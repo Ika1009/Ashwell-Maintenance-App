@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ashwell_Maintenance.View.MainPage"
+             Shell.NavBarIsVisible="False"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             BackgroundColor="#141414">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#141414" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+    
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid RowSpacing="20" Margin="0, 30, 0, 30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="logo.png" WidthRequest="200" HorizontalOptions="Center"/>
+
+            <Label Grid.Row="1" Text="Create New Sheet" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10">
+                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CDM_Tapped"/>
+                    </Frame.GestureRecognizers>
+
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="construction_design_management.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="Construction Design Management" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                    </Grid>
+                </Frame>
+
+                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ER_Tapped"/>
+                    </Frame.GestureRecognizers>
+
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="engineers_report.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="Engineers Report" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                    </Grid>
+                </Frame>
+
+                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SR_Tapped"/>
+                    </Frame.GestureRecognizers>
+
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="service_record.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="Service Record" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                    </Grid>
+                </Frame>
+
+                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GRA_Tapped"/>
+                    </Frame.GestureRecognizers>
+
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="gas_risk_assessment.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="Gas Risk Assessment" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                    </Grid>
+                </Frame>
+
+                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BTT_Tapped"/>
+                    </Frame.GestureRecognizers>
+
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="one_b.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="1B Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                    </Grid>
+                </Frame>
+
+                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ATT_Tapped"/>
+                    </Frame.GestureRecognizers>
+
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="one_a.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="1A Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                    </Grid>
+                </Frame>
+
+                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TT_Tapped"/>
+                    </Frame.GestureRecognizers>
+
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="one.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="1 Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                    </Grid>
+                </Frame>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+    
+</ContentPage>
