@@ -13,7 +13,7 @@
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid RowSpacing="20" Margin="0, 30, 0, 30">
@@ -27,7 +27,7 @@
             <Label Grid.Row="1" Text="Create New Sheet" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
         </Grid>
 
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="10">
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Frame.GestureRecognizers>
@@ -196,7 +196,7 @@
                         <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
                     </Grid>
                 </Frame>
-                
+
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
