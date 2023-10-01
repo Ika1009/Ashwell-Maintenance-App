@@ -30,10 +30,6 @@
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="10">
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="CDM_Tapped"/>
-                    </Frame.GestureRecognizers>
-
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -49,15 +45,11 @@
                             <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
                         </Grid>
 
-                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="CDM_Tapped"/>
                     </Grid>
                 </Frame>
 
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ER_Tapped"/>
-                    </Frame.GestureRecognizers>
-
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -73,15 +65,11 @@
                             <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
                         </Grid>
 
-                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ER_Tapped"/>
                     </Grid>
                 </Frame>
 
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SR_Tapped"/>
-                    </Frame.GestureRecognizers>
-
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -97,15 +85,11 @@
                             <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
                         </Grid>
 
-                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="SR_Tapped"/>
                     </Grid>
                 </Frame>
 
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="GRA_Tapped"/>
-                    </Frame.GestureRecognizers>
-
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -121,15 +105,11 @@
                             <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
                         </Grid>
 
-                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="GRA_Tapped"/>
                     </Grid>
                 </Frame>
 
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BTT_Tapped"/>
-                    </Frame.GestureRecognizers>
-
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -145,15 +125,11 @@
                             <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
                         </Grid>
 
-                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="BTT_Tapped"/>
                     </Grid>
                 </Frame>
 
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ATT_Tapped"/>
-                    </Frame.GestureRecognizers>
-
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -169,15 +145,11 @@
                             <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
                         </Grid>
 
-                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ATT_Tapped"/>
                     </Grid>
                 </Frame>
 
                 <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TT_Tapped"/>
-                    </Frame.GestureRecognizers>
-
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -193,7 +165,7 @@
                             <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
                         </Grid>
 
-                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="TT_Tapped"/>
                     </Grid>
                 </Frame>
 
