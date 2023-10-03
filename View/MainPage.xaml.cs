@@ -19,7 +19,7 @@
         }
         private void SR_Tapped(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new ServiceRecordPage1());
         }
         private void GRA_Tapped(object sender, EventArgs e)
         {

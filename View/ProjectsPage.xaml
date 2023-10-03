@@ -2,11 +2,80 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ashwell_Maintenance.View.ProjectsPage"
-             Title="ProjectsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="ProjectsPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#141414">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid RowSpacing="10" Margin="0, 30, 0, 90">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="engineers_report.png" WidthRequest="60" HorizontalOptions="Center"/>
+
+            <Label Grid.Row="1" Text="Projects" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+
+            <Frame Grid.Row="2" Padding="0" BorderColor="Transparent" CornerRadius="100">
+                <BoxView Color="#1c2424"/>
+            </Frame>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="20">
+            <Frame BackgroundColor="#1c2424" CornerRadius="30" BorderColor="Transparent" Padding="0">
+                <Grid>
+                    <Grid Padding="20, 40" ColumnSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="completed_jobs" WidthRequest="100" VerticalOptions="Center"/>
+
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="5">
+                            <Label Grid.Column="1" Text="Completed Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
+
+                            <Label Grid.Column="1" Text="View Finished Work" TextColor="#84949c" FontSize="15" FontFamily="SatoshiMedium"/>
+                        </VerticalStackLayout>
+
+                        <Image Grid.Column="2" Source="forward.png" HeightRequest="30"/>
+                    </Grid>
+
+                    <Button BackgroundColor="Transparent"/>
+                </Grid>
+            </Frame>
+
+            <Frame BackgroundColor="#1c2424" CornerRadius="30" BorderColor="Transparent" Padding="0">
+                <Grid>
+                    <Grid Padding="20, 40" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="incompleted_jobs" WidthRequest="100" VerticalOptions="Center"/>
+
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="5">
+                            <Label Grid.Column="1" Text="Incompleted Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
+
+                            <Label Grid.Column="1" Text="View Unfinished Work" TextColor="#84949c" FontSize="15" FontFamily="SatoshiMedium"/>
+                        </VerticalStackLayout>
+                        
+                        <Image Grid.Column="2" Source="forward.png" HeightRequest="30"/>
+                    </Grid>
+
+                    <Button BackgroundColor="Transparent"/>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
