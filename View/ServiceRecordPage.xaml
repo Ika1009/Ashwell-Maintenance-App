@@ -43,7 +43,7 @@
                     <Label Text="Site:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium" x:Name="siteEntry"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -288,7 +288,7 @@
                                 <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20" WidthRequest="60" HorizontalOptions="End"/>
                             </Grid>
 
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" Clicked="Button_Clicked" MinimumHeightRequest="0"/>
                         </Grid>
                     </Frame>
                 </VerticalStackLayout>
