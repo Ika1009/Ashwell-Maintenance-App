@@ -51,7 +51,7 @@
                     <Label Text="Appliance Location:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium" x:Name ="ApplianceLocation"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -59,7 +59,7 @@
                     <Label Text="Asset Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium" x:Name="AssetNumber"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -67,7 +67,7 @@
                     <Label Text="Appliance Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="ApplianceNumber"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -81,7 +81,7 @@
                     <Label Text="Make:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="ApplianceDetails"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -89,7 +89,7 @@
                     <Label Text="Model:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium" x:Name="Model"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -97,7 +97,7 @@
                     <Label Text="Serial Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="SerialNumber"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -105,7 +105,7 @@
                     <Label Text="GC Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="GCNumber"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -119,7 +119,7 @@
                     <Label Text="Make:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="BurnerDetails"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -130,7 +130,7 @@
                 <Label Text="Additional Comments / Defects" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Frame Padding="20, 0" HeightRequest="400" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="20">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="AdditionalCommentsDefects"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -140,7 +140,7 @@
                 <Label Text="Warning Notice Number (If Applicable)" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="WarningNoticeNumber"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -194,7 +194,7 @@
                 <Label Text="Engineers Gas Safe ID Number" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="EngineersGasSafeIDNumber"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -204,7 +204,7 @@
                 <Label Text="Engineers Signature" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Frame Padding="20, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#d9d9d9d9" CornerRadius="20">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="EngineersSignature"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -214,7 +214,7 @@
                 <Label Text="Inspection Date" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"x:Name="InspectionDate"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
