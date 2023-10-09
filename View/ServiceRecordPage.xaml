@@ -290,7 +290,7 @@
                                 <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20" WidthRequest="60" HorizontalOptions="End"/>
                             </Grid>
 
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
+                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" Clicked="Button_Clicked" MinimumHeightRequest="0"/>
                         </Grid>
                     </Frame>
                 </VerticalStackLayout>

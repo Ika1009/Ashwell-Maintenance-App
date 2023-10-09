@@ -42,4 +42,10 @@ public partial class ServiceRecordPage1 : ContentPage
         SRSetion3.ScrollToAsync(0, 0, false);
         SRSetion3.IsVisible = true;
     }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+		string siteEntryText = siteEntry.Text;
+		PdfCreation.CreateServiceRecordPDF(siteEntryText);
+    }
 }
