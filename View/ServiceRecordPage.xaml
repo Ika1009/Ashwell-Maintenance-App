@@ -30,49 +30,49 @@
         <ScrollView x:Name="SRSetion1" Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="20">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Site Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Site:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Appliance Location:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Asset Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Appliance Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Appliance Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
@@ -80,37 +80,37 @@
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Make:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Model:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Serial Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="GC Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Burner Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
@@ -118,36 +118,38 @@
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Make:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                        <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                    <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Additional Comments / Defects" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="20, 0" HeightRequest="400" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="20">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                <Frame x:Name="ACDFrame" Padding="20, 0" HeightRequest="400" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="20">
+                    <Grid>
+                        <local:LinelessEditor x:Name="ACDEditor" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                    </Grid>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Warning Notice Number (If Applicable)" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                    <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#1c2424" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ServiceRecordNext1"/>
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ServiceRecordNext1"/>
             </VerticalStackLayout>
         </ScrollView>
 
@@ -155,7 +157,7 @@
         <ScrollView x:Name="SRSetion2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="20">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
@@ -165,7 +167,7 @@
                                     <Setter Property="Color" Value="Red" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTexts}, Path=IsChecked}" Value="False">
-                                    <Setter Property="Color" Value="#84949c" />
+                                    <Setter Property="Color" Value="#fff" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
                         </CheckBox>
@@ -179,7 +181,7 @@
                                     <Setter Property="Color" Value="Red" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWork}, Path=IsChecked}" Value="False">
-                                    <Setter Property="Color" Value="#84949c" />
+                                    <Setter Property="Color" Value="#fff" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
                         </CheckBox>
@@ -188,49 +190,49 @@
                 </VerticalStackLayout>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Engineers Gas Safe ID Number" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                    <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Engineers Signature" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="20, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#d9d9d9d9" CornerRadius="20">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                <Frame Padding="20, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="20">
+                    <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="Inspection Date" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#d9d9d9d9" CornerRadius="100">
-                    <local:LinelessEntry FontSize="15" FontFamily="SatoshiMedium"/>
+                <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                    <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Label Text="By sining this document, I certified that I carried out the above agreed works on the dates provided and all this information is correct."
-                       TextColor="#84949c"
+                       TextColor="#707070"
                        FontSize="15"
                        FontFamily="SatoshiMedium"
                        HorizontalTextAlignment="Center"/>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#1c2424" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ServiceRecordNext2"/>
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ServiceRecordNext2"/>
             </VerticalStackLayout>
         </ScrollView>
 
@@ -238,12 +240,12 @@
         <ScrollView x:Name="SRSetion3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="20">
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <Frame Padding="0" HeightRequest="300" CornerRadius="20">
                     <Grid>
-                        <ImageButton BackgroundColor="#1c2424"/>
+                        <ImageButton BackgroundColor="#222225"/>
 
                         <Button Text="CLICK TO VIEW" TextColor="#000" FontSize="18" FontFamily="SatoshiBold" BackgroundColor="#80ffffff" Padding="20, 10" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"/>
 
@@ -252,11 +254,11 @@
                 </Frame>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#1c2424"/>
+                    <BoxView Color="#222225"/>
                 </Frame>
 
                 <VerticalStackLayout Spacing="15" Margin="0, 0, 0, 50">
-                    <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                         <Grid>
                             <Grid Padding="0, 20">
                                 <Label Text="Add Another Sheet To This Job" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -268,7 +270,7 @@
                         </Grid>
                     </Frame>
                     
-                    <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                         <Grid>
                             <Grid Padding="0, 20">
                                 <Label Text="Complete Job" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -280,7 +282,7 @@
                         </Grid>
                     </Frame>
                     
-                    <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                         <Grid>
                             <Grid Padding="0, 20">
                                 <Label Text="Complete Job Later" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>

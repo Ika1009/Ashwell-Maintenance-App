@@ -24,12 +24,12 @@
             <Label Grid.Row="1" Text="Projects" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
 
             <Frame Grid.Row="2" Padding="0" BorderColor="Transparent" CornerRadius="100">
-                <BoxView Color="#1c2424"/>
+                <BoxView Color="#222225"/>
             </Frame>
         </Grid>
 
         <VerticalStackLayout Grid.Row="1" Spacing="20">
-            <Frame BackgroundColor="#1c2424" CornerRadius="30" BorderColor="Transparent" Padding="0">
+            <Frame BackgroundColor="#222225" CornerRadius="30" BorderColor="Transparent" Padding="0">
                 <Grid>
                     <Grid Padding="20, 40" ColumnSpacing="20">
                         <Grid.ColumnDefinitions>
@@ -53,7 +53,7 @@
                 </Grid>
             </Frame>
 
-            <Frame BackgroundColor="#1c2424" CornerRadius="30" BorderColor="Transparent" Padding="0">
+            <Frame BackgroundColor="#222225" CornerRadius="30" BorderColor="Transparent" Padding="0">
                 <Grid>
                     <Grid Padding="20, 40" ColumnSpacing="10">
                         <Grid.ColumnDefinitions>

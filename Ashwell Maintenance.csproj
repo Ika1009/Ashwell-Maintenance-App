@@ -32,9 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
-		<!-- Splash Screen -->
+		<MauiIcon Include="Resources\AppIcon\ash_icon.svg" Color="Transparent" ForegroundScale="0.5" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -58,6 +56,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\ash_icon.svg" />
+	  <None Remove="Resources\Splash\ash_icon.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\ash_icon.svg">
+	    <Color>#141414</Color>
+	    <BaseSize>256, 256</BaseSize>
+	  </MauiIcon>
+	  <MauiSplashScreen Include="Resources\Splash\ash_icon.svg" BaseSize="256, 256" Color="#141414" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
@@ -72,10 +83,6 @@
 	  <MauiXaml Update="View\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\ash_icon.png" BaseSize="256, 256" Color="#141414" />
 	</ItemGroup>
 
 	<ItemGroup>

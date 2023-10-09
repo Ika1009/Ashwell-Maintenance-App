@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ashwell_Maintenance.Customs
 {
-    class LinelessEntry : Entry
+    class LinelessEditor : Editor
     {
         public static BindableProperty CursorColorProperty = BindableProperty.Create(
             nameof(CursorColor), typeof(Color), typeof(LinelessEntry), Colors.Red);
@@ -16,7 +16,7 @@ namespace Ashwell_Maintenance.Customs
             get => (Color)GetValue(CursorColorProperty);
             set => SetValue(CursorColorProperty, value);
         }
-        static LinelessEntry()
+        static LinelessEditor()
         {
 
         }

@@ -12,11 +12,11 @@
 
             <Style TargetType="TabBar">
                 <Setter Property="Shell.TabBarBackgroundColor"
-                        Value="#1c2424" />
+                        Value="#222225" />
                 <Setter Property="Shell.TabBarTitleColor"
-                        Value="White" />
+                        Value="Red" />
                 <Setter Property="Shell.TabBarUnselectedColor"
-                        Value="#84949c" />
+                        Value="#707070" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

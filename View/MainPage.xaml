@@ -29,7 +29,7 @@
 
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="10">
-                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -49,7 +49,7 @@
                     </Grid>
                 </Frame>
 
-                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -69,7 +69,7 @@
                     </Grid>
                 </Frame>
 
-                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -89,7 +89,7 @@
                     </Grid>
                 </Frame>
 
-                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -109,7 +109,7 @@
                     </Grid>
                 </Frame>
 
-                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -129,7 +129,7 @@
                     </Grid>
                 </Frame>
 
-                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
@@ -149,7 +149,7 @@
                     </Grid>
                 </Frame>
 
-                <Frame BackgroundColor="#1c2424" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                     <Grid>
                         <Grid ColumnSpacing="10" Padding="20">
                             <Grid.ColumnDefinitions>
