@@ -18,13 +18,20 @@ public partial class ServiceRecordPage1 : ContentPage
 			SRSetion1.ScrollToAsync(0, 0, false);
 			SRSetion1.IsVisible = true;
 		}
-		else
+		else if (SRSetion3.IsVisible == true)
 		{
 			SRSetion3.IsVisible = false;
 
 			SRSetion2.ScrollToAsync(0, 0, false);
 			SRSetion2.IsVisible = true;
 		}
+		else
+		{
+            SRSetion4.IsVisible = false;
+
+            SRSetion3.ScrollToAsync(0, 0, false);
+            SRSetion3.IsVisible = true;
+        }
     }
 
 	public void ServiceRecordNext1(object sender, EventArgs e)
@@ -43,9 +50,17 @@ public partial class ServiceRecordPage1 : ContentPage
         SRSetion3.IsVisible = true;
     }
 
+    public void ServiceRecordNext3(object sender, EventArgs e)
+    {
+        SRSetion3.IsVisible = false;
+
+        SRSetion4.ScrollToAsync(0, 0, false);
+        SRSetion4.IsVisible = true;
+    }
+
     private void Button_Clicked(object sender, EventArgs e)
     {
-		string siteEntryText = siteEntry.Text;
-		PdfCreation.CreateServiceRecordPDF(siteEntryText);
+		//string siteEntryText = siteEntry.Text;
+		//PdfCreation.CreateServiceRecordPDF(siteEntryText);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Ashwell_Maintenance.Customs;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Platform;
 
 namespace Ashwell_Maintenance
 {
@@ -40,7 +41,6 @@ namespace Ashwell_Maintenance
 #elif __IOS__
                 handler.PlatformView.TintColor = UIKit.UIColor.Red;
                 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
-                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #endif
             });
             Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping("CursorColor", (handler, view) =>
