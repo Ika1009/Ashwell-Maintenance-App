@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace Ashwell_Maintenance
 {
@@ -10,6 +11,7 @@ namespace Ashwell_Maintenance
 #pragma warning disable MCT001
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("Satoshi-Medium.otf", "SatoshiMedium");

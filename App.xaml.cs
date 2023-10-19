@@ -1,6 +1,6 @@
 ﻿using Ashwell_Maintenance.Customs;
+using Ashwell_Maintenance.View;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Platform;
 
 namespace Ashwell_Maintenance
@@ -11,7 +11,7 @@ namespace Ashwell_Maintenance
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new SignaturePage();
 
 
 
