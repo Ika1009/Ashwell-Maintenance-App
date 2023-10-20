@@ -66,15 +66,15 @@ public partial class ServiceRecordPage1 : ContentPage
         string location1 = location.Text;
         string assetNumber1 = assetNo.Text;
         string applianceNumber1 = applianceNo.Text;
-        bool testsCompleted1 = checkTestsCompleted.Text;
-        string remedialWorkRequired1 = checRemedialWorkRequired.Text;
+        bool testsCompleted1 = checkTestsCompleted.IsChecked;
+        bool remedialWorkRequired1 = checRemedialWorkRequired.IsChecked;
         string applianceMake1 = applianceMake.Text;
         string applianceModel1 = applianceModel.Text;
         string applianceSerialNumber1 = applianceSerialNo.Text;
         string gcNumber1 = GCNo.Text;
-        bool Heating1 = checkHeating.Text;
-        bool HotWater1 = checkHotWater.Text;
-        bool Both1 = checkBoth.Text;
+        bool Heating1 = checkHeating.IsChecked;
+        bool HotWater1 = checkHotWater.IsChecked;
+        bool Both1 = checkBoth.IsChecked;
         string approxAgeOfAppliance1 = years.Text;
         string badgedInput1 = badgedInput.Text;
         string badgedOutput1 = budgedOutput.Text;
@@ -83,89 +83,89 @@ public partial class ServiceRecordPage1 : ContentPage
         string burnerSerialNumber1 = burnerSerialNo.Text;
         string Type1 = type.Text;
         string Spec1 = spec.Text;
-        bool OpenFlue1 = checkOpenFlue.Text;
-        bool Roomsealed1 = checkRoomSealed.Text;
-        bool ForcedDraft1 = checkForcedDraft.Text;
-        bool Flueless1 = checkFlueless.Text;
+        bool OpenFlue1 = checkOpenFlue.IsChecked;
+        bool Roomsealed1 = checkRoomSealed.IsChecked;
+        bool ForcedDraft1 = checkForcedDraft.IsChecked;
+        bool Flueless1 = checkFlueless.IsChecked;
         string badgedBurnerPressure1 = badgedBurnerPressure.Text;
-        bool ventilationSatisfactory1 = checkVentilationSatisfactory.Text;
-        bool flueConditionSatisfactory1 = checkFlueConditionSatisfactory.Text;
-        //= checkNG.Text;
-        //= checkLPG.Text;
-        bool applianceServiceValveSatisfactory1 = checkAppServiceValve.Text;
-        bool applianceServiceValveSatisfactoryNA1 = checkAppServiceValveNA.Text;
+        bool ventilationSatisfactory1 = checkVentilationSatisfactory.IsChecked;
+        bool flueConditionSatisfactory1 = checkFlueConditionSatisfactory.IsChecked;
+        bool tempNG= checkNG.IsChecked;
+        bool tempLPG= checkLPG.IsChecked;
+        bool applianceServiceValveSatisfactory1 = checkAppServiceValve.IsChecked;
+        bool applianceServiceValveSatisfactoryNA1 = checkAppServiceValveNA.IsChecked;
         string applianceServiceValveSatisfactoryComments1 = applianceServiceValveComment.Text;
-        bool governorsSatisfactory1 = checkGovernors.Text;
-        bool governorsSatisfactoryNA1 = checkGovernorsNA.Text;
+        bool governorsSatisfactory1 = checkGovernors.IsChecked;
+        bool governorsSatisfactoryNA1 = checkGovernorsNA.IsChecked;
         string governorsComments1 = governorsComment.Text;
-        bool gasSolenoidValvesSatisfactory1 = checkGasSolenoidValves.Text;
-        bool gasSolenoidValvesSatisfactoryNA1 = checkGasSolenoidValvesNA.Text;
+        bool gasSolenoidValvesSatisfactory1 = checkGasSolenoidValves.IsChecked;
+        bool gasSolenoidValvesSatisfactoryNA1 = checkGasSolenoidValvesNA.IsChecked;
         string gasSolenoidValvesComments1 = gasSolenoidValvesComment.Text;
-        bool controlBoxPcbSatisfactory1 = checkControlBoxPCB.Text;
-        bool controlBoxPcbSatisfactoryNA1 = checkControlBoxPCBNA.Text;
+        bool controlBoxPcbSatisfactory1 = checkControlBoxPCB.IsChecked;
+        bool controlBoxPcbSatisfactoryNA1 = checkControlBoxPCBNA.IsChecked;
         string controlBoxPcbComments1 = controlBoxPCBComment.Text;
-        bool gasketSealsSatisfactory1 = checkGasketSeals.Text;
-        bool gasketSealsSatisfactoryNA1 = checkGasketSealsNA.Text;
+        bool gasketSealsSatisfactory1 = checkGasketSeals.IsChecked;
+        bool gasketSealsSatisfactoryNA1 = checkGasketSealsNA.IsChecked;
         string gasketSealsComments1 = gasketSealsComment.Text;
-        bool burnerSatisfactory1 = checkBurner.Text;
-        bool burnerSatisfactoryNA1 = checkBurnerNA.Text;
+        bool burnerSatisfactory1 = checkBurner.IsChecked;
+        bool burnerSatisfactoryNA1 = checkBurnerNA.IsChecked;
         string burnerComments1 = burnerComment.Text;
-        bool burnerJetsSatisfactory1 = checkBurnerJets.Text;
-        bool burnerJetsSatisfactoryNA1 = checkBurnerJetsNA.Text;
+        bool burnerJetsSatisfactory1 = checkBurnerJets.IsChecked;
+        bool burnerJetsSatisfactoryNA1 = checkBurnerJetsNA.IsChecked;
         string burnerJetsComments1 = burnerJetsComment.Text;
-        bool electrodesTransformerSatisfactory1 = checkElectrodesTransformer.Text;
-        bool electrodesTransformerSatisfactoryNA1 = checkElectrodesTransformerNA.Text;
+        bool electrodesTransformerSatisfactory1 = checkElectrodesTransformer.IsChecked;
+        bool electrodesTransformerSatisfactoryNA1 = checkElectrodesTransformerNA.IsChecked;
         string electrodesTransformerComments1 = electrodesTransformerComment.Text;
-        bool flameFailureDeviceSatisfactory1 = checkFlameFailureDevice.Text;
-        bool flameFailureDeviceSatisfactoryNA1 = checkFlameFailureDeviceNA.Text;
+        bool flameFailureDeviceSatisfactory1 = checkFlameFailureDevice.IsChecked;
+        bool flameFailureDeviceSatisfactoryNA1 = checkFlameFailureDeviceNA.IsChecked;
         string flameFailureDeviceComments1 = flameFailureDeviceComment.Text;
-        bool systemBoilerControlsSatisfactory1 = checkSystemBoilerControls.Text;
-        bool systemBoilerControlsSatisfactoryNA1 = checkSystemBolierControlsNA.Text;
+        bool systemBoilerControlsSatisfactory1 = checkSystemBoilerControls.IsChecked;
+        bool systemBoilerControlsSatisfactoryNA1 = checkSystemBolierControlsNA.IsChecked;
         string systemBoilerControlsComments1 = systemBoilerControlsComment.Text;
-        bool boilerCasingSatisfactory1 = checkBoilerCasing.Text;
-        bool boilerCasingSatisfactoryNA1 = checkBoilerCasingNA.Text;
+        bool boilerCasingSatisfactory1 = checkBoilerCasing.IsChecked;
+        bool boilerCasingSatisfactoryNA1 = checkBoilerCasingNA.IsChecked;
         string boilerCasingComments1 = boilerCasingComment.Text;
-        bool thermalInsulationSatisfactory1 = checkThermalInsulation.Text;
-        bool thermalInsulationSatisfactoryNA1 = checkThermalInsulationNA.Text;
+        bool thermalInsulationSatisfactory1 = checkThermalInsulation.IsChecked;
+        bool thermalInsulationSatisfactoryNA1 = checkThermalInsulationNA.IsChecked;
         string thermalInsulationComments1 = thermalInsulationComment.Text;
-        bool combustionFanIdFanSatisfactory1 = checkCombustionFanIdFan.Text;
-        bool combustionFanIdFanSatisfactoryNA1 = checkCombustionFanIdFanNA.Text;
+        bool combustionFanIdFanSatisfactory1 = checkCombustionFanIdFan.IsChecked;
+        bool combustionFanIdFanSatisfactoryNA1 = checkCombustionFanIdFanNA.IsChecked;
         string combustionFanIdFanComments1 = combustionFanIdFanComment.Text;
-        bool airFluePressureSwitchSatisfactory1 = checkAirFluePressureSwitch.Text;
-        bool airFluePressureSwitchSatisfactoryNA1 = checkAirFluePressureSwitchNA.Text;
+        bool airFluePressureSwitchSatisfactory1 = checkAirFluePressureSwitch.IsChecked;
+        bool airFluePressureSwitchSatisfactoryNA1 = checkAirFluePressureSwitchNA.IsChecked;
         string airFluePressureSwitchComments1 = airFluePressureSwitchComment.Text;
-        bool controlLimitStatsSatisfactory1 = checkControlLimitStatus.Text;
-        bool controlLimitStatsSatisfactoryNA1 = checkControlLimitStatusNA.Text;
+        bool controlLimitStatsSatisfactory1 = checkControlLimitStatus.IsChecked;
+        bool controlLimitStatsSatisfactoryNA1 = checkControlLimitStatusNA.IsChecked;
         string controlLimitStatsComments1 = controlLimitStatusComment.Text;
-        bool pressureTempGaugesSatisfactory1 = checkPressureTempGauges.Text;
-        bool pressureTempGaugesSatisfactoryNA1 = checkPressureTempGaugesNA.Text;
+        bool pressureTempGaugesSatisfactory1 = checkPressureTempGauges.IsChecked;
+        bool pressureTempGaugesSatisfactoryNA1 = checkPressureTempGaugesNA.IsChecked;
         string pressureTempGaugesComments1 = pressureTempGaugesComment.Text;
-        bool circulationPumpsSatisfactory1 = checkCirculationPumps.Text;
-        bool circulationPumpsSatisfactoryNA1 = checkCirculationPumpsNA.Text;
+        bool circulationPumpsSatisfactory1 = checkCirculationPumps.IsChecked;
+        bool circulationPumpsSatisfactoryNA1 = checkCirculationPumpsNA.IsChecked;
         string circulationPumpsComments1 = circulationPumpsComment.Text;
-        bool condenseTrapSatisfactory1 = checkCondenseTrap.Text;
-        bool condenseTrapSatisfactoryNA1 = checkCondenseTrapNA.Text;
+        bool condenseTrapSatisfactory1 = checkCondenseTrap.IsChecked;
+        bool condenseTrapSatisfactoryNA1 = checkCondenseTrapNA.IsChecked;
         string condenseTrapComments1 = condenseTrapComment.Text;
-        bool heatExhanger1 = checkHeatExchangerFluewaysClear.Text;
-        bool heatExhangerNA1 = checkHeatExchangerFluewaysClearNA.Text;
+        bool heatExhanger1 = checkHeatExchangerFluewaysClear.IsChecked;
+        bool heatExhangerNA1 = checkHeatExchangerFluewaysClearNA.IsChecked;
         string heatExhangerComments1 = heatExchangerFluewaysClearComment.Text;
         string workingInletPressure1 = workingIntelPressure.Text;
         string recordedBurnerPressure1 = recordedBurnerPressure.Text;
         string measuredGasRate1 = measuredGasRate.Text;
-        bool flueFlowTest1 = checkFlueFlowTest.Text;
-        bool flueFlowTestNA1 = checkFlueFlowTestNA.Text;
+        bool flueFlowTest1 = checkFlueFlowTest.IsChecked;
+        bool flueFlowTestNA1 = checkFlueFlowTestNA.IsChecked;
         string flueFlowTestComments1 = flueFlowTestComment.Text;
-        bool spillageTest1 = checkSpillageTest.Text;
-        bool spillageTestNA1 = checkSpillageTestNA.Text;
+        bool spillageTest1 = checkSpillageTest.IsChecked;
+        bool spillageTestNA1 = checkSpillageTestNA.IsChecked;
         string spillageTestComments1 = spillageTestComment.Text;
-        bool AECVPlantIsolationCorrect1 = checkAECVPlantIsolationCorrect.Text;
-        bool AECVPlantIsolationCorrectNA1 = checkAECVPlantIsolationCorrectNA.Text;
+        bool AECVPlantIsolationCorrect1 = checkAECVPlantIsolationCorrect.IsChecked;
+        bool AECVPlantIsolationCorrectNA1 = checkAECVPlantIsolationCorrectNA.IsChecked;
         string AECVPlantIsolationCorrectComments1 = AECVPlantIsolationCorrectComment.Text;
-        bool safetyShutOffValve1 = checkSafetyShutOffValve.Text;
-        bool safetyShutOffValveNA1 = checkSafetyShutOffValveNA.Text;
+        bool safetyShutOffValve1 = checkSafetyShutOffValve.IsChecked;
+        bool safetyShutOffValveNA1 = checkSafetyShutOffValveNA.IsChecked;
         string safetyShutOffValveComments1 = safetyShutOffValveComment.Text;
-        bool plantroomGasTightnessTest1 = checkPlantroomGasTightnessTest.Text;
-        bool plantroomGasTightnessTestNA1 = checkPlantroomGasTightnessTestNA.Text;
+        bool plantroomGasTightnessTest1 = checkPlantroomGasTightnessTest.IsChecked;
+        bool plantroomGasTightnessTestNA1 = checkPlantroomGasTightnessTestNA.IsChecked;
         string plantroomGasTightnessTestComments1 = plantroomGasTightnessTestComment.Text;
         string stateApplianceCondition1 = stateApplianceCondition.Text;
         string HighFireCO21 = highFireCO2.Text;
@@ -192,139 +192,147 @@ public partial class ServiceRecordPage1 : ContentPage
         string inspectionDate1 = inspectionDate.Text;
         string commetsDefects1 = additionalCommentsDefects.Text;
         string warningNoticeIssueNumber1 = warningNoticeNumber.Text;
+        string gasType1 = "";
+        if (tempNG)
+        {
+            gasType1 = "NG";
+        }
+        else if (tempLPG)
+        {
+            gasType1 = "LPG";
+        }
 
 
-
-        await PdfCreation.CreateServiceRecordPDF(string workingInletPressure1,
-            string site1, string location1,
-            string applianceNumber1,
-string recordedBurnerPressure1,
-string assetNumber1,
-string measuredGasRate1,
-bool heatExhanger1,
-bool heatExhangerNA1,
-string heatExhangerComments1,
-bool flueFlowTest1,
-bool flueFlowTestNA1,
-string flueFlowTestComments1,
-bool spillageTest1,
-bool spillageTestNA1,
-string spillageTestComments1,
-bool safetyShutOffValve1,
-bool safetyShutOffValveNA1,
-string safetyShutOffValveComments1,
-bool plantroomGasTightnessTest1,
-bool plantroomGasTightnessTestNA1,
-string plantroomGasTightnessTestComments1,
-bool AECVPlantIsolationCorrect1,
-bool AECVPlantIsolationCorrectNA1,
-string AECVPlantIsolationCorrectComments1,
-string stateApplianceConditionComments1,
-string workingInletPressureComments1,
-string recordedBurnerPressureComments1,
-string measuredGasRateComments1,
-bool testsCompleted1,
-bool remedialWorkRequired1,
-string applianceMake1,
-string applianceModel1,
-string applianceSerialNumber1,
-string gcNumber1,
-string stateApplianceCondition1,
-string burnerMake1,
-string burnerModel1,
-string burnerSerialNumber1,
-string Type1,
-string Spec1,
-bool OpenFlue1,
-bool Roomsealed1,
-bool ForcedDraft1,
-bool Flueless1,
-bool Heating1,
-bool HotWater1,
-bool Both1,
-string badgedBurnerPressure1,
-bool ventilationSatisfactory1,
-string gasType1,
-bool flueConditionSatisfactory1,
-string approxAgeOfAppliance1,
-string badgedInput1,
-string badgedOutput1,
-bool applianceServiceValveSatisfactory1,
-bool governorsSatisfactory1,
-bool gasSolenoidValvesSatisfactory1,
-bool controlBoxPcbSatisfactory1,
-bool gasketSealsSatisfactory1,
-bool burnerSatisfactory1,
-bool burnerJetsSatisfactory1,
-bool electrodesTransformerSatisfactory1,
-bool flameFailureDeviceSatisfactory1,
-bool systemBoilerControlsSatisfactory1,
-bool boilerCasingSatisfactory1,
-bool thermalInsulationSatisfactory1,
-bool combustionFanIdFanSatisfactory1,
-bool airFluePressureSwitchSatisfactory1,
-bool controlLimitStatsSatisfactory1,
-bool pressureTempGaugesSatisfactory1,
-bool circulationPumpsSatisfactory1,
-bool condenseTrapSatisfactory1,
-bool applianceServiceValveSatisfactoryNA1,
-bool governorsSatisfactoryNA1,
-bool gasSolenoidValvesSatisfactoryNA1,
-bool controlBoxPcbSatisfactoryNA1,
-bool gasketSealsSatisfactoryNA1,
-bool burnerSatisfactoryNA1,
-bool burnerJetsSatisfactoryNA1,
-bool electrodesTransformerSatisfactoryNA1,
-bool flameFailureDeviceSatisfactoryNA1,
-bool systemBoilerControlsSatisfactoryNA1,
-bool boilerCasingSatisfactoryNA1,
-bool thermalInsulationSatisfactoryNA1,
-bool combustionFanIdFanSatisfactoryNA1,
-bool airFluePressureSwitchSatisfactoryNA1,
-bool controlLimitStatsSatisfactoryNA1,
-bool pressureTempGaugesSatisfactoryNA1,
-bool circulationPumpsSatisfactoryNA1,
-bool condenseTrapSatisfactoryNA1,
-string gasSolenoidValvesComments1,
-string controlBoxPcbComments1,
-string gasketSealsComments1,
-string burnerComments1,
-string burnerJetsComments1,
-string electrodesTransformerComments1,
-string flameFailureDeviceComments1,
-string systemBoilerControlsComments1,
-string boilerCasingComments1,
-string thermalInsulationComments1,
-string combustionFanIdFanComments1,
-string airFluePressureSwitchComments1,
-string controlLimitStatsComments1,
-string pressureTempGaugesComments1,
-string circulationPumpsComments1,
-string condenseTrapComments1,
-string HighFireCO21,
-string HighFireCO1,
-string HighFireO21,
-string HighFireFlueTemp1,
-string HighFireEfficiency1,
-string HighFireExcessAir1,
-string HighFireRoomTemp1,
-string HighFireRatio1,
-string LowFireCO21,
-string LowFireCO1,
-string LowFireO21,
-string LowFireFlueTemp1,
-string LowFireEfficiency1,
-string LowFireExcessAir1,
-string LowFireRoomTemp1,
-string LowFireRatio1,
-string warningNoticeIssueNumber1,
-string engineersName1,
-string engineersSignature1,
-string engineersGasSafeID1,
-string clientsName1,
-string clientsSignature1,
-string inspectionDate1,
-        string commetsDefects1
-        );
+        await PdfCreation.CreateServiceRecordPDF(workingInletPressure1,
+             site1,location1,
+            applianceNumber1,
+ recordedBurnerPressure1,
+ assetNumber1,
+ measuredGasRate1,
+ heatExhanger1,
+ heatExhangerNA1,
+ heatExhangerComments1,
+ flueFlowTest1,
+ flueFlowTestNA1,
+ flueFlowTestComments1,
+ spillageTest1,
+ spillageTestNA1,
+ spillageTestComments1,
+ safetyShutOffValve1,
+ safetyShutOffValveNA1,
+ safetyShutOffValveComments1,
+ plantroomGasTightnessTest1,
+ plantroomGasTightnessTestNA1,
+ plantroomGasTightnessTestComments1,
+ AECVPlantIsolationCorrect1,
+ AECVPlantIsolationCorrectNA1,
+ AECVPlantIsolationCorrectComments1,
+"",// stateApplianceConditionComments1,
+"",// workingInletPressureComments1,
+"",// recordedBurnerPressureComments1,
+"",// measuredGasRateComments1,
+ testsCompleted1,
+ remedialWorkRequired1,
+ applianceMake1,
+ applianceModel1,
+ applianceSerialNumber1,
+ gcNumber1,
+ stateApplianceCondition1,
+ burnerMake1,
+ burnerModel1,
+ burnerSerialNumber1,
+ Type1,
+ Spec1,
+ OpenFlue1,
+ Roomsealed1,
+ ForcedDraft1,
+ Flueless1,
+ Heating1,
+ HotWater1,
+ Both1,
+ badgedBurnerPressure1,
+ ventilationSatisfactory1,
+ gasType1,
+ flueConditionSatisfactory1,
+ approxAgeOfAppliance1,
+ badgedInput1,
+ badgedOutput1,
+ applianceServiceValveSatisfactory1,
+ governorsSatisfactory1,
+ gasSolenoidValvesSatisfactory1,
+ controlBoxPcbSatisfactory1,
+ gasketSealsSatisfactory1,
+ burnerSatisfactory1,
+ burnerJetsSatisfactory1,
+ electrodesTransformerSatisfactory1,
+ flameFailureDeviceSatisfactory1,
+ systemBoilerControlsSatisfactory1,
+ boilerCasingSatisfactory1,
+ thermalInsulationSatisfactory1,
+ combustionFanIdFanSatisfactory1,
+ airFluePressureSwitchSatisfactory1,
+ controlLimitStatsSatisfactory1,
+ pressureTempGaugesSatisfactory1,
+ circulationPumpsSatisfactory1,
+ condenseTrapSatisfactory1,
+ applianceServiceValveSatisfactoryNA1,
+ governorsSatisfactoryNA1,
+ gasSolenoidValvesSatisfactoryNA1,
+ controlBoxPcbSatisfactoryNA1,
+ gasketSealsSatisfactoryNA1,
+ burnerSatisfactoryNA1,
+ burnerJetsSatisfactoryNA1,
+ electrodesTransformerSatisfactoryNA1,
+ flameFailureDeviceSatisfactoryNA1,
+ systemBoilerControlsSatisfactoryNA1,
+ boilerCasingSatisfactoryNA1,
+ thermalInsulationSatisfactoryNA1,
+ combustionFanIdFanSatisfactoryNA1,
+ airFluePressureSwitchSatisfactoryNA1,
+ controlLimitStatsSatisfactoryNA1,
+ pressureTempGaugesSatisfactoryNA1,
+ circulationPumpsSatisfactoryNA1,
+ condenseTrapSatisfactoryNA1,
+ gasSolenoidValvesComments1,
+ controlBoxPcbComments1,
+ gasketSealsComments1,
+ burnerComments1,
+ burnerJetsComments1,
+ electrodesTransformerComments1,
+ flameFailureDeviceComments1,
+ systemBoilerControlsComments1,
+ boilerCasingComments1,
+ thermalInsulationComments1,
+ combustionFanIdFanComments1,
+ airFluePressureSwitchComments1,
+ controlLimitStatsComments1,
+ pressureTempGaugesComments1,
+ circulationPumpsComments1,
+ condenseTrapComments1,
+ HighFireCO21,
+ HighFireCO1,
+ HighFireO21,
+ HighFireFlueTemp1,
+ HighFireEfficiency1,
+ HighFireExcessAir1,
+ HighFireRoomTemp1,
+ HighFireRatio1,
+ LowFireCO21,
+ LowFireCO1,
+ LowFireO21,
+ LowFireFlueTemp1,
+ LowFireEfficiency1,
+ LowFireExcessAir1,
+ LowFireRoomTemp1,
+ LowFireRatio1,
+ warningNoticeIssueNumber1,
+ engineersName1,
+ engineersSignature1,
+ engineersGasSafeID1,
+ clientsName1,
+ clientsSignature1,
+ inspectionDate1,
+     commetsDefects1
+    );
     }
 }

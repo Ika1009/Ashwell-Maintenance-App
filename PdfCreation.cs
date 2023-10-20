@@ -30,7 +30,7 @@ namespace Ashwell_Maintenance
             return null;
         }
 
-        public static async void CreateServiceRecordPDF(string workingInletPressure, string site, string location, string applianceNumber,
+        public static async Task CreateServiceRecordPDF(string workingInletPressure, string site, string location, string applianceNumber,
 string recordedBurnerPressure,
 string assetNumber,
 string measuredGasRate,
