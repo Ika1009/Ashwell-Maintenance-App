@@ -9,7 +9,7 @@ public partial class ServiceRecordPage1 : ContentPage
 
 	public void ServiceRecordBack(object sender, EventArgs e)
 	{
-		if (SRSetion1.IsVisible == true)
+		if (SRSetion1.IsVisible)
 			Navigation.PushAsync(new MainPage());
 		else if (SRSetion2.IsVisible == true)
 		{

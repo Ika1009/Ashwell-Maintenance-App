@@ -43,7 +43,7 @@
                     <Label Text="Site:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="site"/>
+                        <local:LinelessEntry x:Name="site" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -51,7 +51,7 @@
                     <Label Text="Location:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="location"/>
+                        <local:LinelessEntry x:Name ="location" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -59,7 +59,7 @@
                     <Label Text="Asset Number (If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="assetNo"/>
+                        <local:LinelessEntry x:Name ="assetNo" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -73,18 +73,18 @@
                     <Label Text="Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="ApplianceNumber"/>
+                        <local:LinelessEntry x:Name="applianceNo" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
-                        <CheckBox x:Name="checkTexts">
+                        <CheckBox x:Name="checkTestsCompleted">
                             <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTexts}, Path=IsChecked}" Value="True">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestsCompleted}, Path=IsChecked}" Value="True">
                                     <Setter Property="Color" Value="Red" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTexts}, Path=IsChecked}" Value="False">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestsCompleted}, Path=IsChecked}" Value="False">
                                     <Setter Property="Color" Value="#fff" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
@@ -93,12 +93,12 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout>
-                        <CheckBox x:Name="checkWork">
+                        <CheckBox x:Name="checRemedialWorkRequired">
                             <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWork}, Path=IsChecked}" Value="True">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checRemedialWorkRequired}, Path=IsChecked}" Value="True">
                                     <Setter Property="Color" Value="Red" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWork}, Path=IsChecked}" Value="False">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checRemedialWorkRequired}, Path=IsChecked}" Value="False">
                                     <Setter Property="Color" Value="#fff" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
@@ -111,7 +111,7 @@
                     <Label Text="Make:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="ApplianceDetails"/>
+                        <local:LinelessEntry x:Name="applianceMake" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -119,7 +119,7 @@
                     <Label Text="Model:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="Model"/>
+                        <local:LinelessEntry x:Name="applianceModel" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -127,7 +127,7 @@
                     <Label Text="Serial Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="SerialNumber"/>
+                        <local:LinelessEntry x:Name="applianceSerialNo" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -135,7 +135,7 @@
                     <Label Text="GC Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="GCNumber"/>
+                        <local:LinelessEntry x:Name="GCNo" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -195,7 +195,7 @@
                     <Label Text="Years:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="years"/>
+                        <local:LinelessEntry x:Name="years" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -203,7 +203,7 @@
                     <Label Text="Badged Input (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="badgetInput"/>
+                        <local:LinelessEntry x:Name="badgedInput" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -211,7 +211,7 @@
                     <Label Text="Badged Output (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="budgetOutput"/>
+                        <local:LinelessEntry x:Name="budgedOutput" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -225,7 +225,7 @@
                     <Label Text="Make:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="Make"/>
+                        <local:LinelessEntry x:Name="burnerMake" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -233,7 +233,7 @@
                     <Label Text="Model:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="burnerModel"/>
+                        <local:LinelessEntry x:Name="burnerModel" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -241,7 +241,7 @@
                     <Label Text="Serial Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="BurnerSerialNumber"/>
+                        <local:LinelessEntry x:Name="burnerSerialNo" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -249,7 +249,7 @@
                     <Label Text="Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="type"/>
+                        <local:LinelessEntry x:Name="type" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -257,7 +257,7 @@
                     <Label Text="Spec:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="Spec"/>
+                        <local:LinelessEntry  x:Name="spec" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -325,18 +325,18 @@
                     <Label Text="Badged Burner Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="badgedBurnerPressure" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
                 
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
-                        <CheckBox x:Name="checkVentilation">
+                        <CheckBox x:Name="checkVentilationSatisfactory">
                             <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkVentilation}, Path=IsChecked}" Value="True">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkVentilationSatisfactory}, Path=IsChecked}" Value="True">
                                     <Setter Property="Color" Value="Red" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkVentilation}, Path=IsChecked}" Value="False">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkVentilationSatisfactory}, Path=IsChecked}" Value="False">
                                     <Setter Property="Color" Value="#fff" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
@@ -345,12 +345,12 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout>
-                        <CheckBox x:Name="checkFlueCondition">
+                        <CheckBox x:Name="checkFlueConditionSatisfactory">
                             <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueCondition}, Path=IsChecked}" Value="True">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueConditionSatisfactory}, Path=IsChecked}" Value="True">
                                     <Setter Property="Color" Value="Red" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueCondition}, Path=IsChecked}" Value="False">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueConditionSatisfactory}, Path=IsChecked}" Value="False">
                                     <Setter Property="Color" Value="#fff" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
@@ -454,7 +454,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="applianceServiceValveComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -496,7 +496,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="governorsComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -507,12 +507,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasSolVal">
+                                <CheckBox x:Name="checkGasSolenoidValves">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolVal}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolenoidValves}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolVal}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolenoidValves}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -521,12 +521,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasSolValNA">
+                                <CheckBox x:Name="checkGasSolenoidValvesNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolValNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolenoidValvesNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolValNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasSolenoidValvesNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -538,7 +538,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="gasSolenoidValvesComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -549,12 +549,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPCB">
+                                <CheckBox x:Name="checkControlBoxPCB">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPCB}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlBoxPCB}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPCB}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlBoxPCB}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -563,12 +563,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPCBnA">
+                                <CheckBox x:Name="checkControlBoxPCBNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPCBnA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlBoxPCBNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPCBnA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlBoxPCBNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -580,7 +580,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="controlBoxPCBComment"  TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -622,7 +622,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="gasketSealsComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -664,7 +664,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="burnerComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -706,7 +706,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="burnerJetsComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -717,12 +717,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkElTra">
+                                <CheckBox x:Name="checkElectrodesTransformer">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElTra}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElectrodesTransformer}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElTra}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElectrodesTransformer}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -731,12 +731,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkElTraNA">
+                                <CheckBox x:Name="checkElectrodesTransformerNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElTraNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElectrodesTransformerNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElTraNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkElectrodesTransformerNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -748,7 +748,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="electrodesTransformerComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -759,12 +759,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkFFD">
+                                <CheckBox x:Name="checkFlameFailureDevice">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFD}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlameFailureDevice}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFD}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlameFailureDevice}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -773,12 +773,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkFFDnA">
+                                <CheckBox x:Name="checkFlameFailureDeviceNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFDnA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlameFailureDeviceNAA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFDnA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlameFailureDeviceNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -790,7 +790,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="flameFailureDeviceComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -801,12 +801,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkSystemBC">
+                                <CheckBox x:Name="checkSystemBoilerControls">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBC}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBoilerControls}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBC}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBoilerControls}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -815,12 +815,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkSystemBCnA">
+                                <CheckBox x:Name="checkSystemBolierControlsNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBCnA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBolierControlsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBCnA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSystemBolierControlsNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -832,7 +832,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="systemBoilerControlsComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -874,7 +874,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="boilerCasingComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -916,7 +916,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="thermalInsulationComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -927,12 +927,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkCombustionIdFan">
+                                <CheckBox x:Name="checkCombustionFanIdFan">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionIdFan}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionFanIdFan}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionIdFan}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionFanIdFan}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -941,12 +941,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkCombustionIdFanNA">
+                                <CheckBox x:Name="checkCombustionFanIdFanNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionIdFanNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionFanIdFanNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionIdFanNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCombustionFanIdFanNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -958,7 +958,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="combustionFanIdFanComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -969,12 +969,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkAirSwitch">
+                                <CheckBox x:Name="checkAirFluePressureSwitch">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirSwitch}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirFluePressureSwitch}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirSwitch}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirFluePressureSwitch}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -983,12 +983,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkAirSwitchNA">
+                                <CheckBox x:Name="checkAirFluePressureSwitchNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirSwitchNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirFluePressureSwitchNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirSwitchNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAirFluePressureSwitchNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1000,7 +1000,7 @@
                     <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="airFluePressureSwitchComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1011,12 +1011,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkControlLimit">
+                                <CheckBox x:Name="checkControlLimitStatus">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimit}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimitStatus}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimit}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimitStatus}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1025,12 +1025,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkControlLimitNA">
+                                <CheckBox x:Name="checkControlLimitStatusNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimitNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimitStatusNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimitNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkControlLimitStatusNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1042,7 +1042,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="controlLimitStatusComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1053,12 +1053,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPressureTemp">
+                                <CheckBox x:Name="checkPressureTempGauges">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTemp}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTempGauges}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTemp}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTempGauges}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1067,12 +1067,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPressureTempNA">
+                                <CheckBox x:Name="checkPressureTempGaugesNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTempNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTempGaugesNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTempNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPressureTempGaugesNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1084,7 +1084,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="pressureTempGaugesComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1095,12 +1095,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkCirculation">
+                                <CheckBox x:Name="checkCirculationPumps">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculation}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculationPumps}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculation}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculationPumps}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1109,12 +1109,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkCirculationNA">
+                                <CheckBox x:Name="checkCirculationPumpsNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculationNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculationPumpsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculationNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkCirculationPumpsNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1126,7 +1126,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="circulationPumpsComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1168,7 +1168,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="condenseTrapComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1179,12 +1179,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkHeatE_FluewaysC">
+                                <CheckBox x:Name="checkHeatExchangerFluewaysClear">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatE_FluewaysC}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatExchangerFluewaysClear}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatE_FluewaysC}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatExchangerFluewaysClear}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1193,12 +1193,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkHeatE_FluewaysC_NA">
+                                <CheckBox x:Name="checkHeatExchangerFluewaysClearNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatE_FluewaysC_NA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatExchangerFluewaysClearNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatE_FluewaysC_NA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeatExchangerFluewaysClearNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1210,7 +1210,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="heatExchangerFluewaysClearComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
                     
@@ -1222,17 +1222,17 @@
                     <Label Text="Working Intel Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="workingIntelPressure" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                         <BoxView Color="#222225"/>
                     </Frame>
 
-                    <Label Text="Recorder Burner Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
+                    <Label Text="Recorded Burner Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="recordedBurnerPressure" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1242,7 +1242,7 @@
                     <Label Text="(If Possible) Measured Gas Rate (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="measuredGasRate" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
 
@@ -1253,12 +1253,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkFFTest">
+                                <CheckBox x:Name="checkFlueFlowTest">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFTest}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueFlowTest}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFTest}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueFlowTest}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1267,12 +1267,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkFFTestNA">
+                                <CheckBox x:Name="checkFlueFlowTestNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFTestNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueFlowTestNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFFTestNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueFlowTestNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1284,7 +1284,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="flueFlowTestComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1326,7 +1326,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="spillageTestComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1337,12 +1337,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkAECV">
+                                <CheckBox x:Name="checkAECVPlantIsolationCorrect">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECV}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECVPlantIsolationCorrect}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECV}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECVPlantIsolationCorrect}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1351,12 +1351,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkAECVnA">
+                                <CheckBox x:Name="checkAECVPlantIsolationCorrectNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECVnA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECVPlantIsolationCorrectNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECVnA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAECVPlantIsolationCorrectNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1368,7 +1368,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="AECVPlantIsolationCorrectComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1379,12 +1379,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkSafetyValve">
+                                <CheckBox x:Name="checkSafetyShutOffValve">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyValve}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyShutOffValve}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyValve}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyShutOffValve}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1393,12 +1393,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkSafetyValveNA">
+                                <CheckBox x:Name="checkSafetyShutOffValveNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyValveNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyShutOffValveNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyValveNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSafetyShutOffValveNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1410,7 +1410,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="safetyShutOffValveComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1421,12 +1421,12 @@
                     <VerticalStackLayout Spacing="10">
                         <VerticalStackLayout Spacing="-10">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPlantroomGas">
+                                <CheckBox x:Name="checkPlantroomGasTightnessTest">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGas}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGasTightnessTest}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGas}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGasTightnessTest}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1435,12 +1435,12 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPlantroomGasNA">
+                                <CheckBox x:Name="checkPlantroomGasTightnessTestNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGasNA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGasTightnessTestNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGasNA}, Path=IsChecked}" Value="False">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPlantroomGasTightnessTestNA}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
@@ -1452,7 +1452,7 @@
                         <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="plantroomGasTightnessTestComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1463,7 +1463,7 @@
                     <Label Text="State Appliance Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="stateApplianceCondition" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1483,49 +1483,49 @@
                     <Label Text="CO2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireCO2" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="CO (ppm):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireCO" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="O2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireO2" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Ratio:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireRatio" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Flue Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireFlueTemp" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Efficiency (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireEfficiency" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Excess Air (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireExcessAir" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Room Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="highFireRoomTemp" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1539,49 +1539,49 @@
                     <Label Text="CO2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireCO2" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="CO (ppm):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireCO" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="O2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireO2" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Ratio:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireRatio" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Flue Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireFlueTemp" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Efficiency (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireEfficiency" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Excess Air (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireExcessAir" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
 
                     <Label Text="Room Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="lowFireRoomTemp" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1606,7 +1606,7 @@
                     <Label Text="Engineer's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
                     
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="EngineersName"/>
+                        <local:LinelessEntry x:Name="engineersName" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1614,7 +1614,7 @@
                     <Label Text="Engineer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="EngineersSignature"/>
+                        <local:LinelessEntry x:Name="engineersSignature" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1622,7 +1622,7 @@
                     <Label Text="Engineer's Gas Safe ID Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="EngineersGasSafeIDNumber"/>
+                        <local:LinelessEntry x:Name="engineersGasSafeIDNumber" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1636,7 +1636,7 @@
                     <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="ClientsName"/>
+                        <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1644,7 +1644,7 @@
                     <Label Text="Clients's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="ClientsSignature"/>
+                        <local:LinelessEntry x:Name="clientsSignature" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1658,25 +1658,23 @@
                     <Label Text="Inspection Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="InspectionDate"/>
+                        <local:LinelessEntry x:Name="inspectionDate" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Additional Comments / Defects:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
-                    <Frame x:Name="ACDFrame" Padding="20, 0" HeightRequest="400" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="10">
-                        <Grid>
-                            <local:LinelessEditor x:Name="ACDEditor" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
-                        </Grid>
+                    <Frame Padding="20, 0" HeightRequest="400" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="10">
+                        <local:LinelessEditor x:Name="additionalCommentsDefects" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Warning Notice Number (If Applicable)" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
+                    <Label Text="Warning Notice Number (If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="WarningNoticeNumber"/>
+                        <local:LinelessEntry x:Name="warningNoticeNumber" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
