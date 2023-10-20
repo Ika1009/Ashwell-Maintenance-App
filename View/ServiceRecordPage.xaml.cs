@@ -58,9 +58,9 @@ public partial class ServiceRecordPage1 : ContentPage
         SRSetion4.IsVisible = true;
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private async void  Button_Clicked(object sender, EventArgs e)
     {
 		//string siteEntryText = siteEntry.Text;
-		//PdfCreation.CreateServiceRecordPDF(siteEntryText);
+		//await PdfCreation.CreateServiceRecordPDF(siteEntryText);
     }
 }
