@@ -11,6 +11,7 @@ namespace Ashwell_Maintenance
 #pragma warning disable MCT001
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("Satoshi-Medium.otf", "SatoshiMedium");
