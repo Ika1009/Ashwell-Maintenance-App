@@ -43,7 +43,7 @@
                     <Label Text="Site:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="site"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -51,7 +51,7 @@
                     <Label Text="Location:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="ApplianceLocation"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="location"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -59,7 +59,7 @@
                     <Label Text="Asset Number (If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="AssetNumber"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name ="assetNo"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -195,7 +195,7 @@
                     <Label Text="Years:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="years"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -203,7 +203,7 @@
                     <Label Text="Badged Input (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="badgetInput"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -211,7 +211,7 @@
                     <Label Text="Badged Output (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="budgetOutput"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -233,7 +233,7 @@
                     <Label Text="Model:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="burnerModel"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -241,7 +241,7 @@
                     <Label Text="Serial Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="BurnerSerialNumber"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -249,7 +249,7 @@
                     <Label Text="Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="type"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -257,7 +257,7 @@
                     <Label Text="Spec:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium" x:Name="Spec"/>
                     </Frame>
                 </VerticalStackLayout>
 
