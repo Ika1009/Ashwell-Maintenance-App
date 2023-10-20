@@ -29,7 +29,7 @@ namespace Ashwell_Maintenance
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("CursorColor", (handler, view) =>
             {
 #if __ANDROID__
-                handler.PlatformView.TextCursorDrawable.SetTint(Colors.Red.ToAndroid());
+                //handler.PlatformView.TextCursorDrawable.SetTint(Colors.Red.ToAndroid());
 #endif
             });
 
@@ -46,7 +46,7 @@ namespace Ashwell_Maintenance
             Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping("CursorColor", (handler, view) =>
             {
 #if __ANDROID__
-                handler.PlatformView.TextCursorDrawable.SetTint(Colors.Red.ToAndroid());
+                //handler.PlatformView.TextCursorDrawable.SetTint(Colors.Red.ToAndroid());
 #endif
             });
         }
