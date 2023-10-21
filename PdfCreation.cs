@@ -177,7 +177,9 @@ string engineersGasSafeID,
 string clientsName,
 string clientsSignature,
 string inspectionDate,
-        string commetsDefects
+        string commetsDefects,
+       string applianceServiceValveSatisfactoryComments,
+   string  governorsComments
         )
 
 
@@ -199,7 +201,7 @@ string inspectionDate,
 
             XImage image = await ConvertToXImage("ashwell_service_report.jpg");
 
-            gfx.DrawImage(image, 0, 0);
+            //gfx.DrawImage(image, 0, 0);
             //site
             gfx.DrawString(site, font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
             //location
@@ -377,6 +379,8 @@ string inspectionDate,
 
             List<string> componentComments = new List<string>
             {
+                applianceServiceValveSatisfactoryComments,
+                 governorsComments,
                 gasSolenoidValvesComments,
                 controlBoxPcbComments,
                 gasketSealsComments,
