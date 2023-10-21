@@ -198,7 +198,6 @@ string inspectionDate,
 
 
             XImage image = await ConvertToXImage("ashwell_service_report.jpg");
-            XImage image = await ConvertToXImage(myImageControl);
 
             gfx.DrawImage(image, 0, 0);
             //site
