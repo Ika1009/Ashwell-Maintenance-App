@@ -450,6 +450,7 @@ string inspectionDate,
                 pressureTempGaugesComments,
                 circulationPumpsComments,
                 condenseTrapComments
+                //Fale jos 2
             };
             for (int i = 0; i < 18; i++)
             {
