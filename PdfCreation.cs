@@ -198,6 +198,7 @@ string inspectionDate,
 
 
             XImage image = await ConvertToXImage("ashwell_service_report.jpg");
+            XImage image = await ConvertToXImage(myImageControl);
 
             gfx.DrawImage(image, 0, 0);
             //site
@@ -393,6 +394,7 @@ string inspectionDate,
                 pressureTempGaugesComments,
                 circulationPumpsComments,
                 condenseTrapComments
+                //Fale jos 2
             };
             for (int i = 0; i < 18; i++)
             {
@@ -413,19 +415,19 @@ string inspectionDate,
             //State appliance condition
             gfx.DrawString(stateApplianceCondition, font, XBrushes.Black, new XRect(497, 187, 576 - 497, 13), XStringFormats.Center);
             y = 307;
-            //remarks/ comments left page
-            //for (int i = 0; i < 18; i++)
-            //{
-            //    if (i == 8)
-            //    {
-            //        gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 346 - 247, 13), XStringFormats.Center);
-            //    }
-            //    else
-            //    {
-            //        gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 346 - 198, 13), XStringFormats.Center);
-            //    }
-            //    y += 15;
-            //}
+            for (int i = 0; i < 18; i++)
+            {
+                if (i == 8)
+                {
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 346 - 247, 13), XStringFormats.Center);
+                }
+                else
+                {
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 346 - 198, 13), XStringFormats.Center);
+                }
+                y += 15;
+            }
+            //heat exchanger/fluent clear
             ////heat exchanger/fluent clear
             if (heatExhanger)
             {
@@ -551,7 +553,6 @@ string inspectionDate,
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string filePath = System.IO.Path.Combine(downloadsFolder, "Ashwell_Service_Report.pdf");
 
-            document.Save(filePath);
 
         }
     }

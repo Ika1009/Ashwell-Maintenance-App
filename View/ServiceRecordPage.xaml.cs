@@ -332,7 +332,9 @@ public partial class ServiceRecordPage1 : ContentPage
  clientsName1,
  clientsSignature1,
  inspectionDate1,
-     commetsDefects1
+     commetsDefects1,
+     applianceServiceValveSatisfactoryComments1,
+     governorsComments1
     );
     }
 }
