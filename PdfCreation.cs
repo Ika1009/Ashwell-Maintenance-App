@@ -11,6 +11,7 @@ using PdfSharp.Pdf.Advanced;
 using PdfSharp.Fonts;
 using PdfSharp.Drawing.Layout;
 using System.IO;
+using Microsoft.Maui.Storage;
 
 
 namespace Ashwell_Maintenance
@@ -18,16 +19,34 @@ namespace Ashwell_Maintenance
     public static class PdfCreation
     {
 
-        private static async Task<XImage> ConvertToXImage(Image imageControl)
+        private static async Task<XImage> ConvertToXImage(string filename)
         {
-            if (imageControl?.Source is StreamImageSource streamImageSource)
+            try
             {
-                using (var stream = await streamImageSource.Stream(CancellationToken.None))
+                string fullResourcePath = $"Ashwell_Maintenance.Resources.Images.{filename}";
+
+                Image image = new Image { Source = ImageSource.FromResource(fullResourcePath) };
+                if (image?.Source is not StreamImageSource streamImageSource)
                 {
-                    return XImage.FromStream(stream);
+                    Console.WriteLine("The image's source is not a StreamImageSource.");
+                    return null;
+                }
+
+                using (var originalStream = await streamImageSource.Stream(CancellationToken.None))
+                using (var memoryStream = new MemoryStream())
+                {
+                    await originalStream.CopyToAsync(memoryStream);
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+
+                    XImage xImage = XImage.FromStream(memoryStream);
+                    return xImage;
                 }
             }
-            throw new InvalidOperationException("The provided image control does not have a valid StreamImageSource.");
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return null;
+            }
         }
 
 
@@ -177,12 +196,10 @@ string inspectionDate,
 
             XFont font = new XFont("Arial", 10);
 
-            //XImage image = await ConvertToXImage("Ashwell_Maintenance.Resources.Images.ashwell_service_report.jpg");
 
-            Image myImageControl = new Image { Source = ImageSource.FromFile("") };
-            XImage image = await ConvertToXImage(myImageControl);
+            XImage image = await ConvertToXImage("ashwell_service_report.jpg");
 
-            gfx.DrawImage(image, 0, 0, 842, 595);
+            gfx.DrawImage(image, 0, 0);
             //site
             gfx.DrawString(site, font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
             //location
@@ -397,19 +414,19 @@ string inspectionDate,
             gfx.DrawString(stateApplianceCondition, font, XBrushes.Black, new XRect(497, 187, 576 - 497, 13), XStringFormats.Center);
             y = 307;
             //remarks/ comments left page
-            for (int i = 0; i < 18; i++)
-            {
-                if (i == 8)
-                {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 346 - 247, 13), XStringFormats.Center);
-                }
-                else
-                {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 346 - 198, 13), XStringFormats.Center);
-                }
-                y += 15;
-            }
-            //heat exchanger/fluent clear
+            //for (int i = 0; i < 18; i++)
+            //{
+            //    if (i == 8)
+            //    {
+            //        gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 346 - 247, 13), XStringFormats.Center);
+            //    }
+            //    else
+            //    {
+            //        gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 346 - 198, 13), XStringFormats.Center);
+            //    }
+            //    y += 15;
+            //}
+            ////heat exchanger/fluent clear
             if (heatExhanger)
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(507, 55, 11, 5), 0, 360);
@@ -535,6 +552,7 @@ string inspectionDate,
             string filePath = System.IO.Path.Combine(downloadsFolder, "Ashwell_Service_Report.pdf");
 
             document.Save(filePath);
+
         }
     }
 }
