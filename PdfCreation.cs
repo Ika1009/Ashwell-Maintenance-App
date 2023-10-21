@@ -11,6 +11,7 @@ using PdfSharp.Pdf.Advanced;
 using PdfSharp.Fonts;
 using PdfSharp.Drawing.Layout;
 using System.IO;
+using Microsoft.Maui.Devices.Sensors;
 
 
 namespace Ashwell_Maintenance
@@ -18,17 +19,17 @@ namespace Ashwell_Maintenance
     public static class PdfCreation
     {
 
-        private static async Task<XImage> ConvertToXImage(Image imageControl)
-        {
-            if (imageControl?.Source is StreamImageSource streamImageSource)
-            {
-                using (var stream = await streamImageSource.Stream(CancellationToken.None))
-                {
-                    return XImage.FromStream(stream);
-                }
-            }
-            throw new InvalidOperationException("The provided image control does not have a valid StreamImageSource.");
-        }
+        //private static async Task<XImage> ConvertToXImage(Image imageControl)
+        //{
+        //    if (imageControl?.Source is StreamImageSource streamImageSource)
+        //    {
+        //        using (var stream = await streamImageSource.Stream(CancellationToken.None))
+        //        {
+        //            return XImage.FromStream(stream);
+        //        }
+        //    }
+        //    throw new InvalidOperationException("The provided image control does not have a valid StreamImageSource.");
+        //}
 
 
         public static async Task CreateServiceRecordPDF(string workingInletPressure, string site, string location, string applianceNumber,
@@ -177,10 +178,83 @@ string inspectionDate,
 
             XFont font = new XFont("Arial", 10);
 
-            //XImage image = await ConvertToXImage("Ashwell_Maintenance.Resources.Images.ashwell_service_report.jpg");
+            ////XImage image = await ConvertToXImage("Ashwell_Maintenance.Resources.Images.ashwell_service_report.jpg");
 
-            Image myImageControl = new Image { Source = ImageSource.FromFile("") };
-            XImage image = await ConvertToXImage(myImageControl);
+            //Image myImageControl = new Image { Source = ImageSource.FromFile("") };
+            //XImage image = await ConvertToXImage(myImageControl);
+            XImage image = XImage.FromFile(@"C:\Users\Marko\Downloads\Ashwell_Service_Report.jpg");
+
+
+            site = string.IsNullOrEmpty(site) ? " " : site;
+            location = string.IsNullOrEmpty(location) ? " " : location;
+            assetNumber = string.IsNullOrEmpty(assetNumber) ? " " : assetNumber;
+            applianceMake = string.IsNullOrEmpty(applianceMake) ? " " : applianceMake;
+            badgedInput = string.IsNullOrEmpty(badgedInput) ? " " : badgedInput;
+            badgedOutput = string.IsNullOrEmpty(badgedOutput) ? " " : badgedOutput;
+            burnerMake = string.IsNullOrEmpty(burnerMake) ? " " : burnerMake;
+            burnerModel = string.IsNullOrEmpty(burnerModel) ? " " : burnerModel;
+            burnerSerialNumber = string.IsNullOrEmpty(burnerSerialNumber) ? " " : burnerSerialNumber;
+            Type = string.IsNullOrEmpty(Type) ? " " : Type;
+            Spec = string.IsNullOrEmpty(Spec) ? " " : Spec;
+            badgedBurnerPressure = string.IsNullOrEmpty(badgedBurnerPressure) ? " " : badgedBurnerPressure;
+            //applianceServiceValveSatisfactoryComments = string.IsNullOrEmpty(applianceServiceValveSatisfactoryComments) ? " " : applianceServiceValveSatisfactoryComments;
+            //governorsComments = string.IsNullOrEmpty(governorsComments) ? " " : governorsComments;
+            gasSolenoidValvesComments = string.IsNullOrEmpty(gasSolenoidValvesComments) ? " " : gasSolenoidValvesComments;
+            controlBoxPcbComments = string.IsNullOrEmpty(controlBoxPcbComments) ? " " : controlBoxPcbComments;
+            gasketSealsComments = string.IsNullOrEmpty(gasketSealsComments) ? " " : gasketSealsComments;
+            burnerComments = string.IsNullOrEmpty(burnerComments) ? " " : burnerComments;
+            burnerJetsComments = string.IsNullOrEmpty(burnerJetsComments) ? " " : burnerJetsComments;
+            electrodesTransformerComments = string.IsNullOrEmpty(electrodesTransformerComments) ? " " : electrodesTransformerComments;
+            flameFailureDeviceComments = string.IsNullOrEmpty(flameFailureDeviceComments) ? " " : flameFailureDeviceComments;
+            systemBoilerControlsComments = string.IsNullOrEmpty(systemBoilerControlsComments) ? " " : systemBoilerControlsComments;
+            boilerCasingComments = string.IsNullOrEmpty(boilerCasingComments) ? " " : boilerCasingComments;
+            thermalInsulationComments = string.IsNullOrEmpty(thermalInsulationComments) ? " " : thermalInsulationComments;
+            combustionFanIdFanComments = string.IsNullOrEmpty(combustionFanIdFanComments) ? " " : combustionFanIdFanComments;
+            airFluePressureSwitchComments = string.IsNullOrEmpty(airFluePressureSwitchComments) ? " " : airFluePressureSwitchComments;
+            controlLimitStatsComments = string.IsNullOrEmpty(controlLimitStatsComments) ? " " : controlLimitStatsComments;
+            pressureTempGaugesComments = string.IsNullOrEmpty(pressureTempGaugesComments) ? " " : pressureTempGaugesComments;
+            circulationPumpsComments = string.IsNullOrEmpty(circulationPumpsComments) ? " " : circulationPumpsComments;
+            condenseTrapComments = string.IsNullOrEmpty(condenseTrapComments) ? " " : condenseTrapComments;
+            heatExhangerComments = string.IsNullOrEmpty(heatExhangerComments) ? " " : heatExhangerComments;
+            workingInletPressure = string.IsNullOrEmpty(workingInletPressure) ? " " : workingInletPressure;
+            recordedBurnerPressure = string.IsNullOrEmpty(recordedBurnerPressure) ? " " : recordedBurnerPressure;
+            measuredGasRate = string.IsNullOrEmpty(measuredGasRate) ? " " : measuredGasRate;
+            flueFlowTestComments = string.IsNullOrEmpty(flueFlowTestComments) ? " " : flueFlowTestComments;
+            spillageTestComments = string.IsNullOrEmpty(spillageTestComments) ? " " : spillageTestComments;
+            AECVPlantIsolationCorrectComments = string.IsNullOrEmpty(AECVPlantIsolationCorrectComments) ? " " : AECVPlantIsolationCorrectComments;
+            safetyShutOffValveComments = string.IsNullOrEmpty(safetyShutOffValveComments) ? " " : safetyShutOffValveComments;
+            plantroomGasTightnessTestComments = string.IsNullOrEmpty(plantroomGasTightnessTestComments) ? " " : plantroomGasTightnessTestComments;
+            stateApplianceCondition = string.IsNullOrEmpty(stateApplianceCondition) ? " " : stateApplianceCondition;
+            HighFireCO2 = string.IsNullOrEmpty(HighFireCO2) ? " " : HighFireCO2;
+            HighFireCO = string.IsNullOrEmpty(HighFireCO) ? " " : HighFireCO;
+            HighFireO2 = string.IsNullOrEmpty(HighFireO2) ? " " : HighFireO2;
+            HighFireRatio = string.IsNullOrEmpty(HighFireRatio) ? " " : HighFireRatio;
+            HighFireFlueTemp = string.IsNullOrEmpty(HighFireFlueTemp) ? " " : HighFireFlueTemp;
+            HighFireEfficiency = string.IsNullOrEmpty(HighFireEfficiency) ? " " : HighFireEfficiency;
+            HighFireExcessAir = string.IsNullOrEmpty(HighFireExcessAir) ? " " : HighFireExcessAir;
+            HighFireRoomTemp = string.IsNullOrEmpty(HighFireRoomTemp) ? " " : HighFireRoomTemp;
+            LowFireCO2 = string.IsNullOrEmpty(LowFireCO2) ? " " : LowFireCO2;
+            LowFireCO = string.IsNullOrEmpty(LowFireCO) ? " " : LowFireCO;
+            LowFireO2 = string.IsNullOrEmpty(LowFireO2) ? " " : LowFireO2;
+            LowFireRatio = string.IsNullOrEmpty(LowFireRatio) ? " " : LowFireRatio;
+            LowFireFlueTemp = string.IsNullOrEmpty(LowFireFlueTemp) ? " " : LowFireFlueTemp;
+            LowFireEfficiency = string.IsNullOrEmpty(LowFireEfficiency) ? " " : LowFireEfficiency;
+            LowFireExcessAir = string.IsNullOrEmpty(LowFireExcessAir) ? " " : LowFireExcessAir;
+            LowFireRoomTemp = string.IsNullOrEmpty(LowFireRoomTemp) ? " " : LowFireRoomTemp;
+            engineersName = string.IsNullOrEmpty(engineersName) ? " " : engineersName;
+            engineersSignature = string.IsNullOrEmpty(engineersSignature) ? " " : engineersSignature;
+            engineersGasSafeID = string.IsNullOrEmpty(engineersGasSafeID) ? " " : engineersGasSafeID;
+            clientsName = string.IsNullOrEmpty(clientsName) ? " " : clientsName;
+            clientsSignature = string.IsNullOrEmpty(clientsSignature) ? " " : clientsSignature;
+            inspectionDate = string.IsNullOrEmpty(inspectionDate) ? " " : inspectionDate;
+            commetsDefects = string.IsNullOrEmpty(commetsDefects) ? " " : commetsDefects;
+            warningNoticeIssueNumber = string.IsNullOrEmpty(warningNoticeIssueNumber) ? " " : warningNoticeIssueNumber;
+
+
+
+
+
+
 
             gfx.DrawImage(image, 0, 0, 842, 595);
             //site
