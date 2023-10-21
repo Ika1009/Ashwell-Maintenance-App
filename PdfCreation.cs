@@ -10,25 +10,26 @@ using System.Diagnostics;
 using PdfSharp.Pdf.Advanced;
 using PdfSharp.Fonts;
 using PdfSharp.Drawing.Layout;
+using System.IO;
+
 
 namespace Ashwell_Maintenance
 {
     public static class PdfCreation
     {
 
-        private static async Task<XImage> ConvertToXImage(string resourceId)
+        private static async Task<XImage> ConvertToXImage(Image imageControl)
         {
-            var imageSource = ImageSource.FromResource(resourceId);
-            var streamImageSource = imageSource as StreamImageSource;
-            if (streamImageSource != null)
+            if (imageControl?.Source is StreamImageSource streamImageSource)
             {
                 using (var stream = await streamImageSource.Stream(CancellationToken.None))
                 {
                     return XImage.FromStream(stream);
                 }
             }
-            return null;
+            throw new InvalidOperationException("The provided image control does not have a valid StreamImageSource.");
         }
+
 
         public static async Task CreateServiceRecordPDF(string workingInletPressure, string site, string location, string applianceNumber,
 string recordedBurnerPressure,
@@ -175,8 +176,12 @@ string inspectionDate,
 
 
             XFont font = new XFont("Arial", 10);
-       
-            XImage image = await ConvertToXImage("Ashwell Maintenance.Images.Ashwell.png"); ;
+
+            //XImage image = await ConvertToXImage("Ashwell_Maintenance.Resources.Images.ashwell_service_report.jpg");
+
+            Image myImageControl = new Image { Source = ImageSource.FromFile("") };
+            XImage image = await ConvertToXImage(myImageControl);
+
             gfx.DrawImage(image, 0, 0, 842, 595);
             //site
             gfx.DrawString(site, font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);

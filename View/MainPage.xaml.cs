@@ -2,8 +2,6 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
@@ -17,9 +15,9 @@
         {
 
         }
-        private void SR_Tapped(object sender, EventArgs e)
+        private async void SR_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ServiceRecordPage1());
+            await Navigation.PushAsync(new ServiceRecordPage1());
         }
         private void GRA_Tapped(object sender, EventArgs e)
         {

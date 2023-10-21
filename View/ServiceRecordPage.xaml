@@ -140,7 +140,7 @@
                 </VerticalStackLayout>
 
                 <Label Text="Function:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
-                
+
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
                         <CheckBox x:Name="checkHeating">
@@ -190,7 +190,7 @@
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
-                
+
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Years:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
@@ -328,7 +328,7 @@
                         <local:LinelessEntry x:Name="badgedBurnerPressure" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
-                
+
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
                         <CheckBox x:Name="checkVentilationSatisfactory">
@@ -412,11 +412,11 @@
                        FontSize="15"
                        FontFamily="SatoshiMedium"
                        HorizontalTextAlignment="Center"/>
-                
+
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
-                
+
                 <Label Text="Appliance Components Checklist" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="20">
@@ -775,7 +775,7 @@
                             <HorizontalStackLayout>
                                 <CheckBox x:Name="checkFlameFailureDeviceNA">
                                     <CheckBox.Triggers>
-                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlameFailureDeviceNAA}, Path=IsChecked}" Value="True">
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlameFailureDeviceNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlameFailureDeviceNA}, Path=IsChecked}" Value="False">
@@ -997,7 +997,7 @@
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
 
-                    <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
+                        <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
 
                         <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="airFluePressureSwitchComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
@@ -1213,7 +1213,7 @@
                             <local:LinelessEntry x:Name="heatExchangerFluewaysClearComment" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
-                    
+
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                         <BoxView Color="#222225"/>
@@ -1604,7 +1604,7 @@
 
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Engineer's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="10, 0, 0, 0"/>
-                    
+
                     <Frame Padding="20, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                         <local:LinelessEntry x:Name="engineersName" TextColor="#fff"  FontSize="15" FontFamily="SatoshiMedium"/>
                     </Frame>
@@ -1748,7 +1748,7 @@
                                 <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20" WidthRequest="60" HorizontalOptions="End"/>
                             </Grid>
 
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" Clicked="Button_Clicked" MinimumHeightRequest="0"/>
+                            <Button Grid.ColumnSpan="3" Text="PDFFFFFF" BackgroundColor="Transparent" Clicked="Button_Clicked" MinimumHeightRequest="0"/>
                         </Grid>
                     </Frame>
                 </VerticalStackLayout>
