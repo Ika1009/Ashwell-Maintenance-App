@@ -1772,6 +1772,18 @@
                             <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
                         </Grid>
                     </Frame>
+
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                        <Grid>
+                            <Grid Padding="20, 10">
+                                <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
+
+                                <Label Text="Test Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                            </Grid>
+
+                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
+                        </Grid>
+                    </Frame>
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using Microsoft.Maui;
 
 namespace Ashwell_Maintenance.View;
@@ -60,9 +61,9 @@ public partial class ServiceRecordPage1 : ContentPage
         SRSection4.IsVisible = true;
     }
 
-    public void NewFolder()
+    public void NewFolder(object sender, EventArgs e)
     {
-
+        this.ShowPopup(new NewFolderPopup());
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
