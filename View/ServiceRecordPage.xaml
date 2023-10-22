@@ -27,7 +27,7 @@
             <Label Grid.Row="1" Text="Service Record" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
         </Grid>
 
-        <ScrollView x:Name="SRSetion1" Grid.Row="1" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="SRSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="20">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
@@ -400,14 +400,13 @@
         </ScrollView>
 
 
-        <ScrollView x:Name="SRSetion2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="SRSection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="20">
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
-                <Label Text="Please use the checkboxes provided below as:
-                       'Yes / Pass' - Checked, or 'No / Fail' - Unchecked, or check the 'N/A' box if the information is not applicable."
+                <Label Text="Please use the checkboxes provided below as: 'Yes / Pass' - Checked, or 'No / Fail' - Unchecked, or check the 'N/A' box if the information is not applicable."
                        TextColor="#707070"
                        FontSize="16 "
                        FontFamily="SatoshiMedium"
@@ -1594,7 +1593,7 @@
         </ScrollView>
 
 
-        <ScrollView x:Name="SRSetion3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="SRSection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="20">
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
@@ -1695,8 +1694,8 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="SRSetion4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="20">
+        <ScrollView x:Name="SRSection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+            <!--<VerticalStackLayout Spacing="20">
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
@@ -1748,7 +1747,29 @@
                                 <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20" WidthRequest="60" HorizontalOptions="End"/>
                             </Grid>
 
-                            <Button Grid.ColumnSpan="3" Text="PDFFFFFF" BackgroundColor="Transparent" Clicked="Button_Clicked" MinimumHeightRequest="0"/>
+                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" Clicked="Button_Clicked" MinimumHeightRequest="0"/>
+                        </Grid>
+                    </Frame>
+                </VerticalStackLayout>
+            </VerticalStackLayout>-->
+
+            <VerticalStackLayout Spacing="20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout Spacing="10">
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                        <Grid>
+                            <Grid Padding="20, 10">
+                                <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
+
+                                <Label Text="New Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                            </Grid>
+
+                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
                         </Grid>
                     </Frame>
                 </VerticalStackLayout>
