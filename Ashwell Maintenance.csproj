@@ -52,6 +52,7 @@
 
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\ashwell_service_report.jpg" />
+	  <MauiImage Remove="Resources\Images\icon_16.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -61,7 +62,6 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\ash_icon.svg" />
-	  <None Remove="Resources\Images\icon_16.png" />
 	  <None Remove="Resources\Splash\ash_icon.svg" />
 	</ItemGroup>
 
@@ -75,6 +75,10 @@
 	    <BaseSize>256, 256</BaseSize>
 	  </MauiIcon>
 	  <MauiSplashScreen Include="Resources\Splash\ash_icon.svg" BaseSize="256, 256" Color="#141414" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Images\icon_16.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

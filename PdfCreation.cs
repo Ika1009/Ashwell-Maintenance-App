@@ -32,15 +32,19 @@ namespace Ashwell_Maintenance
                     return null;
                 }
 
+                byte[] imageBytes;
                 using (var originalStream = await streamImageSource.Stream(CancellationToken.None))
-                using (var memoryStream = new MemoryStream())
                 {
-                    await originalStream.CopyToAsync(memoryStream);
-                    memoryStream.Seek(0, SeekOrigin.Begin);
-
-                    XImage xImage = XImage.FromStream(memoryStream);
-                    return xImage;
+                    using (var ms = new MemoryStream())
+                    {
+                        await originalStream.CopyToAsync(ms);
+                        imageBytes = ms.ToArray();
+                    }
                 }
+
+                MemoryStream imageStream = new MemoryStream(imageBytes);
+                XImage xImage = XImage.FromStream(imageStream);
+                return xImage;
             }
             catch (Exception ex)
             {
@@ -48,6 +52,7 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+
 
 
         public static async Task CreateServiceRecordPDF(string workingInletPressure, string site, string location, string applianceNumber,
@@ -199,9 +204,9 @@ string inspectionDate,
             XFont font = new XFont("Arial", 10);
 
 
-            XImage image = await ConvertToXImage("icon_16.png");
+            XImage image = await ConvertToXImage("ashwell_service_report.jpg");
 
-            //gfx.DrawImage(image, 0, 0);
+            gfx.DrawImage(image, 0, 0, 842, 595);
             //site
             gfx.DrawString(site, font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
             //location
@@ -554,9 +559,11 @@ string inspectionDate,
 
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "Ashwell_Service_Report.pdf");
+            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string filePath = System.IO.Path.Combine(downloadsFolder, $"Ashwell_Service_Report_{dateTimeString}.pdf");
 
 
+            document.Save(filePath);
         }
     }
 }
