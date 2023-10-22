@@ -19,7 +19,7 @@ namespace Ashwell_Maintenance
     public static class PdfCreation
     {
 
-        private static async Task<XImage> ConvertToXImage(string filename)
+        public static async Task<XImage> ConvertToXImage(string filename)
         {
             try
             {
@@ -583,5 +583,56 @@ string inspectionDate,
 
             document.Save(filePath);
         }
+    }
+    public static async Task CreateEngineersReport(
+        string clientsName,
+string address,
+string date,
+string engineer,
+string tastTNo,
+bool checkTaskComplete,
+string applianceMake,
+string serialNumber,
+string Description,
+bool checkSpillageTestPerformed,
+bool checkSpillageTestPerformedNA,
+string spillageTestPerformedComments,
+bool checkRiskAssesmentCompleted,
+bool checkRiskAssesmentCompletedNA,
+string riskAssesmentCompletedComments,
+bool checkFlueFlowTest,
+bool checkFlueFlowTestNA,
+string flueFlowTestComments,
+string gasOperatinPressure,
+string inletPressure,
+bool checkThightnessTestCarriedOut,
+bool checkThightnessTestCarriedOutNA,
+string thightnessTestCarriedOut,
+string totalHoursIncludingTravel,
+bool checkApplianceSafeToUse,
+bool checkWarningNoticeIssued,
+string warningNoticeNumber
+        )
+    {
+        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new PdfDocument(); document.Info.Title = "Ashwell Service Report";
+
+
+            PdfPage page = document.AddPage();
+            page.Height = 842;
+            page.Width = 595;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+
+            XFont font = new XFont("Arial", 8);
+
+
+          //  XImage image = await ConvertToXImage(@"ashwell_service_report.jpg");
+
+          //  gfx.DrawImage(image, 0, 0, 595, 842);
+
+
     }
 }
