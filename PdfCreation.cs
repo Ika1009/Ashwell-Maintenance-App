@@ -427,7 +427,7 @@ string inspectionDate,
             {
                 if (i == 8)
                 {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 376 - 247, 13), XStringFormats.Center);
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 36 - 247, 13), XStringFormats.Center);
                 }
                 else
                 {
@@ -454,24 +454,42 @@ string inspectionDate,
             gfx.DrawString(recordedBurnerPressure, font, XBrushes.Black, new XRect(497, 83, 557 - 497, 12), XStringFormats.Center);
             gfx.DrawString(measuredGasRate, font, XBrushes.Black, new XRect(497, 99, 557 - 497, 12), XStringFormats.Center);
             //flue flow test
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 114, 18, 7), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 114, 14, 7), 0, 360);
+            if (flueFlowTest)
+            {
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 114, 18, 7), 0, 360);
+            }
+            else if (!flueFlowTestNA)
+            {
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 114, 14, 7), 0, 360);
+            }else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 114, 14, 7), 0, 360);
             //spillage test
+            if (spillageTest) 
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 129, 18, 7), 0, 360);
+            else if(!spillageTestNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 129, 14, 7), 0, 360);
+            else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 129, 14, 7), 0, 360);
             //AECV plant isolation correct
+            if(AECVPlantIsolationCorrect)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 144, 18, 7), 0, 360);
+            else if(!AECVPlantIsolationCorrectNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 144, 14, 7), 0, 360);
+            else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 144, 14, 7), 0, 360);
             //safety shut off valve
+            if(safetyShutOffValve)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 159, 18, 7), 0, 360);
+            else if(!safetyShutOffValveNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 159, 14, 7), 0, 360);
+            else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 159, 14, 7), 0, 360);
             //plantroom gas thightness level
+            if(plantroomGasTightnessTest)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 174, 18, 7), 0, 360);
+            else if(!plantroomGasTightnessTestNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 174, 14, 7), 0, 360);
+            else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 174, 14, 7), 0, 360);
 
             y = 53;
@@ -516,7 +534,7 @@ string inspectionDate,
             string text = commetsDefects;
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
-            tf.DrawString(text, new XFont("Calibri", 11), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
             //unsafe situations warning notice issue number
             gfx.DrawString(warningNoticeIssueNumber, font, XBrushes.Black, new XRect(610, 459, 200, 9), XStringFormats.Center);
 
