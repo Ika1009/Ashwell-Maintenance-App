@@ -427,11 +427,11 @@ string inspectionDate,
             {
                 if (i == 8)
                 {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 346 - 247, 13), XStringFormats.Center);
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 376 - 247, 13), XStringFormats.Center);
                 }
                 else
                 {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 346 - 198, 13), XStringFormats.Center);
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 376 - 198, 13), XStringFormats.Center);
                 }
                 y += 15;
             }
