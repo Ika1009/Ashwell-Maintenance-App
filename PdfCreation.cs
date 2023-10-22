@@ -458,7 +458,7 @@ string inspectionDate,
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 114, 18, 7), 0, 360);
             }
-            else if (flueFlowTestNA)
+            else if (!flueFlowTestNA)
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 114, 14, 7), 0, 360);
             }else
@@ -466,29 +466,30 @@ string inspectionDate,
             //spillage test
             if (spillageTest) 
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 129, 18, 7), 0, 360);
-            else if(spillageTestNA)
+            else if(!spillageTestNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 129, 14, 7), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 129, 14, 7), 0, 360);
             //AECV plant isolation correct
             if(AECVPlantIsolationCorrect)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 144, 18, 7), 0, 360);
-            else if(AECVPlantIsolationCorrectNA)
+            else if(!AECVPlantIsolationCorrectNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 144, 14, 7), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 144, 14, 7), 0, 360);
             //safety shut off valve
             if(safetyShutOffValve)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 159, 18, 7), 0, 360);
-            else if(safetyShutOffValveNA)
+            else if(!safetyShutOffValveNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 159, 14, 7), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 159, 14, 7), 0, 360);
             //plantroom gas thightness level
+            if(plantroomGasTightnessTest)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 174, 18, 7), 0, 360);
-
+            else if(!plantroomGasTightnessTestNA)
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 174, 14, 7), 0, 360);
-
+            else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 174, 14, 7), 0, 360);
 
             y = 53;
