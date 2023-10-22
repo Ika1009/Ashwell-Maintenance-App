@@ -191,7 +191,7 @@ string inspectionDate,
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-            PdfDocument document = new PdfDocument(); document.Info.Title = "Engineers Report Sheet";
+            PdfDocument document = new PdfDocument(); document.Info.Title = "Ashwell Service Report";
 
 
             PdfPage page = document.AddPage();
@@ -201,10 +201,10 @@ string inspectionDate,
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
 
-            XFont font = new XFont("Arial", 10);
+            XFont font = new XFont("Arial", 8);
 
 
-            XImage image = await ConvertToXImage("ashwell_service_report.jpg");
+            XImage image = await ConvertToXImage(@"ashwell_service_report.jpg");
 
             gfx.DrawImage(image, 0, 0, 842, 595);
             //site
@@ -218,21 +218,21 @@ string inspectionDate,
             //Tests completed
             if (testsCompleted)
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(186, 130, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(185, 129, 13, 7), 0, 360);//+1
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(213, 130, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(212, 129, 13, 7), 0, 360);
             }
 
             //remedial work required
             if (remedialWorkRequired)
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(329, 130, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(328, 129, 13, 7), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(356, 130, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(355, 129, 13, 7), 0, 360);
             }
 
             //apliance serial number //apliance model
@@ -312,29 +312,29 @@ string inspectionDate,
             //ventilation satisfactory
             if (ventilationSatisfactory)
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(322, 235, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(321, 234, 13, 7), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(354, 235, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(353, 234, 13, 7), 0, 360);
             }
             //gas type
             if (gasType == "NG")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(133, 250, 11, 6), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(132, 249, 13, 7), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(160, 250, 17, 6), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(159, 249, 19, 8), 0, 360);
             }
             //flue condition satisfactory
             if (ventilationSatisfactory)
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(322, 250, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(321, 249, 13, 7), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(354, 250, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(353, 249, 13, 7), 0, 360);
             }
             //approx age of apliance   //badged input   //badget output
             gfx.DrawString(approxAgeOfAppliance, font, XBrushes.Black, new XRect(114, 263, 145 - 114, 273 - 263), XStringFormats.Center);
@@ -427,11 +427,11 @@ string inspectionDate,
             {
                 if (i == 8)
                 {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 346 - 247, 13), XStringFormats.Center);
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 376 - 247, 13), XStringFormats.Center);
                 }
                 else
                 {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 346 - 198, 13), XStringFormats.Center);
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(198, y, 376 - 198, 13), XStringFormats.Center);
                 }
                 y += 15;
             }
@@ -439,40 +439,40 @@ string inspectionDate,
             ////heat exchanger/fluent clear
             if (heatExhanger)
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(507, 55, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(506, 54, 13, 7), 0, 360);
             }
             else if (heatExhangerNA)
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 55, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 54, 13, 7), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(532, 55, 11, 5), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 54, 13, 7), 0, 360);
             }
             //working inlet pressure   //recorded burner pressure    //measured gas rate   
             gfx.DrawString(workingInletPressure, font, XBrushes.Black, new XRect(497, 67, 557 - 497, 12), XStringFormats.Center);
             gfx.DrawString(recordedBurnerPressure, font, XBrushes.Black, new XRect(497, 83, 557 - 497, 12), XStringFormats.Center);
             gfx.DrawString(measuredGasRate, font, XBrushes.Black, new XRect(497, 99, 557 - 497, 12), XStringFormats.Center);
             //flue flow test
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(504, 115, 16, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(532, 115, 12, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(557, 115, 12, 5), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 114, 18, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 114, 14, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 114, 14, 7), 0, 360);
             //spillage test
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(504, 130, 16, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(532, 130, 12, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(557, 130, 12, 5), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 129, 18, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 129, 14, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 129, 14, 7), 0, 360);
             //AECV plant isolation correct
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(504, 145, 16, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(532, 145, 12, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(557, 145, 12, 5), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 144, 18, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 144, 14, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 144, 14, 7), 0, 360);
             //safety shut off valve
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(504, 160, 16, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(532, 160, 12, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(557, 160, 12, 5), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 159, 18, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 159, 14, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 159, 14, 7), 0, 360);
             //plantroom gas thightness level
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(504, 175, 16, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(532, 175, 12, 5), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(557, 175, 12, 5), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 174, 18, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 174, 14, 7), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 174, 14, 7), 0, 360);
 
             y = 53;
             float x = 580;
