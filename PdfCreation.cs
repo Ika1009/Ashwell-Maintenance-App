@@ -583,26 +583,21 @@ string inspectionDate,
 
             document.Save(filePath);
         }
-    }
-    public static async Task CreateEngineersReport(
-        string clientsName,
+        public static async Task CreateEngineersReport(
+     string clientsName,
 string address,
 string date,
 string engineer,
-string tastTNo,
+string taskTNo,
 bool checkTaskComplete,
 string applianceMake,
 string serialNumber,
-string Description,
+string description,
 bool checkSpillageTestPerformed,
 bool checkSpillageTestPerformedNA,
-string spillageTestPerformedComments,
 bool checkRiskAssesmentCompleted,
-bool checkRiskAssesmentCompletedNA,
-string riskAssesmentCompletedComments,
 bool checkFlueFlowTest,
 bool checkFlueFlowTestNA,
-string flueFlowTestComments,
 string gasOperatinPressure,
 string inletPressure,
 bool checkThightnessTestCarriedOut,
@@ -612,11 +607,11 @@ string totalHoursIncludingTravel,
 bool checkApplianceSafeToUse,
 bool checkWarningNoticeIssued,
 string warningNoticeNumber
-        )
-    {
-        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+     )
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-            PdfDocument document = new PdfDocument(); document.Info.Title = "Ashwell Service Report";
+            PdfDocument document = new PdfDocument(); document.Info.Title = "Engineers Report Sheet";
 
 
             PdfPage page = document.AddPage();
@@ -626,13 +621,109 @@ string warningNoticeNumber
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
 
-            XFont font = new XFont("Arial", 8);
+            XFont font = new XFont("Arial", 10);
 
 
-          //  XImage image = await ConvertToXImage(@"ashwell_service_report.jpg");
+            XImage image = await ConvertToXImage(@"Engineers_report.png");
 
-          //  gfx.DrawImage(image, 0, 0, 595, 842);
+            gfx.DrawImage(image, 0, 0, 595, 842);
+
+            gfx.DrawString(clientsName, font, XBrushes.Black, new XRect(118, 123, 288 - 118, 143 - 123), XStringFormat.Center);
+
+            gfx.DrawString(address, font, XBrushes.Black, new XRect(6, 145, 280, 25), XStringFormat.Center);
+            gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 170, 280, 25), XStringFormat.Center);
+            gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 195, 280, 25), XStringFormat.Center);
+
+            gfx.DrawString(applianceMake, font, XBrushes.Black, new XRect(79, 219, 210, 24), XStringFormat.Center);
+
+            gfx.DrawString(date, font, XBrushes.Black, new XRect(340, 125, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(engineer, font, XBrushes.Black, new XRect(340, 145, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(taskTNo, font, XBrushes.Black, new XRect(340, 170, 588 - 340, 25), XStringFormat.Center);
 
 
+            //gfx.DrawEllipse(XBrushes.Black, new XRect(377, 194, 420 - 377, 25));
+            if(checkTaskComplete)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(377, 194, 396 - 377, 206 - 194), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(491, 194, 396 - 377, 206 - 194), 0, 360);
+
+            gfx.DrawString(serialNumber, font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormat.Center);
+
+            string[] l = {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
+            string[] TempDesc = description.Split();
+            int d = 0;
+            int duzina = 0;
+            for (int i = 0; i < TempDesc.Length; i++)
+            {
+                if (duzina + TempDesc[i].Length < 112)
+                {
+                    l[d] += TempDesc[i]+" ";
+                    duzina += TempDesc[i].Length + 1;
+                }
+                else
+                {
+                    d++;
+                    l[d] += TempDesc[i] + " ";
+                    duzina = TempDesc[i].Length+1;
+                }
+              
+            }
+            int y = 267;
+            for (int i = 0; i < 18; i++)
+            {
+                gfx.DrawString(l[i], font, XBrushes.Black, new XRect(7, y, 588 - 7, 23), XStringFormats.BottomLeft);
+                y += 24;
+            }
+            if(checkSpillageTestPerformed)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(116, 702, 22, 8), 0, 360);
+            else if(!checkSpillageTestPerformedNA)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(143, 702, 20, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(166, 702, 20, 8), 0, 360);
+            if(checkRiskAssesmentCompleted)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(309, 702, 20, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(333, 702, 16, 8), 0, 360);
+            if(checkFlueFlowTest)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(73, 726, 23, 9), 0, 360);
+            else if(!checkFlueFlowTestNA)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(103, 726, 21, 9), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(130, 726, 15, 9), 0, 360);
+            if(checkThightnessTestCarriedOut)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(127, 750, 23, 8), 0, 360);
+            else if(!checkThightnessTestCarriedOutNA)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(156, 750, 21, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(180, 750, 15, 8), 0, 360);
+            if(checkApplianceSafeToUse)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(103, 774, 20, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(127, 774, 18, 8), 0, 360);
+            if(checkWarningNoticeIssued)
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(108, 797, 20, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(132, 797, 15, 8), 0, 360);
+
+            gfx.DrawString(warningNoticeNumber, font, XBrushes.Black, new XRect(267, 797, 105, 17), XStringFormats.Center);
+
+            gfx.DrawString(gasOperatinPressure, font, XBrushes.Black, new XRect(190, 735, 47, 8), XStringFormats.Center);
+
+            gfx.DrawString(inletPressure, font, XBrushes.Black, new XRect(300, 735, 47, 8), XStringFormats.Center);
+
+            gfx.DrawString(totalHoursIncludingTravel, font, XBrushes.Black, new XRect(514, 748, 74, 16), XStringFormats.Center);
+
+
+
+            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string filePath = System.IO.Path.Combine(downloadsFolder, $"Engineers_Report_Sheet_{dateTimeString}.pdf");
+
+
+            document.Save(filePath);
+
+
+        }
     }
+ 
 }
