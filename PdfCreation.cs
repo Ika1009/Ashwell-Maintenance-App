@@ -197,7 +197,7 @@ string inspectionDate,
             XFont font = new XFont("Arial", 10);
 
 
-            XImage image = await ConvertToXImage("ashwell_service_report.jpg");
+            XImage image = await ConvertToXImage("icon_16.png");
 
             gfx.DrawImage(image, 0, 0);
             //site
