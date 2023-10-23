@@ -62,8 +62,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\ash_icon.svg" />
-	  <None Remove="Resources\Images\Engineers report sheet.jpg" />
-	  <None Remove="Resources\Images\Pressurisation Unit Report.jpg" />
+	  <None Remove="Resources\Images\engineers_report_sheet.jpg" />
+	  <None Remove="Resources\Images\pressurisation_unit_report.jpg" />
 	  <None Remove="Resources\Splash\ash_icon.svg" />
 	</ItemGroup>
 
