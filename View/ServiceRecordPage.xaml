@@ -1760,7 +1760,7 @@
 
                 <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <VerticalStackLayout Spacing="10">
+                <VerticalStackLayout Spacing="10" x:Name="_folderStackLayout">
                     <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                         <Grid>
                             <Grid Padding="20, 10">

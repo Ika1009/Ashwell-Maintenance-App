@@ -23,6 +23,19 @@ public static class ApiService
         return response;
     }
     /// <summary>
+    /// Retrieves all folders with their names and IDs from the server.
+    /// </summary>
+    /// <returns>A HttpResponseMessage containing the list of folders.</returns>
+    public static async Task<HttpResponseMessage> GetAllFoldersAsync()
+    {
+        using HttpClient client = new HttpClient();
+
+        HttpResponseMessage response = await client.GetAsync($"{BaseApiUrl}/get_folders.php");
+
+        return response;
+    }
+
+    /// <summary>
     /// Uploads a new report to the server.
     /// </summary>
     /// <param name="reportType">The type of the report.</param>

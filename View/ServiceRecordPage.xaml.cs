@@ -1,5 +1,8 @@
+using CommunityToolkit.Maui.Core.Primitives;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Maui;
+using System.Globalization;
+using System.Text.Json;
 
 namespace Ashwell_Maintenance.View;
 
@@ -45,16 +48,18 @@ public partial class ServiceRecordPage1 : ContentPage
         SRSection2.IsVisible = true;
     }
 
-    public void ServiceRecordNext2(object sender, EventArgs e)
+    public async void ServiceRecordNext2(object sender, EventArgs e)
     {
         SRSection2.IsVisible = false;
 
         SRSection3.ScrollToAsync(0, 0, false);
         SRSection3.IsVisible = true;
+        await LoadFolders();
     }
 
     public void ServiceRecordNext3(object sender, EventArgs e)
     {
+        
         SRSection3.IsVisible = false;
 
         SRSection4.ScrollToAsync(0, 0, false);
@@ -65,6 +70,48 @@ public partial class ServiceRecordPage1 : ContentPage
     {
         this.ShowPopup(new NewFolderPopup());
     }
+    private async Task LoadFolders()
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                string json = await response.Content.ReadAsStringAsync();
+
+                JsonElement dataArray = JsonDocument.Parse(json).RootElement.GetProperty("data");
+
+                List<(string Id, string Name, string Timestamp)> folders = dataArray.EnumerateArray().Select(element => (
+                        Id: element.GetProperty("folder_id").GetString(),
+                        Name: element.GetProperty("folder_name").GetString(),
+                        Timestamp: element.GetProperty("created_at").GetString())).ToList();
+
+                //!!!
+                //Ovde napravi funkciju da ispises folder umesto console writeline da ispises te date podatke
+                foreach (var folder in folders)
+                {
+                    string formattedTimestamp = DateTime.ParseExact(folder.Timestamp, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture).ToString("MMMM dd, yyyy h:mm tt");
+                    Console.WriteLine($"ID: {folder.Id}, Name: {folder.Name}, TimeStamp: {formattedTimestamp}");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to load folders.", "OK");
+            }
+        }
+        catch (JsonException jsonEx) {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (FormatException formatEx) {
+            await DisplayAlert("Error", $"Failed to format the date. Details: {formatEx.Message}", "OK");
+        }
+        catch (Exception ex) {
+            await DisplayAlert("Error", $"An uknown error occurred. Details: {ex.Message}", "OK");
+        }
+    }
+
+
+
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
