@@ -1,66 +1,72 @@
+using CommunityToolkit.Maui.Views;
 using Microsoft.Maui;
 
 namespace Ashwell_Maintenance.View;
 
 public partial class ServiceRecordPage1 : ContentPage
 {
-	public ServiceRecordPage1()
-	{
-		InitializeComponent();
-	}
+    public ServiceRecordPage1()
+    {
+        InitializeComponent();
+    }
 
-	public void ServiceRecordBack(object sender, EventArgs e)
-	{
-		if (SRSetion1.IsVisible)
-			Navigation.PopAsync();
-		else if (SRSetion2.IsVisible == true)
-		{
-			SRSetion2.IsVisible = false;
+    public void ServiceRecordBack(object sender, EventArgs e)
+    {
+        if (SRSection1.IsVisible)
+            Navigation.PopAsync();
+        else if (SRSection2.IsVisible == true)
+        {
+            SRSection2.IsVisible = false;
 
-			SRSetion1.ScrollToAsync(0, 0, false);
-			SRSetion1.IsVisible = true;
-		}
-		else if (SRSetion3.IsVisible == true)
-		{
-			SRSetion3.IsVisible = false;
+            SRSection1.ScrollToAsync(0, 0, false);
+            SRSection1.IsVisible = true;
+        }
+        else if (SRSection3.IsVisible == true)
+        {
+            SRSection3.IsVisible = false;
 
-			SRSetion2.ScrollToAsync(0, 0, false);
-			SRSetion2.IsVisible = true;
-		}
-		else
-		{
-            SRSetion4.IsVisible = false;
+            SRSection2.ScrollToAsync(0, 0, false);
+            SRSection2.IsVisible = true;
+        }
+        else
+        {
+            SRSection4.IsVisible = false;
 
-            SRSetion3.ScrollToAsync(0, 0, false);
-            SRSetion3.IsVisible = true;
+            SRSection3.ScrollToAsync(0, 0, false);
+            SRSection3.IsVisible = true;
         }
     }
 
-	public void ServiceRecordNext1(object sender, EventArgs e)
-	{
-		SRSetion1.IsVisible = false;
+    public void ServiceRecordNext1(object sender, EventArgs e)
+    {
+        SRSection1.IsVisible = false;
 
-		SRSetion2.ScrollToAsync(0, 0, false);
-		SRSetion2.IsVisible = true;
-	}
+        SRSection2.ScrollToAsync(0, 0, false);
+        SRSection2.IsVisible = true;
+    }
 
     public void ServiceRecordNext2(object sender, EventArgs e)
     {
-		SRSetion2.IsVisible = false;
+        SRSection2.IsVisible = false;
 
-        SRSetion3.ScrollToAsync(0, 0, false);
-        SRSetion3.IsVisible = true;
+        SRSection3.ScrollToAsync(0, 0, false);
+        SRSection3.IsVisible = true;
     }
 
     public void ServiceRecordNext3(object sender, EventArgs e)
     {
-        SRSetion3.IsVisible = false;
+        SRSection3.IsVisible = false;
 
-        SRSetion4.ScrollToAsync(0, 0, false);
-        SRSetion4.IsVisible = true;
+        SRSection4.ScrollToAsync(0, 0, false);
+        SRSection4.IsVisible = true;
     }
 
-    private async void  Button_Clicked(object sender, EventArgs e)
+    public void NewFolder(object sender, EventArgs e)
+    {
+        this.ShowPopup(new NewFolderPopup());
+    }
+
+    private async void Button_Clicked(object sender, EventArgs e)
     {
         string site1 = site.Text ?? string.Empty;
         string location1 = location.Text ?? string.Empty;
@@ -90,8 +96,8 @@ public partial class ServiceRecordPage1 : ContentPage
         string badgedBurnerPressure1 = badgedBurnerPressure.Text ?? string.Empty;
         bool ventilationSatisfactory1 = checkVentilationSatisfactory.IsChecked;
         bool flueConditionSatisfactory1 = checkFlueConditionSatisfactory.IsChecked;
-        bool tempNG= checkNG.IsChecked;
-        bool tempLPG= checkLPG.IsChecked;
+        bool tempNG = checkNG.IsChecked;
+        bool tempLPG = checkLPG.IsChecked;
         bool applianceServiceValveSatisfactory1 = checkAppServiceValve.IsChecked;
         bool applianceServiceValveSatisfactoryNA1 = checkAppServiceValveNA.IsChecked;
         string applianceServiceValveSatisfactoryComments1 = applianceServiceValveComment.Text ?? string.Empty;
@@ -203,138 +209,139 @@ public partial class ServiceRecordPage1 : ContentPage
         }
 
 
-        await PdfCreation.CreateServiceRecordPDF(workingInletPressure1,
-             site1,location1,
+        await PdfCreation.CreateServiceRecordPDF(
+            workingInletPressure1,
+            site1, location1,
             applianceNumber1,
- recordedBurnerPressure1,
- assetNumber1,
- measuredGasRate1,
- heatExhanger1,
- heatExhangerNA1,
- heatExhangerComments1,
- flueFlowTest1,
- flueFlowTestNA1,
- flueFlowTestComments1,
- spillageTest1,
- spillageTestNA1,
- spillageTestComments1,
- safetyShutOffValve1,
- safetyShutOffValveNA1,
- safetyShutOffValveComments1,
- plantroomGasTightnessTest1,
- plantroomGasTightnessTestNA1,
- plantroomGasTightnessTestComments1,
- AECVPlantIsolationCorrect1,
- AECVPlantIsolationCorrectNA1,
- AECVPlantIsolationCorrectComments1,
-"",// stateApplianceConditionComments1,
-"",// workingInletPressureComments1,
-"",// recordedBurnerPressureComments1,
-"",// measuredGasRateComments1,
- testsCompleted1,
- remedialWorkRequired1,
- applianceMake1,
- applianceModel1,
- applianceSerialNumber1,
- gcNumber1,
- stateApplianceCondition1,
- burnerMake1,
- burnerModel1,
- burnerSerialNumber1,
- Type1,
- Spec1,
- OpenFlue1,
- Roomsealed1,
- ForcedDraft1,
- Flueless1,
- Heating1,
- HotWater1,
- Both1,
- badgedBurnerPressure1,
- ventilationSatisfactory1,
- gasType1,
- flueConditionSatisfactory1,
- approxAgeOfAppliance1,
- badgedInput1,
- badgedOutput1,
- applianceServiceValveSatisfactory1,
- governorsSatisfactory1,
- gasSolenoidValvesSatisfactory1,
- controlBoxPcbSatisfactory1,
- gasketSealsSatisfactory1,
- burnerSatisfactory1,
- burnerJetsSatisfactory1,
- electrodesTransformerSatisfactory1,
- flameFailureDeviceSatisfactory1,
- systemBoilerControlsSatisfactory1,
- boilerCasingSatisfactory1,
- thermalInsulationSatisfactory1,
- combustionFanIdFanSatisfactory1,
- airFluePressureSwitchSatisfactory1,
- controlLimitStatsSatisfactory1,
- pressureTempGaugesSatisfactory1,
- circulationPumpsSatisfactory1,
- condenseTrapSatisfactory1,
- applianceServiceValveSatisfactoryNA1,
- governorsSatisfactoryNA1,
- gasSolenoidValvesSatisfactoryNA1,
- controlBoxPcbSatisfactoryNA1,
- gasketSealsSatisfactoryNA1,
- burnerSatisfactoryNA1,
- burnerJetsSatisfactoryNA1,
- electrodesTransformerSatisfactoryNA1,
- flameFailureDeviceSatisfactoryNA1,
- systemBoilerControlsSatisfactoryNA1,
- boilerCasingSatisfactoryNA1,
- thermalInsulationSatisfactoryNA1,
- combustionFanIdFanSatisfactoryNA1,
- airFluePressureSwitchSatisfactoryNA1,
- controlLimitStatsSatisfactoryNA1,
- pressureTempGaugesSatisfactoryNA1,
- circulationPumpsSatisfactoryNA1,
- condenseTrapSatisfactoryNA1,
- gasSolenoidValvesComments1,
- controlBoxPcbComments1,
- gasketSealsComments1,
- burnerComments1,
- burnerJetsComments1,
- electrodesTransformerComments1,
- flameFailureDeviceComments1,
- systemBoilerControlsComments1,
- boilerCasingComments1,
- thermalInsulationComments1,
- combustionFanIdFanComments1,
- airFluePressureSwitchComments1,
- controlLimitStatsComments1,
- pressureTempGaugesComments1,
- circulationPumpsComments1,
- condenseTrapComments1,
- HighFireCO21,
- HighFireCO1,
- HighFireO21,
- HighFireFlueTemp1,
- HighFireEfficiency1,
- HighFireExcessAir1,
- HighFireRoomTemp1,
- HighFireRatio1,
- LowFireCO21,
- LowFireCO1,
- LowFireO21,
- LowFireFlueTemp1,
- LowFireEfficiency1,
- LowFireExcessAir1,
- LowFireRoomTemp1,
- LowFireRatio1,
- warningNoticeIssueNumber1,
- engineersName1,
- engineersSignature1,
- engineersGasSafeID1,
- clientsName1,
- clientsSignature1,
- inspectionDate1,
-     commetsDefects1,
-     applianceServiceValveSatisfactoryComments1,
-     governorsComments1
-    );
+            recordedBurnerPressure1,
+            assetNumber1,
+            measuredGasRate1,
+            heatExhanger1,
+            heatExhangerNA1,
+            heatExhangerComments1,
+            flueFlowTest1,
+            flueFlowTestNA1,
+            flueFlowTestComments1,
+            spillageTest1,
+            spillageTestNA1,
+            spillageTestComments1,
+            safetyShutOffValve1,
+            safetyShutOffValveNA1,
+            safetyShutOffValveComments1,
+            plantroomGasTightnessTest1,
+            plantroomGasTightnessTestNA1,
+            plantroomGasTightnessTestComments1,
+            AECVPlantIsolationCorrect1,
+            AECVPlantIsolationCorrectNA1,
+            AECVPlantIsolationCorrectComments1,
+            "",// stateApplianceConditionComments1,
+            "",// workingInletPressureComments1,
+            "",// recordedBurnerPressureComments1,
+            "",// measuredGasRateComments1,
+            testsCompleted1,
+            remedialWorkRequired1,
+            applianceMake1,
+            applianceModel1,
+            applianceSerialNumber1,
+            gcNumber1,
+            stateApplianceCondition1,
+            burnerMake1,
+            burnerModel1,
+            burnerSerialNumber1,
+            Type1,
+            Spec1,
+            OpenFlue1,
+            Roomsealed1,
+            ForcedDraft1,
+            Flueless1,
+            Heating1,
+            HotWater1,
+            Both1,
+            badgedBurnerPressure1,
+            ventilationSatisfactory1,
+            gasType1,
+            flueConditionSatisfactory1,
+            approxAgeOfAppliance1,
+            badgedInput1,
+            badgedOutput1,
+            applianceServiceValveSatisfactory1,
+            governorsSatisfactory1,
+            gasSolenoidValvesSatisfactory1,
+            controlBoxPcbSatisfactory1,
+            gasketSealsSatisfactory1,
+            burnerSatisfactory1,
+            burnerJetsSatisfactory1,
+            electrodesTransformerSatisfactory1,
+            flameFailureDeviceSatisfactory1,
+            systemBoilerControlsSatisfactory1,
+            boilerCasingSatisfactory1,
+            thermalInsulationSatisfactory1,
+            combustionFanIdFanSatisfactory1,
+            airFluePressureSwitchSatisfactory1,
+            controlLimitStatsSatisfactory1,
+            pressureTempGaugesSatisfactory1,
+            circulationPumpsSatisfactory1,
+            condenseTrapSatisfactory1,
+            applianceServiceValveSatisfactoryNA1,
+            governorsSatisfactoryNA1,
+            gasSolenoidValvesSatisfactoryNA1,
+            controlBoxPcbSatisfactoryNA1,
+            gasketSealsSatisfactoryNA1,
+            burnerSatisfactoryNA1,
+            burnerJetsSatisfactoryNA1,
+            electrodesTransformerSatisfactoryNA1,
+            flameFailureDeviceSatisfactoryNA1,
+            systemBoilerControlsSatisfactoryNA1,
+            boilerCasingSatisfactoryNA1,
+            thermalInsulationSatisfactoryNA1,
+            combustionFanIdFanSatisfactoryNA1,
+            airFluePressureSwitchSatisfactoryNA1,
+            controlLimitStatsSatisfactoryNA1,
+            pressureTempGaugesSatisfactoryNA1,
+            circulationPumpsSatisfactoryNA1,
+            condenseTrapSatisfactoryNA1,
+            gasSolenoidValvesComments1,
+            controlBoxPcbComments1,
+            gasketSealsComments1,
+            burnerComments1,
+            burnerJetsComments1,
+            electrodesTransformerComments1,
+            flameFailureDeviceComments1,
+            systemBoilerControlsComments1,
+            boilerCasingComments1,
+            thermalInsulationComments1,
+            combustionFanIdFanComments1,
+            airFluePressureSwitchComments1,
+            controlLimitStatsComments1,
+            pressureTempGaugesComments1,
+            circulationPumpsComments1,
+            condenseTrapComments1,
+            HighFireCO21,
+            HighFireCO1,
+            HighFireO21,
+            HighFireFlueTemp1,
+            HighFireEfficiency1,
+            HighFireExcessAir1,
+            HighFireRoomTemp1,
+            HighFireRatio1,
+            LowFireCO21,
+            LowFireCO1,
+            LowFireO21,
+            LowFireFlueTemp1,
+            LowFireEfficiency1,
+            LowFireExcessAir1,
+            LowFireRoomTemp1,
+            LowFireRatio1,
+            warningNoticeIssueNumber1,
+            engineersName1,
+            engineersSignature1,
+            engineersGasSafeID1,
+            clientsName1,
+            clientsSignature1,
+            inspectionDate1,
+            commetsDefects1,
+            applianceServiceValveSatisfactoryComments1,
+            governorsComments1
+        );
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+           xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
+           x:Class="Ashwell_Maintenance.View.NewFolderPopup"
+	       Color="#141414">
+
+    <Grid Padding="20" WidthRequest="350" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout Spacing="10">
+            <Label Text="Folder Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                <local:LinelessEntry x:Name="folderName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+            </Frame>
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="1" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Done" TextColor="#fff" BackgroundColor="Transparent" FontSize="16 " FontFamily="SatoshiMedium" CornerRadius="100"/>
+
+            <Button Grid.Column="1" Text="Cancel" TextColor="#fff" BackgroundColor="Transparent" FontSize="16 " FontFamily="SatoshiMedium" CornerRadius="100" Clicked="NewFolderCancel"/>
+        </Grid>
+    </Grid>
+</mct:Popup>

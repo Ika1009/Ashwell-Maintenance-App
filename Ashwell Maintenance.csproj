@@ -62,6 +62,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\ash_icon.svg" />
+	  <None Remove="Resources\Images\Engineers report sheet.jpg" />
+	  <None Remove="Resources\Images\Pressurisation Unit Report.jpg" />
 	  <None Remove="Resources\Splash\ash_icon.svg" />
 	</ItemGroup>
 
@@ -86,6 +88,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\NewFolderPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\ProjectsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
