@@ -643,9 +643,9 @@ string warningNoticeNumber
 
             //gfx.DrawEllipse(XBrushes.Black, new XRect(377, 194, 420 - 377, 25));
             if(checkTaskComplete)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(377, 194, 396 - 377, 206 - 194), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(376, 193, 396 - 377+2, 206 - 194+2), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(491, 194, 396 - 377, 206 - 194), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377+2, 206 - 194+2), 0, 360);
 
             gfx.DrawString(serialNumber, font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormat.Center);
 
@@ -675,35 +675,35 @@ string warningNoticeNumber
                 y += 24;
             }
             if(checkSpillageTestPerformed)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(116, 702, 22, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(115, 701, 24, 10), 0, 360);
             else if(!checkSpillageTestPerformedNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(143, 702, 20, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(142, 701, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(166, 702, 20, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(165, 701, 22, 10), 0, 360);
             if(checkRiskAssesmentCompleted)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(309, 702, 20, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(308, 701, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(333, 702, 16, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 701, 18, 10), 0, 360);
             if(checkFlueFlowTest)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(73, 726, 23, 9), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(72, 725, 25, 11), 0, 360);
             else if(!checkFlueFlowTestNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(103, 726, 21, 9), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 725, 23, 11), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(130, 726, 15, 9), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(129, 725, 17, 11), 0, 360);
             if(checkThightnessTestCarriedOut)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(127, 750, 23, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 749, 25, 10), 0, 360);
             else if(!checkThightnessTestCarriedOutNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(156, 750, 21, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(155, 749, 23, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(180, 750, 15, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(179, 749, 17, 10), 0, 360);
             if(checkApplianceSafeToUse)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(103, 774, 20, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 773, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(127, 774, 18, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 773, 20, 10), 0, 360);
             if(checkWarningNoticeIssued)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(108, 797, 20, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(107, 796, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(132, 797, 15, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(131, 796, 17, 10), 0, 360);
 
             gfx.DrawString(warningNoticeNumber, font, XBrushes.Black, new XRect(267, 797, 105, 17), XStringFormats.Center);
 
@@ -722,6 +722,125 @@ string warningNoticeNumber
 
             document.Save(filePath);
 
+
+        }
+        public static async Task PressurisationReport(
+          string siteNameAndAddress,
+          string totalHeatingSystemRating,
+          string numberOfBoilers,
+          string flowTemperature,
+          string returnTemperature,
+          string currentWorkingPressure,
+          string safetyValveSetting,
+          string unitModel,
+          string serialNo,
+          string expansionVesselSize,
+          string numberOfPressureVessels,
+          string setFillPressure,
+          string ratedExpansionVesselCharge,
+          string highPressureSwitchSetting,
+          string lowPressureSwitchSetting,
+          string finalSystemPressure,
+          bool checkMainWaterSupply,
+          bool checkColdFillPressureSet,
+          bool checkElectricalSupplyWorking,
+          bool checkFillingLoopDisconnected,
+          bool checkUnitLeftOperational,
+          string notes,
+          string date,
+          string engineer
+
+          )
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new PdfDocument(); document.Info.Title = "Pressurisation Unit Service Report";
+
+
+            PdfPage page = document.AddPage();
+            page.Height = 842;
+            page.Width = 595;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+            XFont font = new XFont("Arial", 10);
+
+            XImage image = await ConvertToXImage(@"Pressurisation Unit Report.jpg");
+            gfx.DrawImage(image, 0, 0, 595, 842);
+
+            XRect boundingBox = new XRect(35, 222, 561 - 35, 259 - 222);
+            string text = siteNameAndAddress;
+            XTextFormatter tf = new XTextFormatter(gfx);
+            XRect layoutRectangle = boundingBox;
+            tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
+
+            //gfx.DrawString(totalHeatingSystemRating, font, XBrushes.Black, new XRect(298, 308, 543 - 298, 14), XStringFormat.Center);
+            //gfx.DrawString(numberOfBoilers, font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
+            //gfx.DrawString(flowTemperature, font, XBrushes.Black, new XRect(298, 339, 548 - 298, 14), XStringFormat.Center);
+            //gfx.DrawString(returnTemperature, font, XBrushes.Black, new XRect(298, 354, 548 - 298, 14), XStringFormat.Center);
+            //gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 543 - 298, 14), XStringFormat.Center);
+            //gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 543 - 298, 14), XStringFormat.Center);
+
+            gfx.DrawString(totalHeatingSystemRating, font, XBrushes.Black, new XRect(298, 308, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(numberOfBoilers, font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(flowTemperature, font, XBrushes.Black, new XRect(298, 339, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(returnTemperature, font, XBrushes.Black, new XRect(298, 354, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 566 - 298, 14), XStringFormat.Center);
+
+            gfx.DrawString(unitModel, font, XBrushes.Black, new XRect(99, 444, 296 - 99, 25), XStringFormat.Center);
+            gfx.DrawString(serialNo, font, XBrushes.Black, new XRect(359, 444, 565 - 359, 25), XStringFormat.Center);
+            gfx.DrawString(expansionVesselSize, font, XBrushes.Black, new XRect(183, 471, 296 - 183, 25), XStringFormat.Center);
+            gfx.DrawString(numberOfPressureVessels, font, XBrushes.Black, new XRect(447, 471, 565 - 447, 25), XStringFormat.Center);
+
+            List<string> PressurationUnitSetings = new List<string>
+            {
+
+                setFillPressure,
+                ratedExpansionVesselCharge,
+                highPressureSwitchSetting,
+                lowPressureSwitchSetting,
+                finalSystemPressure,
+
+            };
+            double y = 542;
+            for (int i = 0; i < 5; i++)
+            {
+                gfx.DrawString(PressurationUnitSetings[i], font, XBrushes.Black, new XRect(227, y, 268 - 227, 13), XStringFormat.Center);
+                y += 15;
+            }
+            List<bool> check = new List<bool>
+            {
+                checkMainWaterSupply,
+                checkColdFillPressureSet,
+                checkElectricalSupplyWorking,
+                checkFillingLoopDisconnected,
+                checkUnitLeftOperational,
+            };
+            y = 544;
+            for (int i = 0; i < 5; i++)
+            {
+                if (check[i])
+                    gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(499, y - 1, 20, 11), 0, 360);
+                else
+                    gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(525, y - 1, 17, 11), 0, 360);
+                y += 15;
+
+            }
+            XRect boundingBox1 = new XRect(35, 659, 561 - 35, 771 - 659);
+            string text1 = notes;
+            XTextFormatter tf1 = new XTextFormatter(gfx);
+            XRect layoutRectangle1 = boundingBox1;
+            tf1.DrawString(text1, new XFont("Arial", 10), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
+
+            gfx.DrawString(date, font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormat.Center);
+            gfx.DrawString(engineer, font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
+
+            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string filePath = System.IO.Path.Combine(downloadsFolder, $"Pressurisation_Unit_Service_Report_{dateTimeString}.pdf");
+
+            document.Save(filePath);
 
         }
     }
