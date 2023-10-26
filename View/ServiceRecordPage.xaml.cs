@@ -57,9 +57,10 @@ public partial class ServiceRecordPage1 : ContentPage
         await LoadFolders();
     }
 
-    public void ServiceRecordNext3(object sender, EventArgs e)
+    public async void ServiceRecordNext3(object sender, EventArgs e)
     {
-        
+        Button_Clicked(sender, e);
+        await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         SRSection3.IsVisible = false;
 
         SRSection4.ScrollToAsync(0, 0, false);

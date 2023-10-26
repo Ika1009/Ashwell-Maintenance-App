@@ -427,7 +427,7 @@ string inspectionDate,
             {
                 if (i == 8)
                 {
-                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 36 - 247, 13), XStringFormats.Center);
+                    gfx.DrawString(componentComments[i], font, XBrushes.Black, new XRect(247, y, 376 - 247, 13), XStringFormats.Center);
                 }
                 else
                 {
