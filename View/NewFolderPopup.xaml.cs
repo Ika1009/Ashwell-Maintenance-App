@@ -19,7 +19,7 @@ public partial class NewFolderPopup : Popup
         // Check if folder name is empty or consists only of whitespace
         if (string.IsNullOrWhiteSpace(folderName.Text))
         {
-            await Shell.Current.DisplayAlert("Error", "Folder name cannot be empty.", "OK");
+            await Application.Current.MainPage.DisplayAlert("Error", "Folder name cannot be empty.", "OK");
             return;
         }
 
@@ -49,13 +49,13 @@ public partial class NewFolderPopup : Popup
                 else
                     errorMessage = "Internal server error.";
 
-                await Shell.Current.DisplayAlert("Error", errorMessage, "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", errorMessage, "OK");
             }
         }
         catch (Exception ex)
         {
             // Handle other potential exceptions like network errors, timeouts, etc.
-            await Shell.Current.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+            await Application.Current.MainPage.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
         }
 
     }
