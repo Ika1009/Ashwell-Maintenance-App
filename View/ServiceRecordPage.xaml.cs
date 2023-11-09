@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Views;
 using Microsoft.Maui;
 using System.Globalization;
 using System.Text.Json;
+using static Ashwell_Maintenance.View.ServiceRecordPage1;
 
 namespace Ashwell_Maintenance.View;
 
@@ -82,18 +83,14 @@ public partial class ServiceRecordPage1 : ContentPage
 
                 JsonElement dataArray = JsonDocument.Parse(json).RootElement.GetProperty("data");
 
-                List<(string Id, string Name, string Timestamp)> folders = dataArray.EnumerateArray().Select(element => (
-                        Id: element.GetProperty("folder_id").GetString(),
-                        Name: element.GetProperty("folder_name").GetString(),
-                        Timestamp: element.GetProperty("created_at").GetString())).ToList();
-
-                //!!!
-                //Ovde napravi funkciju da ispises folder umesto console writeline da ispises te date podatke
-                foreach (var folder in folders)
+                List<Folder> folders = dataArray.EnumerateArray().Select(element => new Folder
                 {
-                    string formattedTimestamp = DateTime.ParseExact(folder.Timestamp, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture).ToString("MMMM dd, yyyy h:mm tt");
-                    Console.WriteLine($"ID: {folder.Id}, Name: {folder.Name}, TimeStamp: {formattedTimestamp}");
-                }
+                    Id = element.GetProperty("folder_id").GetString(),
+                    Name = element.GetProperty("folder_name").GetString(),
+                    Timestamp = element.GetProperty("created_at").GetString()
+                }).ToList();
+
+                FoldersListView.ItemsSource = folders;
             }
             else
             {
@@ -109,9 +106,15 @@ public partial class ServiceRecordPage1 : ContentPage
         catch (Exception ex) {
             await DisplayAlert("Error", $"An uknown error occurred. Details: {ex.Message}", "OK");
         }
+
+
     }
-
-
+    public class Folder
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Timestamp { get; set; }
+    }
 
 
     private async void Button_Clicked(object sender, EventArgs e)

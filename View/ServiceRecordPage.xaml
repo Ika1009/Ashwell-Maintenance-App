@@ -1772,17 +1772,29 @@
                         </Grid>
                     </Frame>
 
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid Padding="20, 10">
-                                <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
+                    <ListView x:Name="FoldersListView" SeparatorVisibility="Default" SeparatorColor="#333333">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                                        <Grid>
+                                            <Grid Padding="20, 10">
+                                                <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
 
-                                <Label Text="Test Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                            </Grid>
+                                                <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding Timestamp}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding Id}" IsVisible="False"/>
+                                            </Grid>
 
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
-                        </Grid>
-                    </Frame>
+                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
