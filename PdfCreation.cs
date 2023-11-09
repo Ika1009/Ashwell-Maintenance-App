@@ -583,29 +583,30 @@ namespace Ashwell_Maintenance
             document.Save(filePath);
         }
         public static async Task CreateEngineersReport(
-     string clientsName,
-string address,
-string date,
-string engineer,
-string taskTNo,
-bool checkTaskComplete,
-string applianceMake,
-string serialNumber,
-string description,
-bool checkSpillageTestPerformed,
-bool checkSpillageTestPerformedNA,
-bool checkRiskAssesmentCompleted,
-bool checkFlueFlowTest,
-bool checkFlueFlowTestNA,
-string gasOperatinPressure,
-string inletPressure,
-bool checkThightnessTestCarriedOut,
-bool checkThightnessTestCarriedOutNA,
-string thightnessTestCarriedOut,
-string totalHoursIncludingTravel,
-bool checkApplianceSafeToUse,
-bool checkWarningNoticeIssued,
-string warningNoticeNumber
+//     string clientsName,
+//string address,
+//string date,
+//string engineer,
+//string taskTNo,
+//bool checkTaskComplete,
+//string applianceMake,
+//string serialNumber,
+//string description,
+//bool checkSpillageTestPerformed,
+//bool checkSpillageTestPerformedNA,
+//bool checkRiskAssesmentCompleted,
+//bool checkFlueFlowTest,
+//bool checkFlueFlowTestNA,
+//string gasOperatinPressure,
+//string inletPressure,
+//bool checkThightnessTestCarriedOut,
+//bool checkThightnessTestCarriedOutNA,
+//string thightnessTestCarriedOut,
+//string totalHoursIncludingTravel,
+//bool checkApplianceSafeToUse,
+//bool checkWarningNoticeIssued,
+//string warningNoticeNumber
+Dictionary<string,string> dic
      )
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -627,29 +628,29 @@ string warningNoticeNumber
 
             gfx.DrawImage(image, 0, 0, 595, 842);
 
-            gfx.DrawString(clientsName, font, XBrushes.Black, new XRect(118, 123, 288 - 118, 143 - 123), XStringFormat.Center);
+            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(118, 123, 288 - 118, 143 - 123), XStringFormat.Center);
 
-            gfx.DrawString(address, font, XBrushes.Black, new XRect(6, 145, 280, 25), XStringFormat.Center);
+            gfx.DrawString(dic["address"], font, XBrushes.Black, new XRect(6, 145, 280, 25), XStringFormat.Center);
             gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 170, 280, 25), XStringFormat.Center);
             gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 195, 280, 25), XStringFormat.Center);
 
-            gfx.DrawString(applianceMake, font, XBrushes.Black, new XRect(79, 219, 210, 24), XStringFormat.Center);
+            gfx.DrawString(dic["applianceMake"], font, XBrushes.Black, new XRect(79, 219, 210, 24), XStringFormat.Center);
 
-            gfx.DrawString(date, font, XBrushes.Black, new XRect(340, 125, 588 - 340, 25), XStringFormat.Center);
-            gfx.DrawString(engineer, font, XBrushes.Black, new XRect(340, 145, 588 - 340, 25), XStringFormat.Center);
-            gfx.DrawString(taskTNo, font, XBrushes.Black, new XRect(340, 170, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(340, 125, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(340, 145, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["taskTNo"], font, XBrushes.Black, new XRect(340, 170, 588 - 340, 25), XStringFormat.Center);
 
 
             //gfx.DrawEllipse(XBrushes.Black, new XRect(377, 194, 420 - 377, 25));
-            if(checkTaskComplete)
+            if(dic["checkTaskComplete"]=="True")
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(376, 193, 396 - 377+2, 206 - 194+2), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377+2, 206 - 194+2), 0, 360);
 
-            gfx.DrawString(serialNumber, font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["serialNumber"], font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormat.Center);
 
             string[] l = {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
-            string[] TempDesc = description.Split();
+            string[] TempDesc = dic["description"].Split();
             int d = 0;
             int duzina = 0;
             for (int i = 0; i < TempDesc.Length; i++)
@@ -673,44 +674,44 @@ string warningNoticeNumber
                 gfx.DrawString(l[i], font, XBrushes.Black, new XRect(7, y, 588 - 7, 23), XStringFormats.BottomLeft);
                 y += 24;
             }
-            if(checkSpillageTestPerformed)
+            if(dic["checkSpillageTestPerformed"]=="True")
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(115, 701, 24, 10), 0, 360);
-            else if(!checkSpillageTestPerformedNA)
+            else if(!(dic["checkSpillageTestPerformedNA"]=="True"))
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(142, 701, 22, 10), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(165, 701, 22, 10), 0, 360);
-            if(checkRiskAssesmentCompleted)
+            if(dic["checkRiskAssesmentCompleted"]=="True")
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(308, 701, 22, 10), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 701, 18, 10), 0, 360);
-            if(checkFlueFlowTest)
+            if(dic["checkFlueFlowTest"]=="True")
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(72, 725, 25, 11), 0, 360);
-            else if(!checkFlueFlowTestNA)
+            else if(!(dic["checkFlueFlowTestNA"]=="True"))
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 725, 23, 11), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(129, 725, 17, 11), 0, 360);
-            if(checkThightnessTestCarriedOut)
+            if(dic["checkThightnessTestCarriedOut"]=="True")
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 749, 25, 10), 0, 360);
-            else if(!checkThightnessTestCarriedOutNA)
+            else if(!(dic["checkThightnessTestCarriedOutNA"]=="True"))
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(155, 749, 23, 10), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(179, 749, 17, 10), 0, 360);
-            if(checkApplianceSafeToUse)
+            if(dic["checkApplianceSafeToUse"]=="True")
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 773, 22, 10), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 773, 20, 10), 0, 360);
-            if(checkWarningNoticeIssued)
+            if(dic["checkWarningNoticeIssued"]=="True")
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(107, 796, 22, 10), 0, 360);
             else
             gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(131, 796, 17, 10), 0, 360);
 
-            gfx.DrawString(warningNoticeNumber, font, XBrushes.Black, new XRect(267, 797, 105, 17), XStringFormats.Center);
+            gfx.DrawString(dic["warningNoticeNumber"], font, XBrushes.Black, new XRect(267, 797, 105, 17), XStringFormats.Center);
 
-            gfx.DrawString(gasOperatinPressure, font, XBrushes.Black, new XRect(190, 735, 47, 8), XStringFormats.Center);
+            gfx.DrawString(dic["gasOperatinPressure"], font, XBrushes.Black, new XRect(190, 735, 47, 8), XStringFormats.Center);
 
-            gfx.DrawString(inletPressure, font, XBrushes.Black, new XRect(300, 735, 47, 8), XStringFormats.Center);
+            gfx.DrawString(dic["inletPressure"], font, XBrushes.Black, new XRect(300, 735, 47, 8), XStringFormats.Center);
 
-            gfx.DrawString(totalHoursIncludingTravel, font, XBrushes.Black, new XRect(514, 748, 74, 16), XStringFormats.Center);
+            gfx.DrawString(dic["totalHoursIncludingTravel"], font, XBrushes.Black, new XRect(514, 748, 74, 16), XStringFormats.Center);
 
 
 
@@ -724,30 +725,31 @@ string warningNoticeNumber
 
         }
         public static async Task PressurisationReport(
-          string siteNameAndAddress,
-          string totalHeatingSystemRating,
-          string numberOfBoilers,
-          string flowTemperature,
-          string returnTemperature,
-          string currentWorkingPressure,
-          string safetyValveSetting,
-          string unitModel,
-          string serialNo,
-          string expansionVesselSize,
-          string numberOfPressureVessels,
-          string setFillPressure,
-          string ratedExpansionVesselCharge,
-          string highPressureSwitchSetting,
-          string lowPressureSwitchSetting,
-          string finalSystemPressure,
-          bool checkMainWaterSupply,
-          bool checkColdFillPressureSet,
-          bool checkElectricalSupplyWorking,
-          bool checkFillingLoopDisconnected,
-          bool checkUnitLeftOperational,
-          string notes,
-          string date,
-          string engineer
+          //string siteNameAndAddress,
+          //string totalHeatingSystemRating,
+          //string numberOfBoilers,
+          //string flowTemperature,
+          //string returnTemperature,
+          //string currentWorkingPressure,
+          //string safetyValveSetting,
+          //string unitModel,
+          //string serialNo,
+          //string expansionVesselSize,
+          //string numberOfPressureVessels,
+          //string setFillPressure,
+          //string ratedExpansionVesselCharge,
+          //string highPressureSwitchSetting,
+          //string lowPressureSwitchSetting,
+          //string finalSystemPressure,
+          //bool checkMainWaterSupply,
+          //bool checkColdFillPressureSet,
+          //bool checkElectricalSupplyWorking,
+          //bool checkFillingLoopDisconnected,
+          //bool checkUnitLeftOperational,
+          //string notes,
+          //string date,
+          //string engineer
+          Dictionary<string,string> dic
 
           )
         {
@@ -768,7 +770,7 @@ string warningNoticeNumber
             gfx.DrawImage(image, 0, 0, 595, 842);
 
             XRect boundingBox = new XRect(35, 222, 561 - 35, 259 - 222);
-            string text = siteNameAndAddress;
+            string text = dic["siteNameAndAddress"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
@@ -780,26 +782,26 @@ string warningNoticeNumber
             //gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 543 - 298, 14), XStringFormat.Center);
             //gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 543 - 298, 14), XStringFormat.Center);
 
-            gfx.DrawString(totalHeatingSystemRating, font, XBrushes.Black, new XRect(298, 308, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(numberOfBoilers, font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(flowTemperature, font, XBrushes.Black, new XRect(298, 339, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(returnTemperature, font, XBrushes.Black, new XRect(298, 354, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 566 - 298, 14), XStringFormat.Center);
-
-            gfx.DrawString(unitModel, font, XBrushes.Black, new XRect(99, 444, 296 - 99, 25), XStringFormat.Center);
-            gfx.DrawString(serialNo, font, XBrushes.Black, new XRect(359, 444, 565 - 359, 25), XStringFormat.Center);
-            gfx.DrawString(expansionVesselSize, font, XBrushes.Black, new XRect(183, 471, 296 - 183, 25), XStringFormat.Center);
-            gfx.DrawString(numberOfPressureVessels, font, XBrushes.Black, new XRect(447, 471, 565 - 447, 25), XStringFormat.Center);
-
+            gfx.DrawString(dic["totalHeatingSystemRating"], font, XBrushes.Black, new XRect(298, 308, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["numberOfBoilers"], font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["flowTemperature"], font, XBrushes.Black, new XRect(298, 339, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["returnTemperature"], font, XBrushes.Black, new XRect(298, 354, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["currentWorkingPressure"], font, XBrushes.Black, new XRect(298, 369, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["safetyValveSetting"], font, XBrushes.Black, new XRect(298, 385, 566 - 298, 14), XStringFormat.Center);
+                         
+            gfx.DrawString(dic["unitModel"], font, XBrushes.Black, new XRect(99, 444, 296 - 99, 25), XStringFormat.Center);
+            gfx.DrawString(dic["serialNo"], font, XBrushes.Black, new XRect(359, 444, 565 - 359, 25), XStringFormat.Center);
+            gfx.DrawString(dic["expansionVesselSize"], font, XBrushes.Black, new XRect(183, 471, 296 - 183, 25), XStringFormat.Center);
+            gfx.DrawString(dic["numberOfPressureVessels"], font, XBrushes.Black, new XRect(447, 471, 565 - 447, 25), XStringFormat.Center);
+                         
             List<string> PressurationUnitSetings = new List<string>
             {
 
-                setFillPressure,
-                ratedExpansionVesselCharge,
-                highPressureSwitchSetting,
-                lowPressureSwitchSetting,
-                finalSystemPressure,
+                dic["setFillPressure"],
+                dic["ratedExpansionVesselCharge"],
+                dic["highPressureSwitchSetting"],
+                dic["lowPressureSwitchSetting"],
+                dic["finalSystemPressure"],
 
             };
             double y = 542;
@@ -808,14 +810,15 @@ string warningNoticeNumber
                 gfx.DrawString(PressurationUnitSetings[i], font, XBrushes.Black, new XRect(227, y, 268 - 227, 13), XStringFormat.Center);
                 y += 15;
             }
-            List<bool> check = new List<bool>
+            List<string> check1 = new List<string>
             {
-                checkMainWaterSupply,
-                checkColdFillPressureSet,
-                checkElectricalSupplyWorking,
-                checkFillingLoopDisconnected,
-                checkUnitLeftOperational,
+                dic["checkMainWaterSupply"],
+                dic["checkColdFillPressureSet"],
+                dic["checkElectricalSupplyWorking"],
+                dic["checkFillingLoopDisconnected"],
+                dic["checkUnitLeftOperational"],
             };
+            List<bool> check = check1.Select(s => bool.Parse(s)).ToList();
             y = 544;
             for (int i = 0; i < 5; i++)
             {
@@ -827,13 +830,13 @@ string warningNoticeNumber
 
             }
             XRect boundingBox1 = new XRect(35, 659, 561 - 35, 771 - 659);
-            string text1 = notes;
+            string text1 = dic["notes"];
             XTextFormatter tf1 = new XTextFormatter(gfx);
             XRect layoutRectangle1 = boundingBox1;
             tf1.DrawString(text1, new XFont("Arial", 10), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
 
-            gfx.DrawString(date, font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormat.Center);
-            gfx.DrawString(engineer, font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormat.Center);
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
