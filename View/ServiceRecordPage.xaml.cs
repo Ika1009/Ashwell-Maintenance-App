@@ -65,32 +65,30 @@ public partial class ServiceRecordPage1 : ContentPage
         try
         {
             HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                string json = await response.Content.ReadAsStringAsync();
-
-                JsonDocument jsonDocument = JsonDocument.Parse(json);
-                if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
-                {
-                    // Clear the existing items and add the new ones directly to the ObservableCollection
-                    Folders.Clear();
-                    foreach (var element in dataArray.EnumerateArray())
-                    {
-                        Folders.Add(new Folder
-                        {
-                            Id = element.GetProperty("folder_id").GetString(),
-                            Name = element.GetProperty("folder_name").GetString(),
-                            Timestamp = element.GetProperty("created_at").GetString()
-                        });
-                    }
-
-                    // Check if the ItemsSource is already set
-                    FoldersListView.ItemsSource ??= Folders;
-                }
-            }
-            else
-            {
+            if (!response.IsSuccessStatusCode) {
                 await DisplayAlert("Error", "Failed to load folders.", "OK");
+                return;
+            }
+
+            string json = await response.Content.ReadAsStringAsync();
+
+            JsonDocument jsonDocument = JsonDocument.Parse(json);
+            if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
+            {
+                // Clear the existing items and add the new ones directly to the ObservableCollection
+                Folders.Clear();
+                foreach (var element in dataArray.EnumerateArray())
+                {
+                    Folders.Add(new Folder
+                    {
+                        Id = element.GetProperty("folder_id").GetString(),
+                        Name = element.GetProperty("folder_name").GetString(),
+                        Timestamp = element.GetProperty("created_at").GetString()
+                    });
+                }
+
+                // Check if the ItemsSource is already set
+                FoldersListView.ItemsSource ??= Folders;
             }
         }
         catch (JsonException jsonEx)
