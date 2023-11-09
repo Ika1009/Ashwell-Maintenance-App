@@ -1784,10 +1784,9 @@
 
                                                 <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                                                 <Label Text="{Binding Timestamp}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-                                                <Label Text="{Binding Id}" IsVisible="False"/>
                                             </Grid>
 
-                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
+                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
                                         </Grid>
                                     </Frame>
                                 </ViewCell>

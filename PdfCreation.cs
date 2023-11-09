@@ -55,7 +55,7 @@ namespace Ashwell_Maintenance
 
 
 
-        public static async Task CreateServiceRecordPDF(string workingInletPressure, string site, string location, string applianceNumber,
+        public static async Task CreateServiceRecordPDF(string reportName, string workingInletPressure, string site, string location, string applianceNumber,
 string recordedBurnerPressure,
 string assetNumber,
 string measuredGasRate,
@@ -577,8 +577,7 @@ string inspectionDate,
 
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string filePath = System.IO.Path.Combine(downloadsFolder, $"Ashwell_Service_Report_{dateTimeString}.pdf");
+            string filePath = System.IO.Path.Combine(downloadsFolder, reportName);
 
 
             document.Save(filePath);
