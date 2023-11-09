@@ -47,20 +47,25 @@ public static class ApiService
     public static async Task<HttpResponseMessage> UploadReportAsync(Enums.ReportType reportType, string reportName, string folderId, Dictionary<string, string> additionalReportData)
     {
         using HttpClient client = new();
-        // Combine provided data with additional report data
-        var postData = new Dictionary<string, string>
-        {
-            {"report_type", reportType.ToString()},
-            {"report_name", reportName},
-            {"folder_id", folderId}
-        }.Concat(additionalReportData);
 
-        var jsonContent = new StringContent(JsonSerializer.Serialize(postData), Encoding.UTF8, "application/json");
+        // Create a list to maintain the order of elements
+        var postData = new List<KeyValuePair<string, string>>
+        {
+            new KeyValuePair<string, string>("report_type", reportType.ToString()),
+            new KeyValuePair<string, string>("report_name", reportName),
+            new KeyValuePair<string, string>("folder_id", folderId)
+        };
+
+        // Add additional report data to the list
+        postData.AddRange(additionalReportData);
+
+        var jsonContent = new StringContent(JsonSerializer.Serialize(postData.ToDictionary(x => x.Key, x => x.Value)), Encoding.UTF8, "application/json");
 
         HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/upload_report.php", jsonContent);
 
         return response;
     }
+
 
     /// <summary>
     /// Uploads two images signatures to the server along with folder ID and folder name.

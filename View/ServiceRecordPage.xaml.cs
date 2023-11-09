@@ -65,33 +65,38 @@ public partial class ServiceRecordPage1 : ContentPage
             {
                 string json = await response.Content.ReadAsStringAsync();
 
-                JsonElement dataArray = JsonDocument.Parse(json).RootElement.GetProperty("data");
-
-                List<Folder> folders = dataArray.EnumerateArray().Select(element => new Folder
+                JsonDocument jsonDocument = JsonDocument.Parse(json);
+                if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
                 {
-                    Id = element.GetProperty("folder_id").GetString(),
-                    Name = element.GetProperty("folder_name").GetString(),
-                    Timestamp = element.GetProperty("created_at").GetString()
-                }).ToList();
+                    List<Folder> folders = dataArray.EnumerateArray().Select(element => new Folder
+                    {
+                        Id = element.GetProperty("folder_id").GetString(),
+                        Name = element.GetProperty("folder_name").GetString(),
+                        Timestamp = element.GetProperty("created_at").GetString()
+                    }).ToList();
 
-                FoldersListView.ItemsSource = folders;
+                    FoldersListView.ItemsSource = folders;
+                }
             }
             else
             {
                 await DisplayAlert("Error", "Failed to load folders.", "OK");
             }
         }
-        catch (JsonException jsonEx) {
+        catch (JsonException jsonEx)
+        {
             await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
         }
-        catch (FormatException formatEx) {
+        catch (FormatException formatEx)
+        {
             await DisplayAlert("Error", $"Failed to format the date. Details: {formatEx.Message}", "OK");
         }
-        catch (Exception ex) {
-            await DisplayAlert("Error", $"An uknown error occurred. Details: {ex.Message}", "OK");
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
-
     }
+
     public class Folder
     {
         public string Id { get; set; }
