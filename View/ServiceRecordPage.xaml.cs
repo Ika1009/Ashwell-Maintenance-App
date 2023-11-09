@@ -87,10 +87,6 @@ public partial class ServiceRecordPage1 : ContentPage
                     // Check if the ItemsSource is already set
                     FoldersListView.ItemsSource ??= Folders;
                 }
-                else
-                {
-                    await DisplayAlert("Information", "No folders found.", "OK");
-                }
             }
             else
             {
