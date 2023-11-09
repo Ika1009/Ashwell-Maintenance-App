@@ -1,6 +1,8 @@
 using CommunityToolkit.Maui.Core.Primitives;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.Json;
 using static Ashwell_Maintenance.View.ServiceRecordPage1;
@@ -10,6 +12,8 @@ namespace Ashwell_Maintenance.View;
 public partial class ServiceRecordPage1 : ContentPage
 {
     string reportName = "noname";
+    public ObservableCollection<Folder> Folders = new ObservableCollection<Folder>();
+
     public ServiceRecordPage1()
     {
         InitializeComponent();
@@ -54,7 +58,7 @@ public partial class ServiceRecordPage1 : ContentPage
 
     public void NewFolder(object sender, EventArgs e)
     {
-        this.ShowPopup(new NewFolderPopup());
+        this.ShowPopup(new NewFolderPopup(LoadFolders));
     }
     private async Task LoadFolders()
     {
@@ -68,14 +72,25 @@ public partial class ServiceRecordPage1 : ContentPage
                 JsonDocument jsonDocument = JsonDocument.Parse(json);
                 if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
                 {
-                    List<Folder> folders = dataArray.EnumerateArray().Select(element => new Folder
+                    // Clear the existing items and add the new ones directly to the ObservableCollection
+                    Folders.Clear();
+                    foreach (var element in dataArray.EnumerateArray())
                     {
-                        Id = element.GetProperty("folder_id").GetString(),
-                        Name = element.GetProperty("folder_name").GetString(),
-                        Timestamp = element.GetProperty("created_at").GetString()
-                    }).ToList();
+                        Folders.Add(new Folder
+                        {
+                            Id = element.GetProperty("folder_id").GetString(),
+                            Name = element.GetProperty("folder_name").GetString(),
+                            Timestamp = element.GetProperty("created_at").GetString()
+                        });
+                    }
 
-                    FoldersListView.ItemsSource = folders;
+                    // Check if the ItemsSource is already set
+                    if (FoldersListView.ItemsSource == null)
+                        FoldersListView.ItemsSource = Folders;
+                }
+                else
+                {
+                    await DisplayAlert("Information", "No folders found.", "OK");
                 }
             }
             else
@@ -96,6 +111,7 @@ public partial class ServiceRecordPage1 : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
     }
+
 
     public class Folder
     {
@@ -304,143 +320,7 @@ public partial class ServiceRecordPage1 : ContentPage
         }
 
 
-        await PdfCreation.CreateServiceRecordPDF(
-            //reportName,
-            //workingInletPressure1,
-            //site1, location1,
-            //applianceNumber1,
-            //recordedBurnerPressure1,
-            //assetNumber1,
-            //measuredGasRate1,
-            //heatExhanger1,
-            //heatExhangerNA1,
-            //heatExhangerComments1,
-            //flueFlowTest1,
-            //flueFlowTestNA1,
-            //flueFlowTestComments1,
-            //spillageTest1,
-            //spillageTestNA1,
-            //spillageTestComments1,
-            //safetyShutOffValve1,
-            //safetyShutOffValveNA1,
-            //safetyShutOffValveComments1,
-            //plantroomGasTightnessTest1,
-            //plantroomGasTightnessTestNA1,
-            //plantroomGasTightnessTestComments1,
-            //AECVPlantIsolationCorrect1,
-            //AECVPlantIsolationCorrectNA1,
-            //AECVPlantIsolationCorrectComments1,
-            //"",// stateApplianceConditionComments1,
-            //"",// workingInletPressureComments1,
-            //"",// recordedBurnerPressureComments1,
-            //"",// measuredGasRateComments1,
-            //testsCompleted1,
-            //remedialWorkRequired1,
-            //applianceMake1,
-            //applianceModel1,
-            //applianceSerialNumber1,
-            //gcNumber1,
-            //stateApplianceCondition1,
-            //burnerMake1,
-            //burnerModel1,
-            //burnerSerialNumber1,
-            //Type1,
-            //Spec1,
-            //OpenFlue1,
-            //Roomsealed1,
-            //ForcedDraft1,
-            //Flueless1,
-            //Heating1,
-            //HotWater1,
-            //Both1,
-            //badgedBurnerPressure1,
-            //ventilationSatisfactory1,
-            //gasType1,
-            //flueConditionSatisfactory1,
-            //approxAgeOfAppliance1,
-            //badgedInput1,
-            //badgedOutput1,
-            //applianceServiceValveSatisfactory1,
-            //governorsSatisfactory1,
-            //gasSolenoidValvesSatisfactory1,
-            //controlBoxPcbSatisfactory1,
-            //gasketSealsSatisfactory1,
-            //burnerSatisfactory1,
-            //burnerJetsSatisfactory1,
-            //electrodesTransformerSatisfactory1,
-            //flameFailureDeviceSatisfactory1,
-            //systemBoilerControlsSatisfactory1,
-            //boilerCasingSatisfactory1,
-            //thermalInsulationSatisfactory1,
-            //combustionFanIdFanSatisfactory1,
-            //airFluePressureSwitchSatisfactory1,
-            //controlLimitStatsSatisfactory1,
-            //pressureTempGaugesSatisfactory1,
-            //circulationPumpsSatisfactory1,
-            //condenseTrapSatisfactory1,
-            //applianceServiceValveSatisfactoryNA1,
-            //governorsSatisfactoryNA1,
-            //gasSolenoidValvesSatisfactoryNA1,
-            //controlBoxPcbSatisfactoryNA1,
-            //gasketSealsSatisfactoryNA1,
-            //burnerSatisfactoryNA1,
-            //burnerJetsSatisfactoryNA1,
-            //electrodesTransformerSatisfactoryNA1,
-            //flameFailureDeviceSatisfactoryNA1,
-            //systemBoilerControlsSatisfactoryNA1,
-            //boilerCasingSatisfactoryNA1,
-            //thermalInsulationSatisfactoryNA1,
-            //combustionFanIdFanSatisfactoryNA1,
-            //airFluePressureSwitchSatisfactoryNA1,
-            //controlLimitStatsSatisfactoryNA1,
-            //pressureTempGaugesSatisfactoryNA1,
-            //circulationPumpsSatisfactoryNA1,
-            //condenseTrapSatisfactoryNA1,
-            //gasSolenoidValvesComments1,
-            //controlBoxPcbComments1,
-            //gasketSealsComments1,
-            //burnerComments1,
-            //burnerJetsComments1,
-            //electrodesTransformerComments1,
-            //flameFailureDeviceComments1,
-            //systemBoilerControlsComments1,
-            //boilerCasingComments1,
-            //thermalInsulationComments1,
-            //combustionFanIdFanComments1,
-            //airFluePressureSwitchComments1,
-            //controlLimitStatsComments1,
-            //pressureTempGaugesComments1,
-            //circulationPumpsComments1,
-            //condenseTrapComments1,
-            //HighFireCO21,
-            //HighFireCO1,
-            //HighFireO21,
-            //HighFireFlueTemp1,
-            //HighFireEfficiency1,
-            //HighFireExcessAir1,
-            //HighFireRoomTemp1,
-            //HighFireRatio1,
-            //LowFireCO21,
-            //LowFireCO1,
-            //LowFireO21,
-            //LowFireFlueTemp1,
-            //LowFireEfficiency1,
-            //LowFireExcessAir1,
-            //LowFireRoomTemp1,
-            //LowFireRatio1,
-            //warningNoticeIssueNumber1,
-            //engineersName1,
-            //engineersSignature1,
-            //engineersGasSafeID1,
-            //clientsName1,
-            //clientsSignature1,
-            //inspectionDate1,
-            //commetsDefects1,
-            //applianceServiceValveSatisfactoryComments1,
-            //governorsComments1
-            GatherReportData()
-
-        );
+        //await PdfCreation.CreateServiceRecordPDF(GatherReportData()); ;
     }
     private Dictionary<string, string> GatherReportData()
     {
