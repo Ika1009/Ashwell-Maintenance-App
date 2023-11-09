@@ -85,8 +85,7 @@ public partial class ServiceRecordPage1 : ContentPage
                     }
 
                     // Check if the ItemsSource is already set
-                    if (FoldersListView.ItemsSource == null)
-                        FoldersListView.ItemsSource = Folders;
+                    FoldersListView.ItemsSource ??= Folders;
                 }
                 else
                 {
