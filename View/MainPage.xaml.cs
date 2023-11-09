@@ -7,9 +7,9 @@
             InitializeComponent();
         }
 
-        private void CDM_Tapped(object sender, EventArgs e)
+        private async void CDM_Tapped(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ConstructionDesignManagmentPage());
         }
         private void ER_Tapped(object sender, EventArgs e)
         {

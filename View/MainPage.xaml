@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ashwell_Maintenance.View.MainPage"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
              BackgroundColor="#141414">
-
+    
     <ContentPage.Behaviors>
         <mct:StatusBarBehavior StatusBarColor="#141414" StatusBarStyle="LightContent"/>
     </ContentPage.Behaviors>
-    
+
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -172,5 +172,5 @@
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-    
+
 </ContentPage>

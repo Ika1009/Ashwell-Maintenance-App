@@ -88,6 +88,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\ConstructionDesignManagementPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\NewFolderPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -106,6 +109,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\ConstructionDesignManagementPage.xaml.cs">
+	    <DependentUpon>ConstructionDesignManagementPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\ServiceRecordPage.xaml.cs">
 	    <DependentUpon>ServiceRecordPage.xaml</DependentUpon>
 	  </Compile>

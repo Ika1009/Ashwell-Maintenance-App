@@ -7,29 +7,31 @@
            x:Class="Ashwell_Maintenance.View.NewFolderPopup"
 	       Color="#141414">
 
-    <Grid Padding="20" WidthRequest="350" RowSpacing="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+	<Frame Padding="0" CornerRadius="15" BorderColor="Transparent" BackgroundColor="#141414">
+        <Grid Padding="20" WidthRequest="350" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <VerticalStackLayout Spacing="10">
-            <Label Text="Folder Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Folder Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                <local:LinelessEntry x:Name="folderName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-            </Frame>
-        </VerticalStackLayout>
+                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                    <local:LinelessEntry x:Name="folderName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                </Frame>
+            </VerticalStackLayout>
 
-        <Grid Grid.Row="1" ColumnSpacing="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Button Text="Done" TextColor="#fff" BackgroundColor="Transparent" FontSize="16 " FontFamily="SatoshiMedium" CornerRadius="100" Clicked="NewFolderClicked"/>
+                <Button Text="Done" TextColor="#fff" BackgroundColor="Transparent" FontSize="16 " FontFamily="SatoshiMedium" CornerRadius="100" Clicked="NewFolderClicked"/>
 
-            <Button Grid.Column="1" Text="Cancel" TextColor="#fff" BackgroundColor="Transparent" FontSize="16 " FontFamily="SatoshiMedium" CornerRadius="100" Clicked="NewFolderCancel"/>
+                <Button Grid.Column="1" Text="Cancel" TextColor="#fff" BackgroundColor="Transparent" FontSize="16 " FontFamily="SatoshiMedium" CornerRadius="100" Clicked="NewFolderCancel"/>
+            </Grid>
         </Grid>
-    </Grid>
+	</Frame>
 </mct:Popup>

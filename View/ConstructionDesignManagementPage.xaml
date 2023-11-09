@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
+             x:Class="Ashwell_Maintenance.View.ConstructionDesignManagmentPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="#141414">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid RowSpacing="5" Margin="0, 30, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ImageButton x:Name="CDMback" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start"/>
+
+            <Image Source="construction_design_management.png" WidthRequest="60" HorizontalOptions="Center"/>
+
+            <Label Grid.Row="1" Text="Construction Design Managament" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Site Address:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="siteAdress" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Clinet:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="clinet" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Principle Designer:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="principleDesigner" Text="Ashwell Maintenance" IsEnabled="False" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Principle Contractor:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="principleContractor" Text="Ashwell Maintenance LTD" IsEnabled="False" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Responsible Site Engineer:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="responsibleSiteEngineer" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Other Ashwell Maintenance
+                           Engineers On Site:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="otherEngineers" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="What Information Has The Clinet Issued:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="whatInformationIssued" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Start Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="startDate" Keyboard="Numeric" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Completion Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="completionDate" Keyboard="Numeric" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Other:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="other" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

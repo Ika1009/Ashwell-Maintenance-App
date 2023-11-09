@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
              x:Class="Ashwell_Maintenance.View.ServiceRecordPage1"
-             Title="ServiceRecordPage1"
-             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
              Shell.TabBarIsVisible="False"
              BackgroundColor="#141414">
 
