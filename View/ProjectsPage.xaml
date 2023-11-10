@@ -49,7 +49,7 @@
                         <Image Grid.Column="2" Source="forward.png" HeightRequest="30"/>
                     </Grid>
 
-                    <Button BackgroundColor="Transparent"/>
+                    <Button BackgroundColor="Transparent" Clicked="Finished_Projects_Clicked"/>
                 </Grid>
             </Frame>
 
@@ -73,7 +73,7 @@
                         <Image Grid.Column="2" Source="forward.png" HeightRequest="30"/>
                     </Grid>
 
-                    <Button BackgroundColor="Transparent"/>
+                    <Button BackgroundColor="Transparent" Clicked="Unfinished_Projects_Clicked"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

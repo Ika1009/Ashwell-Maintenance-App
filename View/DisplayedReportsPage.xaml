@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ashwell_Maintenance.View.DisplayedReportsPage"
+             Title="DisplayedReportsPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" x:Name="_folderStackLayout">
+            <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                <Grid>
+                    <Grid Padding="20, 10">
+                        <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
+
+                        <Label Text="New Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    </Grid>
+
+                    <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
+                </Grid>
+            </Frame>
+
+            <ListView x:Name="ReportsListView" SeparatorVisibility="Default" SeparatorColor="#333333">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                                <Grid>
+                                    <Grid Padding="20, 10">
+                                        <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
+
+                                        <Label Text="{Binding ReportName}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding ReportType}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding CreatedAt}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                    </Grid>
+
+                                    <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding ReportId}"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

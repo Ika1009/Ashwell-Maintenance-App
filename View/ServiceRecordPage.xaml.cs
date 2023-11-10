@@ -1,19 +1,14 @@
-using CommunityToolkit.Maui.Core.Primitives;
 using CommunityToolkit.Maui.Views;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Text.Json;
-using static Ashwell_Maintenance.View.ServiceRecordPage1;
 
 namespace Ashwell_Maintenance.View;
 
 public partial class ServiceRecordPage1 : ContentPage
 {
     string reportName = "noname";
-    public ObservableCollection<Folder> Folders = new ObservableCollection<Folder>();
-    Dictionary<string, string> reportData;
+    public ObservableCollection<Folder> Folders = new();
+    private Dictionary<string, string> reportData;
     public ServiceRecordPage1()
     {
         InitializeComponent();
@@ -104,7 +99,6 @@ public partial class ServiceRecordPage1 : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
     }
-
 
     public class Folder
     {

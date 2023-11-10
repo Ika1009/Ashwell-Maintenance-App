@@ -37,6 +37,24 @@ public static class ApiService
     }
 
     /// <summary>
+    /// Retrieves all reports for a specified folder ID from the server.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder for which to retrieve reports.</param>
+    /// <returns>A HttpResponseMessage containing the list of reports for the specified folder.</returns>
+    public static async Task<HttpResponseMessage> GetReportsForFolderAsync(string folderId)
+    {
+        using HttpClient client = new HttpClient();
+
+        // Append the folder_id parameter to the API endpoint
+        string apiUrl = $"{BaseApiUrl}/get_reports_by_folder.php?folder_id={folderId}";
+
+        HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+        return response;
+    }
+
+
+    /// <summary>
     /// Uploads a new report to the server.
     /// </summary>
     /// <param name="reportType">The type of the report.</param>
