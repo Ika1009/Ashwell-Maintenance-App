@@ -26,8 +26,8 @@
             <Label Grid.Row="1" Text="Service Record" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
         </Grid>
 
-        <ScrollView x:Name="SRSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="20">
+        <ScrollView x:Name="SRSection1" IsVisible="False" Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
                 </Frame>
@@ -400,7 +400,7 @@
 
 
         <ScrollView x:Name="SRSection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="20">
+            <VerticalStackLayout Spacing="40">
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
@@ -1593,7 +1593,7 @@
 
 
         <ScrollView x:Name="SRSection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="20">
+            <VerticalStackLayout Spacing="40">
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
@@ -1693,7 +1693,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="SRSection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="SRSection4" Grid.Row="1" IsVisible="True" VerticalScrollBarVisibility="Never">
             <!--<VerticalStackLayout Spacing="20">
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
@@ -1752,7 +1752,7 @@
                 </VerticalStackLayout>
             </VerticalStackLayout>-->
 
-            <VerticalStackLayout Spacing="20">
+            <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
                 </Frame>

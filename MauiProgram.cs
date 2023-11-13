@@ -24,7 +24,6 @@ namespace Ashwell_Maintenance
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
             return builder.Build();
         }
     }
