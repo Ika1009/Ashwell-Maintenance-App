@@ -5,12 +5,15 @@ namespace Ashwell_Maintenance.View;
 
 public partial class NewFolderPopup : Popup
 {
-	public NewFolderPopup()
-	{
-		InitializeComponent();
-	}
+    private readonly Func<Task> onAddFolder;
 
-	public void NewFolderCancel(object sender, EventArgs e)
+    public NewFolderPopup(Func<Task> onAddFolder)
+    {
+		InitializeComponent();
+        this.onAddFolder = onAddFolder;
+    }
+
+    public void NewFolderCancel(object sender, EventArgs e)
 	{
 		this.Close();
 	}
@@ -28,7 +31,11 @@ public partial class NewFolderPopup : Popup
             var response = await ApiService.UploadFolderAsync(folderName.Text);
 
             if (response.IsSuccessStatusCode)
+            {
                 this.Close();
+                if (onAddFolder != null)
+                    await Application.Current.MainPage.Dispatcher.DispatchAsync(onAddFolder);
+            }
             else
             {
                 var errorContent = await response.Content.ReadAsStringAsync();

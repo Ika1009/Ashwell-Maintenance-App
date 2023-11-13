@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using Ashwell_Maintenance;
 
 public static class ApiService
 {
@@ -36,6 +37,24 @@ public static class ApiService
     }
 
     /// <summary>
+    /// Retrieves all reports for a specified folder ID from the server.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder for which to retrieve reports.</param>
+    /// <returns>A HttpResponseMessage containing the list of reports for the specified folder.</returns>
+    public static async Task<HttpResponseMessage> GetReportsForFolderAsync(string folderId)
+    {
+        using HttpClient client = new HttpClient();
+
+        // Append the folder_id parameter to the API endpoint
+        string apiUrl = $"{BaseApiUrl}/get_reports_by_folder.php?folder_id={folderId}";
+
+        HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+        return response;
+    }
+
+
+    /// <summary>
     /// Uploads a new report to the server.
     /// </summary>
     /// <param name="reportType">The type of the report.</param>
@@ -43,23 +62,28 @@ public static class ApiService
     /// <param name="folderId">The ID of the folder where the report should be saved.</param>
     /// <param name="additionalReportData">A dictionary containing real values for the report.</param>
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
-    public static async Task<HttpResponseMessage> UploadReportAsync(string reportType, string reportName, string folderId, Dictionary<string, string> additionalReportData)
+    public static async Task<HttpResponseMessage> UploadReportAsync(Enums.ReportType reportType, string reportName, string folderId, Dictionary<string, string> additionalReportData)
     {
         using HttpClient client = new();
-        // Combine provided data with additional report data
-        var postData = new Dictionary<string, string>
-        {
-            {"report_type", reportType},
-            {"report_name", reportName},
-            {"folder_id", folderId}
-        }.Concat(additionalReportData);
 
-        var jsonContent = new StringContent(JsonSerializer.Serialize(postData), Encoding.UTF8, "application/json");
+        // Create a list to maintain the order of elements
+        var postData = new List<KeyValuePair<string, string>>
+        {
+            new KeyValuePair<string, string>("report_type", reportType.ToString()),
+            new KeyValuePair<string, string>("report_name", reportName),
+            new KeyValuePair<string, string>("folder_id", folderId)
+        };
+
+        // Add additional report data to the list
+        postData.AddRange(additionalReportData);
+
+        var jsonContent = new StringContent(JsonSerializer.Serialize(postData.ToDictionary(x => x.Key, x => x.Value)), Encoding.UTF8, "application/json");
 
         HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/upload_report.php", jsonContent);
 
         return response;
     }
+
 
     /// <summary>
     /// Uploads two images signatures to the server along with folder ID and folder name.
