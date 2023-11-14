@@ -19,6 +19,17 @@ public partial class DisplayedReportsPage : ContentPage
         public string FolderId { get; set; }
         public string CreatedAt { get; set; }
     }
+
+
+    public void NewFolder(object sender, EventArgs e)
+    {
+
+    }
+    public void FolderChosen(object sender, EventArgs e)
+    {
+
+    }
+
     private async Task LoadReports(string folderId)
     {
         try

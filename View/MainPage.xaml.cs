@@ -11,9 +11,9 @@
         {
             await Navigation.PushAsync(new ConstructionDesignManagmentPage());
         }
-        private void ER_Tapped(object sender, EventArgs e)
+        private async void ER_Tapped(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new EngineersReportPage());
         }
         private async void SR_Tapped(object sender, EventArgs e)
         {

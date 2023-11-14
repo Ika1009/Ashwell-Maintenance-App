@@ -728,7 +728,7 @@
                         <Label Text="The Control / Action Required:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                            <local:LinelessEntry x:Name="DustNoiseCOSHHTheControlActionRequired" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEditor x:Name="DustNoiseCOSHHTheControlActionRequired" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
                 </VerticalStackLayout>
@@ -1117,7 +1117,7 @@
                         <Label Text="ACTION TAKEN" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                            <local:LinelessEntry x:Name="actionTaken" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEditor x:Name="actionTaken" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
                 </VerticalStackLayout>
@@ -1307,7 +1307,7 @@
                     <Label Text="The Control / Action Required:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEntry x:Name="moreDangersTheControlActionRequired" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessEditor x:Name="moreDangersTheControlActionRequired" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1694,7 +1694,7 @@
                     <Label Text="Engineer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEntry x:Name="engineersSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessEditor x:Name="engineersSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 

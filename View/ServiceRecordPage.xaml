@@ -1612,7 +1612,7 @@
                     <Label Text="Engineer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEntry x:Name="engineersSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessEditor x:Name="engineersSignature" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1639,10 +1639,10 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Clients's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <Label Text="Client's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEntry x:Name="clientsSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessEditor x:Name="clientsSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
