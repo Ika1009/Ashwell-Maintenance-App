@@ -5,6 +5,7 @@
              Title="DisplayedReportsPage">
     <ScrollView>
         <VerticalStackLayout Spacing="10" x:Name="_folderStackLayout">
+            <Button Text="Sign the Project" Clicked="SignatureButton_Clicked"></Button>
             <ListView x:Name="ReportsListView" SeparatorVisibility="Default" SeparatorColor="#333333">
                 <ListView.ItemTemplate>
                     <DataTemplate>
