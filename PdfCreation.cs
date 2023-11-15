@@ -55,139 +55,139 @@ namespace Ashwell_Maintenance
 
 
 
-        public static async Task CreateServiceRecordPDF(string workingInletPressure, string site, string location, string applianceNumber,
-string recordedBurnerPressure,
-string assetNumber,
-string measuredGasRate,
-bool heatExhanger,
-bool heatExhangerNA,
-string heatExhangerComments,
-bool flueFlowTest,
-bool flueFlowTestNA,
-string flueFlowTestComments,
-bool spillageTest,
-bool spillageTestNA,
-string spillageTestComments,
-bool safetyShutOffValve,
-bool safetyShutOffValveNA,
-string safetyShutOffValveComments,
-bool plantroomGasTightnessTest,
-bool plantroomGasTightnessTestNA,
-string plantroomGasTightnessTestComments,
-bool AECVPlantIsolationCorrect,
-bool AECVPlantIsolationCorrectNA,
-string AECVPlantIsolationCorrectComments,
-string stateApplianceConditionComments,
-string workingInletPressureComments,
-string recordedBurnerPressureComments,
-string measuredGasRateComments,
-bool testsCompleted,
-bool remedialWorkRequired,
-string applianceMake,
-string applianceModel,
-string applianceSerialNumber,
-string gcNumber,
-string stateApplianceCondition,
-string burnerMake,
-string burnerModel,
-string burnerSerialNumber,
-string Type,
-string Spec,
-bool OpenFlue,
-bool Roomsealed,
-bool ForcedDraft,
-bool Flueless,
-bool Heating,
-bool HotWater,
-bool Both,
-string badgedBurnerPressure,
-bool ventilationSatisfactory,
-string gasType,
-bool flueConditionSatisfactory,
-string approxAgeOfAppliance,
-string badgedInput,
-string badgedOutput,
-bool applianceServiceValveSatisfactory,
-bool governorsSatisfactory,
-bool gasSolenoidValvesSatisfactory,
-bool controlBoxPcbSatisfactory,
-bool gasketSealsSatisfactory,
-bool burnerSatisfactory,
-bool burnerJetsSatisfactory,
-bool electrodesTransformerSatisfactory,
-bool flameFailureDeviceSatisfactory,
-bool systemBoilerControlsSatisfactory,
-bool boilerCasingSatisfactory,
-bool thermalInsulationSatisfactory,
-bool combustionFanIdFanSatisfactory,
-bool airFluePressureSwitchSatisfactory,
-bool controlLimitStatsSatisfactory,
-bool pressureTempGaugesSatisfactory,
-bool circulationPumpsSatisfactory,
-bool condenseTrapSatisfactory,
-bool applianceServiceValveSatisfactoryNA,
-bool governorsSatisfactoryNA,
-bool gasSolenoidValvesSatisfactoryNA,
-bool controlBoxPcbSatisfactoryNA,
-bool gasketSealsSatisfactoryNA,
-bool burnerSatisfactoryNA,
-bool burnerJetsSatisfactoryNA,
-bool electrodesTransformerSatisfactoryNA,
-bool flameFailureDeviceSatisfactoryNA,
-bool systemBoilerControlsSatisfactoryNA,
-bool boilerCasingSatisfactoryNA,
-bool thermalInsulationSatisfactoryNA,
-bool combustionFanIdFanSatisfactoryNA,
-bool airFluePressureSwitchSatisfactoryNA,
-bool controlLimitStatsSatisfactoryNA,
-bool pressureTempGaugesSatisfactoryNA,
-bool circulationPumpsSatisfactoryNA,
-bool condenseTrapSatisfactoryNA,
-string gasSolenoidValvesComments,
-string controlBoxPcbComments,
-string gasketSealsComments,
-string burnerComments,
-string burnerJetsComments,
-string electrodesTransformerComments,
-string flameFailureDeviceComments,
-string systemBoilerControlsComments,
-string boilerCasingComments,
-string thermalInsulationComments,
-string combustionFanIdFanComments,
-string airFluePressureSwitchComments,
-string controlLimitStatsComments,
-string pressureTempGaugesComments,
-string circulationPumpsComments,
-string condenseTrapComments,
-string HighFireCO2,
-string HighFireCO,
-string HighFireO2,
-string HighFireFlueTemp,
-string HighFireEfficiency,
-string HighFireExcessAir,
-string HighFireRoomTemp,
-string HighFireRatio,
-string LowFireCO2,
-string LowFireCO,
-string LowFireO2,
-string LowFireFlueTemp,
-string LowFireEfficiency,
-string LowFireExcessAir,
-string LowFireRoomTemp,
-string LowFireRatio,
-string warningNoticeIssueNumber,
-string engineersName,
-string engineersSignature,
-string engineersGasSafeID,
-string clientsName,
-string clientsSignature,
-string inspectionDate,
-        string commetsDefects,
-       string applianceServiceValveSatisfactoryComments,
-   string  governorsComments
-        )
+        //        public static async Task CreateServiceRecordPDF(string reportName, string workingInletPressure, string site, string location, string applianceNumber,
+        //string recordedBurnerPressure,
+        //string assetNumber,
+        //string measuredGasRate,
+        //bool heatExhanger,
+        //bool heatExhangerNA,
+        //string heatExhangerComments,
+        //bool flueFlowTest,
+        //bool flueFlowTestNA,
+        //string flueFlowTestComments,
+        //bool spillageTest,
+        //bool spillageTestNA,
+        //string spillageTestComments,
+        //bool safetyShutOffValve,
+        //bool safetyShutOffValveNA,
+        //string safetyShutOffValveComments,
+        //bool plantroomGasTightnessTest,
+        //bool plantroomGasTightnessTestNA,
+        //string plantroomGasTightnessTestComments,
+        //bool AECVPlantIsolationCorrect,
+        //bool AECVPlantIsolationCorrectNA,
+        //string AECVPlantIsolationCorrectComments,
+        //string stateApplianceConditionComments,
+        //string workingInletPressureComments,
+        //string recordedBurnerPressureComments,
+        //string measuredGasRateComments,
+        //bool testsCompleted,
+        //bool remedialWorkRequired,
+        //string applianceMake,
+        //string applianceModel,
+        //string applianceSerialNumber,
+        //string gcNumber,
+        //string stateApplianceCondition,
+        //string burnerMake,
+        //string burnerModel,
+        //string burnerSerialNumber,
+        //string Type,
+        //string Spec,
+        //bool OpenFlue,
+        //bool Roomsealed,
+        //bool ForcedDraft,
+        //bool Flueless,
+        //bool Heating,
+        //bool HotWater,
+        //bool Both,
+        //string badgedBurnerPressure,
+        //bool ventilationSatisfactory,
+        //string gasType,
+        //bool flueConditionSatisfactory,
+        //string approxAgeOfAppliance,
+        //string badgedInput,
+        //string badgedOutput,
+        //bool applianceServiceValveSatisfactory,
+        //bool governorsSatisfactory,
+        //bool gasSolenoidValvesSatisfactory,
+        //bool controlBoxPcbSatisfactory,
+        //bool gasketSealsSatisfactory,
+        //bool burnerSatisfactory,
+        //bool burnerJetsSatisfactory,
+        //bool electrodesTransformerSatisfactory,
+        //bool flameFailureDeviceSatisfactory,
+        //bool systemBoilerControlsSatisfactory,
+        //bool boilerCasingSatisfactory,
+        //bool thermalInsulationSatisfactory,
+        //bool combustionFanIdFanSatisfactory,
+        //bool airFluePressureSwitchSatisfactory,
+        //bool controlLimitStatsSatisfactory,
+        //bool pressureTempGaugesSatisfactory,
+        //bool circulationPumpsSatisfactory,
+        //bool condenseTrapSatisfactory,
+        //bool applianceServiceValveSatisfactoryNA,
+        //bool governorsSatisfactoryNA,
+        //bool gasSolenoidValvesSatisfactoryNA,
+        //bool controlBoxPcbSatisfactoryNA,
+        //bool gasketSealsSatisfactoryNA,
+        //bool burnerSatisfactoryNA,
+        //bool burnerJetsSatisfactoryNA,
+        //bool electrodesTransformerSatisfactoryNA,
+        //bool flameFailureDeviceSatisfactoryNA,
+        //bool systemBoilerControlsSatisfactoryNA,
+        //bool boilerCasingSatisfactoryNA,
+        //bool thermalInsulationSatisfactoryNA,
+        //bool combustionFanIdFanSatisfactoryNA,
+        //bool airFluePressureSwitchSatisfactoryNA,
+        //bool controlLimitStatsSatisfactoryNA,
+        //bool pressureTempGaugesSatisfactoryNA,
+        //bool circulationPumpsSatisfactoryNA,
+        //bool condenseTrapSatisfactoryNA,
+        //string gasSolenoidValvesComments,
+        //string controlBoxPcbComments,
+        //string gasketSealsComments,
+        //string burnerComments,
+        //string burnerJetsComments,
+        //string electrodesTransformerComments,
+        //string flameFailureDeviceComments,
+        //string systemBoilerControlsComments,
+        //string boilerCasingComments,
+        //string thermalInsulationComments,
+        //string combustionFanIdFanComments,
+        //string airFluePressureSwitchComments,
+        //string controlLimitStatsComments,
+        //string pressureTempGaugesComments,
+        //string circulationPumpsComments,
+        //string condenseTrapComments,
+        //string HighFireCO2,
+        //string HighFireCO,
+        //string HighFireO2,
+        //string HighFireFlueTemp,
+        //string HighFireEfficiency,
+        //string HighFireExcessAir,
+        //string HighFireRoomTemp,
+        //string HighFireRatio,
+        //string LowFireCO2,
+        //string LowFireCO,
+        //string LowFireO2,
+        //string LowFireFlueTemp,
+        //string LowFireEfficiency,
+        //string LowFireExcessAir,
+        //string LowFireRoomTemp,
+        //string LowFireRatio,
+        //string warningNoticeIssueNumber,
+        //string engineersName,
+        //string engineersSignature,
+        //string engineersGasSafeID,
+        //string clientsName,
+        //string clientsSignature,
+        //string inspectionDate,
+        //        string commetsDefects,
+        //       string applianceServiceValveSatisfactoryComments,
+        //   string  governorsComments
+        //        )
 
-
+        public static async Task CreateServiceRecordPDF(Dictionary<string, string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -208,15 +208,15 @@ string inspectionDate,
 
             gfx.DrawImage(image, 0, 0, 842, 595);
             //site
-            gfx.DrawString(site, font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
+            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
             //location
-            gfx.DrawString(location, font, XBrushes.Black, new XRect(68, 98, 269 - 68, 124 - 98), XStringFormats.Center);
+            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(68, 98, 269 - 68, 124 - 98), XStringFormats.Center);
             //asset no
-            gfx.DrawString(assetNumber, font, XBrushes.Black, new XRect(272, 107, 337 - 272, 123 - 107), XStringFormats.Center);
+            gfx.DrawString(dic["assetNumber"], font, XBrushes.Black, new XRect(272, 107, 337 - 272, 123 - 107), XStringFormats.Center);
             //Appliance number
-            gfx.DrawString(applianceNumber, font, XBrushes.Black, new XRect(76, 128, 111 - 76, 139 - 128), XStringFormats.Center);
+            gfx.DrawString(dic["applianceNumber"], font, XBrushes.Black, new XRect(76, 128, 111 - 76, 139 - 128), XStringFormats.Center);
             //Tests completed
-            if (testsCompleted)
+            if (dic["testsCompleted"] == "True")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(185, 129, 13, 7), 0, 360);//+1
             }
@@ -226,7 +226,7 @@ string inspectionDate,
             }
 
             //remedial work required
-            if (remedialWorkRequired)
+            if (dic["remedialWorkRequired"] == "True")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(328, 129, 13, 7), 0, 360);
             }
@@ -236,23 +236,23 @@ string inspectionDate,
             }
 
             //apliance serial number //apliance model
-            gfx.DrawString(applianceNumber, font, XBrushes.Black, new XRect(82, 142, 196 - 82, 154 - 142), XStringFormats.Center);
-            gfx.DrawString(applianceModel, font, XBrushes.Black, new XRect(250, 142, 376 - 250, 154 - 142), XStringFormats.Center);
+            gfx.DrawString(dic["applianceNumber"], font, XBrushes.Black, new XRect(82, 142, 196 - 82, 154 - 142), XStringFormats.Center);
+            gfx.DrawString(dic["applianceModel"], font, XBrushes.Black, new XRect(250, 142, 376 - 250, 154 - 142), XStringFormats.Center);
             //apliance serial no  //GC no
-            gfx.DrawString(applianceSerialNumber, font, XBrushes.Black, new XRect(93, 157, 268 - 93, 169 - 157), XStringFormats.Center);
-            gfx.DrawString(gcNumber, font, XBrushes.Black, new XRect(300, 157, 76, 169 - 157), XStringFormats.Center);
+            gfx.DrawString(dic["applianceSerialNumber"], font, XBrushes.Black, new XRect(93, 157, 268 - 93, 169 - 157), XStringFormats.Center);
+            gfx.DrawString(dic["gcNumber"], font, XBrushes.Black, new XRect(300, 157, 76, 169 - 157), XStringFormats.Center);
             //Burner Make   //Burner model
-            gfx.DrawString(burnerMake, font, XBrushes.Black, new XRect(70, 172, 196 - 70, 183 - 172), XStringFormats.Center);
-            gfx.DrawString(burnerModel, font, XBrushes.Black, new XRect(243, 172, 376 - 243, 183 - 172), XStringFormats.Center);
+            gfx.DrawString(dic["burnerMake"], font, XBrushes.Black, new XRect(70, 172, 196 - 70, 183 - 172), XStringFormats.Center);
+            gfx.DrawString(dic["burnerModel"], font, XBrushes.Black, new XRect(243, 172, 376 - 243, 183 - 172), XStringFormats.Center);
             //Burner serial no  // type    //spec
-            gfx.DrawString(burnerSerialNumber, font, XBrushes.Black, new XRect(85, 187, 195 - 85, 199 - 187), XStringFormats.Center);
-            gfx.DrawString(Type, font, XBrushes.Black, new XRect(218, 187, 269 - 218, 199 - 187), XStringFormats.Center);
-            gfx.DrawString(Spec, font, XBrushes.Black, new XRect(293, 187, 376 - 293, 199 - 187), XStringFormats.Center);
+            gfx.DrawString(dic["burnerSerialNumber"], font, XBrushes.Black, new XRect(85, 187, 195 - 85, 199 - 187), XStringFormats.Center);
+            gfx.DrawString(dic["Type"], font, XBrushes.Black, new XRect(218, 187, 269 - 218, 199 - 187), XStringFormats.Center);
+            gfx.DrawString(dic["Spec"], font, XBrushes.Black, new XRect(293, 187, 376 - 293, 199 - 187), XStringFormats.Center);
             //open flue   //room sealed  //forced draft   //flueless
-            if (OpenFlue) { gfx.DrawString("Yes", font, XBrushes.Black, new XRect(159, 201, 177 - 159, 214 - 201), XStringFormats.Center); }
+            if (dic["OpenFlue"] == "True") { gfx.DrawString("Yes", font, XBrushes.Black, new XRect(159, 201, 177 - 159, 214 - 201), XStringFormats.Center); }
             else { gfx.DrawString("No", font, XBrushes.Black, new XRect(159, 201, 177 - 159, 214 - 201), XStringFormats.Center); }
 
-            if (Roomsealed)
+            if (dic["Roomsealed"] == "True")
             {
                 gfx.DrawString("Yes", font, XBrushes.Black, new XRect(226, 201, 244 - 226, 13), XStringFormats.Center);
             }
@@ -261,7 +261,7 @@ string inspectionDate,
                 gfx.DrawString("No", font, XBrushes.Black, new XRect(226, 201, 244 - 226, 13), XStringFormats.Center);
             }
 
-            if (ForcedDraft)
+            if (dic["ForcedDraft"] == "True")
             {
                 gfx.DrawString("Yes", font, XBrushes.Black, new XRect(294, 201, 310 - 294, 13), XStringFormats.Center);
             }
@@ -270,7 +270,7 @@ string inspectionDate,
                 gfx.DrawString("No", font, XBrushes.Black, new XRect(294, 201, 310 - 294, 13), XStringFormats.Center);
             }
 
-            if (Flueless)
+            if (dic["Flueless"] == "True")
             {
                 gfx.DrawString("Yes", font, XBrushes.Black, new XRect(361, 201, 376 - 361, 13), XStringFormats.Center);
             }
@@ -279,7 +279,7 @@ string inspectionDate,
                 gfx.DrawString("No", font, XBrushes.Black, new XRect(361, 201, 376 - 361, 13), XStringFormats.Center);
             }
             //heating   //hotwater  // both
-            if (Heating)
+            if (dic["Heating"] == "True")
             {
                 gfx.DrawString("Yes", font, XBrushes.Black, new XRect(182, 217, 199 - 182, 229 - 217), XStringFormats.Center);
             }
@@ -288,7 +288,7 @@ string inspectionDate,
                 gfx.DrawString("No", font, XBrushes.Black, new XRect(182, 217, 199 - 182, 229 - 217), XStringFormats.Center);
             }
 
-            if (HotWater)
+            if (dic["HotWater"] == "True")
             {
                 gfx.DrawString("Yes", font, XBrushes.Black, new XRect(269, 217, 289 - 269, 229 - 217), XStringFormats.Center);
             }
@@ -297,7 +297,7 @@ string inspectionDate,
                 gfx.DrawString("No", font, XBrushes.Black, new XRect(269, 217, 289 - 269, 229 - 217), XStringFormats.Center);
             }
 
-            if (Both)
+            if (dic["Both"] == "True")
             {
                 gfx.DrawString("Yes", font, XBrushes.Black, new XRect(360, 217, 376 - 360, 229 - 217), XStringFormats.Center);
             }
@@ -308,9 +308,9 @@ string inspectionDate,
 
 
             //badged bumer pressure
-            gfx.DrawString(badgedBurnerPressure, font, XBrushes.Black, new XRect(113, 232, 176 - 113, 243 - 232), XStringFormats.Center);
+            gfx.DrawString(dic["badgedBurnerPressure"], font, XBrushes.Black, new XRect(113, 232, 176 - 113, 243 - 232), XStringFormats.Center);
             //ventilation satisfactory
-            if (ventilationSatisfactory)
+            if (dic["ventilationSatisfactory"] == "True")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(321, 234, 13, 7), 0, 360);
             }
@@ -319,7 +319,7 @@ string inspectionDate,
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(353, 234, 13, 7), 0, 360);
             }
             //gas type
-            if (gasType == "NG")
+            if (dic["gasType"] == "NG")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(132, 249, 13, 7), 0, 360);
             }
@@ -328,7 +328,7 @@ string inspectionDate,
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(159, 249, 19, 8), 0, 360);
             }
             //flue condition satisfactory
-            if (ventilationSatisfactory)
+            if (dic["ventilationSatisfactory"] == "True")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(321, 249, 13, 7), 0, 360);
             }
@@ -337,71 +337,71 @@ string inspectionDate,
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(353, 249, 13, 7), 0, 360);
             }
             //approx age of apliance   //badged input   //badget output
-            gfx.DrawString(approxAgeOfAppliance, font, XBrushes.Black, new XRect(114, 263, 145 - 114, 273 - 263), XStringFormats.Center);
-            gfx.DrawString(badgedInput, font, XBrushes.Black, new XRect(214, 263, 255 - 214, 10), XStringFormats.Center);
-            gfx.DrawString(badgedOutput, font, XBrushes.Black, new XRect(320, 263, 362 - 320, 10), XStringFormats.Center);
+            gfx.DrawString(dic["approxAgeOfAppliance"], font, XBrushes.Black, new XRect(114, 263, 145 - 114, 273 - 263), XStringFormats.Center);
+            gfx.DrawString(dic["badgedInput"], font, XBrushes.Black, new XRect(214, 263, 255 - 214, 10), XStringFormats.Center);
+            gfx.DrawString(dic["badgedOutput"], font, XBrushes.Black, new XRect(320, 263, 362 - 320, 10), XStringFormats.Center);
             double y = 307;
             //apliance component checklist
-            List<bool> componentBooleans = new List<bool>
+            List<string> componentBooleans1 = new List<string>
             {
-                applianceServiceValveSatisfactory,
-                governorsSatisfactory,
-                gasSolenoidValvesSatisfactory,
-                controlBoxPcbSatisfactory,
-                gasketSealsSatisfactory,
-                burnerSatisfactory,
-                burnerJetsSatisfactory,
-                electrodesTransformerSatisfactory,
-                flameFailureDeviceSatisfactory,
-                systemBoilerControlsSatisfactory,
-                boilerCasingSatisfactory,
-                thermalInsulationSatisfactory,
-                combustionFanIdFanSatisfactory,
-                airFluePressureSwitchSatisfactory,
-                controlLimitStatsSatisfactory,
-                pressureTempGaugesSatisfactory,
-                circulationPumpsSatisfactory,
-                condenseTrapSatisfactory,
-                applianceServiceValveSatisfactoryNA,
-                governorsSatisfactoryNA,
-                gasSolenoidValvesSatisfactoryNA,
-                controlBoxPcbSatisfactoryNA,
-                gasketSealsSatisfactoryNA,
-                burnerSatisfactoryNA,
-                burnerJetsSatisfactoryNA,
-                electrodesTransformerSatisfactoryNA,
-                flameFailureDeviceSatisfactoryNA,
-                systemBoilerControlsSatisfactoryNA,
-                boilerCasingSatisfactoryNA,
-                thermalInsulationSatisfactoryNA,
-                combustionFanIdFanSatisfactoryNA,
-                airFluePressureSwitchSatisfactoryNA,
-                controlLimitStatsSatisfactoryNA,
-                pressureTempGaugesSatisfactoryNA,
-                circulationPumpsSatisfactoryNA,
-                condenseTrapSatisfactoryNA
+               dic["applianceServiceValveSatisfactory"],
+               dic["governorsSatisfactory"],
+               dic["gasSolenoidValvesSatisfactory"],
+               dic["controlBoxPcbSatisfactory"],
+               dic["gasketSealsSatisfactory"],
+               dic["burnerSatisfactory"],
+               dic["burnerJetsSatisfactory"],
+               dic["electrodesTransformerSatisfactory"],
+               dic["flameFailureDeviceSatisfactory"],
+               dic["systemBoilerControlsSatisfactory"],
+               dic["boilerCasingSatisfactory"],
+               dic["thermalInsulationSatisfactory"],
+               dic["combustionFanIdFanSatisfactory"],
+               dic["airFluePressureSwitchSatisfactory"],
+               dic["controlLimitStatsSatisfactory"],
+               dic["pressureTempGaugesSatisfactory"],
+               dic["circulationPumpsSatisfactory"],
+               dic["condenseTrapSatisfactory"],
+               dic["applianceServiceValveSatisfactoryNA"],
+               dic["governorsSatisfactoryNA"],
+               dic["gasSolenoidValvesSatisfactoryNA"],
+               dic["controlBoxPcbSatisfactoryNA"],
+               dic["gasketSealsSatisfactoryNA"],
+               dic["burnerSatisfactoryNA"],
+               dic["burnerJetsSatisfactoryNA"],
+               dic["electrodesTransformerSatisfactoryNA"],
+               dic["flameFailureDeviceSatisfactoryNA"],
+               dic["systemBoilerControlsSatisfactoryNA"],
+               dic["boilerCasingSatisfactoryNA"],
+               dic["thermalInsulationSatisfactoryNA"],
+               dic["combustionFanIdFanSatisfactoryNA"],
+               dic["airFluePressureSwitchSatisfactoryNA"],
+               dic["controlLimitStatsSatisfactoryNA"],
+               dic["pressureTempGaugesSatisfactoryNA"],
+               dic["circulationPumpsSatisfactoryNA"],
+               dic["condenseTrapSatisfactoryNA"]
             };
-
+            List<bool> componentBooleans = componentBooleans1.Select(s => bool.Parse(s)).ToList();
             List<string> componentComments = new List<string>
             {
-                applianceServiceValveSatisfactoryComments,
-                 governorsComments,
-                gasSolenoidValvesComments,
-                controlBoxPcbComments,
-                gasketSealsComments,
-                burnerComments,
-                burnerJetsComments,
-                electrodesTransformerComments,
-                flameFailureDeviceComments,
-                systemBoilerControlsComments,
-                boilerCasingComments,
-                thermalInsulationComments,
-                combustionFanIdFanComments,
-                airFluePressureSwitchComments,
-                controlLimitStatsComments,
-                pressureTempGaugesComments,
-                circulationPumpsComments,
-                condenseTrapComments
+               dic["applianceServiceValveSatisfactoryComments"],
+               dic["governorsComments"],
+               dic["gasSolenoidValvesComments"],
+               dic["controlBoxPcbComments"],
+               dic["gasketSealsComments"],
+               dic["burnerComments"],
+               dic["burnerJetsComments"],
+               dic["electrodesTransformerComments"],
+               dic["flameFailureDeviceComments"],
+               dic["systemBoilerControlsComments"],
+               dic["boilerCasingComments"],
+               dic["thermalInsulationComments"],
+               dic["combustionFanIdFanComments"],
+               dic["airFluePressureSwitchComments"],
+               dic["controlLimitStatsComments"],
+               dic["pressureTempGaugesComments"],
+               dic["circulationPumpsComments"],
+               dic["condenseTrapComments"]
                 //Fale jos 2
             };
             for (int i = 0; i < 18; i++)
@@ -421,7 +421,7 @@ string inspectionDate,
                 y += 15;
             }
             //State appliance condition
-            gfx.DrawString(stateApplianceCondition, font, XBrushes.Black, new XRect(497, 187, 576 - 497, 13), XStringFormats.Center);
+            gfx.DrawString(dic["stateApplianceCondition"], font, XBrushes.Black, new XRect(497, 187, 576 - 497, 13), XStringFormats.Center);
             y = 307;
             for (int i = 0; i < 18; i++)
             {
@@ -437,11 +437,11 @@ string inspectionDate,
             }
             //heat exchanger/fluent clear
             ////heat exchanger/fluent clear
-            if (heatExhanger)
+            if (dic["heatExhanger"] == "True")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(506, 54, 13, 7), 0, 360);
             }
-            else if (heatExhangerNA)
+            else if (dic["heatExhangerNA"] == "True")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 54, 13, 7), 0, 360);
             }
@@ -450,47 +450,48 @@ string inspectionDate,
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 54, 13, 7), 0, 360);
             }
             //working inlet pressure   //recorded burner pressure    //measured gas rate   
-            gfx.DrawString(workingInletPressure, font, XBrushes.Black, new XRect(497, 67, 557 - 497, 12), XStringFormats.Center);
-            gfx.DrawString(recordedBurnerPressure, font, XBrushes.Black, new XRect(497, 83, 557 - 497, 12), XStringFormats.Center);
-            gfx.DrawString(measuredGasRate, font, XBrushes.Black, new XRect(497, 99, 557 - 497, 12), XStringFormats.Center);
+            gfx.DrawString(dic["workingInletPressure"], font, XBrushes.Black, new XRect(497, 67, 557 - 497, 12), XStringFormats.Center);
+            gfx.DrawString(dic["recordedBurnerPressure"], font, XBrushes.Black, new XRect(497, 83, 557 - 497, 12), XStringFormats.Center);
+            gfx.DrawString(dic["measuredGasRate"], font, XBrushes.Black, new XRect(497, 99, 557 - 497, 12), XStringFormats.Center);
             //flue flow test
-            if (flueFlowTest)
+            if (dic["flueFlowTest"] == "True")
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 114, 18, 7), 0, 360);
             }
-            else if (!flueFlowTestNA)
+            else if (!(dic["flueFlowTestNA"] == "True"))
             {
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 114, 14, 7), 0, 360);
-            }else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 114, 14, 7), 0, 360);
+            }
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 114, 14, 7), 0, 360);
             //spillage test
-            if (spillageTest) 
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 129, 18, 7), 0, 360);
-            else if(!spillageTestNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 129, 14, 7), 0, 360);
+            if (dic["spillageTest"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 129, 18, 7), 0, 360);
+            else if (!(dic["spillageTestNA"] == "True"))
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 129, 14, 7), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 129, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 129, 14, 7), 0, 360);
             //AECV plant isolation correct
-            if(AECVPlantIsolationCorrect)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 144, 18, 7), 0, 360);
-            else if(!AECVPlantIsolationCorrectNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 144, 14, 7), 0, 360);
+            if (dic["AECVPlantIsolationCorrect"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 144, 18, 7), 0, 360);
+            else if (!(dic["AECVPlantIsolationCorrectNA"] == "True"))
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 144, 14, 7), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 144, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 144, 14, 7), 0, 360);
             //safety shut off valve
-            if(safetyShutOffValve)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 159, 18, 7), 0, 360);
-            else if(!safetyShutOffValveNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 159, 14, 7), 0, 360);
+            if (dic["safetyShutOffValve"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 159, 18, 7), 0, 360);
+            else if (!(dic["safetyShutOffValveNA"] == "True"))
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 159, 14, 7), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 159, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 159, 14, 7), 0, 360);
             //plantroom gas thightness level
-            if(plantroomGasTightnessTest)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 174, 18, 7), 0, 360);
-            else if(!plantroomGasTightnessTestNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 174, 14, 7), 0, 360);
+            if (dic["plantroomGasTightnessTest"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 174, 18, 7), 0, 360);
+            else if (!(dic["plantroomGasTightnessTestNA"] == "True"))
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 174, 14, 7), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 174, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 174, 14, 7), 0, 360);
 
             y = 53;
             float x = 580;
@@ -498,16 +499,16 @@ string inspectionDate,
             List<string> componentComments1 = new List<string>
             {
 
-                heatExhangerComments,
-                workingInletPressureComments,
-                recordedBurnerPressureComments,
-                measuredGasRateComments,
-                flueFlowTestComments,
-                spillageTestComments,
-                AECVPlantIsolationCorrectComments,
-                safetyShutOffValveComments,
-                plantroomGasTightnessTestComments,
-                stateApplianceConditionComments,
+               dic["heatExhangerComments"],
+               "",//dic["workingInletPressureComments"],
+               "",//dic["recordedBurnerPressureComments"],
+               "",//dic["measuredGasRateComments"],
+               dic["flueFlowTestComments"],
+               dic["spillageTestComments"],
+               dic["AECVPlantIsolationCorrectComments"],
+               dic["safetyShutOffValveComments"],
+               dic["plantroomGasTightnessTestComments"],
+               "",//dic["stateApplianceConditionComments"],
 
             };
             for (int i = 0; i < 10; i++)
@@ -520,23 +521,23 @@ string inspectionDate,
             // i = 0; // engineers name //enginiers singature // enginieers gas safe id number
             // i = 1 //clients name // clients signature  // inspection date
 
-            gfx.DrawString(engineersName, font, XBrushes.Black, new XRect(x, y, 137, 25), XStringFormats.Center);
-            gfx.DrawString(engineersSignature, font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
-            gfx.DrawString(engineersGasSafeID, font, XBrushes.Black, new XRect(x + 284, y, 137, 25), XStringFormats.Center);
+            gfx.DrawString(dic["engineersName"], font, XBrushes.Black, new XRect(x, y, 137, 25), XStringFormats.Center);
+            gfx.DrawString(dic["engineersSignature"], font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
+            gfx.DrawString(dic["engineersGasSafeID"], font, XBrushes.Black, new XRect(x + 284, y, 137, 25), XStringFormats.Center);
             y += 45;
-            gfx.DrawString(clientsName, font, XBrushes.Black, new XRect(x, y, 137, 25), XStringFormats.Center);
-            gfx.DrawString(clientsSignature, font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
-            gfx.DrawString(inspectionDate, font, XBrushes.Black, new XRect(x + 284, y, 137, 25), XStringFormats.Center);
+            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(x, y, 137, 25), XStringFormats.Center);
+            gfx.DrawString(dic["clientsSignature"], font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
+            gfx.DrawString(dic["inspectionDate"], font, XBrushes.Black, new XRect(x + 284, y, 137, 25), XStringFormats.Center);
 
 
             //comments/defects
             XRect boundingBox = new XRect(393, 287, 414, 166);
-            string text = commetsDefects;
+            string text = dic["commetsDefects"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
             //unsafe situations warning notice issue number
-            gfx.DrawString(warningNoticeIssueNumber, font, XBrushes.Black, new XRect(610, 459, 200, 9), XStringFormats.Center);
+            gfx.DrawString(dic["warningNoticeIssueNumber"], font, XBrushes.Black, new XRect(610, 459, 200, 9), XStringFormats.Center);
 
             x = 432;
             y = 218.5;
@@ -546,22 +547,22 @@ string inspectionDate,
             //ratio  //room temp
             List<string> debelamasnakurcinanajvecanasvetu = new List<string>
         {
-             HighFireCO2,
-             HighFireCO,
-             HighFireO2,
-             HighFireRatio,
-             HighFireFlueTemp,
-             HighFireEfficiency,
-             HighFireExcessAir,
-             HighFireRoomTemp,
-             LowFireCO2,
-             LowFireCO,
-             LowFireO2,
-             LowFireRatio,
-             LowFireFlueTemp,
-             LowFireEfficiency,
-             LowFireExcessAir,
-             LowFireRoomTemp,
+            dic["HighFireCO2"],
+            dic["HighFireCO"],
+            dic["HighFireO2"],
+            dic["HighFireRatio"],
+            dic["HighFireFlueTemp"],
+            dic["HighFireEfficiency"],
+            dic["HighFireExcessAir"],
+            dic["HighFireRoomTemp"],
+            dic["LowFireCO2"],
+            dic["LowFireCO"],
+            dic["LowFireO2"],
+            dic["LowFireRatio"],
+            dic["LowFireFlueTemp"],
+            dic["LowFireEfficiency"],
+            dic["LowFireExcessAir"],
+            dic["LowFireRoomTemp"],
         };
 
             for (int i = 0; i < 4; i++)
@@ -577,36 +578,36 @@ string inspectionDate,
 
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string filePath = System.IO.Path.Combine(downloadsFolder, $"Ashwell_Service_Report_{dateTimeString}.pdf");
+            string filePath = System.IO.Path.Combine(downloadsFolder, dic["reportName"]);
 
 
             document.Save(filePath);
         }
         public static async Task CreateEngineersReport(
-     string clientsName,
-string address,
-string date,
-string engineer,
-string taskTNo,
-bool checkTaskComplete,
-string applianceMake,
-string serialNumber,
-string description,
-bool checkSpillageTestPerformed,
-bool checkSpillageTestPerformedNA,
-bool checkRiskAssesmentCompleted,
-bool checkFlueFlowTest,
-bool checkFlueFlowTestNA,
-string gasOperatinPressure,
-string inletPressure,
-bool checkThightnessTestCarriedOut,
-bool checkThightnessTestCarriedOutNA,
-string thightnessTestCarriedOut,
-string totalHoursIncludingTravel,
-bool checkApplianceSafeToUse,
-bool checkWarningNoticeIssued,
-string warningNoticeNumber
+//     string clientsName,
+//string address,
+//string date,
+//string engineer,
+//string taskTNo,
+//bool checkTaskComplete,
+//string applianceMake,
+//string serialNumber,
+//string description,
+//bool checkSpillageTestPerformed,
+//bool checkSpillageTestPerformedNA,
+//bool checkRiskAssesmentCompleted,
+//bool checkFlueFlowTest,
+//bool checkFlueFlowTestNA,
+//string gasOperatinPressure,
+//string inletPressure,
+//bool checkThightnessTestCarriedOut,
+//bool checkThightnessTestCarriedOutNA,
+//string thightnessTestCarriedOut,
+//string totalHoursIncludingTravel,
+//bool checkApplianceSafeToUse,
+//bool checkWarningNoticeIssued,
+//string warningNoticeNumber
+Dictionary<string, string> dic
      )
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -628,45 +629,45 @@ string warningNoticeNumber
 
             gfx.DrawImage(image, 0, 0, 595, 842);
 
-            gfx.DrawString(clientsName, font, XBrushes.Black, new XRect(118, 123, 288 - 118, 143 - 123), XStringFormat.Center);
+            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(118, 123, 288 - 118, 143 - 123), XStringFormat.Center);
 
-            gfx.DrawString(address, font, XBrushes.Black, new XRect(6, 145, 280, 25), XStringFormat.Center);
+            gfx.DrawString(dic["address"], font, XBrushes.Black, new XRect(6, 145, 280, 25), XStringFormat.Center);
             gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 170, 280, 25), XStringFormat.Center);
             gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 195, 280, 25), XStringFormat.Center);
 
-            gfx.DrawString(applianceMake, font, XBrushes.Black, new XRect(79, 219, 210, 24), XStringFormat.Center);
+            gfx.DrawString(dic["applianceMake"], font, XBrushes.Black, new XRect(79, 219, 210, 24), XStringFormat.Center);
 
-            gfx.DrawString(date, font, XBrushes.Black, new XRect(340, 125, 588 - 340, 25), XStringFormat.Center);
-            gfx.DrawString(engineer, font, XBrushes.Black, new XRect(340, 145, 588 - 340, 25), XStringFormat.Center);
-            gfx.DrawString(taskTNo, font, XBrushes.Black, new XRect(340, 170, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(340, 125, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(340, 145, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["taskTNo"], font, XBrushes.Black, new XRect(340, 170, 588 - 340, 25), XStringFormat.Center);
 
 
             //gfx.DrawEllipse(XBrushes.Black, new XRect(377, 194, 420 - 377, 25));
-            if(checkTaskComplete)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(376, 193, 396 - 377+2, 206 - 194+2), 0, 360);
+            if (dic["checkTaskComplete"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(376, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377+2, 206 - 194+2), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
 
-            gfx.DrawString(serialNumber, font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["serialNumber"], font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormat.Center);
 
-            string[] l = {"  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
-            string[] TempDesc = description.Split();
+            string[] l = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
+            string[] TempDesc = dic["description"].Split();
             int d = 0;
             int duzina = 0;
             for (int i = 0; i < TempDesc.Length; i++)
             {
                 if (duzina + TempDesc[i].Length < 112)
                 {
-                    l[d] += TempDesc[i]+" ";
+                    l[d] += TempDesc[i] + " ";
                     duzina += TempDesc[i].Length + 1;
                 }
                 else
                 {
                     d++;
                     l[d] += TempDesc[i] + " ";
-                    duzina = TempDesc[i].Length+1;
+                    duzina = TempDesc[i].Length + 1;
                 }
-              
+
             }
             int y = 267;
             for (int i = 0; i < 18; i++)
@@ -674,44 +675,44 @@ string warningNoticeNumber
                 gfx.DrawString(l[i], font, XBrushes.Black, new XRect(7, y, 588 - 7, 23), XStringFormats.BottomLeft);
                 y += 24;
             }
-            if(checkSpillageTestPerformed)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(115, 701, 24, 10), 0, 360);
-            else if(!checkSpillageTestPerformedNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(142, 701, 22, 10), 0, 360);
+            if (dic["checkSpillageTestPerformed"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(115, 701, 24, 10), 0, 360);
+            else if (!(dic["checkSpillageTestPerformedNA"] == "True"))
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(142, 701, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(165, 701, 22, 10), 0, 360);
-            if(checkRiskAssesmentCompleted)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(308, 701, 22, 10), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(165, 701, 22, 10), 0, 360);
+            if (dic["checkRiskAssesmentCompleted"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(308, 701, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 701, 18, 10), 0, 360);
-            if(checkFlueFlowTest)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(72, 725, 25, 11), 0, 360);
-            else if(!checkFlueFlowTestNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 725, 23, 11), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 701, 18, 10), 0, 360);
+            if (dic["checkFlueFlowTest"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(72, 725, 25, 11), 0, 360);
+            else if (!(dic["checkFlueFlowTestNA"] == "True"))
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 725, 23, 11), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(129, 725, 17, 11), 0, 360);
-            if(checkThightnessTestCarriedOut)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 749, 25, 10), 0, 360);
-            else if(!checkThightnessTestCarriedOutNA)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(155, 749, 23, 10), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(129, 725, 17, 11), 0, 360);
+            if (dic["checkThightnessTestCarriedOut"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 749, 25, 10), 0, 360);
+            else if (!(dic["checkThightnessTestCarriedOutNA"] == "True"))
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(155, 749, 23, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(179, 749, 17, 10), 0, 360);
-            if(checkApplianceSafeToUse)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 773, 22, 10), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(179, 749, 17, 10), 0, 360);
+            if (dic["checkApplianceSafeToUse"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(102, 773, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 773, 20, 10), 0, 360);
-            if(checkWarningNoticeIssued)
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(107, 796, 22, 10), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(126, 773, 20, 10), 0, 360);
+            if (dic["checkWarningNoticeIssued"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(107, 796, 22, 10), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(131, 796, 17, 10), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(131, 796, 17, 10), 0, 360);
 
-            gfx.DrawString(warningNoticeNumber, font, XBrushes.Black, new XRect(267, 797, 105, 17), XStringFormats.Center);
+            gfx.DrawString(dic["warningNoticeNumber"], font, XBrushes.Black, new XRect(267, 797, 105, 17), XStringFormats.Center);
 
-            gfx.DrawString(gasOperatinPressure, font, XBrushes.Black, new XRect(190, 735, 47, 8), XStringFormats.Center);
+            gfx.DrawString(dic["gasOperatinPressure"], font, XBrushes.Black, new XRect(190, 735, 47, 8), XStringFormats.Center);
 
-            gfx.DrawString(inletPressure, font, XBrushes.Black, new XRect(300, 735, 47, 8), XStringFormats.Center);
+            gfx.DrawString(dic["inletPressure"], font, XBrushes.Black, new XRect(300, 735, 47, 8), XStringFormats.Center);
 
-            gfx.DrawString(totalHoursIncludingTravel, font, XBrushes.Black, new XRect(514, 748, 74, 16), XStringFormats.Center);
+            gfx.DrawString(dic["totalHoursIncludingTravel"], font, XBrushes.Black, new XRect(514, 748, 74, 16), XStringFormats.Center);
 
 
 
@@ -725,30 +726,31 @@ string warningNoticeNumber
 
         }
         public static async Task PressurisationReport(
-          string siteNameAndAddress,
-          string totalHeatingSystemRating,
-          string numberOfBoilers,
-          string flowTemperature,
-          string returnTemperature,
-          string currentWorkingPressure,
-          string safetyValveSetting,
-          string unitModel,
-          string serialNo,
-          string expansionVesselSize,
-          string numberOfPressureVessels,
-          string setFillPressure,
-          string ratedExpansionVesselCharge,
-          string highPressureSwitchSetting,
-          string lowPressureSwitchSetting,
-          string finalSystemPressure,
-          bool checkMainWaterSupply,
-          bool checkColdFillPressureSet,
-          bool checkElectricalSupplyWorking,
-          bool checkFillingLoopDisconnected,
-          bool checkUnitLeftOperational,
-          string notes,
-          string date,
-          string engineer
+          //string siteNameAndAddress,
+          //string totalHeatingSystemRating,
+          //string numberOfBoilers,
+          //string flowTemperature,
+          //string returnTemperature,
+          //string currentWorkingPressure,
+          //string safetyValveSetting,
+          //string unitModel,
+          //string serialNo,
+          //string expansionVesselSize,
+          //string numberOfPressureVessels,
+          //string setFillPressure,
+          //string ratedExpansionVesselCharge,
+          //string highPressureSwitchSetting,
+          //string lowPressureSwitchSetting,
+          //string finalSystemPressure,
+          //bool checkMainWaterSupply,
+          //bool checkColdFillPressureSet,
+          //bool checkElectricalSupplyWorking,
+          //bool checkFillingLoopDisconnected,
+          //bool checkUnitLeftOperational,
+          //string notes,
+          //string date,
+          //string engineer
+          Dictionary<string, string> dic
 
           )
         {
@@ -769,7 +771,7 @@ string warningNoticeNumber
             gfx.DrawImage(image, 0, 0, 595, 842);
 
             XRect boundingBox = new XRect(35, 222, 561 - 35, 259 - 222);
-            string text = siteNameAndAddress;
+            string text = dic["siteNameAndAddress"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
@@ -781,42 +783,44 @@ string warningNoticeNumber
             //gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 543 - 298, 14), XStringFormat.Center);
             //gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 543 - 298, 14), XStringFormat.Center);
 
-            gfx.DrawString(totalHeatingSystemRating, font, XBrushes.Black, new XRect(298, 308, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(numberOfBoilers, font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(flowTemperature, font, XBrushes.Black, new XRect(298, 339, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(returnTemperature, font, XBrushes.Black, new XRect(298, 354, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["totalHeatingSystemRating"], font, XBrushes.Black, new XRect(298, 308, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["numberOfBoilers"], font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["flowTemperature"], font, XBrushes.Black, new XRect(298, 339, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["returnTemperature"], font, XBrushes.Black, new XRect(298, 354, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["currentWorkingPressure"], font, XBrushes.Black, new XRect(298, 369, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["safetyValveSetting"], font, XBrushes.Black, new XRect(298, 385, 566 - 298, 14), XStringFormat.Center);
 
-            gfx.DrawString(unitModel, font, XBrushes.Black, new XRect(99, 444, 296 - 99, 25), XStringFormat.Center);
-            gfx.DrawString(serialNo, font, XBrushes.Black, new XRect(359, 444, 565 - 359, 25), XStringFormat.Center);
-            gfx.DrawString(expansionVesselSize, font, XBrushes.Black, new XRect(183, 471, 296 - 183, 25), XStringFormat.Center);
-            gfx.DrawString(numberOfPressureVessels, font, XBrushes.Black, new XRect(447, 471, 565 - 447, 25), XStringFormat.Center);
+            gfx.DrawString(dic["unitModel"], font, XBrushes.Black, new XRect(99, 444, 296 - 99, 25), XStringFormat.Center);
+            gfx.DrawString(dic["serialNo"], font, XBrushes.Black, new XRect(359, 444, 565 - 359, 25), XStringFormat.Center);
+            gfx.DrawString(dic["expansionVesselSize"], font, XBrushes.Black, new XRect(183, 471, 296 - 183, 25), XStringFormat.Center);
+            gfx.DrawString(dic["numberOfPressureVessels"], font, XBrushes.Black, new XRect(447, 471, 565 - 447, 25), XStringFormat.Center);
 
             List<string> PressurationUnitSetings = new List<string>
             {
 
-                setFillPressure,
-                ratedExpansionVesselCharge,
-                highPressureSwitchSetting,
-                lowPressureSwitchSetting,
-                finalSystemPressure,
+                dic["setFillPressure"],
+                dic["ratedExpansionVesselCharge"],
+                dic["highPressureSwitchSetting"],
+                dic["lowPressureSwitchSetting"],
+                dic["finalSystemPressure"],
 
             };
+            //za push
             double y = 542;
             for (int i = 0; i < 5; i++)
             {
                 gfx.DrawString(PressurationUnitSetings[i], font, XBrushes.Black, new XRect(227, y, 268 - 227, 13), XStringFormat.Center);
                 y += 15;
             }
-            List<bool> check = new List<bool>
+            List<string> check1 = new List<string>
             {
-                checkMainWaterSupply,
-                checkColdFillPressureSet,
-                checkElectricalSupplyWorking,
-                checkFillingLoopDisconnected,
-                checkUnitLeftOperational,
+                dic["checkMainWaterSupply"],
+                dic["checkColdFillPressureSet"],
+                dic["checkElectricalSupplyWorking"],
+                dic["checkFillingLoopDisconnected"],
+                dic["checkUnitLeftOperational"],
             };
+            List<bool> check = check1.Select(s => bool.Parse(s)).ToList();
             y = 544;
             for (int i = 0; i < 5; i++)
             {
@@ -828,13 +832,13 @@ string warningNoticeNumber
 
             }
             XRect boundingBox1 = new XRect(35, 659, 561 - 35, 771 - 659);
-            string text1 = notes;
+            string text1 = dic["notes"];
             XTextFormatter tf1 = new XTextFormatter(gfx);
             XRect layoutRectangle1 = boundingBox1;
             tf1.DrawString(text1, new XFont("Arial", 10), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
 
-            gfx.DrawString(date, font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormat.Center);
-            gfx.DrawString(engineer, font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormat.Center);
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -843,11 +847,6 @@ string warningNoticeNumber
             document.Save(filePath);
 
         }
-
-        internal static Task CreateServiceRecordPDF(Dictionary<string, string> reportData)
-        {
-            throw new NotImplementedException();
-        }
     }
- 
+
 }
