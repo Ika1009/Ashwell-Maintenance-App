@@ -9,7 +9,8 @@ public partial class DisplayedReportsPage : ContentPage
     public DisplayedReportsPage(string folderId)
 	{
 		InitializeComponent();
-	}
+        _ = LoadReports(folderId);
+    }
     public class Report
     {
         public string ReportType { get; set; }
@@ -20,12 +21,7 @@ public partial class DisplayedReportsPage : ContentPage
         public string CreatedAt { get; set; }
     }
 
-
-    public void NewFolder(object sender, EventArgs e)
-    {
-
-    }
-    public void FolderChosen(object sender, EventArgs e)
+    public void ReportChosen(object sender, EventArgs e)
     {
 
     }

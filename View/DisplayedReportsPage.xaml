@@ -5,18 +5,6 @@
              Title="DisplayedReportsPage">
     <ScrollView>
         <VerticalStackLayout Spacing="10" x:Name="_folderStackLayout">
-            <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                <Grid>
-                    <Grid Padding="20, 10">
-                        <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
-
-                        <Label Text="New Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                    </Grid>
-
-                    <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
-                </Grid>
-            </Frame>
-
             <ListView x:Name="ReportsListView" SeparatorVisibility="Default" SeparatorColor="#333333">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -31,15 +19,13 @@
                                         <Label Text="{Binding CreatedAt}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
                                     </Grid>
 
-                                    <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding ReportId}"/>
+                                    <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ReportChosen" CommandParameter="{Binding ReportId}"/>
                                 </Grid>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

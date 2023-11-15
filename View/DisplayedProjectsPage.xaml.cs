@@ -22,10 +22,10 @@ public partial class DisplayedProjectsPage : ContentPage
         public string Signature2 { get; set; }
 
     }
-    public void FolderChosen(object sender, EventArgs e)
+    public async void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;
-
+        await Navigation.PushAsync(new DisplayedReportsPage(folderId));
     }
     public void NewFolder(object sender, EventArgs e)
     {
