@@ -725,6 +725,138 @@ Dictionary<string, string> dic
 
 
         }
+        
+        public static async Task CDM(
+            Dictionary<string,string> dic
+            )
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new PdfDocument(); document.Info.Title = "CDM Site Form";
+
+
+            PdfPage page = document.AddPage();
+            page.Height = 842;
+            page.Width = 595;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+            XFont font = new XFont("Arial", 10);
+
+            XImage image = await ConvertToXImage(@"cdm.jpg");
+            gfx.DrawImage(image, 0, 0, 595, 842);
+
+            gfx.DrawString(dic["siteAdress"], font, XBrushes.Black, new XRect(93, 127, 562 - 93, 40), XStringFormats.Center);
+
+            gfx.DrawString(dic["clinet"], font, XBrushes.Black, new XRect(64, 171, 229, 15), XStringFormats.CenterLeft);
+
+
+            gfx.DrawString(dic["responsibleSiteEngineer"], font, XBrushes.Black, new XRect(415, 191, 148, 16), XStringFormats.CenterLeft);
+
+            gfx.DrawString(dic["otherEngineers"], font, XBrushes.Black, new XRect(233, 212, 330, 16), XStringFormats.CenterLeft);
+
+            gfx.DrawString(dic["whatInformationIssued"], font, XBrushes.Black, new XRect(204, 234, 360, 16), XStringFormats.CenterLeft);
+
+            gfx.DrawString(dic["startDate"], font, XBrushes.Black, new XRect(83, 254, 123, 16), XStringFormats.Center);
+            gfx.DrawString(dic["completionDate"], font, XBrushes.Black, new XRect(290, 254, 95, 16), XStringFormats.Center);
+            gfx.DrawString(dic["other"], font, XBrushes.Black, new XRect(421, 254, 142, 16), XStringFormats.Center);
+            if(dic["checkWelfareFacilitiesYes"]=="True")
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 279, 17, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(385, 279, 16, 8), 0, 360);
+            if (dic["checkPortableWelfareFacilitiesYes"]=="True")
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 292, 17, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(385, 292, 16, 8), 0, 360);
+            //Pocetak dugog niza
+            if (dic["checkWorkingAtHeightYes"] =="True")
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 332, 17, 8), 0, 360);
+            else
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 332, 15, 8), 0, 360);
+            if (dic["checkPermitsToWorkRequiredYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 352, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 352, 15, 8), 0, 360);
+            if (dic["checkExcavationsYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 373, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 373, 15, 8), 0, 360);
+            if (dic["checkDustYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 407, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 407, 15, 8), 0, 360);
+            if (dic["checkNoiseYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 420, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 420, 15, 8), 0, 360);
+            if (dic["checkCOSHHYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 433, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 433, 15, 8), 0, 360);
+            if (dic["checkOtherYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 446, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 446, 15, 8), 0, 360);
+            if (dic["checkManagementSurveyYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 478, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 478, 15, 8), 0, 360);
+            if (dic["checkFiveYearsSurveyYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 491, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 491, 15, 8), 0, 360);
+            if (dic["checkElectricalYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 524, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 524, 15, 8), 0, 360);
+            if (dic["checkGasYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 537, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 537, 15, 8), 0, 360);
+            if (dic["checkWaterYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 550, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 550, 15, 8), 0, 360);
+            if (dic["checkOtherServicesYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 563, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 563, 15, 8), 0, 360);
+            if (dic["checkDangerToOthersYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 583, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 583, 15, 8), 0, 360);
+            if (dic["checkDangerToPublicYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 601, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 601, 15, 8), 0, 360);
+            if (dic["checkOtherDangersYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 619, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 619, 15, 8), 0, 360);
+            if (dic["checkHotWorksYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 641, 17, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 641, 15, 8), 0, 360);
+            if (dic["checkAppointedFirstAiderYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 667, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 667, 15, 8), 0, 360);
+            if (dic["checkAdditionalActionsYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 712, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 712, 15, 8), 0, 360);
+            if (dic["checkIsItSafeYes"] == "True")
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 732, 17, 8), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 732, 15, 8), 0, 360);
+
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(418, 786, 59, 7), XStringFormats.CenterLeft);
+
+
+
+            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string filePath = System.IO.Path.Combine(downloadsFolder, $"CDM_Site_Form{dateTimeString}.pdf");
+        }
         public static async Task PressurisationReport(
           //string siteNameAndAddress,
           //string totalHeatingSystemRating,
@@ -767,7 +899,7 @@ Dictionary<string, string> dic
 
             XFont font = new XFont("Arial", 10);
 
-            XImage image = await ConvertToXImage(@"Pressurisation Unit Report.jpg");
+            XImage image = await ConvertToXImage(@"pressurisation_unit_report.jpg");
             gfx.DrawImage(image, 0, 0, 595, 842);
 
             XRect boundingBox = new XRect(35, 222, 561 - 35, 259 - 222);

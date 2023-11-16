@@ -45,7 +45,6 @@ public partial class EngineersReportPage : ContentPage
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         string  reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";
 
-        GatherReportData();
         PdfCreation.CreateEngineersReport(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
@@ -56,8 +55,8 @@ public partial class EngineersReportPage : ContentPage
       //  reportData.Add("", .Text ?? string.Empty);
       //  reportData.Add("", .IsChecked.ToString());
 
-        reportData.Add("clientsName", clientsNameAndAdress.Text ?? string.Empty);
-        reportData.Add("address", clientsNameAndAdress.Text ?? string.Empty);
+        reportData.Add("clientsName", clientsName.Text ?? string.Empty);
+        reportData.Add("address", clientsAdress.Text ?? string.Empty);
         reportData.Add("applianceMake", applianceMake.Text ?? string.Empty);
         reportData.Add("date", date.Text ?? string.Empty);
         reportData.Add("engineer", engineer.Text ?? string.Empty);
