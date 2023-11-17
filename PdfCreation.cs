@@ -52,6 +52,20 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+        public static XImage ConvertToXImage(byte[] imageBytes)
+        {
+            try
+            {
+                MemoryStream imageStream = new MemoryStream(imageBytes);
+                XImage xImage = XImage.FromStream(imageStream);
+                return xImage;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return null;
+            }
+        }
 
 
 

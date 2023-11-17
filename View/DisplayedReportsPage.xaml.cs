@@ -8,7 +8,7 @@ public partial class DisplayedReportsPage : ContentPage
     public ObservableCollection<Report> Reports = new();
     public DisplayedReportsPage(string folderId)
     {
-	InitializeComponent();
+	    InitializeComponent();
         _ = LoadReports(folderId);
     }
     public class Report
@@ -28,7 +28,14 @@ public partial class DisplayedReportsPage : ContentPage
 
     public async void SignatureButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new SignaturePage());
+        var signaturePage = new SignaturePage();
+        signaturePage.ImagesSaved += OnSignaturePageImagesSaved;
+        await Navigation.PushModalAsync(signaturePage);
+    }
+
+    private void OnSignaturePageImagesSaved(byte[] customerSignature, byte[] engineerSignature)
+    {
+        // Handle the images here
     }
 
     private async Task LoadReports(string folderId)

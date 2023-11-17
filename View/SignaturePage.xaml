@@ -6,9 +6,10 @@
              Title="SignaturePage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Customer's Signature:"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+            x:Name="signatureTitle"/>
         <toolkit:DrawingView
             x:Name="drawingView"
             BackgroundColor="White"
