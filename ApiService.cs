@@ -3,6 +3,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using Ashwell_Maintenance;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 public static class ApiService
 {
@@ -87,23 +89,79 @@ public static class ApiService
     /// <summary>
     /// Uploads two images signatures to the server along with folder ID and folder name.
     /// </summary>
-    /// <param name="image1">The first image to be uploaded.</param>
+    /// <param name="customerSignature">The first image to be uploaded.</param>
     /// <param name="image2">The second image to be uploaded.</param>
     /// <param name="folderId">The ID of the folder where the images should be saved.</param>
     /// <param name="folderName">The name of the folder where the images should be saved.</param>
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
-    public static async Task<HttpResponseMessage> UploadImagesAsync(Stream image1, Stream image2, string folderId, string folderName)
+    public static async Task<HttpResponseMessage> UploadSignaturesAsync(byte[] customerSignatureBytes, byte[] engineerSignatureBytes, string folderId)
     {
         using HttpClient client = new();
-        using MultipartFormDataContent content = new()
-        {
-            // Adding the two images with generated names
-            { new StreamContent(image1), "signature1", $"{folderName}_{folderId}.jpg" },
-            { new StreamContent(image2), "signature2", $"{folderName}_{folderId}.jpg" },
-        };
+        using MultipartFormDataContent content = new();
+
+        // Convert byte arrays to streams for upload
+        using var customerSignatureStream = new MemoryStream(customerSignatureBytes);
+        using var engineerSignatureStream = new MemoryStream(engineerSignatureBytes);
+
+        // Adding the two images with generated names
+        content.Add(new StreamContent(customerSignatureStream), "signature1", $"customerSignature_{folderId}.jpg");
+        content.Add(new StreamContent(engineerSignatureStream), "signature2", $"engineerSignature_{folderId}.jpg");
 
         HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/upload_signatures.php", content);
 
         return response;
     }
+
+
+    //private static readonly string _key = "kbyqio0zijuo2os"; 
+    //private static readonly string _secret = "geruwzjd0qbbebe";
+    private static readonly string _uploadUrl = "https://content.dropboxapi.com/2/files/upload";
+    private static readonly string _accessToken = "sl.BqADOkI5uhZ-aN_HpM9IvOq50dtMQWijGZX3ppaN4op3KVqcVFg2mmwz0xZz9LJZrfO6RsUCCN54-p20AqBKGofVfVwRRFH5u4H6Q67tJfOlwHkFqt9qaXTxwshMdwPDbTFhJ-lcsQhR";
+    private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
+
+
+    public static async Task<HttpResponseMessage> UploadPdfAsync(byte[] pdfData, string folderName)
+    {
+        using HttpClient client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
+
+        // Construct the full Dropbox path for the folder
+        string folderPath = $"/{folderName}";
+
+        // Check if the folder exists, and create it if it doesn't
+        if (!await CheckFolderExistsAsync(client, folderPath))
+        {
+            await CreateFolderAsync(client, folderPath);
+        }
+
+        // Construct the full file path (adjust the file name as necessary)
+        string filePath = $"{folderPath}/file.pdf";
+
+        // Upload the file
+        using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, _uploadUrl);
+        request.Headers.Add("Dropbox-API-Arg", $"{{\"path\": \"{filePath}\",\"mode\": \"add\",\"autorename\": true,\"mute\": false}}");
+        request.Content = new ByteArrayContent(pdfData);
+        request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+        return await client.SendAsync(request);
+    }
+
+    private static async Task<bool> CheckFolderExistsAsync(HttpClient client, string path)
+    {
+        var response = await client.PostAsJsonAsync($"{_apiUrl}/files/get_metadata", new { path = path });
+        return response.IsSuccessStatusCode;
+    }
+
+    private static async Task CreateFolderAsync(HttpClient client, string path)
+    {
+        var content = new StringContent(JsonSerializer.Serialize(new { path = path }), System.Text.Encoding.UTF8, "application/json");
+        var response = await client.PostAsync($"{_apiUrl}/files/create_folder_v2", content);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Failed to create folder: {path}. Response: {responseContent}");
+        }
+    }
+
 }

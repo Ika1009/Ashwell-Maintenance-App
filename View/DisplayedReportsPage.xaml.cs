@@ -6,10 +6,12 @@ namespace Ashwell_Maintenance.View;
 public partial class DisplayedReportsPage : ContentPage
 {
     public ObservableCollection<Report> Reports = new();
-    public DisplayedReportsPage(string folderId)
+    private readonly string folderId;
+    public DisplayedReportsPage(string folderId, string folderName)
     {
 	    InitializeComponent();
         _ = LoadReports(folderId);
+        this.folderId = folderId;
     }
     public class Report
     {
@@ -33,9 +35,29 @@ public partial class DisplayedReportsPage : ContentPage
         await Navigation.PushModalAsync(signaturePage);
     }
 
-    private void OnSignaturePageImagesSaved(byte[] customerSignature, byte[] engineerSignature)
+    private async void OnSignaturePageImagesSaved(byte[] customerSignature, byte[] engineerSignature)
     {
         // Handle the images here
+        await ApiService.UploadSignaturesAsync(customerSignature, engineerSignature, folderId);
+
+        foreach(Report report in Reports)
+        {
+            //switch(report.ReportType)
+            //{
+            //    case Enums.ReportType.ServiceRecord.ToString():
+
+            //        break;
+            //}
+
+
+            // Load your PDF file into a byte array
+            byte[] pdfData = File.ReadAllBytes("D:\\doc\\Downloads\\Ashwell_Service_Report_20231027_003817.pdf");
+
+            // Call your static method
+            HttpResponseMessage response = await ApiService.UploadPdfAsync(pdfData, "testara");
+        }
+
+
     }
 
     private async Task LoadReports(string folderId)
