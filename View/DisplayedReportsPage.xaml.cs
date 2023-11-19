@@ -1,3 +1,4 @@
+using PdfSharp.Pdf;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 
@@ -15,10 +16,10 @@ public partial class DisplayedReportsPage : ContentPage
     }
     public class Report
     {
-        public string ReportType { get; set; }
+        public Enums.ReportType ReportType { get; set; }
         public string ReportId { get; set; }
         public string ReportName { get; set; }
-        public string ReportData { get; set; }
+        public Dictionary<string, string> ReportData { get; set; }
         public string FolderId { get; set; }
         public string CreatedAt { get; set; }
     }
@@ -37,25 +38,35 @@ public partial class DisplayedReportsPage : ContentPage
 
     private async void OnSignaturePageImagesSaved(byte[] customerSignature, byte[] engineerSignature)
     {
-        // Handle the images here
         await ApiService.UploadSignaturesAsync(customerSignature, engineerSignature, folderId);
-
+        string failedReports = string.Empty;
         foreach(Report report in Reports)
         {
-            //switch(report.ReportType)
-            //{
-            //    case Enums.ReportType.ServiceRecord.ToString():
+            try
+            {
+                byte[] pdfData = null;
+                // For each report checks which pdf function to call based on the type
+                switch (report.ReportType)
+                {
+                    case Enums.ReportType.ServiceRecord:
+                        pdfData = await PdfCreation.CreateServiceRecordPDF(report.ReportData);
+                        break;
+                }
 
-            //        break;
-            //}
-
-
-            // Load your PDF file into a byte array
-            byte[] pdfData = File.ReadAllBytes("D:\\doc\\Downloads\\Ashwell_Service_Report_20231027_003817.pdf");
-
-            // Call your static method
-            HttpResponseMessage response = await ApiService.UploadPdfAsync(pdfData, "testara");
+                if (pdfData != null)
+                {
+                    HttpResponseMessage response = await ApiService.UploadPdfAsync(pdfData, report.ReportName);
+                    if (!response.IsSuccessStatusCode)
+                        failedReports += $"Failed to upload report: {report.ReportName}\n";
+                }
+            }
+            catch (Exception ex)
+            {
+                failedReports += $"Error uploading report {report.ReportName}: {ex.Message}";
+            }
         }
+
+        if(!string.IsNullOrEmpty(failedReports)) await DisplayAlert("Errors when uploading", failedReports, "OK");
 
 
     }
@@ -79,16 +90,16 @@ public partial class DisplayedReportsPage : ContentPage
                 Reports.Clear();
                 foreach (var element in dataArray.EnumerateArray())
                 {
-                    // Customize this based on the actual structure of your reports
                     Reports.Add(new Report
                     {
                         ReportId = element.GetProperty("report_id").GetString(),
                         ReportName = element.GetProperty("report_name").GetString(),
-                        // Add other properties as needed
+                        ReportData = JsonSerializer.Deserialize<Dictionary<string, string>>(element.GetProperty("report_data").GetString()),
+                        ReportType = Enum.TryParse<Enums.ReportType>(element.GetProperty("report_type").GetString(), out Enums.ReportType parsedReportType)
+                                     ? parsedReportType
+                                     : Enums.ReportType.ServiceRecord // Default Type if nothing is found
                     });
                 }
-
-                // Assuming you have a ReportsListView for displaying reports
                 ReportsListView.ItemsSource ??= Reports;
             }
         }

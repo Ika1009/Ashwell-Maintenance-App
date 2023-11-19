@@ -39,9 +39,9 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         CDMSection3.IsVisible = true;
     }
 
-    public void CDMNext3(object sender, EventArgs e)
+    public async void CDMNext3(object sender, EventArgs e)
     {
-        PdfCreation.CDM(GatherReportData());
+        await PdfCreation.CDM(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {

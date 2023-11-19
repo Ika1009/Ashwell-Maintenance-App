@@ -201,7 +201,7 @@ namespace Ashwell_Maintenance
         //   string  governorsComments
         //        )
 
-        public static async Task CreateServiceRecordPDF(Dictionary<string, string> dic)
+        public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -593,9 +593,12 @@ namespace Ashwell_Maintenance
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string filePath = System.IO.Path.Combine(downloadsFolder, dic["reportName"]);
-
-
             document.Save(filePath);
+
+            // Save to MemoryStream
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
         }
         public static async Task CreateEngineersReport(
 //     string clientsName,
@@ -871,7 +874,7 @@ Dictionary<string, string> dic
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string filePath = System.IO.Path.Combine(downloadsFolder, $"CDM_Site_Form{dateTimeString}.pdf");
         }
-        public static async Task PressurisationReport(
+        public static async Task<PdfDocument> PressurisationReport(
           //string siteNameAndAddress,
           //string totalHeatingSystemRating,
           //string numberOfBoilers,
@@ -991,6 +994,8 @@ Dictionary<string, string> dic
             string filePath = System.IO.Path.Combine(downloadsFolder, $"Pressurisation_Unit_Service_Report_{dateTimeString}.pdf");
 
             document.Save(filePath);
+
+            return document;
 
         }
     }

@@ -25,7 +25,8 @@ public partial class DisplayedProjectsPage : ContentPage
     public async void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;
-        await Navigation.PushAsync(new DisplayedReportsPage(folderId));
+        string folderName = Folders.First(x => x.Id == folderId).Name;
+        await Navigation.PushAsync(new DisplayedReportsPage(folderId, folderName));
     }
     public void NewFolder(object sender, EventArgs e)
     {
