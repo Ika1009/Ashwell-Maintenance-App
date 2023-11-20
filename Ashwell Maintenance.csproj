@@ -98,6 +98,9 @@
 	  <MauiXaml Update="View\EngineersReportPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\GasRiskAssessmentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\NewFolderPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -123,5 +126,7 @@
 	    <DependentUpon>ServiceRecordPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadGenericExceptionInfoBarAshwellMaintenanceHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
