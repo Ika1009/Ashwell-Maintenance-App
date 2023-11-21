@@ -25,7 +25,7 @@
         }
         private async void PUR_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PressurisationUnitReport());
+            await Navigation.PushAsync(new PressurisationUnitReportPage());
         }
         private void BTT_Tapped(object sender, EventArgs e)
         {

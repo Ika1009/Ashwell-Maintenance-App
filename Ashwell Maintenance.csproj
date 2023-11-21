@@ -103,7 +103,7 @@
 	  <MauiXaml Update="View\NewFolderPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\PressurisationUnitReport.xaml">
+	  <MauiXaml Update="View\PressurisationUnitReportPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ProjectsPage.xaml">
@@ -124,8 +124,8 @@
 	  <Compile Update="View\ConstructionDesignManagementPage.xaml.cs">
 	    <DependentUpon>ConstructionDesignManagementPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\PressurisationUnitReport.xaml.cs">
-	    <DependentUpon>PressurisationUnitReport.xaml</DependentUpon>
+	  <Compile Update="View\PressurisationUnitReportPage.xaml.cs">
+	    <DependentUpon>PressurisationUnitReportPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\ServiceRecordPage.xaml.cs">
 	    <DependentUpon>ServiceRecordPage.xaml</DependentUpon>

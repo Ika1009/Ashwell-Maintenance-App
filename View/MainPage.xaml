@@ -118,7 +118,7 @@
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Source="pressurisation_unit_report.png" HeightRequest="30"/>
+                            <Image Source="pressure_unit_report.png" HeightRequest="30"/>
 
                             <Label Grid.Column="1" Text="Pressurisation Unit Report" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
 
