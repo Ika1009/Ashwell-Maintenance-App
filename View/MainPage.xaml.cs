@@ -23,6 +23,10 @@
         {
             await Navigation.PushAsync(new GasRiskAssessmentPage());
         }
+        private async void PUR_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PressurisationUnitReport());
+        }
         private void BTT_Tapped(object sender, EventArgs e)
         {
 

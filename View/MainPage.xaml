@@ -118,6 +118,26 @@
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
 
+                            <Image Source="pressurisation_unit_report.png" HeightRequest="30"/>
+
+                            <Label Grid.Column="1" Text="Pressurisation Unit Report" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                        </Grid>
+
+                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="PUR_Tapped"/>
+                    </Grid>
+                </Frame>
+
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
                             <Image Source="one_b.png" HeightRequest="30"/>
 
                             <Label Grid.Column="1" Text="1B Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
