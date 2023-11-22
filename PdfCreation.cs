@@ -201,7 +201,7 @@ namespace Ashwell_Maintenance
         //   string  governorsComments
         //        )
 
-        public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic)
+        public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -221,6 +221,10 @@ namespace Ashwell_Maintenance
             XImage image = await ConvertToXImage(@"ashwell_service_report.jpg");
 
             gfx.DrawImage(image, 0, 0, 842, 595);
+
+            //potpis - za doncica
+            gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
+            gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
             //site
             gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
             //location
@@ -642,7 +646,7 @@ Dictionary<string, string> dic
             XFont font = new XFont("Arial", 10);
 
 
-            XImage image = await ConvertToXImage(@"Engineers_report.png");
+            XImage image = await ConvertToXImage(@"engineers_report.png");
 
             gfx.DrawImage(image, 0, 0, 595, 842);
 
