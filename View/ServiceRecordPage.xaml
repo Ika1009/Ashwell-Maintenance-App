@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="Ashwell_Maintenance.View.ServiceRecordPage1"
-             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
              BackgroundColor="#141414">
 
@@ -20,12 +20,14 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
+            <ImageButton Clicked="ServiceRecordBack" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start"/>
+            
             <Image Source="service_record.png" WidthRequest="60" HorizontalOptions="Center"/>
 
             <Label Grid.Row="1" Text="Service Record" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
         </Grid>
 
-        <ScrollView x:Name="SRSection1" IsVisible="True" Grid.Row="1" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="SRSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>

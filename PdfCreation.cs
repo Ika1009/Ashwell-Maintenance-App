@@ -1002,6 +1002,11 @@ Dictionary<string, string> dic
             return document;
 
         }
+
+        internal static Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> reportData)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
