@@ -64,7 +64,6 @@
 	  <None Remove="Resources\AppIcon\ash_icon.svg" />
 	  <None Remove="Resources\Images\CDM.jpg" />
 	  <None Remove="Resources\Images\engineers_report_sheet.jpg" />
-	  <None Remove="Resources\Images\pressurisation_unit_report.jpg" />
 	  <None Remove="Resources\Splash\ash_icon.svg" />
 	</ItemGroup>
 
@@ -98,7 +97,13 @@
 	  <MauiXaml Update="View\EngineersReportPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\GasRiskAssessmentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\NewFolderPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\PressurisationUnitReportPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ProjectsPage.xaml">
@@ -119,9 +124,14 @@
 	  <Compile Update="View\ConstructionDesignManagementPage.xaml.cs">
 	    <DependentUpon>ConstructionDesignManagementPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\PressurisationUnitReportPage.xaml.cs">
+	    <DependentUpon>PressurisationUnitReportPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\ServiceRecordPage.xaml.cs">
 	    <DependentUpon>ServiceRecordPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadGenericExceptionInfoBarAshwellMaintenanceHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>

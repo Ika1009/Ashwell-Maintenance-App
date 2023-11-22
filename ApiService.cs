@@ -89,10 +89,9 @@ public static class ApiService
     /// <summary>
     /// Uploads two images signatures to the server along with folder ID and folder name.
     /// </summary>
-    /// <param name="customerSignature">The first image to be uploaded.</param>
-    /// <param name="image2">The second image to be uploaded.</param>
+    /// <param name="customerSignatureBytes">The customer's signature image to be uploaded.</param>
+    /// <param name="engineerSignatureBytes">The engineer's signature image to be uploaded.</param>
     /// <param name="folderId">The ID of the folder where the images should be saved.</param>
-    /// <param name="folderName">The name of the folder where the images should be saved.</param>
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
     public static async Task<HttpResponseMessage> UploadSignaturesAsync(byte[] customerSignatureBytes, byte[] engineerSignatureBytes, string folderId)
     {

@@ -1,0 +1,2005 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
+             x:Class="Ashwell_Maintenance.View.GasRiskAssessmentPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="#141414">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid RowSpacing="5" Margin="0, 30, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="GasRiskAssessmentBack"/>
+
+            <Image Source="gas_risk_assessment.png" WidthRequest="60" HorizontalOptions="Center"/>
+
+            <Label Grid.Row="1" Text="Gas Installation&#10; Risk Assessment" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+        </Grid>
+
+        <ScrollView x:Name="GRASection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Site &amp; Client" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout>
+                    <Label Text="Name And Site Address:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="nameAndSiteAdress" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Client:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="client" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Meter Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout>
+                    <Label Text="Meter Location:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="meterLocation" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Internal or External Meter:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkInternalMeter" >
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInternalMeter}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInternalMeter}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExternalMeter}, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsChecked" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExternalMeter}, Path=IsChecked}" Value="False">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Internal" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkExternalMeter">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExternalMeter}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExternalMeter}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInternalMeter}, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsChecked" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInternalMeter}, Path=IsChecked}" Value="False">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="External" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Comments on Overall Meter Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="commentsOnOverallMeter" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Meter Checks" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="General Meter Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGeneralMeterConditionYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGeneralMeterConditionNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGeneralMeterConditionNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Earth Bonding:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEarthBondingYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEarthBondingNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkEarthBondingNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkEarthBondingNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEarthBondingNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Emergency Controls (ECV):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEmergencyControlsYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEmergencyControlsNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkEmergencyControlsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkEmergencyControlsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEmergencyControlsNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Meter Ventilation:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkMeterVentilationYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkMeterVentilationNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkMeterVentilationNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkMeterVentilationNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkMeterVentilationNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Gas Line Diagram:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGasLineDiagramYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGasLineDiagramNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGasLineDiagramNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGasLineDiagramNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGasLineDiagramNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Emergency Contract Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEmergencyContractNumberYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEmergencyContractNumberNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkEmergencyContractNumberNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Notices and Lables:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkNoticesAndLabelsYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkNoticesAndLabelsNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkNoticesAndLabelsNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
+                        <local:LinelessEditor x:Name="meterComments" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="GasRiskAssessmentNext1"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="GRASection2" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Pipework Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout>
+                    <Label Text="Pipework Location:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="pipeworkLocation" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Comments on Overall Pipework Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="commentsOnOverallPipework" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Pipework Checks" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Pipework Identified:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkIdentifiedYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkIdentifiedNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkIdentifiedNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Pipework Buried:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkBuriedYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkBuriedNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkBuriedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkBuriedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkBuriedNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Pipework Surface:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkSurfaceYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkSurfaceNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkSurfaceNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Earth Bonding:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkEarthBondingYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkEarthBondingNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkEarthBondingNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Jointing Methods:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkJointingMethodsYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkJointingMethodsNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkJointingMethodsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkJointingMethodsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkJointingMethodsNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Pipework Supports:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkSupportsYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkSupportsNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkSupportsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkSupportsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkSupportsNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Fixings:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkFixingsYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkFixingsNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkFixingsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkFixingsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkFixingsNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Support Separation Distances:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkSupportSepparationDistancesYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkSupportSepparationDistancesNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkSupportSepparationDistancesNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Pipework in Voids:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkInVoidsYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkInVoidsNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeworkInVoidsNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Pipe Sleeves:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeSleevesYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeSleevesNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeSleevesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeSleevesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeSleevesNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Pipe Sleeves Sealed:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeSleevesSealedYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeSleevesSealedNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPipeSleevesSealedNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Service Valves:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkServiceValvesYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkServiceValvesNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkServiceValvesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkServiceValvesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkServiceValvesNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Additional Emergency Control Valves:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkAdditionalEmergencyControlValvesYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkAdditionalEmergencyControlValvesNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkAdditionalEmergencyControlValvesNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Isolation Valve On / Off Labels:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkIsolationValveYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkIsolationValveNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkIsolationValveNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkIsolationValveNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkIsolationValveNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Test Point:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkTestPointYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkTestPointNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkTestPointNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkTestPointNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkTestPointNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Purge Points:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPurgePointsYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPurgePointsNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPurgePointsNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkPurgePointsNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkPurgePointsNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="General Pipework Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGeneralPipeworkConditionYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGeneralPipeworkConditionNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkIsolationValveNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkIsolationValveNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGeneralPipeworkConditionNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Installation Safe To Operate?:" TextColor="Red" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkinstallationSafeToOperateYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkinstallationSafeToOperateNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkinstallationSafeToOperateNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Warning Notice Issued?:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkWarningNoticeIssuedYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkWarningNoticeIssuedNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkWarningNoticeIssuedNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Gas Tightness Test Recommended?:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGasTightnessTestRecommendedYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGasTightnessTestRecommendedNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGasTightnessTestRecommendedNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Gas Tightness Test Carried Out?:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGuessTightnessTestCarriedOutYes">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGuessTightnessTestCarriedOutNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="TextColor" Value="#fff"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkGuessTightnessTestCarriedOutNA">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNA}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNA}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
+                        <local:LinelessEditor x:Name="pipeworkComments" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Reason For Warning Notice:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="reasonForWarningNotice" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Warning Notice Ref No°:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="warningNoticeRefNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Date Of Last Tightness Test:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="dateOfLastTightnessTest" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Record Tightness Test Result:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="recordTightnessTestResult" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Drop Recorded:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="dropRecorded" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="If a tightness has been carried out, appropriate supplementary tightness testing calculation sheet must also be completed."
+                       TextColor="#707070"
+                       FontSize="16 "
+                       FontFamily="SatoshiMedium"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="GasRiskAssessmentNext2"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="GRASection3" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="By sining this document, I certified that I carried out the above agreed service work on the date provided and all this information is correct."
+                       TextColor="#707070"
+                       FontSize="16 "
+                       FontFamily="SatoshiMedium"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Engineer's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="engineersName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Engineer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
+                        <local:LinelessEditor x:Name="engineersSignature" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Gas Safe Operative ID Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="gasSafeOperativeIdNo" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Client's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
+                        <local:LinelessEditor x:Name="clientsSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Completion Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="completionDate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="By sining this document, I certified that I carried out the above agreed service work on the date provided and all this information is correct."
+                       TextColor="#707070"
+                       FontSize="16 "
+                       FontFamily="SatoshiMedium"
+                       HorizontalTextAlignment="Center"/>
+                
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="GasRiskAssessmentNext3"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
