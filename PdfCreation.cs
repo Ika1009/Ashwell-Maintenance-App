@@ -201,7 +201,7 @@ namespace Ashwell_Maintenance
         //   string  governorsComments
         //        )
 
-        public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic)
+        public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -646,7 +646,7 @@ Dictionary<string, string> dic
             XFont font = new XFont("Arial", 10);
 
 
-            XImage image = await ConvertToXImage(@"Engineers_report.png");
+            XImage image = await ConvertToXImage(@"engineers_report.png");
 
             gfx.DrawImage(image, 0, 0, 595, 842);
 
