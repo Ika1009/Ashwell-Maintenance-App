@@ -147,7 +147,7 @@ public static class ApiService
 
     private static async Task<bool> CheckFolderExistsAsync(HttpClient client, string path)
     {
-        var response = await client.PostAsJsonAsync($"{_apiUrl}/files/get_metadata", new { path = path });
+        var response = await client.PostAsJsonAsync($"{_apiUrl}/files/get_metadata", new { path });
         return response.IsSuccessStatusCode;
     }
 

@@ -11,7 +11,7 @@ namespace Ashwell_Maintenance
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new AppShell();
 
 
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(LinelessEntry), (handler, view) =>

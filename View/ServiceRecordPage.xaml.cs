@@ -17,7 +17,6 @@ public partial class ServiceRecordPage1 : ContentPage
     {
         string folderId = (sender as Button).CommandParameter as string;
         
-        // Call the UploadReport function and ignore the result
         _ = UploadReport(folderId, reportData);
     }
 
@@ -25,7 +24,6 @@ public partial class ServiceRecordPage1 : ContentPage
     {
         try
         {
-            // Assuming ApiService.UploadReportAsync takes folderId and a Report object
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.ServiceRecord, reportName, folderId, report);
 
             if (response.IsSuccessStatusCode)
@@ -153,20 +151,16 @@ public partial class ServiceRecordPage1 : ContentPage
 
     public async void ServiceRecordNext3(object sender, EventArgs e)
     {
-        Button_Clicked(sender, e);
         await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         SRSection3.IsVisible = false;
 
         await SRSection4.ScrollToAsync(0, 0, false);
         SRSection4.IsVisible = true;
-    }
 
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";
         GatherReportData();
-        await PdfCreation.CreateServiceRecordPDF(reportData);
+        // await PdfCreation.CreateServiceRecordPDF(reportData);
     }
     private void GatherReportData()
     {
