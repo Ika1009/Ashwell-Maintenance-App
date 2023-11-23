@@ -28,7 +28,8 @@ public partial class ServiceRecordPage1 : ContentPage
 
             if (response.IsSuccessStatusCode)
             {
-                await Navigation.PopAsync();
+                await DisplayAlert("Success", "Successfully created new sheet.", "OK");
+                await Navigation.PopModalAsync();
             }
             else
             {

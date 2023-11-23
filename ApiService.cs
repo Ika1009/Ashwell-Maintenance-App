@@ -105,6 +105,7 @@ public static class ApiService
         // Adding the two images with generated names
         content.Add(new StreamContent(customerSignatureStream), "signature1", $"customerSignature_{folderId}.jpg");
         content.Add(new StreamContent(engineerSignatureStream), "signature2", $"engineerSignature_{folderId}.jpg");
+        content.Add(new StringContent(folderId), "folderId");
 
         HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/upload_signatures.php", content);
 
@@ -112,14 +113,15 @@ public static class ApiService
     }
 
 
+
     //private static readonly string _key = "kbyqio0zijuo2os"; 
     //private static readonly string _secret = "geruwzjd0qbbebe";
     private static readonly string _uploadUrl = "https://content.dropboxapi.com/2/files/upload";
-    private static readonly string _accessToken = "sl.BqADOkI5uhZ-aN_HpM9IvOq50dtMQWijGZX3ppaN4op3KVqcVFg2mmwz0xZz9LJZrfO6RsUCCN54-p20AqBKGofVfVwRRFH5u4H6Q67tJfOlwHkFqt9qaXTxwshMdwPDbTFhJ-lcsQhR";
+    private static readonly string _accessToken = "sl.BqbG5iL6_7XlUq6V9qzlZS1ate9NdZc8pKrJ_78H5Mdv-cB2i3AImo6I1sOE7VH3wBDLv27iA2Mcl1Z8XLksHfv1Gz7bpWOFgSyv09hshePFv6dTR7FY1Q-YIZzsbQyuBmCBRLrcY4g8";
     private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
 
 
-    public static async Task<HttpResponseMessage> UploadPdfAsync(byte[] pdfData, string folderName)
+    public static async Task<HttpResponseMessage> UploadPdfToDropboxAsync(byte[] pdfData, string folderName, string reportName)
     {
         using HttpClient client = new HttpClient();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
@@ -128,13 +130,13 @@ public static class ApiService
         string folderPath = $"/{folderName}";
 
         // Check if the folder exists, and create it if it doesn't
-        if (!await CheckFolderExistsAsync(client, folderPath))
+        if (!await CheckFolderExistsDropboxAsync(client, folderPath))
         {
-            await CreateFolderAsync(client, folderPath);
+            await CreateFolderDropboxAsync(client, folderPath);
         }
 
         // Construct the full file path (adjust the file name as necessary)
-        string filePath = $"{folderPath}/file.pdf";
+        string filePath = $"{folderPath}/{reportName}.pdf";
 
         // Upload the file
         using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, _uploadUrl);
@@ -145,15 +147,15 @@ public static class ApiService
         return await client.SendAsync(request);
     }
 
-    private static async Task<bool> CheckFolderExistsAsync(HttpClient client, string path)
+    private static async Task<bool> CheckFolderExistsDropboxAsync(HttpClient client, string path)
     {
         var response = await client.PostAsJsonAsync($"{_apiUrl}/files/get_metadata", new { path });
         return response.IsSuccessStatusCode;
     }
 
-    private static async Task CreateFolderAsync(HttpClient client, string path)
+    private static async Task CreateFolderDropboxAsync(HttpClient client, string path)
     {
-        var content = new StringContent(JsonSerializer.Serialize(new { path = path }), System.Text.Encoding.UTF8, "application/json");
+        var content = new StringContent(JsonSerializer.Serialize(new { path }), Encoding.UTF8, "application/json");
         var response = await client.PostAsync($"{_apiUrl}/files/create_folder_v2", content);
 
         if (!response.IsSuccessStatusCode)

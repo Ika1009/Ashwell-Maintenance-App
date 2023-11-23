@@ -8,11 +8,14 @@ public partial class DisplayedReportsPage : ContentPage
 {
     public ObservableCollection<Report> Reports = new();
     private readonly string folderId;
+    private readonly string folderName;
+
     public DisplayedReportsPage(string folderId, string folderName)
     {
 	    InitializeComponent();
         _ = LoadReports(folderId);
         this.folderId = folderId;
+        this.folderName = folderName;
     }
     public class Report
     {
@@ -49,13 +52,13 @@ public partial class DisplayedReportsPage : ContentPage
                 switch (report.ReportType)
                 {
                     case Enums.ReportType.ServiceRecord:
-                        pdfData = await PdfCreation.CreateServiceRecordPDF(report.ReportData);
+                        pdfData = await PdfCreation.CreateServiceRecordPDF(report.ReportData, engineerSignature, customerSignature);
                         break;
                 }
 
                 if (pdfData != null)
                 {
-                    HttpResponseMessage response = await ApiService.UploadPdfAsync(pdfData, report.ReportName);
+                    HttpResponseMessage response = await ApiService.UploadPdfToDropboxAsync(pdfData, folderName, report.ReportName);
                     if (!response.IsSuccessStatusCode)
                         failedReports += $"Failed to upload report: {report.ReportName}\n";
                 }
@@ -67,8 +70,11 @@ public partial class DisplayedReportsPage : ContentPage
         }
 
         if(!string.IsNullOrEmpty(failedReports)) await DisplayAlert("Errors when uploading", failedReports, "OK");
-
-
+        else
+        {
+            await DisplayAlert("Success", "Successfully uploaded signed sheets to Dropbox!", "OK");
+            await Navigation.PopToRootAsync();
+        }
     }
 
     private async Task LoadReports(string folderId)
