@@ -6,26 +6,25 @@
         {
             InitializeComponent();
         }
-
         private async void CDM_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ConstructionDesignManagmentPage());
+            await Navigation.PushModalAsync(new ConstructionDesignManagmentPage());
         }
         private async void ER_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EngineersReportPage());
+            await Navigation.PushModalAsync(new EngineersReportPage());
         }
         private async void SR_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ServiceRecordPage1());
+            await Navigation.PushModalAsync(new ServiceRecordPage1());
         }
         private async void GRA_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GasRiskAssessmentPage());
+            await Navigation.PushModalAsync(new GasRiskAssessmentPage());
         }
         private async void PUR_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PressurisationUnitReportPage());
+            await Navigation.PushModalAsync(new PressurisationUnitReportPage());
         }
         private void BTT_Tapped(object sender, EventArgs e)
         {

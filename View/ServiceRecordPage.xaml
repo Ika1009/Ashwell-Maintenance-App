@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="Ashwell_Maintenance.View.ServiceRecordPage1"
-             Shell.NavBarIsVisible="False"
-             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="True"
+             Shell.TabBarIsVisible="True"
              BackgroundColor="#141414">
 
     <Grid Padding="20">
