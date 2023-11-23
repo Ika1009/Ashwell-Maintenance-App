@@ -108,7 +108,7 @@ public partial class ServiceRecordPage1 : ContentPage
     public void ServiceRecordBack(object sender, EventArgs e)
     {
         if (SRSection1.IsVisible)
-            Navigation.PopAsync();
+            Navigation.PopModalAsync();
         else if (SRSection2.IsVisible == true)
         {
             SRSection2.IsVisible = false;
