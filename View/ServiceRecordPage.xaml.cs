@@ -144,7 +144,7 @@ public partial class ServiceRecordPage1 : ContentPage
     {
         SRSection2.IsVisible = false;
 
-        await SRSection3.ScrollToAsync(0, 0, false);
+        //await SRSection3.ScrollToAsync(0, 0, false);
         SRSection3.IsVisible = true;
         await LoadFolders();
     }
@@ -154,7 +154,7 @@ public partial class ServiceRecordPage1 : ContentPage
         await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         SRSection3.IsVisible = false;
 
-        await SRSection4.ScrollToAsync(0, 0, false);
+        //await SRSection4.ScrollToAsync(0, 0, false);
         SRSection4.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
