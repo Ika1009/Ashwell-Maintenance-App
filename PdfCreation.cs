@@ -223,7 +223,9 @@ namespace Ashwell_Maintenance
             gfx.DrawImage(image, 0, 0, 842, 595);
 
             //potpis - za doncica
-            gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
+            //   gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531+(671-531- ConvertToXImage(inzenjer).PixelWidth/2),548+(529-502- ConvertToXImage(inzenjer).PixelHeight/2)));
+            gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531, 502));
+             //   gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
             gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
             //site
             gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
@@ -236,21 +238,21 @@ namespace Ashwell_Maintenance
             //Tests completed
             if (dic["testsCompleted"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(185, 129, 13, 7), 0, 360);//+1
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(184, 128, 15, 9), 0, 360);//+1
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(212, 129, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(211, 128, 15,9), 0, 360);
             }
 
             //remedial work required
             if (dic["remedialWorkRequired"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(328, 129, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(327, 128, 15, 9), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(355, 129, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(354, 128, 15, 9), 0, 360);
             }
 
             //apliance serial number //apliance model
@@ -267,61 +269,61 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["Type"], font, XBrushes.Black, new XRect(218, 187, 269 - 218, 199 - 187), XStringFormats.Center);
             gfx.DrawString(dic["Spec"], font, XBrushes.Black, new XRect(293, 187, 376 - 293, 199 - 187), XStringFormats.Center);
             //open flue   //room sealed  //forced draft   //flueless
-            if (dic["OpenFlue"] == "True") { gfx.DrawString("Yes", font, XBrushes.Black, new XRect(159, 201, 177 - 159, 214 - 201), XStringFormats.Center); }
-            else { gfx.DrawString("No", font, XBrushes.Black, new XRect(159, 201, 177 - 159, 214 - 201), XStringFormats.Center); }
+            if (dic["OpenFlue"] == "True") { gfx.DrawString("\u221A", font, XBrushes.Black, new XRect(159, 201, 177 - 159, 214 - 201), XStringFormats.Center); }
+            //else { gfx.DrawString("No", font, XBrushes.Black, new XRect(159, 201, 177 - 159, 214 - 201), XStringFormats.Center); }
 
             if (dic["Roomsealed"] == "True")
             {
-                gfx.DrawString("Yes", font, XBrushes.Black, new XRect(226, 201, 244 - 226, 13), XStringFormats.Center);
+                gfx.DrawString("\u221A", font, XBrushes.Black, new XRect(226, 201, 244 - 226, 13), XStringFormats.Center);
             }
             else
             {
-                gfx.DrawString("No", font, XBrushes.Black, new XRect(226, 201, 244 - 226, 13), XStringFormats.Center);
+             //   gfx.DrawString("No", font, XBrushes.Black, new XRect(226, 201, 244 - 226, 13), XStringFormats.Center);
             }
 
             if (dic["ForcedDraft"] == "True")
             {
-                gfx.DrawString("Yes", font, XBrushes.Black, new XRect(294, 201, 310 - 294, 13), XStringFormats.Center);
+                gfx.DrawString("\u221A", font, XBrushes.Black, new XRect(294, 201, 310 - 294, 13), XStringFormats.Center);
             }
             else
             {
-                gfx.DrawString("No", font, XBrushes.Black, new XRect(294, 201, 310 - 294, 13), XStringFormats.Center);
+              //  gfx.DrawString("No", font, XBrushes.Black, new XRect(294, 201, 310 - 294, 13), XStringFormats.Center);
             }
 
             if (dic["Flueless"] == "True")
             {
-                gfx.DrawString("Yes", font, XBrushes.Black, new XRect(361, 201, 376 - 361, 13), XStringFormats.Center);
+                gfx.DrawString("\u221A", font, XBrushes.Black, new XRect(361, 201, 376 - 361, 13), XStringFormats.Center);
             }
             else
             {
-                gfx.DrawString("No", font, XBrushes.Black, new XRect(361, 201, 376 - 361, 13), XStringFormats.Center);
+              //  gfx.DrawString("No", font, XBrushes.Black, new XRect(361, 201, 376 - 361, 13), XStringFormats.Center);
             }
             //heating   //hotwater  // both
             if (dic["Heating"] == "True")
             {
-                gfx.DrawString("Yes", font, XBrushes.Black, new XRect(182, 217, 199 - 182, 229 - 217), XStringFormats.Center);
+                gfx.DrawString("√", font, XBrushes.Black, new XRect(182, 217, 199 - 182, 229 - 217), XStringFormats.Center);
             }
             else
             {
-                gfx.DrawString("No", font, XBrushes.Black, new XRect(182, 217, 199 - 182, 229 - 217), XStringFormats.Center);
+              //  gfx.DrawString("No", font, XBrushes.Black, new XRect(182, 217, 199 - 182, 229 - 217), XStringFormats.Center);
             }
 
             if (dic["HotWater"] == "True")
             {
-                gfx.DrawString("Yes", font, XBrushes.Black, new XRect(269, 217, 289 - 269, 229 - 217), XStringFormats.Center);
+                gfx.DrawString("√", font, XBrushes.Black, new XRect(269, 217, 289 - 269, 229 - 217), XStringFormats.Center);
             }
             else
             {
-                gfx.DrawString("No", font, XBrushes.Black, new XRect(269, 217, 289 - 269, 229 - 217), XStringFormats.Center);
+               // gfx.DrawString("No", font, XBrushes.Black, new XRect(269, 217, 289 - 269, 229 - 217), XStringFormats.Center);
             }
 
             if (dic["Both"] == "True")
             {
-                gfx.DrawString("Yes", font, XBrushes.Black, new XRect(360, 217, 376 - 360, 229 - 217), XStringFormats.Center);
+                gfx.DrawString("√", font, XBrushes.Black, new XRect(360, 217, 376 - 360, 229 - 217), XStringFormats.Center);
             }
             else
             {
-                gfx.DrawString("No", font, XBrushes.Black, new XRect(360, 217, 376 - 360, 229 - 217), XStringFormats.Center);
+               // gfx.DrawString("No", font, XBrushes.Black, new XRect(360, 217, 376 - 360, 229 - 217), XStringFormats.Center);
             }
 
 
@@ -330,29 +332,29 @@ namespace Ashwell_Maintenance
             //ventilation satisfactory
             if (dic["ventilationSatisfactory"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(321, 234, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(320, 233, 15, 9), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(353, 234, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(352, 233, 15, 9), 0, 360);
             }
             //gas type
             if (dic["gasType"] == "NG")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(132, 249, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(131, 248, 15, 9), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(159, 249, 19, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(158, 248, 21, 10), 0, 360);
             }
             //flue condition satisfactory
             if (dic["ventilationSatisfactory"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(321, 249, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(320, 248, 15, 9), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(353, 249, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(352, 248, 15, 9), 0, 360);
             }
             //approx age of apliance   //badged input   //badget output
             gfx.DrawString(dic["approxAgeOfAppliance"], font, XBrushes.Black, new XRect(114, 263, 145 - 114, 273 - 263), XStringFormats.Center);
@@ -426,15 +428,15 @@ namespace Ashwell_Maintenance
             {
                 if (componentBooleans[i])
                 {
-                    gfx.DrawString("Yes", font, XBrushes.Black, new XRect(114, y, 140 - 114, 13), XStringFormats.Center);
+                    gfx.DrawString("√", font, XBrushes.Black, new XRect(114, y, 140 - 114, 13), XStringFormats.Center);
                 }
                 else if (componentBooleans[i + 18])
                 {
-                    gfx.DrawString("N/A", font, XBrushes.Black, new XRect(170, y, 197 - 170, 13), XStringFormats.Center);
+                    gfx.DrawString("√", font, XBrushes.Black, new XRect(170, y, 197 - 170, 13), XStringFormats.Center);
                 }
                 else
                 {
-                    gfx.DrawString("No", font, XBrushes.Black, new XRect(142, y, 168 - 142, 13), XStringFormats.Center);
+                    gfx.DrawString("√", font, XBrushes.Black, new XRect(142, y, 168 - 142, 13), XStringFormats.Center);
                 }
                 y += 15;
             }
@@ -457,59 +459,59 @@ namespace Ashwell_Maintenance
             ////heat exchanger/fluent clear
             if (dic["heatExhanger"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(506, 54, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(505, 53, 15, 9), 0, 360);
             }
             else if (dic["heatExhangerNA"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 54, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(554, 53, 15, 9), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 54, 13, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(530, 53, 15, 9), 0, 360);
             }
             //working inlet pressure   //recorded burner pressure    //measured gas rate   
-            gfx.DrawString(dic["workingInletPressure"], font, XBrushes.Black, new XRect(497, 67, 557 - 497, 12), XStringFormats.Center);
-            gfx.DrawString(dic["recordedBurnerPressure"], font, XBrushes.Black, new XRect(497, 83, 557 - 497, 12), XStringFormats.Center);
-            gfx.DrawString(dic["measuredGasRate"], font, XBrushes.Black, new XRect(497, 99, 557 - 497, 12), XStringFormats.Center);
+            gfx.DrawString(dic["workingInletPressure"], font, XBrushes.Black, new XRect(496, 66, 557 - 497+2, 12+2), XStringFormats.Center);
+            gfx.DrawString(dic["recordedBurnerPressure"], font, XBrushes.Black, new XRect(496, 82, 557 - 497+2, 12+2), XStringFormats.Center);
+            gfx.DrawString(dic["measuredGasRate"], font, XBrushes.Black, new XRect(496, 98, 557 - 497+2, 12+2), XStringFormats.Center);
             //flue flow test
             if (dic["flueFlowTest"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 114, 18, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(502, 113, 20, 9), 0, 360);
             }
             else if (!(dic["flueFlowTestNA"] == "True"))
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 114, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(530, 113, 16, 9), 0, 360);
             }
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 114, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 113, 16, 9), 0, 360);
             //spillage test
             if (dic["spillageTest"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 129, 18, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(502, 128, 20, 9), 0, 360);
             else if (!(dic["spillageTestNA"] == "True"))
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 129, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(530, 128, 16, 9), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 129, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 128, 16, 9), 0, 360);
             //AECV plant isolation correct
             if (dic["AECVPlantIsolationCorrect"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 144, 18, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(502, 143, 20, 9), 0, 360);
             else if (!(dic["AECVPlantIsolationCorrectNA"] == "True"))
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 144, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(530, 143, 16, 9), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 144, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 143, 16, 9), 0, 360);
             //safety shut off valve
             if (dic["safetyShutOffValve"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 159, 18, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(502, 158, 20, 9), 0, 360);
             else if (!(dic["safetyShutOffValveNA"] == "True"))
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 159, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(530, 158, 16, 9), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 159, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 158, 16, 9), 0, 360);
             //plantroom gas thightness level
             if (dic["plantroomGasTightnessTest"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(503, 174, 18, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(502, 173, 20, 9), 0, 360);
             else if (!(dic["plantroomGasTightnessTestNA"] == "True"))
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(531, 174, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(530, 173, 16, 9), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(556, 174, 14, 7), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(555, 173, 16, 9), 0, 360);
 
             y = 53;
             float x = 580;
