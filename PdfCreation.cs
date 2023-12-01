@@ -228,11 +228,11 @@ namespace Ashwell_Maintenance
              //   gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
             gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
             //site
-            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.Center);
+            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.CenterLeft);
             //location
-            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(68, 98, 269 - 68, 124 - 98), XStringFormats.Center);
+            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(68, 98, 269 - 68, 124 - 98), XStringFormats.CenterLeft);
             //asset no
-            gfx.DrawString(dic["assetNumber"], font, XBrushes.Black, new XRect(272, 107, 337 - 272, 123 - 107), XStringFormats.Center);
+            gfx.DrawString(dic["assetNumber"], font, XBrushes.Black, new XRect(272, 107, 337 - 272, 123 - 107), XStringFormats.CenterLeft);
             //Appliance number
             gfx.DrawString(dic["applianceNumber"], font, XBrushes.Black, new XRect(76, 128, 111 - 76, 139 - 128), XStringFormats.Center);
             //Tests completed
@@ -332,11 +332,11 @@ namespace Ashwell_Maintenance
             //ventilation satisfactory
             if (dic["ventilationSatisfactory"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(320, 233, 15, 9), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(319, 233, 15, 9), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(352, 233, 15, 9), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(351, 233, 15, 9), 0, 360);
             }
             //gas type
             if (dic["gasType"] == "NG")
@@ -350,11 +350,11 @@ namespace Ashwell_Maintenance
             //flue condition satisfactory
             if (dic["ventilationSatisfactory"] == "True")
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(320, 248, 15, 9), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(319, 248, 15, 9), 0, 360);
             }
             else
             {
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(352, 248, 15, 9), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(351, 248, 15, 9), 0, 360);
             }
             //approx age of apliance   //badged input   //badget output
             gfx.DrawString(dic["approxAgeOfAppliance"], font, XBrushes.Black, new XRect(114, 263, 145 - 114, 273 - 263), XStringFormats.Center);
