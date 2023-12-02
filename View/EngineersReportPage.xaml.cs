@@ -10,7 +10,7 @@ public partial class EngineersReportPage : ContentPage
 	public void EngineersReportBack(object sender, EventArgs e)
 	{
 		if (ERSection1.IsVisible)
-			Navigation.PopAsync();
+			Navigation.PopModalAsync();
 		else if (ERSection2.IsVisible)
 		{
 			ERSection2.IsVisible = false;
@@ -28,15 +28,19 @@ public partial class EngineersReportPage : ContentPage
         }
     }
 
-	public void ERNext1(object sender, EventArgs e)
+	public async void ERNext1(object sender, EventArgs e)
 	{
 		ERSection1.IsVisible = false;
+
+        await ERSection2.ScrollToAsync(0, 0, false);
 		ERSection2.IsVisible = true;
 	}
 
-    public void ERNext2(object sender, EventArgs e)
+    public async void ERNext2(object sender, EventArgs e)
     {
         ERSection2.IsVisible = false;
+
+        await ERSection3.ScrollToAsync(0, 0, false);
         ERSection3.IsVisible = true;
     }
 

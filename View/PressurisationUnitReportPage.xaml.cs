@@ -10,7 +10,7 @@ public partial class PressurisationUnitReportPage : ContentPage
     public async void PressurisationUnitReportBack(object sender, EventArgs e)
     {
 		if (PURSection1.IsVisible)
-			await Navigation.PopAsync();
+			await Navigation.PopModalAsync();
 		else if (PURSection2.IsVisible)
 		{
 			PURSection2.IsVisible = false;

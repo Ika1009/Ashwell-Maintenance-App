@@ -141,21 +141,25 @@ public partial class ServiceRecordPage1 : ContentPage
         SRSection2.IsVisible = true;
     }
 
+    [Obsolete]
     public async void ServiceRecordNext2(object sender, EventArgs e)
     {
         SRSection2.IsVisible = false;
 
-        //await SRSection3.ScrollToAsync(0, 0, false);
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await SRSection3.ScrollToAsync(0, 0, false);
         SRSection3.IsVisible = true;
         await LoadFolders();
     }
 
+    [Obsolete]
     public async void ServiceRecordNext3(object sender, EventArgs e)
     {
         await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         SRSection3.IsVisible = false;
 
-        //await SRSection4.ScrollToAsync(0, 0, false);
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await SRSection4.ScrollToAsync(0, 0, false);
         SRSection4.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
