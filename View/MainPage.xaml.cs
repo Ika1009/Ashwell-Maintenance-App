@@ -26,6 +26,10 @@
         {
             await Navigation.PushModalAsync(new PressurisationUnitReportPage());
         }
+        private async void BHDS_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new BoilerHouseDataSheetPage());
+        }
         private void BTT_Tapped(object sender, EventArgs e)
         {
 

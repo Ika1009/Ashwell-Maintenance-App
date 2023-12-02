@@ -10,7 +10,7 @@ public partial class GasRiskAssessmentPage : ContentPage
 	public async void GasRiskAssessmentBack(object sender, EventArgs e)
 	{
 		if (GRASection1.IsVisible)
-			await Navigation.PopAsync();
+			await Navigation.PopModalAsync();
 		else if (GRASection2.IsVisible)
 		{
 			GRASection2.IsVisible = false;

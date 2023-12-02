@@ -88,6 +88,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\BoilerHouseDataSheetPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\DisplayedProjectsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

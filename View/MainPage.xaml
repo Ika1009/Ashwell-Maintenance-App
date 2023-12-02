@@ -30,7 +30,7 @@
         <Grid Grid.Row="1">
             <ScrollView VerticalScrollBarVisibility="Never">
                 <VerticalStackLayout Spacing="10">
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0" Margin="0, 20, 0, 0">
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0" Margin="0, 30, 0, 0">
                         <Grid>
                             <Grid ColumnSpacing="10" Padding="20">
                                 <Grid.ColumnDefinitions>
@@ -139,6 +139,26 @@
                                     <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
 
+                                <Image Source="boiler_house_data.png" HeightRequest="30"/>
+
+                                <Label Grid.Column="1" Text="Boiler House Data Sheet" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                            </Grid>
+
+                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="BHDS_Tapped"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                        <Grid>
+                            <Grid ColumnSpacing="10" Padding="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+
                                 <Image Source="one_b.png" HeightRequest="30"/>
 
                                 <Label Grid.Column="1" Text="1B Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
@@ -170,7 +190,7 @@
                         </Grid>
                     </Frame>
 
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0" Margin="0, 0, 0, 50">
                         <Grid>
                             <Grid ColumnSpacing="10" Padding="20">
                                 <Grid.ColumnDefinitions>

@@ -10,7 +10,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     public void CDMBack(object sender, EventArgs e)
     {
         if (CDMSection1.IsVisible)
-            Navigation.PopAsync();
+            Navigation.PopModalAsync();
         else if (CDMSection2.IsVisible)
         {
             CDMSection2.IsVisible = false;
