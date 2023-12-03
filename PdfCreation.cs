@@ -245,10 +245,20 @@ namespace Ashwell_Maintenance
             }
             x = 508;
             y = 412;
+            List<string> StrenghtTesting = new List<string>
+            {
+                dic["strenghtTestPressure"],
+                dic["componentsNotSuitable"],
+                dic["stabilisationPeriod"],
+                dic["strenghtTestDuration"],
+                dic["permittedPressureDrop"],
+                dic["actualPressureDrop"],
+                dic["testPassedOrFailed"]
+            };
             for (int i = 0; i < 7; i++)
             {
                 gfx.DrawRectangle(XBrushes.White, new XRect(x, y + 1, 60, 5));
-                gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(x, y, 65, 10), XStringFormats.Center);
+                gfx.DrawString(StrenghtTesting[i], font, XBrushes.Black, new XRect(x, y, 65, 10), XStringFormats.Center);
                 y += 11.85;
             }
             double TimeTaken = double.Parse(dic["gaudgeReadableMovement"]) * ((1.1 * Total) + MeterTypeVolume(dic["meterVolume"])) * double.Parse(dic["testMediumFactor"]);
@@ -256,15 +266,19 @@ namespace Ashwell_Maintenance
             gfx.DrawString((2.8 * TimeTaken / double.Parse(dic["roomVolume"])).ToString("F5"), font, XBrushes.Black, new XRect(510, 555, 60, 30), XStringFormats.Center);
             gfx.DrawString(dic["roomVolume"], font, XBrushes.Black, new XRect(510, 590, 60, 10), XStringFormats.Center);
             gfx.DrawString((0.047*TimeTaken).ToString("F5"), font, XBrushes.Black, new XRect(510, 603, 60, 30), XStringFormats.Center);
+           
+            
+            
+            
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 638, 60, 20), XStringFormats.Center);
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 658, 60, 20), XStringFormats.Center);
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 680, 60, 20), XStringFormats.Center);
 
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 730, 60, 10), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 741, 60, 10), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 752, 60, 10), XStringFormats.Center);
+            gfx.DrawString(dic["actualPressureDrop"], font, XBrushes.Black, new XRect(510, 730, 60, 10), XStringFormats.Center);
+            gfx.DrawString(dic["actualLeakRate"], font, XBrushes.Black, new XRect(510, 741, 60, 10), XStringFormats.Center);
+            gfx.DrawString(dic["AreasWithInadequate"], font, XBrushes.Black, new XRect(510, 752, 60, 10), XStringFormats.Center);
 
-            gfx.DrawString(dic[""], font, XBrushes.Red, new XRect(322, 790, 571 - 322, 811 - 790), XStringFormats.Center);
+            gfx.DrawString(dic["PassedOrFailed"], font, XBrushes.Red, new XRect(322, 790, 571 - 322, 811 - 790), XStringFormats.Center);
 
 
 
