@@ -66,6 +66,26 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+        static public double MeterTypeVolume(string x)
+        {
+            if (x == "G4/U6")
+                return 0.008;
+            else if (x == "U16")
+                return 0.025;
+            else if (x == "U25")
+                return 0.037;
+            else if (x == "U40")
+                return 0.067;
+            else if (x == "U65")
+                return 0.1;
+            else if (x == "U100")
+                return 0.182;
+            else if (x == "U160")
+                return 0.304;
+            else if (x == "RD or Turnime")
+                return 0.079;
+            return 0.0024;
+        }
         public static async Task<PdfDocument> _1Up(Dictionary<string, string> dic)
         {
 
@@ -131,14 +151,68 @@ namespace Ashwell_Maintenance
                 dic["125mm"],
             };
             List<string> listaDuzinaDouble = new List<string>();
+            List<double> pomnozaj = new List<double>
+            {
+                0.00024,
+                0.000046,
+                0.00064,
+                0.0011,
+                0.0015,
+                0.0024,
+                0.0038,
+                0.0054,
+                0.009,
+                0.014,
+                0.02,
+                0.035,
+                0.053,
+                0.00014,
+                0.00032,
+                0.00054,
+                0.00084,
+                0.0012,
+                0.0021,
+                0.0033,
+                0.00019,
+                0.00033,
+                0.00053,
+                0.0016,
+                0.0021,
+                0.0029,
+                0.004,
+                0.008
+            };
+            int or = 0;
             foreach(var str in listaDuzina)
             {
                 if (str != String.Empty)
                 {
-                    listaDuzinaDouble.Add((1.1 * Double.Parse(str)).ToString("F5"));
+                    listaDuzinaDouble.Add((pomnozaj[or++] * Double.Parse(str)).ToString("F5"));
                 }
                 else listaDuzinaDouble.Add(" ");
             }
+            double Total = 0;
+            foreach(var str in listaDuzinaDouble)
+            {
+                if(str != " ")
+                {
+                    Total += Double.Parse(str);
+                }
+            }
+            listaDuzinaDouble.Add(Total.ToString("F5"));
+            listaDuzinaDouble.Add((1.1 * Total).ToString("F5"));
+            listaDuzinaDouble.Add(MeterTypeVolume(dic["meterVolume"]).ToString());
+            listaDuzinaDouble.Add(((1.1 * Total) + MeterTypeVolume(dic["meterVolume"])).ToString("F5"));//prethodna dva sabrana
+            listaDuzinaDouble.Add(dic["testMedium"]);
+            listaDuzinaDouble.Add(dic["testMediumFactor"]);
+            listaDuzinaDouble.Add(dic["installation"]);
+            listaDuzinaDouble.Add(dic["weather/temperature"]);
+            listaDuzinaDouble.Add(dic["metarBypass"]);
+            listaDuzinaDouble.Add(dic["testGaugeUsed"]);
+            listaDuzinaDouble.Add(dic["gaudgeReadableMovment"]);
+            listaDuzinaDouble.Add(dic["tightnessTestPressure"]);
+            listaDuzinaDouble.Add(dic["maximumPermittedLeakRate"]);
+            listaDuzinaDouble.Add(dic["barometricPressure"]);
 
             double x, y;
             x = 100;
@@ -177,10 +251,11 @@ namespace Ashwell_Maintenance
                 gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(x, y, 65, 10), XStringFormats.Center);
                 y += 11.85;
             }
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 520, 60, 30), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 555, 60, 30), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 590, 60, 10), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 603, 60, 30), XStringFormats.Center);
+            double TimeTaken = double.Parse(dic["gaudgeReadableMovement"]) * ((1.1 * Total) + MeterTypeVolume(dic["meterVolume"])) * double.Parse(dic["testMediumFactor"]);
+            gfx.DrawString((TimeTaken).ToString("F5"), font, XBrushes.Black, new XRect(510, 520, 60, 30), XStringFormats.Center);
+            gfx.DrawString((2.8 * TimeTaken / double.Parse(dic["roomVolume"])).ToString("F5"), font, XBrushes.Black, new XRect(510, 555, 60, 30), XStringFormats.Center);
+            gfx.DrawString(dic["roomVolume"], font, XBrushes.Black, new XRect(510, 590, 60, 10), XStringFormats.Center);
+            gfx.DrawString((0.047*TimeTaken).ToString("F5"), font, XBrushes.Black, new XRect(510, 603, 60, 30), XStringFormats.Center);
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 638, 60, 20), XStringFormats.Center);
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 658, 60, 20), XStringFormats.Center);
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 680, 60, 20), XStringFormats.Center);
