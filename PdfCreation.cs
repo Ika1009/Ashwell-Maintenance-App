@@ -521,11 +521,11 @@ namespace Ashwell_Maintenance
                 gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
 
             //site
-            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(35, 72, 337 - 35, 95 - 72), XStringFormats.CenterLeft);
             //location
-            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(68, 98, 269 - 68, 124 - 98), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(35, 108, 269 - 65, 124 - 108), XStringFormats.CenterLeft);
             //asset no
-            gfx.DrawString(dic["assetNumber"], font, XBrushes.Black, new XRect(272, 107, 337 - 272, 123 - 107), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["assetNumber"], font, XBrushes.Black, new XRect(275, 108, 337 - 272, 123 - 108), XStringFormats.CenterLeft);
             //Appliance number
             gfx.DrawString(dic["applianceNumber"], font, XBrushes.Black, new XRect(76, 128, 111 - 76, 139 - 128), XStringFormats.Center);
             //Tests completed
