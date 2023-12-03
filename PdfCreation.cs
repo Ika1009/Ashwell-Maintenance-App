@@ -514,9 +514,12 @@ namespace Ashwell_Maintenance
 
             //potpis - za doncica
             //   gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531+(671-531- ConvertToXImage(inzenjer).PixelWidth/2),548+(529-502- ConvertToXImage(inzenjer).PixelHeight/2)));
-            gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531, 502));
-             //   gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
-            gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531, 502));
+            //   gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
+
             //site
             gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.CenterLeft);
             //location
