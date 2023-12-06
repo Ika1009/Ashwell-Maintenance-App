@@ -66,8 +66,312 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+        static public double MeterTypeVolume(string x)
+        {
+            if (x == "G4/U6")
+                return 0.008;
+            else if (x == "U16")
+                return 0.025;
+            else if (x == "U25")
+                return 0.037;
+            else if (x == "U40")
+                return 0.067;
+            else if (x == "U65")
+                return 0.1;
+            else if (x == "U100")
+                return 0.182;
+            else if (x == "U160")
+                return 0.304;
+            else if (x == "RD or Turnime")
+                return 0.079;
+            return 0.0024;
+        }
+        public static async Task<PdfDocument> _1Up(Dictionary<string, string> dic)
+        {
+
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new PdfDocument(); document.Info.Title = "";
 
 
+            PdfPage page = document.AddPage();
+            page.Height = 842;
+            page.Width = 595;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+
+            XFont font = new XFont("Arial", 10);
+
+            XImage image = await ConvertToXImage(@"ige_up_1.jpg");
+            gfx.DrawImage(image, 0, 0, 595, 842);
+
+            gfx.DrawString(dic["siteAddress"], font, XBrushes.Black, new XRect(86, 125, 483, 14), XStringFormats.Center);
+            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(69, 144, 308, 13), XStringFormats.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(406, 144, 162, 13), XStringFormats.Center);
+
+            //engineer signature
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(68, 162, 150, 13), XStringFormats.Center);
+            gfx.DrawString(dic["cardNumber"], font, XBrushes.Black, new XRect(283, 162, 92, 13), XStringFormats.Center);
+            // gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(423, 162, 162, 13), XStringFormats.Center);
+
+            //client signature
+            gfx.DrawString(dic["clientName"], font, XBrushes.Black, new XRect(81, 179, 137, 13), XStringFormats.Center);
+            //gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(292, 179, 84, 13), XStringFormats.Center);
+            gfx.DrawString(dic["warningNoticeNo"], font, XBrushes.Black, new XRect(442, 179, 128, 13), XStringFormats.Center);
+            List<string> listaDuzina = new List<string>
+            { 
+                dic["1/2"],
+                dic["3/4"],
+                dic["1"],
+                dic["1 1/4"],
+                dic["1 1/2"],
+                dic["2"],
+                dic["2 1/2"],
+                dic["3"],
+                dic["4"],
+                dic["5"],
+                dic["6"],
+                dic["8"],
+                dic["10"],
+                dic["15mm"],
+                dic["22mm"],
+                dic["28mm"],
+                dic["35mm"],
+                dic["42mm"],
+                dic["54mm"],
+                dic["67mm"],
+                dic["20mm"],
+                dic["25mm"],
+                dic["32mm"],
+                dic["55mm"],
+                dic["63mm"],
+                dic["75mm"],
+                dic["90mm"],
+                dic["125mm"],
+            };
+            List<string> listaDuzinaDouble = new List<string>();
+            List<double> pomnozaj = new List<double>
+            {
+                0.00024,
+                0.000046,
+                0.00064,
+                0.0011,
+                0.0015,
+                0.0024,
+                0.0038,
+                0.0054,
+                0.009,
+                0.014,
+                0.02,
+                0.035,
+                0.053,
+                0.00014,
+                0.00032,
+                0.00054,
+                0.00084,
+                0.0012,
+                0.0021,
+                0.0033,
+                0.00019,
+                0.00033,
+                0.00053,
+                0.0016,
+                0.0021,
+                0.0029,
+                0.004,
+                0.008
+            };
+            int or = 0;
+            foreach(var str in listaDuzina)
+            {
+                if (str != String.Empty)
+                {
+                    listaDuzinaDouble.Add((pomnozaj[or++] * Double.Parse(str)).ToString("F5"));
+                }
+                else listaDuzinaDouble.Add(" ");
+            }
+            double Total = 0;
+            foreach(var str in listaDuzinaDouble)
+            {
+                if(str != " ")
+                {
+                    Total += Double.Parse(str);
+                }
+            }
+            listaDuzinaDouble.Add(Total.ToString("F5"));
+            listaDuzinaDouble.Add((1.1 * Total).ToString("F5"));
+            listaDuzinaDouble.Add(MeterTypeVolume(dic["meterVolume"]).ToString());
+            listaDuzinaDouble.Add(((1.1 * Total) + MeterTypeVolume(dic["meterVolume"])).ToString("F5"));//prethodna dva sabrana
+            listaDuzinaDouble.Add(dic["testMedium"]);
+            listaDuzinaDouble.Add(dic["testMediumFactor"]);
+            listaDuzinaDouble.Add(dic["installation"]);
+            listaDuzinaDouble.Add(dic["weather/temperature"]);
+            listaDuzinaDouble.Add(dic["metarBypass"]);
+            listaDuzinaDouble.Add(dic["testGaugeUsed"]);
+            listaDuzinaDouble.Add(dic["gaudgeReadableMovment"]);
+            listaDuzinaDouble.Add(dic["tightnessTestPressure"]);
+            listaDuzinaDouble.Add(dic["maximumPermittedLeakRate"]);
+            listaDuzinaDouble.Add(dic["barometricPressure"]);
+
+            double x, y;
+            x = 100;
+            y = 269;
+            int ouchL1 = 0;
+            for (int i = 0; i < 30; i++)
+            {
+                if (i == 13 || i == 21)
+                {
+                    y += 10.95;
+                    continue;
+                }
+                gfx.DrawString(listaDuzina[ouchL1++], font, XBrushes.Black, new XRect(x, y, 53, 11), XStringFormats.Center);
+                y += 11.95;
+            }
+            y = 269;
+            x = 223;
+            ouchL1 = 0;
+            for (int i = 0; i < 46; i++)
+            {
+                if (i == 33) y -= 2;
+                if (i == 13 || i == 21 || i == 34 || i == 35)
+                {
+
+                    y += 10.95;
+                    continue;
+                }
+                gfx.DrawString(listaDuzinaDouble[ouchL1++], font, XBrushes.Black, new XRect(x, y, 65, 11), XStringFormats.Center);
+                y += 11.95;
+            }
+            x = 508;
+            y = 412;
+            List<string> StrenghtTesting = new List<string>
+            {
+                dic["strenghtTestPressure"],
+                dic["componentsNotSuitable"],
+                dic["stabilisationPeriod"],
+                dic["strenghtTestDuration"],
+                dic["permittedPressureDrop"],
+                dic["actualPressureDrop"],
+                dic["testPassedOrFailed"]
+            };
+            for (int i = 0; i < 7; i++)
+            {
+                gfx.DrawRectangle(XBrushes.White, new XRect(x, y + 1, 60, 5));
+                gfx.DrawString(StrenghtTesting[i], font, XBrushes.Black, new XRect(x, y, 65, 10), XStringFormats.Center);
+                y += 11.85;
+            }
+            double TimeTaken = double.Parse(dic["gaudgeReadableMovement"]) * ((1.1 * Total) + MeterTypeVolume(dic["meterVolume"])) * double.Parse(dic["testMediumFactor"]);
+            gfx.DrawString((TimeTaken).ToString("F5"), font, XBrushes.Black, new XRect(510, 520, 60, 30), XStringFormats.Center);
+            gfx.DrawString((2.8 * TimeTaken / double.Parse(dic["roomVolume"])).ToString("F5"), font, XBrushes.Black, new XRect(510, 555, 60, 30), XStringFormats.Center);
+            gfx.DrawString(dic["roomVolume"], font, XBrushes.Black, new XRect(510, 590, 60, 10), XStringFormats.Center);
+            gfx.DrawString((0.047*TimeTaken).ToString("F5"), font, XBrushes.Black, new XRect(510, 603, 60, 30), XStringFormats.Center);
+           
+            
+            
+            
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 638, 60, 20), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 658, 60, 20), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(510, 680, 60, 20), XStringFormats.Center);
+
+            gfx.DrawString(dic["actualPressureDrop"], font, XBrushes.Black, new XRect(510, 730, 60, 10), XStringFormats.Center);
+            gfx.DrawString(dic["actualLeakRate"], font, XBrushes.Black, new XRect(510, 741, 60, 10), XStringFormats.Center);
+            gfx.DrawString(dic["AreasWithInadequate"], font, XBrushes.Black, new XRect(510, 752, 60, 10), XStringFormats.Center);
+
+            gfx.DrawString(dic["PassedOrFailed"], font, XBrushes.Red, new XRect(322, 790, 571 - 322, 811 - 790), XStringFormats.Center);
+
+
+
+            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1 Sheet.pdf");
+
+            document.Save(filePath);
+            
+            return document;
+
+        }
+        public static async Task<PdfDocument> _1A(Dictionary<string,string> dic)
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new PdfDocument(); document.Info.Title = "Engineers Report Sheet";
+
+
+            PdfPage page = document.AddPage();
+            page.Height = 842;
+            page.Width = 595;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+
+            XFont font = new XFont("Arial", 10);
+
+          //  XImage image = ConvertToXImage();
+          //  gfx.DrawImage(image, 0, 0, 595, 842);
+
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(86, 104, 476, 14), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(69, 120, 308, 13), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(406, 120, 162, 13), XStringFormats.Center);
+
+
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(68, 136, 150, 13), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(283, 136, 92, 13), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(423, 136, 162, 13), XStringFormats.Center);
+
+
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(81, 152, 137, 13), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(292, 152, 84, 13), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(442, 152, 128, 13), XStringFormats.Center);
+
+            double x, y;
+            x = 106;
+            y = 230;
+            for (int i = 0; i < 30; i++)
+            {
+                if (i == 13 || i == 21)
+                {
+                    y += 10.0;
+                    continue;
+                }
+                gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(x, y, 53, 10), XStringFormats.Center);
+                y += 10.95;
+            }
+            y = 230;
+            x = 244;
+            for (int i = 0; i < 54; i++)
+            {
+                if (i == 33) y -= 2;
+                if (i == 13 || i == 21 || i == 34 || i == 35 || i == 45 || i == 46)
+                {
+
+                    y += 10.25;
+                    continue;
+                }
+                gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(x, y, 62, 10), XStringFormats.Center);
+                y += 10.95;
+            }
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 698, 56, 20), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 720, 56, 20), XStringFormats.Center);
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 740, 56, 20), XStringFormats.Center);
+
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 774, 56, 8), XStringFormats.Center);
+
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(338, 795, 224, 18), XStringFormats.Center);
+
+
+
+
+
+
+            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1A Sheet.pdf");
+
+            document.Save(filePath);
+
+            return document;
+
+        
+    }
 
         //        public static async Task CreateServiceRecordPDF(string reportName, string workingInletPressure, string site, string location, string applianceNumber,
         //string recordedBurnerPressure,
@@ -224,15 +528,18 @@ namespace Ashwell_Maintenance
 
             //potpis - za doncica
             //   gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531+(671-531- ConvertToXImage(inzenjer).PixelWidth/2),548+(529-502- ConvertToXImage(inzenjer).PixelHeight/2)));
-            gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531, 502));
-             //   gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
-            gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531, 502));
+            //   gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
+
             //site
-            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(51, 67, 337 - 51, 95 - 67), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(35, 72, 337 - 35, 95 - 72), XStringFormats.CenterLeft);
             //location
-            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(68, 98, 269 - 68, 124 - 98), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(35, 108, 269 - 65, 124 - 108), XStringFormats.CenterLeft);
             //asset no
-            gfx.DrawString(dic["assetNumber"], font, XBrushes.Black, new XRect(272, 107, 337 - 272, 123 - 107), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["assetNumber"], font, XBrushes.Black, new XRect(275, 108, 337 - 272, 123 - 108), XStringFormats.CenterLeft);
             //Appliance number
             gfx.DrawString(dic["applianceNumber"], font, XBrushes.Black, new XRect(76, 128, 111 - 76, 139 - 128), XStringFormats.Center);
             //Tests completed
@@ -1004,6 +1311,7 @@ Dictionary<string, string> dic
             return document;
 
         }
+       
     }
 
 }
