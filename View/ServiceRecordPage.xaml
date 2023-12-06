@@ -135,9 +135,9 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Label Text="Function:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
                 <VerticalStackLayout>
+                    <Label Text="Function:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 15"/>
+                    
                     <HorizontalStackLayout>
                         <CheckBox x:Name="checkHeating">
                             <CheckBox.Triggers>
@@ -257,9 +257,9 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Label Text="Flue Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
                 <VerticalStackLayout>
+                    <Label Text="Flue Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 15"/>
+                    
                     <HorizontalStackLayout>
                         <CheckBox x:Name="checkOpenFlue">
                             <CheckBox.Triggers>
@@ -355,9 +355,9 @@
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
 
-                <Label Text="Gas Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
                 <VerticalStackLayout>
+                    <Label Text="Gas Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 15"/>
+                    
                     <HorizontalStackLayout>
                         <CheckBox x:Name="checkNG">
                             <CheckBox.Triggers>
@@ -1681,6 +1681,7 @@
                        TextColor="#707070"
                        FontSize="16 "
                        FontFamily="SatoshiMedium"
+                       FontAttributes="Bold"
                        HorizontalTextAlignment="Center"/>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
