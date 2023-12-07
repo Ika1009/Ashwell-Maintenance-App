@@ -66,6 +66,200 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+        public static async Task<PdfDocument> Boiler(Dictionary<string,string> dic)
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new PdfDocument(); document.Info.Title = "And i wonder";
+
+
+            PdfPage page = document.AddPage();
+            page.Height = 842;
+            page.Width = 595;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+            XFont font = new XFont("Arial", 20);
+
+
+
+            XImage image = await ConvertToXImage(@"boiler.jpg");
+            gfx.DrawImage(image, 0, 0, 595, 842);
+
+           
+            if (dic["checkRemedialToWorkRequiredYes"] == "True")
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(30, 50, 200)), new XRect(488.5, 82, 15, 15));
+            }
+            else
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(30, 50, 200)), new XRect(518.7, 82, 15, 15));
+            }
+            if (dic[""] == "True")
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(30, 50, 200)), new XRect(488.5, 114.5, 15, 15));
+            }
+            else
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(30, 50, 200)), new XRect(518.7, 114.5, 15, 15));
+            }
+            gfx.DrawString(dic["SheetNo"], new XFont("Arial", 11), XBrushes.Black, new XRect(506, 27, 64, 26), XStringFormats.Center);
+            gfx.DrawString(dic["nameOfPremises"], new XFont("Arial", 8), XBrushes.Black, new XPoint(100, 81.8));
+            gfx.DrawString(dic["adressOfPremises"], new XFont("Arial", 8), XBrushes.Black, new XPoint(107, 113.8));
+            gfx.DrawString(dic["WarningNoticeRefNo"], new XFont("Arial", 8), XBrushes.Black, new XRect(439, 53, 131, 20), XStringFormats.Center);
+            gfx.DrawString(dic["appliancesCoveredByThisCheck"], new XFont("Arial", 8), XBrushes.Black, new XPoint(162.75, 158.92));
+            // addvert ventilationLocation
+            double x = 193;
+            double y = 249;
+            List<string> list = new List<string>()
+            {
+                dic["checkPipeworkToGasMeterYes"],
+                dic["checkRegulatorAndOrMeterYes"],
+                dic["checkSafetyNoticesLabelsYes"],
+                dic["checkLineDiagramYes"],
+                dic["checkColorCodingIndicationTapeYes"],
+                dic["checkMeterHouseVentilationYes"],
+
+            };
+            List<string> lista = new List<string>()
+            {
+                dic["checkPipeworkToGasMeterNA"],
+                dic["checkRegulatorAndOrMeterNA"],
+                dic["checkSafetyNoticesLabelsNA"],
+                dic["checkLineDiagramNA"],
+                dic["checkColorCodingIndicationTapeNA"],
+                dic["checkMeterHouseVentilationNA"],
+
+            };
+            for (int i = 0; i < 6; i++)
+            {
+                if (list[i]=="True")
+                gfx.DrawString("\u221A", new XFont("Arial", 15), XBrushes.Black, new XRect(x, y, 34, 17), XStringFormats.Center);
+                else if (lista[i]=="True")
+                gfx.DrawString("\u221A", new XFont("Arial", 15), XBrushes.Black, new XRect(x + 34.5, y, 34, 17), XStringFormats.Center);
+                else
+                gfx.DrawString("\u221A", new XFont("Arial", 15), XBrushes.Black, new XRect(x + 69, y, 34, 17), XStringFormats.Center);
+
+                y += 18.5;
+            }
+            x = 193;
+            y = 465;
+            List<string> list1 = new List<string>()
+            {
+                dic["checkMainFlueYes"],
+                dic["checkChimneyFlueTerminalPositionYes"],
+                dic["checkStubFluersToBoildersYes"],
+                dic["checkIdFanYes"],
+                dic["checkFanBoilerSafetyInterlockYes"],
+                dic["checkGeneralComplianceOfGasPipeYes"],
+                dic["checkVentilationYes"],
+
+            };
+            List<string> lista1 = new List<string>()
+            {
+                dic["checkMainFlueNA"],
+                dic["checkChimneyFlueTerminalPositionNA"],
+                dic["checkStubFluersToBoildersNA"],
+                dic["checkIdFanNA"],
+                dic["checkFanBoilerSafetyInterlockNA"],
+                dic["checkGeneralComplianceOfGasPipeNA"],
+                dic["checkVentilationNA"],
+
+            };
+            for (int i = 0; i < 7; i++)
+            {
+                if (list1[i]=="True")
+                gfx.DrawString("√", new XFont("Arial", 15), XBrushes.Black, new XRect(x, y, 34, 17), XStringFormats.Center);
+                else if (lista1[i]=="True")
+                gfx.DrawString("√", new XFont("Arial", 15), XBrushes.Black, new XRect(x + 34.5, y, 34, 17), XStringFormats.Center);
+                else 
+                gfx.DrawString("√", new XFont("Arial", 15), XBrushes.Black, new XRect(x + 69, y, 34, 17), XStringFormats.Center);
+
+                y += 18.5;
+            }
+            //checkFreeAirExistingCM,checkFreeAirExistingMH,checkFreeAirRequiredCM,checkcheckFreeAirRequiredMH,
+
+            gfx.DrawString(dic["meterHouseLocation"], new XFont("Arial", 8), XBrushes.Black, new XPoint(232.20, 218.5));
+            gfx.DrawString(dic["freeAirExistingHighLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(298, 393, 100, 17), XStringFormats.Center);
+            gfx.DrawString(dic["freeAirExistingLowLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(464, 393, 100, 17), XStringFormats.Center);
+            gfx.DrawString(dic["freeAirRequiredHighLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(298, 410, 100, 17), XStringFormats.Center);
+            gfx.DrawString(dic["freeAirRequiredLowLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(464, 410, 100, 17), XStringFormats.Center);
+          
+            gfx.DrawRectangle(XBrushes.White, new XRect(133, 394, 92, 15));
+            gfx.DrawString("1000  cm2   or", new XFont("Arial", 8), XBrushes.Black, new XPoint(134.7, 403));
+            gfx.DrawString("1000  m3/h", new XFont("Arial", 8), XBrushes.Black, new XPoint(185, 403));
+          
+            gfx.DrawRectangle(XBrushes.White, new XRect(133, 413, 92, 15));
+            gfx.DrawString("1000  cm2   or", new XFont("Arial", 8), XBrushes.Black, new XPoint(134.7, 422));
+            gfx.DrawString("1000  m3/h", new XFont("Arial", 8), XBrushes.Black, new XPoint(185, 422));
+           
+            gfx.DrawString(dic["inletWorkingPressureTestFullLoad"], new XFont("Arial", 8), XBrushes.Black, new XRect(194, 614, 102, 17), XStringFormats.Center);
+            gfx.DrawString(dic["standingPressure"], new XFont("Arial", 8), XBrushes.Black, new XRect(194, 632, 102, 17), XStringFormats.Center);
+            gfx.DrawString(dic["inletWorkingPressureTestPartLoad"], new XFont("Arial", 8), XBrushes.Black, new XRect(464, 614, 102, 17), XStringFormats.Center);
+            gfx.DrawString(dic["plantGasInstallationVolume"], new XFont("Arial", 8), XBrushes.Black, new XRect(464, 632, 102, 17), XStringFormats.Center);
+            if (dic["checkAIVYes"] =="True")
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(312.5, 596.5, 15, 15));
+            else if (dic["checkAIVNo"] =="True")
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(341, 596.5, 15, 15));
+            else
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(368.7, 596.5, 15, 15));
+
+            if (dic["checkManualYes"] =="True")
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(481.1, 596.5, 15, 15));
+            else if (dic["checkManualNo"] =="True")
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(509.5, 596.5, 15, 15));
+            else
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(538, 596.5, 15, 15));
+
+            if (dic["checkPlantGasTightnessTestYes"]=="True")
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(487.5, 654, 21, 10));
+            else
+            gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(527, 654, 21, 10));
+
+            y = 712;
+            List<string> finalno = new List<string>()
+            {
+                dic["engineersName"]," ",
+                dic["contractor"],
+                dic["companyGasSafeRegistrationNo"],
+                dic["engineersGasSafeIDNo"],
+                dic["inspectionDate"],
+                dic["clientsName"]," ",
+                dic["date"],
+            };
+            for (int i = 0; i < 3; i++)
+            {
+                gfx.DrawRectangle(XBrushes.White, new XRect(27, y + 2, 198, 24));
+                gfx.DrawRectangle(XBrushes.White, new XRect(230, y + 2, 168, 24));
+                gfx.DrawRectangle(XBrushes.White, new XRect(402, y + 2, 168, 24));
+
+
+                gfx.DrawString(finalno[i], new XFont("Arial", 11), XBrushes.Black, new XRect(26, y, 200, 25), XStringFormats.Center);
+                gfx.DrawString(finalno[i+1], new XFont("Arial", 11), XBrushes.Black, new XRect(228, y, 170, 25), XStringFormats.Center);
+                gfx.DrawString(finalno[i+2], new XFont("Arial", 11), XBrushes.Black, new XRect(400, y, 170, 25), XStringFormats.Center);
+                y += 36;
+            }
+
+            //Coments
+
+
+            XRect boundingBox = new XRect(300, 465, 269, 127);
+            string text = dic["meterHouseComment"];
+            XTextFormatter tf = new XTextFormatter(gfx);
+            XRect layoutRectangle = boundingBox;
+            tf.DrawString(text, new XFont("Arial", 11), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
+
+            XRect boundingBox2 = new XRect(300, 250, 269, 107);
+            XRect layoutRectangle2 = boundingBox2;
+            text = dic["boilerHousePlantRoomComments"];
+            tf.DrawString(text, new XFont("Arial", 11), XBrushes.Black, layoutRectangle2, XStringFormats.TopLeft);
+
+            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
+
+            document.Save(filePath);
+            return document;
+        }
         static public double MeterTypeVolume(string x)
         {
             if (x == "G4/U6")
