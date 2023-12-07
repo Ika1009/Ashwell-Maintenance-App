@@ -205,7 +205,7 @@
                 <Label Text="Test Results" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Mains Waters Supply Checked" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Mains Waters Supply Checked" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -255,7 +255,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Cold Fill Pressure Set Correctly" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Cold Fill Pressure Set Correctly" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -305,7 +305,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Electrical Supply Working" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Electrical Supply Working" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -355,7 +355,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Filling Loop Disconnected" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Filling Loop Disconnected" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -405,7 +405,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Unit Left Operational" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Unit Left Operational" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>

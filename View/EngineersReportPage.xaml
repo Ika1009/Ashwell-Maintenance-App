@@ -82,7 +82,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="TASK COMPLETE" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="TASK COMPLETE" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -176,7 +176,7 @@
                 </Frame>
                 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="SPILLAGE TEST PERFORMED:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="SPILLAGE TEST PERFORMED:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -227,7 +227,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="RISK ASSESSMENT COMPLETED:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="RISK ASSESSMENT COMPLETED:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -277,7 +277,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="FLUE FLOW TEST:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="FLUE FLOW TEST:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -344,7 +344,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="TIGHTNESS TEST CARRIED OUT:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="TIGHTNESS TEST CARRIED OUT:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -395,7 +395,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="APPLIANCE SAFE TO USE:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="APPLIANCE SAFE TO USE:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -445,7 +445,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="WARNING NOTICE ISSUED:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="WARNING NOTICE ISSUED:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>

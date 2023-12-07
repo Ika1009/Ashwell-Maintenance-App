@@ -135,7 +135,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Tests Completed Satisfactory" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Tests Completed Satisfactory" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -226,7 +226,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Pipework to Gas Meter" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Pipework to Gas Meter" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -286,7 +286,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Regulator and / or Meter" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Regulator and / or Meter" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -346,7 +346,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Safety Notices / Labels" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Safety Notices / Labels" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -406,7 +406,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Line Diagram of Gas Distribution System" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Line Diagram of Gas Distribution System" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -466,7 +466,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Color Coding / Indication Tape" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Color Coding / Indication Tape" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -526,7 +526,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Meter House Ventilation" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Meter House Ventilation" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -621,10 +621,10 @@
                                         <Setter Property="Color" Value="#fff" />
                                     </DataTrigger>
 
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckFreeAirExistingMH}, Path=IsChecked}" Value="True">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFreeAirExistingMH}, Path=IsChecked}" Value="True">
                                         <Setter Property="IsChecked" Value="False"/>
                                     </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckFreeAirExistingMH}, Path=IsChecked}" Value="False">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFreeAirExistingMH}, Path=IsChecked}" Value="False">
                                         <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
@@ -634,12 +634,12 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkcheckFreeAirExistingMH">
+                            <CheckBox x:Name="checkFreeAirExistingMH">
                                 <CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckFreeAirExistingMH}, Path=IsChecked}" Value="True">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFreeAirExistingMH}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckFreeAirExistingMH}, Path=IsChecked}" Value="False">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFreeAirExistingMH}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
                                     </DataTrigger>
 
@@ -770,7 +770,7 @@
                 <Label Text="Boiler House / Plant Room Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Main Flue" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Main Flue" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -830,7 +830,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Chimney / Flue Terminal Position" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Chimney / Flue Terminal Position" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -890,7 +890,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Stub-Flues to Boilers" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Stub-Flues to Boilers" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -950,7 +950,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="ID Fan" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="ID Fan" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -1010,7 +1010,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Fan / Boiler Safety Interlock" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Fan / Boiler Safety Interlock" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -1070,7 +1070,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="General Compliance of Gas Pipe" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="General Compliance of Gas Pipe" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -1130,7 +1130,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Ventilation" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Ventilation" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -1204,7 +1204,7 @@
                 <Label Text="Emergancy Gas Isolation Satisfactory?" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="AIV" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="AIV" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -1264,7 +1264,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Manual" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Manual" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -1366,7 +1366,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Plant Gas Tightness Test" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+                    <Label Text="Plant Gas Tightness Test" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                         <HorizontalStackLayout>
@@ -1432,7 +1432,7 @@
                        TextColor="#707070"
                        FontSize="16 "
                        FontFamily="SatoshiMedium"
-                       FontAttributes="Bold"
+                       FontAttributes="Italic"
                        HorizontalTextAlignment="Center"/>
 
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
@@ -1469,7 +1469,7 @@
                     <Label Text="Contractor:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="contractor" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="contractor" Text="Ashwell Maintenance Ltd" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" IsEnabled="false"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1477,7 +1477,7 @@
                     <Label Text="Company Gas-Safe Registration No°:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEditor x:Name="companyGasSafeRegistrationNo" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessEditor x:Name="companyGasSafeRegistrationNo" Text="81031" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium" IsEnabled="false"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1501,7 +1501,7 @@
                     <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessEntry x:Name="clientsName" Text="Paul Sarson" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" IsEnabled="false"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1529,6 +1529,7 @@
                        TextColor="#707070"
                        FontSize="16 "
                        FontFamily="SatoshiMedium"
+                       FontAttributes="Bold"
                        HorizontalTextAlignment="Center"/>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">

@@ -30,6 +30,10 @@
         {
             await Navigation.PushModalAsync(new BoilerHouseDataSheetPage());
         }
+        private async void CC_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ConformityCheckPage());
+        }
         private void BTT_Tapped(object sender, EventArgs e)
         {
 
