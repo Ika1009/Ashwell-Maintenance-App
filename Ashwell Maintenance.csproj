@@ -64,6 +64,7 @@
 	  <None Remove="Resources\AppIcon\ash_icon.svg" />
 	  <None Remove="Resources\Images\boiler.jpg" />
 	  <None Remove="Resources\Images\CDM.jpg" />
+	  <None Remove="Resources\Images\check_page.jpg" />
 	  <None Remove="Resources\Images\engineers_report_sheet.jpg" />
 	  <None Remove="Resources\Images\ige_up_1.jpg" />
 	  <None Remove="Resources\Images\pressurisation_unit_report.jpg" />
