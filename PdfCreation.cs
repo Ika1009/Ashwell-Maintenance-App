@@ -66,9 +66,7 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
-        public static async Task GasRisk(
-    Dictionary<string, string> dic
-    )
+        public static async Task GasRisk(Dictionary<string, string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1279,139 +1277,6 @@ namespace Ashwell_Maintenance
 
         
     }
-
-        //        public static async Task CreateServiceRecordPDF(string reportName, string workingInletPressure, string site, string location, string applianceNumber,
-        //string recordedBurnerPressure,
-        //string assetNumber,
-        //string measuredGasRate,
-        //bool heatExhanger,
-        //bool heatExhangerNA,
-        //string heatExhangerComments,
-        //bool flueFlowTest,
-        //bool flueFlowTestNA,
-        //string flueFlowTestComments,
-        //bool spillageTest,
-        //bool spillageTestNA,
-        //string spillageTestComments,
-        //bool safetyShutOffValve,
-        //bool safetyShutOffValveNA,
-        //string safetyShutOffValveComments,
-        //bool plantroomGasTightnessTest,
-        //bool plantroomGasTightnessTestNA,
-        //string plantroomGasTightnessTestComments,
-        //bool AECVPlantIsolationCorrect,
-        //bool AECVPlantIsolationCorrectNA,
-        //string AECVPlantIsolationCorrectComments,
-        //string stateApplianceConditionComments,
-        //string workingInletPressureComments,
-        //string recordedBurnerPressureComments,
-        //string measuredGasRateComments,
-        //bool testsCompleted,
-        //bool remedialWorkRequired,
-        //string applianceMake,
-        //string applianceModel,
-        //string applianceSerialNumber,
-        //string gcNumber,
-        //string stateApplianceCondition,
-        //string burnerMake,
-        //string burnerModel,
-        //string burnerSerialNumber,
-        //string Type,
-        //string Spec,
-        //bool OpenFlue,
-        //bool Roomsealed,
-        //bool ForcedDraft,
-        //bool Flueless,
-        //bool Heating,
-        //bool HotWater,
-        //bool Both,
-        //string badgedBurnerPressure,
-        //bool ventilationSatisfactory,
-        //string gasType,
-        //bool flueConditionSatisfactory,
-        //string approxAgeOfAppliance,
-        //string badgedInput,
-        //string badgedOutput,
-        //bool applianceServiceValveSatisfactory,
-        //bool governorsSatisfactory,
-        //bool gasSolenoidValvesSatisfactory,
-        //bool controlBoxPcbSatisfactory,
-        //bool gasketSealsSatisfactory,
-        //bool burnerSatisfactory,
-        //bool burnerJetsSatisfactory,
-        //bool electrodesTransformerSatisfactory,
-        //bool flameFailureDeviceSatisfactory,
-        //bool systemBoilerControlsSatisfactory,
-        //bool boilerCasingSatisfactory,
-        //bool thermalInsulationSatisfactory,
-        //bool combustionFanIdFanSatisfactory,
-        //bool airFluePressureSwitchSatisfactory,
-        //bool controlLimitStatsSatisfactory,
-        //bool pressureTempGaugesSatisfactory,
-        //bool circulationPumpsSatisfactory,
-        //bool condenseTrapSatisfactory,
-        //bool applianceServiceValveSatisfactoryNA,
-        //bool governorsSatisfactoryNA,
-        //bool gasSolenoidValvesSatisfactoryNA,
-        //bool controlBoxPcbSatisfactoryNA,
-        //bool gasketSealsSatisfactoryNA,
-        //bool burnerSatisfactoryNA,
-        //bool burnerJetsSatisfactoryNA,
-        //bool electrodesTransformerSatisfactoryNA,
-        //bool flameFailureDeviceSatisfactoryNA,
-        //bool systemBoilerControlsSatisfactoryNA,
-        //bool boilerCasingSatisfactoryNA,
-        //bool thermalInsulationSatisfactoryNA,
-        //bool combustionFanIdFanSatisfactoryNA,
-        //bool airFluePressureSwitchSatisfactoryNA,
-        //bool controlLimitStatsSatisfactoryNA,
-        //bool pressureTempGaugesSatisfactoryNA,
-        //bool circulationPumpsSatisfactoryNA,
-        //bool condenseTrapSatisfactoryNA,
-        //string gasSolenoidValvesComments,
-        //string controlBoxPcbComments,
-        //string gasketSealsComments,
-        //string burnerComments,
-        //string burnerJetsComments,
-        //string electrodesTransformerComments,
-        //string flameFailureDeviceComments,
-        //string systemBoilerControlsComments,
-        //string boilerCasingComments,
-        //string thermalInsulationComments,
-        //string combustionFanIdFanComments,
-        //string airFluePressureSwitchComments,
-        //string controlLimitStatsComments,
-        //string pressureTempGaugesComments,
-        //string circulationPumpsComments,
-        //string condenseTrapComments,
-        //string HighFireCO2,
-        //string HighFireCO,
-        //string HighFireO2,
-        //string HighFireFlueTemp,
-        //string HighFireEfficiency,
-        //string HighFireExcessAir,
-        //string HighFireRoomTemp,
-        //string HighFireRatio,
-        //string LowFireCO2,
-        //string LowFireCO,
-        //string LowFireO2,
-        //string LowFireFlueTemp,
-        //string LowFireEfficiency,
-        //string LowFireExcessAir,
-        //string LowFireRoomTemp,
-        //string LowFireRatio,
-        //string warningNoticeIssueNumber,
-        //string engineersName,
-        //string engineersSignature,
-        //string engineersGasSafeID,
-        //string clientsName,
-        //string clientsSignature,
-        //string inspectionDate,
-        //        string commetsDefects,
-        //       string applianceServiceValveSatisfactoryComments,
-        //   string  governorsComments
-        //        )
-
         public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -1820,32 +1685,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task CreateEngineersReport(
-//     string clientsName,
-//string address,
-//string date,
-//string engineer,
-//string taskTNo,
-//bool checkTaskComplete,
-//string applianceMake,
-//string serialNumber,
-//string description,
-//bool checkSpillageTestPerformed,
-//bool checkSpillageTestPerformedNA,
-//bool checkRiskAssesmentCompleted,
-//bool checkFlueFlowTest,
-//bool checkFlueFlowTestNA,
-//string gasOperatinPressure,
-//string inletPressure,
-//bool checkThightnessTestCarriedOut,
-//bool checkThightnessTestCarriedOutNA,
-//string thightnessTestCarriedOut,
-//string totalHoursIncludingTravel,
-//bool checkApplianceSafeToUse,
-//bool checkWarningNoticeIssued,
-//string warningNoticeNumber
-Dictionary<string, string> dic
-     )
+        public static async Task CreateEngineersReport(Dictionary<string, string> dic )
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1962,10 +1802,7 @@ Dictionary<string, string> dic
 
 
         }
-        
-        public static async Task CDM(
-            Dictionary<string,string> dic
-            )
+        public static async Task CDM(Dictionary<string,string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -2094,34 +1931,7 @@ Dictionary<string, string> dic
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string filePath = System.IO.Path.Combine(downloadsFolder, $"CDM_Site_Form{dateTimeString}.pdf");
         }
-        public static async Task<PdfDocument> PressurisationReport(
-          //string siteNameAndAddress,
-          //string totalHeatingSystemRating,
-          //string numberOfBoilers,
-          //string flowTemperature,
-          //string returnTemperature,
-          //string currentWorkingPressure,
-          //string safetyValveSetting,
-          //string unitModel,
-          //string serialNo,
-          //string expansionVesselSize,
-          //string numberOfPressureVessels,
-          //string setFillPressure,
-          //string ratedExpansionVesselCharge,
-          //string highPressureSwitchSetting,
-          //string lowPressureSwitchSetting,
-          //string finalSystemPressure,
-          //bool checkMainWaterSupply,
-          //bool checkColdFillPressureSet,
-          //bool checkElectricalSupplyWorking,
-          //bool checkFillingLoopDisconnected,
-          //bool checkUnitLeftOperational,
-          //string notes,
-          //string date,
-          //string engineer
-          Dictionary<string, string> dic
-
-          )
+        public static async Task<PdfDocument> PressurisationReport(Dictionary<string, string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
