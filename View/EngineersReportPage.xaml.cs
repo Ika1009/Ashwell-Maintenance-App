@@ -7,7 +7,8 @@ public partial class EngineersReportPage : ContentPage
 		InitializeComponent();
 	}
 
-	public void EngineersReportBack(object sender, EventArgs e)
+    [Obsolete]
+    public void EngineersReportBack(object sender, EventArgs e)
 	{
 		if (ERSection1.IsVisible)
 			Navigation.PopModalAsync();
@@ -15,7 +16,8 @@ public partial class EngineersReportPage : ContentPage
 		{
 			ERSection2.IsVisible = false;
 
-			ERSection1.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                ERSection1.ScrollToAsync(0, 0, false);
 			ERSection1.IsVisible = true;
 
 		}
@@ -23,27 +25,31 @@ public partial class EngineersReportPage : ContentPage
 		{
             ERSection3.IsVisible = false;
 
-            ERSection2.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                ERSection2.ScrollToAsync(0, 0, false);
             ERSection2.IsVisible = true;
         }
     }
 
-	public async void ERNext1(object sender, EventArgs e)
+    [Obsolete]
+    public async void ERNext1(object sender, EventArgs e)
 	{
 		ERSection1.IsVisible = false;
 
-        await ERSection2.ScrollToAsync(0, 0, false);
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await ERSection2.ScrollToAsync(0, 0, false);
 		ERSection2.IsVisible = true;
 	}
-
+    [Obsolete]
     public async void ERNext2(object sender, EventArgs e)
     {
         ERSection2.IsVisible = false;
 
-        await ERSection3.ScrollToAsync(0, 0, false);
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await ERSection3.ScrollToAsync(0, 0, false);
         ERSection3.IsVisible = true;
     }
-
+    [Obsolete]
     public void ERNext3(object sender, EventArgs e)
     {
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");

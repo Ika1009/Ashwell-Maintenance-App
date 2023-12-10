@@ -106,6 +106,7 @@ public partial class ServiceRecordPage1 : ContentPage
         public string Timestamp { get; set; }
     }
 
+    [Obsolete]
     public void ServiceRecordBack(object sender, EventArgs e)
     {
         if (SRSection1.IsVisible)
@@ -114,30 +115,35 @@ public partial class ServiceRecordPage1 : ContentPage
         {
             SRSection2.IsVisible = false;
 
-            SRSection1.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                SRSection1.ScrollToAsync(0, 0, false);
             SRSection1.IsVisible = true;
         }
         else if (SRSection3.IsVisible == true)
         {
             SRSection3.IsVisible = false;
 
-            SRSection2.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                SRSection2.ScrollToAsync(0, 0, false);
             SRSection2.IsVisible = true;
         }
         else
         {
             SRSection4.IsVisible = false;
 
-            SRSection3.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                SRSection3.ScrollToAsync(0, 0, false);
             SRSection3.IsVisible = true;
         }
     }
 
+    [Obsolete]
     public void ServiceRecordNext1(object sender, EventArgs e)
     {
         SRSection1.IsVisible = false;
 
-        SRSection2.ScrollToAsync(0, 0, false);
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            SRSection2.ScrollToAsync(0, 0, false);
         SRSection2.IsVisible = true;
     }
 

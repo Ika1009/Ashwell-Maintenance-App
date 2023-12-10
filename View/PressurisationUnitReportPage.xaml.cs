@@ -7,6 +7,7 @@ public partial class PressurisationUnitReportPage : ContentPage
 		InitializeComponent();
 	}
 
+    [Obsolete]
     public async void PressurisationUnitReportBack(object sender, EventArgs e)
     {
 		if (PURSection1.IsVisible)
@@ -15,34 +16,38 @@ public partial class PressurisationUnitReportPage : ContentPage
 		{
 			PURSection2.IsVisible = false;
 
-			await PURSection1.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                await PURSection1.ScrollToAsync(0, 0, false);
 			PURSection1.IsVisible = true;
 		}
 		else
 		{
             PURSection3.IsVisible = false;
 
-            await PURSection2.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                await PURSection2.ScrollToAsync(0, 0, false);
             PURSection2.IsVisible = true;
         }
     }
 
-	public async void PressurisationUnitReportNext1(object sender, EventArgs e)
+    [Obsolete]
+    public async void PressurisationUnitReportNext1(object sender, EventArgs e)
 	{
 		PURSection1.IsVisible = false;
 
-		await PURSection2.ScrollToAsync(0, 0, false);
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await PURSection2.ScrollToAsync(0, 0, false);
 		PURSection2.IsVisible = true;
 	}
-
+    [Obsolete]
     public async void PressurisationUnitReportNext2(object sender, EventArgs e)
     {
         PURSection2.IsVisible = false;
 
-        await PURSection3.ScrollToAsync(0, 0, false);
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await PURSection3.ScrollToAsync(0, 0, false);
         PURSection3.IsVisible = true;
     }
-
     public void PressurisationUnitReportNext3(object sender, EventArgs e)
     {
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");

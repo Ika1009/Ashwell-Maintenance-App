@@ -10,250 +10,255 @@
         <mct:StatusBarBehavior StatusBarColor="#141414" StatusBarStyle="LightContent"/>
     </ContentPage.Behaviors>
 
-    <Grid Padding="20, 20, 20, 0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <Grid RowSpacing="20" Margin="0, 30, 0, 10">
+    <Grid>
+        <Grid Padding="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Image Source="logo.png" WidthRequest="200" HorizontalOptions="Center"/>
+            <Grid RowSpacing="20" Margin="0, 20, 0, 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <Label Grid.Row="1" Text="Create New Sheet" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                <Image Source="logo.png" WidthRequest="200" HorizontalOptions="Center"/>
+
+                <Label Grid.Row="1" Text="Create New Sheet" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <VerticalStackLayout Spacing="10">
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0" Margin="0, 30, 0, 0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="construction_design_management.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="Construction Design Management" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="CDM" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="CDM_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="engineers_report.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="Engineers Report" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="ER" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ER_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="service_record.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="Service Record" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="SR" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="SR_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="gas_risk_assessment.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="Gas Risk Assessment" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="GRA" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="GRA_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="pressure_unit_report.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="Pressurisation Unit Report" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="PUR" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="PUR_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="boiler_house_data.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="Boiler House Data Sheet" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="BHDS" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="BHDS_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="conformity_check.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="Conformity Check" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="CC" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="CC_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="one_b.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="1B Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button x:Name="TT" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="BTT_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="one_a.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="1A Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ATT_Tapped"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0" Margin="0, 0, 0, 50">
+                            <Grid>
+                                <Grid ColumnSpacing="10" Padding="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="one.png" HeightRequest="30"/>
+
+                                    <Label Grid.Column="1" Text="1 Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                    <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
+                                </Grid>
+
+                                <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="TT_Tapped"/>
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <BoxView Color="Transparent" HeightRequest="50" VerticalOptions="Start" IsEnabled="False">
+                    <BoxView.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#141414"
+                        Offset="0.1" />
+                            <GradientStop Color="Transparent"
+                        Offset="0.8" />
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+
+                <BoxView Color="Transparent" HeightRequest="50" VerticalOptions="End" IsEnabled="False">
+                    <BoxView.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="Transparent"
+                        Offset="0.1" />
+                            <GradientStop Color="#141414"
+                        Offset="0.8" />
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+            </Grid>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <ScrollView VerticalScrollBarVisibility="Never">
-                <VerticalStackLayout Spacing="10">
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0" Margin="0, 30, 0, 0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="construction_design_management.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="Construction Design Management" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="CDM_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="engineers_report.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="Engineers Report" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ER_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="service_record.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="Service Record" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="SR_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="gas_risk_assessment.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="Gas Risk Assessment" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="GRA_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="pressure_unit_report.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="Pressurisation Unit Report" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="PUR_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="boiler_house_data.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="Boiler House Data Sheet" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="BHDS_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="conformity_check.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="Conformity Check" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="CC_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="one_b.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="1B Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="BTT_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="one_a.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="1A Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ATT_Tapped"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0" Margin="0, 0, 0, 50">
-                        <Grid>
-                            <Grid ColumnSpacing="10" Padding="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="30"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image Source="one.png" HeightRequest="30"/>
-
-                                <Label Grid.Column="1" Text="1 Tightness Testing" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="TT_Tapped"/>
-                        </Grid>
-                    </Frame>
-                </VerticalStackLayout>
-            </ScrollView>
-
-            <BoxView Color="Transparent" HeightRequest="50" VerticalOptions="Start" IsEnabled="False">
-                <BoxView.Background>
-                    <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop Color="#141414"
-                    Offset="0.1" />
-                        <GradientStop Color="Transparent"
-                    Offset="0.8" />
-                    </LinearGradientBrush>
-                </BoxView.Background>
-            </BoxView>
-
-            <BoxView Color="Transparent" HeightRequest="50" VerticalOptions="End" IsEnabled="False">
-                <BoxView.Background>
-                    <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop Color="Transparent"
-                    Offset="0.1" />
-                        <GradientStop Color="#141414"
-                    Offset="0.8" />
-                    </LinearGradientBrush>
-                </BoxView.Background>
-            </BoxView>
-        </Grid>
+        <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000"/>
+        <ActivityIndicator x:Name="loading" IsRunning="False" Color="Red" WidthRequest="75" Grid.RowSpan="2"/>
     </Grid>
 
 </ContentPage>

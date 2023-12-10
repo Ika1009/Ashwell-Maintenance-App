@@ -7,6 +7,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
 		InitializeComponent();
 	}
 
+    [Obsolete]
     public void CDMBack(object sender, EventArgs e)
     {
         if (CDMSection1.IsVisible)
@@ -15,30 +16,39 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         {
             CDMSection2.IsVisible = false;
 
-            CDMSection1.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                CDMSection1.ScrollToAsync(0, 0, false);
             CDMSection1.IsVisible = true;
         }
         else
         {
             CDMSection3.IsVisible = false;
 
-            CDMSection2.ScrollToAsync(0, 0, false);
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                CDMSection2.ScrollToAsync(0, 0, false);
             CDMSection2.IsVisible = true;
         }
     }
 
-    public void CDMNext1(object sender, EventArgs e)
+    [Obsolete]
+    public async void CDMNext1(object sender, EventArgs e)
     {
         CDMSection1.IsVisible = false;
+
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await CDMSection2.ScrollToAsync(0, 0, false);
         CDMSection2.IsVisible = true;
     }
-
+    [Obsolete]
     public void CDMNext2(object sender, EventArgs e)
     {
         CDMSection2.IsVisible = false;
+
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            CDMSection3.ScrollToAsync(0, 0, false);
         CDMSection3.IsVisible = true;
     }
-
+    [Obsolete]
     public async void CDMNext3(object sender, EventArgs e)
     {
         await PdfCreation.CDM(GatherReportData());
