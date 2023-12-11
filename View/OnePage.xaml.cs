@@ -163,7 +163,7 @@ public partial class OnePage : ContentPage
             await OSection6.ScrollToAsync(0, 0, false);
         OSection6.IsVisible = true;
     }
-    public void ONexrFinish(object sender, EventArgs e)
+    public void ONextFinish(object sender, EventArgs e)
     {
 
     }
