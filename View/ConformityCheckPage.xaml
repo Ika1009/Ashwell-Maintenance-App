@@ -1785,7 +1785,7 @@
                     <Label Text="Company Gas-Safe Registration No°:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEditor x:Name="companyGasSafeRegistrationNo" Text="81031" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium" IsEnabled="false"/>
+                        <local:LinelessEditor x:Name="companyGasSafeRegistrationNo" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1809,7 +1809,7 @@
                     <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="clientsName" Text="Paul Sarson" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" IsEnabled="false"/>
+                        <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 

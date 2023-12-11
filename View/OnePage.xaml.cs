@@ -70,13 +70,33 @@ public partial class OnePage : ContentPage
                 await OSection2.ScrollToAsync(0, 0, false);
             OSection2.IsVisible = true;
         }
-        else
+        else if (OSection4.IsVisible)
         {
+            checkAreaA.IsChecked = false;
+            checkAreaB.IsChecked = false;
+            checkAreaCD.IsChecked = false;
+
             OSection4.IsVisible = false;
 
             if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
                 await OSection3.ScrollToAsync(0, 0, false);
             OSection3.IsVisible = true;
+        }
+        else if (OSection5.IsVisible)
+        {
+            OSection5.IsVisible = false;
+
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                await OSection4.ScrollToAsync(0, 0, false);
+            OSection4.IsVisible = true;
+        }
+        else
+        {
+            OSection6.IsVisible = false;
+
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                await OSection5.ScrollToAsync(0, 0, false);
+            OSection5.IsVisible = true;
         }
 	}
 
@@ -106,7 +126,214 @@ public partial class OnePage : ContentPage
         if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
             await OSection4.ScrollToAsync(0, 0, false);
         OSection4.IsVisible = true;
+
+        if (!new[] { null, "", ".", "-", "+"}.Contains(gaugeReadableMovement.Text) && totalVolumeForTesting.Text != null && testMediumFactor.Text != null)
+        {
+            AreaA_Value.Text = Math.Round(double.Parse(gaugeReadableMovement.Text) * double.Parse(totalVolumeForTesting.Text) * double.Parse(testMediumFactor.Text), 3).ToString();
+            if (!new[] { null, "", ".", "-", "+" }.Contains(roomVolume.Text))
+                AreaB_Value.Text = Math.Round(2.8 * double.Parse(AreaA_Value.Text) / double.Parse(roomVolume.Text), 3).ToString();
+            AreaCD_Value.Text = Math.Round(0.047 * double.Parse(AreaA_Value.Text), 3).ToString();
+        }
+        else
+        {
+            AreaA_Value.Text = null;
+            AreaB_Value.Text = null;
+            AreaCD_Value.Text = null;
+
+            letByDuration.Text = null;
+            stabilisationDuration.Text = null;
+            testDuration.Text = null;
+        }
     }
+    [Obsolete]
+    public async void ONext4(object sender, EventArgs e)
+    {
+        OSection4.IsVisible = false;
+
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await OSection5.ScrollToAsync(0, 0, false);
+        OSection5.IsVisible = true;
+    }
+    [Obsolete]
+    public async void ONext5(object sender, EventArgs e)
+    {
+        OSection5.IsVisible = false;
+
+        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            await OSection6.ScrollToAsync(0, 0, false);
+        OSection6.IsVisible = true;
+    }
+    public void ONexrFinish(object sender, EventArgs e)
+    {
+
+    }
+
+
+    public void checkAreaA_Tap(object sender, EventArgs e)
+    {
+        if (checkAreaA.IsChecked)
+        {
+            checkAreaA.Color = Colors.Red;
+            checkAreaB.IsChecked = false;
+            checkAreaCD.IsChecked = false;
+
+            AreaB.IsVisible = false;
+            AreaCD.IsVisible = false;
+            AreaA.IsVisible = true;
+
+            if (AreaA_Value.Text != null)
+            {
+                letByDuration.Text = "2";
+                stabilisationDuration.Text = "15";
+                testDuration.Text = "2";
+
+                double min = Math.Ceiling(double.Parse(AreaA_Value.Text));
+                string min_string = min.ToString();
+
+                if (min > 15)
+                {
+                    letByDuration.Text = min_string;
+                    stabilisationDuration.Text = min_string;
+                    testDuration.Text = min_string;
+                }
+                else if (min > 2)
+                {
+                    letByDuration.Text = min_string;
+                    testDuration.Text = min_string;
+                }
+            }
+            else
+            {
+                letByDuration.Text = null;
+                stabilisationDuration.Text = null;
+                testDuration.Text = null;
+            }
+        }
+        else
+        {
+            checkAreaA.Color = Colors.White;
+            AreaA.IsVisible = false;
+
+            letByDuration.Text = null;
+            stabilisationDuration.Text = null;
+            testDuration.Text = null;
+        }
+    }
+    public void checkAreaB_Tap(object sender, EventArgs e)
+    {
+        if (checkAreaB.IsChecked)
+        {
+            checkAreaB.Color = Colors.Red;
+            checkAreaA.IsChecked = false;
+            checkAreaCD.IsChecked = false;
+
+            AreaA.IsVisible = false;
+            AreaCD.IsVisible = false;
+            AreaB.IsVisible = true;
+
+            if (AreaB_Value.Text != null)
+            {
+                letByDuration.Text = "2";
+                stabilisationDuration.Text = "15";
+                testDuration.Text = "2";
+
+                double min = Math.Ceiling(double.Parse(AreaB_Value.Text));
+                string min_string = min.ToString();
+
+                if (min > 15)
+                {
+                    letByDuration.Text = min_string;
+                    stabilisationDuration.Text = min_string;
+                    testDuration.Text = min_string;
+                }
+                else if (min > 2)
+                {
+                    letByDuration.Text = min_string;
+                    testDuration.Text = min_string;
+                }
+            }
+            else
+            {
+                letByDuration.Text = null;
+                stabilisationDuration.Text = null;
+                testDuration.Text = null;
+            }
+        }
+        else
+        {
+            checkAreaB.Color = Colors.White;
+            AreaB.IsVisible = false;
+
+            letByDuration.Text = null;
+            stabilisationDuration.Text = null;
+            testDuration.Text = null;
+        }
+    }
+    public void checkAreaCD_Tap(object sender, EventArgs e)
+    {
+        if (checkAreaCD.IsChecked)
+        {
+            checkAreaCD.Color = Colors.Red;
+            checkAreaB.IsChecked = false;
+            checkAreaA.IsChecked = false;
+
+            AreaA.IsVisible = false;
+            AreaB.IsVisible = false;
+            AreaCD.IsVisible = true;
+
+            if (AreaCD_Value.Text != null)
+            {
+                letByDuration.Text = "2";
+                stabilisationDuration.Text = "15";
+                testDuration.Text = "2";
+
+                double min = Math.Ceiling(double.Parse(AreaCD_Value.Text));
+                string min_string = min.ToString();
+
+                if (min > 15)
+                {
+                    letByDuration.Text = min_string;
+                    stabilisationDuration.Text = min_string;
+                    testDuration.Text = min_string;
+                }
+                else if (min > 2)
+                {
+                    letByDuration.Text = min_string;
+                    testDuration.Text = min_string;
+                }
+            }
+            else
+            {
+                letByDuration.Text = null;
+                stabilisationDuration.Text = null;
+                testDuration.Text = null;
+            }
+        }
+        else
+        {
+            checkAreaCD.Color = Colors.White;
+            AreaCD.IsVisible = false;
+
+            letByDuration.Text = null;
+            stabilisationDuration.Text = null;
+            testDuration.Text = null;
+        }
+    }
+
+
+    //public void letByDuration_Completed(object sender, EventArgs e)
+    //{
+    //    EntryChanged(letByDuration);
+    //}
+    //public void stabilisationDuration_Completed(object sender, EventArgs e)
+    //{
+    //    EntryChanged(stabilisationDuration);
+    //}
+    //public void testDuration_Completed(object sender, EventArgs e)
+    //{
+    //    EntryChanged(testDuration);
+    //}
+
 
     private void UpdateTotalPipeworkVolume(Label total, Picker quantificator, double k)
     {
@@ -118,7 +345,7 @@ public partial class OnePage : ContentPage
         pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
         if (meterVolume.Text != null && meterVolume.Text != "0.079d2L*")
-            totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 6).ToString();
+            totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
     }
     private void SubtractTotalPipeworkVolume()
     {
@@ -137,9 +364,118 @@ public partial class OnePage : ContentPage
             pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
             if (meterVolume.Text != null)
-                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 6).ToString();
+                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
         }
     }
+
+    //private void EntryChanged(Entry entry)
+    //{
+    //    double min;
+    //    double setMin = entry == stabilisationDuration ? 15 : 2;
+    //    string value = entry.Text;
+
+    //    if (!checkAreaA.IsChecked && !checkAreaB.IsChecked && !checkAreaCD.IsChecked)
+    //        entry.Text = null;
+    //    else if (checkAreaA.IsChecked)
+    //    {
+    //        if (AreaA_Value.Text != null)
+    //        {
+    //            min = Math.Ceiling(double.Parse(AreaA_Value.Text));
+
+    //            if (double.Parse(entry.Text) < min)
+    //            {
+    //                if (min > setMin)
+    //                    entry.Text = min.ToString();
+    //                else
+    //                    entry.Text = setMin.ToString();
+    //            }
+    //            else if (entry != stabilisationDuration && double.Parse(entry.Text) > double.Parse(stabilisationDuration.Text))
+    //            {
+    //                letByDuration.Text = value;
+    //                stabilisationDuration.Text = value;
+    //                testDuration.Text = value;
+    //            }
+    //            else
+    //            {
+    //                if (min > 15)
+    //                    stabilisationDuration.Text = min.ToString();
+    //                else
+    //                    stabilisationDuration.Text = "15";
+
+    //                letByDuration.Text = value;
+    //                testDuration.Text = value;
+    //            }
+    //        }
+    //        else
+    //            entry.Text = null;
+    //    }
+    //    else if (checkAreaB.IsChecked)
+    //    {
+    //        if (AreaB_Value.Text != null)
+    //        {
+    //            min = Math.Ceiling(double.Parse(AreaB_Value.Text));
+
+    //            if (double.Parse(entry.Text) < min)
+    //            {
+    //                if (min > setMin)
+    //                    entry.Text = min.ToString();
+    //                else
+    //                    entry.Text = setMin.ToString();
+    //            }
+    //            else if (entry != stabilisationDuration && double.Parse(entry.Text) > double.Parse(stabilisationDuration.Text))
+    //            {
+    //                letByDuration.Text = value;
+    //                stabilisationDuration.Text = value;
+    //                testDuration.Text = value;
+    //            }
+    //            else
+    //            {
+    //                if (min > 15)
+    //                    stabilisationDuration.Text = min.ToString();
+    //                else
+    //                    stabilisationDuration.Text = "15";
+
+    //                letByDuration.Text = value;
+    //                testDuration.Text = value;
+    //            }
+    //        }
+    //        else
+    //            entry.Text = null;
+    //    }
+    //    else
+    //    {
+    //        if (AreaCD_Value.Text != null)
+    //        {
+    //            min = Math.Ceiling(double.Parse(AreaCD_Value.Text));
+
+    //            if (double.Parse(entry.Text) < min)
+    //            {
+    //                if (min > setMin)
+    //                    entry.Text = min.ToString();
+    //                else
+    //                    entry.Text = setMin.ToString();
+    //            }
+    //            else if (entry != stabilisationDuration && double.Parse(entry.Text) > double.Parse(stabilisationDuration.Text))
+    //            {
+    //                letByDuration.Text = value;
+    //                stabilisationDuration.Text = value;
+    //                testDuration.Text = value;
+    //            }
+    //            else
+    //            {
+    //                if (min > 15)
+    //                    stabilisationDuration.Text = min.ToString();
+    //                else
+    //                    stabilisationDuration.Text = "15";
+
+    //                letByDuration.Text = value;
+    //                testDuration.Text = value;
+    //            }
+    //        }
+    //        else
+    //            entry.Text = null;
+    //    }
+    //}
 
 
     public void meterVolumePicker_IndexChanged(object sender, EventArgs e)
@@ -162,10 +498,12 @@ public partial class OnePage : ContentPage
             }
 
             if (meterVolume.Text != "0.079d2L*" && pipeworkFittingsIV.Text != null)
-                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 6).ToString();
+                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
         }
         else
+        {
             meterVolumePicker_delete.IsVisible = false;
+        }
     }
     public void meterVolumePicker_Delete(object sender, EventArgs e)
     {
@@ -174,6 +512,41 @@ public partial class OnePage : ContentPage
         meterVolumePicker.SelectedIndex = -1;
     }
 
+
+    public void roomVolume_TextChanged(object sender, EventArgs e)
+    {
+        if (!new[] { null, "", ".", "-", "+" }.Contains(roomVolume.Text) && !new[] { null, " ", ".", "-", "+" }.Contains(gaugeReadableMovement.Text) && totalVolumeForTesting.Text != null && testMediumFactor.Text != null)
+        {
+            AreaB_Value.Text = Math.Round(2.8 * double.Parse(AreaA_Value.Text) / double.Parse(roomVolume.Text), 3).ToString();
+
+            letByDuration.Text = "2";
+            stabilisationDuration.Text = "15";
+            testDuration.Text = "2";
+
+            double min = Math.Ceiling(double.Parse(AreaB_Value.Text));
+            string min_string = min.ToString();
+
+            if (min > 15)
+            {
+                letByDuration.Text = min_string;
+                stabilisationDuration.Text = min_string;
+                testDuration.Text = min_string;
+            }
+            else if (min > 2)
+            {
+                letByDuration.Text = min_string;
+                testDuration.Text = min_string;
+            }
+        }
+        else
+        {
+            AreaB_Value.Text = null;
+
+            letByDuration.Text = null;
+            stabilisationDuration.Text = null;
+            testDuration.Text = null;
+        }
+    }
 
     public void testMediumPicker_IndexChanged(object sender, EventArgs e)
     {
@@ -184,6 +557,7 @@ public partial class OnePage : ContentPage
 
             if (testMediumPicker.SelectedItem.ToString() == "Natural Gas")
                 testMediumFactor.Text = "42";
+
             else
                 testMediumFactor.Text = "67";
         }
@@ -940,5 +1314,68 @@ public partial class OnePage : ContentPage
     {
         pipeworkVolumeNumber = Math.Round(Int64.Parse(pesdr8.SelectedItem.ToString()) * 0.008, 5);
         pesdr8.SelectedIndex = -1;
+    }
+
+    // =======================================================================================================================================================================================
+
+    public void checkAreasWithInadequateVentilationYes_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkAreasWithInadequateVentilationYes.IsChecked)
+        {
+            checkAreasWithInadequateVentilationNo.IsChecked = false;
+            checkAreasWithInadequateVentilationNA.IsChecked = false;
+
+            checkAreasWithInadequateVentilationNo.Color = Colors.White;
+            checkAreasWithInadequateVentilationNA.Color = Colors.White;
+            checkAreasWithInadequateVentilationYes.Color = Colors.Red;
+        }
+        else
+            checkAreasWithInadequateVentilationYes.Color = Colors.White;
+    }
+    public void checkAreasWithInadequateVentilationNo_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkAreasWithInadequateVentilationNo.IsChecked)
+        {
+            checkAreasWithInadequateVentilationYes.IsChecked = false;
+            checkAreasWithInadequateVentilationNA.IsChecked = false;
+
+            checkAreasWithInadequateVentilationYes.Color = Colors.White;
+            checkAreasWithInadequateVentilationNA.Color = Colors.White;
+            checkAreasWithInadequateVentilationNo.Color = Colors.Red;
+        }
+        else
+            checkAreasWithInadequateVentilationNo.Color = Colors.White;
+    }
+    public void checkAreasWithInadequateVentilationNA_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkAreasWithInadequateVentilationNA.IsChecked)
+        {
+            checkAreasWithInadequateVentilationNo.IsChecked = false;
+            checkAreasWithInadequateVentilationYes.IsChecked = false;
+
+            checkAreasWithInadequateVentilationNo.Color = Colors.White;
+            checkAreasWithInadequateVentilationYes.Color = Colors.White;
+            checkAreasWithInadequateVentilationNA.Color = Colors.Red;
+        }
+        else
+            checkAreasWithInadequateVentilationNA.Color = Colors.White;
+    }
+
+    public void testPassedOrFailed_IndexChanged(object sender, EventArgs e)
+    {
+        if (testPassedOrFailed.SelectedIndex != -1)
+        {
+            testPassedOrFailed_x.IsVisible = true;
+            testPassedOrFailed_delete.IsVisible = true;
+        }
+        else
+        {
+            testPassedOrFailed_x.IsVisible = false;
+            testPassedOrFailed_delete.IsVisible = false;
+        }
+    }
+    public void testPassedOrFailed_Delete(object sender, EventArgs e)
+    {
+        testPassedOrFailed.SelectedIndex = -1;
     }
 }

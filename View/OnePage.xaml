@@ -31,7 +31,17 @@
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
                 </Frame>
-                
+
+                <Label Text="For installation volumes over 0.035m³ but under 1m³ or pipework under 6”, IGE/UP/1A applies. For installation volumes under 0.035m³ and pipework under 35mm, IGE/UP/1B applies."
+                       TextColor="#707070"
+                       FontSize="16 "
+                       FontFamily="SatoshiMedium"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
                 <Label Text="Site Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
@@ -880,7 +890,7 @@
 
                     <Label Text="Gauge Readable Movement ( mbar ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="6"/>
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="6" Grid.Column="1">
-                        <local:LinelessEntry x:Name="guageReadableMovement" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
+                        <local:LinelessEntry x:Name="gaugeReadableMovement" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
                     </Frame>
 
                     <Label Text="Tightness Test Pressure ( mbar ) ( TTP ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="7"/>
@@ -1117,76 +1127,302 @@
                 <Label Text="Tightness Testing" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout>
-                    <Label Text="Area Details" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" Margin="15, 0, 0, 0"/>
+                    <Label Text="Area Details" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start"/>
 
-                    <VerticalStackLayout Spacing="-5">
+                    <VerticalStackLayout Spacing="-5" Margin="-10, 0, 0, 0">
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreaA" Color="#fff"/>
-                            <!--<CheckBox.Triggers>-->
-                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="True">
-                                        <Setter Property="Color" Value="Red" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="False">
-                                        <Setter Property="Color" Value="#fff" />
-                                    </DataTrigger>
-
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="True">
-                                        <Setter Property="IsChecked" Value="False"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="False">
-                                        <Setter Property="IsChecked" Value="True"/>
-                                    </DataTrigger>
-                                </CheckBox.Triggers>
-                            </CheckBox>-->
+                            <CheckBox x:Name="checkAreaA" Color="#fff" CheckedChanged="checkAreaA_Tap"/>
 
                             <Label Text="Area A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreaB" Color="#fff"/>
-                            <!--<CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="True">
-                                        <Setter Property="Color" Value="Red" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="False">
-                                        <Setter Property="Color" Value="#fff" />
-                                    </DataTrigger>
-
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="True">
-                                        <Setter Property="IsChecked" Value="False"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="False">
-                                        <Setter Property="IsChecked" Value="True"/>
-                                    </DataTrigger>
-                                </CheckBox.Triggers>
-                            </CheckBox>-->
+                            <CheckBox x:Name="checkAreaB" Color="#fff" CheckedChanged="checkAreaB_Tap"/>
 
                             <Label Text="Area B" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreaCD" Color="#fff"/>
-                            <!--<CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="True">
-                                        <Setter Property="Color" Value="Red" />
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="False">
-                                        <Setter Property="Color" Value="#fff" />
-                                    </DataTrigger>
-
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="True">
-                                        <Setter Property="IsChecked" Value="False"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="False">
-                                        <Setter Property="IsChecked" Value="True"/>
-                                    </DataTrigger>
-                                </CheckBox.Triggers>
-                            </CheckBox>-->
+                            <CheckBox x:Name="checkAreaCD" Color="#fff" CheckedChanged="checkAreaCD_Tap"/>
 
                             <Label Text="Area C &amp; D" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </VerticalStackLayout>
+
+                <Grid x:Name="AreaA" ColumnDefinitions="3*, *" ColumnSpacing="10" IsVisible="False">
+                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Area A" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
+                                <Span Text=": New or Inadequately Vented Area ( Or After a Strength Test ) " FontFamily="SatoshiMedium"/>
+                                <Span Text="( GRM x IV x F1 )" TextColor="#707070" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Line Grid.Column="1" X2="0" Y2="50" Stroke="Red" StrokeThickness="2" VerticalOptions="Center"/>
+
+                    <local:LinelessEntry x:Name="AreaA_Value" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="False" Grid.Column="1"/>
+                </Grid>
+
+                <Grid x:Name="AreaB" ColumnDefinitions="3*, *" RowDefinitions="Auto, Auto" ColumnSpacing="10" IsVisible="False">
+                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Area B" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
+                                <Span Text=": Adequately Vented Internal Areas of Volume Less Than 60m " FontFamily="SatoshiMedium"/>
+                                <Span Text="( 2.8 x GRM x IV x F1 / RV )" TextColor="#707070" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Line Grid.Column="1" Grid.RowSpan="2" X2="0" Y2="100" Stroke="Red" StrokeThickness="2" VerticalOptions="Center"/>
+
+                    <local:LinelessEntry x:Name="AreaB_Value" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="False" Grid.Column="1" Grid.RowSpan="2"/>
+
+                    <Grid ColumnDefinitions="1.5*, *" Grid.Row="1" Margin="0, 5, 0, 0">
+                        <Label Text="Room Volume ( m³ ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+
+                        <Frame Grid.Column="1" Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="roomVolume" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" TextChanged="roomVolume_TextChanged"/>
+                        </Frame>
+                    </Grid>
+                </Grid>
+
+                <Grid x:Name="AreaCD" ColumnDefinitions="3*, *" ColumnSpacing="10" IsVisible="False">
+                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Area C &amp; D" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
+                                <Span Text=":  Adequately Vented Internal of Volume More Than
+                                      ( 60+ ) m³ and External Exposed Areas or Buried Pipe &#10;" FontFamily="SatoshiMedium"/>
+                                <Span Text="( 0.047 x GRM x IV x F1 )" TextColor="#707070" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Line Grid.Column="1" X2="0" Y2="80" Stroke="Red" StrokeThickness="2" VerticalOptions="Center"/>
+
+                    <local:LinelessEntry x:Name="AreaCD_Value" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="False" Grid.Column="1"/>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+                
+                <Grid ColumnDefinitions="2*, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
+                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Let-By Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
+                                <Span Text="( Minimum 2 Mins or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame Grid.Column="1" Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center">
+                        <local:LinelessEntry x:Name="letByDuration" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" IsEnabled="False"/>
+                    </Frame>
+
+                    <Label Grid.Row="1" TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Stabilisation Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
+                                <Span Text="( 15 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame Grid.Row="1" Grid.Column="1" Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center">
+                        <local:LinelessEntry x:Name="stabilisationDuration" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" IsEnabled="False"/>
+                    </Frame>
+
+                    <Label Grid.Row="2" Text="Test Duration ( minutes ) (TTD)" TextColor="Red" FontSize="16" FontAttributes="Bold" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    <Frame Grid.Row="2" Grid.Column="1" Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center">
+                        <local:LinelessEntry x:Name="testDuration" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" IsEnabled="False"/>
+                    </Frame>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONext4"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="OSection5" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Tightness Test Results" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Actual Pressure Drop ( if any ) ( mbar ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="actualPressureDropResult" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Actual Leak Rate ( m³/h ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="actualLeakRateResult" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Areas With Inadequate Ventilation Checked?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkAreasWithInadequateVentilationYes" Color="#fff" CheckedChanged="checkAreasWithInadequateVentilationYes_CheckedChanged"/>
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkAreasWithInadequateVentilationNo" Color="#fff" CheckedChanged="checkAreasWithInadequateVentilationNo_CheckedChanged"/>
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="checkAreasWithInadequateVentilationNA" Color="#fff" CheckedChanged="checkAreasWithInadequateVentilationNA_CheckedChanged"/>
+                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Final Test Results" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                    <Label Text="Test Passed or Failed:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                    <Frame Grid.Column="1" Padding="0" BorderColor="Transparent" CornerRadius="100">
+                        <Grid>
+                            <local:LinelessPicker x:Name="testPassedOrFailed" TextColor="Red" FontSize="20" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225" SelectedIndexChanged="testPassedOrFailed_IndexChanged">
+                                <local:LinelessPicker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>PASS</x:String>
+                                        <x:String>FAIL</x:String>
+                                    </x:Array>
+                                </local:LinelessPicker.ItemsSource>
+                            </local:LinelessPicker>
+
+                            <Label x:Name="testPassedOrFailed_x" Text="×" IsVisible="False" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 15, 0"/>
+
+                            <Frame x:Name="testPassedOrFailed_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="testPassedOrFailed_Delete"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONext5"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="OSection6" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="By signing this document, I confirm that all the work on this form has been completed in accordance with GSIUR, industry standards and procedures and the installation is safe to use, or where appropriate, has been isolated and made safe."
+                       TextColor="Red"
+                       FontSize="16"
+                       FontFamily="SatoshiMedium"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Engineer:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="engineer" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Card Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="cardNumber" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="signature" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Client's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="clientsSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Warning Notice No:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="WarningNoticeRefNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="By signing this document, I confirm that all the work on this form has been completed in accordance with GSIUR, industry standards and procedures and the installation is safe to use, or where appropriate, has been isolated and made safe."
+                       TextColor="Red"
+                       FontSize="16"
+                       FontFamily="SatoshiMedium"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONextFinish"/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
