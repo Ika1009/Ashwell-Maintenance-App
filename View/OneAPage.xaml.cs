@@ -258,7 +258,7 @@ public partial class OneAPage : ContentPage
         pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
         if (meterVolume.Text != null && meterVolume.Text != "0.079d2L*")
-            totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
+            totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
     }
     private void SubtractTotalPipeworkVolume()
     {
@@ -277,7 +277,7 @@ public partial class OneAPage : ContentPage
             pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
             if (meterVolume.Text != null)
-                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
+                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
         }
     }
     public void meterVolumePicker_IndexChanged(object sender, EventArgs e)
@@ -300,7 +300,7 @@ public partial class OneAPage : ContentPage
             }
 
             if (meterVolume.Text != "0.079d2L*" && pipeworkFittingsIV.Text != null)
-                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
+                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
         }
         else
         {
@@ -331,6 +331,24 @@ public partial class OneAPage : ContentPage
     public void testMediumPicker_Delete(object sender, EventArgs e)
     {
         testMediumPicker.SelectedIndex = -1;
+    }
+    public void testGaugeUsed_IndexChanged(object sender, EventArgs e)
+    {
+        if (testGaugeUsed.SelectedIndex != -1)
+        {
+            testGaugeUsed_x.IsVisible = true;
+            testGaugeUsed_delete.IsVisible = true;
+
+        }
+        else
+        {
+            testGaugeUsed_x.IsVisible = false;
+            testGaugeUsed_delete.IsVisible = false;
+        }
+    }
+    public void testGaugeUsed_Delete(object sender, EventArgs e)
+    {
+        testGaugeUsed.SelectedIndex = -1;
     }
     public void installationPicker_IndexChanged(object sender, EventArgs e)
     {

@@ -24,6 +24,7 @@
                 case "BHDS": await Navigation.PushModalAsync(new BoilerHouseDataSheetPage()); break;
                 case "CC": await Navigation.PushModalAsync(new ConformityCheckPage()); break;
                 case "ATT": await Navigation.PushModalAsync(new OneAPage()); break;
+                case "BTT": await Navigation.PushModalAsync(new OneBPage()); break;
                 case "TT": await Navigation.PushModalAsync(new OnePage()); break;
             }
 
@@ -62,7 +63,7 @@
         }
         private void BTT_Tapped(object sender, EventArgs e)
         {
-
+            OpenPage("BTT");
         }
         private void ATT_Tapped(object sender, EventArgs e)
         {

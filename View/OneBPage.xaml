@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ashwell_Maintenance.View.OneBPage"
+             xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             BackgroundColor="#141414">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid RowSpacing="5" Margin="0, 30, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneBBack"/>
+
+            <Image Source="one_b.png" WidthRequest="60" HorizontalOptions="Center"/>
+
+            <Label Grid.Row="1" Text="1B Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+        </Grid>
+
+        <ScrollView x:Name="OBSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="For installation volumes over 1m³ or pipework over 6”, IGE / UP / 1 applies. For installation volumes over 0.035m³ and pipework over 35mm, IGE / UP / 1A applies."
+                       TextColor="#707070"
+                       FontSize="16 "
+                       FontFamily="SatoshiMedium"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Site Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Site Address:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="site" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Location:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name ="location" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Pipe Size Volumes ( m³ )" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Grid ColumnDefinitions="70, *, *, *"
+                      RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                      ColumnSpacing="20"
+                      RowSpacing="10">
+
+                    <Grid Grid.ColumnSpan="4" ColumnDefinitions="70, 0.5*, 1.6*, *, 0.5*">
+                        <Label Grid.Column="2" Text="×" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="3" Text="=" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    </Grid>
+
+                    <Label Text="Steel" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    <Label Text="Length" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                    <Label Text="Volume" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="2"/>
+                    <Label Text="  Total  " TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="3"/>
+
+                    <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="1"/>
+                    <Label Text="1/2''" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1"/>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="steel1" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="steel1_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="steel1_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="steel1_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="steel1_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00024" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                    <Label x:Name="steel1Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="1" Grid.Column="3"/>
+
+                    <Label Text="3/4''" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2"/>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="steel2" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="steel2_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="steel2_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="steel2_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="steel2_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00046" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="2"/>
+                    <Label x:Name="steel2Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="2" Grid.Column="3"/>
+
+                    <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="3"/>
+                    <Label Text="1''" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3"/>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="steel3" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="steel3_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="steel3_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="steel3_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="steel3_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00064" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="2"/>
+                    <Label x:Name="steel3Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="3"/>
+
+                    <Label Text="1 1/4''" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="4"/>
+                    <Grid Grid.Row="4" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="steel4" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="steel4_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="steel4_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="steel4_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="steel4_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.0011" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="4" Grid.Column="2"/>
+                    <Label x:Name="steel4Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="4" Grid.Column="3"/>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Grid ColumnDefinitions="70, *, *, *"
+                      RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                      ColumnSpacing="20"
+                      RowSpacing="10">
+
+                    <Grid Grid.ColumnSpan="4" ColumnDefinitions="70, 0.5*, 1.6*, *, 0.5*">
+                        <Label Grid.Column="2" Text="×" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="3" Text="=" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    </Grid>
+
+                    <Label Text="Copper" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    <Label Text="Length" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                    <Label Text="Volume" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="2"/>
+                    <Label Text="  Total  " TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="3"/>
+
+                    <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="1"/>
+                    <Label Text="15mm" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1"/>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="copper1" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="copper1_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="copper1_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="copper1_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="copper1_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00014" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                    <Label x:Name="copper1Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="1" Grid.Column="3"/>
+
+                    <Label Text="22mm" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2"/>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="copper2" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="copper2_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="copper2_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="copper2_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="copper2_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00032" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="2"/>
+                    <Label x:Name="copper2Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="2" Grid.Column="3"/>
+
+                    <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="3"/>
+                    <Label Text="28mm" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3"/>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="copper3" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="copper3_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="copper3_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="copper3_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="copper3_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00054" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="2"/>
+                    <Label x:Name="copper3Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="3"/>
+
+                    <Label Text="35mm" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="4"/>
+                    <Grid Grid.Row="4" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="copper4" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="copper4_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="copper4_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="copper4_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="copper4_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00084" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="4" Grid.Column="2"/>
+                    <Label x:Name="copper4Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="4" Grid.Column="3"/>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Grid ColumnDefinitions="70, *, *, *"
+                      RowDefinitions="Auto, Auto, Auto, Auto"
+                      ColumnSpacing="20"
+                      RowSpacing="10">
+
+                    <Grid Grid.ColumnSpan="4" ColumnDefinitions="70, 0.5*, 1.6*, *, 0.5*">
+                        <Label Grid.Column="2" Text="×" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="3" Text="=" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    </Grid>
+
+                    <Label Text="PE SDR 11" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    <Label Text="Length" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                    <Label Text="Volume" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="2"/>
+                    <Label Text="  Total  " TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="3"/>
+
+                    <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="1"/>
+                    <Label Text="20mm" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1"/>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="pesdr1" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="pesdr1_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="pesdr1_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="pesdr1_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="pesdr1_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00019" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                    <Label x:Name="pesdr1Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="1" Grid.Column="3"/>
+
+                    <Label Text="25mm" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2"/>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="pesdr2" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="pesdr2_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="pesdr2_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="pesdr2_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="pesdr2_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00033" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="2"/>
+                    <Label x:Name="pesdr2Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="2" Grid.Column="3"/>
+
+                    <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="3"/>
+                    <Label Text="32mm" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3"/>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="pesdr3" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="pesdr3_IndexChanged"/>
+                        </Frame>
+
+                        <Label x:Name="pesdr3_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="pesdr3_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="pesdr3_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Label Text="0.00053" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="2"/>
+                    <Label x:Name="pesdr3Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="3"/>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Grid ColumnDefinitions="3*, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="20">
+                    <Label Text="Total Pipework Volume ( m³ ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start"/>
+                    <Label Text="Pipework + Fittings IV ( m³ ) ( +10% ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" Grid.Row="1"/>
+
+                    <Grid Grid.Row="2" ColumnDefinitions="Auto, 2*, 0.5*" ColumnSpacing="5">
+                        <Label Text="Meter Volume ( m³ )" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                        <Grid Grid.Column="1">
+                            <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                                <local:LinelessPicker x:Name="meterVolumePicker" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                      SelectedIndexChanged="meterVolumePicker_IndexChanged">
+                                    <local:LinelessPicker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>G4 / U6</x:String>
+                                            <x:String>U16</x:String>
+                                        </x:Array>
+                                    </local:LinelessPicker.ItemsSource>
+                                </local:LinelessPicker>
+                            </Frame>
+
+                            <Frame x:Name="meterVolumePicker_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="meterVolumePicker_Delete"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+
+                        <Label Grid.Column="2" Text=":" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    </Grid>
+
+                    <Label Text="Total Volume For Testing ( m³ ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="3"/>
+
+                    <Label x:Name="totalPipeworkVolume" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Column="1"/>
+                    <Label x:Name="pipeworkFittingsIV" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="1" Grid.Column="1"/>
+                    <Label x:Name="meterVolume" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="2"  Grid.Column="1"/>
+                    <Label x:Name="totalVolumeForTesting" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="1"/>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneBNext1"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="OBSection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Details Of Tightness / Strength Test" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Grid ColumnDefinitions="1.5*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
+                    <Label Text="Test Medium
+                           ( Test with air if new ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    <Grid Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="testMediumPicker" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                      SelectedIndexChanged="testMediumPicker_IndexChanged">
+                                <local:LinelessPicker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Natural Gas</x:String>
+                                        <x:String>LPG</x:String>
+                                        <x:String>Air</x:String>
+                                    </x:Array>
+                                </local:LinelessPicker.ItemsSource>
+                            </local:LinelessPicker>
+                        </Frame>
+
+                        <Label x:Name="testMediumPicker_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="testMediumPicker_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="testMediumPicker_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+
+                    <Label Text="Installation:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="1"/>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
+                            <local:LinelessPicker x:Name="installationPicker" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
+                                                  SelectedIndexChanged="installationPicker_IndexChanged">
+                                <local:LinelessPicker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>New</x:String>
+                                        <x:String>Existing</x:String>
+                                    </x:Array>
+                                </local:LinelessPicker.ItemsSource>
+                            </local:LinelessPicker>
+                        </Frame>
+
+                        <Label x:Name="installationPicker_x" Text="×" IsVisible="False"
+                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+
+                        <Frame x:Name="installationPicker_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="installationPicker_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+
+                    <Label Text="Is Weather / Temprature Stable?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="2"/>
+                    <FlexLayout Grid.Row="2" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
+                        <HorizontalStackLayout Spacing="-5">
+                            <CheckBox x:Name="checkIsWeatherTemperatureStableYes" IsChecked="True">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsChecked" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="-5">
+                            <CheckBox x:Name="checkIsWeatherTemperatureStableNo">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableNo}, Path=IsChecked}" Value="True">
+                                        <Setter Property="Color" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableNo}, Path=IsChecked}" Value="False">
+                                        <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableYes}, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsChecked" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsWeatherTemperatureStableYes}, Path=IsChecked}" Value="False">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+
+                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </FlexLayout>
+
+                    <Label Text="Test Gauge Used (Electronic, U Gauge etc):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="3"/>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessPicker x:Name="testGaugeUsed" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" SelectedIndexChanged="testGaugeUsed_IndexChanged">
+                                <local:LinelessPicker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>High SG</x:String>
+                                        <x:String>Standard U</x:String>
+                                        <x:String>Electronic</x:String>
+                                    </x:Array>
+                                </local:LinelessPicker.ItemsSource>
+                            </local:LinelessPicker>
+                        </Frame>
+
+                        <Label x:Name="testGaugeUsed_x" Text="×" IsVisible="False" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 15, 0"/>
+
+                        <Frame x:Name="testGaugeUsed_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="testGaugeUsed_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+
+                    <Label Text="Tightness Test Pressure ( mbar ) ( TTP ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="4"/>
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="4" Grid.Column="1">
+                        <local:LinelessEntry x:Name="tightnessTestPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
+                    </Frame>
+
+                    <Label Text="Maximum Permissible Pressure Drop ( mbar ) ( MAPD ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="5"/>
+                    <Grid Grid.Row="5" Grid.Column="1">
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center">
+                            <local:LinelessPicker x:Name="maximumPermissiblePressureDrop" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" SelectedIndexChanged="maximumPermissiblePressureDrop_IndexChanged">
+                                <local:LinelessPicker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>8</x:String>
+                                        <x:String>4</x:String>
+                                        <x:String>2.5</x:String>
+                                        <x:String>1.5</x:String>
+                                        <x:String>1</x:String>
+                                        <x:String>0.5</x:String>
+                                        <x:String>GRM</x:String>
+                                    </x:Array>
+                                </local:LinelessPicker.ItemsSource>
+                            </local:LinelessPicker>
+                        </Frame>
+
+                        <Label x:Name="maximumPermissiblePressureDrop_x" Text="×" IsVisible="False" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 15, 0"/>
+
+                        <Frame x:Name="maximumPermissiblePressureDrop_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="maximumPermissiblePressureDrop_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                </Grid>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneBNext2"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="OBSection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Tightness Testing" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                
+                <Grid ColumnDefinitions="2*, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
+                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Let-By Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
+                                <Span Text="( Minimum 2 Mins )" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame Grid.Column="1" Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center">
+                        <local:LinelessEntry x:Name="letByDuration" Text="1" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" IsEnabled="False"/>
+                    </Frame>
+
+                    <Label Grid.Row="1" TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Stabilisation Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
+                                <Span Text="( 6 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame Grid.Row="1" Grid.Column="1" Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center">
+                        <local:LinelessEntry x:Name="stabilisationDuration" Text="1" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" IsEnabled="False"/>
+                    </Frame>
+
+                    <Label Grid.Row="2" Text="Test Duration ( minutes ) ( TTD )" TextColor="Red" FontSize="16" FontAttributes="Bold" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    <Frame Grid.Row="2" Grid.Column="1" Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center">
+                        <local:LinelessEntry x:Name="testDuration" Text="2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" IsEnabled="False"/>
+                    </Frame>
+                </Grid>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="Tightness Test Results" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Actual Pressure Drop&#10;( if any ) ( mbar ) ( MAPD ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="actualPressureDropResult" Text="0" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" IsEnabled="False"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                    <Label Text="Test Passed or Failed:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="15, 0, 0, 0"/>
+
+                    <Frame Grid.Column="1" Padding="0" BorderColor="Transparent" CornerRadius="100">
+                        <Grid>
+                            <local:LinelessPicker x:Name="testPassedOrFailed" TextColor="Red" FontSize="20" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225" SelectedIndexChanged="testPassedOrFailed_IndexChanged">
+                                <local:LinelessPicker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>PASS</x:String>
+                                        <x:String>FAIL</x:String>
+                                    </x:Array>
+                                </local:LinelessPicker.ItemsSource>
+                            </local:LinelessPicker>
+
+                            <Label x:Name="testPassedOrFailed_x" Text="×" IsVisible="False" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 15, 0"/>
+
+                            <Frame x:Name="testPassedOrFailed_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="testPassedOrFailed_Delete"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+                </Grid>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Engineers Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
+                        <local:LinelessEditor x:Name="engineersComments" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneBNext3"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="OBSection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="By signing this document, I confirm that all the work on this form has been completed in accordance with GSIUR, industry standards and procedures and the installation is safe to use, or where appropriate, has been isolated and made safe."
+                       TextColor="Red"
+                       FontSize="16"
+                       FontFamily="SatoshiMedium"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Engineer:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="engineer" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Card Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="cardNumber" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="signature" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Client's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="clientsSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Warning Notice No:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="WarningNoticeRefNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Label Text="By signing this document, I confirm that all the work on this form has been completed in accordance with GSIUR, industry standards and procedures and the installation is safe to use, or where appropriate, has been isolated and made safe."
+                       TextColor="Red"
+                       FontSize="16"
+                       FontFamily="SatoshiMedium"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneBNextFinish"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

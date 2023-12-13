@@ -881,17 +881,27 @@
                     </FlexLayout>
 
                     <Label Text="Test Gauge Used (Electronic, U Gauge etc):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="4"/>
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="4" Grid.Column="1">
-                        <local:LinelessPicker x:Name="testGuageUsed" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center">
-                            <local:LinelessPicker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>High SG</x:String>
-                                    <x:String>Standard U</x:String>
-                                    <x:String>Electronic</x:String>
-                                </x:Array>
-                            </local:LinelessPicker.ItemsSource>
-                        </local:LinelessPicker>
-                    </Frame>
+                    <Grid Grid.Row="4" Grid.Column="1">
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessPicker x:Name="testGaugeUsed" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" SelectedIndexChanged="testGaugeUsed_IndexChanged">
+                                <local:LinelessPicker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>High SG</x:String>
+                                        <x:String>Standard U</x:String>
+                                        <x:String>Electronic</x:String>
+                                    </x:Array>
+                                </local:LinelessPicker.ItemsSource>
+                            </local:LinelessPicker>
+                        </Frame>
+
+                        <Label x:Name="testGaugeUsed_x" Text="×" IsVisible="False" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 15, 0"/>
+
+                        <Frame x:Name="testGaugeUsed_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="testGaugeUsed_Delete"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
 
                     <Label Text="Tightness Test Pressure ( mbar ) ( TTP ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="5"/>
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="5" Grid.Column="1">
@@ -1129,7 +1139,7 @@
                 </VerticalStackLayout>
 
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
-                    <Label Text="Test Passed or Failed:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    <Label Text="Test Passed or Failed:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="15, 0, 0, 0"/>
 
                     <Frame Grid.Column="1" Padding="0" BorderColor="Transparent" CornerRadius="100">
                         <Grid>
