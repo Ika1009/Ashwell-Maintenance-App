@@ -7,103 +7,58 @@
             InitializeComponent();
         }
 
-        private async void CDM_Tapped(object sender, EventArgs e)
-        {
-            CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false; 
-            BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
-
-            loadingBG.IsRunning = true; loading.IsRunning = true;
-
-            await Navigation.PushModalAsync(new ConstructionDesignManagmentPage());
-
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
-        }
-        private async void ER_Tapped(object sender, EventArgs e)
+        private async void OpenPage(string page)
         {
             CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
             BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
 
             loadingBG.IsRunning = true; loading.IsRunning = true;
 
-            await Navigation.PushModalAsync(new EngineersReportPage());
+            switch (page)
+            {
+                case "CDM": await Navigation.PushModalAsync(new ConstructionDesignManagmentPage()); break;
+                case "ER": await Navigation.PushModalAsync(new EngineersReportPage()); break;
+                case "SR": await Navigation.PushModalAsync(new ServiceRecordPage1()); break;
+                case "GRA": await Navigation.PushModalAsync(new GasRiskAssessmentPage()); break;
+                case "PUR": await Navigation.PushModalAsync(new PressurisationUnitReportPage()); break;
+                case "BHDS": await Navigation.PushModalAsync(new BoilerHouseDataSheetPage()); break;
+                case "CC": await Navigation.PushModalAsync(new ConformityCheckPage()); break;
+                case "ATT": await Navigation.PushModalAsync(new OneAPage()); break;
+                case "TT": await Navigation.PushModalAsync(new OnePage()); break;
+            }
 
             loading.IsRunning = false; loadingBG.IsRunning = false;
 
             CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
             BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
         }
-        private async void SR_Tapped(object sender, EventArgs e)
+        public void CDM_Tapped(object sender, EventArgs e)
         {
-            CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
-            BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
-
-            loadingBG.IsRunning = true; loading.IsRunning = true;
-
-            await Navigation.PushModalAsync(new ServiceRecordPage1());
-
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+            OpenPage("CDM");
         }
-        private async void GRA_Tapped(object sender, EventArgs e)
+        public void ER_Tapped(object sender, EventArgs e)
         {
-            CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
-            BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
-
-            loadingBG.IsRunning = true; loading.IsRunning = true;
-
-            await Navigation.PushModalAsync(new GasRiskAssessmentPage());
-
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+            OpenPage("ER");
         }
-        private async void PUR_Tapped(object sender, EventArgs e)
+        public void SR_Tapped(object sender, EventArgs e)
         {
-            CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
-            BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
-
-            loadingBG.IsRunning = true; loading.IsRunning = true;
-
-            await Navigation.PushModalAsync(new PressurisationUnitReportPage());
-
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+            OpenPage("SR");
         }
-        private async void BHDS_Tapped(object sender, EventArgs e)
+        public void GRA_Tapped(object sender, EventArgs e)
         {
-            CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
-            BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
-
-            loadingBG.IsRunning = true; loading.IsRunning = true;
-
-            await Navigation.PushModalAsync(new BoilerHouseDataSheetPage());
-
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+            OpenPage("GRA");
         }
-        private async void CC_Tapped(object sender, EventArgs e)
+        public void PUR_Tapped(object sender, EventArgs e)
         {
-            CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
-            BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
-
-            loadingBG.IsRunning = true; loading.IsRunning = true;
-
-            await Navigation.PushModalAsync(new ConformityCheckPage());
-
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+            OpenPage("PUR");
+        }
+        public void BHDS_Tapped(object sender, EventArgs e)
+        {
+            OpenPage("BHDS");
+        }
+        public void CC_Tapped(object sender, EventArgs e)
+        {
+            OpenPage("CC");
         }
         private void BTT_Tapped(object sender, EventArgs e)
         {
@@ -111,21 +66,11 @@
         }
         private void ATT_Tapped(object sender, EventArgs e)
         {
-
+            OpenPage("ATT");
         }
-        private async void TT_Tapped(object sender, EventArgs e)
+        public void TT_Tapped(object sender, EventArgs e)
         {
-            CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
-            BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
-
-            loadingBG.IsRunning = true; loading.IsRunning = true;
-
-            await Navigation.PushModalAsync(new OnePage());
-
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+            OpenPage("TT");
         }
     }
 }

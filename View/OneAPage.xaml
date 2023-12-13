@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ashwell_Maintenance.View.OnePage"
+             x:Class="Ashwell_Maintenance.View.OneAPage"
              xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
@@ -19,20 +19,20 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneBack"/>
+            <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneABack"/>
 
-            <Image Source="one.png" WidthRequest="60" HorizontalOptions="Center"/>
+            <Image Source="one_a.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Label Grid.Row="1" Text="1 Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            <Label Grid.Row="1" Text="1A Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
         </Grid>
-        
-        <ScrollView x:Name="OSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
+
+        <ScrollView x:Name="OASection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
                 </Frame>
 
-                <Label Text="For installation volumes over 1m³ or pipework over 6”, IGE / UP / 1 applies. For installation volumes under 0.035m³ and pipework under 35mm, IGE / UP / 1B applies."
+                <Label Text="For installation volumes over 0.035m³ but under 1m³ or pipework under 6”, IGE / UP / 1A applies. For installation volumes under 0.035m³ and pipework under 35mm, IGE / UP / 1B applies."
                        TextColor="#707070"
                        FontSize="16 "
                        FontFamily="SatoshiMedium"
@@ -59,7 +59,7 @@
                         <local:LinelessEntry x:Name ="location" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
-                
+
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
                 </Frame>
@@ -119,7 +119,7 @@
                     </Grid>
                     <Label Text="0.00046" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="2"/>
                     <Label x:Name="steel2Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="2" Grid.Column="3"/>
-                    
+
                     <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="3"/>
                     <Label Text="1''" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3"/>
                     <Grid Grid.Row="3" Grid.Column="1">
@@ -349,7 +349,7 @@
                         <Label Grid.Column="2" Text="×" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                         <Label Grid.Column="3" Text="=" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
                     </Grid>
-                    
+
                     <Label Text="Copper" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
                     <Label Text="Length" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="1"/>
                     <Label Text="Volume" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="2"/>
@@ -496,7 +496,7 @@
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
-                
+
                 <Grid ColumnDefinitions="70, *, *, *"
                       RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                       ColumnSpacing="20"
@@ -677,7 +677,7 @@
                 <Grid ColumnDefinitions="3*, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="20">
                     <Label Text="Total Pipework Volume ( m³ ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start"/>
                     <Label Text="Pipework + Fittings IV ( m³ ) ( +10% ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" Grid.Row="1"/>
-                    
+
                     <Grid Grid.Row="2" ColumnDefinitions="Auto, 2*, 0.5*" ColumnSpacing="5">
                         <Label Text="Meter Volume ( m³ )" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
 
@@ -707,10 +707,10 @@
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </Grid>
-                        
+
                         <Label Grid.Column="2" Text=":" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                     </Grid>
-                    
+
                     <Label Text="Total Volume For Testing ( m³ ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="3"/>
 
                     <Label x:Name="totalPipeworkVolume" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Column="1"/>
@@ -723,11 +723,11 @@
                     <BoxView Color="#222225"/>
                 </Frame>
 
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONext1"/>
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneANext1"/>
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="OSection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="OASection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
@@ -735,9 +735,9 @@
 
                 <Label Text="Details Of Tightness / Strength Test" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <Grid ColumnDefinitions="1.5*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
+                <Grid ColumnDefinitions="1.5*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
                     <Label Text="Test Medium
-                           ( For new, test with air ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                           ( Test with air if new ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                     <Grid Grid.Column="1">
                         <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
                             <local:LinelessPicker x:Name="testMediumPicker" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
@@ -762,14 +762,11 @@
                         </Frame>
                     </Grid>
 
-                    <Label Text="Test Medium Factor (F1):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="1"/>
-                    <Label x:Name="testMediumFactor" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-
-                    <Label Text="Installation:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="2"/>
-                    <Grid Grid.Row="2" Grid.Column="1">
+                    <Label Text="Installation:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="1"/>
+                    <Grid Grid.Row="1" Grid.Column="1">
                         <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
                             <local:LinelessPicker x:Name="installationPicker" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
-                                                      SelectedIndexChanged="installationPicker_IndexChanged">
+                                                  SelectedIndexChanged="installationPicker_IndexChanged">
                                 <local:LinelessPicker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>New</x:String>
@@ -789,8 +786,8 @@
                         </Frame>
                     </Grid>
 
-                    <Label Text="Is Weather / Temprature Stable?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="3"/>
-                    <FlexLayout Grid.Row="3" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
+                    <Label Text="Is Weather / Temprature Stable?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="2"/>
+                    <FlexLayout Grid.Row="2" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
                         <HorizontalStackLayout Spacing="-5">
                             <CheckBox x:Name="checkIsWeatherTemperatureStableYes" IsChecked="True">
                                 <CheckBox.Triggers>
@@ -836,8 +833,8 @@
                         </HorizontalStackLayout>
                     </FlexLayout>
 
-                    <Label Text="Has a Meter Bypass Been Installed?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="4"/>
-                    <FlexLayout Grid.Row="4" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
+                    <Label Text="Has a Meter Bypass Been Installed?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="3"/>
+                    <FlexLayout Grid.Row="3" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
                         <HorizontalStackLayout Spacing="-5">
                             <CheckBox x:Name="checkMeterBypassYes" IsChecked="True">
                                 <CheckBox.Triggers>
@@ -883,62 +880,50 @@
                         </HorizontalStackLayout>
                     </FlexLayout>
 
-                    <Label Text="Test Gauge Used (Electronic, U Gauge etc):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="5"/>
+                    <Label Text="Test Gauge Used (Electronic, U Gauge etc):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="4"/>
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="4" Grid.Column="1">
+                        <local:LinelessPicker x:Name="testGuageUsed" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center">
+                            <local:LinelessPicker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>High SG</x:String>
+                                    <x:String>Standard U</x:String>
+                                    <x:String>Electronic</x:String>
+                                </x:Array>
+                            </local:LinelessPicker.ItemsSource>
+                        </local:LinelessPicker>
+                    </Frame>
+
+                    <Label Text="Tightness Test Pressure ( mbar ) ( TTP ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="5"/>
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="5" Grid.Column="1">
-                        <local:LinelessEntry x:Name="testGuageUsed" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
-                    </Frame>
-
-                    <Label Text="Gauge Readable Movement ( mbar ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="6"/>
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="6" Grid.Column="1">
-                        <local:LinelessEntry x:Name="gaugeReadableMovement" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
-                    </Frame>
-
-                    <Label Text="Tightness Test Pressure ( mbar ) ( TTP ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="7"/>
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" Grid.Row="7" Grid.Column="1">
                         <local:LinelessEntry x:Name="tightnessTestPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
                     </Frame>
 
-                    <Label Text="Maximum Permitted Leak Rate ( m³/h ) ( MPLR ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="8"/>
-                    <Grid Grid.Row="8" Grid.Column="1">
-                        <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
-                            <local:LinelessPicker x:Name="maximumPermittedLeakRate" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
-                                                      SelectedIndexChanged="maximumPermittedLeakRate_IndexChanged">
-                                <local:LinelessPicker.ItemsSource>
-                                    <x:Array Type="{x:Type x:Double}">
-                                        <x:Double>0.03</x:Double>
-                                        <x:Double>0.0005</x:Double>
-                                        <x:Double>0.0014</x:Double>
-                                    </x:Array>
-                                </local:LinelessPicker.ItemsSource>
-                            </local:LinelessPicker>
-                        </Frame>
+                    <Label Text="Room Volume of Smallest Occupied Space ( If Required for MAPD ) ( m³ ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="6"/>
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center" Grid.Row="6" Grid.Column="1">
+                        <local:LinelessEntry x:Name="roomVolumeOfSmallestOccupiedSpace" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
+                    </Frame>
 
-                        <Label x:Name="maximumPermittedLeakRate_x" Text="×" IsVisible="False"
-                               TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 10, 0"/>
+                    <Label Text="Maximum Allowable Pressure Drop ( mbar ) ( MAPD ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="7"/>
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100" VerticalOptions="Center" Grid.Row="7" Grid.Column="1">
+                        <local:LinelessEntry x:Name="maximumAllowablePressureDrop" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
+                    </Frame>
 
-                        <Frame x:Name="maximumPermittedLeakRate_delete" IsVisible="False" BackgroundColor="Transparent" BorderColor="Transparent">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="maximumPermittedLeakRate_Delete"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                    </Grid>
-
-                    <Label Text="Is Barometric Pressure Correction Required?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="9"/>
-                    <FlexLayout Grid.Row="9" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
+                    <Label Text="Any Areas With Inadequate Ventilation to Check?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="8"/>
+                    <FlexLayout Grid.Row="8" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
                         <HorizontalStackLayout Spacing="-5">
-                            <CheckBox x:Name="checkBarometricPressureCorrectionYes" IsChecked="True">
+                            <CheckBox x:Name="checkInadequateVentilationYes" IsChecked="True">
                                 <CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionYes}, Path=IsChecked}" Value="True">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationYes}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionYes}, Path=IsChecked}" Value="False">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationYes}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
                                     </DataTrigger>
 
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionNo}, Path=IsChecked}" Value="True">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterBypassNcheckInadequateVentilationNo}, Path=IsChecked}" Value="True">
                                         <Setter Property="IsChecked" Value="False"/>
                                     </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionNo}, Path=IsChecked}" Value="False">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationNo}, Path=IsChecked}" Value="False">
                                         <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
@@ -948,19 +933,19 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout Spacing="-5">
-                            <CheckBox x:Name="checkBarometricPressureCorrectionNo">
+                            <CheckBox x:Name="checkInadequateVentilationNo">
                                 <CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionNo}, Path=IsChecked}" Value="True">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationNo}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionNo}, Path=IsChecked}" Value="False">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationNo}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
                                     </DataTrigger>
 
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionYes}, Path=IsChecked}" Value="True">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationYes}, Path=IsChecked}" Value="True">
                                         <Setter Property="IsChecked" Value="False"/>
                                     </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBarometricPressureCorrectionYes}, Path=IsChecked}" Value="False">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationYes}, Path=IsChecked}" Value="False">
                                         <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
@@ -975,11 +960,11 @@
                     <BoxView Color="#222225"/>
                 </Frame>
 
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONext2"/>
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneANext2"/>
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="OSection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="OASection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
@@ -997,20 +982,13 @@
                            Removed / Bypassed?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="1"/>
                     <FlexLayout Grid.Row="1" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
                         <HorizontalStackLayout Spacing="-5">
-                            <CheckBox x:Name="checkComponentsRemovedBypassedYes" IsChecked="True">
+                            <CheckBox x:Name="checkComponentsRemovedBypassedYes">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
                                     </DataTrigger>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
-                                    </DataTrigger>
-
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="True">
-                                        <Setter Property="IsChecked" Value="False"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="False">
-                                        <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
@@ -1026,13 +1004,6 @@
                                     </DataTrigger>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
-                                    </DataTrigger>
-
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="True">
-                                        <Setter Property="IsChecked" Value="False"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="False">
-                                        <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
@@ -1065,20 +1036,13 @@
                     <Label Text="Test Passed or Failed" TextColor="Red" FontSize="16" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="6"/>
                     <FlexLayout Grid.Row="6" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
                         <HorizontalStackLayout Spacing="-5" Margin="-5, 0, 0, 0">
-                            <CheckBox x:Name="checkTestPassedOrFailedPass" IsChecked="True">
+                            <CheckBox x:Name="checkTestPassedOrFailedPass">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
                                     </DataTrigger>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
-                                    </DataTrigger>
-
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="True">
-                                        <Setter Property="IsChecked" Value="False"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="False">
-                                        <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
@@ -1095,13 +1059,6 @@
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
                                     </DataTrigger>
-
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="True">
-                                        <Setter Property="IsChecked" Value="False"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="False">
-                                        <Setter Property="IsChecked" Value="True"/>
-                                    </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
 
@@ -1114,11 +1071,11 @@
                     <BoxView Color="#222225"/>
                 </Frame>
 
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONext3"/>
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneANext3"/>
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="OSection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="OASection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
@@ -1126,97 +1083,12 @@
 
                 <Label Text="Tightness Testing" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
-                <VerticalStackLayout>
-                    <Label Text="Area Details" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start"/>
-
-                    <VerticalStackLayout Spacing="-5" Margin="-10, 0, 0, 0">
-                        <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreaA" Color="#fff" CheckedChanged="checkAreaA_Tap"/>
-
-                            <Label Text="Area A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreaB" Color="#fff" CheckedChanged="checkAreaB_Tap"/>
-
-                            <Label Text="Area B" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreaCD" Color="#fff" CheckedChanged="checkAreaCD_Tap"/>
-
-                            <Label Text="Area C &amp; D" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </VerticalStackLayout>
-
-                <Grid x:Name="AreaA" ColumnDefinitions="3*, *" ColumnSpacing="10" IsVisible="False">
-                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Area A" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                <Span Text=": New or Inadequately Vented Area ( Or After a Strength Test ) " FontFamily="SatoshiMedium"/>
-                                <Span Text="( GRM x IV x F1 )" TextColor="#707070" FontFamily="SatoshiMedium"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-
-                    <Line Grid.Column="1" X2="0" Y2="50" Stroke="Red" StrokeThickness="2" VerticalOptions="Center"/>
-
-                    <local:LinelessEntry x:Name="AreaA_Value" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="False" Grid.Column="1"/>
-                </Grid>
-
-                <Grid x:Name="AreaB" ColumnDefinitions="3*, *" RowDefinitions="Auto, Auto" ColumnSpacing="10" IsVisible="False">
-                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Area B" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                <Span Text=": Adequately Vented Internal Areas of Volume Less Than 60m " FontFamily="SatoshiMedium"/>
-                                <Span Text="( 2.8 x GRM x IV x F1 / RV )" TextColor="#707070" FontFamily="SatoshiMedium"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-
-                    <Line Grid.Column="1" Grid.RowSpan="2" X2="0" Y2="100" Stroke="Red" StrokeThickness="2" VerticalOptions="Center"/>
-
-                    <local:LinelessEntry x:Name="AreaB_Value" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="False" Grid.Column="1" Grid.RowSpan="2"/>
-
-                    <Grid ColumnDefinitions="1.5*, *" Grid.Row="1" Margin="0, 5, 0, 0">
-                        <Label Text="Room Volume ( m³ ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
-
-                        <Frame Grid.Column="1" Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="roomVolume" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Keyboard="Numeric" TextChanged="roomVolume_TextChanged"/>
-                        </Frame>
-                    </Grid>
-                </Grid>
-
-                <Grid x:Name="AreaCD" ColumnDefinitions="3*, *" ColumnSpacing="10" IsVisible="False">
-                    <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Area C &amp; D" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                <Span Text=":  Adequately Vented Internal of Volume More Than
-                                      ( 60+ ) m³ and External Exposed Areas or Buried Pipe &#10;" FontFamily="SatoshiMedium"/>
-                                <Span Text="( 0.047 x GRM x IV x F1 )" TextColor="#707070" FontFamily="SatoshiMedium"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-
-                    <Line Grid.Column="1" X2="0" Y2="80" Stroke="Red" StrokeThickness="2" VerticalOptions="Center"/>
-
-                    <local:LinelessEntry x:Name="AreaCD_Value" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="False" Grid.Column="1"/>
-                </Grid>
-
-                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#222225"/>
-                </Frame>
-                
                 <Grid ColumnDefinitions="2*, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
                     <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Let-By Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                <Span Text="( Minimum 2 Mins or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                                <Span Text="( Minimum 2 Mins )" FontFamily="SatoshiMedium"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -1228,7 +1100,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Stabilisation Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                <Span Text="( 15 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                                <Span Text="( 6 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -1242,16 +1114,6 @@
                     </Frame>
                 </Grid>
 
-                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONext4"/>
-            </VerticalStackLayout>
-        </ScrollView>
-
-        <ScrollView x:Name="OSection5" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
                 </Frame>
@@ -1259,47 +1121,12 @@
                 <Label Text="Tightness Test Results" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Actual Pressure Drop ( if any ) ( mbar ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <Label Text="Actual Pressure Drop&#10;( if any ) ( mbar ) ( MAPD ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                         <local:LinelessEntry x:Name="actualPressureDropResult" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Actual Leak Rate ( m³/h ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="actualLeakRateResult" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
-                    </Frame>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Areas With Inadequate Ventilation Checked?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
-
-                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
-                        <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreasWithInadequateVentilationYes" Color="#fff" CheckedChanged="checkAreasWithInadequateVentilationYes_CheckedChanged"/>
-                            <Label Text="Yes" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreasWithInadequateVentilationNo" Color="#fff" CheckedChanged="checkAreasWithInadequateVentilationNo_CheckedChanged"/>
-                            <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout>
-                            <CheckBox x:Name="checkAreasWithInadequateVentilationNA" Color="#fff" CheckedChanged="checkAreasWithInadequateVentilationNA_CheckedChanged"/>
-                            <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
-                        </HorizontalStackLayout>
-                    </FlexLayout>
-                </VerticalStackLayout>
-
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
-                <Label Text="Final Test Results" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
                     <Label Text="Test Passed or Failed:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
@@ -1326,15 +1153,15 @@
                     </Frame>
                 </Grid>
 
-                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONext5"/>
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneANext4"/>
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="OSection6" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="OASection5" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40">
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
                     <BoxView Color="#222225"/>
@@ -1422,7 +1249,7 @@
                     <BoxView Color="#222225"/>
                 </Frame>
 
-                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONextFinish"/>
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneANextFinish"/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
