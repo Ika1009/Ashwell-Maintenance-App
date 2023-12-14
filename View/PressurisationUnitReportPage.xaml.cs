@@ -53,7 +53,7 @@ public partial class PressurisationUnitReportPage : ContentPage
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         string reportName = $"Ashwell_Pressurisation_Report_{dateTimeString}.pdf";
 
-        PdfCreation.CreateEngineersReport(GatherReportData());
+        PdfCreation.PressurisationReport(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {
@@ -62,7 +62,7 @@ public partial class PressurisationUnitReportPage : ContentPage
 
         //  reportData.Add("", .Text ?? string.Empty);
         //  reportData.Add("", .IsChecked.ToString());
-        string SNameAdress = siteAddress.Text + siteName.Text;
+        string SNameAdress = siteAddress.Text+" "+ siteName.Text;
         reportData.Add("siteNameAndAddress", SNameAdress?? string.Empty);
         reportData.Add("totalHeatingSystemRating", totalHeatingSystemRating.Text ?? string.Empty);
         reportData.Add("numberOfBoilers", numberOfBoilers.Text ?? string.Empty);
