@@ -66,7 +66,7 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
-        public static async Task GasRisk(Dictionary<string, string> dic)
+        public static async Task<byte[]> GasRisk(Dictionary<string, string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -112,12 +112,12 @@ namespace Ashwell_Maintenance
             string text = dic["pipeworkComments"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
-            tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//coments 1
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//coments 1
 
             boundingBox = new XRect(273, 226, 277, 83);
             text = dic["meterComments"];
             layoutRectangle = boundingBox;
-            tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//coments 2
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//coments 2
 
 
             double x = 185;
@@ -551,8 +551,12 @@ namespace Ashwell_Maintenance
             string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
 
             document.Save(filePath);
+
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
         }
-        public static async Task<PdfDocument> CheckPage(Dictionary<string,string> dic)
+        public static async Task<byte[]> CheckPage(Dictionary<string,string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -701,15 +705,15 @@ namespace Ashwell_Maintenance
             string text = dic["nameAndAddressOfPremises"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
-            tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
             text = dic["location"];
             XRect boundingBox1 = new XRect(80, 255, 475, 26);
             XRect layoutRectangle1 = boundingBox1;
-            tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
             text = dic["ventilationCalculations"];
             XRect boundingBox2 = new XRect(80, 629, 475, 26);
             XRect layoutRectangle2 = boundingBox2;
-            tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle2, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle2, XStringFormats.TopLeft);
 
             x = 38;
             y = 750;
@@ -748,22 +752,22 @@ namespace Ashwell_Maintenance
             XRect boundingBox3 = new XRect(417, 534, 138, 13);
             XRect layoutRectangle3 = boundingBox3;
             text = dic["ventilationChecksComments"];
-            tf.DrawString(text, new XFont("Calibri", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
 
             boundingBox3 = new XRect(150, 74, 212, 20);
             layoutRectangle3 = boundingBox3;
             text = dic["flueChecksComments"];
-            tf.DrawString(text, new XFont("Calibri", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
 
             boundingBox3 = new XRect(74, 98, 288, 18);
             layoutRectangle3 = boundingBox3;
             text = dic["emergencyStopButtonComment"];
-            tf.DrawString(text, new XFont("Calibri", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
 
             boundingBox3 = new XRect(125, 147, 430, 36);
             layoutRectangle3 = boundingBox3;
             text = dic["safetyInterlocksComments"];
-            tf.DrawString(text, new XFont("Calibri", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 5), XBrushes.Black, layoutRectangle3, XStringFormats.TopLeft);
             //checkExistingHighLevelCM,checkExistingLowLevelCM,checkRequiredHighLevelCM,checkRequiredLowLevelCM
             gfx.DrawString(dic["existingHighLevel"], font, XBrushes.Black, new XRect(112, 188, 90, 13), XStringFormats.Center);
             gfx.DrawString(dic["requiredHighLevel"], font, XBrushes.Black, new XRect(112, 207, 90, 13), XStringFormats.Center);
@@ -771,13 +775,15 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["requiredLowLevel"], font, XBrushes.Black, new XRect(367, 207, 90, 13), XStringFormats.Center);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
+            string filePath = System.IO.Path.Combine(downloadsFolder, "ConformityCheckPage.pdf");
 
             document.Save(filePath);
 
-            return document;
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
         }
-        public static async Task<PdfDocument> Boiler(Dictionary<string,string> dic)
+        public static async Task<byte[]> Boiler(Dictionary<string,string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -806,7 +812,7 @@ namespace Ashwell_Maintenance
             {
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(30, 50, 200)), new XRect(518.7, 82, 15, 15));
             }
-            if (dic[""] == "True")
+            if (dic["checkTestsCompletedSatisfactoryYes"] == "True")
             {
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(30, 50, 200)), new XRect(488.5, 114.5, 15, 15));
             }
@@ -969,7 +975,10 @@ namespace Ashwell_Maintenance
             string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
 
             document.Save(filePath);
-            return document;
+            // Save to MemoryStream
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
         }
         static public double MeterTypeVolume(string x)
         {
@@ -1685,7 +1694,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task CreateEngineersReport(Dictionary<string, string> dic )
+        public static async Task<byte[]> CreateEngineersReport(Dictionary<string, string> dic )
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1799,10 +1808,13 @@ namespace Ashwell_Maintenance
 
 
             document.Save(filePath);
-
+            // Save to MemoryStream
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
 
         }
-        public static async Task CDM(Dictionary<string,string> dic)
+        public static async Task<byte[]> CDM(Dictionary<string,string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1930,8 +1942,13 @@ namespace Ashwell_Maintenance
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string filePath = System.IO.Path.Combine(downloadsFolder, $"CDM_Site_Form{dateTimeString}.pdf");
+            document.Save(filePath);
+            // Save to MemoryStream
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
         }
-        public static async Task<PdfDocument> PressurisationReport(Dictionary<string, string> dic)
+        public static async Task<byte[]> PressurisationReport(Dictionary<string, string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -2025,7 +2042,10 @@ namespace Ashwell_Maintenance
 
             document.Save(filePath);
 
-            return document;
+            // Save to MemoryStream
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
 
         }
        

@@ -87,7 +87,7 @@ public partial class ConformityCheckPage : ContentPage
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         string reportName = $"Ashwell_Engineers_Report_{dateTimeString}.pdf";
 
-        PdfCreation.Boiler(GatherReportData());
+        PdfCreation.CheckPage(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {
