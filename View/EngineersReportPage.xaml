@@ -24,15 +24,17 @@
 
             <Image Source="engineers_report.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Label Grid.Row="1" Text="Engineers Report" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <Label Text="Engineers Report" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
         </Grid>
 
         <ScrollView x:Name="ERSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="CLIENTS NAME" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
@@ -139,7 +141,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
                 
@@ -148,11 +150,7 @@
         </ScrollView>
 
         <ScrollView x:Name="ERSection2" IsVisible="false" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="DESCRIPTION OF WORK CARRIED OUT" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
@@ -161,7 +159,7 @@
                     </Frame>
                 </VerticalStackLayout>
                 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -170,11 +168,7 @@
         </ScrollView>
 
         <ScrollView x:Name="ERSection3" IsVisible="false" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-                
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="SPILLAGE TEST PERFORMED:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
@@ -502,7 +496,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -530,14 +524,11 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
-
                 <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ERNext3"/>
-                
-
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

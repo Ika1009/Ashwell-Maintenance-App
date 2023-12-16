@@ -3,31 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
              x:Class="Ashwell_Maintenance.View.SignaturePage"
-             Title="SignaturePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Customer's Signature:"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            x:Name="signatureTitle"/>
-        <toolkit:DrawingView
-            x:Name="drawingView"
-            BackgroundColor="White"
-            Margin="15"
-            WidthRequest="400"
-            HeightRequest="400"
-            IsMultiLineModeEnabled="True"
-            HorizontalOptions="Center"
-            ></toolkit:DrawingView>
+             BackgroundColor="#141414">
 
-        <HorizontalStackLayout>
-            <Button Text="Clear"
-                HorizontalOptions="Center"
-                Clicked="Clear_Button_Clicked"/>
-            <Button Text="Save"
-                HorizontalOptions="Center"
-                Clicked="Save_Button_Clicked"/>
-        </HorizontalStackLayout>
+    <Grid Padding="20" RowDefinitions="100, *, 200">
+        <Label Text="Signatures" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" VerticalOptions="Center"  HorizontalOptions="Center" />
+        
+        <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Center" Clicked="SignaturesBack"/>
 
-    </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1" Spacing="20" VerticalOptions="Center">
+            <Label x:Name="signatureTitle" Text="Customer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center"  HorizontalOptions="Center"/>
+
+            <Grid>
+                <Frame Padding="0" HeightRequest="250" BorderColor="Transparent">
+                    <Grid>
+                        <toolkit:DrawingView Grid.Row="1" x:Name="drawingViewCustomer" BackgroundColor="#fff" HorizontalOptions="Center" IsMultiLineModeEnabled="True"/>
+                        <toolkit:DrawingView Grid.Row="1" x:Name="drawingViewEngineer" IsVisible="False" BackgroundColor="#fff" HorizontalOptions="Center" IsMultiLineModeEnabled="True"/>
+                    </Grid>
+                </Frame>
+
+                <Border x:Name="signatureBorder" Stroke="Red" BackgroundColor="Transparent" StrokeThickness="5" HeightRequest="270" Margin="-10, 0" Padding="0" Opacity="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                </Border>
+            </Grid>
+        </VerticalStackLayout>
+
+        <FlexLayout Grid.Row="2" JustifyContent="SpaceEvenly">
+            <Button Padding="0, 20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" CornerRadius="100" Clicked="Clear_Button_Clicked"
+                    Text="Clear" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#707070"/>
+
+            <Button Padding="0, 20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" CornerRadius="100" Clicked="Save_Button_Clicked"
+                    Text="Save" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#c20000"/>
+        </FlexLayout>
+    </Grid>
 </ContentPage>

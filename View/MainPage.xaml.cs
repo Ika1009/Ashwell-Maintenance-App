@@ -7,7 +7,7 @@
             InitializeComponent();
         }
 
-        private async void OpenPage(string page)
+        public async void OpenPage(string page)
         {
             CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
             BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
@@ -18,7 +18,7 @@
             {
                 case "CDM": await Navigation.PushModalAsync(new ConstructionDesignManagmentPage()); break;
                 case "ER": await Navigation.PushModalAsync(new EngineersReportPage()); break;
-                case "SR": await Navigation.PushModalAsync(new ServiceRecordPage1()); break;
+                case "SR": await Navigation.PushModalAsync(new ServiceRecordPage()); break;
                 case "GRA": await Navigation.PushModalAsync(new GasRiskAssessmentPage()); break;
                 case "PUR": await Navigation.PushModalAsync(new PressurisationUnitReportPage()); break;
                 case "BHDS": await Navigation.PushModalAsync(new BoilerHouseDataSheetPage()); break;

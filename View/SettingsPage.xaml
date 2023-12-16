@@ -2,11 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ashwell_Maintenance.View.SettingsPage"
-             Title="SettingsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#141414">
+
+    <Grid>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid RowSpacing="5" Margin="0, 30, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="settings.png" WidthRequest="60" HorizontalOptions="Center"/>
+
+                <VerticalStackLayout Grid.Row="1" Spacing="20">
+                    <Label Text="Settings Page" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                    <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                        <BoxView Color="#222225"/>
+                    </Frame>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+
+        <Label Text="Settings Page Not Yet Added." TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+    </Grid>
 </ContentPage>

@@ -4,12 +4,12 @@ using System.Text.Json;
 
 namespace Ashwell_Maintenance.View;
 
-public partial class ServiceRecordPage1 : ContentPage
+public partial class ServiceRecordPage : ContentPage
 {
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
-    public ServiceRecordPage1()
+    public ServiceRecordPage()
     {
         InitializeComponent();
     }

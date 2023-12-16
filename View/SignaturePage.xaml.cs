@@ -16,27 +16,57 @@ public partial class SignaturePage : ContentPage
         InitializeComponent();
     }
 
+    public async void SignaturesBack(object sender, EventArgs e)
+    {
+        if (savedImageData == null)
+            await Navigation.PopModalAsync();
+        else
+        {
+            drawingViewEngineer.IsVisible = false;
+            drawingViewCustomer.IsVisible = true;
+
+            savedImageData = null;
+            signatureTitle.Text = "Customer's Signature:";
+        }
+    }
+
     private void Clear_Button_Clicked(object sender, EventArgs e)
     {
-        drawingView.Clear();
+        if (drawingViewCustomer.IsVisible)
+            drawingViewCustomer.Clear();
+        else
+            drawingViewEngineer.Clear();
     }
 
     private async void Save_Button_Clicked(object sender, EventArgs e)
     {
-        using var stream = await drawingView.GetImageStream(100, 100);
-        using var memoryStream = new MemoryStream();
-        stream.CopyTo(memoryStream);
+        try
+        {
+            using var stream = drawingViewCustomer.IsVisible ? await drawingViewCustomer.GetImageStream(100, 100) : await drawingViewEngineer.GetImageStream(100, 100);
+            using var memoryStream = new MemoryStream();
+            stream.CopyTo(memoryStream);
 
-        if (savedImageData == null)
-        {
-            savedImageData = memoryStream.ToArray();
-            drawingView.Clear();
-            signatureTitle.Text = "Engineer's Signature:";
+            if (savedImageData == null)
+            {
+                drawingViewCustomer.IsVisible = false;
+                drawingViewEngineer.IsVisible = true;
+
+                savedImageData = memoryStream.ToArray();
+                signatureTitle.Text = "Engineer's Signature:";
+            }
+            else
+            {
+                OnImagesSaved(savedImageData, memoryStream.ToArray());
+                await Navigation.PopModalAsync(); // Close the modal
+            }
         }
-        else
+        catch
         {
-            OnImagesSaved(savedImageData, memoryStream.ToArray());
-            await Navigation.PopModalAsync(); // Close the modal
+            // Kolko sam uzasan u ovome lol, ali radi? - Nixa
+
+            await signatureBorder.FadeTo(1, 100);
+            await signatureBorder.FadeTo(1, 250);
+            await signatureBorder.FadeTo(0, 1000);
         }
     }
     private void OnImagesSaved(byte[] image1, byte[] image2)

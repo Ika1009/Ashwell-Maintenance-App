@@ -3,13 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ashwell_Maintenance.View.DisplayedProjectsPage"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
-             Title="Projects"
-             BackgroundColor="#141414">
+             BackgroundColor="#141414"
+             Shell.NavBarIsVisible="False">
 
-    <Grid Padding="20, 0">
-        <ScrollView VerticalScrollBarVisibility="Never">
+    <Grid Padding="20, 20, 20, 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid RowSpacing="5" Margin="0, 30, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="JobsBack"/>
+
+            <Image x:Name="icon" WidthRequest="60" HorizontalOptions="Center"/>
+
+            <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <Label x:Name="title" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
+        
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40">
-
                 <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 20, 0, 0"/>
 
                 <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
@@ -26,7 +49,7 @@
                     </Frame>
 
 
-                    <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 200">
+                    <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 100">
                         <ListView.RowHeight>60</ListView.RowHeight>
 
                         <ListView.ItemTemplate>

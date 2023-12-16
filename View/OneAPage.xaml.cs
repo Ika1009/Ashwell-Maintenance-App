@@ -6,8 +6,8 @@ public partial class OneAPage : ContentPage
     double totalPipeworkVolumeNumber = 0;
 
     public OneAPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         List<Int64> numbers = new List<Int64>();
         for (Int64 i = 1; i <= 88; i++)
@@ -46,10 +46,10 @@ public partial class OneAPage : ContentPage
     }
 
     [Obsolete]
-	public async void OneABack(object sender, EventArgs e)
-	{
+    public async void OneABack(object sender, EventArgs e)
+    {
         if (OASection1.IsVisible)
-		    await Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         else if (OASection2.IsVisible)
         {
             OASection2.IsVisible = false;

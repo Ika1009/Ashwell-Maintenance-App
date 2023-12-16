@@ -23,15 +23,17 @@
 
             <Image Source="gas_risk_assessment.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Label Grid.Row="1" Text="Gas Installation&#10; Risk Assessment" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <Label Text="Gas Installation&#10; Risk Assessment" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" >
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
         </Grid>
 
         <ScrollView x:Name="GRASection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Site &amp; Client" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout>
@@ -565,11 +567,7 @@
         </ScrollView>
 
         <ScrollView x:Name="GRASection2" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Pipework Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout>
@@ -1922,11 +1920,7 @@
         </ScrollView>
 
         <ScrollView x:Name="GRASection3" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="By sining this document, I certified that I carried out the above agreed service work on the date provided and all this information is correct."
                        TextColor="#707070"
                        FontSize="16 "

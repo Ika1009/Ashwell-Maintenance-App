@@ -23,15 +23,17 @@
 
             <Image Source="one_a.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Label Grid.Row="1" Text="1A Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <Label Text="1A Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
         </Grid>
 
         <ScrollView x:Name="OASection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="For installation volumes over 0.035m³ but under 1m³ or pipework under 6”, IGE / UP / 1A applies. For installation volumes under 0.035m³ and pipework under 35mm, IGE / UP / 1B applies."
                        TextColor="#707070"
                        FontSize="16 "
@@ -60,7 +62,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -728,11 +730,7 @@
         </ScrollView>
 
         <ScrollView x:Name="OASection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Details Of Tightness / Strength Test" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Grid ColumnDefinitions="1.5*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
@@ -930,7 +928,7 @@
                                         <Setter Property="Color" Value="#fff" />
                                     </DataTrigger>
 
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterBypassNcheckInadequateVentilationNo}, Path=IsChecked}" Value="True">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationNo}, Path=IsChecked}" Value="True">
                                         <Setter Property="IsChecked" Value="False"/>
                                     </DataTrigger>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkInadequateVentilationNo}, Path=IsChecked}" Value="False">
@@ -975,11 +973,7 @@
         </ScrollView>
 
         <ScrollView x:Name="OASection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Strength Testing&#10;( For New or Extensions of Pipework )" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Grid ColumnDefinitions="1.5*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
@@ -1086,11 +1080,7 @@
         </ScrollView>
 
         <ScrollView x:Name="OASection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Tightness Testing" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Grid ColumnDefinitions="2*, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
@@ -1124,7 +1114,7 @@
                     </Frame>
                 </Grid>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1172,11 +1162,7 @@
         </ScrollView>
 
         <ScrollView x:Name="OASection5" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="By signing this document, I confirm that all the work on this form has been completed in accordance with GSIUR, industry standards and procedures and the installation is safe to use, or where appropriate, has been isolated and made safe."
                        TextColor="Red"
                        FontSize="16"
@@ -1244,7 +1230,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 

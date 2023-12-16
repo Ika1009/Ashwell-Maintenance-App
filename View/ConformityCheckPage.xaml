@@ -23,16 +23,18 @@
 
             <Image Source="conformity_check.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Label Grid.Row="1" Text="University of Leicester
-                   Conformity Checklist For Gas Installations" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <Label Text="University of Leicester
+                       Conformity Checklist For Gas Installations" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
         </Grid>
         
         <ScrollView x:Name="CCSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Primary Information" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout>
@@ -193,7 +195,7 @@
                     </FlexLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -202,11 +204,7 @@
         </ScrollView>
 
         <ScrollView x:Name="CCSection2" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Ventilation Checks" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
@@ -680,7 +678,7 @@
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -689,11 +687,7 @@
         </ScrollView>
 
         <ScrollView x:Name="CCSection3" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Flue Checks" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
@@ -1170,7 +1164,7 @@
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1179,11 +1173,7 @@
         </ScrollView>
 
         <ScrollView x:Name="CCSection4" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Safety Interlocks" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <VerticalStackLayout Spacing="5">
@@ -1673,7 +1663,7 @@
                 </VerticalStackLayout>
                 
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1682,11 +1672,7 @@
         </ScrollView>
 
         <ScrollView x:Name="CCSection5" Grid.Row="1" IsVisible="false" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Copies must be sent to UoL Technicials  the main site e-mail and not to any site individuals e-mail addresses"
                        TextColor="#707070"
                        FontSize="16 "
@@ -1694,7 +1680,7 @@
                        FontAttributes="Italic"
                        HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 

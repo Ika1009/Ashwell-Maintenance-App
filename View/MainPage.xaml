@@ -257,8 +257,22 @@
             </Grid>
         </Grid>
 
-        <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000"/>
-        <ActivityIndicator x:Name="loading" IsRunning="False" Color="Red" WidthRequest="75" Grid.RowSpan="2"/>
+        <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000">
+            <ActivityIndicator.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="Android" Value="True"/>
+                    <On Platform="iOS" Value="True"/>
+                </OnPlatform>
+            </ActivityIndicator.IsVisible>
+        </ActivityIndicator>
+        <ActivityIndicator x:Name="loading" IsRunning="False" Color="Red" WidthRequest="75" Grid.RowSpan="2">
+            <ActivityIndicator.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="Android" Value="True"/>
+                    <On Platform="iOS" Value="True"/>
+                </OnPlatform>
+            </ActivityIndicator.IsVisible>
+        </ActivityIndicator>
     </Grid>
 
 </ContentPage>
