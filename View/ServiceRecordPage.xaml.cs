@@ -110,7 +110,10 @@ public partial class ServiceRecordPage : ContentPage
     public void ServiceRecordBack(object sender, EventArgs e)
     {
         if (SRSection1.IsVisible)
+        {
+            ServiceRecordBackBtt.IsEnabled = false;
             Navigation.PopModalAsync();
+        }
         else if (SRSection2.IsVisible == true)
         {
             SRSection2.IsVisible = false;
@@ -301,10 +304,10 @@ public partial class ServiceRecordPage : ContentPage
             { "LowFireExcessAir", lowFireExcessAir.Text ?? string.Empty },
             { "LowFireRoomTemp", lowFireRoomTemp.Text ?? string.Empty },
             { "engineersName", engineersName.Text ?? string.Empty },
-            { "engineersSignature", engineersSignature.Text ?? string.Empty },
+            //{ "engineersSignature", engineersSignature.Text ?? string.Empty },
             { "engineersGasSafeID", engineersGasSafeIDNumber.Text ?? string.Empty },
             { "clientsName", clientsName.Text ?? string.Empty },
-            { "clientsSignature", clientsSignature.Text ?? string.Empty },
+            //{ "clientsSignature", clientsSignature.Text ?? string.Empty },
             { "inspectionDate", inspectionDate.Text ?? string.Empty },
             { "commetsDefects", additionalCommentsDefects.Text ?? string.Empty },
             { "warningNoticeIssueNumber", warningNoticeNumber.Text ?? string.Empty }

@@ -1,7 +1,3 @@
-//using AudioUnit;
-//using IntentsUI;
-//using System.Xml.Linq;
-
 namespace Ashwell_Maintenance.View;
 
 public partial class OnePage : ContentPage
@@ -53,7 +49,10 @@ public partial class OnePage : ContentPage
     public async void OneBack(object sender, EventArgs e)
 	{
         if (OSection1.IsVisible)
-		    await Navigation.PopModalAsync();
+        {
+            OneBackBtt.IsEnabled = false;
+            await Navigation.PopModalAsync();
+        }
         else if (OSection2.IsVisible)
         {
             OSection2.IsVisible = false;
@@ -1361,21 +1360,49 @@ public partial class OnePage : ContentPage
             checkAreasWithInadequateVentilationNA.Color = Colors.White;
     }
 
-    public void testPassedOrFailed_IndexChanged(object sender, EventArgs e)
+    private async void stampAnimation(Image image)
+    {
+        var rotate = image.RotateTo(30, 350, Easing.Default);
+        var scale = image.ScaleTo(0.85, 1000, Easing.BounceOut);
+        var opacity = image.FadeTo(0.5, 1000, Easing.BounceOut);
+
+        await Task.WhenAll(opacity, rotate, scale);
+
+        await image.FadeTo(0.5, 2000);
+        await image.FadeTo(0, 200);
+    }
+    private async void stampAnimationEnd(Image image)
+    {
+        await image.FadeTo(0, 0);
+        await image.RotateTo(0, 0);
+        await image.ScaleTo(1, 0);
+    }
+    public async void testPassedOrFailed_IndexChanged(object sender, EventArgs e)
     {
         if (testPassedOrFailed.SelectedIndex != -1)
         {
             testPassedOrFailed_x.IsVisible = true;
             testPassedOrFailed_delete.IsVisible = true;
+
+            if (testPassedOrFailed.SelectedItem.ToString() == "PASS")
+                stampAnimation(passStamp);
+            else
+                stampAnimation(failStamp);
         }
         else
         {
             testPassedOrFailed_x.IsVisible = false;
             testPassedOrFailed_delete.IsVisible = false;
+
+            stampAnimationEnd(passStamp);
+            stampAnimationEnd(failStamp);
         }
     }
     public void testPassedOrFailed_Delete(object sender, EventArgs e)
     {
+        passStamp.CancelAnimations();
+        failStamp.CancelAnimations();
+
         testPassedOrFailed.SelectedIndex = -1;
     }
 }

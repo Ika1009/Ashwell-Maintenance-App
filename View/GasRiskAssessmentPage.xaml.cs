@@ -11,7 +11,10 @@ public partial class GasRiskAssessmentPage : ContentPage
     public async void GasRiskAssessmentBack(object sender, EventArgs e)
 	{
 		if (GRASection1.IsVisible)
-			await Navigation.PopModalAsync();
+        {
+            GasRiskAssessmentBackBtt.IsEnabled = false;
+            await Navigation.PopModalAsync();
+        }
 		else if (GRASection2.IsVisible)
 		{
 			GRASection2.IsVisible = false;
@@ -76,10 +79,10 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("recordTightnessTestResult", recordTightnessTestResult.Text ?? string.Empty);
         reportData.Add("dropRecorded", dropRecorded.Text ?? string.Empty);
         reportData.Add("engineersName", engineersName.Text ?? string.Empty);
-        reportData.Add("engineersSignature", engineersSignature.Text ?? string.Empty);
+        //reportData.Add("engineersSignature", engineersSignature.Text ?? string.Empty);
         reportData.Add("gasSafeOperativeIdNo", gasSafeOperativeIdNo.Text ?? string.Empty);
         reportData.Add("clientsName", clientsName.Text ?? string.Empty);
-        reportData.Add("clientsSignature", clientsSignature.Text ?? string.Empty);
+        //reportData.Add("clientsSignature", clientsSignature.Text ?? string.Empty);
         reportData.Add("completionDate", completionDate.Text ?? string.Empty);
 
 

@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneBack"/>
+            <ImageButton x:Name="OneBackBtt" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneBack"/>
 
             <Image Source="one.png" WidthRequest="60" HorizontalOptions="Center"/>
 
@@ -31,7 +31,7 @@
                 </Frame>
             </VerticalStackLayout>
         </Grid>
-        
+
         <ScrollView x:Name="OSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="For installation volumes over 1m³ or pipework over 6”, IGE / UP / 1 applies. For installation volumes under 0.035m³ and pipework under 35mm, IGE / UP / 1B applies."
@@ -61,7 +61,7 @@
                         <local:LinelessEntry x:Name ="location" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
-                
+
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
@@ -121,7 +121,7 @@
                     </Grid>
                     <Label Text="0.00046" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="2"/>
                     <Label x:Name="steel2Total" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Row="2" Grid.Column="3"/>
-                    
+
                     <BoxView Color="#191919" Grid.ColumnSpan="4" CornerRadius="100" Grid.Row="3"/>
                     <Label Text="1''" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="3"/>
                     <Grid Grid.Row="3" Grid.Column="1">
@@ -351,7 +351,7 @@
                         <Label Grid.Column="2" Text="×" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                         <Label Grid.Column="3" Text="=" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
                     </Grid>
-                    
+
                     <Label Text="Copper" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
                     <Label Text="Length" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="1"/>
                     <Label Text="Volume" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Grid.Column="2"/>
@@ -498,7 +498,7 @@
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
-                
+
                 <Grid ColumnDefinitions="70, *, *, *"
                       RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                       ColumnSpacing="20"
@@ -679,7 +679,7 @@
                 <Grid ColumnDefinitions="3*, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="20">
                     <Label Text="Total Pipework Volume ( m³ ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start"/>
                     <Label Text="Pipework + Fittings IV ( m³ ) ( +10% ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" Grid.Row="1"/>
-                    
+
                     <Grid Grid.Row="2" ColumnDefinitions="Auto, 2*, 0.5*" ColumnSpacing="5">
                         <Label Text="Meter Volume ( m³ )" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
 
@@ -709,10 +709,10 @@
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </Grid>
-                        
+
                         <Label Grid.Column="2" Text=":" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                     </Grid>
-                    
+
                     <Label Text="Total Volume For Testing ( m³ ):" TextColor="#fff" FontSize="14" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="3"/>
 
                     <Label x:Name="totalPipeworkVolume" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Grid.Column="1"/>
@@ -1200,7 +1200,7 @@
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
-                
+
                 <Grid ColumnDefinitions="2*, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
                     <Label TextColor="#fff" FontSize="16" HorizontalTextAlignment="Start">
                         <Label.FormattedText>
@@ -1358,26 +1358,10 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="signature" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="5">
                     <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                         <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Client's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="clientsSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -1407,5 +1391,8 @@
                 <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONextFinish"/>
             </VerticalStackLayout>
         </ScrollView>
+        
+        <Image x:Name="passStamp" Grid.RowSpan="2" Source="pass.png" Opacity="0"/>
+        <Image x:Name="failStamp" Grid.RowSpan="2" Source="fail.png" Opacity="0"/>
     </Grid>
 </ContentPage>

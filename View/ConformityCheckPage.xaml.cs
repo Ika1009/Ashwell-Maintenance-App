@@ -11,7 +11,10 @@ public partial class ConformityCheckPage : ContentPage
     public async void ConformityCheckBack(object sender, EventArgs e)
 	{
 		if (CCSection1.IsVisible)
-			await Navigation.PopModalAsync();
+        {
+            ConformityCheckBackBtt.IsEnabled = false;
+            await Navigation.PopModalAsync();
+        }
 		else if (CCSection2.IsVisible)
 		{
 			CCSection2.IsVisible = false;
