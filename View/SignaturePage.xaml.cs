@@ -26,7 +26,22 @@ public partial class SignaturePage : ContentPage
             drawingViewCustomer.IsVisible = true;
 
             savedImageData = null;
+
+            signatureTitle.CancelAnimations();
+            await Task.WhenAll
+            (
+                signatureTitle.FadeTo(0, 200),
+                signatureTitle.TranslateTo(50, signatureTitle.Y, 300, Easing.SinOut)
+            );
+
             signatureTitle.Text = "Customer's Signature:";
+            signatureTitle.TranslationX = -50;
+
+            await Task.WhenAll
+            (
+                signatureTitle.FadeTo(1, 200),
+                signatureTitle.TranslateTo(0, signatureTitle.Y, 300, Easing.SinOut)
+            );
         }
     }
 
@@ -52,7 +67,22 @@ public partial class SignaturePage : ContentPage
                 drawingViewEngineer.IsVisible = true;
 
                 savedImageData = memoryStream.ToArray();
+
+                signatureTitle.CancelAnimations();
+                await Task.WhenAll
+                (
+                    signatureTitle.FadeTo(0, 200),
+                    signatureTitle.TranslateTo(-50, signatureTitle.Y, 300, Easing.SinOut)
+                );
+
                 signatureTitle.Text = "Engineer's Signature:";
+                signatureTitle.TranslationX = 50;
+
+                await Task.WhenAll
+                (
+                    signatureTitle.FadeTo(1, 200),
+                    signatureTitle.TranslateTo( 0, signatureTitle.Y, 300, Easing.SinOut)
+                );
             }
             else
             {
