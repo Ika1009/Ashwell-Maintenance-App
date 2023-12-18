@@ -12,7 +12,7 @@
             CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
             BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
 
-            loadingBG.IsRunning = true; loading.IsRunning = true;
+            //loadingBG.IsRunning = true; loading.IsRunning = true;
 
             switch (page)
             {
@@ -28,7 +28,7 @@
                 case "TT": await Navigation.PushModalAsync(new OnePage()); break;
             }
 
-            loading.IsRunning = false; loadingBG.IsRunning = false;
+            //loading.IsRunning = false; loadingBG.IsRunning = false;
 
             CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
             BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
