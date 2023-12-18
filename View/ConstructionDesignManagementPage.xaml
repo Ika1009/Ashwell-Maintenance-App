@@ -19,19 +19,21 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ImageButton Clicked="CDMBack" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start"/>
+            <ImageButton x:Name="CDMBackBtt" Clicked="CDMBack" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start"/>
 
             <Image Source="construction_design_management.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Label Grid.Row="1" Text="Construction Design Managament" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <Label Text="Construction Design Managament" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
         </Grid>
 
         <ScrollView x:Name="CDMSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Site Address:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
@@ -113,7 +115,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -122,10 +124,7 @@
         </ScrollView>
 
         <ScrollView x:Name="CDMSection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
-                    <BoxView Color="#222225"/>
-                </Frame>
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
 
                 <Label Text="ANY RED WORDS CHECKED REQUIRES ACTION AND THE OFFICE MUST BE INFORMED IF NO SAFE ACTION CAN BE CARRIED OUT"
                        TextColor="Red"
@@ -133,7 +132,7 @@
                        FontFamily="SatoshiMedium"
                        HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -268,7 +267,7 @@
                     </FlexLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -481,7 +480,7 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -733,7 +732,7 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -870,7 +869,7 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1122,7 +1121,7 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1311,7 +1310,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1384,7 +1383,7 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1457,7 +1456,7 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1666,7 +1665,7 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1676,7 +1675,7 @@
                        FontFamily="SatoshiMedium"
                        HorizontalTextAlignment="Center"/>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -1685,19 +1684,7 @@
         </ScrollView>
 
         <ScrollView x:Name="CDMSection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Engineer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                    <Frame Padding="15, 0" BorderColor="Transparent" HeightRequest="100" BackgroundColor="#222225" CornerRadius="10">
-                        <local:LinelessEditor x:Name="engineersSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
-                </VerticalStackLayout>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 

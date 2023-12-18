@@ -2,46 +2,81 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ashwell_Maintenance.View.DisplayedReportsPage"
-             Title="DisplayedReportsPage"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             Shell.NavBarIsVisible="False"
              BackgroundColor="#141414">
-    <Grid Padding="20">
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
 
-                <ListView x:Name="ReportsListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 200">
-                    <ListView.RowHeight>60</ListView.RowHeight>
+    <Grid>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame BackgroundColor="#222225" CornerRadius="40" HeightRequest="50" BorderColor="Transparent" Padding="0">
-                                    <Grid>
-                                        <Grid Padding="20, 0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="50"/>
-                                                <ColumnDefinition Width="50"/>
-                                                <ColumnDefinition Width="40"/>
-                                            </Grid.ColumnDefinitions>
+            <Grid RowSpacing="5" Margin="0, 30, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                                            <ImageButton Grid.Column="3" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
+                <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="ReportsBack"/>
 
-                                            <Label Text="{Binding ReportName}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                            <Label Text="{Binding ReportType}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                            <Label Text="{Binding CreatedAt}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                <Image Source="sign.png" WidthRequest="60" HorizontalOptions="Center"/>
+
+                <VerticalStackLayout Grid.Row="1" Spacing="20">
+                    <Label Text="Projects To Sign" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                    <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                        <BoxView Color="#222225"/>
+                    </Frame>
+                </VerticalStackLayout>
+            </Grid>
+
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <VerticalStackLayout Spacing="15" x:Name="_folderStackLayout" Margin="0, 30, 0, 200">
+
+                    <ListView x:Name="ReportsListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never">
+                        <ListView.RowHeight>60</ListView.RowHeight>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BackgroundColor="#222225" CornerRadius="40" HeightRequest="50" BorderColor="Transparent" Padding="0">
+                                        <Grid>
+                                            <Grid Padding="20, -10, 20, 5" ColumnDefinitions="*, Auto, 40" RowDefinitions="*, Auto">
+
+                                                <ImageButton Grid.Column="3" Grid.RowSpan="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" Margin="0, 15, 0, 0"/>
+
+                                                <Label Text="{Binding ReportName}" Grid.Row="1" Grid.ColumnSpan="2" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding ReportType}" Grid.RowSpan="2" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                <!--<Label Text="{Binding CreatedAt}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>-->
+
+                                                <Label Grid.Column="1" Grid.RowSpan="2" BindingContext="{x:Static sys:DateTime.Now}"
+                                                       Text="{Binding StringFormat='{0:d}'}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                            </Grid>
+
+                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ReportChosen" CommandParameter="{Binding ReportId}"/>
                                         </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
 
-                                        <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ReportChosen" CommandParameter="{Binding ReportId}"/>
-                                    </Grid>
-                                </Frame>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+        <BoxView Grid.Row="1" Color="Transparent" HeightRequest="200" VerticalOptions="End" IsEnabled="False">
+            <BoxView.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Transparent"
+                            Offset="0.1" />
+                    <GradientStop Color="#141414"
+                            Offset="0.8" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
 
-                <Button Text="Sign the Project" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="SignatureButton_Clicked"/>
-
-            </VerticalStackLayout>
-        </ScrollView>
+        <Button Text="Sign the Project" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" VerticalOptions="End" Clicked="SignatureButton_Clicked" Margin="0, 0, 0, 20"/>
     </Grid>
 </ContentPage>

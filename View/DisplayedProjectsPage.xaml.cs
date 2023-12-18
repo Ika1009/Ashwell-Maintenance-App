@@ -5,6 +5,10 @@ using System.Text.Json;
 
 public partial class DisplayedProjectsPage : ContentPage
 {
+    public async void JobsBack(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
     public ObservableCollection<Folder> Folders = new();
     readonly bool finishedProjects;
     public DisplayedProjectsPage(bool finished)
@@ -12,6 +16,17 @@ public partial class DisplayedProjectsPage : ContentPage
 		InitializeComponent();
         finishedProjects = finished;
         _ = LoadFolders();
+
+        if (finished)
+        {
+            title.Text = "Completed Jobs";
+            icon.Source = "completed_jobs.png";
+        }
+        else
+        {
+            title.Text = "Incompleted Jobs";
+            icon.Source = "incompleted_jobs.png";
+        }
     }
     public class Folder
     {

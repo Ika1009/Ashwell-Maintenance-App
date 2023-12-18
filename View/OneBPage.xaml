@@ -19,19 +19,21 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneBBack"/>
+            <ImageButton x:Name="OneBBackBtt" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneBBack"/>
 
             <Image Source="one_b.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Label Grid.Row="1" Text="1B Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <Label Text="1B Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </VerticalStackLayout>
         </Grid>
 
         <ScrollView x:Name="OBSection1" Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="For installation volumes over 1m³ or pipework over 6”, IGE / UP / 1 applies. For installation volumes over 0.035m³ and pipework over 35mm, IGE / UP / 1A applies."
                        TextColor="#707070"
                        FontSize="16 "
@@ -60,7 +62,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -388,11 +390,7 @@
         </ScrollView>
 
         <ScrollView x:Name="OBSection2" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Details Of Tightness / Strength Test" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                 <Grid ColumnDefinitions="1.5*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
@@ -558,11 +556,7 @@
         </ScrollView>
 
         <ScrollView x:Name="OBSection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Tightness Testing" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
                 
                 <Grid ColumnDefinitions="2*, *" RowDefinitions="Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
@@ -596,7 +590,7 @@
                     </Frame>
                 </Grid>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -652,11 +646,7 @@
         </ScrollView>
 
         <ScrollView x:Name="OBSection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="By signing this document, I confirm that all the work on this form has been completed in accordance with GSIUR, industry standards and procedures and the installation is safe to use, or where appropriate, has been isolated and made safe."
                        TextColor="Red"
                        FontSize="16"
@@ -693,26 +683,10 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="signature" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="5">
                     <Label Text="Client's Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                         <local:LinelessEntry x:Name="clientsName" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Client's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="clientsSignature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -724,7 +698,7 @@
                     </Frame>
                 </VerticalStackLayout>
 
-                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100"  Margin="0, 20, 0, 0">
+                <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
 
@@ -742,5 +716,8 @@
                 <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneBNextFinish"/>
             </VerticalStackLayout>
         </ScrollView>
+
+        <Image x:Name="passStamp" Grid.RowSpan="2" Source="pass.png" Opacity="0"/>
+        <Image x:Name="failStamp" Grid.RowSpan="2" Source="fail.png" Opacity="0"/>
     </Grid>
 </ContentPage>

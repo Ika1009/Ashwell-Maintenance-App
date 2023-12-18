@@ -4,12 +4,12 @@ using System.Text.Json;
 
 namespace Ashwell_Maintenance.View;
 
-public partial class ServiceRecordPage1 : ContentPage
+public partial class ServiceRecordPage : ContentPage
 {
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
-    public ServiceRecordPage1()
+    public ServiceRecordPage()
     {
         InitializeComponent();
     }
@@ -110,7 +110,10 @@ public partial class ServiceRecordPage1 : ContentPage
     public void ServiceRecordBack(object sender, EventArgs e)
     {
         if (SRSection1.IsVisible)
+        {
+            ServiceRecordBackBtt.IsEnabled = false;
             Navigation.PopModalAsync();
+        }
         else if (SRSection2.IsVisible == true)
         {
             SRSection2.IsVisible = false;
@@ -301,10 +304,10 @@ public partial class ServiceRecordPage1 : ContentPage
             { "LowFireExcessAir", lowFireExcessAir.Text ?? string.Empty },
             { "LowFireRoomTemp", lowFireRoomTemp.Text ?? string.Empty },
             { "engineersName", engineersName.Text ?? string.Empty },
-            { "engineersSignature", engineersSignature.Text ?? string.Empty },
+            //{ "engineersSignature", engineersSignature.Text ?? string.Empty },
             { "engineersGasSafeID", engineersGasSafeIDNumber.Text ?? string.Empty },
             { "clientsName", clientsName.Text ?? string.Empty },
-            { "clientsSignature", clientsSignature.Text ?? string.Empty },
+            //{ "clientsSignature", clientsSignature.Text ?? string.Empty },
             { "inspectionDate", inspectionDate.Text ?? string.Empty },
             { "commetsDefects", additionalCommentsDefects.Text ?? string.Empty },
             { "warningNoticeIssueNumber", warningNoticeNumber.Text ?? string.Empty }

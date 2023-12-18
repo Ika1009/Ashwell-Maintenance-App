@@ -11,7 +11,10 @@ public partial class BoilerHouseDataSheetPage : ContentPage
     public async void BoilerHouseDataSheetBack(object sender, EventArgs e)
 	{
 		if (BHDSSection1.IsVisible)
-			await Navigation.PopModalAsync();
+        {
+            BoilderHouseDataSheetBackBtt.IsEnabled = false;
+            await Navigation.PopModalAsync();
+        }
 		else if (BHDSSection2.IsVisible)
 		{
 			BHDSSection2.IsVisible = false;

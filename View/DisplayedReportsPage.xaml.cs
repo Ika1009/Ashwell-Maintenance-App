@@ -27,6 +27,11 @@ public partial class DisplayedReportsPage : ContentPage
         public string CreatedAt { get; set; }
     }
 
+    public async void ReportsBack(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
+
     public void ReportChosen(object sender, EventArgs e)
     {
 
