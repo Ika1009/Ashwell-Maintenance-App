@@ -1208,7 +1208,7 @@ namespace Ashwell_Maintenance
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-            PdfDocument document = new PdfDocument(); document.Info.Title = "Engineers Report Sheet";
+            PdfDocument document = new PdfDocument(); document.Info.Title = "OneApage";
 
 
             PdfPage page = document.AddPage();
@@ -1220,11 +1220,11 @@ namespace Ashwell_Maintenance
 
             XFont font = new XFont("Arial", 10);
 
-          //  XImage image = ConvertToXImage();
-          //  gfx.DrawImage(image, 0, 0, 595, 842);
+            XImage image = await ConvertToXImage(@"one_a_sheet.png");
+            gfx.DrawImage(image, 0, 0, 595, 842);
 
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(86, 104, 476, 14), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(69, 120, 308, 13), XStringFormats.Center);
+            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(86, 104, 476, 14), XStringFormats.Center);
+            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(69, 120, 308, 13), XStringFormats.Center);
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(406, 120, 162, 13), XStringFormats.Center);
 
 
@@ -1240,6 +1240,40 @@ namespace Ashwell_Maintenance
             double x, y;
             x = 106;
             y = 230;
+            int fisrtFor = 0;
+
+            List<string> prviFor = new List<string>
+            {
+                dic["steel1"],
+                dic["steel2"],
+                dic["steel3"],
+                dic["steel4"],
+                dic["steel5"],
+                dic["steel6"],
+                dic["steel7"],
+                dic["steel8"],
+                dic["steel9"],
+                dic["steel10"],
+                dic["steel11"],
+                dic["steel12"],
+                dic["steel13"],
+                dic["copper1"],
+                dic["copper2"],
+                dic["copper3"],
+                dic["copper4"],
+                dic["copper5"],
+                dic["copper6"],
+                dic["copper7"],
+                dic["presdr1"],
+                dic["presdr2"],
+                dic["presdr3"],
+                dic["presdr4"],
+                dic["presdr5"],
+                dic["presdr6"],
+                dic["presdr7"],
+                dic["presdr8"],
+            };
+
             for (int i = 0; i < 30; i++)
             {
                 if (i == 13 || i == 21)
@@ -1247,11 +1281,47 @@ namespace Ashwell_Maintenance
                     y += 10.0;
                     continue;
                 }
-                gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(x, y, 53, 10), XStringFormats.Center);
+                gfx.DrawString(prviFor[firstFor++], font, XBrushes.Black, new XRect(x, y, 53, 10), XStringFormats.Center);
                 y += 10.95;
             }
             y = 230;
             x = 244;
+            List<string> drugiFor = new List<string>
+            {
+                dic["steel1Total"],
+                dic["steel2Total"],
+                dic["steel3Total"],
+                dic["steel4Total"],
+                dic["steel5Total"],
+                dic["steel6Total"],
+                dic["steel7Total"],
+                dic["steel8Total"],
+                dic["steel9Total"],
+                dic["steel10Total"],
+                dic["steel11Total"],
+                dic["steel12Total"],
+                dic["steel13Total"],
+                dic["copper1Total"],
+                dic["copper2Total"],
+                dic["copper3Total"],
+                dic["copper4Total"],
+                dic["copper5Total"],
+                dic["copper6Total"],
+                dic["copper7Total"],
+                dic["presdr1Total"],
+                dic["presdr2Total"],
+                dic["presdr3Total"],
+                dic["presdr4Total"],
+                dic["presdr5Total"],
+                dic["presdr6Total"],
+                dic["presdr7Total"],
+                dic["presdr8Total"],
+                dic["totalPipeworkVolume"],
+                dic["pipeworkFittingsIV"],
+                dic["meterVolumePicker"],
+                dic["totalVolumeForTesting"],
+            };
+            int secondFor = 0;
             for (int i = 0; i < 54; i++)
             {
                 if (i == 33) y -= 2;
@@ -1261,7 +1331,7 @@ namespace Ashwell_Maintenance
                     y += 10.25;
                     continue;
                 }
-                gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(x, y, 62, 10), XStringFormats.Center);
+                gfx.DrawString(drugiFor[secondFor++], font, XBrushes.Black, new XRect(x, y, 62, 10), XStringFormats.Center);
                 y += 10.95;
             }
             gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 698, 56, 20), XStringFormats.Center);
