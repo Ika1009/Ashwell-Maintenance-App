@@ -446,17 +446,74 @@ public partial class OneAPage : ContentPage
             reportData.Add("meterVolumePicker", (meterVolumePicker.SelectedItem).ToString());
         else
             reportData.Add("meterVolumePicker", string.Empty);
-        reportData.Add("meterVolumePicker",  string.Empty);
 
+        if (testMediumPicker.SelectedIndex != -1)
+            reportData.Add("testMediumPicker", (testMediumPicker.SelectedItem).ToString());
+        else
+            reportData.Add("testMediumPicker", string.Empty);
 
-
+        if (installationPicker.SelectedIndex != -1)
+            reportData.Add("installationPicker", (installationPicker.SelectedItem).ToString());
+        else
+            reportData.Add("installationPicker", string.Empty);
 
         reportData.Add("totalPipeworkVolume", totalPipeworkVolume.Text ?? string.Empty);
         reportData.Add("pipeworkFittingsIV", pipeworkFittingsIV.Text ?? string.Empty);
         reportData.Add("meterVolume", meterVolume.Text ?? string.Empty);
         reportData.Add("totalVolumeForTesting", totalVolumeForTesting.Text ?? string.Empty);
-        reportData.Add("", .Text ?? string.Empty);
-        reportData.Add("", .Text ?? string.Empty);
+
+        if (checkIsWeatherTemperatureStableYes.IsChecked)
+            reportData.Add("checkIsWeatherTemperatureStableYes", "yes");
+        else reportData.Add("checkIsWeatherTemperatureStableYes", "no");
+
+        //checkMeterBypassYes,checkInadequateVentilationYes
+        if (checkMeterBypassYes.IsChecked)
+            reportData.Add("checkMeterBypassYes", "yes");
+        else reportData.Add("checkMeterBypassYes", "no");
+
+        if (testGaugeUsed.SelectedIndex != -1)
+            reportData.Add("testGaugeUsed", (testGaugeUsed.SelectedItem).ToString());
+        else
+            reportData.Add("testGaugeUsed", string.Empty);
+
+        reportData.Add("tightnessTestPressure", tightnessTestPressure.Text ?? string.Empty);
+        reportData.Add("roomVolumeOfSmallestOccupiedSpace", roomVolumeOfSmallestOccupiedSpace.Text ?? string.Empty);
+        reportData.Add("maximumAllowablePressureDrop", maximumAllowablePressureDrop.Text ?? string.Empty);
+
+        if (checkInadequateVentilationYes.IsChecked)
+            reportData.Add("checkInadequateVentilationYes", "yes");
+        else reportData.Add("checkInadequateVentilationYes", "no");
+
+        reportData.Add("strengthTestPressure", strengthTestPressure.Text ?? string.Empty);
+        //checkComponentsRemovedBypassedYes
+        if (checkComponentsRemovedBypassedYes.IsChecked)
+            reportData.Add("checkComponentsRemovedBypassedYes", "yes");
+        else reportData.Add("checkComponentsRemovedBypassedYes", "no");
+        reportData.Add("stabilisationPeriod", stabilisationPeriod.Text ?? string.Empty);
+        reportData.Add("strenghtTestDuration", strenghtTestDuration.Text ?? string.Empty);
+        reportData.Add("permittedPressureDrop", permittedPressureDrop.Text ?? string.Empty);
+        reportData.Add("actualPressureDrop", actualPressureDrop.Text ?? string.Empty);
+
+        //checkTestPassedOrFailedPass,testPassedOrFailed
+        if (checkTestPassedOrFailedPass.IsChecked)
+            reportData.Add("checkTestPassedOrFailedPass", "Passed");
+        else reportData.Add("checkTestPassedOrFailedPass", "Failed");
+        reportData.Add("letByDuration", letByDuration.Text ?? string.Empty);
+        reportData.Add("stabilisationDuration", stabilisationDuration.Text ?? string.Empty);
+        reportData.Add("testDuration", testDuration.Text ?? string.Empty);
+        reportData.Add("actualPressureDropResult", actualPressureDropResult.Text ?? string.Empty);
+
+        if (testPassedOrFailed.SelectedIndex != -1)
+            reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
+        else
+            reportData.Add("testPassedOrFailed", string.Empty);
+
+        reportData.Add("date", date.Text ?? string.Empty);
+        reportData.Add("engineer", engineer.Text ?? string.Empty);
+        reportData.Add("cardNumber", cardNumber.Text ?? string.Empty);
+        reportData.Add("clientsName", clientsName.Text ?? string.Empty);
+        reportData.Add("WarningNoticeRefNo", WarningNoticeRefNo.Text ?? string.Empty);
+   
 
         return reportData;
     }

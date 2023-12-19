@@ -1225,17 +1225,17 @@ namespace Ashwell_Maintenance
 
             gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(86, 104, 476, 14), XStringFormats.Center);
             gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(69, 120, 308, 13), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(406, 120, 162, 13), XStringFormats.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(406, 120, 162, 13), XStringFormats.Center);
 
 
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(68, 136, 150, 13), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(283, 136, 92, 13), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(423, 136, 162, 13), XStringFormats.Center);
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(68, 136, 150, 13), XStringFormats.Center);
+            gfx.DrawString(dic["cardNumber"], font, XBrushes.Black, new XRect(283, 136, 92, 13), XStringFormats.Center);
+        //    gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(423, 136, 162, 13), XStringFormats.Center);
 
 
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(81, 152, 137, 13), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(292, 152, 84, 13), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(442, 152, 128, 13), XStringFormats.Center);
+            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(81, 152, 137, 13), XStringFormats.Center);
+          //  gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(292, 152, 84, 13), XStringFormats.Center);
+            gfx.DrawString(dic["WarningNoticeRefNo"], font, XBrushes.Black, new XRect(442, 152, 128, 13), XStringFormats.Center);
 
             double x, y;
             x = 106;
@@ -1318,8 +1318,24 @@ namespace Ashwell_Maintenance
                 dic["presdr8Total"],
                 dic["totalPipeworkVolume"],
                 dic["pipeworkFittingsIV"],
-                dic["meterVolumePicker"],
+                dic["meterVolume"],
                 dic["totalVolumeForTesting"],
+                dic["testMediumPicker"],
+                dic["installationPicker"],
+                dic["checkIsWeatherTemperatureStableYes"],
+                dic["checkMeterBypassYes"],
+                dic["testGaugeUsed"],
+                dic["tightnessTestPressure"],
+                dic["roomVolumeOfSmallestOccupiedSpace"],
+                dic["maximumAllowablePressureDrop"],
+                dic["checkInadequateVentilationYes"],
+                dic["strengthTestPressure"],
+                dic["checkComponentsRemovedBypassedYes"],
+                dic["stabilisationPeriod"],
+                dic["strenghtTestDuration"],
+                dic["permittedPressureDrop"],
+                dic["actualPressureDrop"],
+                dic["checkTestPassedOrFailedPass"],
             };
             int secondFor = 0;
             for (int i = 0; i < 54; i++)
@@ -1334,13 +1350,13 @@ namespace Ashwell_Maintenance
                 gfx.DrawString(drugiFor[secondFor++], font, XBrushes.Black, new XRect(x, y, 62, 10), XStringFormats.Center);
                 y += 10.95;
             }
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 698, 56, 20), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 720, 56, 20), XStringFormats.Center);
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 740, 56, 20), XStringFormats.Center);
+            gfx.DrawString(dic["letByDuration"], font, XBrushes.Black, new XRect(506, 698, 56, 20), XStringFormats.Center);
+            gfx.DrawString(dic["stabilisationDuration"], font, XBrushes.Black, new XRect(506, 720, 56, 20), XStringFormats.Center);
+            gfx.DrawString(dic["testDuration"], font, XBrushes.Black, new XRect(506, 740, 56, 20), XStringFormats.Center);
 
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(506, 774, 56, 8), XStringFormats.Center);
+            gfx.DrawString(dic["actualPressureDropResult"], font, XBrushes.Black, new XRect(506, 774, 56, 8), XStringFormats.Center);
 
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(338, 795, 224, 18), XStringFormats.Center);
+            gfx.DrawString(dic["testPassedOrFailed"], font, XBrushes.Black, new XRect(338, 795, 224, 18), XStringFormats.Center);
 
 
 
