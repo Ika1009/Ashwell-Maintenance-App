@@ -1000,7 +1000,7 @@ namespace Ashwell_Maintenance
                 return 0.079;
             return 0.0024;
         }
-        public static async Task<PdfDocument> _1Up(Dictionary<string, string> dic)
+        public static async Task<byte[]> _1Up(Dictionary<string, string> dic)
         {
 
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -1200,11 +1200,13 @@ namespace Ashwell_Maintenance
             string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1 Sheet.pdf");
 
             document.Save(filePath);
-            
-            return document;
+
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
 
         }
-        public static async Task<PdfDocument> _1A(Dictionary<string,string> dic)
+        public static async Task<byte[]> _1A(Dictionary<string,string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1368,10 +1370,12 @@ namespace Ashwell_Maintenance
 
             document.Save(filePath);
 
-            return document;
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
 
-        
-    }
+
+        }
         public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
