@@ -1212,31 +1212,55 @@
                         <BoxView Color="#222225"/>
                     </Frame>
 
-                    <Label Text="Working Intel Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Working Intel Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="workingIntelPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="workingIntelPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
 
-                    <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
-                        <BoxView Color="#222225"/>
-                    </Frame>
+                        <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                    <Label Text="Recorded Burner Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="recordedBurnerPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="workingIntelPressureComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
+                    </VerticalStackLayout>
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                         <BoxView Color="#222225"/>
                     </Frame>
 
-                    <Label Text="(If Possible) Measured Gas Rate (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Recorded Burner Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="measuredGasRate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="recordedBurnerPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
+
+                        <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="recordedBurnerPressureComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
+                        <BoxView Color="#222225"/>
                     </Frame>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="(If Possible) Measured Gas Rate (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="measuredGasRate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
+
+                        <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="mesuredGasRateComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
+                    </VerticalStackLayout>
 
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1453,11 +1477,19 @@
                         <BoxView Color="#222225"/>
                     </Frame>
 
-                    <Label Text="State Appliance Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="State Appliance Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="stateApplianceCondition" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                    </Frame>
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="stateApplianceCondition" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
+
+                        <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                            <local:LinelessEntry x:Name="stateApplianceConditionComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        </Frame>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
 
                 <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -1644,7 +1676,8 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="5">
-                    <Label Text="Warning Notice Number (If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <Label Text="Unsafe Situations Warning Notice Number
+                           (If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                         <local:LinelessEntry x:Name="warningNoticeNumber" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
