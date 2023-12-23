@@ -2,6 +2,7 @@
 using Ashwell_Maintenance.View;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
+using PdfSharp.Fonts;
 
 namespace Ashwell_Maintenance
 {
@@ -10,6 +11,9 @@ namespace Ashwell_Maintenance
         public App()
         {
             InitializeComponent();
+
+            // Assign the custom font resolver
+            GlobalFontSettings.FontResolver = new CustomFontResolver();
 
             MainPage = new AppShell();
 

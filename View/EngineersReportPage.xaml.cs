@@ -53,12 +53,12 @@ public partial class EngineersReportPage : ContentPage
         ERSection3.IsVisible = true;
     }
     [Obsolete]
-    public void ERNext3(object sender, EventArgs e)
+    public async void ERNext3(object sender, EventArgs e)
     {
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         string  reportName = $"Ashwell_Engineers_Report_{dateTimeString}.pdf";
 
-        PdfCreation.CreateEngineersReport(GatherReportData());
+        await PdfCreation.CreateEngineersReport(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {
