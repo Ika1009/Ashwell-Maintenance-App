@@ -72,6 +72,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         reportData.Add("startDate", startDate.Text ?? string.Empty);
         reportData.Add("other", other.Text ?? string.Empty);
         reportData.Add("date", date.Text ?? string.Empty);
+        reportData.Add("completionDate", date.Text ?? string.Empty);
         //za buduce kometnari
         reportData.Add("ControlActionWorkingAtHeight", ControlActionWorkingAtHeight.Text ?? string.Empty);
         reportData.Add("ControlActionPermitsToWorkRequired", ControlActionPermitsToWorkRequired.Text ?? string.Empty);
