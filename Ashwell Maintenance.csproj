@@ -59,7 +59,7 @@
 	  <MauiImage Remove="Resources\Images\boiler.jpg" />
 	  <MauiImage Remove="Resources\Images\cdm.jpg" />
 	  <MauiImage Remove="Resources\Images\check_page.jpg" />
-	  <MauiImage Remove="Resources\Images\engineers_report.png" />
+	  <MauiImage Remove="Resources\Images\engineers_report_sheet.jpg" />
 	  <MauiImage Remove="Resources\Images\icon_16.jpg" />
 	  <MauiImage Remove="Resources\Images\ige_up_1.jpg" />
 	  <MauiImage Remove="Resources\Images\one_a_sheet.jpg" />
@@ -89,7 +89,6 @@
 	  <EmbeddedResource Include="Resources\Images\boiler.jpg" />
 	  <EmbeddedResource Include="Resources\Images\cdm.jpg" />
 	  <EmbeddedResource Include="Resources\Images\check_page.jpg" />
-	  <EmbeddedResource Include="Resources\Images\engineers_report.png" />
 	  <EmbeddedResource Include="Resources\Images\ige_up_1.jpg" />
 	  <EmbeddedResource Include="Resources\Images\one_a_sheet.jpg" />
 	  <EmbeddedResource Include="Resources\Images\pressurisation_unit_report.jpg" />
@@ -177,6 +176,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Ashwell_Maintenance\Android\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Images\engineers_report_sheet.jpg" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadGenericExceptionInfoBarAshwellMaintenanceHideInfoBar="True" /></VisualStudio></ProjectExtensions>

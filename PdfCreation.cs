@@ -1814,7 +1814,6 @@ namespace Ashwell_Maintenance
 
             XFont font = new XFont("Arial", 10);
 
-
             XImage image = await ConvertToXImage(@"engineers_report_sheet.jpg");
 
             gfx.DrawImage(image, 0, 0, 595, 842);
