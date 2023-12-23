@@ -42,7 +42,8 @@ namespace Ashwell_Maintenance
                     }
                 }
 
-                MemoryStream imageStream = new MemoryStream(imageBytes);
+                // Use this constructor to make the internal buffer publicly visible
+                MemoryStream imageStream = new MemoryStream(imageBytes, 0, imageBytes.Length, true, true);
                 XImage xImage = XImage.FromStream(imageStream);
                 return xImage;
             }
@@ -52,6 +53,7 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+
         public static XImage ConvertToXImage(byte[] imageBytes)
         {
             try
@@ -1390,7 +1392,19 @@ namespace Ashwell_Maintenance
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
 
-            XFont font = new XFont("Arial", 8);
+            XFont font;
+
+            try
+            {
+                // Try to create an XFont with the desired font
+                font = new XFont("Helvetica", 8);
+            }
+            catch (Exception)
+            {
+                // If an exception is thrown, fall back to a different font
+                font = new XFont("Times New Roman", 8); // Replace with any other font you have
+            }
+
 
 
             XImage image = await ConvertToXImage(@"ashwell_service_report.jpg");
@@ -1800,8 +1814,7 @@ namespace Ashwell_Maintenance
 
             XFont font = new XFont("Arial", 10);
 
-
-            XImage image = await ConvertToXImage(@"engineers_report.png");
+            XImage image = await ConvertToXImage(@"engineers_report_sheet.jpg");
 
             gfx.DrawImage(image, 0, 0, 595, 842);
 
