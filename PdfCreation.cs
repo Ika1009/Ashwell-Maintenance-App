@@ -1144,13 +1144,15 @@ namespace Ashwell_Maintenance
                 y += 11.85;
             }
 
-            if (dic["checkAreaA"]=="True")
-            gfx.DrawString(dic["AreaA_Value"], font, XBrushes.Black, new XRect(510, 520, 60, 30), XStringFormats.Center);
-            else if (dic["checkAreaB"]=="True")
-            gfx.DrawString(dic["AreaB_Value"], font, XBrushes.Black, new XRect(510, 555, 60, 30), XStringFormats.Center);
-            gfx.DrawString(dic["roomVolume"], font, XBrushes.Black, new XRect(510, 590, 60, 10), XStringFormats.Center); 
+            if (dic["checkAreaA"] == "True")
+                gfx.DrawString(dic["AreaA_Value"], font, XBrushes.Black, new XRect(510, 520, 60, 30), XStringFormats.Center);
+            else if (dic["checkAreaB"] == "True")
+            {
+                gfx.DrawString(dic["AreaB_Value"], font, XBrushes.Black, new XRect(510, 555, 60, 30), XStringFormats.Center);
+                gfx.DrawString(dic["roomVolume"], font, XBrushes.Black, new XRect(510, 590, 60, 10), XStringFormats.Center);
+            }
             else
-            gfx.DrawString(dic["AreaCD_Value"], font, XBrushes.Black, new XRect(510, 603, 60, 30), XStringFormats.Center);
+                gfx.DrawString(dic["AreaCD_Value"], font, XBrushes.Black, new XRect(510, 603, 60, 30), XStringFormats.Center);
            
             
             
