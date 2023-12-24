@@ -558,6 +558,112 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
+        public static async Task<byte[]> IgeUpB(Dictionary<string, string> dic)
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            PdfDocument document = new PdfDocument(); document.Info.Title = "Check";
+
+
+            PdfPage page = document.AddPage();
+            page.Height = 842;
+            page.Width = 595;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+
+            XFont font = new XFont("Arial", 8);
+            //zameniti path
+            XImage image = await ConvertToXImage(@"");
+            gfx.DrawImage(image, 0, 0, 595, 842);
+
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(80, 162, 485, 5), XStringFormats.Center);//site adress
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(65, 183, 210, 5), XStringFormats.Center);//location 
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(406, 183, 162, 5), XStringFormats.Center);//date
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(65, 206, 152, 5), XStringFormats.Center);//engineer
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(282, 206, 94, 5), XStringFormats.Center);//card number
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(425, 206, 142, 5), XStringFormats.Center);//signature
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(80, 228, 137, 5), XStringFormats.Center);//client name
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(291, 228, 84, 5), XStringFormats.Center);//client signature
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(440, 228, 127, 5), XStringFormats.Center);//warning notice no
+
+            double x = 100;
+            double y = 332;
+            for (int i = 0; i < 4; i++)//pipe size steel
+            {
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+                y += 13;
+            }
+
+
+            x = 100;
+            y = 411;
+            for (int i = 0; i < 4; i++)//pipe size coppper
+            {
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+                y += 13;
+            }
+
+            x = 100;
+            y = 491;
+            for (int i = 0; i < 3; i++)//pipe size pe sdr 11
+            {
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+                y += 13;
+            }
+
+            x = 222;
+            y = 543;
+            for (int i = 0; i < 4; i++)//predzadnja tabela
+            {
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+                y += 13;
+            }
+
+            x = 222;
+            y = 622;
+            for (int i = 0; i < 6; i++)//total tightness
+            {
+                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+                y += 13;
+            }
+
+            XRect boundingBox = new XRect(325, 542, 240, 150);
+            string text = "his isneeds to be split to fit within the bounding box. This is a long text aa  a a a that needis a long text that neeis a long text that neeis a long text that nees to be split to fit within the bounding box.";
+            XTextFormatter tf = new XTextFormatter(gfx);
+            XRect layoutRectangle = boundingBox;
+            tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//engineers coments
+
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(322, 490, 248, 22), XStringFormats.Center);//failed passed
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 451, 64, 9), XStringFormats.Center);//tightness test results
+
+
+            gfx.DrawRectangle(XBrushes.White, new XRect(507, 359, 63, 22));
+            gfx.DrawRectangle(XBrushes.White, new XRect(507, 385, 63, 22));
+            gfx.DrawRectangle(XBrushes.White, new XRect(507, 411, 63, 20));
+
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 359, 63, 22), XStringFormats.Center);//let by duration
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 385, 63, 22), XStringFormats.Center);//stabilisation duration
+            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 411, 63, 22), XStringFormats.Center);//test duration
+            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_B.pdf");
+
+            document.Save(filePath);
+            using MemoryStream stream = new MemoryStream();
+            document.Save(stream, false);
+            return stream.ToArray();
+        }
         public static async Task<byte[]> CheckPage(Dictionary<string,string> dic)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
