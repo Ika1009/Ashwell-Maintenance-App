@@ -704,7 +704,7 @@ namespace Ashwell_Maintenance
             string text = dic["engineersComments"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
-            tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//engineers coments
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//engineers coments
 
             gfx.DrawString(dic["testPassedOrFailed"], font, XBrushes.Black, new XRect(322, 490, 248, 22), XStringFormats.Center);//failed passed
             gfx.DrawString(dic["actualPressureDropResult"], font, XBrushes.Black, new XRect(507, 451, 64, 9), XStringFormats.Center);//tightness test results
