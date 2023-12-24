@@ -714,11 +714,12 @@ namespace Ashwell_Maintenance
 
 
             };
-            for (int i = 0; i < 7; i+=2)//prvi for
+            int om = 0;
+            for (int i = 0; i < 7; i+=1)//prvi for
             {
-                if (prviFor[i]=="True")
+                if (prviFor[om++]=="True")
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(435.5, y, 21, 10));
-                else if(prviFor[i+1]=="True")
+                else if(prviFor[om++]=="True")
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(475.5, y, 21, 10));
                 else
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(513.5, y, 21, 10));
@@ -744,17 +745,18 @@ namespace Ashwell_Maintenance
             
 
             };
-            for (int i = 0; i < 8; i+=2)//drugi for
+            int kl = 0;
+            for (int i = 0; i < 8; i+=1)//drugi for
             {
-                if (i == 2)
+                if (i ==2)
                 {
 
                 }
                 else
                 {
-                    if (drugiFor[i]=="True")
+                    if (drugiFor[kl++]=="True")
                     gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(435.5, y, 21, 10));
-                    else if (drugiFor[i+1]=="True")
+                    else if (drugiFor[kl++]=="True")
                     gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(475.5, y, 21, 10));
                     else
                     gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(514, y, 21, 10));
