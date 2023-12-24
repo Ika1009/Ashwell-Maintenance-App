@@ -562,7 +562,7 @@ namespace Ashwell_Maintenance
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-            PdfDocument document = new PdfDocument(); document.Info.Title = "Check";
+            PdfDocument document = new PdfDocument(); document.Info.Title = "IgeUpB";
 
 
             PdfPage page = document.AddPage();
@@ -574,88 +574,149 @@ namespace Ashwell_Maintenance
 
             XFont font = new XFont("Arial", 8);
             //zameniti path
-            XImage image = await ConvertToXImage(@"");
+            XImage image = await ConvertToXImage(@"oneb.jpg");
             gfx.DrawImage(image, 0, 0, 595, 842);
 
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(80, 162, 485, 5), XStringFormats.Center);//site adress
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(65, 183, 210, 5), XStringFormats.Center);//location 
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(406, 183, 162, 5), XStringFormats.Center);//date
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(65, 206, 152, 5), XStringFormats.Center);//engineer
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(282, 206, 94, 5), XStringFormats.Center);//card number
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(425, 206, 142, 5), XStringFormats.Center);//signature
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(80, 228, 137, 5), XStringFormats.Center);//client name
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(291, 228, 84, 5), XStringFormats.Center);//client signature
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(440, 228, 127, 5), XStringFormats.Center);//warning notice no
+            gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(80, 162, 485, 5), XStringFormats.Center);//site adress
+            gfx.DrawString(dic["location"], font, XBrushes.Black, new XRect(65, 183, 210, 5), XStringFormats.Center);//location 
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(406, 183, 162, 5), XStringFormats.Center);//date
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(65, 206, 152, 5), XStringFormats.Center);//engineer
+            gfx.DrawString(dic["cardNumber"], font, XBrushes.Black, new XRect(282, 206, 94, 5), XStringFormats.Center);//card number
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(425, 206, 142, 5), XStringFormats.Center);//signature
+            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(80, 228, 137, 5), XStringFormats.Center);//client name
+            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(291, 228, 84, 5), XStringFormats.Center);//client signature
+            gfx.DrawString(dic["WarningNoticeRefNo"], font, XBrushes.Black, new XRect(440, 228, 127, 5), XStringFormats.Center);//warning notice no
 
             double x = 100;
             double y = 332;
-            for (int i = 0; i < 4; i++)//pipe size steel
-            {
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+            gfx.DrawString(dic["steel1"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
 
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+            gfx.DrawString(dic["steel1Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
 
-                y += 13;
-            }
+            y += 13;
+
+            gfx.DrawString(dic["steel2"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["steel2Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+
+            gfx.DrawString(dic["steel3"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["steel3Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+
+            gfx.DrawString(dic["steel4"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["steel4Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
 
 
             x = 100;
             y = 411;
-            for (int i = 0; i < 4; i++)//pipe size coppper
-            {
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+            gfx.DrawString(dic["copper1"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
 
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+            gfx.DrawString(dic["copper1Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
 
-                y += 13;
-            }
+            y += 13;
+            gfx.DrawString(dic["copper2"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["copper2Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+
+            gfx.DrawString(dic["copper3"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["copper3Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+            gfx.DrawString(dic["copper4"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["copper4Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
 
             x = 100;
             y = 491;
-            for (int i = 0; i < 3; i++)//pipe size pe sdr 11
-            {
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+            gfx.DrawString(dic["pesdr1"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
 
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+            gfx.DrawString(dic["pesdr1Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
 
-                y += 13;
-            }
+            y += 13;
+            gfx.DrawString(dic["pesdr2"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["pesdr2Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+            gfx.DrawString(dic["pesdr3"], font, XBrushes.Black, new XRect(x, y, 52, 9), XStringFormats.Center);
+
+            gfx.DrawString(dic["pesdr3Total"], font, XBrushes.Black, new XRect(x + 123, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+
 
             x = 222;
             y = 543;
-            for (int i = 0; i < 4; i++)//predzadnja tabela
-            {
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+            gfx.DrawString(dic["totalPipeworkVolume"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
 
-                y += 13;
-            }
+            y += 13;
+            gfx.DrawString(dic["pipeworkFittingsIV"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+            gfx.DrawString(dic["meterVolume"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+            gfx.DrawString(dic["totalVolumeForTesting"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
 
             x = 222;
             y = 622;
-            for (int i = 0; i < 6; i++)//total tightness
-            {
-                gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+            gfx.DrawString(dic["testMediumPicker"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
 
-                y += 13;
+            y += 13;
+            gfx.DrawString(dic["installationPicker"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+            if (dic["checkIsWeatherTemperatureStableYes"] == "True")
+            {
+                gfx.DrawString("Yes", font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+            }
+            else
+            {
+                gfx.DrawString("No", font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
             }
 
+            y += 13;
+            gfx.DrawString(dic["testGaugeUsed"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+            gfx.DrawString(dic["tightnessTestPressure"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+            gfx.DrawString(dic["maximumPermissiblePressureDrop"], font, XBrushes.Black, new XRect(x, y, 64, 9), XStringFormats.Center);
+
+            y += 13;
+
             XRect boundingBox = new XRect(325, 542, 240, 150);
-            string text = "his isneeds to be split to fit within the bounding box. This is a long text aa  a a a that needis a long text that neeis a long text that neeis a long text that nees to be split to fit within the bounding box.";
+            string text = dic["engineersComments"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Calibri", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);//engineers coments
 
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(322, 490, 248, 22), XStringFormats.Center);//failed passed
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 451, 64, 9), XStringFormats.Center);//tightness test results
+            gfx.DrawString(dic["testPassedOrFailed"], font, XBrushes.Black, new XRect(322, 490, 248, 22), XStringFormats.Center);//failed passed
+            gfx.DrawString(dic["actualPressureDropResult"], font, XBrushes.Black, new XRect(507, 451, 64, 9), XStringFormats.Center);//tightness test results
 
 
             gfx.DrawRectangle(XBrushes.White, new XRect(507, 359, 63, 22));
             gfx.DrawRectangle(XBrushes.White, new XRect(507, 385, 63, 22));
             gfx.DrawRectangle(XBrushes.White, new XRect(507, 411, 63, 20));
 
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 359, 63, 22), XStringFormats.Center);//let by duration
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 385, 63, 22), XStringFormats.Center);//stabilisation duration
-            gfx.DrawString("kurcina", font, XBrushes.Black, new XRect(507, 411, 63, 22), XStringFormats.Center);//test duration
+            gfx.DrawString(dic["letByDuration"], font, XBrushes.Black, new XRect(507, 359, 63, 22), XStringFormats.Center);//let by duration
+            gfx.DrawString(dic["stabilisationDuration"], font, XBrushes.Black, new XRect(507, 385, 63, 22), XStringFormats.Center);//stabilisation duration
+            gfx.DrawString(dic["testDuration"], font, XBrushes.Black, new XRect(507, 411, 63, 22), XStringFormats.Center);//test duration
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_B.pdf");
 

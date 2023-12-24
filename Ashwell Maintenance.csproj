@@ -81,6 +81,7 @@
 	  <None Remove="Resources\Images\engineers_report_sheet.jpg" />
 	  <None Remove="Resources\Images\gas.jpg" />
 	  <None Remove="Resources\Images\ige_up_1.jpg" />
+	  <None Remove="Resources\Images\oneb.jpg" />
 	  <None Remove="Resources\Images\one_a_sheet.jpg" />
 	  <None Remove="Resources\Images\pressurisation_unit_report.jpg" />
 	  <None Remove="Resources\Splash\ash_icon.svg" />

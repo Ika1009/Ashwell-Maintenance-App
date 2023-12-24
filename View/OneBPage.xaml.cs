@@ -93,9 +93,142 @@ public partial class OneBPage : ContentPage
 
     public void OneBNextFinish(object sender, EventArgs e)
     {
+        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
+        string reportName = $"Ashwell_IgeUpB{dateTimeString}.pdf";
 
+        PdfCreation.IgeUpB(GatherReportData());
     }
+    private Dictionary<string, string> GatherReportData()
+    {
+        Dictionary<string, string> reportData = new Dictionary<string, string>();
 
+        //  reportData.Add("", .Text ?? string.Empty);
+        //  reportData.Add("", .IsChecked.ToString());
+
+        reportData.Add("site", site.Text ?? string.Empty);
+        reportData.Add("location", location.Text ?? string.Empty);
+        reportData.Add("steel1Total", steel1Total.Text ?? string.Empty);
+        reportData.Add("steel2Total", steel2Total.Text ?? string.Empty);
+        reportData.Add("steel3Total", steel3Total.Text ?? string.Empty);
+        reportData.Add("steel4Total", steel4Total.Text ?? string.Empty);
+        reportData.Add("copper1Total", copper1Total.Text ?? string.Empty);
+        reportData.Add("copper2Total", copper2Total.Text ?? string.Empty);
+        reportData.Add("copper3Total", copper3Total.Text ?? string.Empty);
+        reportData.Add("copper4Total", copper4Total.Text ?? string.Empty);
+        reportData.Add("pesdr1Total", pesdr1Total.Text ?? string.Empty);
+        reportData.Add("pesdr2Total", pesdr2Total.Text ?? string.Empty);
+        reportData.Add("pesdr3Total", pesdr3Total.Text ?? string.Empty);
+        reportData.Add("totalPipeworkVolume", totalPipeworkVolume.Text ?? string.Empty);
+        reportData.Add("pipeworkFittingsIV", pipeworkFittingsIV.Text ?? string.Empty);
+        reportData.Add("meterVolume", meterVolume.Text ?? string.Empty);
+        reportData.Add("totalVolumeForTesting", totalVolumeForTesting.Text ?? string.Empty);
+        reportData.Add("tightnessTestPressure", tightnessTestPressure.Text ?? string.Empty);
+        reportData.Add("letByDuration", letByDuration.Text ?? string.Empty);
+        reportData.Add("stabilisationDuration", stabilisationDuration.Text ?? string.Empty);
+        reportData.Add("testDuration", testDuration.Text ?? string.Empty);
+        reportData.Add("actualPressureDropResult", actualPressureDropResult.Text ?? string.Empty);
+        reportData.Add("engineersComments", engineersComments.Text ?? string.Empty);
+        reportData.Add("engineer", engineer.Text ?? string.Empty);
+        reportData.Add("clientsName", clientsName.Text ?? string.Empty);
+        reportData.Add("WarningNoticeRefNo", WarningNoticeRefNo.Text ?? string.Empty);
+        reportData.Add("cardNumber", cardNumber.Text ?? string.Empty);
+
+
+        reportData.Add("checkIsWeatherTemperatureStableYes", checkIsWeatherTemperatureStableYes.IsChecked.ToString());
+        reportData.Add("checkIsWeatherTemperatureStableNo", checkIsWeatherTemperatureStableNo.IsChecked.ToString());
+
+
+        if (steel1.SelectedIndex != -1)
+            reportData.Add("steel1", (steel1.SelectedItem).ToString());
+        else
+            reportData.Add("steel1", string.Empty);
+
+        if (steel2.SelectedIndex != -1)
+            reportData.Add("steel2", (steel2.SelectedItem).ToString());
+        else
+            reportData.Add("steel2", string.Empty);
+
+        if (steel3.SelectedIndex != -1)
+            reportData.Add("steel3", (steel3.SelectedItem).ToString());
+        else
+            reportData.Add("steel3", string.Empty);
+        if (steel4.SelectedIndex != -1)
+            reportData.Add("steel4", (steel4.SelectedItem).ToString());
+        else
+            reportData.Add("steel4", string.Empty);
+
+
+        if (copper1.SelectedIndex != -1)
+            reportData.Add("copper1", (copper1.SelectedItem).ToString());
+        else
+            reportData.Add("copper1", string.Empty);
+
+        if (copper2.SelectedIndex != -1)
+            reportData.Add("copper2", (copper2.SelectedItem).ToString());
+        else
+            reportData.Add("copper2", string.Empty);
+        if (copper3.SelectedIndex != -1)
+            reportData.Add("copper3", (copper3.SelectedItem).ToString());
+        else
+            reportData.Add("copper3", string.Empty);
+        if (copper4.SelectedIndex != -1)
+            reportData.Add("copper4", (copper4.SelectedItem).ToString());
+        else
+            reportData.Add("copper4", string.Empty);
+
+
+        if (pesdr1.SelectedIndex != -1)
+            reportData.Add("pesdr1", (pesdr1.SelectedItem).ToString());
+        else
+            reportData.Add("pesdr1", string.Empty);
+
+        if (pesdr2.SelectedIndex != -1)
+            reportData.Add("pesdr2", (pesdr2.SelectedItem).ToString());
+        else
+            reportData.Add("pesdr2", string.Empty);
+
+        if (pesdr3.SelectedIndex != -1)
+            reportData.Add("pesdr3", (pesdr3.SelectedItem).ToString());
+        else
+            reportData.Add("pesdr3", string.Empty);
+
+
+
+
+
+        if (testMediumPicker.SelectedIndex != -1)
+            reportData.Add("testMediumPicker", (testMediumPicker.SelectedItem).ToString());
+        else
+            reportData.Add("testMediumPicker", string.Empty);
+
+        if (installationPicker.SelectedIndex != -1)
+            reportData.Add("installationPicker", (installationPicker.SelectedItem).ToString());
+        else
+            reportData.Add("installationPicker", string.Empty);
+
+        if (testGaugeUsed.SelectedIndex != -1)
+            reportData.Add("testGaugeUsed", (testGaugeUsed.SelectedItem).ToString());
+        else
+            reportData.Add("testGaugeUsed", string.Empty);
+
+        if (maximumPermissiblePressureDrop.SelectedIndex != -1)
+            reportData.Add("maximumPermissiblePressureDrop", (maximumPermissiblePressureDrop.SelectedItem).ToString());
+        else
+            reportData.Add("maximumPermissiblePressureDrop", string.Empty);
+
+        if (testPassedOrFailed.SelectedIndex != -1)
+            reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
+        else
+            reportData.Add("testPassedOrFailed", string.Empty);
+
+
+
+
+
+
+
+        return reportData;
+    }
 
     private void UpdateTotalPipeworkVolume(Label total, Picker quantificator, double k)
     {
