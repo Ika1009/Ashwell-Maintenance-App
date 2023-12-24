@@ -95,6 +95,8 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("checkGeneralMeterConditionNo", checkGeneralMeterConditionNo.IsChecked.ToString());
         reportData.Add("checkEarthBondingYes", checkEarthBondingYes.IsChecked.ToString());
         reportData.Add("checkEarthBondingNo", checkEarthBondingNo.IsChecked.ToString());
+        reportData.Add("checkEmergencyControlsYes", checkEmergencyControlsYes.IsChecked.ToString());
+        reportData.Add("checkEmergencyControlsNo", checkEmergencyControlsNo.IsChecked.ToString());
         reportData.Add("checkMeterVentilationYes", checkMeterVentilationYes.IsChecked.ToString());
         reportData.Add("checkMeterVentilationNo", checkMeterVentilationNo.IsChecked.ToString());
         reportData.Add("checkGasLineDiagramYes", checkGasLineDiagramYes.IsChecked.ToString());
