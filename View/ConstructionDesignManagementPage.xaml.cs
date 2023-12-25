@@ -117,7 +117,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         {
             CDMSection2.IsVisible = false;
 
-            if (DeviceInfo.Platform is DevicePlatform.Android or DevicePlatform.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await CDMSection1.ScrollToAsync(0, 0, false);
             CDMSection1.IsVisible = true;
         }
