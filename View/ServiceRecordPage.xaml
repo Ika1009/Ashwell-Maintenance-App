@@ -1703,7 +1703,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="SRSection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+        <ScrollView x:Name="FolderSection" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 

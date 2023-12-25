@@ -132,7 +132,7 @@ public partial class ServiceRecordPage : ContentPage
         }
         else
         {
-            SRSection4.IsVisible = false;
+            FolderSection.IsVisible = false;
 
             if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
                 SRSection3.ScrollToAsync(0, 0, false);
@@ -167,8 +167,8 @@ public partial class ServiceRecordPage : ContentPage
         SRSection3.IsVisible = false;
 
         if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
-            await SRSection4.ScrollToAsync(0, 0, false);
-        SRSection4.IsVisible = true;
+            await FolderSection.ScrollToAsync(0, 0, false);
+        FolderSection.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";

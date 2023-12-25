@@ -106,28 +106,36 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         public string Name { get; set; }
         public string Timestamp { get; set; }
     }
-    public void CDMBack(object sender, EventArgs e)
+    public async void CDMBack(object sender, EventArgs e)
     {
         if (CDMSection1.IsVisible)
         {
             CDMBackBtt.IsEnabled = false;
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
         else if (CDMSection2.IsVisible)
         {
             CDMSection2.IsVisible = false;
 
             if (Device.RuntimePlatform is Device.Android or Device.iOS)
-                CDMSection1.ScrollToAsync(0, 0, false);
+                await CDMSection1.ScrollToAsync(0, 0, false);
             CDMSection1.IsVisible = true;
         }
-        else
+        else if (CDMSection3.IsVisible)
         {
             CDMSection3.IsVisible = false;
 
             if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
-                CDMSection2.ScrollToAsync(0, 0, false);
+                await CDMSection2.ScrollToAsync(0, 0, false);
             CDMSection2.IsVisible = true;
+        }
+        else
+        {
+            FolderSection.IsVisible = false;
+
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                await CDMSection3.ScrollToAsync(0, 0, false);
+            CDMSection3.IsVisible = true;
         }
     }
 
@@ -153,6 +161,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     [Obsolete]
     public async void CDMNext3(object sender, EventArgs e)
     {
+        CDMSection3.IsVisible = false;
         FolderSection.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
