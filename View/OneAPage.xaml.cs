@@ -45,7 +45,7 @@ public partial class OneAPage : ContentPage
         pesdr8.ItemsSource = numbers;
     }
 
-    [Obsolete]
+    
     public async void OneABack(object sender, EventArgs e)
     {
         if (OASection1.IsVisible)
@@ -57,7 +57,7 @@ public partial class OneAPage : ContentPage
         {
             OASection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection1.ScrollToAsync(0, 0, false);
             OASection1.IsVisible = true;
         }
@@ -65,7 +65,7 @@ public partial class OneAPage : ContentPage
         {
             OASection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection2.ScrollToAsync(0, 0, false);
             OASection2.IsVisible = true;
         }
@@ -73,7 +73,7 @@ public partial class OneAPage : ContentPage
         {
             OASection4.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection3.ScrollToAsync(0, 0, false);
             OASection3.IsVisible = true;
         }
@@ -81,31 +81,31 @@ public partial class OneAPage : ContentPage
         {
             OASection5.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection4.ScrollToAsync(0, 0, false);
             OASection4.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public async void OneANext1(object sender, EventArgs e)
     {
         OASection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection2.ScrollToAsync(0, 0, false);
         OASection2.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneANext2(object sender, EventArgs e)
     {
         OASection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection3.ScrollToAsync(0, 0, false);
         OASection3.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneANext3(object sender, EventArgs e)
     {
         if (totalVolumeForTesting.Text != null && testMediumPicker.SelectedIndex != -1 && installationPicker.SelectedIndex != -1)
@@ -232,16 +232,16 @@ public partial class OneAPage : ContentPage
 
         OASection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection4.ScrollToAsync(0, 0, false);
         OASection4.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneANext4(object sender, EventArgs e)
     {
         OASection4.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection5.ScrollToAsync(0, 0, false);
         OASection5.IsVisible = true;
     }

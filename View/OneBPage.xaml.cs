@@ -28,7 +28,7 @@ public partial class OneBPage : ContentPage
         pesdr3.ItemsSource = numbers;
     }
 
-    [Obsolete]
+    
 	public async void OneBBack(object sender, EventArgs e)
 	{
         if (OBSection1.IsVisible)
@@ -40,7 +40,7 @@ public partial class OneBPage : ContentPage
         {
             OBSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OBSection1.ScrollToAsync(0, 0, false);
             OBSection1.IsVisible = true;
         }
@@ -48,7 +48,7 @@ public partial class OneBPage : ContentPage
         {
             OBSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OBSection2.ScrollToAsync(0, 0, false);
             OBSection2.IsVisible = true;
         }
@@ -56,37 +56,37 @@ public partial class OneBPage : ContentPage
         {
             OBSection4.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OBSection3.ScrollToAsync(0, 0, false);
             OBSection3.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public async void OneBNext1(object sender, EventArgs e)
     {
         OBSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OBSection2.ScrollToAsync(0, 0, false);
         OBSection2.IsVisible = true;
     }
 
-    [Obsolete]
+    
     public async void OneBNext2(object sender, EventArgs e)
     {
         OBSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OBSection3.ScrollToAsync(0, 0, false);
         OBSection3.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneBNext3(object sender, EventArgs e)
     {
         OBSection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OBSection4.ScrollToAsync(0, 0, false);
         OBSection4.IsVisible = true;
     }

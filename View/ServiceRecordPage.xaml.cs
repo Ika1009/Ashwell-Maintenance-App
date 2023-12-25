@@ -106,7 +106,7 @@ public partial class ServiceRecordPage : ContentPage
         public string Timestamp { get; set; }
     }
 
-    [Obsolete]
+    
     public void ServiceRecordBack(object sender, EventArgs e)
     {
         if (SRSection1.IsVisible)
@@ -118,7 +118,7 @@ public partial class ServiceRecordPage : ContentPage
         {
             SRSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 SRSection1.ScrollToAsync(0, 0, false);
             SRSection1.IsVisible = true;
         }
@@ -126,55 +126,55 @@ public partial class ServiceRecordPage : ContentPage
         {
             SRSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 SRSection2.ScrollToAsync(0, 0, false);
             SRSection2.IsVisible = true;
         }
         else
         {
-            SRSection4.IsVisible = false;
+            FolderSection.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 SRSection3.ScrollToAsync(0, 0, false);
             SRSection3.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public void ServiceRecordNext1(object sender, EventArgs e)
     {
         SRSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             SRSection2.ScrollToAsync(0, 0, false);
         SRSection2.IsVisible = true;
     }
 
-    [Obsolete]
+    
     public async void ServiceRecordNext2(object sender, EventArgs e)
     {
         SRSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await SRSection3.ScrollToAsync(0, 0, false);
         SRSection3.IsVisible = true;
         await LoadFolders();
     }
 
-    [Obsolete]
+    
     public async void ServiceRecordNext3(object sender, EventArgs e)
     {
         SRSection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
-            await SRSection4.ScrollToAsync(0, 0, false);
-        SRSection4.IsVisible = true;
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await FolderSection.ScrollToAsync(0, 0, false);
+        FolderSection.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";
         GatherReportData();
-        await PdfCreation.CreateServiceRecordPDF(reportData, Array.Empty<byte>(), Array.Empty<byte>());
-        await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
+        //await PdfCreation.CreateServiceRecordPDF(reportData, Array.Empty<byte>(), Array.Empty<byte>());
+        //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
     }
     private void GatherReportData()
     {

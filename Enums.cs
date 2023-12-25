@@ -10,7 +10,16 @@ namespace Ashwell_Maintenance
     {
         public enum ReportType
         {
-            ServiceRecord
+            ServiceRecord,
+            BoilerHouseDataSheet,
+            ConformityCheck,
+            ConstructionDesignManagement,
+            EngineersReport,
+            GasRiskAssessment,
+            OneA,
+            OneB,
+            One,
+            PressurisationUnitReport
         }
     }
 }
