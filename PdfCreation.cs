@@ -68,7 +68,7 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
-        public static async Task<byte[]> GasRisk(Dictionary<string, string> dic)
+        public static async Task<byte[]> GasRisk(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -544,10 +544,15 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(36, 762, 200, 22), XStringFormats.Center);//clients name
             gfx.DrawString(dic["gasSafeOperativeIdNo"], font, XBrushes.Black, new XRect(376, 724, 182, 22), XStringFormats.Center);//gas safe operative
             gfx.DrawString(dic["completionDate"], font, XBrushes.Black, new XRect(376, 762, 182, 22), XStringFormats.Center);//completion date
-       //     gfx.DrawString(dic["engineersSignature"], font, XBrushes.Black, new XRect(240, 724, 133, 22), XStringFormats.Center);//engineers signature
-       //     gfx.DrawString(dic["clientsSignature"], font, XBrushes.Black, new XRect(240, 762, 133, 22), XStringFormats.Center);//clients signature
+           //     gfx.DrawString(dic["engineersSignature"], font, XBrushes.Black, new XRect(240, 724, 133, 22), XStringFormats.Center);//engineers signature
+           //     gfx.DrawString(dic["clientsSignature"], font, XBrushes.Black, new XRect(240, 762, 133, 22), XStringFormats.Center);//clients signature
 
 
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 240, 724, 133, 22);
+
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 240, 724, 133, 22);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
@@ -558,7 +563,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> IgeUpB(Dictionary<string, string> dic)
+        public static async Task<byte[]> IgeUpB(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -582,10 +587,17 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(406, 183, 162, 5), XStringFormats.Center);//date
             gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(65, 206, 152, 5), XStringFormats.Center);//engineer
             gfx.DrawString(dic["cardNumber"], font, XBrushes.Black, new XRect(282, 206, 94, 5), XStringFormats.Center);//card number
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(425, 206, 142, 5), XStringFormats.Center);//signature
+          //  gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(425, 206, 142, 5), XStringFormats.Center);//signature
             gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(80, 228, 137, 5), XStringFormats.Center);//client name
-            gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(291, 228, 84, 5), XStringFormats.Center);//client signature
+          //  gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(291, 228, 84, 5), XStringFormats.Center);//client signature
             gfx.DrawString(dic["WarningNoticeRefNo"], font, XBrushes.Black, new XRect(440, 228, 127, 5), XStringFormats.Center);//warning notice no
+
+
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 425, 206, 142, 5);
+
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 425, 206, 142, 5);
 
             double x = 100;
             double y = 332;
@@ -725,7 +737,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> CheckPage(Dictionary<string,string> dic)
+        public static async Task<byte[]> CheckPage(Dictionary<string,string> dic,, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -888,6 +900,11 @@ namespace Ashwell_Maintenance
 
             x = 38;
             y = 750;
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), x + 203, y, 171, 13);
+
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), x + 203, y, 171, 13);
 
             gfx.DrawString(dic["engineersName"], font, XBrushes.Black, new XRect(x, y, 200, 13), XStringFormats.Center);
             gfx.DrawRectangle(XBrushes.White, new XRect(x + 378, y + 1, 140, 11));
@@ -954,7 +971,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> Boiler(Dictionary<string,string> dic)
+        public static async Task<byte[]> Boiler(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1131,6 +1148,11 @@ namespace Ashwell_Maintenance
                 y += 36;
                 ka += 3;
             }
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 228, 712, 170, 25);
+
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 228, 712+36+36, 170, 25);
 
             //Coments
 
@@ -1156,7 +1178,7 @@ namespace Ashwell_Maintenance
             return stream.ToArray();
         }
 
-        public static async Task<byte[]> _1Up(Dictionary<string, string> dic)
+        public static async Task<byte[]> _1Up(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
 
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -1189,6 +1211,13 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["clientName"], font, XBrushes.Black, new XRect(81, 179, 137, 13), XStringFormats.Center);
             //gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(292, 179, 84, 13), XStringFormats.Center);
             gfx.DrawString(dic["warningNoticeNo"], font, XBrushes.Black, new XRect(442, 179, 128, 13), XStringFormats.Center);
+
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 423, 162, 162, 13);
+
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 292, 179, 84, 13);
+
 
             List<string> prviFor = new List<string>
             {
@@ -1352,7 +1381,7 @@ namespace Ashwell_Maintenance
             return stream.ToArray();
 
         }
-        public static async Task<byte[]> _1A(Dictionary<string,string> dic)
+        public static async Task<byte[]> _1A(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1384,6 +1413,12 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(81, 152, 137, 13), XStringFormats.Center);
           //  gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(292, 152, 84, 13), XStringFormats.Center);
             gfx.DrawString(dic["WarningNoticeRefNo"], font, XBrushes.Black, new XRect(442, 152, 128, 13), XStringFormats.Center);
+
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 423, 136, 162, 13);
+
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 292, 152, 84, 13);
 
             double x, y;
             x = 106;
@@ -1558,8 +1593,8 @@ namespace Ashwell_Maintenance
             //potpis - za doncica
             //   gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531+(671-531- ConvertToXImage(inzenjer).PixelWidth/2),548+(529-502- ConvertToXImage(inzenjer).PixelHeight/2)));
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531, 502));
-            //   gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
+                gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
+           
             if (clijent != null && clijent.Length != 0)
                 gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
 
@@ -1942,7 +1977,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> CreateEngineersReport(Dictionary<string, string> dic )
+        public static async Task<byte[]> CreateEngineersReport(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -2047,7 +2082,11 @@ namespace Ashwell_Maintenance
 
             gfx.DrawString(dic["totalHoursIncludingTravel"], font, XBrushes.Black, new XRect(514, 748, 74, 16), XStringFormats.Center);
 
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 477, 770, 586-447, 16);
 
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 461, 795, 586-461, 16);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -2061,7 +2100,7 @@ namespace Ashwell_Maintenance
             return stream.ToArray();
 
         }
-        public static async Task<byte[]> CDM(Dictionary<string,string> dic)
+        public static async Task<byte[]> CDM(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -2184,7 +2223,11 @@ namespace Ashwell_Maintenance
 
             gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(418, 786, 59, 7), XStringFormats.CenterLeft);
 
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 288, 776, 382 - 288, 26);
 
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 64, 171, 229, 15);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -2195,7 +2238,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> PressurisationReport(Dictionary<string, string> dic)
+        public static async Task<byte[]> PressurisationReport(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -2281,7 +2324,14 @@ namespace Ashwell_Maintenance
             tf1.DrawString(text1, new XFont("Arial", 10), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
 
             gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormat.Center);
-         //   gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
+            //   gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
+
+            if (inzenjer != null && inzenjer.Length != 0)
+                gfx.DrawImage(ConvertToXImage(inzenjer), 435, 777, 565 - 435, 23);
+
+            if (clijent != null && clijent.Length != 0)
+                gfx.DrawImage(ConvertToXImage(clijent), 74, 777, 209-74, 799-777);
+
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
