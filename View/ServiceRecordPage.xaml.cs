@@ -173,8 +173,8 @@ public partial class ServiceRecordPage : ContentPage
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";
         GatherReportData();
-        await PdfCreation.CreateServiceRecordPDF(reportData, Array.Empty<byte>(), Array.Empty<byte>());
-        await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
+        //await PdfCreation.CreateServiceRecordPDF(reportData, Array.Empty<byte>(), Array.Empty<byte>());
+        //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
     }
     private void GatherReportData()
     {
