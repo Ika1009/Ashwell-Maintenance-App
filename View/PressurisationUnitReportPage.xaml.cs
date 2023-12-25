@@ -7,7 +7,7 @@ public partial class PressurisationUnitReportPage : ContentPage
 		InitializeComponent();
 	}
 
-    [Obsolete]
+    
     public async void PressurisationUnitReportBack(object sender, EventArgs e)
     {
 		if (PURSection1.IsVisible)
@@ -19,7 +19,7 @@ public partial class PressurisationUnitReportPage : ContentPage
 		{
 			PURSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await PURSection1.ScrollToAsync(0, 0, false);
 			PURSection1.IsVisible = true;
 		}
@@ -27,27 +27,27 @@ public partial class PressurisationUnitReportPage : ContentPage
 		{
             PURSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await PURSection2.ScrollToAsync(0, 0, false);
             PURSection2.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public async void PressurisationUnitReportNext1(object sender, EventArgs e)
 	{
 		PURSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await PURSection2.ScrollToAsync(0, 0, false);
 		PURSection2.IsVisible = true;
 	}
-    [Obsolete]
+    
     public async void PressurisationUnitReportNext2(object sender, EventArgs e)
     {
         PURSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await PURSection3.ScrollToAsync(0, 0, false);
         PURSection3.IsVisible = true;
     }

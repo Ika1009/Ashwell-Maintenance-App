@@ -7,7 +7,7 @@ public partial class ConformityCheckPage : ContentPage
 		InitializeComponent();
 	}
 
-    [Obsolete]
+    
     public async void ConformityCheckBack(object sender, EventArgs e)
 	{
 		if (CCSection1.IsVisible)
@@ -19,7 +19,7 @@ public partial class ConformityCheckPage : ContentPage
 		{
 			CCSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await CCSection1.ScrollToAsync(0, 0, false);
 			CCSection1.IsVisible = true;
 		}
@@ -27,7 +27,7 @@ public partial class ConformityCheckPage : ContentPage
 		{
             CCSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await CCSection2.ScrollToAsync(0, 0, false);
             CCSection2.IsVisible = true;
         }
@@ -35,7 +35,7 @@ public partial class ConformityCheckPage : ContentPage
 		{
             CCSection4.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await CCSection3.ScrollToAsync(0, 0, false);
             CCSection3.IsVisible = true;
         }
@@ -43,45 +43,45 @@ public partial class ConformityCheckPage : ContentPage
         {
             CCSection5.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await CCSection4.ScrollToAsync(0, 0, false);
             CCSection4.IsVisible = true;
         }
 	}
 
-    [Obsolete]
+    
     public async void CCNext1(object sender, EventArgs e)
 	{
 		CCSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await CCSection2.ScrollToAsync(0, 0, false);
 		CCSection2.IsVisible = true;
 	}
-    [Obsolete]
+    
     public async void CCNext2(object sender, EventArgs e)
     {
         CCSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await CCSection3.ScrollToAsync(0, 0, false);
         CCSection3.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void CCNext3(object sender, EventArgs e)
     {
         CCSection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await CCSection4.ScrollToAsync(0, 0, false);
         CCSection4.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void CCNext4(object sender, EventArgs e)
     {
         CCSection4.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await CCSection5.ScrollToAsync(0, 0, false);
         CCSection5.IsVisible = true;
     }

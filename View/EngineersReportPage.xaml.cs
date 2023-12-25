@@ -107,7 +107,7 @@ public partial class EngineersReportPage : ContentPage
         public string Timestamp { get; set; }
     }
 
-    [Obsolete]
+    
     public async void EngineersReportBack(object sender, EventArgs e)
 	{
 		if (ERSection1.IsVisible)
@@ -119,7 +119,7 @@ public partial class EngineersReportPage : ContentPage
 		{
 			ERSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await ERSection1.ScrollToAsync(0, 0, false);
 			ERSection1.IsVisible = true;
 
@@ -128,7 +128,7 @@ public partial class EngineersReportPage : ContentPage
 		{
             ERSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await ERSection2.ScrollToAsync(0, 0, false);
             ERSection2.IsVisible = true;
         }
@@ -136,37 +136,37 @@ public partial class EngineersReportPage : ContentPage
         {
             FolderSection.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await ERSection3.ScrollToAsync(0, 0, false);
             ERSection3.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public async void ERNext1(object sender, EventArgs e)
 	{
 		ERSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await ERSection2.ScrollToAsync(0, 0, false);
 		ERSection2.IsVisible = true;
 	}
-    [Obsolete]
+    
     public async void ERNext2(object sender, EventArgs e)
     {
         ERSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await ERSection3.ScrollToAsync(0, 0, false);
         ERSection3.IsVisible = true;
         await LoadFolders();
     }
-    [Obsolete]
+    
     public async void ERNext3(object sender, EventArgs e)
     {
         ERSection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await FolderSection.ScrollToAsync(0, 0, false);
         FolderSection.IsVisible = true;
 

@@ -117,7 +117,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         {
             CDMSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform is Device.Android or Device.iOS)
+            if (DeviceInfo.Platform is DevicePlatform.Android or DevicePlatform.iOS)
                 await CDMSection1.ScrollToAsync(0, 0, false);
             CDMSection1.IsVisible = true;
         }
@@ -125,7 +125,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         {
             CDMSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await CDMSection2.ScrollToAsync(0, 0, false);
             CDMSection2.IsVisible = true;
         }
@@ -133,32 +133,32 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         {
             FolderSection.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await CDMSection3.ScrollToAsync(0, 0, false);
             CDMSection3.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public async void CDMNext1(object sender, EventArgs e)
     {
         CDMSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await CDMSection2.ScrollToAsync(0, 0, false);
         CDMSection2.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void CDMNext2(object sender, EventArgs e)
     {
         CDMSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             CDMSection3.ScrollToAsync(0, 0, false);
         CDMSection3.IsVisible = true;
         await LoadFolders();
     }
-    [Obsolete]
+    
     public async void CDMNext3(object sender, EventArgs e)
     {
         CDMSection3.IsVisible = false;

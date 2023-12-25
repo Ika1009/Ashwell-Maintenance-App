@@ -7,7 +7,7 @@ public partial class GasRiskAssessmentPage : ContentPage
 		InitializeComponent();
     }
 
-    [Obsolete]
+    
     public async void GasRiskAssessmentBack(object sender, EventArgs e)
 	{
 		if (GRASection1.IsVisible)
@@ -19,7 +19,7 @@ public partial class GasRiskAssessmentPage : ContentPage
 		{
 			GRASection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await GRASection1.ScrollToAsync(0, 0, false);
 			GRASection1.IsVisible = true;
 		}
@@ -27,27 +27,27 @@ public partial class GasRiskAssessmentPage : ContentPage
 		{
             GRASection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await GRASection2.ScrollToAsync(0, 0, false);
             GRASection2.IsVisible = true;
         }
 	}
 
-    [Obsolete]
+    
     public async void GasRiskAssessmentNext1(object sender, EventArgs e)
 	{
 		GRASection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await GRASection2.ScrollToAsync(0, 0, false);
 		GRASection2.IsVisible = true;
 	}
-    [Obsolete]
+    
     public async void GasRiskAssessmentNext2(object sender, EventArgs e)
     {
         GRASection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await GRASection3.ScrollToAsync(0, 0, false);
         GRASection3.IsVisible = true;
     }

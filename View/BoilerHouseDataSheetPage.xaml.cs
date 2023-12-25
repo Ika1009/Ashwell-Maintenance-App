@@ -7,7 +7,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
 		InitializeComponent();
 	}
 
-    [Obsolete]
+    
     public async void BoilerHouseDataSheetBack(object sender, EventArgs e)
 	{
 		if (BHDSSection1.IsVisible)
@@ -19,7 +19,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
 		{
 			BHDSSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await BHDSSection1.ScrollToAsync(0, 0, false);
 			BHDSSection1.IsVisible = true;
 		}
@@ -27,7 +27,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
 		{
 			BHDSSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await BHDSSection2.ScrollToAsync(0, 0, false);
 			BHDSSection2.IsVisible = true;
 		}
@@ -35,36 +35,36 @@ public partial class BoilerHouseDataSheetPage : ContentPage
 		{
             BHDSSection4.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await BHDSSection3.ScrollToAsync(0, 0, false);
             BHDSSection3.IsVisible = true;
         }
 	}
 
-    [Obsolete]
+    
     public async void BHDSNext1(object sender, EventArgs e)
 	{
         BHDSSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await BHDSSection2.ScrollToAsync(0, 0, false);
         BHDSSection2.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void BHDSNext2(object sender, EventArgs e)
     {
         BHDSSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await BHDSSection3.ScrollToAsync(0, 0, false);
         BHDSSection3.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void BHDSNext3(object sender, EventArgs e)
     {
         BHDSSection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await BHDSSection4.ScrollToAsync(0, 0, false);
         BHDSSection4.IsVisible = true;
     }
