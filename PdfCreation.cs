@@ -737,7 +737,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> CheckPage(Dictionary<string,string> dic,, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> CheckPage(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
