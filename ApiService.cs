@@ -112,6 +112,30 @@ public static class ApiService
         return response;
     }
 
+    /// <summary>
+    /// Downloads an image from the specified URL and returns its content as a byte array.
+    /// </summary>
+    /// <param name="imageUrl">The URL of the image to be downloaded.</param>
+    /// <returns>A byte array representing the content of the downloaded image, or null if the download fails.</returns>
+    public static async Task<byte[]> GetImageAsByteArrayAsync(string imageUrl)
+    {
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                // Download the image from the URL
+                byte[] imageData = await client.GetByteArrayAsync(imageUrl);
+
+                return imageData;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., if the URL is invalid or the image couldn't be downloaded)
+                Console.WriteLine($"Error downloading image from {imageUrl}: {ex.Message}");
+                return null;
+            }
+        }
+    }
 
 
     //private static readonly string _key = "kbyqio0zijuo2os"; 
@@ -164,5 +188,7 @@ public static class ApiService
             throw new Exception($"Failed to create folder: {path}. Response: {responseContent}");
         }
     }
+
+
 
 }

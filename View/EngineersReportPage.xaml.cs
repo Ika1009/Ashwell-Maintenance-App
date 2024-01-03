@@ -17,14 +17,14 @@ public partial class EngineersReportPage : ContentPage
     {
         string folderId = (sender as Button).CommandParameter as string;
 
-        _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
+        _ = UploadReport(Folders.First(folder => folder.Id == folderId));
     }
 
-    private async Task UploadReport(Folder folder, Dictionary<string, string> report)
+    private async Task UploadReport(Folder folder)
     {
         try
         {
-            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folder.Id, report);
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folder.Id, reportData);
 
             if (response.IsSuccessStatusCode)
             {
@@ -47,6 +47,33 @@ public partial class EngineersReportPage : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+
+        if (folder.Signature1 != null && folder.Signature2 != null)
+        {
+            try
+            {
+                byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/signatures/{folder.Signature1}");
+                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/signatures/{folder.Signature1}");
+                if (signature1 == null || signature2 == null)
+                    throw new Exception("Couldn't retrieve signatures");
+
+                byte[] pdfData = await PdfCreation.CreateEngineersReport(reportData, signature1, signature2); ;
+                
+                if (pdfData != null)
+                {
+                    HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
+
+                    if (!signatureResponse.IsSuccessStatusCode)
+                    {
+                        await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
+            }
         }
     }
 
