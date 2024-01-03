@@ -173,6 +173,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await BHDSSection4.ScrollToAsync(0, 0, false);
         BHDSSection4.IsVisible = true;
+        await LoadFolders();
     }
 	public async void BHDSNext4(object sender, EventArgs e)
 	{
