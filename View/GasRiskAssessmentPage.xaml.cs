@@ -1,13 +1,112 @@
+using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Views;
+using System.Text.Json;
+
 namespace Ashwell_Maintenance.View;
 
 public partial class GasRiskAssessmentPage : ContentPage
 {
-	public GasRiskAssessmentPage()
+    string reportName = "noname";
+    public ObservableCollection<Folder> Folders = new();
+    private Dictionary<string, string> reportData;
+    public GasRiskAssessmentPage()
 	{
 		InitializeComponent();
     }
+    public void FolderChosen(object sender, EventArgs e)
+    {
+        string folderId = (sender as Button).CommandParameter as string;
 
-    
+        _ = UploadReport(folderId, reportData);
+    }
+
+    private async Task UploadReport(string folderId, Dictionary<string, string> report)
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.GasRiskAssessment, reportName, folderId, report);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Success", "Successfully uploaded new sheet.", "OK");
+                await Navigation.PopModalAsync();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to upload report.", "OK");
+            }
+        }
+        catch (HttpRequestException httpEx)
+        {
+            await DisplayAlert("Error", $"HTTP request error. Details: {httpEx.Message}", "OK");
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+    }
+
+    public void NewFolder(object sender, EventArgs e)
+    {
+        this.ShowPopup(new NewFolderPopup(LoadFolders));
+    }
+    private async Task LoadFolders()
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Error", "Failed to load folders.", "OK");
+                return;
+            }
+
+            string json = await response.Content.ReadAsStringAsync();
+
+            JsonDocument jsonDocument = JsonDocument.Parse(json);
+            if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
+            {
+                // Clear the existing items and add the new ones directly to the ObservableCollection
+                Folders.Clear();
+                foreach (var element in dataArray.EnumerateArray())
+                {
+                    Folders.Add(new Folder
+                    {
+                        Id = element.GetProperty("folder_id").GetString(),
+                        Name = element.GetProperty("folder_name").GetString(),
+                        Timestamp = element.GetProperty("created_at").GetString()
+                    });
+                }
+
+                // Check if the ItemsSource is already set
+                FoldersListView.ItemsSource ??= Folders;
+            }
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (FormatException formatEx)
+        {
+            await DisplayAlert("Error", $"Failed to format the date. Details: {formatEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+    }
+
+    public class Folder
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Timestamp { get; set; }
+    }
+
     public async void GasRiskAssessmentBack(object sender, EventArgs e)
 	{
 		if (GRASection1.IsVisible)
@@ -26,6 +125,14 @@ public partial class GasRiskAssessmentPage : ContentPage
 		else if (GRASection3.IsVisible)
 		{
             GRASection3.IsVisible = false;
+
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                await GRASection2.ScrollToAsync(0, 0, false);
+            GRASection2.IsVisible = true;
+        }
+        else
+        {
+            FolderSection.IsVisible = false;
 
             if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await GRASection2.ScrollToAsync(0, 0, false);
@@ -50,14 +157,21 @@ public partial class GasRiskAssessmentPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await GRASection3.ScrollToAsync(0, 0, false);
         GRASection3.IsVisible = true;
+        await LoadFolders();
     }
 
-    public void GasRiskAssessmentNext3(object sender, EventArgs e)
+    public async void GasRiskAssessmentNext3(object sender, EventArgs e)
     {
-        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
-        string reportName = $"Ashwell_EngineersReport{dateTimeString}.pdf";
+        GRASection3.IsVisible = false;
 
-        PdfCreation.GasRisk(GatherReportData());
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await FolderSection.ScrollToAsync(0, 0, false);
+        FolderSection.IsVisible = true;
+
+        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
+        reportName = $"Gas_Risk_Assessment_{dateTimeString}.pdf";
+        reportData = GatherReportData();
+        //PdfCreation.GasRisk(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {

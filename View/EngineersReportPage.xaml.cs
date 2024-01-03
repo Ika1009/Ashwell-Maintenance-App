@@ -113,7 +113,7 @@ public partial class EngineersReportPage : ContentPage
 		if (ERSection1.IsVisible)
         {
             EngineersReportBackBtt.IsEnabled = false;
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
 		else if (ERSection2.IsVisible)
 		{
