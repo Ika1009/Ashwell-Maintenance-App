@@ -56,14 +56,14 @@ public partial class OnePage : ContentPage
     {
         string folderId = (sender as Button).CommandParameter as string;
 
-        _ = UploadReport(folderId, reportData);
+        _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
     }
 
-    private async Task UploadReport(string folderId, Dictionary<string, string> report)
+    private async Task UploadReport(Folder folder, Dictionary<string, string> report)
     {
         try
         {
-            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folderId, report);
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folder.Id, report);
 
             if (response.IsSuccessStatusCode)
             {
@@ -117,7 +117,9 @@ public partial class OnePage : ContentPage
                     {
                         Id = element.GetProperty("folder_id").GetString(),
                         Name = element.GetProperty("folder_name").GetString(),
-                        Timestamp = element.GetProperty("created_at").GetString()
+                        Timestamp = element.GetProperty("created_at").GetString(),
+                        Signature1 = element.GetProperty("signature1").GetString(),
+                        Signature2 = element.GetProperty("signature2").GetString()
                     });
                 }
 
@@ -138,15 +140,6 @@ public partial class OnePage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
     }
-
-    public class Folder
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Timestamp { get; set; }
-    }
-
-
     public async void OneBack(object sender, EventArgs e)
 	{
         if (OSection1.IsVisible)

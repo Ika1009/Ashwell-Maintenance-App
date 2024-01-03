@@ -22,4 +22,12 @@ namespace Ashwell_Maintenance
             PressurisationUnitReport
         }
     }
+    public class Folder
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Timestamp { get; set; }
+        public string Signature1 { get; set; }
+        public string Signature2 { get; set; }
+    }
 }
