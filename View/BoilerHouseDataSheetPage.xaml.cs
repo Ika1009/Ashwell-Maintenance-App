@@ -213,76 +213,75 @@ public partial class BoilerHouseDataSheetPage : ContentPage
     private Dictionary<string, string> GatherReportData()
     {
 
-        Dictionary<string, string> reportData = new Dictionary<string, string>();
+        Dictionary<string, string> reportData = new()
+        {
+            //  reportData.Add("", .Text ?? string.Empty);
+            //  reportData.Add("", .IsChecked.ToString());
+            { "uern", uern.Text ?? string.Empty },
+            { "SheetNo", SheetNo.Text ?? string.Empty },
+            { "WarningNoticeRefNo", WarningNoticeRefNo.Text ?? string.Empty },
+            { "nameOfPremises", nameOfPremises.Text ?? string.Empty },
+            { "adressOfPremises", adressOfPremises.Text ?? string.Empty },
+            { "appliancesCoveredByThisCheck", appliancesCoveredByThisCheck.Text ?? string.Empty },
+            { "meterHouseLocation", meterHouseLocation.Text ?? string.Empty },
+            { "meterHouseComment", meterHouseComment.Text ?? string.Empty },
+            { "ventilationLocation", ventilationLocation.Text ?? string.Empty },
+            { "freeAirExistingHighLevel", freeAirExistingHighLevel.Text ?? string.Empty },
+            { "freeAirExistingLowLevel", freeAirExistingLowLevel.Text ?? string.Empty },
+            { "freeAirRequiredHighLevel", freeAirRequiredHighLevel.Text ?? string.Empty },
+            { "freeAirRequiredLowLevel", freeAirRequiredLowLevel.Text ?? string.Empty },
+            { "boilerHousePlantRoomComments", boilerHousePlantRoomComments.Text ?? string.Empty },
+            { "inletWorkingPressureTestFullLoad", inletWorkingPressureTestFullLoad.Text ?? string.Empty },
+            { "inletWorkingPressureTestPartLoad", inletWorkingPressureTestPartLoad.Text ?? string.Empty },
+            { "standingPressure", standingPressure.Text ?? string.Empty },
+            { "plantGasInstallationVolume", plantGasInstallationVolume.Text ?? string.Empty },
+            { "engineersName", engineersName.Text ?? string.Empty },
+            { "contractor", contractor.Text ?? string.Empty },
+            { "companyGasSafeRegistrationNo", companyGasSafeRegistrationNo.Text ?? string.Empty },
+            { "engineersGasSafeIDNo", engineersGasSafeIDNo.Text ?? string.Empty },
+            { "inspectionDate", inspectionDate.Text ?? string.Empty },
+            { "clientsName", clientsName.Text ?? string.Empty },
+            { "date", date.Text ?? string.Empty },
 
-        //  reportData.Add("", .Text ?? string.Empty);
-        //  reportData.Add("", .IsChecked.ToString());
+            { "checkRemedialToWorkRequiredYes", checkRemedialToWorkRequiredYes.IsChecked.ToString() },
+            { "checkTestsCompletedSatisfactoryYes", checkTestsCompletedSatisfactoryYes.IsChecked.ToString() },
+            { "checkPipeworkToGasMeterYes", checkPipeworkToGasMeterYes.IsChecked.ToString() },
+            { "checkPipeworkToGasMeterNA", checkPipeworkToGasMeterNA.IsChecked.ToString() },
+            { "checkRegulatorAndOrMeterYes", checkRegulatorAndOrMeterYes.IsChecked.ToString() },
+            { "checkRegulatorAndOrMeterNA", checkRegulatorAndOrMeterNA.IsChecked.ToString() },
+            { "checkSafetyNoticesLabelsYes", checkSafetyNoticesLabelsYes.IsChecked.ToString() },
+            { "checkSafetyNoticesLabelsNA", checkSafetyNoticesLabelsNA.IsChecked.ToString() },
+            { "checkLineDiagramYes", checkLineDiagramYes.IsChecked.ToString() },
+            { "checkLineDiagramNA", checkLineDiagramNA.IsChecked.ToString() },
+            { "checkColorCodingIndicationTapeYes", checkColorCodingIndicationTapeYes.IsChecked.ToString() },
+            { "checkColorCodingIndicationTapeNA", checkColorCodingIndicationTapeNA.IsChecked.ToString() },
+            { "checkMeterHouseVentilationYes", checkMeterHouseVentilationYes.IsChecked.ToString() },
+            { "checkMeterHouseVentilationNA", checkMeterHouseVentilationNA.IsChecked.ToString() },
+            { "checkFreeAirExistingCM", checkFreeAirExistingCM.IsChecked.ToString() },
+            { "checkFreeAirExistingMH", checkFreeAirExistingMH.IsChecked.ToString() },
+            { "checkFreeAirRequiredCM", checkFreeAirRequiredCM.IsChecked.ToString() },
+            { "checkcheckFreeAirRequiredMH", checkcheckFreeAirRequiredMH.IsChecked.ToString() },
+            { "checkMainFlueYes", checkMainFlueYes.IsChecked.ToString() },
+            { "checkMainFlueNA", checkMainFlueNA.IsChecked.ToString() },
+            { "checkChimneyFlueTerminalPositionYes", checkChimneyFlueTerminalPositionYes.IsChecked.ToString() },
+            { "checkChimneyFlueTerminalPositionNA", checkChimneyFlueTerminalPositionNA.IsChecked.ToString() },
+            { "checkStubFluersToBoildersYes", checkStubFluersToBoildersYes.IsChecked.ToString() },
+            { "checkStubFluersToBoildersNA", checkStubFluersToBoildersNA.IsChecked.ToString() },
+            { "checkIdFanYes", checkIdFanYes.IsChecked.ToString() },
+            { "checkIdFanNA", checkIdFanNA.IsChecked.ToString() },
+            { "checkFanBoilerSafetyInterlockYes", checkFanBoilerSafetyInterlockYes.IsChecked.ToString() },
+            { "checkFanBoilerSafetyInterlockNA", checkFanBoilerSafetyInterlockNA.IsChecked.ToString() },
+            { "checkGeneralComplianceOfGasPipeYes", checkGeneralComplianceOfGasPipeYes.IsChecked.ToString() },
+            { "checkGeneralComplianceOfGasPipeNA", checkGeneralComplianceOfGasPipeNA.IsChecked.ToString() },
+            { "checkVentilationYes", checkVentilationYes.IsChecked.ToString() },
+            { "checkVentilationNA", checkVentilationNA.IsChecked.ToString() },
+            { "checkAIVYes", checkAIVYes.IsChecked.ToString() },
+            { "checkAIVNo", checkAIVNo.IsChecked.ToString() },
+            { "checkManualYes", checkManualYes.IsChecked.ToString() },
+            { "checkManualNo", checkManualNo.IsChecked.ToString() },
+            { "checkPlantGasTightnessTestYes", checkPlantGasTightnessTestYes.IsChecked.ToString() }
+        };
 
-        reportData.Add("uern", uern.Text ?? string.Empty);
-        reportData.Add("SheetNo", SheetNo.Text ?? string.Empty);
-        reportData.Add("WarningNoticeRefNo", WarningNoticeRefNo.Text ?? string.Empty);
-        reportData.Add("nameOfPremises", nameOfPremises.Text ?? string.Empty);
-        reportData.Add("adressOfPremises", adressOfPremises.Text ?? string.Empty);
-        reportData.Add("appliancesCoveredByThisCheck", appliancesCoveredByThisCheck.Text ?? string.Empty);
-        reportData.Add("meterHouseLocation", meterHouseLocation.Text ?? string.Empty);
-        reportData.Add("meterHouseComment", meterHouseComment.Text ?? string.Empty);
-        reportData.Add("ventilationLocation", ventilationLocation.Text ?? string.Empty);
-        reportData.Add("freeAirExistingHighLevel", freeAirExistingHighLevel.Text ?? string.Empty);
-        reportData.Add("freeAirExistingLowLevel", freeAirExistingLowLevel.Text ?? string.Empty);
-        reportData.Add("freeAirRequiredHighLevel", freeAirRequiredHighLevel.Text ?? string.Empty);
-        reportData.Add("freeAirRequiredLowLevel", freeAirRequiredLowLevel.Text ?? string.Empty);
-        reportData.Add("boilerHousePlantRoomComments", boilerHousePlantRoomComments.Text ?? string.Empty);
-        reportData.Add("inletWorkingPressureTestFullLoad", inletWorkingPressureTestFullLoad.Text ?? string.Empty);
-        reportData.Add("inletWorkingPressureTestPartLoad", inletWorkingPressureTestPartLoad.Text ?? string.Empty);
-        reportData.Add("standingPressure", standingPressure.Text ?? string.Empty);
-        reportData.Add("plantGasInstallationVolume", plantGasInstallationVolume.Text ?? string.Empty);
-        reportData.Add("engineersName", engineersName.Text ?? string.Empty);
-        reportData.Add("contractor", contractor.Text ?? string.Empty);
-        reportData.Add("companyGasSafeRegistrationNo", companyGasSafeRegistrationNo.Text ?? string.Empty);
-        reportData.Add("engineersGasSafeIDNo", engineersGasSafeIDNo.Text ?? string.Empty);
-        reportData.Add("inspectionDate", inspectionDate.Text ?? string.Empty);
-        reportData.Add("clientsName", clientsName.Text ?? string.Empty);
-        reportData.Add("date", date.Text ?? string.Empty);
-
-
-        reportData.Add("checkRemedialToWorkRequiredYes", checkRemedialToWorkRequiredYes.IsChecked.ToString());
-        reportData.Add("checkTestsCompletedSatisfactoryYes", checkTestsCompletedSatisfactoryYes.IsChecked.ToString());
-        reportData.Add("checkPipeworkToGasMeterYes", checkPipeworkToGasMeterYes.IsChecked.ToString());
-        reportData.Add("checkPipeworkToGasMeterNA", checkPipeworkToGasMeterNA.IsChecked.ToString());
-        reportData.Add("checkRegulatorAndOrMeterYes", checkRegulatorAndOrMeterYes.IsChecked.ToString());
-        reportData.Add("checkRegulatorAndOrMeterNA", checkRegulatorAndOrMeterNA.IsChecked.ToString());
-        reportData.Add("checkSafetyNoticesLabelsYes", checkSafetyNoticesLabelsYes.IsChecked.ToString());
-        reportData.Add("checkSafetyNoticesLabelsNA", checkSafetyNoticesLabelsNA.IsChecked.ToString());
-        reportData.Add("checkLineDiagramYes", checkLineDiagramYes.IsChecked.ToString());
-        reportData.Add("checkLineDiagramNA", checkLineDiagramNA.IsChecked.ToString());
-        reportData.Add("checkColorCodingIndicationTapeYes", checkColorCodingIndicationTapeYes.IsChecked.ToString());
-        reportData.Add("checkColorCodingIndicationTapeNA", checkColorCodingIndicationTapeNA.IsChecked.ToString());
-        reportData.Add("checkMeterHouseVentilationYes", checkMeterHouseVentilationYes.IsChecked.ToString());
-        reportData.Add("checkMeterHouseVentilationNA", checkMeterHouseVentilationNA.IsChecked.ToString());
-        reportData.Add("checkFreeAirExistingCM", checkFreeAirExistingCM.IsChecked.ToString());
-        reportData.Add("checkFreeAirExistingMH", checkFreeAirExistingMH.IsChecked.ToString());
-        reportData.Add("checkFreeAirRequiredCM", checkFreeAirRequiredCM.IsChecked.ToString());
-        reportData.Add("checkcheckFreeAirRequiredMH", checkcheckFreeAirRequiredMH.IsChecked.ToString());
-        reportData.Add("checkMainFlueYes", checkMainFlueYes.IsChecked.ToString());
-        reportData.Add("checkMainFlueNA", checkMainFlueNA.IsChecked.ToString());
-        reportData.Add("checkChimneyFlueTerminalPositionYes", checkChimneyFlueTerminalPositionYes.IsChecked.ToString());
-        reportData.Add("checkChimneyFlueTerminalPositionNA", checkChimneyFlueTerminalPositionNA.IsChecked.ToString());
-        reportData.Add("checkStubFluersToBoildersYes", checkStubFluersToBoildersYes.IsChecked.ToString());
-        reportData.Add("checkStubFluersToBoildersNA", checkStubFluersToBoildersNA.IsChecked.ToString());
-        reportData.Add("checkIdFanYes", checkIdFanYes.IsChecked.ToString());
-        reportData.Add("checkIdFanNA", checkIdFanNA.IsChecked.ToString());
-        reportData.Add("checkFanBoilerSafetyInterlockYes", checkFanBoilerSafetyInterlockYes.IsChecked.ToString());
-        reportData.Add("checkFanBoilerSafetyInterlockNA", checkFanBoilerSafetyInterlockNA.IsChecked.ToString());
-        reportData.Add("checkGeneralComplianceOfGasPipeYes", checkGeneralComplianceOfGasPipeYes.IsChecked.ToString());
-        reportData.Add("checkGeneralComplianceOfGasPipeNA", checkGeneralComplianceOfGasPipeNA.IsChecked.ToString());
-        reportData.Add("checkVentilationYes", checkVentilationYes.IsChecked.ToString());
-        reportData.Add("checkVentilationNA", checkVentilationNA.IsChecked.ToString());
-        reportData.Add("checkAIVYes", checkAIVYes.IsChecked.ToString());
-        reportData.Add("checkAIVNo", checkAIVNo.IsChecked.ToString());
-        reportData.Add("checkManualYes", checkManualYes.IsChecked.ToString());
-        reportData.Add("checkManualNo", checkManualNo.IsChecked.ToString());
-        reportData.Add("checkPlantGasTightnessTestYes", checkPlantGasTightnessTestYes.IsChecked.ToString());
-     
 
         return reportData;
     }

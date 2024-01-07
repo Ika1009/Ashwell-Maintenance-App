@@ -774,7 +774,7 @@ public partial class OneAPage : ContentPage
         installationPicker.SelectedIndex = -1;
     }
 
-    private async Task stampAnimation(Image image)
+    private async static Task stampAnimation(Image image)
     {
         var rotate = image.RotateTo(30, 350, Easing.Default);
         var scale = image.ScaleTo(0.85, 1000, Easing.BounceOut);

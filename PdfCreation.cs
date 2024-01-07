@@ -25,7 +25,7 @@ namespace Ashwell_Maintenance
             {
                 string fullResourcePath = $"Ashwell_Maintenance.Resources.Images.{filename}";
 
-                Image image = new Image { Source = ImageSource.FromResource(fullResourcePath) };
+                Image image = new () { Source = ImageSource.FromResource(fullResourcePath) };
                 if (image?.Source is not StreamImageSource streamImageSource)
                 {
                     Console.WriteLine("The image's source is not a StreamImageSource.");
@@ -854,7 +854,7 @@ namespace Ashwell_Maintenance
                 x += 104.5;
             }
             x = 325;
-            y = y + 176;
+            y += 176;
             List<string> dva = new List<string>()
             {
                 dic["checkA_ID2"],

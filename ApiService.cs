@@ -17,7 +17,7 @@ public static class ApiService
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
     public static async Task<HttpResponseMessage> UploadFolderAsync(string folderName)
     {
-        using HttpClient client = new HttpClient();
+        using HttpClient client = new();
         var folderData = new { folder_name = folderName };
         var jsonContent = new StringContent(JsonSerializer.Serialize(folderData), Encoding.UTF8, "application/json");
 
@@ -31,7 +31,7 @@ public static class ApiService
     /// <returns>A HttpResponseMessage containing the list of folders.</returns>
     public static async Task<HttpResponseMessage> GetAllFoldersAsync()
     {
-        using HttpClient client = new HttpClient();
+        using HttpClient client = new();
 
         HttpResponseMessage response = await client.GetAsync($"{BaseApiUrl}/get_folders.php");
 
@@ -45,7 +45,7 @@ public static class ApiService
     /// <returns>A HttpResponseMessage containing the list of reports for the specified folder.</returns>
     public static async Task<HttpResponseMessage> GetReportsForFolderAsync(string folderId)
     {
-        using HttpClient client = new HttpClient();
+        using HttpClient client = new();
 
         // Append the folder_id parameter to the API endpoint
         string apiUrl = $"{BaseApiUrl}/get_reports_by_folder.php?folder_id={folderId}";
@@ -119,7 +119,7 @@ public static class ApiService
     /// <returns>A byte array representing the content of the downloaded image, or null if the download fails.</returns>
     public static async Task<byte[]> GetImageAsByteArrayAsync(string imageUrl)
     {
-        using (HttpClient client = new HttpClient())
+        using (HttpClient client = new())
         {
             try
             {
@@ -153,7 +153,7 @@ public static class ApiService
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
     public static async Task<HttpResponseMessage> UploadPdfToDropboxAsync(byte[] pdfData, string folderName, string reportName)
     {
-        using HttpClient client = new HttpClient();
+        using HttpClient client = new();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
 
         // Construct the full Dropbox path for the folder
@@ -169,7 +169,7 @@ public static class ApiService
         string filePath = $"{folderPath}/{reportName}.pdf";
 
         // Upload the file
-        using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, _uploadUrl);
+        using HttpRequestMessage request = new(HttpMethod.Post, _uploadUrl);
         request.Headers.Add("Dropbox-API-Arg", $"{{\"path\": \"{filePath}\",\"mode\": \"add\",\"autorename\": true,\"mute\": false}}");
         request.Content = new ByteArrayContent(pdfData);
         request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
