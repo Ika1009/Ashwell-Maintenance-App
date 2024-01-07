@@ -141,7 +141,7 @@ public static class ApiService
     //private static readonly string _key = "kbyqio0zijuo2os"; 
     //private static readonly string _secret = "geruwzjd0qbbebe";
     private static readonly string _uploadUrl = "https://content.dropboxapi.com/2/files/upload";
-    private static readonly string _accessToken = "sl.BqbG5iL6_7XlUq6V9qzlZS1ate9NdZc8pKrJ_78H5Mdv-cB2i3AImo6I1sOE7VH3wBDLv27iA2Mcl1Z8XLksHfv1Gz7bpWOFgSyv09hshePFv6dTR7FY1Q-YIZzsbQyuBmCBRLrcY4g8";
+    private static readonly string _accessToken = "sl.BtN25J4Ykyk8X5OooCHx1ky9QXpRv9BFALlMli6fV0jV7CDaCKyMU77VtvzkFSjfusUJSAYWVUhUt8fWr19zh1fkyFNIPMJbzRibMTNWJoPq6FCfpefleLFFYE_JDgPCkg3c42c-LiNp";
     private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
 
     /// <summary>

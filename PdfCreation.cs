@@ -58,7 +58,8 @@ namespace Ashwell_Maintenance
         {
             try
             {
-                MemoryStream imageStream = new MemoryStream(imageBytes);
+                // Use this constructor to make the internal buffer publicly visible
+                MemoryStream imageStream = new MemoryStream(imageBytes, 0, imageBytes.Length, true, true);
                 XImage xImage = XImage.FromStream(imageStream);
                 return xImage;
             }
@@ -563,7 +564,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> IgeUpB(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> _1B(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -737,7 +738,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> CheckPage(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> ConformityCheckPage(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
