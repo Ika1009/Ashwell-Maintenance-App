@@ -144,7 +144,13 @@ public static class ApiService
     private static readonly string _accessToken = "sl.BqbG5iL6_7XlUq6V9qzlZS1ate9NdZc8pKrJ_78H5Mdv-cB2i3AImo6I1sOE7VH3wBDLv27iA2Mcl1Z8XLksHfv1Gz7bpWOFgSyv09hshePFv6dTR7FY1Q-YIZzsbQyuBmCBRLrcY4g8";
     private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
 
-
+    /// <summary>
+    /// Uploads a PDF file to Dropbox.
+    /// </summary>
+    /// <param name="pdfData">The byte array representing the PDF file.</param>
+    /// <param name="folderName">The name of the folder in Dropbox.</param>
+    /// <param name="reportName">The name of the report.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
     public static async Task<HttpResponseMessage> UploadPdfToDropboxAsync(byte[] pdfData, string folderName, string reportName)
     {
         using HttpClient client = new HttpClient();
@@ -171,12 +177,24 @@ public static class ApiService
         return await client.SendAsync(request);
     }
 
+    /// <summary>
+    /// Checks if a folder exists in Dropbox.
+    /// </summary>
+    /// <param name="client">The HttpClient instance.</param>
+    /// <param name="path">The path of the folder in Dropbox.</param>
+    /// <returns>True if the folder exists, false otherwise.</returns>
     private static async Task<bool> CheckFolderExistsDropboxAsync(HttpClient client, string path)
     {
         var response = await client.PostAsJsonAsync($"{_apiUrl}/files/get_metadata", new { path });
         return response.IsSuccessStatusCode;
     }
 
+    /// <summary>
+    /// Creates a folder in Dropbox.
+    /// </summary>
+    /// <param name="client">The HttpClient instance.</param>
+    /// <param name="path">The path of the folder to create in Dropbox.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     private static async Task CreateFolderDropboxAsync(HttpClient client, string path)
     {
         var content = new StringContent(JsonSerializer.Serialize(new { path }), Encoding.UTF8, "application/json");
@@ -188,7 +206,6 @@ public static class ApiService
             throw new Exception($"Failed to create folder: {path}. Response: {responseContent}");
         }
     }
-
 
 
 }

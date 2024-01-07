@@ -20,6 +20,13 @@ public partial class EngineersReportPage : ContentPage
         _ = UploadReport(Folders.First(folder => folder.Id == folderId));
     }
 
+    /// <summary>
+    /// Uploads the report to the server and handles the response.
+    /// If the upload is successful, it navigates back.
+    /// If the folder contains signatures, it retrieves them and creates a PDF report.
+    /// The PDF report is then uploaded to Dropbox.
+    /// </summary>
+    /// <param name="folder">The folder containing the report data.</param>
     private async Task UploadReport(Folder folder)
     {
         try
