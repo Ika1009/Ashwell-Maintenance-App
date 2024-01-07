@@ -496,7 +496,7 @@ public partial class OneBPage : ContentPage
         maximumPermissiblePressureDrop.SelectedIndex = -1;
     }
 
-    private async void stampAnimation(Image image)
+    private async Task stampAnimation(Image image)
     {
         var rotate = image.RotateTo(30, 350, Easing.Default);
         var scale = image.ScaleTo(0.85, 1000, Easing.BounceOut);
@@ -507,7 +507,7 @@ public partial class OneBPage : ContentPage
         await image.FadeTo(0.5, 2000);
         await image.FadeTo(0, 200);
     }
-    private async void stampAnimationEnd(Image image)
+    private async Task stampAnimationEnd(Image image)
     {
         await image.FadeTo(0, 0);
         await image.RotateTo(0, 0);
@@ -521,17 +521,17 @@ public partial class OneBPage : ContentPage
             testPassedOrFailed_delete.IsVisible = true;
 
             if (testPassedOrFailed.SelectedItem.ToString() == "PASS")
-                stampAnimation(passStamp);
+                await stampAnimation(passStamp);
             else
-                stampAnimation(failStamp);
+                await stampAnimation(failStamp);
         }
         else
         {
             testPassedOrFailed_x.IsVisible = false;
             testPassedOrFailed_delete.IsVisible = false;
 
-            stampAnimationEnd(passStamp);
-            stampAnimationEnd(failStamp);
+            await stampAnimationEnd(passStamp);
+            await stampAnimationEnd(failStamp);
         }
     }
     public void testPassedOrFailed_Delete(object sender, EventArgs e)

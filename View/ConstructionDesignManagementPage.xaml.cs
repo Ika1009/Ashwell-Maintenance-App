@@ -177,12 +177,12 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         CDMSection2.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
-            CDMSection3.ScrollToAsync(0, 0, false);
+            await CDMSection3.ScrollToAsync(0, 0, false);
         CDMSection3.IsVisible = true;
         await LoadFolders();
     }
     
-    public async void CDMNext3(object sender, EventArgs e)
+    public void CDMNext3(object sender, EventArgs e)
     {
         CDMSection3.IsVisible = false;
         FolderSection.IsVisible = true;

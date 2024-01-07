@@ -1998,17 +1998,17 @@ namespace Ashwell_Maintenance
 
             gfx.DrawImage(image, 0, 0, 595, 842);
 
-            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(118, 123, 288 - 118, 143 - 123), XStringFormat.Center);
+            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(118, 123, 288 - 118, 143 - 123), XStringFormats.Center);
 
-            gfx.DrawString(dic["address"], font, XBrushes.Black, new XRect(6, 145, 280, 25), XStringFormat.Center);
-            gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 170, 280, 25), XStringFormat.Center);
-            gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 195, 280, 25), XStringFormat.Center);
+            gfx.DrawString(dic["address"], font, XBrushes.Black, new XRect(6, 145, 280, 25), XStringFormats.Center);
+            gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 170, 280, 25), XStringFormats.Center);
+            gfx.DrawString(" ", font, XBrushes.Black, new XRect(6, 195, 280, 25), XStringFormats.Center);
 
-            gfx.DrawString(dic["applianceMake"], font, XBrushes.Black, new XRect(79, 219, 210, 24), XStringFormat.Center);
+            gfx.DrawString(dic["applianceMake"], font, XBrushes.Black, new XRect(79, 219, 210, 24), XStringFormats.Center);
 
-            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(340, 125, 588 - 340, 25), XStringFormat.Center);
-            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(340, 145, 588 - 340, 25), XStringFormat.Center);
-            gfx.DrawString(dic["taskTNo"], font, XBrushes.Black, new XRect(340, 170, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(340, 125, 588 - 340, 25), XStringFormats.Center);
+            gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(340, 145, 588 - 340, 25), XStringFormats.Center);
+            gfx.DrawString(dic["taskTNo"], font, XBrushes.Black, new XRect(340, 170, 588 - 340, 25), XStringFormats.Center);
 
 
             //gfx.DrawEllipse(XBrushes.Black, new XRect(377, 194, 420 - 377, 25));
@@ -2017,7 +2017,7 @@ namespace Ashwell_Maintenance
             else
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
 
-            gfx.DrawString(dic["serialNumber"], font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormat.Center);
+            gfx.DrawString(dic["serialNumber"], font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormats.Center);
 
             string[] l = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " };
             string[] TempDesc = dic["description"].Split();
@@ -2263,24 +2263,24 @@ namespace Ashwell_Maintenance
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
 
-            //gfx.DrawString(totalHeatingSystemRating, font, XBrushes.Black, new XRect(298, 308, 543 - 298, 14), XStringFormat.Center);
-            //gfx.DrawString(numberOfBoilers, font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
-            //gfx.DrawString(flowTemperature, font, XBrushes.Black, new XRect(298, 339, 548 - 298, 14), XStringFormat.Center);
-            //gfx.DrawString(returnTemperature, font, XBrushes.Black, new XRect(298, 354, 548 - 298, 14), XStringFormat.Center);
-            //gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 543 - 298, 14), XStringFormat.Center);
-            //gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 543 - 298, 14), XStringFormat.Center);
+            //gfx.DrawString(totalHeatingSystemRating, font, XBrushes.Black, new XRect(298, 308, 543 - 298, 14), XStringFormats.Center);
+            //gfx.DrawString(numberOfBoilers, font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormats.Center);
+            //gfx.DrawString(flowTemperature, font, XBrushes.Black, new XRect(298, 339, 548 - 298, 14), XStringFormats.Center);
+            //gfx.DrawString(returnTemperature, font, XBrushes.Black, new XRect(298, 354, 548 - 298, 14), XStringFormats.Center);
+            //gfx.DrawString(currentWorkingPressure, font, XBrushes.Black, new XRect(298, 369, 543 - 298, 14), XStringFormats.Center);
+            //gfx.DrawString(safetyValveSetting, font, XBrushes.Black, new XRect(298, 385, 543 - 298, 14), XStringFormats.Center);
 
-            gfx.DrawString(dic["totalHeatingSystemRating"], font, XBrushes.Black, new XRect(298, 308, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(dic["numberOfBoilers"], font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(dic["flowTemperature"], font, XBrushes.Black, new XRect(298, 339, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(dic["returnTemperature"], font, XBrushes.Black, new XRect(298, 354, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(dic["currentWorkingPressure"], font, XBrushes.Black, new XRect(298, 369, 566 - 298, 14), XStringFormat.Center);
-            gfx.DrawString(dic["safetyValveSetting"], font, XBrushes.Black, new XRect(298, 385, 566 - 298, 14), XStringFormat.Center);
+            gfx.DrawString(dic["totalHeatingSystemRating"], font, XBrushes.Black, new XRect(298, 308, 566 - 298, 14), XStringFormats.Center);
+            gfx.DrawString(dic["numberOfBoilers"], font, XBrushes.Black, new XRect(298, 323, 566 - 298, 14), XStringFormats.Center);
+            gfx.DrawString(dic["flowTemperature"], font, XBrushes.Black, new XRect(298, 339, 566 - 298, 14), XStringFormats.Center);
+            gfx.DrawString(dic["returnTemperature"], font, XBrushes.Black, new XRect(298, 354, 566 - 298, 14), XStringFormats.Center);
+            gfx.DrawString(dic["currentWorkingPressure"], font, XBrushes.Black, new XRect(298, 369, 566 - 298, 14), XStringFormats.Center);
+            gfx.DrawString(dic["safetyValveSetting"], font, XBrushes.Black, new XRect(298, 385, 566 - 298, 14), XStringFormats.Center);
 
-            gfx.DrawString(dic["unitModel"], font, XBrushes.Black, new XRect(99, 444, 296 - 99, 25), XStringFormat.Center);
-            gfx.DrawString(dic["serialNo"], font, XBrushes.Black, new XRect(359, 444, 565 - 359, 25), XStringFormat.Center);
-            gfx.DrawString(dic["expansionVesselSize"], font, XBrushes.Black, new XRect(183, 471, 296 - 183, 25), XStringFormat.Center);
-            gfx.DrawString(dic["numberOfPressureVessels"], font, XBrushes.Black, new XRect(447, 471, 565 - 447, 25), XStringFormat.Center);
+            gfx.DrawString(dic["unitModel"], font, XBrushes.Black, new XRect(99, 444, 296 - 99, 25), XStringFormats.Center);
+            gfx.DrawString(dic["serialNo"], font, XBrushes.Black, new XRect(359, 444, 565 - 359, 25), XStringFormats.Center);
+            gfx.DrawString(dic["expansionVesselSize"], font, XBrushes.Black, new XRect(183, 471, 296 - 183, 25), XStringFormats.Center);
+            gfx.DrawString(dic["numberOfPressureVessels"], font, XBrushes.Black, new XRect(447, 471, 565 - 447, 25), XStringFormats.Center);
 
             List<string> PressurationUnitSetings = new List<string>
             {
@@ -2296,7 +2296,7 @@ namespace Ashwell_Maintenance
             double y = 542;
             for (int i = 0; i < 5; i++)
             {
-                gfx.DrawString(PressurationUnitSetings[i], font, XBrushes.Black, new XRect(227, y, 268 - 227, 13), XStringFormat.Center);
+                gfx.DrawString(PressurationUnitSetings[i], font, XBrushes.Black, new XRect(227, y, 268 - 227, 13), XStringFormats.Center);
                 y += 15;
             }
             List<string> check1 = new List<string>
@@ -2324,8 +2324,8 @@ namespace Ashwell_Maintenance
             XRect layoutRectangle1 = boundingBox1;
             tf1.DrawString(text1, new XFont("Arial", 10), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
 
-            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormat.Center);
-            //   gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormat.Center);
+            gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(245, 777, 378 - 245, 25), XStringFormats.Center);
+            //   gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormats.Center);
 
             if (inzenjer != null && inzenjer.Length != 0)
                 gfx.DrawImage(ConvertToXImage(inzenjer), 435, 777, 565 - 435, 23);
