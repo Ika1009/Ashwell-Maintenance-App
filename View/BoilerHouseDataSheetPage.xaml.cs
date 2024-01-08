@@ -57,7 +57,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
-                byte[] pdfData = await PdfCreation.Boiler(reportData, signature1, signature2);
+                byte[] pdfData = await PdfCreation.BoilerHouseDataSheet(reportData, signature1, signature2);
 
                 if (pdfData != null)
                 {
@@ -208,7 +208,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Boiler_House_Data_Sheet_{dateTimeString}.pdf";
         reportData = GatherReportData();
-        //PdfCreation.Boiler(GatherReportData());
+        //PdfCreation.BoilerHouseDataSheet(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {

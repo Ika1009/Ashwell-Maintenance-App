@@ -57,7 +57,13 @@ public partial class DisplayedReportsPage : ContentPage
                 switch (report.ReportType)
                 {
                     case Enums.ReportType.ServiceRecord:
-                        pdfData = await PdfCreation.CreateServiceRecordPDF(report.ReportData, engineerSignature, customerSignature);
+                        pdfData = await PdfCreation.ServiceRecord(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.EngineersReport:
+                        pdfData = await PdfCreation.CreateEngineersReportPDF(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.BoilerHouseDataSheet:
+                        pdfData = await PdfCreation.BoilerHouseDataSheet(report.ReportData, engineerSignature, customerSignature);
                         break;
                 }
 

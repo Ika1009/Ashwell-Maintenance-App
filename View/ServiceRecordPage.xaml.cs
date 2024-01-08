@@ -58,7 +58,7 @@ public partial class ServiceRecordPage : ContentPage
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
-                byte[] pdfData = await PdfCreation.CreateServiceRecordPDF(reportData, signature1, signature2);
+                byte[] pdfData = await PdfCreation.ServiceRecord(reportData, signature1, signature2);
 
                 if (pdfData != null)
                 {
@@ -193,7 +193,7 @@ public partial class ServiceRecordPage : ContentPage
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";
         GatherReportData();
-        //await PdfCreation.CreateServiceRecordPDF(reportData, Array.Empty<byte>(), Array.Empty<byte>());
+        //await PdfCreation.ServiceRecord(reportData, Array.Empty<byte>(), Array.Empty<byte>());
         //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
     }
     private void GatherReportData()

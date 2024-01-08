@@ -69,7 +69,7 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
-        public static async Task<byte[]> GasRisk(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> GasRiskAssessment(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -564,7 +564,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> _1B(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> OneB(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -738,7 +738,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> ConformityCheckPage(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> ConformityCheck(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -964,7 +964,7 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["requiredLowLevel"], font, XBrushes.Black, new XRect(367, 207, 90, 13), XStringFormats.Center);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "ConformityCheckPage.pdf");
+            string filePath = System.IO.Path.Combine(downloadsFolder, "ConformityCheckReport.pdf");
 
             document.Save(filePath);
 
@@ -972,7 +972,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> Boiler(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> BoilerHouseDataSheet(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1179,7 +1179,7 @@ namespace Ashwell_Maintenance
             return stream.ToArray();
         }
 
-        public static async Task<byte[]> _1Up(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> One(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
 
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -1382,7 +1382,7 @@ namespace Ashwell_Maintenance
             return stream.ToArray();
 
         }
-        public static async Task<byte[]> _1A(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> OneA(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1544,9 +1544,6 @@ namespace Ashwell_Maintenance
 
 
 
-
-
-
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1A Sheet.pdf");
 
@@ -1558,7 +1555,7 @@ namespace Ashwell_Maintenance
 
 
         }
-        public static async Task<byte[]> CreateServiceRecordPDF(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> ServiceRecord(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -1978,7 +1975,7 @@ namespace Ashwell_Maintenance
             document.Save(stream, false);
             return stream.ToArray();
         }
-        public static async Task<byte[]> CreateEngineersReport(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> EngineersReport(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
@@ -2101,11 +2098,11 @@ namespace Ashwell_Maintenance
             return stream.ToArray();
 
         }
-        public static async Task<byte[]> CDM(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
+        public static async Task<byte[]> ConstructionDesignManagement(Dictionary<string,string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-            PdfDocument document = new PdfDocument(); document.Info.Title = "CDM Site Form";
+            PdfDocument document = new PdfDocument(); document.Info.Title = "ConstructionDesignManagement Site Form";
 
 
             PdfPage page = document.AddPage();

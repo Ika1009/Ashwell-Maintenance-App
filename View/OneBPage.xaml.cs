@@ -79,7 +79,7 @@ public partial class OneBPage : ContentPage
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
-                byte[] pdfData = await PdfCreation._1B(reportData, signature1, signature2);
+                byte[] pdfData = await PdfCreation.OneB(reportData, signature1, signature2);
 
                 if (pdfData != null)
                 {

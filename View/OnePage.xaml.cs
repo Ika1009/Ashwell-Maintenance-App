@@ -97,7 +97,7 @@ public partial class OnePage : ContentPage
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
-                byte[] pdfData = await PdfCreation._1Up(reportData, signature1, signature2);
+                byte[] pdfData = await PdfCreation.One(reportData, signature1, signature2);
 
                 if (pdfData != null)
                 {
@@ -304,7 +304,7 @@ public partial class OnePage : ContentPage
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"1_Tightness_Testing__{dateTimeString}.pdf";
         reportData = GatherReportData();
-        //PdfCreation._1Up(GatherReportData());
+        //PdfCreation.One(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {

@@ -58,7 +58,7 @@ public partial class GasRiskAssessmentPage : ContentPage
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
-                byte[] pdfData = await PdfCreation.GasRisk(reportData, signature1, signature2);
+                byte[] pdfData = await PdfCreation.GasRiskAssessment(reportData, signature1, signature2);
 
                 if (pdfData != null)
                 {

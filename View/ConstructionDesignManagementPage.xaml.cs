@@ -58,7 +58,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
-                byte[] pdfData = await PdfCreation.CDM(reportData, signature1, signature2);
+                byte[] pdfData = await PdfCreation.ConstructionDesignManagement(reportData, signature1, signature2);
 
                 if (pdfData != null)
                 {
@@ -191,7 +191,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         reportName = $"Construction_Design_Management_{dateTimeString}.pdf";
         reportData = GatherReportData();
         //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
-        //await PdfCreation.CDM(reportData);
+        //await PdfCreation.ConstructionDesignManagement(reportData);
     }
     private Dictionary<string, string> GatherReportData()
     {
