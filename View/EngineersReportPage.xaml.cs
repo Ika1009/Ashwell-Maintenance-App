@@ -65,7 +65,7 @@ public partial class EngineersReportPage : ContentPage
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
-                byte[] pdfData = await PdfCreation.CreateEngineersReport(reportData, signature1, signature2); ;
+                byte[] pdfData = await PdfCreation.EngineersReport(reportData, signature1, signature2); ;
                 
                 if (pdfData != null)
                 {

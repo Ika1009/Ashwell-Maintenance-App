@@ -56,14 +56,35 @@ public partial class DisplayedReportsPage : ContentPage
                 // For each report checks which pdf function to call based on the type
                 switch (report.ReportType)
                 {
-                    case Enums.ReportType.ServiceRecord:
-                        pdfData = await PdfCreation.ServiceRecord(report.ReportData, engineerSignature, customerSignature);
-                        break;
-                    case Enums.ReportType.EngineersReport:
-                        pdfData = await PdfCreation.CreateEngineersReportPDF(report.ReportData, engineerSignature, customerSignature);
-                        break;
                     case Enums.ReportType.BoilerHouseDataSheet:
                         pdfData = await PdfCreation.BoilerHouseDataSheet(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.ConformityCheck:
+                        pdfData = await PdfCreation.ConformityCheck(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.ConstructionDesignManagement:
+                        pdfData = await PdfCreation.ConstructionDesignManagement(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.EngineersReport:
+                        pdfData = await PdfCreation.EngineersReport(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.GasRiskAssessment:
+                        pdfData = await PdfCreation.GasRiskAssessment(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.OneA:
+                        pdfData = await PdfCreation.OneA(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.OneB:
+                        pdfData = await PdfCreation.OneB(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.One:
+                        pdfData = await PdfCreation.One(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.PressurisationUnitReport:
+                        pdfData = await PdfCreation.PressurisationReport(report.ReportData, engineerSignature, customerSignature);
+                        break;
+                    case Enums.ReportType.ServiceRecord:
+                        pdfData = await PdfCreation.ServiceRecord(report.ReportData, engineerSignature, customerSignature);
                         break;
                 }
 
@@ -112,7 +133,7 @@ public partial class DisplayedReportsPage : ContentPage
                         ReportId = element.GetProperty("report_id").GetString(),
                         ReportName = element.GetProperty("report_name").GetString(),
                         ReportData = JsonSerializer.Deserialize<Dictionary<string, string>>(element.GetProperty("report_data").GetString()),
-                        ReportType = Enum.TryParse<Enums.ReportType>(element.GetProperty("report_type").GetString(), out Enums.ReportType parsedReportType)
+                        ReportType = Enum.TryParse(element.GetProperty("report_type").GetString(), out Enums.ReportType parsedReportType)
                                      ? parsedReportType
                                      : Enums.ReportType.ServiceRecord // Default Type if nothing is found
                     });
