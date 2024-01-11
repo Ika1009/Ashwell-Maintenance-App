@@ -1,64 +1,206 @@
+using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Views;
+using System.Text.Json;
+
 namespace Ashwell_Maintenance.View;
 
 public partial class EngineersReportPage : ContentPage
 {
-	public EngineersReportPage()
+    string reportName = "noname";
+    public ObservableCollection<Folder> Folders = new();
+    private Dictionary<string, string> reportData;
+    public EngineersReportPage()
 	{
 		InitializeComponent();
 	}
+    public void FolderChosen(object sender, EventArgs e)
+    {
+        string folderId = (sender as Button).CommandParameter as string;
 
-    [Obsolete]
-    public void EngineersReportBack(object sender, EventArgs e)
+        _ = UploadReport(Folders.First(folder => folder.Id == folderId));
+    }
+
+    /// <summary>
+    /// Uploads the report to the server and handles the response.
+    /// If the upload is successful, it navigates back.
+    /// If the folder contains signatures, it retrieves them and creates a PDF report.
+    /// The PDF report is then uploaded to Dropbox.
+    /// </summary>
+    /// <param name="folder">The folder containing the report data.</param>
+    private async Task UploadReport(Folder folder)
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folder.Id, reportData);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Success", "Successfully uploaded new sheet.", "OK");
+                await Navigation.PopModalAsync();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to upload report.", "OK");
+            }
+        }
+        catch (HttpRequestException httpEx)
+        {
+            await DisplayAlert("Error", $"HTTP request error. Details: {httpEx.Message}", "OK");
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+
+        if (folder.Signature1 != null && folder.Signature2 != null)
+        {
+            try
+            {
+                byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                if (signature1 == null || signature2 == null)
+                    throw new Exception("Couldn't retrieve signatures");
+
+                byte[] pdfData = await PdfCreation.EngineersReport(reportData, signature1, signature2); ;
+                
+                if (pdfData != null)
+                {
+                    HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
+
+                    if (!signatureResponse.IsSuccessStatusCode)
+                    {
+                        await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
+            }
+        }
+    }
+
+    public void NewFolder(object sender, EventArgs e)
+    {
+        this.ShowPopup(new NewFolderPopup(LoadFolders));
+    }
+    private async Task LoadFolders()
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Error", "Failed to load folders.", "OK");
+                return;
+            }
+
+            string json = await response.Content.ReadAsStringAsync();
+
+            JsonDocument jsonDocument = JsonDocument.Parse(json);
+            if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
+            {
+                // Clear the existing items and add the new ones directly to the ObservableCollection
+                Folders.Clear();
+                foreach (var element in dataArray.EnumerateArray())
+                {
+                    Folders.Add(new Folder
+                    {
+                        Id = element.GetProperty("folder_id").GetString(),
+                        Name = element.GetProperty("folder_name").GetString(),
+                        Timestamp = element.GetProperty("created_at").GetString(),
+                        Signature1 = element.GetProperty("signature1").GetString(),
+                        Signature2 = element.GetProperty("signature2").GetString()
+                    });
+                }
+
+                // Check if the ItemsSource is already set
+                FoldersListView.ItemsSource ??= Folders;
+            }
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (FormatException formatEx)
+        {
+            await DisplayAlert("Error", $"Failed to format the date. Details: {formatEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+    }
+    
+    public async void EngineersReportBack(object sender, EventArgs e)
 	{
 		if (ERSection1.IsVisible)
         {
             EngineersReportBackBtt.IsEnabled = false;
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
 		else if (ERSection2.IsVisible)
 		{
 			ERSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
-                ERSection1.ScrollToAsync(0, 0, false);
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                await ERSection1.ScrollToAsync(0, 0, false);
 			ERSection1.IsVisible = true;
 
 		}
-		else
+		else if(ERSection3.IsVisible)
 		{
             ERSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
-                ERSection2.ScrollToAsync(0, 0, false);
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                await ERSection2.ScrollToAsync(0, 0, false);
             ERSection2.IsVisible = true;
+        }
+        else
+        {
+            FolderSection.IsVisible = false;
+
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                await ERSection3.ScrollToAsync(0, 0, false);
+            ERSection3.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public async void ERNext1(object sender, EventArgs e)
 	{
 		ERSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await ERSection2.ScrollToAsync(0, 0, false);
 		ERSection2.IsVisible = true;
 	}
-    [Obsolete]
+    
     public async void ERNext2(object sender, EventArgs e)
     {
         ERSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await ERSection3.ScrollToAsync(0, 0, false);
         ERSection3.IsVisible = true;
+        await LoadFolders();
     }
-    [Obsolete]
+    
     public async void ERNext3(object sender, EventArgs e)
     {
-        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
-        string  reportName = $"Ashwell_Engineers_Report_{dateTimeString}.pdf";
+        ERSection3.IsVisible = false;
 
-        await PdfCreation.CreateEngineersReport(GatherReportData());
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await FolderSection.ScrollToAsync(0, 0, false);
+        FolderSection.IsVisible = true;
+
+        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
+        reportName = $"Engineers_Report_{dateTimeString}.pdf";
+        reportData = GatherReportData();
     }
     private Dictionary<string, string> GatherReportData()
     {

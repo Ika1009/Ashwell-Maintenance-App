@@ -28,15 +28,6 @@ public partial class DisplayedProjectsPage : ContentPage
             icon.Source = "incompleted_jobs.png";
         }
     }
-    public class Folder
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Timestamp { get; set; }
-        public string Signature1 { get; set; }
-        public string Signature2 { get; set; }
-
-    }
     public async void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;

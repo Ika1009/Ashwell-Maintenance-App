@@ -1703,65 +1703,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <ScrollView x:Name="SRSection4" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-            <!--<VerticalStackLayout Spacing="20">
-                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
-                <Frame Padding="0" HeightRequest="300" CornerRadius="10">
-                    <Grid>
-                        <ImageButton BackgroundColor="#222225"/>
-
-                        <Button Text="CLICK TO VIEW" TextColor="#000" FontSize="18" FontFamily="SatoshiBold" BackgroundColor="#80ffffff" Padding="20, 10" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"/>
-
-                        <ImageButton Source="edit.png" WidthRequest="60" HeightRequest="60" BackgroundColor="#80ffffff" Padding="10" CornerRadius="20" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 15, 15"/>
-                    </Grid>
-                </Frame>
-
-                <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
-                    <BoxView Color="#222225"/>
-                </Frame>
-
-                <VerticalStackLayout Spacing="15" Margin="0, 0, 0, 50">
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid Padding="0, 20">
-                                <Label Text="Add Another Sheet To This Job" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20" WidthRequest="60" HorizontalOptions="End"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid Padding="0, 20">
-                                <Label Text="Complete Job" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20" WidthRequest="60" HorizontalOptions="End"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                        <Grid>
-                            <Grid Padding="0, 20">
-                                <Label Text="Complete Job Later" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-
-                                <ImageButton Grid.Column="2" Source="forward.png" HeightRequest="20" WidthRequest="60" HorizontalOptions="End"/>
-                            </Grid>
-
-                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" Clicked="Button_Clicked" MinimumHeightRequest="0"/>
-                        </Grid>
-                    </Frame>
-                </VerticalStackLayout>
-            </VerticalStackLayout>-->
-
+        <ScrollView x:Name="FolderSection" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
                 <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
@@ -1777,28 +1719,6 @@
                             <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
                         </Grid>
                     </Frame>
-
-                    <!--<ListView x:Name="FoldersListView" SeparatorVisibility="Default" SeparatorColor="#333333">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                                        <Grid>
-                                            <Grid Padding="20, 10">
-                                                <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
-
-                                                <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                <Label Text="{Binding Timestamp}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-                                            </Grid>
-
-                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
-                                        </Grid>
-                                    </Frame>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>-->
-
 
                     <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 200">
                         <ListView.RowHeight>60</ListView.RowHeight>

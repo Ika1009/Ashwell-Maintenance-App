@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ashwell_Maintenance.View.OnePage"
              xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
              BackgroundColor="#141414">
@@ -1389,6 +1390,56 @@
                 </Frame>
 
                 <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ONextFinish"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="FolderSection" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
+                <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
+                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                        <Grid>
+                            <Grid Padding="20, 10">
+                                <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
+
+                                <Label Text="New Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                            </Grid>
+
+                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
+                        </Grid>
+                    </Frame>
+
+                    <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 200">
+                        <ListView.RowHeight>60</ListView.RowHeight>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BackgroundColor="#222225" CornerRadius="40" HeightRequest="50" BorderColor="Transparent" Padding="0">
+                                        <Grid>
+                                            <Grid Padding="20, 0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
+                                                <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                                <Label Grid.Column="1" BindingContext="{x:Static sys:DateTime.Now}" Text="{Binding StringFormat='{0:d}'}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                            </Grid>
+
+                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+
+                </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
         

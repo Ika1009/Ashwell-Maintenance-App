@@ -1,3 +1,7 @@
+ using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Views;
+using System.Text.Json;
+
 namespace Ashwell_Maintenance.View;
 
 public partial class OneBPage : ContentPage
@@ -5,6 +9,9 @@ public partial class OneBPage : ContentPage
     double pipeworkVolumeNumber;
     double totalPipeworkVolumeNumber = 0;
 
+    string reportName = "noname";
+    public ObservableCollection<Folder> Folders = new();
+    private Dictionary<string, string> reportData;
     public OneBPage()
 	{
 		InitializeComponent();
@@ -27,9 +34,122 @@ public partial class OneBPage : ContentPage
         pesdr2.ItemsSource = numbers;
         pesdr3.ItemsSource = numbers;
     }
+    public void FolderChosen(object sender, EventArgs e)
+    {
+        string folderId = (sender as Button).CommandParameter as string;
 
-    [Obsolete]
-	public async void OneBBack(object sender, EventArgs e)
+        _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
+    }
+
+    private async Task UploadReport(Folder folder, Dictionary<string, string> report)
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.OneB, reportName, folder.Id, report);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Success", "Successfully uploaded new sheet.", "OK");
+                await Navigation.PopModalAsync();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to upload report.", "OK");
+            }
+        }
+        catch (HttpRequestException httpEx)
+        {
+            await DisplayAlert("Error", $"HTTP request error. Details: {httpEx.Message}", "OK");
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+
+        if (folder.Signature1 != null && folder.Signature2 != null)
+        {
+            try
+            {
+                byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                if (signature1 == null || signature2 == null)
+                    throw new Exception("Couldn't retrieve signatures");
+
+                byte[] pdfData = await PdfCreation.OneB(reportData, signature1, signature2);
+
+                if (pdfData != null)
+                {
+                    HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
+
+                    if (!signatureResponse.IsSuccessStatusCode)
+                    {
+                        await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
+            }
+        }
+    }
+
+    public void NewFolder(object sender, EventArgs e)
+    {
+        this.ShowPopup(new NewFolderPopup(LoadFolders));
+    }
+    private async Task LoadFolders()
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Error", "Failed to load folders.", "OK");
+                return;
+            }
+
+            string json = await response.Content.ReadAsStringAsync();
+
+            JsonDocument jsonDocument = JsonDocument.Parse(json);
+            if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
+            {
+                // Clear the existing items and add the new ones directly to the ObservableCollection
+                Folders.Clear();
+                foreach (var element in dataArray.EnumerateArray())
+                {
+                    Folders.Add(new Folder
+                    {
+                        Id = element.GetProperty("folder_id").GetString(),
+                        Name = element.GetProperty("folder_name").GetString(),
+                        Timestamp = element.GetProperty("created_at").GetString(),
+                        Signature1 = element.GetProperty("signature1").GetString(),
+                        Signature2 = element.GetProperty("signature2").GetString()
+                    });
+                }
+
+                // Check if the ItemsSource is already set
+                FoldersListView.ItemsSource ??= Folders;
+            }
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (FormatException formatEx)
+        {
+            await DisplayAlert("Error", $"Failed to format the date. Details: {formatEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+    }
+    public async void OneBBack(object sender, EventArgs e)
 	{
         if (OBSection1.IsVisible)
         {
@@ -40,7 +160,7 @@ public partial class OneBPage : ContentPage
         {
             OBSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OBSection1.ScrollToAsync(0, 0, false);
             OBSection1.IsVisible = true;
         }
@@ -48,54 +168,203 @@ public partial class OneBPage : ContentPage
         {
             OBSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OBSection2.ScrollToAsync(0, 0, false);
             OBSection2.IsVisible = true;
         }
-        else
+        else if(OBSection4.IsVisible)
         {
             OBSection4.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OBSection3.ScrollToAsync(0, 0, false);
             OBSection3.IsVisible = true;
         }
+        else
+        {
+            FolderSection.IsVisible = false;
+
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                await OBSection4.ScrollToAsync(0, 0, false);
+            OBSection4.IsVisible = true;
+        }
     }
 
-    [Obsolete]
+    
     public async void OneBNext1(object sender, EventArgs e)
     {
         OBSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OBSection2.ScrollToAsync(0, 0, false);
         OBSection2.IsVisible = true;
     }
 
-    [Obsolete]
+    
     public async void OneBNext2(object sender, EventArgs e)
     {
         OBSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OBSection3.ScrollToAsync(0, 0, false);
         OBSection3.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneBNext3(object sender, EventArgs e)
     {
         OBSection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OBSection4.ScrollToAsync(0, 0, false);
         OBSection4.IsVisible = true;
+        await LoadFolders();
     }
 
-    public void OneBNextFinish(object sender, EventArgs e)
+    public async void OneBNextFinish(object sender, EventArgs e)
     {
+        OBSection4.IsVisible = false;
 
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await FolderSection.ScrollToAsync(0, 0, false);
+        FolderSection.IsVisible = true;
+
+        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
+        reportName = $"1_B_Tightness_Testing_{dateTimeString}.pdf";
+        reportData = GatherReportData();
+
+        //PdfCreation.IgeUpB(GatherReportData());
     }
+    private Dictionary<string, string> GatherReportData()
+    {
+        Dictionary<string, string> reportData = new Dictionary<string, string>();
 
+        //  reportData.Add("", .Text ?? string.Empty);
+        //  reportData.Add("", .IsChecked.ToString());
+
+        reportData.Add("site", site.Text ?? string.Empty);
+        reportData.Add("location", location.Text ?? string.Empty);
+        reportData.Add("steel1Total", steel1Total.Text ?? string.Empty);
+        reportData.Add("steel2Total", steel2Total.Text ?? string.Empty);
+        reportData.Add("steel3Total", steel3Total.Text ?? string.Empty);
+        reportData.Add("steel4Total", steel4Total.Text ?? string.Empty);
+        reportData.Add("copper1Total", copper1Total.Text ?? string.Empty);
+        reportData.Add("copper2Total", copper2Total.Text ?? string.Empty);
+        reportData.Add("copper3Total", copper3Total.Text ?? string.Empty);
+        reportData.Add("copper4Total", copper4Total.Text ?? string.Empty);
+        reportData.Add("pesdr1Total", pesdr1Total.Text ?? string.Empty);
+        reportData.Add("pesdr2Total", pesdr2Total.Text ?? string.Empty);
+        reportData.Add("pesdr3Total", pesdr3Total.Text ?? string.Empty);
+        reportData.Add("totalPipeworkVolume", totalPipeworkVolume.Text ?? string.Empty);
+        reportData.Add("pipeworkFittingsIV", pipeworkFittingsIV.Text ?? string.Empty);
+        reportData.Add("meterVolume", meterVolume.Text ?? string.Empty);
+        reportData.Add("totalVolumeForTesting", totalVolumeForTesting.Text ?? string.Empty);
+        reportData.Add("tightnessTestPressure", tightnessTestPressure.Text ?? string.Empty);
+        reportData.Add("letByDuration", letByDuration.Text ?? string.Empty);
+        reportData.Add("stabilisationDuration", stabilisationDuration.Text ?? string.Empty);
+        reportData.Add("testDuration", testDuration.Text ?? string.Empty);
+        reportData.Add("actualPressureDropResult", actualPressureDropResult.Text ?? string.Empty);
+        reportData.Add("engineersComments", engineersComments.Text ?? string.Empty);
+        reportData.Add("engineer", engineer.Text ?? string.Empty);
+        reportData.Add("clientsName", clientsName.Text ?? string.Empty);
+        reportData.Add("WarningNoticeRefNo", WarningNoticeRefNo.Text ?? string.Empty);
+        reportData.Add("cardNumber", cardNumber.Text ?? string.Empty);
+
+
+        reportData.Add("checkIsWeatherTemperatureStableYes", checkIsWeatherTemperatureStableYes.IsChecked.ToString());
+        reportData.Add("checkIsWeatherTemperatureStableNo", checkIsWeatherTemperatureStableNo.IsChecked.ToString());
+
+
+        if (steel1.SelectedIndex != -1)
+            reportData.Add("steel1", (steel1.SelectedItem).ToString());
+        else
+            reportData.Add("steel1", string.Empty);
+
+        if (steel2.SelectedIndex != -1)
+            reportData.Add("steel2", (steel2.SelectedItem).ToString());
+        else
+            reportData.Add("steel2", string.Empty);
+
+        if (steel3.SelectedIndex != -1)
+            reportData.Add("steel3", (steel3.SelectedItem).ToString());
+        else
+            reportData.Add("steel3", string.Empty);
+        if (steel4.SelectedIndex != -1)
+            reportData.Add("steel4", (steel4.SelectedItem).ToString());
+        else
+            reportData.Add("steel4", string.Empty);
+
+
+        if (copper1.SelectedIndex != -1)
+            reportData.Add("copper1", (copper1.SelectedItem).ToString());
+        else
+            reportData.Add("copper1", string.Empty);
+
+        if (copper2.SelectedIndex != -1)
+            reportData.Add("copper2", (copper2.SelectedItem).ToString());
+        else
+            reportData.Add("copper2", string.Empty);
+        if (copper3.SelectedIndex != -1)
+            reportData.Add("copper3", (copper3.SelectedItem).ToString());
+        else
+            reportData.Add("copper3", string.Empty);
+        if (copper4.SelectedIndex != -1)
+            reportData.Add("copper4", (copper4.SelectedItem).ToString());
+        else
+            reportData.Add("copper4", string.Empty);
+
+
+        if (pesdr1.SelectedIndex != -1)
+            reportData.Add("pesdr1", (pesdr1.SelectedItem).ToString());
+        else
+            reportData.Add("pesdr1", string.Empty);
+
+        if (pesdr2.SelectedIndex != -1)
+            reportData.Add("pesdr2", (pesdr2.SelectedItem).ToString());
+        else
+            reportData.Add("pesdr2", string.Empty);
+
+        if (pesdr3.SelectedIndex != -1)
+            reportData.Add("pesdr3", (pesdr3.SelectedItem).ToString());
+        else
+            reportData.Add("pesdr3", string.Empty);
+
+
+
+
+
+        if (testMediumPicker.SelectedIndex != -1)
+            reportData.Add("testMediumPicker", (testMediumPicker.SelectedItem).ToString());
+        else
+            reportData.Add("testMediumPicker", string.Empty);
+
+        if (installationPicker.SelectedIndex != -1)
+            reportData.Add("installationPicker", (installationPicker.SelectedItem).ToString());
+        else
+            reportData.Add("installationPicker", string.Empty);
+
+        if (testGaugeUsed.SelectedIndex != -1)
+            reportData.Add("testGaugeUsed", (testGaugeUsed.SelectedItem).ToString());
+        else
+            reportData.Add("testGaugeUsed", string.Empty);
+
+        if (maximumPermissiblePressureDrop.SelectedIndex != -1)
+            reportData.Add("maximumPermissiblePressureDrop", (maximumPermissiblePressureDrop.SelectedItem).ToString());
+        else
+            reportData.Add("maximumPermissiblePressureDrop", string.Empty);
+
+        if (testPassedOrFailed.SelectedIndex != -1)
+            reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
+        else
+            reportData.Add("testPassedOrFailed", string.Empty);
+
+
+
+
+
+
+
+        return reportData;
+    }
 
     private void UpdateTotalPipeworkVolume(Label total, Picker quantificator, double k)
     {
@@ -227,7 +496,7 @@ public partial class OneBPage : ContentPage
         maximumPermissiblePressureDrop.SelectedIndex = -1;
     }
 
-    private async void stampAnimation(Image image)
+    private async Task stampAnimation(Image image)
     {
         var rotate = image.RotateTo(30, 350, Easing.Default);
         var scale = image.ScaleTo(0.85, 1000, Easing.BounceOut);
@@ -238,7 +507,7 @@ public partial class OneBPage : ContentPage
         await image.FadeTo(0.5, 2000);
         await image.FadeTo(0, 200);
     }
-    private async void stampAnimationEnd(Image image)
+    private async Task stampAnimationEnd(Image image)
     {
         await image.FadeTo(0, 0);
         await image.RotateTo(0, 0);
@@ -252,17 +521,17 @@ public partial class OneBPage : ContentPage
             testPassedOrFailed_delete.IsVisible = true;
 
             if (testPassedOrFailed.SelectedItem.ToString() == "PASS")
-                stampAnimation(passStamp);
+                await stampAnimation(passStamp);
             else
-                stampAnimation(failStamp);
+                await stampAnimation(failStamp);
         }
         else
         {
             testPassedOrFailed_x.IsVisible = false;
             testPassedOrFailed_delete.IsVisible = false;
 
-            stampAnimationEnd(passStamp);
-            stampAnimationEnd(failStamp);
+            await stampAnimationEnd(passStamp);
+            await stampAnimationEnd(failStamp);
         }
     }
     public void testPassedOrFailed_Delete(object sender, EventArgs e)

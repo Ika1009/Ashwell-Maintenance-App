@@ -17,14 +17,14 @@ public partial class ServiceRecordPage : ContentPage
     {
         string folderId = (sender as Button).CommandParameter as string;
         
-        _ = UploadReport(folderId, reportData);
+        _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
     }
 
-    private async Task UploadReport(string folderId, Dictionary<string, string> report)
+    private async Task UploadReport(Folder folder, Dictionary<string, string> report)
     {
         try
         {
-            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.ServiceRecord, reportName, folderId, report);
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.ServiceRecord, reportName, folder.Id, report);
 
             if (response.IsSuccessStatusCode)
             {
@@ -47,6 +47,33 @@ public partial class ServiceRecordPage : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+
+        if (folder.Signature1 != null && folder.Signature2 != null)
+        {
+            try
+            {
+                byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                if (signature1 == null || signature2 == null)
+                    throw new Exception("Couldn't retrieve signatures");
+
+                byte[] pdfData = await PdfCreation.ServiceRecord(reportData, signature1, signature2);
+
+                if (pdfData != null)
+                {
+                    HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
+
+                    if (!signatureResponse.IsSuccessStatusCode)
+                    {
+                        await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
+            }
         }
     }
 
@@ -77,7 +104,9 @@ public partial class ServiceRecordPage : ContentPage
                     {
                         Id = element.GetProperty("folder_id").GetString(),
                         Name = element.GetProperty("folder_name").GetString(),
-                        Timestamp = element.GetProperty("created_at").GetString()
+                        Timestamp = element.GetProperty("created_at").GetString(),
+                        Signature1 = element.GetProperty("signature1").GetString(),
+                        Signature2 = element.GetProperty("signature2").GetString()
                     });
                 }
 
@@ -98,15 +127,6 @@ public partial class ServiceRecordPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
     }
-
-    public class Folder
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Timestamp { get; set; }
-    }
-
-    [Obsolete]
     public void ServiceRecordBack(object sender, EventArgs e)
     {
         if (SRSection1.IsVisible)
@@ -118,7 +138,7 @@ public partial class ServiceRecordPage : ContentPage
         {
             SRSection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 SRSection1.ScrollToAsync(0, 0, false);
             SRSection1.IsVisible = true;
         }
@@ -126,55 +146,55 @@ public partial class ServiceRecordPage : ContentPage
         {
             SRSection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 SRSection2.ScrollToAsync(0, 0, false);
             SRSection2.IsVisible = true;
         }
         else
         {
-            SRSection4.IsVisible = false;
+            FolderSection.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 SRSection3.ScrollToAsync(0, 0, false);
             SRSection3.IsVisible = true;
         }
     }
 
-    [Obsolete]
+    
     public void ServiceRecordNext1(object sender, EventArgs e)
     {
         SRSection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             SRSection2.ScrollToAsync(0, 0, false);
         SRSection2.IsVisible = true;
     }
 
-    [Obsolete]
+    
     public async void ServiceRecordNext2(object sender, EventArgs e)
     {
         SRSection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await SRSection3.ScrollToAsync(0, 0, false);
         SRSection3.IsVisible = true;
         await LoadFolders();
     }
 
-    [Obsolete]
+    
     public async void ServiceRecordNext3(object sender, EventArgs e)
     {
         SRSection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
-            await SRSection4.ScrollToAsync(0, 0, false);
-        SRSection4.IsVisible = true;
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await FolderSection.ScrollToAsync(0, 0, false);
+        FolderSection.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";
         GatherReportData();
-        await PdfCreation.CreateServiceRecordPDF(reportData, Array.Empty<byte>(), Array.Empty<byte>());
-        await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
+        //await PdfCreation.ServiceRecord(reportData, Array.Empty<byte>(), Array.Empty<byte>());
+        //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
     }
     private void GatherReportData()
     {

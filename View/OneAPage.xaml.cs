@@ -1,3 +1,7 @@
+using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Views;
+using System.Text.Json;
+
 namespace Ashwell_Maintenance.View;
 
 public partial class OneAPage : ContentPage
@@ -5,6 +9,9 @@ public partial class OneAPage : ContentPage
     double pipeworkVolumeNumber;
     double totalPipeworkVolumeNumber = 0;
 
+    string reportName = "noname";
+    public ObservableCollection<Folder> Folders = new();
+    private Dictionary<string, string> reportData;
     public OneAPage()
     {
         InitializeComponent();
@@ -44,8 +51,122 @@ public partial class OneAPage : ContentPage
         pesdr7.ItemsSource = numbers;
         pesdr8.ItemsSource = numbers;
     }
+    public void FolderChosen(object sender, EventArgs e)
+    {
+        string folderId = (sender as Button).CommandParameter as string;
 
-    [Obsolete]
+        _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
+    }
+
+    private async Task UploadReport(Folder folder, Dictionary<string, string> report)
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.OneA, reportName, folder.Id, report);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Success", "Successfully uploaded new sheet.", "OK");
+                await Navigation.PopModalAsync();
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to upload report.", "OK");
+            }
+        }
+        catch (HttpRequestException httpEx)
+        {
+            await DisplayAlert("Error", $"HTTP request error. Details: {httpEx.Message}", "OK");
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+
+        if (folder.Signature1 != null && folder.Signature2 != null)
+        {
+            try
+            {
+                byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                if (signature1 == null || signature2 == null)
+                    throw new Exception("Couldn't retrieve signatures");
+
+                byte[] pdfData = await PdfCreation.OneA(reportData, signature1, signature2);
+
+                if (pdfData != null)
+                {
+                    HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
+
+                    if (!signatureResponse.IsSuccessStatusCode)
+                    {
+                        await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
+            }
+        }
+    }
+
+    public void NewFolder(object sender, EventArgs e)
+    {
+        this.ShowPopup(new NewFolderPopup(LoadFolders));
+    }
+    private async Task LoadFolders()
+    {
+        try
+        {
+            HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Error", "Failed to load folders.", "OK");
+                return;
+            }
+
+            string json = await response.Content.ReadAsStringAsync();
+
+            JsonDocument jsonDocument = JsonDocument.Parse(json);
+            if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
+            {
+                // Clear the existing items and add the new ones directly to the ObservableCollection
+                Folders.Clear();
+                foreach (var element in dataArray.EnumerateArray())
+                {
+                    Folders.Add(new Folder
+                    {
+                        Id = element.GetProperty("folder_id").GetString(),
+                        Name = element.GetProperty("folder_name").GetString(),
+                        Timestamp = element.GetProperty("created_at").GetString(),
+                        Signature1 = element.GetProperty("signature1").GetString(),
+                        Signature2 = element.GetProperty("signature2").GetString()
+                    });
+                }
+
+                // Check if the ItemsSource is already set
+                FoldersListView.ItemsSource ??= Folders;
+            }
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (FormatException formatEx)
+        {
+            await DisplayAlert("Error", $"Failed to format the date. Details: {formatEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+    }
+
     public async void OneABack(object sender, EventArgs e)
     {
         if (OASection1.IsVisible)
@@ -57,7 +178,7 @@ public partial class OneAPage : ContentPage
         {
             OASection2.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection1.ScrollToAsync(0, 0, false);
             OASection1.IsVisible = true;
         }
@@ -65,7 +186,7 @@ public partial class OneAPage : ContentPage
         {
             OASection3.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection2.ScrollToAsync(0, 0, false);
             OASection2.IsVisible = true;
         }
@@ -73,39 +194,47 @@ public partial class OneAPage : ContentPage
         {
             OASection4.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection3.ScrollToAsync(0, 0, false);
             OASection3.IsVisible = true;
         }
-        else
+        else if(OASection5.IsVisible)
         {
             OASection5.IsVisible = false;
 
-            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 await OASection4.ScrollToAsync(0, 0, false);
             OASection4.IsVisible = true;
         }
+        else
+        {
+            FolderSection.IsVisible = false;
+
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                await OASection5.ScrollToAsync(0, 0, false);
+            OASection5.IsVisible = true;
+        }
     }
 
-    [Obsolete]
+    
     public async void OneANext1(object sender, EventArgs e)
     {
         OASection1.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection2.ScrollToAsync(0, 0, false);
         OASection2.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneANext2(object sender, EventArgs e)
     {
         OASection2.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection3.ScrollToAsync(0, 0, false);
         OASection3.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneANext3(object sender, EventArgs e)
     {
         if (totalVolumeForTesting.Text != null && testMediumPicker.SelectedIndex != -1 && installationPicker.SelectedIndex != -1)
@@ -232,26 +361,33 @@ public partial class OneAPage : ContentPage
 
         OASection3.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection4.ScrollToAsync(0, 0, false);
         OASection4.IsVisible = true;
     }
-    [Obsolete]
+    
     public async void OneANext4(object sender, EventArgs e)
     {
         OASection4.IsVisible = false;
 
-        if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection5.ScrollToAsync(0, 0, false);
         OASection5.IsVisible = true;
+        await LoadFolders();
     }
 
-    public void OneANextFinish(object sender, EventArgs e)
+    public async void OneANextFinish(object sender, EventArgs e)
     {
-        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
-        string reportName = $"Ashwell_EngineersReport{dateTimeString}.pdf";
+        OASection5.IsVisible = false;
 
-        PdfCreation._1A(GatherReportData());
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await FolderSection.ScrollToAsync(0, 0, false);
+        FolderSection.IsVisible = true;
+
+        string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
+        reportName = $"1_A_Tightness_Testing_{dateTimeString}.pdf";
+        reportData = GatherReportData();
+        //PdfCreation.OneA(GatherReportData());
     }
     private Dictionary<string, string> GatherReportData()
     {
@@ -638,7 +774,7 @@ public partial class OneAPage : ContentPage
         installationPicker.SelectedIndex = -1;
     }
 
-    private async void stampAnimation(Image image)
+    private async static Task stampAnimation(Image image)
     {
         var rotate = image.RotateTo(30, 350, Easing.Default);
         var scale = image.ScaleTo(0.85, 1000, Easing.BounceOut);
@@ -649,7 +785,7 @@ public partial class OneAPage : ContentPage
         await image.FadeTo(0.5, 2000);
         await image.FadeTo(0, 200);
     }
-    private async void stampAnimationEnd(Image image)
+    private async Task stampAnimationEnd(Image image)
     {
         await image.FadeTo(0, 0);
         await image.RotateTo(0, 0);
@@ -663,17 +799,17 @@ public partial class OneAPage : ContentPage
             testPassedOrFailed_delete.IsVisible = true;
 
             if (testPassedOrFailed.SelectedItem.ToString() == "PASS")
-                stampAnimation(passStamp);
+                await stampAnimation(passStamp);
             else
-                stampAnimation(failStamp);
+                await stampAnimation(failStamp);
         }
         else
         {
             testPassedOrFailed_x.IsVisible = false;
             testPassedOrFailed_delete.IsVisible = false;
 
-            stampAnimationEnd(passStamp);
-            stampAnimationEnd(failStamp);
+            await stampAnimationEnd(passStamp);
+            await stampAnimationEnd(failStamp);
         }
     }
     public void testPassedOrFailed_Delete(object sender, EventArgs e)
