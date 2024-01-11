@@ -96,4 +96,83 @@ public partial class EngineersReportPage : ContentPage
 
         return reportData;
     }
+
+
+
+    public void DisjunctCheckboxes(CheckBox a, CheckBox b, CheckBox c)
+    {
+        a.IsChecked = true;
+        b.IsChecked = false;
+        c.IsChecked = false;
+
+        a.Color = Colors.Red;
+        b.Color = Colors.White;
+        c.Color = Colors.White;
+    }
+
+    public void CheckSpillageTestPassChanged(object sender, EventArgs e)
+    {
+        if (checkSpillageTestPass.IsChecked)
+            DisjunctCheckboxes(checkSpillageTestPass, checkSpillageTestNo, checkSpillageTestNA);
+        else
+            checkSpillageTestPass.Color = Colors.White;
+    }
+    public void CheckSpillageTestNoChanged(object sender, EventArgs e)
+    {
+        if (checkSpillageTestNo.IsChecked)
+            DisjunctCheckboxes(checkSpillageTestNo, checkSpillageTestPass, checkSpillageTestNA);
+        else
+            checkSpillageTestNo.Color = Colors.White;
+    }
+    public void CheckSpillageTestNAChanged(object sender, EventArgs e)
+    {
+        if (checkSpillageTestNA.IsChecked)
+            DisjunctCheckboxes(checkSpillageTestNA, checkSpillageTestPass, checkSpillageTestNo);
+        else
+            checkSpillageTestNA.Color = Colors.White;
+    }
+
+    public void CheckFlueFlowTestPassChanged(object sender, EventArgs e)
+    {
+        if (checkFlueFlowTestPass.IsChecked)
+            DisjunctCheckboxes(checkFlueFlowTestPass, checkFlueFlowTestFail, checkFlueFlowTestNA);
+        else
+            checkFlueFlowTestPass.Color = Colors.White;
+    }
+    public void CheckFlueFlowTestFailChanged(object sender, EventArgs e)
+    {
+        if (checkFlueFlowTestFail.IsChecked)
+            DisjunctCheckboxes(checkFlueFlowTestFail, checkFlueFlowTestPass, checkFlueFlowTestNA);
+        else
+            checkFlueFlowTestFail.Color = Colors.White;
+    }
+    public void CheckFlueFlowTestNAChanged(object sender, EventArgs e)
+    {
+        if (checkFlueFlowTestNA.IsChecked)
+            DisjunctCheckboxes(checkFlueFlowTestNA, checkFlueFlowTestPass, checkFlueFlowTestFail);
+        else
+            checkFlueFlowTestNA.Color = Colors.White;
+    }
+
+    public void CheckTightnessTestPassChanged(object sender, EventArgs e)
+    {
+        if (checkTightnessTestPass.IsChecked)
+            DisjunctCheckboxes(checkTightnessTestPass, checkTightnessTestFail, checkTightnessTestNA);
+        else
+            checkTightnessTestPass.Color = Colors.White;
+    }
+    public void CheckTightnessTestFailChanged(object sender, EventArgs e)
+    {
+        if (checkTightnessTestFail.IsChecked)
+            DisjunctCheckboxes(checkTightnessTestFail, checkTightnessTestPass, checkTightnessTestNA);
+        else
+            checkTightnessTestFail.Color = Colors.White;
+    }
+    public void CheckTightnessTestNAChanged(object sender, EventArgs e)
+    {
+        if (checkTightnessTestNA.IsChecked)
+            DisjunctCheckboxes(checkTightnessTestNA, checkTightnessTestPass, checkTightnessTestFail);
+        else
+            checkTightnessTestNA.Color = Colors.White;
+    }
 }
