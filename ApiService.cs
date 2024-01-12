@@ -141,7 +141,7 @@ public static class ApiService
     //private static readonly string _key = "kbyqio0zijuo2os"; 
     //private static readonly string _secret = "geruwzjd0qbbebe";
     private static readonly string _uploadUrl = "https://content.dropboxapi.com/2/files/upload";
-    private static readonly string _accessToken = "sl.BtN25J4Ykyk8X5OooCHx1ky9QXpRv9BFALlMli6fV0jV7CDaCKyMU77VtvzkFSjfusUJSAYWVUhUt8fWr19zh1fkyFNIPMJbzRibMTNWJoPq6FCfpefleLFFYE_JDgPCkg3c42c-LiNp";
+    private static readonly string _accessToken = "sl.BthjuUJJfBW7JnPJqWOxgoF-1HbQ8mYiY9kZdr2Znr_E0ZCpqFJ0YALCrAhkXYDYOdkmqBFEVRnnK8f-KQvIP7TCI7LRDkYvqHTbeW0m3_FkZWfR8eKG2r9MjcE8UMRRQcL40BjUHGip";
     private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
 
     /// <summary>
@@ -159,23 +159,35 @@ public static class ApiService
         // Construct the full Dropbox path for the folder
         string folderPath = $"/{folderName}";
 
-        // Check if the folder exists, and create it if it doesn't
-        if (!await CheckFolderExistsDropboxAsync(client, folderPath))
+        try
         {
-            await CreateFolderDropboxAsync(client, folderPath);
+            // Check if the folder exists, and create it if it doesn't
+            if (!await CheckFolderExistsDropboxAsync(client, folderPath))
+            {
+                await CreateFolderDropboxAsync(client, folderPath);
+            }
+
+            // Construct the full file path (adjust the file name as necessary)
+            string filePath = $"{folderPath}/{reportName}.pdf";
+
+            // Upload the file
+            using HttpRequestMessage request = new(HttpMethod.Post, _uploadUrl);
+            request.Headers.Add("Dropbox-API-Arg", $"{{\"path\": \"{filePath}\",\"mode\": \"add\",\"autorename\": true,\"mute\": false}}");
+            request.Content = new ByteArrayContent(pdfData);
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+            return await client.SendAsync(request);
         }
-
-        // Construct the full file path (adjust the file name as necessary)
-        string filePath = $"{folderPath}/{reportName}.pdf";
-
-        // Upload the file
-        using HttpRequestMessage request = new(HttpMethod.Post, _uploadUrl);
-        request.Headers.Add("Dropbox-API-Arg", $"{{\"path\": \"{filePath}\",\"mode\": \"add\",\"autorename\": true,\"mute\": false}}");
-        request.Content = new ByteArrayContent(pdfData);
-        request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-
-        return await client.SendAsync(request);
+        catch (Exception ex)
+        {
+            // Return an error response message
+            return new HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError)
+            {
+                Content = new StringContent($"Error uploading PDF to Dropbox: {ex.Message}")
+            };
+        }
     }
+
 
     /// <summary>
     /// Checks if a folder exists in Dropbox.
