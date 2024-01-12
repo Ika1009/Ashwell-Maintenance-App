@@ -145,7 +145,7 @@
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
-                
+
                 <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="ERNext1"/>
             </VerticalStackLayout>
         </ScrollView>
@@ -159,7 +159,7 @@
                         <local:LinelessEditor x:Name="descriptionOfWork" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
                     </Frame>
                 </VerticalStackLayout>
-                
+
                 <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                     <BoxView Color="#222225"/>
                 </Frame>
