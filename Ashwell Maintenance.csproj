@@ -46,6 +46,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Ashwell_Maintenance\**" />
+	  <Compile Remove="Ashwell_Maintenance\**" />
+	  <EmbeddedResource Remove="Ashwell_Maintenance\**" />
+	  <MauiCss Remove="Ashwell_Maintenance\**" />
+	  <MauiXaml Remove="Ashwell_Maintenance\**" />
+	  <None Remove="Ashwell_Maintenance\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Remove="View\ServiceRecordPage2.xaml.cs" />
 	  <Compile Remove="View\ServiceRecordPage3.xaml.cs" />
 	</ItemGroup>
@@ -176,10 +185,6 @@
 	  <Compile Update="View\ServiceRecordPage.xaml.cs">
 	    <DependentUpon>ServiceRecordPage.xaml</DependentUpon>
 	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Ashwell_Maintenance\Android\" />
 	</ItemGroup>
 
 	<ItemGroup>
