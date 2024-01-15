@@ -10,17 +10,17 @@
         <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate view:MainPage}"
-            Icon="home_idle"/>
+            Icon="home_active"/>
 
         <ShellContent
             Title="Projects"
             ContentTemplate="{DataTemplate view:ProjectsPage}"
-            Icon="projects_idle"/>
+            Icon="projects_active"/>
 
         <ShellContent
             Title="Settings"
             ContentTemplate="{DataTemplate view:SettingsPage}"
-            Icon="settings_idle"/>
+            Icon="settings_active"/>
     </TabBar>
 
 </Shell>
