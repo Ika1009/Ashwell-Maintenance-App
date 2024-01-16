@@ -68,7 +68,6 @@ public partial class OnePage : ContentPage
             if (response.IsSuccessStatusCode)
             {
                 await DisplayAlert("Success", "Successfully uploaded new sheet.", "OK");
-                await Navigation.PopModalAsync();
             }
             else
             {
@@ -114,6 +113,7 @@ public partial class OnePage : ContentPage
                 await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
             }
         }
+        await Navigation.PopModalAsync();
     }
 
     public void NewFolder(object sender, EventArgs e)
