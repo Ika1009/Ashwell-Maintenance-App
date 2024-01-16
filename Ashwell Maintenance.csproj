@@ -72,6 +72,8 @@
 	  <MauiImage Remove="Resources\Images\gas.jpg" />
 	  <MauiImage Remove="Resources\Images\icon_16.jpg" />
 	  <MauiImage Remove="Resources\Images\ige_up_1.jpg" />
+	  <MauiImage Remove="Resources\Images\oneb.jpg" />
+	  <MauiImage Remove="Resources\Images\one_a.png" />
 	  <MauiImage Remove="Resources\Images\one_a_sheet.jpg" />
 	  <MauiImage Remove="Resources\Images\pressurisation_unit_report.jpg" />
 	</ItemGroup>
@@ -103,6 +105,8 @@
 	  <EmbeddedResource Include="Resources\Images\check_page.jpg" />
 	  <EmbeddedResource Include="Resources\Images\gas.jpg" />
 	  <EmbeddedResource Include="Resources\Images\ige_up_1.jpg" />
+	  <EmbeddedResource Include="Resources\Images\oneb.jpg" />
+	  <EmbeddedResource Include="Resources\Images\one_a.png" />
 	  <EmbeddedResource Include="Resources\Images\one_a_sheet.jpg" />
 	  <EmbeddedResource Include="Resources\Images\pressurisation_unit_report.jpg" />
 	</ItemGroup>

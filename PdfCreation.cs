@@ -1398,7 +1398,7 @@ namespace Ashwell_Maintenance
 
             XFont font = new XFont("Arial", 10);
 
-            XImage image = await ConvertToXImage(@"one_a_sheet.png");
+            XImage image = await ConvertToXImage(@"one_a_sheet.jpg");
             gfx.DrawImage(image, 0, 0, 595, 842);
 
             gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(86, 104, 476, 14), XStringFormats.Center);
@@ -1426,7 +1426,7 @@ namespace Ashwell_Maintenance
             y = 230;
             int firstFor = 0;
 
-            List<string> prviFor = new List<string>
+           List<string> prviFor = new List<string>
             {
                 dic["steel1"],
                 dic["steel2"],
@@ -1448,14 +1448,14 @@ namespace Ashwell_Maintenance
                 dic["copper5"],
                 dic["copper6"],
                 dic["copper7"],
-                dic["presdr1"],
-                dic["presdr2"],
-                dic["presdr3"],
-                dic["presdr4"],
-                dic["presdr5"],
-                dic["presdr6"],
-                dic["presdr7"],
-                dic["presdr8"],
+                dic["pesdr1"],
+                dic["pesdr2"],
+                dic["pesdr3"],
+                dic["pesdr4"],
+                dic["pesdr5"],
+                dic["pesdr6"],
+                dic["pesdr7"],
+                dic["pesdr8"],
             };
 
             for (int i = 0; i < 30; i++)
@@ -1492,14 +1492,14 @@ namespace Ashwell_Maintenance
                 dic["copper5Total"],
                 dic["copper6Total"],
                 dic["copper7Total"],
-                dic["presdr1Total"],
-                dic["presdr2Total"],
-                dic["presdr3Total"],
-                dic["presdr4Total"],
-                dic["presdr5Total"],
-                dic["presdr6Total"],
-                dic["presdr7Total"],
-                dic["presdr8Total"],
+                dic["pesdr1Total"],
+                dic["pesdr2Total"],
+                dic["pesdr3Total"],
+                dic["pesdr4Total"],
+                dic["pesdr5Total"],
+                dic["pesdr6Total"],
+                dic["pesdr7Total"],
+                dic["pesdr8Total"],
                 dic["totalPipeworkVolume"],
                 dic["pipeworkFittingsIV"],
                 dic["meterVolume"],

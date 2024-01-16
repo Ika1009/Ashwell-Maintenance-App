@@ -242,6 +242,7 @@ public partial class OneBPage : ContentPage
         //  reportData.Add("", .IsChecked.ToString());
 
         reportData.Add("site", site.Text ?? string.Empty);
+        reportData.Add("date", date.Text ?? string.Empty);
         reportData.Add("location", location.Text ?? string.Empty);
         reportData.Add("steel1Total", steel1Total.Text ?? string.Empty);
         reportData.Add("steel2Total", steel2Total.Text ?? string.Empty);
