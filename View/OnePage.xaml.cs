@@ -339,7 +339,7 @@ public partial class OnePage : ContentPage
         if (steel4.SelectedIndex != -1)
             reportData.Add("steel4", (steel4.SelectedItem).ToString());
         else
-            reportData.Add("", string.Empty);
+            reportData.Add("steel4", string.Empty);
         reportData.Add("steel4Total", steel4Total.Text ?? string.Empty);
 
 
@@ -383,7 +383,7 @@ public partial class OnePage : ContentPage
         if (steel11.SelectedIndex != -1)
             reportData.Add("steel11", (steel11.SelectedItem).ToString());
         else
-            reportData.Add("steel", string.Empty);
+            reportData.Add("steel11", string.Empty);
         reportData.Add("steel11Total", steel11Total.Text ?? string.Empty);
 
         if (steel12.SelectedIndex != -1)
@@ -427,11 +427,11 @@ public partial class OnePage : ContentPage
         else
             reportData.Add("copper5", string.Empty);
         reportData.Add("copper5Total", copper5Total.Text ?? string.Empty);
-        if (copper5.SelectedIndex != -1)
-            reportData.Add("copper5", (copper5.SelectedItem).ToString());
-        else
-            reportData.Add("copper5", string.Empty);
-        reportData.Add("copper5Total", copper5Total.Text ?? string.Empty);
+        //if (copper5.SelectedIndex != -1)
+        //    reportData.Add("copper5", (copper5.SelectedItem).ToString());
+        //else
+        //    reportData.Add("copper5", string.Empty);
+        //reportData.Add("copper5Total", copper5Total.Text ?? string.Empty);
 
         if (copper6.SelectedIndex != -1)
             reportData.Add("copper6", (copper6.SelectedItem).ToString());
