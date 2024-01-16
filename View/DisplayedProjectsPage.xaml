@@ -36,7 +36,7 @@
                 <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 20, 0, 0"/>
 
                 <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
-                    <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Frame x:Name="newFolder" BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                         <Grid>
                             <Grid Padding="20, 10">
                                 <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>

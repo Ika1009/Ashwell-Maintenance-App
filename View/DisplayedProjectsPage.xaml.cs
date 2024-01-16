@@ -21,11 +21,13 @@ public partial class DisplayedProjectsPage : ContentPage
         {
             title.Text = "Completed Jobs";
             icon.Source = "completed_jobs.png";
+            newFolder.IsVisible = false;
         }
         else
         {
             title.Text = "Incompleted Jobs";
             icon.Source = "incompleted_jobs.png";
+            newFolder.IsVisible = true;
         }
     }
     public async void FolderChosen(object sender, EventArgs e)
