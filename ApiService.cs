@@ -5,6 +5,7 @@ using System.Text.Json;
 using Ashwell_Maintenance;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Net.Http;
 
 public static class ApiService
 {
@@ -141,7 +142,7 @@ public static class ApiService
     private static readonly string _key = "kbyqio0zijuo2os"; 
     private static readonly string _secret = "geruwzjd0qbbebe";
     private static readonly string _redirectUri = "http://localhost:12345/";
-    private static readonly string _accessToken = "";
+    private static readonly string _accessToken;
     private static readonly string _uploadUrl = "https://content.dropboxapi.com/2/files/upload";
     private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
 
@@ -154,6 +155,12 @@ public static class ApiService
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
     public static async Task<HttpResponseMessage> UploadPdfToDropboxAsync(byte[] pdfData, string folderName, string reportName)
     {
+        if (string.IsNullOrEmpty(_accessToken))
+        {
+            // Authorize the user and get the access token
+            //await AuthorizeUserAsync();
+        }
+
         using HttpClient client = new();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
 
