@@ -359,7 +359,7 @@ public partial class OnePage : ContentPage
         if (steel7.SelectedIndex != -1)
             reportData.Add("steel7", (steel7.SelectedItem).ToString());
         else
-            reportData.Add("steel", string.Empty);
+            reportData.Add("steel7", string.Empty);
         reportData.Add("steel7Total", steel7Total.Text ?? string.Empty);
 
         if (steel8.SelectedIndex != -1)
@@ -581,20 +581,20 @@ public partial class OnePage : ContentPage
         reportData.Add("roomVolume", roomVolume.Text ?? string.Empty);
         reportData.Add("AreaCD_Value", AreaA_Value.Text ?? string.Empty);
 
-        reportData.Add("letByDuration", letByDuration.Text ?? string.Empty);
-        reportData.Add("stabilisationDuration", stabilisationDuration.Text ?? string.Empty);
-        reportData.Add("testDuration", testDuration.Text ?? string.Empty);
-        reportData.Add("actualPressureDropResult", actualPressureDropResult.Text ?? string.Empty);
+      // reportData.Add("letByDuration", letByDuration.Text ?? string.Empty);
+      //  reportData.Add("stabilisationDuration", stabilisationDuration.Text ?? string.Empty);
+      //  reportData.Add("testDuration", testDuration.Text ?? string.Empty);
+      //  reportData.Add("actualPressureDropResult", actualPressureDropResult.Text ?? string.Empty);
         reportData.Add("actualLeakRateResult", actualLeakRateResult.Text ?? string.Empty);
         if (checkAreasWithInadequateVentilationYes.IsChecked)
             reportData.Add("checkAreasWithInadequateVentilationYes", "yes");
         else if(checkAreasWithInadequateVentilationNA.IsChecked) reportData.Add("checkAreasWithInadequateVentilationYes", "N/A");
         else reportData.Add("checkAreasWithInadequateVentilationYes", "no");
         //testPassedOrFailed
-        if (testPassedOrFailed.SelectedIndex != -1)
-            reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
-        else
-            reportData.Add("testPassedOrFailed", string.Empty);
+        //if (testPassedOrFailed.SelectedIndex != -1)
+        //    reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
+        //else
+        //    reportData.Add("testPassedOrFailed", string.Empty);
 
         return reportData;
     }

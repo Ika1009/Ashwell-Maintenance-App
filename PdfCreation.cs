@@ -1194,7 +1194,7 @@ namespace Ashwell_Maintenance
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
 
-            XFont font = new XFont("Arial", 10);
+            XFont font = new XFont("Arial", 8);
 
             XImage image = await ConvertToXImage(@"ige_up_1.jpg");
             gfx.DrawImage(image, 0, 0, 595, 842);
@@ -1209,9 +1209,9 @@ namespace Ashwell_Maintenance
             // gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(423, 162, 162, 13), XStringFormats.Center);
 
             //client signature
-            gfx.DrawString(dic["clientName"], font, XBrushes.Black, new XRect(81, 179, 137, 13), XStringFormats.Center);
+            gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(81, 179, 137, 13), XStringFormats.Center);
             //gfx.DrawString(dic[""], font, XBrushes.Black, new XRect(292, 179, 84, 13), XStringFormats.Center);
-            gfx.DrawString(dic["warningNoticeNo"], font, XBrushes.Black, new XRect(442, 179, 128, 13), XStringFormats.Center);
+            gfx.DrawString(dic["WarningNoticeNo"], font, XBrushes.Black, new XRect(442, 179, 128, 13), XStringFormats.Center);
 
             if (inzenjer != null && inzenjer.Length != 0)
                 gfx.DrawImage(ConvertToXImage(inzenjer), 423, 162, 162, 13);
@@ -1332,8 +1332,9 @@ namespace Ashwell_Maintenance
             y = 412;
             List<string> StrenghtTesting = new List<string>
             {
-                dic["strenghtTestPressure"],
-                dic["componentsNotSuitable"],
+                dic["strengthTestPressure"],
+                //componentsNotSuitable
+                dic["checkComponentsRemovedBypassedYes"],
                 dic["stabilisationPeriod"],
                 dic["strenghtTestDuration"],
                 dic["permittedPressureDrop"],
@@ -1396,7 +1397,7 @@ namespace Ashwell_Maintenance
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
 
-            XFont font = new XFont("Arial", 10);
+            XFont font = new XFont("Arial", 8);
 
             XImage image = await ConvertToXImage(@"one_a_sheet.jpg");
             gfx.DrawImage(image, 0, 0, 595, 842);
