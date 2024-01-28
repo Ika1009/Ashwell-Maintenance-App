@@ -12,7 +12,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid RowSpacing="10" Margin="0, 30, 0, 90">
+        <Grid RowSpacing="10" Margin="0, 30, 0, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -28,54 +28,61 @@
             </Frame>
         </Grid>
 
-        <VerticalStackLayout Grid.Row="1" Spacing="20">
-            <Frame BackgroundColor="#222225" CornerRadius="20" BorderColor="Transparent" Padding="0">
-                <Grid>
-                    <Grid Padding="20, 40" ColumnSpacing="20">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Padding="0, -60, 0, 0">
+            <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                <Frame BackgroundColor="#222225" CornerRadius="20" BorderColor="Transparent" Padding="0">
+                    <Grid>
+                        <Grid Padding="20, 40" ColumnSpacing="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Image Source="completed_jobs" WidthRequest="100" VerticalOptions="Center"/>
+                            <Image Source="completed_jobs" WidthRequest="100" VerticalOptions="Center"/>
 
-                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="5">
-                            <Label Grid.Column="1" Text="Completed Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="5">
+                                <Label Grid.Column="1" Text="Completed Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
 
-                            <Label Grid.Column="1" Text="View Finished Work" TextColor="#84949c" FontSize="15" FontFamily="SatoshiMedium"/>
-                        </VerticalStackLayout>
+                                <Label Grid.Column="1" Text="View Finished Work" TextColor="#84949c" FontSize="15" FontFamily="SatoshiMedium"/>
+                            </VerticalStackLayout>
 
-                        <Image Grid.Column="2" Source="forward.png" HeightRequest="30"/>
+                            <Image Grid.Column="2" Source="forward.png" HeightRequest="30"/>
+                        </Grid>
+
+                        <Button BackgroundColor="Transparent" Clicked="Finished_Projects_Clicked"/>
                     </Grid>
+                </Frame>
 
-                    <Button BackgroundColor="Transparent" Clicked="Finished_Projects_Clicked"/>
-                </Grid>
-            </Frame>
+                <Frame BackgroundColor="#222225" CornerRadius="20" BorderColor="Transparent" Padding="0">
+                    <Grid>
+                        <Grid Padding="20, 40" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
+                            </Grid.ColumnDefinitions>
 
-            <Frame BackgroundColor="#222225" CornerRadius="20" BorderColor="Transparent" Padding="0">
-                <Grid>
-                    <Grid Padding="20, 40" ColumnSpacing="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
+                            <Image Source="forward.png" HeightRequest="30" Rotation="180"/>
 
-                        <Image Source="incompleted_jobs" WidthRequest="100" VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="5">
+                                <Label Grid.Column="1" Text="Incompleted Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
 
-                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="5">
-                            <Label Grid.Column="1" Text="Incompleted Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
+                                <Label Grid.Column="1" Text="View Unfinished Work" TextColor="#84949c" FontSize="15" FontFamily="SatoshiMedium"/>
+                            </VerticalStackLayout>
 
-                            <Label Grid.Column="1" Text="View Unfinished Work" TextColor="#84949c" FontSize="15" FontFamily="SatoshiMedium"/>
-                        </VerticalStackLayout>
-                        
-                        <Image Grid.Column="2" Source="forward.png" HeightRequest="30"/>
+                            <Image Grid.Column="2" Source="incompleted_jobs" WidthRequest="100" VerticalOptions="Center"/>
+                        </Grid>
+
+                        <Button BackgroundColor="Transparent" Clicked="Unfinished_Projects_Clicked"/>
                     </Grid>
+                </Frame>
+            </VerticalStackLayout>
 
-                    <Button BackgroundColor="Transparent" Clicked="Unfinished_Projects_Clicked"/>
-                </Grid>
-            </Frame>
-        </VerticalStackLayout>
+            <!--<Image Source="pin.png" HeightRequest="80" Rotation="15" Margin="200, -320, 0, 0"/>
+            <Image Source="pin.png" HeightRequest="50" Rotation="35" Margin="270, -310, 0, 0"/>
+            
+            <Image Source="pin_poked.png" HeightRequest="90" Rotation="-165" Margin="-200, 290, 0, 0"/>-->
+        </Grid>
     </Grid>
 </ContentPage>
