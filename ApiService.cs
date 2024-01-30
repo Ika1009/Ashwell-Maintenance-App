@@ -139,12 +139,64 @@ public static class ApiService
     }
 
 
-    private static readonly string _key = "kbyqio0zijuo2os"; 
-    private static readonly string _secret = "geruwzjd0qbbebe";
+    private static readonly string _appKey = "kbyqio0zijuo2os"; 
+    private static readonly string _appSecret = "geruwzjd0qbbebe";
     private static readonly string _redirectUri = "http://localhost:12345/";
-    private static readonly string _accessToken = "sl.BuDSyiVYenyH38eQA7iWAyIjumi5_rZq4t9nLkX2RdwfetXQFPXB8uFu5l8wzPCl0E6J50YnW0DJmV2HuK0qrCldl8IeA96qqiXQHSaq5UFaFqh905_tcAugOixedoSwg0nmyrBUNNPA";
+    private static string _accessToken;
     private static readonly string _uploadUrl = "https://content.dropboxapi.com/2/files/upload";
     private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
+    private static readonly string _refreshToken = "Tdz63Fagf9UAAAAAAAAAAd0yiW3LmuxRCpjStQtDenyQdn9FAWJztR_480RMGQ74";
+    /// <summary>
+    /// Retrieves a new access token from Dropbox using the refresh token.
+    /// </summary>
+    /// <returns>The new access token as a string.</returns>
+    /// <remarks>
+    /// This method makes an asynchronous HTTP POST request to the Dropbox API
+    /// to exchange the refresh token for a new access token.
+    /// </remarks>
+    public static async Task<string> GetNewAccessTokenAsync()
+    {
+        using (var client = new HttpClient())
+        {
+            try
+            {
+                var requestContent = new FormUrlEncodedContent(new[]
+                {
+                new KeyValuePair<string, string>("refresh_token", _refreshToken),
+                new KeyValuePair<string, string>("grant_type", "refresh_token"),
+                new KeyValuePair<string, string>("client_id", _appKey),
+                new KeyValuePair<string, string>("client_secret", _appSecret)
+            });
+
+                var response = await client.PostAsync("https://api.dropbox.com/oauth2/token", requestContent);
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    // Log detailed error
+                    Console.WriteLine($"Error: {response.StatusCode}, Response: {jsonResponse}");
+                    throw new HttpRequestException($"Request failed with status {response.StatusCode}");
+                }
+
+                var tokenData = JsonSerializer.Deserialize<JsonElement>(jsonResponse);
+
+                if (tokenData.ValueKind == JsonValueKind.Object && tokenData.TryGetProperty("access_token", out JsonElement accessTokenElement))
+                {
+                    return accessTokenElement.GetString();
+                }
+                else
+                {
+                    throw new InvalidOperationException("Failed to retrieve access token.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                Console.WriteLine($"Exception: {ex.Message}");
+                throw;
+            }
+        }
+    }
 
     /// <summary>
     /// Uploads a PDF file to Dropbox.
@@ -157,8 +209,7 @@ public static class ApiService
     {
         if (string.IsNullOrEmpty(_accessToken))
         {
-            // Authorize the user and get the access token
-            //await AuthorizeUserAsync();
+            _accessToken = await GetNewAccessTokenAsync();
         }
 
         using HttpClient client = new();
