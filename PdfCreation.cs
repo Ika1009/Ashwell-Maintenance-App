@@ -563,10 +563,10 @@ namespace Ashwell_Maintenance
                 //  gfx.DrawImage(ConvertToXImage(clijent), 240, 724, 133, 22);
                 IspisiClijenta(gfx, ConvertToXImage(clijent), 240, 724, 133, 22);
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
 
-            document.Save(filePath);
+            //document.Save(filePath);
 
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
@@ -739,10 +739,10 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["letByDuration"], font, XBrushes.Black, new XRect(507, 359, 63, 22), XStringFormats.Center);//let by duration
             gfx.DrawString(dic["stabilisationDuration"], font, XBrushes.Black, new XRect(507, 385, 63, 22), XStringFormats.Center);//stabilisation duration
             gfx.DrawString(dic["testDuration"], font, XBrushes.Black, new XRect(507, 411, 63, 22), XStringFormats.Center);//test duration
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_B.pdf");
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_B.pdf");
+            //document.Save(filePath);
 
-            document.Save(filePath);
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
             return stream.ToArray();
@@ -974,10 +974,10 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["existingLowLevel"], font, XBrushes.Black, new XRect(367, 188, 90, 13), XStringFormats.Center);
             gfx.DrawString(dic["requiredLowLevel"], font, XBrushes.Black, new XRect(367, 207, 90, 13), XStringFormats.Center);
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "ConformityCheckReport.pdf");
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string filePath = System.IO.Path.Combine(downloadsFolder, "ConformityCheckReport.pdf");
 
-            document.Save(filePath);
+            //document.Save(filePath);
 
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
@@ -1182,10 +1182,10 @@ namespace Ashwell_Maintenance
             text = dic["boilerHousePlantRoomComments"];
             tf.DrawString(text, new XFont("Arial", 11), XBrushes.Black, layoutRectangle2, XStringFormats.TopLeft);
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "Boiler.pdf");
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string filePath = System.IO.Path.Combine(downloadsFolder, "Boiler.pdf");
+            //document.Save(filePath);
 
-            document.Save(filePath);
             // Save to MemoryStream
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
@@ -1388,10 +1388,9 @@ namespace Ashwell_Maintenance
 
 
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1 Sheet.pdf");
-
-            document.Save(filePath);
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1 Sheet.pdf");
+            //document.Save(filePath);
 
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
@@ -1562,10 +1561,9 @@ namespace Ashwell_Maintenance
 
 
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1A Sheet.pdf");
-
-            document.Save(filePath);
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string filePath = System.IO.Path.Combine(downloadsFolder, "IGE_UP_1A Sheet.pdf");
+            //document.Save(filePath);
 
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
@@ -1986,9 +1984,9 @@ namespace Ashwell_Maintenance
 
 
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = System.IO.Path.Combine(downloadsFolder, dic["reportName"]);
-            document.Save(filePath);
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string filePath = System.IO.Path.Combine(downloadsFolder, dic["reportName"]);
+            //document.Save(filePath);
 
             // Save to MemoryStream
             using MemoryStream stream = new MemoryStream();
@@ -2110,12 +2108,10 @@ namespace Ashwell_Maintenance
                 // gfx.DrawImage(ConvertToXImage(clijent), 461, 795, 586-461, 16);
                 IspisiClijenta(gfx, ConvertToXImage(clijent), 461, 795, 586-461, 16);
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string filePath = System.IO.Path.Combine(downloadsFolder, $"Engineers_Report_Sheet_{dateTimeString}.pdf");
-
-
-            document.Save(filePath);
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            //string filePath = System.IO.Path.Combine(downloadsFolder, $"Engineers_Report_Sheet_{dateTimeString}.pdf");
+            //document.Save(filePath);
             // Save to MemoryStream
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
@@ -2252,10 +2248,6 @@ namespace Ashwell_Maintenance
             // if (clijent != null && clijent.Length != 0)
             // gfx.DrawImage(ConvertToXImage(clijent), 64, 171, 229, 15);
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string filePath = System.IO.Path.Combine(downloadsFolder, $"CDM_Site_Form{dateTimeString}.pdf");
-            document.Save(filePath);
             // Save to MemoryStream
             using MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
@@ -2358,11 +2350,10 @@ namespace Ashwell_Maintenance
                 IspisiClijenta(gfx, ConvertToXImage(clijent), 74, 777, 209 - 74, 799-777);
 
 
-            string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            string filePath = System.IO.Path.Combine(downloadsFolder, $"Pressurisation_Unit_Service_Report_{dateTimeString}.pdf");
-
-            document.Save(filePath);
+            //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+            //string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            //string filePath = System.IO.Path.Combine(downloadsFolder, $"Pressurisation_Unit_Service_Report_{dateTimeString}.pdf");
+            //document.Save(filePath);
 
             // Save to MemoryStream
             using MemoryStream stream = new MemoryStream();

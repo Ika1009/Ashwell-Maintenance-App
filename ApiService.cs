@@ -125,14 +125,26 @@ public static class ApiService
             try
             {
                 // Download the image from the URL
-                byte[] imageData = await client.GetByteArrayAsync(imageUrl);
+                //byte[] imageData = await client.GetByteArrayAsync(imageUrl);
+
+                // Send a GET request to the specified URL
+                HttpResponseMessage response = await client.GetAsync(imageUrl);
+
+                // Throw an exception if the response status code indicates failure
+                response.EnsureSuccessStatusCode();
+
+                // Read the response content as a byte array
+                byte[] imageData = await response.Content.ReadAsByteArrayAsync();
+
+                response.EnsureSuccessStatusCode();
 
                 return imageData;
             }
             catch (Exception ex)
             {
                 // Handle exceptions (e.g., if the URL is invalid or the image couldn't be downloaded)
-                Console.WriteLine($"Error downloading image from {imageUrl}: {ex.Message}");
+                await Shell.Current.DisplayAlert($"Error downloading image", ex.Message, "OK");
+                var cekara = ex;
                 return null;
             }
         }

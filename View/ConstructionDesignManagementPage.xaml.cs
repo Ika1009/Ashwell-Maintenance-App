@@ -48,26 +48,32 @@ public partial class ConstructionDesignManagmentPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
 
-        if (folder.Signature1 != null && folder.Signature2 != null)
+        if (!string.IsNullOrEmpty(folder.Signature1) && !string.IsNullOrEmpty(folder.Signature2))
         {
             try
             {
                 byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
                 byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 
+
                 byte[] pdfData = await PdfCreation.ConstructionDesignManagement(reportData, signature1, signature2);
 
-                if (pdfData != null)
+                if (pdfData == null)
                 {
-                    HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
-
-                    if (!signatureResponse.IsSuccessStatusCode)
-                    {
-                        await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
-                    }
+                    throw new Exception("PDF didn't have a value");
                 }
+
+                HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
+
+                if (!signatureResponse.IsSuccessStatusCode)
+                {
+                    await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
+                }
+                await Shell.Current.DisplayAlert("Success", $"{reportName} uploaded to Dropbox successfully.", "OK");
+
             }
             catch (Exception ex)
             {

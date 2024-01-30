@@ -55,7 +55,7 @@ public partial class EngineersReportPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
 
-        if (folder.Signature1 != null && folder.Signature2 != null)
+        if (!string.IsNullOrEmpty(folder.Signature1) && !string.IsNullOrEmpty(folder.Signature2))
         {
             try
             {
