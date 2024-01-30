@@ -69,6 +69,12 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+        public static void IspisiClijenta(XGraphics gfx, XImage slika, double x, double y,double duzina, double visina)
+        {
+            x += (duzina - 87) / 2;
+            y += (visina - 13) / 2;
+            gfx.DrawImage(slika, x, y, 87, 13);
+        }
         public static async Task<byte[]> GasRiskAssessment(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -550,10 +556,12 @@ namespace Ashwell_Maintenance
 
 
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 240, 724, 133, 22);
+                //   gfx.DrawImage(ConvertToXImage(inzenjer), 240, 724, 133, 22);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 240, 724, 133, 22);
 
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 240, 724, 133, 22);
+                //  gfx.DrawImage(ConvertToXImage(clijent), 240, 724, 133, 22);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 240, 724, 133, 22);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
@@ -595,10 +603,11 @@ namespace Ashwell_Maintenance
 
 
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 425, 206, 142, 5);
-
+                // gfx.DrawImage(ConvertToXImage(inzenjer), 425, 200, 146, 19);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 425, 200, 146, 19);
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 425, 206, 142, 5);
+                //  gfx.DrawImage(ConvertToXImage(clijent), 291, 223, 96, 19);
+                IspisiClijenta(gfx,ConvertToXImage(clijent),291,233,96,19);
 
             double x = 100;
             double y = 332;
@@ -902,10 +911,12 @@ namespace Ashwell_Maintenance
             x = 38;
             y = 750;
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), x + 203, y, 171, 13);
+                //  gfx.DrawImage(ConvertToXImage(inzenjer), x + 203, y, 171, 13);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), x+203, y, 171, 13);
 
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), x + 203, y, 171, 13);
+                // gfx.DrawImage(ConvertToXImage(clijent), x + 203, y, 171, 13);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), x+203, y, 171, 13);
 
             gfx.DrawString(dic["engineersName"], font, XBrushes.Black, new XRect(x, y, 200, 13), XStringFormats.Center);
             gfx.DrawRectangle(XBrushes.White, new XRect(x + 378, y + 1, 140, 11));
@@ -1150,10 +1161,12 @@ namespace Ashwell_Maintenance
                 ka += 3;
             }
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 228, 712, 170, 25);
+                // gfx.DrawImage(ConvertToXImage(inzenjer), 228, 712, 170, 25);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 228, 712, 170, 25);
 
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 228, 712+36+36, 170, 25);
+                // gfx.DrawImage(ConvertToXImage(clijent), 228, 712+36+36, 170, 25);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 228, 712+36+36, 170, 25);
 
             //Coments
 
@@ -1214,10 +1227,12 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["WarningNoticeNo"], font, XBrushes.Black, new XRect(442, 179, 128, 13), XStringFormats.Center);
 
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 423, 162, 162, 13);
+                //  gfx.DrawImage(ConvertToXImage(inzenjer), 423, 162, 162, 13);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 423, 162, 162, 13);
 
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 292, 179, 84, 13);
+                // gfx.DrawImage(ConvertToXImage(clijent), 292, 179, 84, 13);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 291, 179, 87, 13);
 
 
             List<string> prviFor = new List<string>
@@ -1417,10 +1432,12 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["WarningNoticeRefNo"], font, XBrushes.Black, new XRect(442, 152, 128, 13), XStringFormats.Center);
 
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 423, 136, 162, 13);
+                // gfx.DrawImage(ConvertToXImage(inzenjer), 423, 136, 162, 13);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 423, 136, 162, 13);
 
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 292, 152, 84, 13);
+                // gfx.DrawImage(ConvertToXImage(clijent), 292, 152, 84, 13);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 291, 152, 87, 13);
 
             double x, y;
             x = 106;
@@ -1592,10 +1609,12 @@ namespace Ashwell_Maintenance
             //potpis - za doncica
             //   gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531+(671-531- ConvertToXImage(inzenjer).PixelWidth/2),548+(529-502- ConvertToXImage(inzenjer).PixelHeight/2)));
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
-           
+                //  gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 531, 502, 671-531, 27);
+
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
+                // gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 531, 548, 671-531, 27);
 
             //site
             gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(35, 72, 337 - 35, 95 - 72), XStringFormats.CenterLeft);
@@ -1912,11 +1931,11 @@ namespace Ashwell_Maintenance
             // i = 1 //clients name // clients signature  // inspection date
 
             gfx.DrawString(dic["engineersName"], font, XBrushes.Black, new XRect(x, y, 137, 25), XStringFormats.Center);
-            gfx.DrawString(dic["engineersSignature"], font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
+         //   gfx.DrawString(dic["engineersSignature"], font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
             gfx.DrawString(dic["engineersGasSafeID"], font, XBrushes.Black, new XRect(x + 284, y, 137, 25), XStringFormats.Center);
             y += 45;
             gfx.DrawString(dic["clientsName"], font, XBrushes.Black, new XRect(x, y, 137, 25), XStringFormats.Center);
-            gfx.DrawString(dic["clientsSignature"], font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
+          //  gfx.DrawString(dic["clientsSignature"], font, XBrushes.Black, new XRect(x + 142, y, 137, 25), XStringFormats.Center);
             gfx.DrawString(dic["inspectionDate"], font, XBrushes.Black, new XRect(x + 284, y, 137, 25), XStringFormats.Center);
 
 
@@ -2011,9 +2030,11 @@ namespace Ashwell_Maintenance
 
             //gfx.DrawEllipse(XBrushes.Black, new XRect(377, 194, 420 - 377, 25));
             if (dic["checkTaskComplete"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(376, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
+                gfx.DrawString("√", font, XBrushes.Black, new XRect(421, 196, 490-421, 216-196), XStringFormats.Center);
+            // gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(376, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
+                gfx.DrawString("√", font, XBrushes.Black, new XRect(537, 196, 588-537, 20), XStringFormats.Center);
+            // gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
 
             gfx.DrawString(dic["serialNumber"], font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormats.Center);
 
@@ -2082,10 +2103,12 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["totalHoursIncludingTravel"], font, XBrushes.Black, new XRect(514, 748, 74, 16), XStringFormats.Center);
 
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 477, 770, 586-447, 16);
+                // gfx.DrawImage(ConvertToXImage(inzenjer), 477, 770, 586-447, 16);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 477, 770, 586-447, 16);
 
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 461, 795, 586-461, 16);
+                // gfx.DrawImage(ConvertToXImage(clijent), 461, 795, 586-461, 16);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 461, 795, 586-461, 16);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -2223,10 +2246,11 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(418, 786, 59, 7), XStringFormats.CenterLeft);
 
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 288, 776, 382 - 288, 26);
+                // gfx.DrawImage(ConvertToXImage(inzenjer), 288, 776, 382 - 288, 26);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 288, 776, 382 - 288, 26);
 
-            if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 64, 171, 229, 15);
+            // if (clijent != null && clijent.Length != 0)
+            // gfx.DrawImage(ConvertToXImage(clijent), 64, 171, 229, 15);
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string dateTimeString = DateTime.Now.ToString("yyyyMMdd_HHmmss");
@@ -2326,10 +2350,12 @@ namespace Ashwell_Maintenance
             //   gfx.DrawString(dic["engineer"], font, XBrushes.Black, new XRect(435, 777, 565 - 435, 25), XStringFormats.Center);
 
             if (inzenjer != null && inzenjer.Length != 0)
-                gfx.DrawImage(ConvertToXImage(inzenjer), 435, 777, 565 - 435, 23);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 435, 777, 565 - 435, 23);
+            //   gfx.DrawImage(ConvertToXImage(inzenjer), 435, 777, 565 - 435, 23);
 
             if (clijent != null && clijent.Length != 0)
-                gfx.DrawImage(ConvertToXImage(clijent), 74, 777, 209-74, 799-777);
+                // gfx.DrawImage(ConvertToXImage(clijent), 74, 777, 209-74, 799-777);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 74, 777, 209 - 74, 799-777);
 
 
             string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";

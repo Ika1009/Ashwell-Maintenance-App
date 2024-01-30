@@ -81,5 +81,22 @@
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
+
+        <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000" Grid.RowSpan="2" Margin="-20, -20, -20, 0">
+            <ActivityIndicator.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="Android, iOS" Value="True" />
+                    <On Platform="Windows" Value="False" />
+                </OnPlatform>
+            </ActivityIndicator.IsVisible>
+        </ActivityIndicator>
+        <ActivityIndicator x:Name="loading" IsRunning="False" Color="Red" WidthRequest="75" Grid.RowSpan="2">
+            <ActivityIndicator.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="Android, iOS" Value="True" />
+                    <On Platform="Windows" Value="False" />
+                </OnPlatform>
+            </ActivityIndicator.IsVisible>
+        </ActivityIndicator>
     </Grid>
 </ContentPage>
