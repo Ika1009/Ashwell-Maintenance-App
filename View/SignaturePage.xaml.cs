@@ -57,6 +57,9 @@ public partial class SignaturePage : ContentPage
     {
         try
         {
+            drawingViewCustomer.Background = Colors.White;
+            drawingViewEngineer.Background = Colors.White;
+
             using var stream = drawingViewCustomer.IsVisible ? await drawingViewCustomer.GetImageStream(100, 100) : await drawingViewEngineer.GetImageStream(100, 100);
             using var memoryStream = new MemoryStream();
             stream.CopyTo(memoryStream);
