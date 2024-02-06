@@ -14,7 +14,7 @@
             <Label x:Name="signatureTitle" Text="Customer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center"  HorizontalOptions="Center"/>
 
             <Grid>
-                <Frame Padding="0" HeightRequest="52" WidthRequest="348" BorderColor="Transparent">
+                <Frame Padding="0" HeightRequest="52" WidthRequest="348" BorderColor="Transparent" CornerRadius="10">
                     <Grid BackgroundColor="#fff">
                         <toolkit:DrawingView Grid.Row="1" x:Name="drawingViewCustomer" BackgroundColor="#fff" HorizontalOptions="Center" IsMultiLineModeEnabled="True"/>
                         <toolkit:DrawingView Grid.Row="1" x:Name="drawingViewEngineer" IsVisible="False" BackgroundColor="#fff" HorizontalOptions="Center" IsMultiLineModeEnabled="True"/>
@@ -22,7 +22,7 @@
                     </Grid>
                 </Frame>
 
-                <Border x:Name="signatureBorder" Stroke="Red" BackgroundColor="Transparent" StrokeThickness="5" Margin="-10, 0" Padding="0" Opacity="0">
+                <Border x:Name="signatureBorder" Stroke="Red" BackgroundColor="Transparent" StrokeThickness="5" Margin="-10, 0" Padding="0" Opacity="0" HeightRequest="67" WidthRequest="363">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10"/>
                     </Border.StrokeShape>
@@ -32,7 +32,7 @@
 
         <FlexLayout Grid.Row="2" JustifyContent="SpaceEvenly">
             <Button Padding="0, 20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" CornerRadius="100" Clicked="Clear_Button_Clicked"
-                    Text="Clear" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#fff"/>
+                    Text="Clear" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#707070"/>
 
             <Button Padding="0, 20" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" CornerRadius="100" Clicked="Save_Button_Clicked"
                     Text="Save" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#c20000"/>
