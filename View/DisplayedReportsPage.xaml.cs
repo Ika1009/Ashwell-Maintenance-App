@@ -6,13 +6,14 @@ namespace Ashwell_Maintenance.View;
 
 public partial class DisplayedReportsPage : ContentPage
 {
-    public ObservableCollection<Report> Reports = new();
+    public ObservableCollection<Report> Reports { get; } = new();
     private readonly string folderId;
     private readonly string folderName;
 
     public DisplayedReportsPage(string folderId, string folderName)
     {
 	    InitializeComponent();
+        this.BindingContext = this; // This line sets the page's context to itself, making the Reports collection bindable in XAML.
         _ = LoadReports(folderId);
         this.folderId = folderId;
         this.folderName = folderName;
@@ -132,10 +133,12 @@ public partial class DisplayedReportsPage : ContentPage
                     {
                         ReportId = element.GetProperty("report_id").GetString(),
                         ReportName = element.GetProperty("report_name").GetString(),
+                        CreatedAt = element.GetProperty("created_at").GetString(),
                         ReportData = JsonSerializer.Deserialize<Dictionary<string, string>>(element.GetProperty("report_data").GetString()),
                         ReportType = Enum.TryParse(element.GetProperty("report_type").GetString(), out Enums.ReportType parsedReportType)
                                      ? parsedReportType
                                      : Enums.ReportType.ServiceRecord // Default Type if nothing is found
+                                  
                     });
                 }
                 ReportsListView.ItemsSource ??= Reports;
