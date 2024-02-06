@@ -75,6 +75,12 @@ namespace Ashwell_Maintenance
             y += (visina - 13) / 2;
             gfx.DrawImage(slika, x, y, 87, 13);
         }
+        public static void IspisiClijenta(XGraphics gfx, XImage slika, double x, double y, double duzina, double visina, double uvecanje)
+        {
+            x += (duzina - 87*uvecanje) / 2;
+            y += (visina - 13*uvecanje) / 2;
+            gfx.DrawImage(slika, x, y, 87, 13);
+        }
         public static async Task<byte[]> GasRiskAssessment(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -557,11 +563,11 @@ namespace Ashwell_Maintenance
 
             if (inzenjer != null && inzenjer.Length != 0)
                 //   gfx.DrawImage(ConvertToXImage(inzenjer), 240, 724, 133, 22);
-                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 240, 724, 133, 22);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 240, 724, 133*1.5, 22*1.5,1.5);
 
             if (clijent != null && clijent.Length != 0)
                 //  gfx.DrawImage(ConvertToXImage(clijent), 240, 724, 133, 22);
-                IspisiClijenta(gfx, ConvertToXImage(clijent), 240, 724, 133, 22);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 240, 762, 133*1.5, 22*1.5,1.5);
 
             //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             //string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
@@ -604,10 +610,10 @@ namespace Ashwell_Maintenance
 
             if (inzenjer != null && inzenjer.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(inzenjer), 425, 200, 146, 19);
-                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 425, 200, 146, 19);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 425, 200, 146*1.1, 19*1.1,1.1);
             if (clijent != null && clijent.Length != 0)
                 //  gfx.DrawImage(ConvertToXImage(clijent), 291, 223, 96, 19);
-                IspisiClijenta(gfx,ConvertToXImage(clijent),291,233,96,19);
+                IspisiClijenta(gfx,ConvertToXImage(clijent),289,223,90,19);
 
             double x = 100;
             double y = 332;
@@ -916,7 +922,7 @@ namespace Ashwell_Maintenance
 
             if (clijent != null && clijent.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(clijent), x + 203, y, 171, 13);
-                IspisiClijenta(gfx, ConvertToXImage(clijent), x+203, y, 171, 13);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), x+203, y+50, 171, 13);//dodato +50 al nisam siguran
 
             gfx.DrawString(dic["engineersName"], font, XBrushes.Black, new XRect(x, y, 200, 13), XStringFormats.Center);
             gfx.DrawRectangle(XBrushes.White, new XRect(x + 378, y + 1, 140, 11));
@@ -1162,11 +1168,11 @@ namespace Ashwell_Maintenance
             }
             if (inzenjer != null && inzenjer.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(inzenjer), 228, 712, 170, 25);
-                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 228, 712, 170, 25);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 228, 712, 170*1.3, 25*1.3,1.3);
 
             if (clijent != null && clijent.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(clijent), 228, 712+36+36, 170, 25);
-                IspisiClijenta(gfx, ConvertToXImage(clijent), 228, 712+36+36, 170, 25);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 228, 712+36+36, 170* 1.3, 25*1.3,1.3);
 
             //Coments
 
@@ -1436,7 +1442,7 @@ namespace Ashwell_Maintenance
 
             if (clijent != null && clijent.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(clijent), 292, 152, 84, 13);
-                IspisiClijenta(gfx, ConvertToXImage(clijent), 291, 152, 87, 13);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 300, 152, 84, 13);
 
             double x, y;
             x = 106;
@@ -1608,11 +1614,11 @@ namespace Ashwell_Maintenance
             //   gfx.DrawImage(ConvertToXImage(inzenjer), new XPoint(531+(671-531- ConvertToXImage(inzenjer).PixelWidth/2),548+(529-502- ConvertToXImage(inzenjer).PixelHeight/2)));
             if (inzenjer != null && inzenjer.Length != 0)
                 //  gfx.DrawImage(ConvertToXImage(inzenjer), 531, 502, 671 - 531, 529 - 502);
-                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 531, 502, 671-531, 27);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 531, 502, 671-531, 27,1.5);
 
             if (clijent != null && clijent.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(clijent), 531, 548, 671 - 531, 529 - 502);
-                IspisiClijenta(gfx, ConvertToXImage(clijent), 531, 548, 671-531, 27);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 531, 548, 671-531, 27,1.5);
 
             //site
             gfx.DrawString(dic["site"], font, XBrushes.Black, new XRect(35, 72, 337 - 35, 95 - 72), XStringFormats.CenterLeft);
@@ -2102,7 +2108,7 @@ namespace Ashwell_Maintenance
 
             if (inzenjer != null && inzenjer.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(inzenjer), 477, 770, 586-447, 16);
-                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 477, 770, 586-447, 16);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 477, 770, 586-477, 16);
 
             if (clijent != null && clijent.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(clijent), 461, 795, 586-461, 16);
