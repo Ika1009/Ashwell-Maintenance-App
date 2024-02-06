@@ -81,7 +81,7 @@ namespace Ashwell_Maintenance
              x += (duzina - 87*uvecanje) / 2;
            // x += 2;
             y += (visina - 13*uvecanje) / 2;
-            gfx.DrawImage(slika, x, y, 87, 13);
+            gfx.DrawImage(slika, x, y, 87*uvecanje, 13*uvecanje);
         }
         public static void IspisiClijenta2(XGraphics gfx, XImage slika, double x, double y, double duzina, double visina)
         {
@@ -95,7 +95,7 @@ namespace Ashwell_Maintenance
            // x += (duzina - 87 * uvecanje) / 2;
             x += 2;
             y += (visina - 13 * uvecanje) / 2;
-            gfx.DrawImage(slika, x, y, 87, 13);
+            gfx.DrawImage(slika, x, y, 87*uvecanje, 13*uvecanje);
         }
 
         public static async Task<byte[]> GasRiskAssessment(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
@@ -580,11 +580,11 @@ namespace Ashwell_Maintenance
 
             if (inzenjer != null && inzenjer.Length != 0)
                 //   gfx.DrawImage(ConvertToXImage(inzenjer), 240, 724, 133, 22);
-                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 240, 724, 133*1.5, 22*1.5,1.5);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 240, 724, 133, 22,1.5);
 
             if (clijent != null && clijent.Length != 0)
                 //  gfx.DrawImage(ConvertToXImage(clijent), 240, 724, 133, 22);
-                IspisiClijenta(gfx, ConvertToXImage(clijent), 240, 762, 133*1.5, 22*1.5,1.5);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 240, 762, 133, 22,1.5);
 
             //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             //string filePath = System.IO.Path.Combine(downloadsFolder, "output.pdf");
@@ -1185,11 +1185,11 @@ namespace Ashwell_Maintenance
             }
             if (inzenjer != null && inzenjer.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(inzenjer), 228, 712, 170, 25);
-                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 228, 712, 170*1.3, 25*1.3,1.3);
+                IspisiClijenta(gfx, ConvertToXImage(inzenjer), 228, 712, 170, 25,1.3);
 
             if (clijent != null && clijent.Length != 0)
                 // gfx.DrawImage(ConvertToXImage(clijent), 228, 712+36+36, 170, 25);
-                IspisiClijenta(gfx, ConvertToXImage(clijent), 228, 712+36+36, 170* 1.3, 25*1.3,1.3);
+                IspisiClijenta(gfx, ConvertToXImage(clijent), 228, 712+36+36, 170, 25,1.3);
 
             //Coments
 
