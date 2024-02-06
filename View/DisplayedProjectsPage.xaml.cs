@@ -15,8 +15,6 @@ public partial class DisplayedProjectsPage : ContentPage
 	{
 		InitializeComponent();
         finishedProjects = finished;
-        _ = LoadFolders();
-
         if (finished)
         {
             title.Text = "Completed Jobs";
@@ -29,6 +27,7 @@ public partial class DisplayedProjectsPage : ContentPage
             icon.Source = "incompleted_jobs.png";
             newFolder.IsVisible = true;
         }
+        _ = LoadFolders();
     }
     public async void FolderChosen(object sender, EventArgs e)
     {
@@ -42,6 +41,7 @@ public partial class DisplayedProjectsPage : ContentPage
     }
     private async Task LoadFolders()
     {
+        loadingBG.IsRunning = true;
         try
         {
             HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
@@ -91,5 +91,6 @@ public partial class DisplayedProjectsPage : ContentPage
         {
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
+        loadingBG.IsRunning = false;
     }
 }
