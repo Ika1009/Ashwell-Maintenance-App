@@ -78,8 +78,8 @@ namespace Ashwell_Maintenance
         }
         public static void IspisiClijenta(XGraphics gfx, XImage slika, double x, double y, double duzina, double visina, double uvecanje)
         {
-            // x += (duzina - 87*uvecanje) / 2;
-            x += 2;
+             x += (duzina - 87*uvecanje) / 2;
+           // x += 2;
             y += (visina - 13*uvecanje) / 2;
             gfx.DrawImage(slika, x, y, 87, 13);
         }
@@ -92,8 +92,8 @@ namespace Ashwell_Maintenance
         }
         public static void IspisiClijenta2(XGraphics gfx, XImage slika, double x, double y, double duzina, double visina, double uvecanje)
         {
-            x += (duzina - 87 * uvecanje) / 2;
-            //x += 2;
+           // x += (duzina - 87 * uvecanje) / 2;
+            x += 2;
             y += (visina - 13 * uvecanje) / 2;
             gfx.DrawImage(slika, x, y, 87, 13);
         }
