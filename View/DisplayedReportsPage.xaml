@@ -36,23 +36,24 @@
                 <VerticalStackLayout Spacing="15" x:Name="_folderStackLayout" Margin="0, 30, 0, 200">
 
                     <ListView x:Name="ReportsListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never">
-                        <ListView.RowHeight>60</ListView.RowHeight>
+                        <ListView.RowHeight>90</ListView.RowHeight>
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Frame BackgroundColor="#222225" CornerRadius="40" HeightRequest="50" BorderColor="Transparent" Padding="0">
+                                    <Frame BackgroundColor="#222225" CornerRadius="20" HeightRequest="80" BorderColor="Transparent" Padding="0">
                                         <Grid>
-                                            <Grid Padding="20, -10, 20, 5" ColumnDefinitions="*, Auto, 40" RowDefinitions="*, Auto">
+                                            <Grid Padding="20, 10, 20, 5" ColumnDefinitions="*, 40" RowDefinitions="Auto, Auto, Auto">
 
-                                                <ImageButton Grid.Column="3" Grid.RowSpan="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" Margin="0, 15, 0, 0"/>
+                                                <ImageButton Grid.Column="3" Grid.RowSpan="3" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
+                                                
+                                                <Label Text="{Binding ReportType}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                
+                                                <Label Text="{Binding CreatedAt}" Grid.Row="1" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                                <!--<Label Grid.Row="1" BindingContext="{x:Static sys:DateTime.Now}"
+                                                       Text="{Binding StringFormat='{0:d}'}" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>-->
 
-                                                <Label Text="{Binding ReportName}" Grid.Row="1" Grid.ColumnSpan="2" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                <Label Text="{Binding ReportType}" Grid.RowSpan="2" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                <!--<Label Text="{Binding CreatedAt}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>-->
-
-                                                <Label Grid.Column="1" Grid.RowSpan="2" BindingContext="{x:Static sys:DateTime.Now}"
-                                                       Text="{Binding StringFormat='{0:d}'}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding ReportName}" Grid.Row="2" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                                             </Grid>
 
                                             <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="ReportChosen" CommandParameter="{Binding ReportId}"/>
