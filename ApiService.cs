@@ -151,13 +151,13 @@ public static class ApiService
     }
 
 
-    private static readonly string _appKey = "v1o5gkz4um6bs3p"; 
-    private static readonly string _appSecret = "bidim5c6msdospm";
+    private static readonly string _appKey = Secrets.AppKey; 
+    private static readonly string _appSecret = Secrets.AppSecret;
     //private static readonly string _redirectUri = "http://localhost:12345/"; 
     private static string _accessToken;
     private static readonly string _uploadUrl = "https://content.dropboxapi.com/2/files/upload";
     private static readonly string _apiUrl = "https://api.dropboxapi.com/2";
-    private static readonly string _refreshToken = "cSHya4TwKZsAAAAAAAAAAUJ98wheX1FYfUtEEG1I7ygt99ikbZa63e-4ywEXNeAq";
+    private static readonly string _refreshToken = Secrets.RefreshToken;
     /// <summary>
     /// Retrieves a new access token from Dropbox using the refresh token.
     /// </summary>
