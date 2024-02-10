@@ -42,6 +42,7 @@ public partial class DisplayedProjectsPage : ContentPage
     private async Task LoadFolders()
     {
         loadingBG.IsRunning = true;
+        loading.IsRunning = true;
         try
         {
             HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
@@ -92,5 +93,6 @@ public partial class DisplayedProjectsPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
         loadingBG.IsRunning = false;
+        loading.IsRunning = false;
     }
 }

@@ -29,6 +29,8 @@ public partial class EngineersReportPage : ContentPage
     /// <param name="folder">The folder containing the report data.</param>
     private async Task UploadReport(Folder folder)
     {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folder.Id, reportData);
@@ -81,6 +83,8 @@ public partial class EngineersReportPage : ContentPage
                 await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
             }
         }
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
         await Navigation.PopModalAsync();
     }
 
