@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ashwell_Maintenance.View.DisplayedProjectsPage"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
              BackgroundColor="#141414"
              Shell.NavBarIsVisible="False">
 
@@ -30,12 +31,24 @@
                 </Frame>
             </VerticalStackLayout>
         </Grid>
-        
-        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="40">
-                <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 20, 0, 0"/>
 
-                <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
+        <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *" RowSpacing="20">
+            <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 20, 0, 0"/>
+
+            <Frame Grid.Row="1" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="100">
+                <Grid>
+                    <local:LinelessSearch Background="#222225" PlaceholderColor="#707070" CancelButtonColor="#fff" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+
+                    <Image Source="search.png" Rotation="-90" WidthRequest="25" HorizontalOptions="Start" BackgroundColor="#222225" Margin="20,0,0,0"/>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" Margin="0,0,0,0">
+                <BoxView Color="#222225"/>
+            </Frame>
+
+            <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="3" Margin="0, -20, 0, 0">
+                <VerticalStackLayout Spacing="20" x:Name="_folderStackLayout" Margin="0, 20, 0, 0">
                     <Frame x:Name="newFolder" BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                         <Grid>
                             <Grid Padding="20, 10">
@@ -79,8 +92,8 @@
 
 
                 </VerticalStackLayout>
-            </VerticalStackLayout>
-        </ScrollView>
+            </ScrollView>
+        </Grid>
 
         <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000" Grid.RowSpan="2" Margin="-20, -20, -20, 0">
             <ActivityIndicator.IsVisible>

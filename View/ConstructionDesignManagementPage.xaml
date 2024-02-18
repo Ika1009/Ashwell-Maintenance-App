@@ -97,7 +97,7 @@
                         <Label Text="Start Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="startDate" Keyboard="Numeric" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="startDate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -105,7 +105,7 @@
                         <Label Text="Completion Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="completionDate" Keyboard="Numeric" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="completionDate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
