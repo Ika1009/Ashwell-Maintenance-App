@@ -23,6 +23,8 @@ public partial class PressurisationUnitReportPage : ContentPage
 
     private async Task UploadReport(Folder folder, Dictionary<string, string> report)
     {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.PressurisationUnitReport, reportName, folder.Id, report);
@@ -75,6 +77,8 @@ public partial class PressurisationUnitReportPage : ContentPage
                 await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
             }
         }
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
         await Navigation.PopModalAsync();
     }
 

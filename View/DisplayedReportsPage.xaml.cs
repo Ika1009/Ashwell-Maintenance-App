@@ -126,6 +126,7 @@ public partial class DisplayedReportsPage : ContentPage
     private async Task LoadReports(string folderId)
     {
         loadingBG.IsRunning = true;
+        loading.IsRunning = true;
         try
         {
             HttpResponseMessage response = await ApiService.GetReportsForFolderAsync(folderId);
@@ -171,6 +172,7 @@ public partial class DisplayedReportsPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
         loadingBG.IsRunning = false;
+        loading.IsRunning = false;
     }
 
 }
