@@ -5,6 +5,7 @@ using System.Text.Json;
 
 public partial class DisplayedProjectsPage : ContentPage
 {
+    bool projectComplete = true;
     public async void JobsBack(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
@@ -23,6 +24,7 @@ public partial class DisplayedProjectsPage : ContentPage
         }
         else
         {
+            projectComplete = false;
             title.Text = "Incompleted Jobs";
             icon.Source = "incompleted_jobs.png";
             newFolder.IsVisible = true;
@@ -33,7 +35,7 @@ public partial class DisplayedProjectsPage : ContentPage
     {
         string folderId = (sender as Button).CommandParameter as string;
         string folderName = Folders.First(x => x.Id == folderId).Name;
-        await Navigation.PushAsync(new DisplayedReportsPage(folderId, folderName));
+        await Navigation.PushAsync(new DisplayedReportsPage(folderId, folderName, projectComplete));
     }
     public void NewFolder(object sender, EventArgs e)
     {
