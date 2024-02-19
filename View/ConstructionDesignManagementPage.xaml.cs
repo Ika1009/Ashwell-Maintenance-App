@@ -213,7 +213,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         //  reportData.Add("", .IsChecked.ToString());
 
         reportData.Add("siteAdress", siteAdress.Text ?? string.Empty);
-        reportData.Add("clinet", clinet.Text ?? string.Empty);
+        reportData.Add("client", client.Text ?? string.Empty);
         reportData.Add("responsibleSiteEngineer", responsibleSiteEngineer.Text ?? string.Empty);
         reportData.Add("otherEngineers", otherEngineers.Text ?? string.Empty);
         reportData.Add("whatInformationIssued", whatInformationIssued.Text ?? string.Empty);
