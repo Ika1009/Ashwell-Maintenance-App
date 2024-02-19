@@ -24,6 +24,7 @@ public partial class GasRiskAssessmentPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        GasRiskAssessmentBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.GasRiskAssessment, reportName, folder.Id, report);

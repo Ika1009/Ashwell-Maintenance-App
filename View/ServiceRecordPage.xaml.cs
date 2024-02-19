@@ -24,6 +24,7 @@ public partial class ServiceRecordPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        ServiceRecordBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.ServiceRecord, reportName, folder.Id, report);

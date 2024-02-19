@@ -45,6 +45,7 @@ public partial class OneBPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        OneBBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.OneB, reportName, folder.Id, report);

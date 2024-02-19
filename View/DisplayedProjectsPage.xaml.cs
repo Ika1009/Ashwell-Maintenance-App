@@ -45,6 +45,7 @@ public partial class DisplayedProjectsPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        
         try
         {
             HttpResponseMessage response = await ApiService.GetAllFoldersAsync();

@@ -63,6 +63,7 @@ public partial class OnePage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        OneBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folder.Id, report);

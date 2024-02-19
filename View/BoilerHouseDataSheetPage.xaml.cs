@@ -23,6 +23,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        BoilderHouseDataSheetBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.BoilerHouseDataSheet, reportName, folder.Id, report);

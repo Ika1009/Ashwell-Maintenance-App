@@ -24,6 +24,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        CDMBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.ConstructionDesignManagement, reportName, folder.Id, report);

@@ -24,6 +24,7 @@ public partial class ConformityCheckPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        ConformityCheckBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.ConformityCheck, reportName, folder.Id, report);
