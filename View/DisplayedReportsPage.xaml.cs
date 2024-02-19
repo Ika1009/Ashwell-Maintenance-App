@@ -9,6 +9,7 @@ public partial class DisplayedReportsPage : ContentPage
     public ObservableCollection<Report> Reports { get; } = new();
     private readonly string folderId;
     private readonly string folderName;
+    private readonly bool folderComplete;
 
     public DisplayedReportsPage(string folderId, string folderName)
     {
@@ -17,6 +18,18 @@ public partial class DisplayedReportsPage : ContentPage
         _ = LoadReports(folderId);
         this.folderId = folderId;
         this.folderName = folderName;
+    }
+    public DisplayedReportsPage(string folderId, string folderName, bool folderComplete)
+    {
+        InitializeComponent();
+        this.BindingContext = this; // This line sets the page's context to itself, making the Reports collection bindable in XAML.
+        _ = LoadReports(folderId);
+        this.folderId = folderId;
+        this.folderName = folderName;
+        this.folderComplete = folderComplete;
+
+        if (!folderComplete)
+            signTeProjectsButton.IsVisible = true;
     }
     public class Report
     {
