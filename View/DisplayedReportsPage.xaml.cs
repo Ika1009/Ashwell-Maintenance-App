@@ -29,7 +29,10 @@ public partial class DisplayedReportsPage : ContentPage
         this.folderComplete = folderComplete;
 
         if (!folderComplete)
+        {
             signTeProjectsButton.IsVisible = true;
+            displayedReportsTitle.Text = "Projects To Sign";
+        }
     }
     public class Report
     {
