@@ -25,7 +25,7 @@ public partial class DisplayedProjectsPage : ContentPage
         else
         {
             projectComplete = false;
-            title.Text = "Incompleted Jobs";
+            title.Text = "Incomplete Jobs";
             icon.Source = "incompleted_jobs.png";
             newFolder.IsVisible = true;
         }

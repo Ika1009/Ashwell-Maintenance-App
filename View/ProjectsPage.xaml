@@ -66,7 +66,7 @@
                             <Image Source="forward.png" HeightRequest="30" Rotation="180"/>
 
                             <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="5">
-                                <Label Grid.Column="1" Text="Incompleted Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
+                                <Label Grid.Column="1" Text="Incomplete Jobs" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
 
                                 <Label Grid.Column="1" Text="View Unfinished Work" TextColor="#84949c" FontSize="15" FontFamily="SatoshiMedium"/>
                             </VerticalStackLayout>
