@@ -62,6 +62,7 @@ public partial class OneAPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        OneABackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.OneA, reportName, folder.Id, report);
@@ -93,7 +94,7 @@ public partial class OneAPage : ContentPage
             try
             {
                 byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
-                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature2}");
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
 

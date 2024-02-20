@@ -24,6 +24,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
+        CDMBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.ConstructionDesignManagement, reportName, folder.Id, report);
@@ -55,7 +56,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
             try
             {
                 byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
-                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature2}");
 
                 if (signature1 == null || signature2 == null)
                     throw new Exception("Couldn't retrieve signatures");
@@ -212,7 +213,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         //  reportData.Add("", .IsChecked.ToString());
 
         reportData.Add("siteAdress", siteAdress.Text ?? string.Empty);
-        reportData.Add("clinet", clinet.Text ?? string.Empty);
+        reportData.Add("client", client.Text ?? string.Empty);
         reportData.Add("responsibleSiteEngineer", responsibleSiteEngineer.Text ?? string.Empty);
         reportData.Add("otherEngineers", otherEngineers.Text ?? string.Empty);
         reportData.Add("whatInformationIssued", whatInformationIssued.Text ?? string.Empty);

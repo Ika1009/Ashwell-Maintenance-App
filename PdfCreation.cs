@@ -2161,7 +2161,7 @@ namespace Ashwell_Maintenance
 
             gfx.DrawString(dic["siteAdress"], font, XBrushes.Black, new XRect(50, 127, 562 - 50, 40), XStringFormats.CenterLeft);
 
-            gfx.DrawString(dic["clinet"], font, XBrushes.Black, new XRect(64, 171, 229, 15), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["client"], font, XBrushes.Black, new XRect(64, 171, 229, 15), XStringFormats.CenterLeft);
 
 
             gfx.DrawString(dic["responsibleSiteEngineer"], font, XBrushes.Black, new XRect(415, 191, 148, 16), XStringFormats.CenterLeft);
