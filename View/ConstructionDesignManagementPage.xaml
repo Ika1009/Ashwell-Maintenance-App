@@ -55,7 +55,7 @@
                     <VerticalStackLayout Spacing="5">
                         <Label Text="Principle Designer:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <Frame Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="principleDesigner" Text="Ashwell Maintenance" IsEnabled="False" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
@@ -63,7 +63,7 @@
                     <VerticalStackLayout Spacing="5">
                         <Label Text="Principle Contractor:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <Frame Padding="15, 0" BorderColor="#707070" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="principleContractor" Text="Ashwell Maintenance LTD" IsEnabled="False" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
@@ -77,7 +77,7 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="5">
-                        <Label Text="Other Ashwell Maintenance Engineers On Site:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <Label Text="Other Ashwell Maintenance&#10;Engineers On Site:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="otherEngineers" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>

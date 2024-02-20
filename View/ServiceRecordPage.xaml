@@ -69,7 +69,7 @@
                     <Label Text="Appliance Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <VerticalStackLayout Spacing="5">
-                        <Label Text="Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <Label Text="Appliance Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="applianceNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
@@ -218,7 +218,15 @@
                         <BoxView Color="#222225"/>
                     </Frame>
 
-                    <Label Text="Burner Details" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    <!--<Label Text="Burner Details (If Applicable)" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>-->
+                    <Label HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Burner Details&#10;" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium"/>
+                                <Span Text="If Applicable" TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
                     <VerticalStackLayout Spacing="5">
                         <Label Text="Make:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
@@ -259,6 +267,10 @@
                             <local:LinelessEntry  x:Name="spec" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
+
+                    <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                        <BoxView Color="#222225"/>
+                    </Frame>
 
                     <VerticalStackLayout>
                         <Label Text="Flue Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 15"/>
@@ -1484,12 +1496,6 @@
                             <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                                 <local:LinelessEntry x:Name="stateApplianceCondition" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                             </Frame>
-
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
-
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="stateApplianceConditionComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
                         </VerticalStackLayout>
                     </VerticalStackLayout>
 
@@ -1497,7 +1503,7 @@
                         <BoxView Color="#222225"/>
                     </Frame>
 
-                    <Label Text="Fire Information" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    <Label Text="Combustion Information" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                         <BoxView Color="#222225"/>
@@ -1677,8 +1683,7 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="5">
-                        <Label Text="Unsafe Situations Warning Notice Number
-                               (If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <Label Text="Unsafe Situations Warning Notice Number&#10;(If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="warningNoticeNumber" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>

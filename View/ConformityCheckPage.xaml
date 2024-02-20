@@ -26,8 +26,7 @@
                 <Image Source="conformity_check.png" WidthRequest="60" HorizontalOptions="Center"/>
 
                 <VerticalStackLayout Grid.Row="1" Spacing="20">
-                    <Label Text="University of Leicester
-                           Conformity Checklist For Gas Installations" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    <Label Text="University of Leicester&#10;Conformity Checklist For Gas Installations" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                         <BoxView Color="#222225"/>
@@ -59,7 +58,7 @@
                         <Label Text="Warning Notice Ref No° (If Applicable):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="WarningNoticeRefNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                            <local:LinelessEntry x:Name="WarningNoticeRefNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 

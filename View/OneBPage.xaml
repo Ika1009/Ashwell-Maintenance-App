@@ -396,8 +396,7 @@
                     <Label Text="Details Of Tightness / Strength Test" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <Grid ColumnDefinitions="1.5*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnSpacing="10" RowSpacing="20">
-                        <Label Text="Test Medium
-                               ( Test with air if new ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        <Label Text="Test Medium&#10;( Test with air if new ):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                         <Grid Grid.Column="1">
                             <Frame Padding="0" BorderColor="Transparent" CornerRadius="100">
                                 <local:LinelessPicker x:Name="testMediumPicker" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" BackgroundColor="#222225"
@@ -566,7 +565,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Let-By Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                    <Span Text="( Minimum 2 Mins )" FontFamily="SatoshiMedium"/>
+                                    <!--<Span Text="( Minimum 2 Mins )" FontFamily="SatoshiMedium"/>-->
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -578,7 +577,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Stabilisation Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                    <Span Text="( 6 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                                    <!--<Span Text="( 6 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>-->
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -696,7 +695,7 @@
                         <Label Text="Warning Notice No:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="WarningNoticeRefNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                            <local:LinelessEntry x:Name="WarningNoticeRefNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 

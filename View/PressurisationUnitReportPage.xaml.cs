@@ -25,7 +25,7 @@ public partial class PressurisationUnitReportPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
-        Btt.IsEnabled = false;
+        PressurisationUnitReportBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.PressurisationUnitReport, reportName, folder.Id, report);
