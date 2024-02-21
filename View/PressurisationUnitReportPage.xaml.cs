@@ -83,9 +83,10 @@ public partial class PressurisationUnitReportPage : ContentPage
         await Navigation.PopModalAsync();
     }
 
-    public void NewFolder(object sender, EventArgs e)
+    public async void NewFolder(object sender, EventArgs e)
     {
-        this.ShowPopup(new NewFolderPopup(LoadFolders));
+        this.ShowPopup(new NewFolderPopup());     
+        await LoadFolders();
     }
     private async Task LoadFolders()
     {
