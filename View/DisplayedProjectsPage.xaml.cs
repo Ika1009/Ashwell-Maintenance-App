@@ -37,9 +37,10 @@ public partial class DisplayedProjectsPage : ContentPage
         string folderName = Folders.First(x => x.Id == folderId).Name;
         await Navigation.PushAsync(new DisplayedReportsPage(folderId, folderName, projectComplete));
     }
-    public void NewFolder(object sender, EventArgs e)
+    public async void NewFolder(object sender, EventArgs e)
     {
-        this.ShowPopup(new NewFolderPopup(LoadFolders));
+        this.ShowPopup(new NewFolderPopup());
+        await LoadFolders();
     }
     private async Task LoadFolders()
     {

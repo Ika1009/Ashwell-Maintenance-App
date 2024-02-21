@@ -25,7 +25,7 @@ public partial class PressurisationUnitReportPage : ContentPage
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
-        Btt.IsEnabled = false;
+        PressurisationUnitReportBackBtt.IsEnabled = false;
         try
         {
             HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.PressurisationUnitReport, reportName, folder.Id, report);
@@ -83,9 +83,10 @@ public partial class PressurisationUnitReportPage : ContentPage
         await Navigation.PopModalAsync();
     }
 
-    public void NewFolder(object sender, EventArgs e)
+    public async void NewFolder(object sender, EventArgs e)
     {
-        this.ShowPopup(new NewFolderPopup(LoadFolders));
+        this.ShowPopup(new NewFolderPopup());     
+        await LoadFolders();
     }
     private async Task LoadFolders()
     {

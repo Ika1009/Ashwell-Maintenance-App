@@ -1,69 +1,70 @@
 using CommunityToolkit.Maui.Views;
+using System;
+using System.Collections.Generic;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
 
-namespace Ashwell_Maintenance.View;
-
-public partial class NewFolderPopup : Popup
+namespace Ashwell_Maintenance.View
 {
-    private readonly Func<Task> onAddFolder;
-
-    public NewFolderPopup(Func<Task> onAddFolder)
+    public partial class NewFolderPopup : Popup
     {
-		InitializeComponent();
-        this.onAddFolder = onAddFolder;
-    }
-
-    public void NewFolderCancel(object sender, EventArgs e)
-	{
-		this.Close();
-	}
-    public async void NewFolderClicked(object sender, EventArgs e)
-    {
-        // Check if folder name is empty or consists only of whitespace
-        if (string.IsNullOrWhiteSpace(folderName.Text))
+        public NewFolderPopup()
         {
-            await Application.Current.MainPage.DisplayAlert("Error", "Folder name cannot be empty.", "OK");
-            return;
+            InitializeComponent();
         }
 
-        try
+        public void NewFolderCancel(object sender, EventArgs e)
         {
-            var response = await ApiService.UploadFolderAsync(folderName.Text);
+            this.Close();
+        }
 
-            if (response.IsSuccessStatusCode)
+        public async void NewFolderClicked(object sender, EventArgs e)
+        {
+            // Check if folder name is empty or consists only of whitespace
+            if (string.IsNullOrWhiteSpace(folderName.Text))
             {
-                this.Close();
-                if (onAddFolder != null)
-                    await Application.Current.MainPage.Dispatcher.DispatchAsync(onAddFolder);
+                await Application.Current.MainPage.DisplayAlert("Error", "Folder name cannot be empty.", "OK");
+                return;
             }
-            else
-            {
-                var errorContent = await response.Content.ReadAsStringAsync();
 
-                string errorMessage;
-                if (!string.IsNullOrWhiteSpace(errorContent))
+            try
+            {
+                var response = await ApiService.UploadFolderAsync(folderName.Text);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    try
-                    {
-                        var errorObj = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
-                        errorMessage = errorObj.ContainsKey("error") ? errorObj["error"] : "An unknown error occurred.";
-                    }
-                    catch
-                    {
-                        errorMessage = "An unknown error occurred.";
-                    }
+                    this.Close();
                 }
                 else
-                    errorMessage = "Internal server error.";
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
 
-                await Application.Current.MainPage.DisplayAlert("Error", errorMessage, "OK");
+                    string errorMessage;
+                    if (!string.IsNullOrWhiteSpace(errorContent))
+                    {
+                        try
+                        {
+                            var errorObj = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
+                            errorMessage = errorObj.ContainsKey("error") ? errorObj["error"] : "An unknown error occurred.";
+                        }
+                        catch
+                        {
+                            errorMessage = "An unknown error occurred.";
+                        }
+                    }
+                    else
+                        errorMessage = "Internal server error.";
+
+                    await Application.Current.MainPage.DisplayAlert("Error", errorMessage, "OK");
+                }
             }
-        }
-        catch (Exception ex)
-        {
-            // Handle other potential exceptions like network errors, timeouts, etc.
-            await Application.Current.MainPage.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
-        }
+            catch (Exception ex)
+            {
+                // Handle other potential exceptions like network errors, timeouts, etc.
+                await Application.Current.MainPage.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+            }
 
+        }
     }
 }
