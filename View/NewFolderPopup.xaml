@@ -16,8 +16,9 @@
             <VerticalStackLayout Spacing="10">
                 <Label Text="Folder Name:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                <Entry x:Name="folderName" TextColor="#fff"  FontSize="16" FontFamily="SatoshiMedium"
-                       BackgroundColor="#222225"/>
+				<Frame Padding="20, 0, 20, 0" BorderColor="Transparent" CornerRadius="100" BackgroundColor="#222225">
+                    <local:LinelessEntry x:Name="folderName" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" BackgroundColor="#222225"/>
+				</Frame>
             </VerticalStackLayout>
 
             <Grid Grid.Row="1" ColumnSpacing="10">

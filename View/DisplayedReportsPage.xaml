@@ -24,7 +24,7 @@
                 <Image Source="sign.png" WidthRequest="60" HorizontalOptions="Center"/>
 
                 <VerticalStackLayout Grid.Row="1" Spacing="20">
-                    <Label Text="Projects To Sign" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="displayedReportsTitle" Text="Signed Off Projects" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
                         <BoxView Color="#222225"/>

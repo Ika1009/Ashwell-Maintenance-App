@@ -1208,7 +1208,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Let-By Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                    <Span Text="( Minimum 2 Mins or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                                    <!--<Span Text="( Minimum 2 Mins or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>-->
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -1220,7 +1220,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Stabilisation Duration ( minutes )&#10;" TextColor="Red" FontAttributes="Bold" FontFamily="SatoshiMedium"/>
-                                    <Span Text="( 15 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>
+                                    <!--<Span Text="( 15 Minutes or Same as Test Time if Greater )" FontFamily="SatoshiMedium"/>-->
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

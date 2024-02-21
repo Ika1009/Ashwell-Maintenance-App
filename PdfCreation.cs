@@ -69,33 +69,36 @@ namespace Ashwell_Maintenance
                 return null;
             }
         }
+
+        public const double duzinaBoxPotis = 87;
+        public const double visinaBoxPotpis = 13;
         public static void IspisiClijenta(XGraphics gfx, XImage slika, double x, double y,double duzina, double visina)
         {
-             x += (duzina - 87) / 2;
+             x += (duzina - duzinaBoxPotis) / 2;
            // x += 2;
-            y += (visina - 13) / 2;
-            gfx.DrawImage(slika, x, y, 87, 13);
+            y += (visina - visinaBoxPotpis) / 2;
+            gfx.DrawImage(slika, x, y, duzinaBoxPotis, visinaBoxPotpis);
         }
         public static void IspisiClijenta(XGraphics gfx, XImage slika, double x, double y, double duzina, double visina, double uvecanje)
         {
-             x += (duzina - 87*uvecanje) / 2;
+             x += (duzina - duzinaBoxPotis * uvecanje) / 2;
            // x += 2;
-            y += (visina - 13*uvecanje) / 2;
-            gfx.DrawImage(slika, x, y, 87*uvecanje, 13*uvecanje);
+            y += (visina - visinaBoxPotpis * uvecanje) / 2;
+            gfx.DrawImage(slika, x, y, duzinaBoxPotis * uvecanje, visinaBoxPotpis * uvecanje);
         }
         public static void IspisiClijenta2(XGraphics gfx, XImage slika, double x, double y, double duzina, double visina)
         {
             //x += (duzina - 87) / 2;
             x += 2;
-            y += (visina - 13) / 2;
-            gfx.DrawImage(slika, x, y, 87, 13);
+            y += (visina - visinaBoxPotpis) / 2;
+            gfx.DrawImage(slika, x, y, duzinaBoxPotis, visinaBoxPotpis);
         }
         public static void IspisiClijenta2(XGraphics gfx, XImage slika, double x, double y, double duzina, double visina, double uvecanje)
         {
            // x += (duzina - 87 * uvecanje) / 2;
             x += 2;
-            y += (visina - 13 * uvecanje) / 2;
-            gfx.DrawImage(slika, x, y, 87*uvecanje, 13*uvecanje);
+            y += (visina - visinaBoxPotpis * uvecanje) / 2;
+            gfx.DrawImage(slika, x, y, duzinaBoxPotis * uvecanje, visinaBoxPotpis * uvecanje);
         }
 
         public static async Task<byte[]> GasRiskAssessment(Dictionary<string, string> dic, byte[] inzenjer, byte[] clijent)
@@ -2051,10 +2054,10 @@ namespace Ashwell_Maintenance
 
             //gfx.DrawEllipse(XBrushes.Black, new XRect(377, 194, 420 - 377, 25));
             if (dic["checkTaskComplete"] == "True")
-                gfx.DrawString("√", font, XBrushes.Black, new XRect(421, 196, 490-421, 216-196), XStringFormats.Center);
+                gfx.DrawString("√", font, XBrushes.Black, new XRect(395, 195, 418-395, 218-195), XStringFormats.Center);
             // gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(376, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
             else
-                gfx.DrawString("√", font, XBrushes.Black, new XRect(537, 196, 588-537, 20), XStringFormats.Center);
+                gfx.DrawString("√", font, XBrushes.Black, new XRect(507, 195, 534-507, 218-195), XStringFormats.Center);
             // gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(490, 193, 396 - 377 + 2, 206 - 194 + 2), 0, 360);
 
             gfx.DrawString(dic["serialNumber"], font, XBrushes.Black, new XRect(340, 219, 588 - 340, 25), XStringFormats.Center);

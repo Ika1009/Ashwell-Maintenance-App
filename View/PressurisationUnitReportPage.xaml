@@ -132,7 +132,7 @@
                         <Label Text="Serial No°:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="serialNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                            <local:LinelessEntry x:Name="serialNo" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
