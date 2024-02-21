@@ -49,7 +49,7 @@
 
             <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="3" Margin="0, -20, 0, 0">
                 <VerticalStackLayout Spacing="20" x:Name="_folderStackLayout" Margin="0, 20, 0, 0">
-                    <Frame x:Name="newFolder" BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <!--<Frame x:Name="newFolder" BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                         <Grid>
                             <Grid Padding="20, 10">
                                 <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
@@ -59,10 +59,9 @@
 
                             <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
                         </Grid>
-                    </Frame>
+                    </Frame>-->
 
-
-                    <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 100">
+                    <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 120">
                         <ListView.RowHeight>60</ListView.RowHeight>
 
                         <ListView.ItemTemplate>
@@ -94,6 +93,27 @@
                 </VerticalStackLayout>
             </ScrollView>
         </Grid>
+
+        <BoxView Grid.Row="1" Color="Transparent" HeightRequest="150" VerticalOptions="End" IsEnabled="False">
+            <BoxView.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Transparent"
+                            Offset="0.1" />
+                    <GradientStop Color="#141414"
+                            Offset="0.8" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+        
+        <Frame x:Name="newFolder" Grid.RowSpan="2" IsVisible="False" HorizontalOptions="End" VerticalOptions="End"
+               Padding="0" Margin="0, 0, 15, 30" BackgroundColor="Transparent" BorderColor="Transparent" WidthRequest="60" HeightRequest="60" CornerRadius="30">
+            <Grid BackgroundColor="Red">
+                <Image Source="plus.png" Scale="0.5"/>
+
+                <Button BackgroundColor="Transparent" Clicked="NewFolder"/>
+            </Grid>
+        </Frame>
+        
 
         <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000" Grid.RowSpan="2" Margin="-20, -20, -20, 0">
             <ActivityIndicator.IsVisible>

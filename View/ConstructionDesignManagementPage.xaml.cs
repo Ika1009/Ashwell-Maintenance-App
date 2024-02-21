@@ -166,9 +166,11 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         else
         {
             FolderSection.IsVisible = false;
+            folderSearch.IsVisible = false;
+            folderAdd.IsVisible = false;
 
-            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
-                await CDMSection3.ScrollToAsync(0, 0, false);
+            //if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            //    await CDMSection3.ScrollToAsync(0, 0, false);
             CDMSection3.IsVisible = true;
         }
     }
@@ -187,8 +189,8 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     {
         CDMSection2.IsVisible = false;
 
-        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
-            await CDMSection3.ScrollToAsync(0, 0, false);
+        //if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+        //    await CDMSection3.ScrollToAsync(0, 0, false);
         CDMSection3.IsVisible = true;
         await LoadFolders();
     }
@@ -197,6 +199,8 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     {
         CDMSection3.IsVisible = false;
         FolderSection.IsVisible = true;
+        folderSearch.IsVisible = true;
+        folderAdd.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Construction_Design_Management_{dateTimeString}.pdf";

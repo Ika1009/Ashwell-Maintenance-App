@@ -9,7 +9,7 @@
              BackgroundColor="#141414">
 
     <Grid>
-        <Grid Padding="20">
+        <Grid Padding="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
@@ -19,16 +19,33 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <ImageButton x:Name="CDMBackBtt" Clicked="CDMBack" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start"/>
 
                 <Image Source="construction_design_management.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-                <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <VerticalStackLayout Grid.Row="1" Spacing="20" Margin="0, 0, 0, -5">
                     <Label Text="Construction Design Managament" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                        <BoxView Color="#222225"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout x:Name="folderSearch" Grid.Row="2" Spacing="20" IsVisible="False" Margin="0, 20, 0, 0">
+                    <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                    <Frame Grid.Row="1" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="100">
+                        <Grid>
+                            <local:LinelessSearch Background="#222225" PlaceholderColor="#707070" CancelButtonColor="#fff" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+
+                            <Image Source="search.png" WidthRequest="25" HorizontalOptions="Start" BackgroundColor="#222225" Margin="20,0,0,0"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" Margin="0,0,0,0">
                         <BoxView Color="#222225"/>
                     </Frame>
                 </VerticalStackLayout>
@@ -1684,26 +1701,36 @@
                 </VerticalStackLayout>
             </ScrollView>
 
-            <ScrollView x:Name="CDMSection3" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-                <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+            <VerticalStackLayout x:Name="CDMSection3" Grid.Row="1" IsVisible="False" Spacing="40" Margin="0, 40, 0, 0">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
-                    </VerticalStackLayout>
-
-                    <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="CDMNext3"/>
+                    <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                        <local:LinelessEntry x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                    </Frame>
                 </VerticalStackLayout>
-            </ScrollView>
+
+                <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="CDMNext3"/>
+            </VerticalStackLayout>
 
             <ScrollView x:Name="FolderSection" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-                <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
-                    <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                <VerticalStackLayout Spacing="40" Margin="0, 20, 0, 0">
+                    <!--<Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                    <Frame Grid.Row="1" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="100">
+                        <Grid>
+                            <local:LinelessSearch Background="#222225" PlaceholderColor="#707070" CancelButtonColor="#fff" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+
+                            <Image Source="search.png" WidthRequest="25" HorizontalOptions="Start" BackgroundColor="#222225" Margin="20,0,0,0"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" Margin="0,0,0,0">
+                        <BoxView Color="#222225"/>
+                    </Frame>-->
 
                     <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
-                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                        <!--<Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
                             <Grid>
                                 <Grid Padding="20, 10">
                                     <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
@@ -1713,9 +1740,9 @@
 
                                 <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
                             </Grid>
-                        </Frame>
+                        </Frame>-->
 
-                        <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 100">
+                        <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 120">
                             <ListView.RowHeight>60</ListView.RowHeight>
 
                             <ListView.ItemTemplate>
@@ -1749,6 +1776,28 @@
             </ScrollView>
         </Grid>
 
+        <Grid x:Name="folderAdd" IsVisible="False">
+            <BoxView Grid.Row="1" Color="Transparent" HeightRequest="150" VerticalOptions="End" IsEnabled="False">
+                <BoxView.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="Transparent"
+                            Offset="0.1" />
+                        <GradientStop Color="#141414"
+                            Offset="0.8" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <Frame x:Name="newFolder" Grid.RowSpan="2" HorizontalOptions="End" VerticalOptions="End"
+               Padding="0" Margin="0, 0, 35, 35" BackgroundColor="Transparent" BorderColor="Transparent" WidthRequest="60" HeightRequest="60" CornerRadius="30">
+                <Grid BackgroundColor="Red">
+                    <Image Source="plus.png" Scale="0.5"/>
+
+                    <Button BackgroundColor="Transparent" Clicked="NewFolder"/>
+                </Grid>
+            </Frame>
+        </Grid>
+        
         <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000" Grid.RowSpan="2" Margin="-20, -20, -20, 0">
             <ActivityIndicator.IsVisible>
                 <OnPlatform x:TypeArguments="x:Boolean">
