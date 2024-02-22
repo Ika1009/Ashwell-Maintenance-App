@@ -85,9 +85,15 @@ public partial class PressurisationUnitReportPage : ContentPage
 
     public async void NewFolder(object sender, EventArgs e)
     {
-        this.ShowPopup(new NewFolderPopup());     
-        await LoadFolders();
+        NewFolderPopup popup = new NewFolderPopup();
+        popup.PopupClosed += async (s, e) =>
+        {
+            await LoadFolders();
+        };
+
+        this.ShowPopup(popup);
     }
+
     private async Task LoadFolders()
     {
         try

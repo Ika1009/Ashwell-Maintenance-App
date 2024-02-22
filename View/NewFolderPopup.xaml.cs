@@ -9,6 +9,7 @@ namespace Ashwell_Maintenance.View
 {
     public partial class NewFolderPopup : Popup
     {
+        public event EventHandler PopupClosed;
         public NewFolderPopup()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace Ashwell_Maintenance.View
                 if (response.IsSuccessStatusCode)
                 {
                     this.Close();
+                    PopupClosed?.Invoke(this, EventArgs.Empty); // Fire the custom event
                 }
                 else
                 {
@@ -64,7 +66,6 @@ namespace Ashwell_Maintenance.View
                 // Handle other potential exceptions like network errors, timeouts, etc.
                 await Application.Current.MainPage.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
             }
-
         }
     }
 }
