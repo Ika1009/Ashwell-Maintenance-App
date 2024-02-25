@@ -39,8 +39,47 @@ public partial class DisplayedProjectsPage : ContentPage
     }
     public async void NewFolder(object sender, EventArgs e)
     {
-        this.ShowPopup(new NewFolderPopup());
-        await LoadFolders();
+        string folderName = await Shell.Current.DisplayPromptAsync("New Folder", "Enter folder name");
+        if (folderName == null) // User clicked Cancel
+            return;
+
+        try
+        {
+            var response = await ApiService.UploadFolderAsync(folderName);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Load folders after successful upload
+                await LoadFolders();
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+
+                string errorMessage;
+                if (!string.IsNullOrWhiteSpace(errorContent))
+                {
+                    try
+                    {
+                        var errorObj = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
+                        errorMessage = errorObj.ContainsKey("error") ? errorObj["error"] : "An unknown error occurred.";
+                    }
+                    catch
+                    {
+                        errorMessage = "An unknown error occurred.";
+                    }
+                }
+                else
+                    errorMessage = "Internal server error.";
+
+                await Application.Current.MainPage.DisplayAlert("Error", errorMessage, "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle other potential exceptions like network errors, timeouts, etc.
+            await Application.Current.MainPage.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+        }
     }
     private async Task LoadFolders()
     {
