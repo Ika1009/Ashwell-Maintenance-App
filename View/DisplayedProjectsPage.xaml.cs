@@ -138,4 +138,21 @@ public partial class DisplayedProjectsPage : ContentPage
         loadingBG.IsRunning = false;
         loading.IsRunning = false;
     }
+    private async void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string searchText = e.NewTextValue;
+
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            // If search text is empty, load all folders
+            await LoadFolders();
+        }
+        else
+        {
+            // Filter folders based on search text
+            IEnumerable<Folder> filteredFolders = Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+            // Update the ItemsSource with filtered folders
+            FoldersListView.ItemsSource = filteredFolders;
+        }
+    }
 }
