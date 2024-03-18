@@ -152,7 +152,7 @@ public partial class DisplayedProjectsPage : ContentPage
         else
         {
             // Filter folders based on search text
-            ObservableCollection<Folder> filteredFolders = Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToObservableCollection<Folder>();
+            ObservableCollection<Folder> filteredFolders = new ObservableCollection<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
             // Update the ItemsSource with filtered folders
             FoldersListView.ItemsSource = filteredFolders;
         }
