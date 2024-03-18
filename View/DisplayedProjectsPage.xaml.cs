@@ -1,4 +1,6 @@
 namespace Ashwell_Maintenance.View;
+
+using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Maui.Views;
 using System.Collections.ObjectModel;
 using System.Text.Json;
@@ -150,7 +152,7 @@ public partial class DisplayedProjectsPage : ContentPage
         else
         {
             // Filter folders based on search text
-            IEnumerable<Folder> filteredFolders = Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+            ObservableCollection<Folder> filteredFolders = Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToObservableCollection<Folder>();
             // Update the ItemsSource with filtered folders
             FoldersListView.ItemsSource = filteredFolders;
         }
