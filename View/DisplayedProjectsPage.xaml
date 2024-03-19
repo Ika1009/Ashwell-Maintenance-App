@@ -37,7 +37,7 @@
 
             <Frame Grid.Row="1" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="100">
                 <Grid>
-                    <local:LinelessSearch x:Name="searchEntry" TextChanged="SearchEntry_TextChanged" Background="#222225" PlaceholderColor="#707070" CancelButtonColor="#fff" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+                    <Entry x:Name="searchEntry" TextChanged="SearchEntry_TextChanged" Background="#222225" PlaceholderColor="#707070" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
 
                     <Image Source="search.png" WidthRequest="25" HorizontalOptions="Start" BackgroundColor="#222225" Margin="20,0,0,0"/>
                 </Grid>
