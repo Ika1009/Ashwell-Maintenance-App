@@ -16,6 +16,9 @@ public partial class OnePage : ContentPage
 	{
 		InitializeComponent();
 
+        checkAreasWithInadequateVentilationNA.IsChecked = true;
+        checkAreaA.IsChecked = true;
+
         List<Int64> numbers = new List<Int64>();
         for (Int64 i = 1; i <= 88; i++)
             numbers.Add(i);
@@ -644,46 +647,49 @@ public partial class OnePage : ContentPage
         return reportData;
     }
 
-    public void checkAreaA_Tap(object sender, EventArgs e)
+    private void AreaA_Control()
     {
-        if (checkAreaA.IsChecked)
+        checkAreaA.IsChecked = true;
+        checkAreaA.Color = Colors.Red;
+        checkAreaB.IsChecked = false;
+        checkAreaCD.IsChecked = false;
+
+        AreaB.IsVisible = false;
+        AreaCD.IsVisible = false;
+        AreaA.IsVisible = true;
+
+        if (AreaA_Value.Text != null)
         {
-            checkAreaA.Color = Colors.Red;
-            checkAreaB.IsChecked = false;
-            checkAreaCD.IsChecked = false;
+            letByDuration.Text = "2";
+            stabilisationDuration.Text = "15";
+            testDuration.Text = "2";
 
-            AreaB.IsVisible = false;
-            AreaCD.IsVisible = false;
-            AreaA.IsVisible = true;
+            double min = Math.Ceiling(double.Parse(AreaA_Value.Text));
+            string min_string = min.ToString();
 
-            if (AreaA_Value.Text != null)
+            if (min > 15)
             {
-                letByDuration.Text = "2";
-                stabilisationDuration.Text = "15";
-                testDuration.Text = "2";
-
-                double min = Math.Ceiling(double.Parse(AreaA_Value.Text));
-                string min_string = min.ToString();
-
-                if (min > 15)
-                {
-                    letByDuration.Text = min_string;
-                    stabilisationDuration.Text = min_string;
-                    testDuration.Text = min_string;
-                }
-                else if (min > 2)
-                {
-                    letByDuration.Text = min_string;
-                    testDuration.Text = min_string;
-                }
+                letByDuration.Text = min_string;
+                stabilisationDuration.Text = min_string;
+                testDuration.Text = min_string;
             }
-            else
+            else if (min > 2)
             {
-                letByDuration.Text = null;
-                stabilisationDuration.Text = null;
-                testDuration.Text = null;
+                letByDuration.Text = min_string;
+                testDuration.Text = min_string;
             }
         }
+        else
+        {
+            letByDuration.Text = null;
+            stabilisationDuration.Text = null;
+            testDuration.Text = null;
+        }
+    }
+    public void checkAreaA_Tap(object sender, EventArgs e)
+    {
+        if (checkAreaA.IsChecked || (!checkAreaB.IsChecked && !checkAreaCD.IsChecked))
+            AreaA_Control();
         else
         {
             checkAreaA.Color = Colors.White;
@@ -742,6 +748,9 @@ public partial class OnePage : ContentPage
             letByDuration.Text = null;
             stabilisationDuration.Text = null;
             testDuration.Text = null;
+
+            if (!checkAreaCD.IsChecked)
+                AreaA_Control();
         }
     }
     public void checkAreaCD_Tap(object sender, EventArgs e)
@@ -792,6 +801,9 @@ public partial class OnePage : ContentPage
             letByDuration.Text = null;
             stabilisationDuration.Text = null;
             testDuration.Text = null;
+
+            if (!checkAreaB.IsChecked)
+                AreaA_Control();
         }
     }
 
@@ -1793,49 +1805,6 @@ public partial class OnePage : ContentPage
 
     // =======================================================================================================================================================================================
 
-    public void checkAreasWithInadequateVentilationYes_CheckedChanged(object sender, EventArgs e)
-    {
-        if (checkAreasWithInadequateVentilationYes.IsChecked)
-        {
-            checkAreasWithInadequateVentilationNo.IsChecked = false;
-            checkAreasWithInadequateVentilationNA.IsChecked = false;
-
-            checkAreasWithInadequateVentilationNo.Color = Colors.White;
-            checkAreasWithInadequateVentilationNA.Color = Colors.White;
-            checkAreasWithInadequateVentilationYes.Color = Colors.Red;
-        }
-        else
-            checkAreasWithInadequateVentilationYes.Color = Colors.White;
-    }
-    public void checkAreasWithInadequateVentilationNo_CheckedChanged(object sender, EventArgs e)
-    {
-        if (checkAreasWithInadequateVentilationNo.IsChecked)
-        {
-            checkAreasWithInadequateVentilationYes.IsChecked = false;
-            checkAreasWithInadequateVentilationNA.IsChecked = false;
-
-            checkAreasWithInadequateVentilationYes.Color = Colors.White;
-            checkAreasWithInadequateVentilationNA.Color = Colors.White;
-            checkAreasWithInadequateVentilationNo.Color = Colors.Red;
-        }
-        else
-            checkAreasWithInadequateVentilationNo.Color = Colors.White;
-    }
-    public void checkAreasWithInadequateVentilationNA_CheckedChanged(object sender, EventArgs e)
-    {
-        if (checkAreasWithInadequateVentilationNA.IsChecked)
-        {
-            checkAreasWithInadequateVentilationNo.IsChecked = false;
-            checkAreasWithInadequateVentilationYes.IsChecked = false;
-
-            checkAreasWithInadequateVentilationNo.Color = Colors.White;
-            checkAreasWithInadequateVentilationYes.Color = Colors.White;
-            checkAreasWithInadequateVentilationNA.Color = Colors.Red;
-        }
-        else
-            checkAreasWithInadequateVentilationNA.Color = Colors.White;
-    }
-
     private async Task stampAnimation(Image image)
     {
         var rotate = image.RotateTo(30, 350, Easing.Default);
@@ -1880,5 +1849,51 @@ public partial class OnePage : ContentPage
         failStamp.CancelAnimations();
 
         testPassedOrFailed.SelectedIndex = -1;
+    }
+
+
+    // Disjunct Buttons
+
+
+    public void DisjunctCheckboxes(CheckBox a, CheckBox b, CheckBox c)
+    {
+        a.IsChecked = true;
+        b.IsChecked = false;
+        c.IsChecked = false;
+
+        a.Color = Colors.Red;
+        b.Color = Colors.White;
+        c.Color = Colors.White;
+    }
+
+
+    public void checkAreasWithInadequateVentilationYes_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkAreasWithInadequateVentilationYes.IsChecked)
+            DisjunctCheckboxes(checkAreasWithInadequateVentilationYes, checkAreasWithInadequateVentilationNo, checkAreasWithInadequateVentilationNA);
+        else
+        {
+            checkAreasWithInadequateVentilationYes.Color = Colors.White;
+            if (!checkAreasWithInadequateVentilationNo.IsChecked)
+                DisjunctCheckboxes(checkAreasWithInadequateVentilationNA, checkAreasWithInadequateVentilationYes, checkAreasWithInadequateVentilationNo);
+        }
+    }
+    public void checkAreasWithInadequateVentilationNo_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkAreasWithInadequateVentilationNo.IsChecked)
+            DisjunctCheckboxes(checkAreasWithInadequateVentilationNo, checkAreasWithInadequateVentilationYes, checkAreasWithInadequateVentilationNA);
+        else
+        {
+            checkAreasWithInadequateVentilationNo.Color = Colors.White;
+            if (!checkAreasWithInadequateVentilationYes.IsChecked)
+                DisjunctCheckboxes(checkAreasWithInadequateVentilationNA, checkAreasWithInadequateVentilationYes, checkAreasWithInadequateVentilationNo);
+        }
+    }
+    public void checkAreasWithInadequateVentilationNA_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkAreasWithInadequateVentilationNA.IsChecked || !checkAreasWithInadequateVentilationYes.IsChecked && !checkAreasWithInadequateVentilationNo.IsChecked)
+            DisjunctCheckboxes(checkAreasWithInadequateVentilationNA, checkAreasWithInadequateVentilationYes, checkAreasWithInadequateVentilationNo);
+        else
+            checkAreasWithInadequateVentilationNA.Color = Colors.White;
     }
 }

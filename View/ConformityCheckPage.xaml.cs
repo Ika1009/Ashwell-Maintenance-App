@@ -12,6 +12,25 @@ public partial class ConformityCheckPage : ContentPage
     public ConformityCheckPage()
 	{
 		InitializeComponent();
+
+        checkA_ID1.IsChecked = true;
+        checkA_ID2.IsChecked = true;
+        checkA_ID3.IsChecked = true;
+
+        checkFluesFittedNA.IsChecked = true;
+        checkFluesSupportedNA.IsChecked = true;
+        checkFluesInLineNA.IsChecked = true;
+        checkFacilitiesNA.IsChecked = true;
+        checkFlueGradientsNA.IsChecked = true;
+        checkFluesInspectionNA.IsChecked = true;
+        checkFlueJointsNA.IsChecked = true;
+        checkInterlocksProvidedNA.IsChecked = true;
+        checkEmergencyShutOffButtonNA.IsChecked = true;
+        checkPlantInterlinkNA.IsChecked = true;
+        checkFuelShutOffNA.IsChecked = true;
+        checkFuelFirstEntryNA.IsChecked = true;
+        checkSystemStopNA.IsChecked = true;
+        checkTestAndResetNA.IsChecked = true;
 	}
     public void FolderChosen(object sender, EventArgs e)
     {
@@ -357,5 +376,554 @@ public partial class ConformityCheckPage : ContentPage
 
 
         return reportData;
+    }
+
+
+    // Disjunct Buttons
+
+
+    public void DisjunctCheckboxes(CheckBox a, CheckBox b, CheckBox c)
+    {
+        a.IsChecked = true;
+        b.IsChecked = false;
+        c.IsChecked = false;
+
+        a.Color = Colors.Red;
+        b.Color = Colors.White;
+        c.Color = Colors.White;
+    }
+
+
+    public void CheckFluesFittedYesChanged(object sender, EventArgs e)
+    {
+        if (checkFluesFittedYes.IsChecked)
+            DisjunctCheckboxes(checkFluesFittedYes, checkFluesFittedNo, checkFluesFittedNA);
+        else
+        {
+            checkFluesFittedYes.Color = Colors.White;
+            if (!checkFluesFittedNo.IsChecked)
+                DisjunctCheckboxes(checkFluesFittedNA, checkFluesFittedYes, checkFluesFittedNo);
+        }
+    }
+    public void CheckFluesFittedNoChanged(object sender, EventArgs e)
+    {
+        if (checkFluesFittedNo.IsChecked)
+            DisjunctCheckboxes(checkFluesFittedNo, checkFluesFittedYes, checkFluesFittedNA);
+        else
+        {
+            checkFluesFittedNo.Color = Colors.White;
+            if (!checkFluesFittedYes.IsChecked)
+                DisjunctCheckboxes(checkFluesFittedNA, checkFluesFittedYes, checkFluesFittedNo);
+        }
+    }
+    public void CheckFluesFittedNAChanged(object sender, EventArgs e)
+    {
+        if (checkFluesFittedNA.IsChecked || !checkFluesFittedYes.IsChecked && !checkFluesFittedNo.IsChecked)
+            DisjunctCheckboxes(checkFluesFittedNA, checkFluesFittedYes, checkFluesFittedNo);
+        else
+            checkFluesFittedNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFluesSupportedYesChanged(object sender, EventArgs e)
+    {
+        if (checkFluesSupportedYes.IsChecked)
+            DisjunctCheckboxes(checkFluesSupportedYes, checkFluesSupportedNo, checkFluesSupportedNA);
+        else
+        {
+            checkFluesSupportedYes.Color = Colors.White;
+            if (!checkFluesSupportedNo.IsChecked)
+                DisjunctCheckboxes(checkFluesSupportedNA, checkFluesSupportedYes, checkFluesSupportedNo);
+        }
+    }
+    public void CheckFluesSupportedNoChanged(object sender, EventArgs e)
+    {
+        if (checkFluesSupportedNo.IsChecked)
+            DisjunctCheckboxes(checkFluesSupportedNo, checkFluesSupportedYes, checkFluesSupportedNA);
+        else
+        {
+            checkFluesSupportedNo.Color = Colors.White;
+            if (!checkFluesSupportedYes.IsChecked)
+                DisjunctCheckboxes(checkFluesSupportedNA, checkFluesSupportedYes, checkFluesSupportedNo);
+        }
+    }
+    public void CheckFluesSupportedNAChanged(object sender, EventArgs e)
+    {
+        if (checkFluesSupportedNA.IsChecked || !checkFluesSupportedYes.IsChecked && !checkFluesSupportedNo.IsChecked)
+            DisjunctCheckboxes(checkFluesSupportedNA, checkFluesSupportedYes, checkFluesSupportedNo);
+        else
+            checkFluesSupportedNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFluesInLineYesChanged(object sender, EventArgs e)
+    {
+        if (checkFluesInLineYes.IsChecked)
+            DisjunctCheckboxes(checkFluesInLineYes, checkFluesInLineNo, checkFluesInLineNA);
+        else
+        {
+            checkFluesInLineYes.Color = Colors.White;
+            if (!checkFluesInLineNo.IsChecked)
+                DisjunctCheckboxes(checkFluesInLineNA, checkFluesInLineYes, checkFluesInLineNo);
+        }
+    }
+    public void CheckFluesInLineNoChanged(object sender, EventArgs e)
+    {
+        if (checkFluesInLineNo.IsChecked)
+            DisjunctCheckboxes(checkFluesInLineNo, checkFluesInLineYes, checkFluesInLineNA);
+        else
+        {
+            checkFluesInLineNo.Color = Colors.White;
+            if (!checkFluesInLineYes.IsChecked)
+                DisjunctCheckboxes(checkFluesInLineNA, checkFluesInLineYes, checkFluesInLineNo);
+        }
+    }
+    public void CheckFluesInLineNAChanged(object sender, EventArgs e)
+    {
+        if (checkFluesInLineNA.IsChecked || !checkFluesInLineYes.IsChecked && !checkFluesInLineNo.IsChecked)
+            DisjunctCheckboxes(checkFluesInLineNA, checkFluesInLineYes, checkFluesInLineNo);
+        else
+            checkFluesInLineNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFacilitiesYesChanged(object sender, EventArgs e)
+    {
+        if (checkFacilitiesYes.IsChecked)
+            DisjunctCheckboxes(checkFacilitiesYes, checkFacilitiesNo, checkFacilitiesNA);
+        else
+        {
+            checkFacilitiesYes.Color = Colors.White;
+            if (!checkFacilitiesNo.IsChecked)
+                DisjunctCheckboxes(checkFacilitiesNA, checkFacilitiesYes, checkFacilitiesNo);
+        }
+    }
+    public void CheckFacilitiesNoChanged(object sender, EventArgs e)
+    {
+        if (checkFacilitiesNo.IsChecked)
+            DisjunctCheckboxes(checkFacilitiesNo, checkFacilitiesYes, checkFacilitiesNA);
+        else
+        {
+            checkFacilitiesNo.Color = Colors.White;
+            if (!checkFacilitiesYes.IsChecked)
+                DisjunctCheckboxes(checkFacilitiesNA, checkFacilitiesYes, checkFacilitiesNo);
+        }
+    }
+    public void CheckFacilitiesNAChanged(object sender, EventArgs e)
+    {
+        if (checkFacilitiesNA.IsChecked || !checkFacilitiesYes.IsChecked && !checkFacilitiesNo.IsChecked)
+            DisjunctCheckboxes(checkFacilitiesNA, checkFacilitiesYes, checkFacilitiesNo);
+        else
+            checkFacilitiesNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFlueGradientsYesChanged(object sender, EventArgs e)
+    {
+        if (checkFlueGradientsYes.IsChecked)
+            DisjunctCheckboxes(checkFlueGradientsYes, checkFlueGradientsNo, checkFlueGradientsNA);
+        else
+        {
+            checkFlueGradientsYes.Color = Colors.White;
+            if (!checkFlueGradientsNo.IsChecked)
+                DisjunctCheckboxes(checkFlueGradientsNA, checkFlueGradientsYes, checkFlueGradientsNo);
+        }
+    }
+    public void CheckFlueGradientsNoChanged(object sender, EventArgs e)
+    {
+        if (checkFlueGradientsNo.IsChecked)
+            DisjunctCheckboxes(checkFlueGradientsNo, checkFlueGradientsYes, checkFlueGradientsNA);
+        else
+        {
+            checkFlueGradientsNo.Color = Colors.White;
+            if (!checkFlueGradientsYes.IsChecked)
+                DisjunctCheckboxes(checkFlueGradientsNA, checkFlueGradientsYes, checkFlueGradientsNo);
+        }
+    }
+    public void CheckFlueGradientsNAChanged(object sender, EventArgs e)
+    {
+        if (checkFlueGradientsNA.IsChecked || !checkFlueGradientsYes.IsChecked && !checkFlueGradientsNo.IsChecked)
+            DisjunctCheckboxes(checkFlueGradientsNA, checkFlueGradientsYes, checkFlueGradientsNo);
+        else
+            checkFlueGradientsNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFluesInspectionYesChanged(object sender, EventArgs e)
+    {
+        if (checkFluesInspectionYes.IsChecked)
+            DisjunctCheckboxes(checkFluesInspectionYes, checkFluesInspectionNo, checkFluesInspectionNA);
+        else
+        {
+            checkFluesInspectionYes.Color = Colors.White;
+            if (!checkFluesInspectionNo.IsChecked)
+                DisjunctCheckboxes(checkFluesInspectionNA, checkFluesInspectionYes, checkFluesInspectionNo);
+        }
+    }
+    public void CheckFluesInspectionNoChanged(object sender, EventArgs e)
+    {
+        if (checkFluesInspectionNo.IsChecked)
+            DisjunctCheckboxes(checkFluesInspectionNo, checkFluesInspectionYes, checkFluesInspectionNA);
+        else
+        {
+            checkFluesInspectionNo.Color = Colors.White;
+            if (!checkFluesInspectionYes.IsChecked)
+                DisjunctCheckboxes(checkFluesInspectionNA, checkFluesInspectionYes, checkFluesInspectionNo);
+        }
+    }
+    public void CheckFluesInspectionNAChanged(object sender, EventArgs e)
+    {
+        if (checkFluesInspectionNA.IsChecked || !checkFluesInspectionYes.IsChecked && !checkFluesInspectionNo.IsChecked)
+            DisjunctCheckboxes(checkFluesInspectionNA, checkFluesInspectionYes, checkFluesInspectionNo);
+        else
+            checkFluesInspectionNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFlueJointsYesChanged(object sender, EventArgs e)
+    {
+        if (checkFlueJointsYes.IsChecked)
+            DisjunctCheckboxes(checkFlueJointsYes, checkFlueJointsNo, checkFlueJointsNA);
+        else
+        {
+            checkFlueJointsYes.Color = Colors.White;
+            if (!checkFlueJointsNo.IsChecked)
+                DisjunctCheckboxes(checkFlueJointsNA, checkFlueJointsYes, checkFlueJointsNo);
+        }
+    }
+    public void CheckFlueJointsNoChanged(object sender, EventArgs e)
+    {
+        if (checkFlueJointsNo.IsChecked)
+            DisjunctCheckboxes(checkFlueJointsNo, checkFlueJointsYes, checkFlueJointsNA);
+        else
+        {
+            checkFlueJointsNo.Color = Colors.White;
+            if (!checkFlueJointsYes.IsChecked)
+                DisjunctCheckboxes(checkFlueJointsNA, checkFlueJointsYes, checkFlueJointsNo);
+        }
+    }
+    public void CheckFlueJointsNAChanged(object sender, EventArgs e)
+    {
+        if (checkFlueJointsNA.IsChecked || !checkFlueJointsYes.IsChecked && !checkFlueJointsNo.IsChecked)
+            DisjunctCheckboxes(checkFlueJointsNA, checkFlueJointsYes, checkFlueJointsNo);
+        else
+            checkFlueJointsNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckInterlocksProvidedYesChanged(object sender, EventArgs e)
+    {
+        if (checkInterlocksProvidedYes.IsChecked)
+            DisjunctCheckboxes(checkInterlocksProvidedYes, checkInterlocksProvidedNo, checkInterlocksProvidedNA);
+        else
+        {
+            checkInterlocksProvidedYes.Color = Colors.White;
+            if (!checkInterlocksProvidedNo.IsChecked)
+                DisjunctCheckboxes(checkInterlocksProvidedNA, checkInterlocksProvidedYes, checkInterlocksProvidedNo);
+        }
+    }
+    public void CheckInterlocksProvidedNoChanged(object sender, EventArgs e)
+    {
+        if (checkInterlocksProvidedNo.IsChecked)
+            DisjunctCheckboxes(checkInterlocksProvidedNo, checkInterlocksProvidedYes, checkInterlocksProvidedNA);
+        else
+        {
+            checkInterlocksProvidedNo.Color = Colors.White;
+            if (!checkInterlocksProvidedYes.IsChecked)
+                DisjunctCheckboxes(checkInterlocksProvidedNA, checkInterlocksProvidedYes, checkInterlocksProvidedNo);
+        }
+    }
+    public void CheckInterlocksProvidedNAChanged(object sender, EventArgs e)
+    {
+        if (checkInterlocksProvidedNA.IsChecked || !checkInterlocksProvidedYes.IsChecked && !checkInterlocksProvidedNo.IsChecked)
+            DisjunctCheckboxes(checkInterlocksProvidedNA, checkInterlocksProvidedYes, checkInterlocksProvidedNo);
+        else
+            checkInterlocksProvidedNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckEmergencyShutOffButtonYesChanged(object sender, EventArgs e)
+    {
+        if (checkEmergencyShutOffButtonYes.IsChecked)
+            DisjunctCheckboxes(checkEmergencyShutOffButtonYes, checkEmergencyShutOffButtonNo, checkEmergencyShutOffButtonNA);
+        else
+        {
+            checkEmergencyShutOffButtonYes.Color = Colors.White;
+            if (!checkEmergencyShutOffButtonNo.IsChecked)
+                DisjunctCheckboxes(checkEmergencyShutOffButtonNA, checkEmergencyShutOffButtonYes, checkEmergencyShutOffButtonNo);
+        }
+    }
+    public void CheckEmergencyShutOffButtonNoChanged(object sender, EventArgs e)
+    {
+        if (checkEmergencyShutOffButtonNo.IsChecked)
+            DisjunctCheckboxes(checkEmergencyShutOffButtonNo, checkEmergencyShutOffButtonYes, checkEmergencyShutOffButtonNA);
+        else
+        {
+            checkEmergencyShutOffButtonNo.Color = Colors.White;
+            if (!checkEmergencyShutOffButtonYes.IsChecked)
+                DisjunctCheckboxes(checkEmergencyShutOffButtonNA, checkEmergencyShutOffButtonYes, checkEmergencyShutOffButtonNo);
+        }
+    }
+    public void CheckEmergencyShutOffButtonNAChanged(object sender, EventArgs e)
+    {
+        if (checkEmergencyShutOffButtonNA.IsChecked || !checkEmergencyShutOffButtonYes.IsChecked && !checkEmergencyShutOffButtonNo.IsChecked)
+            DisjunctCheckboxes(checkEmergencyShutOffButtonNA, checkEmergencyShutOffButtonYes, checkEmergencyShutOffButtonNo);
+        else
+            checkEmergencyShutOffButtonNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckPlantInterlinkYesChanged(object sender, EventArgs e)
+    {
+        if (checkPlantInterlinkYes.IsChecked)
+            DisjunctCheckboxes(checkPlantInterlinkYes, checkPlantInterlinkNo, checkPlantInterlinkNA);
+        else
+        {
+            checkPlantInterlinkYes.Color = Colors.White;
+            if (!checkPlantInterlinkNo.IsChecked)
+                DisjunctCheckboxes(checkPlantInterlinkNA, checkPlantInterlinkYes, checkPlantInterlinkNo);
+        }
+    }
+    public void CheckPlantInterlinkNoChanged(object sender, EventArgs e)
+    {
+        if (checkPlantInterlinkNo.IsChecked)
+            DisjunctCheckboxes(checkPlantInterlinkNo, checkPlantInterlinkYes, checkPlantInterlinkNA);
+        else
+        {
+            checkPlantInterlinkNo.Color = Colors.White;
+            if (!checkPlantInterlinkYes.IsChecked)
+                DisjunctCheckboxes(checkPlantInterlinkNA, checkPlantInterlinkYes, checkPlantInterlinkNo);
+        }
+    }
+    public void CheckPlantInterlinkNAChanged(object sender, EventArgs e)
+    {
+        if (checkPlantInterlinkNA.IsChecked || !checkPlantInterlinkYes.IsChecked && !checkPlantInterlinkNo.IsChecked)
+            DisjunctCheckboxes(checkPlantInterlinkNA, checkPlantInterlinkYes, checkPlantInterlinkNo);
+        else
+            checkPlantInterlinkNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFuelShutOffYesChanged(object sender, EventArgs e)
+    {
+        if (checkFuelShutOffYes.IsChecked)
+            DisjunctCheckboxes(checkFuelShutOffYes, checkFuelShutOffNo, checkFuelShutOffNA);
+        else
+        {
+            checkFuelShutOffYes.Color = Colors.White;
+            if (!checkFuelShutOffNo.IsChecked)
+                DisjunctCheckboxes(checkFuelShutOffNA, checkFuelShutOffYes, checkFuelShutOffNo);
+        }
+    }
+    public void CheckFuelShutOffNoChanged(object sender, EventArgs e)
+    {
+        if (checkFuelShutOffNo.IsChecked)
+            DisjunctCheckboxes(checkFuelShutOffNo, checkFuelShutOffYes, checkFuelShutOffNA);
+        else
+        {
+            checkFuelShutOffNo.Color = Colors.White;
+            if (!checkFuelShutOffYes.IsChecked)
+                DisjunctCheckboxes(checkFuelShutOffNA, checkFuelShutOffYes, checkFuelShutOffNo);
+        }
+    }
+    public void CheckFuelShutOffNAChanged(object sender, EventArgs e)
+    {
+        if (checkFuelShutOffNA.IsChecked || !checkFuelShutOffYes.IsChecked && !checkFuelShutOffNo.IsChecked)
+            DisjunctCheckboxes(checkFuelShutOffNA, checkFuelShutOffYes, checkFuelShutOffNo);
+        else
+            checkFuelShutOffNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckFuelFirstEntryYesChanged(object sender, EventArgs e)
+    {
+        if (checkFuelFirstEntryYes.IsChecked)
+            DisjunctCheckboxes(checkFuelFirstEntryYes, checkFuelFirstEntryNo, checkFuelFirstEntryNA);
+        else
+        {
+            checkFuelFirstEntryYes.Color = Colors.White;
+            if (!checkFuelFirstEntryNo.IsChecked)
+                DisjunctCheckboxes(checkFuelFirstEntryNA, checkFuelFirstEntryYes, checkFuelFirstEntryNo);
+        }
+    }
+    public void CheckFuelFirstEntryNoChanged(object sender, EventArgs e)
+    {
+        if (checkFuelFirstEntryNo.IsChecked)
+            DisjunctCheckboxes(checkFuelFirstEntryNo, checkFuelFirstEntryYes, checkFuelFirstEntryNA);
+        else
+        {
+            checkFuelFirstEntryNo.Color = Colors.White;
+            if (!checkFuelFirstEntryYes.IsChecked)
+                DisjunctCheckboxes(checkFuelFirstEntryNA, checkFuelFirstEntryYes, checkFuelFirstEntryNo);
+        }
+    }
+    public void CheckFuelFirstEntryNAChanged(object sender, EventArgs e)
+    {
+        if (checkFuelFirstEntryNA.IsChecked || !checkFuelFirstEntryYes.IsChecked && !checkFuelFirstEntryNo.IsChecked)
+            DisjunctCheckboxes(checkFuelFirstEntryNA, checkFuelFirstEntryYes, checkFuelFirstEntryNo);
+        else
+            checkFuelFirstEntryNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckSystemStopYesChanged(object sender, EventArgs e)
+    {
+        if (checkSystemStopYes.IsChecked)
+            DisjunctCheckboxes(checkSystemStopYes, checkSystemStopNo, checkSystemStopNA);
+        else
+        {
+            checkSystemStopYes.Color = Colors.White;
+            if (!checkSystemStopNo.IsChecked)
+                DisjunctCheckboxes(checkSystemStopNA, checkSystemStopYes, checkSystemStopNo);
+        }
+    }
+    public void CheckSystemStopNoChanged(object sender, EventArgs e)
+    {
+        if (checkSystemStopNo.IsChecked)
+            DisjunctCheckboxes(checkSystemStopNo, checkSystemStopYes, checkSystemStopNA);
+        else
+        {
+            checkSystemStopNo.Color = Colors.White;
+            if (!checkSystemStopYes.IsChecked)
+                DisjunctCheckboxes(checkSystemStopNA, checkSystemStopYes, checkSystemStopNo);
+        }
+    }
+    public void CheckSystemStopNAChanged(object sender, EventArgs e)
+    {
+        if (checkSystemStopNA.IsChecked || !checkSystemStopYes.IsChecked && !checkSystemStopNo.IsChecked)
+            DisjunctCheckboxes(checkSystemStopNA, checkSystemStopYes, checkSystemStopNo);
+        else
+            checkSystemStopNA.Color = Colors.White;
+    }
+
+
+
+
+    public void CheckTestAndResetYesChanged(object sender, EventArgs e)
+    {
+        if (checkTestAndResetYes.IsChecked)
+            DisjunctCheckboxes(checkTestAndResetYes, checkTestAndResetNo, checkTestAndResetNA);
+        else
+        {
+            checkTestAndResetYes.Color = Colors.White;
+            if (!checkTestAndResetNo.IsChecked)
+                DisjunctCheckboxes(checkTestAndResetNA, checkTestAndResetYes, checkTestAndResetNo);
+        }
+    }
+    public void CheckTestAndResetNoChanged(object sender, EventArgs e)
+    {
+        if (checkTestAndResetNo.IsChecked)
+            DisjunctCheckboxes(checkTestAndResetNo, checkTestAndResetYes, checkTestAndResetNA);
+        else
+        {
+            checkTestAndResetNo.Color = Colors.White;
+            if (!checkTestAndResetYes.IsChecked)
+                DisjunctCheckboxes(checkTestAndResetNA, checkTestAndResetYes, checkTestAndResetNo);
+        }
+    }
+    public void CheckTestAndResetNAChanged(object sender, EventArgs e)
+    {
+        if (checkTestAndResetNA.IsChecked || !checkTestAndResetYes.IsChecked && !checkTestAndResetNo.IsChecked)
+            DisjunctCheckboxes(checkTestAndResetNA, checkTestAndResetYes, checkTestAndResetNo);
+        else
+            checkTestAndResetNA.Color = Colors.White;
+    }
+
+
+
+    // ID, AR, NCS
+
+
+    public void DisjunctABC(CheckBox a, CheckBox b, CheckBox c)
+    {
+        a.IsChecked = true;
+        b.IsChecked = false;
+        c.IsChecked = false;
+    }
+
+    public void A1(object sender, EventArgs e)
+    {
+        if (checkA_ID1.IsChecked || (!checkB_AR1.IsChecked && !checkC_NCS1.IsChecked))
+            DisjunctABC(checkA_ID1, checkB_AR1, checkC_NCS1);
+    }
+    public void B1(object sender, EventArgs e)
+    {
+        if (checkB_AR1.IsChecked)
+            DisjunctABC(checkB_AR1, checkA_ID1, checkC_NCS1);
+        else if (!checkC_NCS1.IsChecked)
+            DisjunctABC(checkA_ID1, checkB_AR1, checkC_NCS1);
+    }
+    public void C1(object sender, EventArgs e)
+    {
+        if (checkC_NCS1.IsChecked)
+            DisjunctABC(checkC_NCS1, checkB_AR1, checkA_ID1);
+        else if (!checkB_AR1.IsChecked)
+            DisjunctABC(checkA_ID1, checkB_AR1, checkC_NCS1);
+    }
+
+
+    public void A2(object sender, EventArgs e)
+    {
+        if (checkA_ID2.IsChecked || (!checkB_AR2.IsChecked && !checkC_NCS2.IsChecked))
+            DisjunctABC(checkA_ID2, checkB_AR2, checkC_NCS2);
+    }
+    public void B2(object sender, EventArgs e)
+    {
+        if (checkB_AR2.IsChecked)
+            DisjunctABC(checkB_AR2, checkA_ID2, checkC_NCS2);
+        else if (!checkC_NCS2.IsChecked)
+            DisjunctABC(checkA_ID2, checkB_AR2, checkC_NCS2);
+    }
+    public void C2(object sender, EventArgs e)
+    {
+        if (checkC_NCS2.IsChecked)
+            DisjunctABC(checkC_NCS2, checkB_AR2, checkA_ID2);
+        else if (!checkB_AR2.IsChecked)
+            DisjunctABC(checkA_ID2, checkB_AR2, checkC_NCS2);
+    }
+
+
+    public void A3(object sender, EventArgs e)
+    {
+        if (checkA_ID3.IsChecked || (!checkB_AR3.IsChecked && !checkC_NCS3.IsChecked))
+            DisjunctABC(checkA_ID3, checkB_AR3, checkC_NCS3);
+    }
+    public void B3(object sender, EventArgs e)
+    {
+        if (checkB_AR3.IsChecked)
+            DisjunctABC(checkB_AR3, checkA_ID3, checkC_NCS3);
+        else if (!checkC_NCS3.IsChecked)
+            DisjunctABC(checkA_ID3, checkB_AR3, checkC_NCS3);
+    }
+    public void C3(object sender, EventArgs e)
+    {
+        if (checkC_NCS3.IsChecked)
+            DisjunctABC(checkC_NCS3, checkB_AR3, checkA_ID3);
+        else if (!checkB_AR3.IsChecked)
+            DisjunctABC(checkA_ID3, checkB_AR3, checkC_NCS3);
     }
 }

@@ -993,7 +993,7 @@
                                Removed / Bypassed?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="1"/>
                         <FlexLayout Grid.Row="1" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
                             <HorizontalStackLayout Spacing="-5">
-                                <CheckBox x:Name="checkComponentsRemovedBypassedYes" IsChecked="True">
+                                <CheckBox x:Name="checkComponentsRemovedBypassedYes">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1015,7 +1015,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout Spacing="-5">
-                                <CheckBox x:Name="checkComponentsRemovedBypassedNo">
+                                <CheckBox x:Name="checkComponentsRemovedBypassedNo" IsChecked="True">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />

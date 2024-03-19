@@ -302,18 +302,26 @@ public partial class EngineersReportPage : ContentPage
         if (checkSpillageTestPass.IsChecked)
             DisjunctCheckboxes(checkSpillageTestPass, checkSpillageTestNo, checkSpillageTestNA);
         else
+        {
             checkSpillageTestPass.Color = Colors.White;
+            if (!checkSpillageTestNo.IsChecked)
+                DisjunctCheckboxes(checkSpillageTestNA, checkSpillageTestPass, checkSpillageTestNo);
+        }
     }
     public void CheckSpillageTestNoChanged(object sender, EventArgs e)
     {
         if (checkSpillageTestNo.IsChecked)
             DisjunctCheckboxes(checkSpillageTestNo, checkSpillageTestPass, checkSpillageTestNA);
         else
+        {
             checkSpillageTestNo.Color = Colors.White;
+            if (!checkSpillageTestPass.IsChecked)
+                DisjunctCheckboxes(checkSpillageTestNA, checkSpillageTestPass, checkSpillageTestNo);
+        }
     }
     public void CheckSpillageTestNAChanged(object sender, EventArgs e)
     {
-        if (checkSpillageTestNA.IsChecked)
+        if (checkSpillageTestNA.IsChecked || !checkSpillageTestPass.IsChecked && !checkSpillageTestNo.IsChecked)
             DisjunctCheckboxes(checkSpillageTestNA, checkSpillageTestPass, checkSpillageTestNo);
         else
             checkSpillageTestNA.Color = Colors.White;
@@ -324,18 +332,26 @@ public partial class EngineersReportPage : ContentPage
         if (checkFlueFlowTestPass.IsChecked)
             DisjunctCheckboxes(checkFlueFlowTestPass, checkFlueFlowTestFail, checkFlueFlowTestNA);
         else
+        {
             checkFlueFlowTestPass.Color = Colors.White;
+            if (!checkFlueFlowTestFail.IsChecked)
+                DisjunctCheckboxes(checkFlueFlowTestNA, checkFlueFlowTestPass, checkFlueFlowTestFail);
+        }
     }
     public void CheckFlueFlowTestFailChanged(object sender, EventArgs e)
     {
         if (checkFlueFlowTestFail.IsChecked)
             DisjunctCheckboxes(checkFlueFlowTestFail, checkFlueFlowTestPass, checkFlueFlowTestNA);
         else
+        {
             checkFlueFlowTestFail.Color = Colors.White;
+            if (!checkFlueFlowTestPass.IsChecked)
+                DisjunctCheckboxes(checkFlueFlowTestNA, checkFlueFlowTestPass, checkFlueFlowTestFail);
+        }
     }
     public void CheckFlueFlowTestNAChanged(object sender, EventArgs e)
     {
-        if (checkFlueFlowTestNA.IsChecked)
+        if (checkFlueFlowTestNA.IsChecked || !checkFlueFlowTestPass.IsChecked && !checkFlueFlowTestFail.IsChecked)
             DisjunctCheckboxes(checkFlueFlowTestNA, checkFlueFlowTestPass, checkFlueFlowTestFail);
         else
             checkFlueFlowTestNA.Color = Colors.White;
@@ -346,18 +362,26 @@ public partial class EngineersReportPage : ContentPage
         if (checkTightnessTestPass.IsChecked)
             DisjunctCheckboxes(checkTightnessTestPass, checkTightnessTestFail, checkTightnessTestNA);
         else
+        {
             checkTightnessTestPass.Color = Colors.White;
+            if (!checkTightnessTestFail.IsChecked)
+                DisjunctCheckboxes(checkTightnessTestNA, checkTightnessTestPass, checkTightnessTestFail);
+        }
     }
     public void CheckTightnessTestFailChanged(object sender, EventArgs e)
     {
         if (checkTightnessTestFail.IsChecked)
             DisjunctCheckboxes(checkTightnessTestFail, checkTightnessTestPass, checkTightnessTestNA);
         else
+        {
             checkTightnessTestFail.Color = Colors.White;
+            if (!checkTightnessTestPass.IsChecked)
+                DisjunctCheckboxes(checkTightnessTestNA, checkTightnessTestPass, checkTightnessTestFail);
+        }
     }
     public void CheckTightnessTestNAChanged(object sender, EventArgs e)
     {
-        if (checkTightnessTestNA.IsChecked)
+        if (checkTightnessTestNA.IsChecked || !checkTightnessTestPass.IsChecked && !checkTightnessTestFail.IsChecked)
             DisjunctCheckboxes(checkTightnessTestNA, checkTightnessTestPass, checkTightnessTestFail);
         else
             checkTightnessTestNA.Color = Colors.White;

@@ -995,6 +995,13 @@
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
                                         </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True" />
+                                        </DataTrigger>
                                     </CheckBox.Triggers>
                                 </CheckBox>
 
@@ -1002,13 +1009,20 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout Spacing="-5">
-                                <CheckBox x:Name="checkComponentsRemovedBypassedNo">
+                                <CheckBox x:Name="checkComponentsRemovedBypassedNo" IsChecked="True">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedNo}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkComponentsRemovedBypassedYes}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
                                 </CheckBox>
@@ -1041,13 +1055,20 @@
                         <Label Text="Test Passed or Failed" TextColor="Red" FontSize="16" FontFamily="SatoshiMedium" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="6"/>
                         <FlexLayout Grid.Row="6" Grid.Column="1" Direction="Row" JustifyContent="SpaceBetween">
                             <HorizontalStackLayout Spacing="-5" Margin="-5, 0, 0, 0">
-                                <CheckBox x:Name="checkTestPassedOrFailedPass">
+                                <CheckBox x:Name="checkTestPassedOrFailedPass" IsChecked="True">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
                                 </CheckBox>
@@ -1063,6 +1084,13 @@
                                         </DataTrigger>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedFail}, Path=IsChecked}" Value="False">
                                             <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPassedOrFailedPass}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True" />
                                         </DataTrigger>
                                     </CheckBox.Triggers>
                                 </CheckBox>

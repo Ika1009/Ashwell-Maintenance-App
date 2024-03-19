@@ -14,15 +14,15 @@
             <Label x:Name="signatureTitle" Text="Customer's Signature:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalOptions="Center"  HorizontalOptions="Center"/>
 
             <Grid>
-                <Frame Padding="0" HeightRequest="52" WidthRequest="348" BorderColor="Transparent" CornerRadius="10">
+                <Frame Padding="0" HeightRequest="200" BorderColor="Transparent" CornerRadius="10">
                     <Grid BackgroundColor="#fff">
                         <toolkit:DrawingView Grid.Row="1" x:Name="drawingViewCustomer" BackgroundColor="#fff" HorizontalOptions="Center" IsMultiLineModeEnabled="True"/>
                         <toolkit:DrawingView Grid.Row="1" x:Name="drawingViewEngineer" IsVisible="False" BackgroundColor="#fff" HorizontalOptions="Center" IsMultiLineModeEnabled="True"/>
-                        <Image Source="dots.png" Scale="5" Opacity="0.25"/>
+                        <Image Source="dots.png" Scale="1.5" Opacity="0.25"/>
                     </Grid>
                 </Frame>
 
-                <Border x:Name="signatureBorder" Stroke="Red" BackgroundColor="Transparent" StrokeThickness="5" Margin="-10, 0" Padding="0" Opacity="0" HeightRequest="67" WidthRequest="363">
+                <Border x:Name="signatureBorder" Stroke="Red" BackgroundColor="Transparent" StrokeThickness="5" Margin="-7.5, 0" Padding="0" Opacity="0" HeightRequest="215">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10"/>
                     </Border.StrokeShape>

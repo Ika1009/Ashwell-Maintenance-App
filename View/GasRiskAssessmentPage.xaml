@@ -137,7 +137,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGeneralMeterConditionYes">
+                                <CheckBox x:Name="checkGeneralMeterConditionYes" CheckedChanged="CheckGeneralMeterConditionYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -152,7 +152,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGeneralMeterConditionNo">
+                                <CheckBox x:Name="checkGeneralMeterConditionNo" CheckedChanged="CheckGeneralMeterConditionNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -163,7 +163,7 @@
                                     </CheckBox.Triggers>
                                 </CheckBox>
 
-                                <Label Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                <Label x:Name="generalMeterConditionNo"  Text="No" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
                                     <Label.Triggers>
                                         <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="TextColor" Value="Red"/>
@@ -176,7 +176,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGeneralMeterConditionNA">
+                                <CheckBox x:Name="checkGeneralMeterConditionNA" CheckedChanged="CheckGeneralMeterConditionNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralMeterConditionNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -197,7 +197,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEarthBondingYes">
+                                <CheckBox x:Name="checkEarthBondingYes" CheckedChanged="CheckEarthBondingYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -212,7 +212,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEarthBondingNo">
+                                <CheckBox x:Name="checkEarthBondingNo" CheckedChanged="CheckEarthBondingNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -236,7 +236,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEarthBondingNA">
+                                <CheckBox x:Name="checkEarthBondingNA" CheckedChanged="CheckEarthBondingNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEarthBondingNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -257,7 +257,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEmergencyControlsYes">
+                                <CheckBox x:Name="checkEmergencyControlsYes" CheckedChanged="CheckEmergencyControlsYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -272,7 +272,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEmergencyControlsNo">
+                                <CheckBox x:Name="checkEmergencyControlsNo" CheckedChanged="CheckEmergencyControlsNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -296,7 +296,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEmergencyControlsNA">
+                                <CheckBox x:Name="checkEmergencyControlsNA" CheckedChanged="CheckEmergencyControlsNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyControlsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -317,7 +317,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkMeterVentilationYes">
+                                <CheckBox x:Name="checkMeterVentilationYes" CheckedChanged="CheckMeterVentilationYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -332,7 +332,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkMeterVentilationNo">
+                                <CheckBox x:Name="checkMeterVentilationNo" CheckedChanged="CheckMeterVentilationNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -356,7 +356,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkMeterVentilationNA">
+                                <CheckBox x:Name="checkMeterVentilationNA" CheckedChanged="CheckMeterVentilationNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkMeterVentilationNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -377,7 +377,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasLineDiagramYes">
+                                <CheckBox x:Name="checkGasLineDiagramYes" CheckedChanged="CheckGasLineDiagramYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -392,7 +392,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasLineDiagramNo">
+                                <CheckBox x:Name="checkGasLineDiagramNo" CheckedChanged="CheckGasLineDiagramNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -416,7 +416,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasLineDiagramNA">
+                                <CheckBox x:Name="checkGasLineDiagramNA" CheckedChanged="CheckGasLineDiagramNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasLineDiagramNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -437,7 +437,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEmergencyContractNumberYes">
+                                <CheckBox x:Name="checkEmergencyContractNumberYes" CheckedChanged="CheckEmergencyContractNumberYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -452,7 +452,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEmergencyContractNumberNo">
+                                <CheckBox x:Name="checkEmergencyContractNumberNo" CheckedChanged="CheckEmergencyContractNumberNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -476,7 +476,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkEmergencyContractNumberNA">
+                                <CheckBox x:Name="checkEmergencyContractNumberNA" CheckedChanged="CheckEmergencyContractNumberNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkEmergencyContractNumberNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -497,7 +497,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkNoticesAndLabelsYes">
+                                <CheckBox x:Name="checkNoticesAndLabelsYes" CheckedChanged="CheckNoticesAndLabelsYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -512,7 +512,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkNoticesAndLabelsNo">
+                                <CheckBox x:Name="checkNoticesAndLabelsNo" CheckedChanged="CheckNoticesAndLabelsNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -536,7 +536,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkNoticesAndLabelsNA">
+                                <CheckBox x:Name="checkNoticesAndLabelsNA" CheckedChanged="CheckNoticesAndLabelsNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNoticesAndLabelsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -599,7 +599,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkIdentifiedYes">
+                                <CheckBox x:Name="checkPipeworkIdentifiedYes" CheckedChanged="CheckPipeworkIdentifiedYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -614,7 +614,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkIdentifiedNo">
+                                <CheckBox x:Name="checkPipeworkIdentifiedNo" CheckedChanged="CheckPipeworkIdentifiedNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -638,7 +638,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkIdentifiedNA">
+                                <CheckBox x:Name="checkPipeworkIdentifiedNA" CheckedChanged="CheckPipeworkIdentifiedNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkIdentifiedNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -659,7 +659,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkBuriedYes">
+                                <CheckBox x:Name="checkPipeworkBuriedYes" CheckedChanged="CheckPipeworkBuriedYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -674,7 +674,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkBuriedNo">
+                                <CheckBox x:Name="checkPipeworkBuriedNo" CheckedChanged="CheckPipeworkBuriedNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -698,7 +698,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkBuriedNA">
+                                <CheckBox x:Name="checkPipeworkBuriedNA" CheckedChanged="CheckPipeworkBuriedNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkBuriedNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -719,7 +719,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkSurfaceYes">
+                                <CheckBox x:Name="checkPipeworkSurfaceYes" CheckedChanged="CheckPipeworkSurfaceYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -734,7 +734,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkSurfaceNo">
+                                <CheckBox x:Name="checkPipeworkSurfaceNo" CheckedChanged="CheckPipeworkSurfaceNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -758,7 +758,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkSurfaceNA">
+                                <CheckBox x:Name="checkPipeworkSurfaceNA" CheckedChanged="CheckPipeworkSurfaceNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSurfaceNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -779,7 +779,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkEarthBondingYes">
+                                <CheckBox x:Name="checkPipeworkEarthBondingYes" CheckedChanged="CheckPipeworkEarthBondingYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -794,7 +794,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkEarthBondingNo">
+                                <CheckBox x:Name="checkPipeworkEarthBondingNo" CheckedChanged="CheckPipeworkEarthBondingNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -818,7 +818,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkEarthBondingNA">
+                                <CheckBox x:Name="checkPipeworkEarthBondingNA" CheckedChanged="CheckPipeworkEarthBondingNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkEarthBondingNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -839,7 +839,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkJointingMethodsYes">
+                                <CheckBox x:Name="checkJointingMethodsYes" CheckedChanged="CheckJointingMethodsYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -854,7 +854,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkJointingMethodsNo">
+                                <CheckBox x:Name="checkJointingMethodsNo" CheckedChanged="CheckJointingMethodsNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -878,7 +878,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkJointingMethodsNA">
+                                <CheckBox x:Name="checkJointingMethodsNA" CheckedChanged="CheckJointingMethodsNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkJointingMethodsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -899,7 +899,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkSupportsYes">
+                                <CheckBox x:Name="checkPipeworkSupportsYes" CheckedChanged="CheckPipeworkSupportsYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -914,7 +914,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkSupportsNo">
+                                <CheckBox x:Name="checkPipeworkSupportsNo" CheckedChanged="CheckPipeworkSupportsNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -938,7 +938,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkSupportsNA">
+                                <CheckBox x:Name="checkPipeworkSupportsNA" CheckedChanged="CheckPipeworkSupportsNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkSupportsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -959,7 +959,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkFixingsYes">
+                                <CheckBox x:Name="checkFixingsYes" CheckedChanged="CheckFixingsYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -974,7 +974,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkFixingsNo">
+                                <CheckBox x:Name="checkFixingsNo" CheckedChanged="CheckFixingsNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -998,7 +998,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkFixingsNA">
+                                <CheckBox x:Name="checkFixingsNA" CheckedChanged="CheckFixingsNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFixingsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1019,7 +1019,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkSupportSepparationDistancesYes">
+                                <CheckBox x:Name="checkSupportSepparationDistancesYes" CheckedChanged="CheckSupportSepparationDistancesYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1034,7 +1034,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkSupportSepparationDistancesNo">
+                                <CheckBox x:Name="checkSupportSepparationDistancesNo" CheckedChanged="CheckSupportSepparationDistancesNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1058,7 +1058,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkSupportSepparationDistancesNA">
+                                <CheckBox x:Name="checkSupportSepparationDistancesNA" CheckedChanged="CheckSupportSepparationDistancesNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkSupportSepparationDistancesNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1079,7 +1079,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkInVoidsYes">
+                                <CheckBox x:Name="checkPipeworkInVoidsYes" CheckedChanged="CheckPipeworkInVoidsYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1094,7 +1094,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkInVoidsNo">
+                                <CheckBox x:Name="checkPipeworkInVoidsNo" CheckedChanged="CheckPipeworkInVoidsNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1118,7 +1118,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeworkInVoidsNA">
+                                <CheckBox x:Name="checkPipeworkInVoidsNA" CheckedChanged="CheckPipeworkInVoidsNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeworkInVoidsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1139,7 +1139,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeSleevesYes">
+                                <CheckBox x:Name="checkPipeSleevesYes" CheckedChanged="CheckPipeSleevesYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1154,7 +1154,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeSleevesNo">
+                                <CheckBox x:Name="checkPipeSleevesNo" CheckedChanged="CheckPipeSleevesNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1178,7 +1178,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeSleevesNA">
+                                <CheckBox x:Name="checkPipeSleevesNA" CheckedChanged="CheckPipeSleevesNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1199,7 +1199,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeSleevesSealedYes">
+                                <CheckBox x:Name="checkPipeSleevesSealedYes" CheckedChanged="CheckPipeSleevesSealedYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1214,7 +1214,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeSleevesSealedNo">
+                                <CheckBox x:Name="checkPipeSleevesSealedNo" CheckedChanged="CheckPipeSleevesSealedNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1238,7 +1238,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPipeSleevesSealedNA">
+                                <CheckBox x:Name="checkPipeSleevesSealedNA" CheckedChanged="CheckPipeSleevesSealedNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPipeSleevesSealedNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1259,7 +1259,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkServiceValvesYes">
+                                <CheckBox x:Name="checkServiceValvesYes" CheckedChanged="CheckServiceValvesYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1274,7 +1274,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkServiceValvesNo">
+                                <CheckBox x:Name="checkServiceValvesNo" CheckedChanged="CheckServiceValvesNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1298,7 +1298,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkServiceValvesNA">
+                                <CheckBox x:Name="checkServiceValvesNA" CheckedChanged="CheckServiceValvesNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkServiceValvesNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1319,7 +1319,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkAdditionalEmergencyControlValvesYes">
+                                <CheckBox x:Name="checkAdditionalEmergencyControlValvesYes" CheckedChanged="CheckAdditionalEmergencyControlValvesYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1334,7 +1334,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkAdditionalEmergencyControlValvesNo">
+                                <CheckBox x:Name="checkAdditionalEmergencyControlValvesNo" CheckedChanged="CheckAdditionalEmergencyControlValvesNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1358,7 +1358,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkAdditionalEmergencyControlValvesNA">
+                                <CheckBox x:Name="checkAdditionalEmergencyControlValvesNA" CheckedChanged="CheckAdditionalEmergencyControlValvesNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkAdditionalEmergencyControlValvesNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1379,7 +1379,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkIsolationValveYes">
+                                <CheckBox x:Name="checkIsolationValveYes" CheckedChanged="CheckIsolationValveYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1394,7 +1394,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkIsolationValveNo">
+                                <CheckBox x:Name="checkIsolationValveNo" CheckedChanged="CheckIsolationValveNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1418,7 +1418,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkIsolationValveNA">
+                                <CheckBox x:Name="checkIsolationValveNA" CheckedChanged="CheckIsolationValveNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkIsolationValveNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1439,7 +1439,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkTestPointYes">
+                                <CheckBox x:Name="checkTestPointYes" CheckedChanged="CheckTestPointYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1454,7 +1454,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkTestPointNo">
+                                <CheckBox x:Name="checkTestPointNo" CheckedChanged="CheckTestPointNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1478,7 +1478,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkTestPointNA">
+                                <CheckBox x:Name="checkTestPointNA" CheckedChanged="CheckTestPointNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkTestPointNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1499,7 +1499,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPurgePointsYes">
+                                <CheckBox x:Name="checkPurgePointsYes" CheckedChanged="CheckPurgePointsYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1514,7 +1514,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPurgePointsNo">
+                                <CheckBox x:Name="checkPurgePointsNo" CheckedChanged="CheckPurgePointsNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1538,7 +1538,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkPurgePointsNA">
+                                <CheckBox x:Name="checkPurgePointsNA" CheckedChanged="CheckPurgePointsNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkPurgePointsNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1559,7 +1559,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGeneralPipeworkConditionYes">
+                                <CheckBox x:Name="checkGeneralPipeworkConditionYes" CheckedChanged="CheckGeneralPipeworkConditionYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1574,7 +1574,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGeneralPipeworkConditionNo">
+                                <CheckBox x:Name="checkGeneralPipeworkConditionNo" CheckedChanged="CheckGeneralPipeworkConditionNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1598,7 +1598,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGeneralPipeworkConditionNA">
+                                <CheckBox x:Name="checkGeneralPipeworkConditionNA" CheckedChanged="CheckGeneralPipeworkConditionNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGeneralPipeworkConditionNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1619,7 +1619,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkinstallationSafeToOperateYes">
+                                <CheckBox x:Name="checkinstallationSafeToOperateYes" CheckedChanged="CheckinstallationSafeToOperateYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1634,7 +1634,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkinstallationSafeToOperateNo">
+                                <CheckBox x:Name="checkinstallationSafeToOperateNo" CheckedChanged="CheckinstallationSafeToOperateNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1658,7 +1658,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkinstallationSafeToOperateNA">
+                                <CheckBox x:Name="checkinstallationSafeToOperateNA" CheckedChanged="CheckinstallationSafeToOperateNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkinstallationSafeToOperateNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1679,7 +1679,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkWarningNoticeIssuedYes">
+                                <CheckBox x:Name="checkWarningNoticeIssuedYes" CheckedChanged="CheckWarningNoticeIssuedYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1694,7 +1694,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkWarningNoticeIssuedNo">
+                                <CheckBox x:Name="checkWarningNoticeIssuedNo" CheckedChanged="CheckWarningNoticeIssuedNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1718,7 +1718,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkWarningNoticeIssuedNA">
+                                <CheckBox x:Name="checkWarningNoticeIssuedNA" CheckedChanged="CheckWarningNoticeIssuedNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeIssuedNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1739,7 +1739,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasTightnessTestRecommendedYes">
+                                <CheckBox x:Name="checkGasTightnessTestRecommendedYes" CheckedChanged="CheckGasTightnessTestRecommendedYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1754,7 +1754,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasTightnessTestRecommendedNo">
+                                <CheckBox x:Name="checkGasTightnessTestRecommendedNo" CheckedChanged="CheckGasTightnessTestRecommendedNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1778,7 +1778,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGasTightnessTestRecommendedNA">
+                                <CheckBox x:Name="checkGasTightnessTestRecommendedNA" CheckedChanged="CheckGasTightnessTestRecommendedNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGasTightnessTestRecommendedNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1799,7 +1799,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGuessTightnessTestCarriedOutYes">
+                                <CheckBox x:Name="checkGuessTightnessTestCarriedOutYes" CheckedChanged="CheckGuessTightnessTestCarriedOutYesChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1814,7 +1814,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGuessTightnessTestCarriedOutNo">
+                                <CheckBox x:Name="checkGuessTightnessTestCarriedOutNo" CheckedChanged="CheckGuessTightnessTestCarriedOutNoChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -1838,7 +1838,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkGuessTightnessTestCarriedOutNA">
+                                <CheckBox x:Name="checkGuessTightnessTestCarriedOutNA" CheckedChanged="CheckGuessTightnessTestCarriedOutNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkGuessTightnessTestCarriedOutNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
