@@ -12,7 +12,7 @@ public partial class DisplayedProjectsPage : ContentPage
     {
         await Navigation.PopAsync();
     }
-    public ObservableCollection<Folder> Folders = new();
+    public List<Folder> Folders = new();
     readonly bool finishedProjects;
     public DisplayedProjectsPage(bool finished)
 	{
@@ -121,8 +121,8 @@ public partial class DisplayedProjectsPage : ContentPage
                         });
                     }
                 }
-
-                FoldersListView.ItemsSource ??= Folders;
+                FoldersListView.ItemsSource = null;
+                FoldersListView.ItemsSource = Folders;
             }
         }
         catch (JsonException jsonEx)
@@ -147,13 +147,15 @@ public partial class DisplayedProjectsPage : ContentPage
         if (string.IsNullOrWhiteSpace(searchText))
         {
             // If search text is empty, load all folders
+            FoldersListView.ItemsSource = null;
             FoldersListView.ItemsSource = Folders;
         }
         else
         {
             // Filter folders based on search text
-            ObservableCollection<Folder> filteredFolders = new ObservableCollection<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
+            List<Folder> filteredFolders = new List<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
             // Update the ItemsSource with filtered folders
+            FoldersListView.ItemsSource = null;
             FoldersListView.ItemsSource = filteredFolders;
         }
     }
