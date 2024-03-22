@@ -84,7 +84,8 @@ public partial class DisplayedProjectsPage : ContentPage
         }
     }
     private async Task LoadFolders()
-    {
+    {s
+        FoldersListView.ItemsSource = null;
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
         
@@ -121,7 +122,6 @@ public partial class DisplayedProjectsPage : ContentPage
                         });
                     }
                 }
-                FoldersListView.ItemsSource = null;
                 FoldersListView.ItemsSource = Folders;
             }
         }
