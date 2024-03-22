@@ -141,9 +141,9 @@ public partial class DisplayedProjectsPage : ContentPage
         loadingBG.IsRunning = false;
         loading.IsRunning = false;
     }
-    private async void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+    private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
-        Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(() =>
+        Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(async () =>
         {
             try
             {
