@@ -143,51 +143,55 @@ public partial class DisplayedProjectsPage : ContentPage
     }
     private async void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
-        try
+        Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(() =>
         {
-            string searchText = e.NewTextValue;
+            try
+            {
+                string searchText = e.NewTextValue;
 
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                // If search text is empty, load all folders
-                if (FoldersListView != null && Folders != null)
+                if (string.IsNullOrWhiteSpace(searchText))
                 {
-                    FoldersListView.ItemsSource = null;
-                    FoldersListView.ItemsSource = Folders;
-                }
-                else
-                {
-                    await DisplayAlert("Error", "Folders or FoldersListView is null.", "OK");
-                }
-            }
-            else
-            {
-                // Filter folders based on search text
-                if (Folders != null)
-                {
-                    List<Folder> filteredFolders = new List<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
-                    // Update the ItemsSource with filtered folders
-                    if (FoldersListView != null)
+                    // If search text is empty, load all folders
+                    if (FoldersListView != null && Folders != null)
                     {
                         FoldersListView.ItemsSource = null;
-                        FoldersListView.ItemsSource = filteredFolders;
+                        FoldersListView.ItemsSource = Folders;
                     }
                     else
                     {
-                        await DisplayAlert("Error", "FoldersListView is null.", "OK");
+                        await DisplayAlert("Error", "Folders or FoldersListView is null.", "OK");
                     }
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Folders is null.", "OK");
+                    // Filter folders based on search text
+                    if (Folders != null)
+                    {
+                        List<Folder> filteredFolders = new List<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
+                        // Update the ItemsSource with filtered folders
+                        if (FoldersListView != null)
+                        {
+                            FoldersListView.ItemsSource = null;
+                            FoldersListView.ItemsSource = filteredFolders;
+                        }
+                        else
+                        {
+                            await DisplayAlert("Error", "FoldersListView is null.", "OK");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Folders is null.", "OK");
+                    }
                 }
             }
-        }
-        catch(Exception ex)
-        {
-            await DisplayAlert("Error", ex.Message, "OK");
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
 
-        }
+            }
+        });
+
 
     }
 
