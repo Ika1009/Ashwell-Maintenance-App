@@ -2192,93 +2192,94 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["completionDate"], font, XBrushes.Black, new XRect(290, 254, 95, 16), XStringFormats.Center);
             gfx.DrawString(dic["other"], font, XBrushes.Black, new XRect(421, 254, 142, 16), XStringFormats.Center);
             if(dic["checkWelfareFacilitiesYes"]=="True")
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 279, 17, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332-1, 279-1, 17+2, 8+2), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(385, 279, 16, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(385-1, 279-1, 16+2, 8+2), 0, 360);
             if (dic["checkPortableWelfareFacilitiesYes"]=="True")
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332, 292, 17, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(332-1, 292-1, 17+2, 8+2), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(385, 292, 16, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(385-1, 292-1, 16+2, 8+2), 0, 360);
             //Pocetak dugog niza
             if (dic["checkWorkingAtHeightYes"] =="True")
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 332, 17, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 332-1, 17+2, 8+2), 0, 360);
             else
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 332, 15, 8), 0, 360);
+            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 332-1, 15+2, 8+2), 0, 360);
             if (dic["checkPermitsToWorkRequiredYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 352, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 352-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 352, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 352-1, 15+2, 8+2), 0, 360);
             if (dic["checkExcavationsYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 373, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 373-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 373, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 373-1, 15+2, 8+2), 0, 360);
             if (dic["checkDustYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 407, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 407-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 407, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 407-1, 15+2, 8+2), 0, 360);
             if (dic["checkNoiseYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 420, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 420-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 420, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 420-1, 15+2, 8+2), 0, 360);
             if (dic["checkCOSHHYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 433, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 433-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 433, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 433-1, 15+2, 8+2), 0, 360);
             if (dic["checkOtherYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 446, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 446-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 446, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 446-1, 15+2, 8+2), 0, 360);
             if (dic["checkManagementSurveyYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 478, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 478-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 478, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 478-1, 15+2, 8+2), 0, 360);
             if (dic["checkFiveYearsSurveyYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 491, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 491-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 491, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 491-1, 15+2, 8+2), 0, 360);
             if (dic["checkElectricalYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 524, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 524-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 524, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 524-1, 15+2, 8+2), 0, 360);
             if (dic["checkGasYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 537, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 537-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 537, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 537-1, 15+2, 8+2), 0, 360);
             if (dic["checkWaterYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 550, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 550-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 550, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 550-1, 15+2, 8+2), 0, 360);
             if (dic["checkOtherServicesYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 563, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 563-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 563, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 563-1, 15+2, 8+2), 0, 360);
             if (dic["checkDangerToOthersYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 583, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 583-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 583, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 583-1, 15+2, 8+2), 0, 360);
             if (dic["checkDangerToPublicYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 601, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 601-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 601, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 601-1, 15+2, 8+2), 0, 360);
             if (dic["checkOtherDangersYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 619, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 619-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 619, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 619-1, 15+2, 8+2), 0, 360);
             if (dic["checkHotWorksYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 641, 17, 8), 0, 360);
-            gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 641, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 641-1, 17+2, 8+2), 0, 360);
+            else
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 641-1, 15+2, 8+2), 0, 360);
             if (dic["checkAppointedFirstAiderYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 667, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 667-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 667, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 667-1, 15+2, 8+2), 0, 360);
             if (dic["checkAdditionalActionsYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 712, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 712-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 712, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 712-1, 15+2, 8+2), 0, 360);
             if (dic["checkIsItSafeYes"] == "True")
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273, 732, 17, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(273-1, 732-1, 17+2, 8+2), 0, 360);
             else
-                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300, 732, 15, 8), 0, 360);
+                gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(300-1, 732-1, 15+2, 8+2), 0, 360);
 
             gfx.DrawString(dic["date"], font, XBrushes.Black, new XRect(418, 786, 59, 7), XStringFormats.CenterLeft);
 
@@ -2288,6 +2289,32 @@ namespace Ashwell_Maintenance
 
             // if (clijent != null && clijent.Length != 0)
             // gfx.DrawImage(ConvertToXImage(clijent), 64, 171, 229, 15);
+
+            //comments
+            gfx.DrawString(dic["ControlActionWorkingAtHeight"], font, XBrushes.Black, new XRect(347, 328, 564-347, 16), XStringFormats.Center);
+            gfx.DrawString(dic["ControlActionPermitsToWorkRequired"], font, XBrushes.Black, new XRect(347, 347, 564-347, 16), XStringFormats.Center);
+            XRect boundingBox = new XRect(347, 390, 564-347, 458-390);
+            string text = dic["DustNoiseCOSHHTheControlActionRequired"];
+            XTextFormatter tf = new XTextFormatter(gfx);
+            XRect layoutRectangle = boundingBox;
+            tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
+            gfx.DrawString(dic["ControlActionExcavations"], font, XBrushes.Black, new XRect(347, 369, 564-347, 16), XStringFormats.Center);
+            gfx.DrawString(dic["ControlActionAnyOtherDanger"], font, XBrushes.Black, new XRect(347, 636, 564-347, 16), XStringFormats.Center);
+            XRect boundingBox1 = new XRect(347, 523, 564 - 347, 575 - 523);
+            string text1 = dic["actionTaken"];
+            XTextFormatter tf1 = new XTextFormatter(gfx);
+            XRect layoutRectangle1 = boundingBox1;
+            tf.DrawString(text1, new XFont("Arial", 10), XBrushes.Black, layoutRectangle1, XStringFormats.TopLeft);
+            gfx.DrawString(dic["ControlActionAppointedFirstAider"], font, XBrushes.Black, new XRect(347, 689, 564 - 347, 16), XStringFormats.Center);
+            gfx.DrawString(dic["ControlActionAdditionalActions"], font, XBrushes.Black, new XRect(347, 708, 564 - 347, 16), XStringFormats.Center);
+            gfx.DrawString(dic["ControlActionIsItSafe"], font, XBrushes.Black, new XRect(347, 728, 564 - 347, 16), XStringFormats.Center);
+            XRect boundingBox2 = new XRect(347, 578, 564 - 347, 632 - 578);
+            string text2 = dic["moreDangersTheControlActionRequired"];
+            XTextFormatter tf2 = new XTextFormatter(gfx);
+            XRect layoutRectangle2 = boundingBox2;
+            tf.DrawString(text2, new XFont("Arial", 10), XBrushes.Black, layoutRectangle2, XStringFormats.TopLeft);
+
+
 
             // Save to MemoryStream
             using MemoryStream stream = new MemoryStream();
