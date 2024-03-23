@@ -180,22 +180,58 @@ public partial class ConstructionDesignManagmentPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
     }
-    private async void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+    private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
-        string searchText = e.NewTextValue;
+        Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            try
+            {
+                string searchText = e.NewTextValue;
 
-        if (string.IsNullOrWhiteSpace(searchText))
-        {
-            // If search text is empty, load all folders
-            await LoadFolders();
-        }
-        else
-        {
-            // Filter folders based on search text
-            IEnumerable<Folder> filteredFolders = Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase));
-            // Update the ItemsSource with filtered folders
-            FoldersListView.ItemsSource = filteredFolders;
-        }
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    // If search text is empty, load all folders
+                    if (FoldersListView != null && Folders != null)
+                    {
+                        FoldersListView.ItemsSource = null;
+                        FoldersListView.ItemsSource = Folders;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Folders or FoldersListView is null.", "OK");
+                    }
+                }
+                else
+                {
+                    // Filter folders based on search text
+                    if (Folders != null)
+                    {
+                        List<Folder> filteredFolders = new List<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
+                        // Update the ItemsSource with filtered folders
+                        if (FoldersListView != null)
+                        {
+                            FoldersListView.ItemsSource = null;
+                            FoldersListView.ItemsSource = filteredFolders;
+                        }
+                        else
+                        {
+                            await DisplayAlert("Error", "FoldersListView is null.", "OK");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Folders is null.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+
+            }
+        });
+
+
     }
 
     public async void CDMBack(object sender, EventArgs e)

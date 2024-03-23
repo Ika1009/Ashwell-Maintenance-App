@@ -8,6 +8,7 @@ using System.Text.Json;
 public partial class DisplayedProjectsPage : ContentPage
 {
     bool projectComplete = true;
+    bool test = true;
     public async void JobsBack(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
@@ -118,8 +119,13 @@ public partial class DisplayedProjectsPage : ContentPage
                             Name = element.GetProperty("folder_name").GetString(),
                             Timestamp = element.GetProperty("created_at").GetString(),
                             Signature1 = element.GetProperty("signature1").GetString(),
-                            Signature2 = element.GetProperty("signature2").GetString()
-                        });
+                            Signature2 = element.GetProperty("signature2").GetString(),
+
+                            TimestampVisible = true,
+                            IsEditing = false,
+                            //IsDeleteVisible = false,
+                            PenImageSource = "pen.png"
+                        }) ;
                     }
                 }
 
@@ -195,4 +201,21 @@ public partial class DisplayedProjectsPage : ContentPage
 
     }
 
+
+    // Nixa pokusava da napravi Edit folder :3
+    private void ToggleEditing(object sender, EventArgs e)
+    {
+        if (sender is ImageButton button && button.BindingContext is Folder folder)
+        {
+            folder.IsEditing = !folder.IsEditing;
+            folder.TimestampVisible = !folder.IsEditing;
+            folder.PenImageSource = folder.IsEditing ? "tick.png" : "pen.png";
+        }
+    }
+
+    public void ChangeFolderName(object sender, EventArgs e)
+    {
+        test = !test;
+        title.TextColor = test ? Colors.White : Colors.Red;
+    }
 }

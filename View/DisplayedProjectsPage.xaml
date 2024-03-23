@@ -37,7 +37,7 @@
 
             <Frame Grid.Row="1" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="100">
                 <Grid>
-                    <Entry x:Name="searchEntry" TextChanged="SearchEntry_TextChanged" Background="#222225" PlaceholderColor="#707070" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+                    <local:LinelessSearch x:Name="searchEntry" TextChanged="SearchEntry_TextChanged" Background="#222225" PlaceholderColor="#707070" Placeholder="Search Folders" CancelButtonColor="#fff" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
 
                     <Image Source="search.png" WidthRequest="25" HorizontalOptions="Start" BackgroundColor="#222225" Margin="20,0,0,0"/>
                 </Grid>
@@ -67,23 +67,27 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Frame BackgroundColor="#222225" CornerRadius="40" HeightRequest="50" BorderColor="Transparent" Padding="0">
+                                    <Border BackgroundColor="#222225" StrokeShape="RoundRectangle 40" HeightRequest="50" Stroke="Transparent" Padding="0">
                                         <Grid>
-                                            <Grid Padding="20, 0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="0.5*"/>
-                                                    <ColumnDefinition Width="40"/>
-                                                </Grid.ColumnDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="0.5*"/>
+                                                <ColumnDefinition Width="40"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" IsEnabled="{Binding TimestampVisible}" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
 
-                                                <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
-                                                <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
-                                                <Label Grid.Column="1" Text="{Binding Timestamp}" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-                                            </Grid>
+                                            <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Margin="20, 0, 0, 0" IsEnabled="{Binding IsEditing}">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ChangeFolderName"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Label Grid.Column="1" Text="{Binding Timestamp}" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" IsVisible="{Binding TimestampVisible}" VerticalTextAlignment="Center" Margin="0, 0, 20, 0"/>
 
-                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
+                                            <ImageButton Grid.Column="2" Source="{Binding PenImageSource}" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" Clicked="ToggleEditing" Margin="0, 0, 20, 0"/>
+                                            <ImageButton x:Name="folderDelete" Grid.Column="1" Source="trash.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" IsVisible="{Binding IsEditing}" Margin="0, 0, 20, 0"/>
                                         </Grid>
-                                    </Frame>
+                                    </Border>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
