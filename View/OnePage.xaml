@@ -9,7 +9,7 @@
              BackgroundColor="#141414">
 
     <Grid>
-        <Grid Padding="20">
+        <Grid Padding="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
@@ -19,16 +19,33 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <ImageButton x:Name="OneBackBtt" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="OneBack"/>
 
                 <Image Source="one.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-                <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <VerticalStackLayout Grid.Row="1" Spacing="20" Margin="0, 0, 0, -5">
                     <Label Text="1 Tightness Testing" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                        <BoxView Color="#222225"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout x:Name="folderSearch" Grid.Row="2" Spacing="20" IsVisible="False" Margin="0, 20, 0, 0">
+                    <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                    <Frame Grid.Row="1" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="100">
+                        <Grid>
+                            <local:LinelessSearch x:Name="searchEntry" TextChanged="SearchEntry_TextChanged" Background="#222225" PlaceholderColor="#707070" CancelButtonColor="#fff" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+
+                            <Image Source="search.png" WidthRequest="25" HorizontalOptions="Start" BackgroundColor="#222225" Margin="20,0,0,0"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" Margin="0,0,0,0">
                         <BoxView Color="#222225"/>
                     </Frame>
                 </VerticalStackLayout>
@@ -1367,7 +1384,7 @@
                         </Frame>
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
                         <Label Text="Warning Notice No:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
@@ -1395,57 +1412,59 @@
             </ScrollView>
 
             <ScrollView x:Name="FolderSection" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-                <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
-                    <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                <VerticalStackLayout x:Name="_folderStackLayout" Spacing="40" Margin="0, 15, 0, 0">
+                    <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 120">
+                        <ListView.RowHeight>60</ListView.RowHeight>
 
-                    <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
-                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                            <Grid>
-                                <Grid Padding="20, 10">
-                                    <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Border BackgroundColor="#222225" StrokeShape="RoundRectangle 40" HeightRequest="50" Stroke="Transparent" Padding="0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="0.5*"/>
+                                                <ColumnDefinition Width="40"/>
+                                            </Grid.ColumnDefinitions>
 
-                                    <Label Text="New Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                </Grid>
+                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
 
-                                <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
-                            </Grid>
-                        </Frame>
-
-                        <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 100">
-                            <ListView.RowHeight>60</ListView.RowHeight>
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Frame BackgroundColor="#222225" CornerRadius="40" HeightRequest="50" BorderColor="Transparent" Padding="0">
-                                            <Grid>
-                                                <Grid Padding="20, 0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="0.5*"/>
-                                                        <ColumnDefinition Width="40"/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
-                                                    <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
-                                                    <Label Grid.Column="1" Text="{Binding Timestamp}" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-                                                </Grid>
-
-                                                <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
-                                            </Grid>
-                                        </Frame>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-
-
-                    </VerticalStackLayout>
+                                            <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Margin="20, 0, 0, 0"/>
+                                            <Label Grid.Column="1" Text="{Binding Timestamp}" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 20, 0"/>
+                                            <ImageButton Grid.Column="2" Source="pen.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" CommandParameter="{Binding Id}" Margin="0, 0, 20, 0"/>
+                                        </Grid>
+                                    </Border>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </VerticalStackLayout>
             </ScrollView>
 
             <Image x:Name="passStamp" Grid.RowSpan="2" Source="pass.png" Opacity="0"/>
             <Image x:Name="failStamp" Grid.RowSpan="2" Source="fail.png" Opacity="0"/>
+        </Grid>
+
+        <Grid x:Name="folderAdd" IsVisible="False">
+            <BoxView Grid.Row="1" Color="Transparent" HeightRequest="150" VerticalOptions="End" IsEnabled="False">
+                <BoxView.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="Transparent"
+                            Offset="0.1" />
+                        <GradientStop Color="#141414"
+                            Offset="0.8" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <Frame x:Name="newFolder" Grid.RowSpan="2" HorizontalOptions="End" VerticalOptions="End"
+               Padding="0" Margin="0, 0, 35, 35" BackgroundColor="Transparent" BorderColor="Transparent" WidthRequest="60" HeightRequest="60" CornerRadius="30">
+                <Grid BackgroundColor="Red">
+                    <Image Source="plus.png" Scale="0.5"/>
+
+                    <Button BackgroundColor="Transparent" Clicked="NewFolder"/>
+                </Grid>
+            </Frame>
         </Grid>
 
         <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000" Grid.RowSpan="2" Margin="-20, -20, -20, 0">

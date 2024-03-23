@@ -19,6 +19,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         checkMeterVentilationNA.IsChecked = true;
         checkGasLineDiagramNA.IsChecked = true;
         checkEmergencyContractNumberNA.IsChecked = true;
+        checkNoticesAndLabelsNA.IsChecked = true;
         checkGeneralPipeworkConditionNA.IsChecked = true;
         checkPipeworkIdentifiedNA.IsChecked = true;
         checkPipeworkBuriedNA.IsChecked = true;
@@ -114,7 +115,7 @@ public partial class GasRiskAssessmentPage : ContentPage
     public async void NewFolder(object sender, EventArgs e)
     {
         string folderName = await Shell.Current.DisplayPromptAsync("New Folder", "Enter folder name");
-        if (folderName == null) // User clicked Cancel
+        if (folderName == null || folderName == "") // User clicked Cancel
             return;
 
         try
@@ -202,6 +203,59 @@ public partial class GasRiskAssessmentPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
     }
+    private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            try
+            {
+                string searchText = e.NewTextValue;
+
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    // If search text is empty, load all folders
+                    if (FoldersListView != null && Folders != null)
+                    {
+                        FoldersListView.ItemsSource = null;
+                        FoldersListView.ItemsSource = Folders;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Folders or FoldersListView is null.", "OK");
+                    }
+                }
+                else
+                {
+                    // Filter folders based on search text
+                    if (Folders != null)
+                    {
+                        List<Folder> filteredFolders = new List<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
+                        // Update the ItemsSource with filtered folders
+                        if (FoldersListView != null)
+                        {
+                            FoldersListView.ItemsSource = null;
+                            FoldersListView.ItemsSource = filteredFolders;
+                        }
+                        else
+                        {
+                            await DisplayAlert("Error", "FoldersListView is null.", "OK");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Folders is null.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+
+            }
+        });
+
+
+    }
 
     public async void GasRiskAssessmentBack(object sender, EventArgs e)
 	{
@@ -231,8 +285,12 @@ public partial class GasRiskAssessmentPage : ContentPage
             FolderSection.IsVisible = false;
 
             if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
-                await GRASection2.ScrollToAsync(0, 0, false);
-            GRASection2.IsVisible = true;
+                await GRASection3.ScrollToAsync(0, 0, false);
+            GRASection3.IsVisible = true;
+
+            FolderSection.IsVisible = false;
+            folderSearch.IsVisible = false;
+            folderAdd.IsVisible = false;
         }
 	}
 
@@ -263,6 +321,8 @@ public partial class GasRiskAssessmentPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await FolderSection.ScrollToAsync(0, 0, false);
         FolderSection.IsVisible = true;
+        folderSearch.IsVisible = true;
+        folderAdd.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Gas_Risk_Assessment_{dateTimeString}.pdf";
@@ -313,8 +373,8 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("checkGasLineDiagramNo", checkGasLineDiagramNo.IsChecked.ToString());
         reportData.Add("checkEmergencyContractNumberYes", checkEmergencyContractNumberYes.IsChecked.ToString());
         reportData.Add("checkEmergencyContractNumberNo", checkEmergencyContractNumberNo.IsChecked.ToString());
-        reportData.Add("checkGeneralPipeworkConditionYes", checkGeneralPipeworkConditionYes.IsChecked.ToString());
-        reportData.Add("checkGeneralPipeworkConditionNo", checkGeneralPipeworkConditionNo.IsChecked.ToString());
+        //reportData.Add("checkGeneralPipeworkConditionYes", checkGeneralPipeworkConditionYes.IsChecked.ToString());
+        //reportData.Add("checkGeneralPipeworkConditionNo", checkGeneralPipeworkConditionNo.IsChecked.ToString());
         reportData.Add("checkPipeworkIdentifiedYes", checkPipeworkIdentifiedYes.IsChecked.ToString());
         reportData.Add("checkPipeworkIdentifiedNo", checkPipeworkIdentifiedNo.IsChecked.ToString());
         reportData.Add("checkPipeworkBuriedYes", checkPipeworkBuriedYes.IsChecked.ToString());

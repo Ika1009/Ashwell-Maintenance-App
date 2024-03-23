@@ -91,7 +91,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     public async void NewFolder(object sender, EventArgs e)
     {
         string folderName = await Shell.Current.DisplayPromptAsync("New Folder", "Enter folder name");
-        if (folderName == null) // User clicked Cancel
+        if (folderName == null || folderName == "") // User clicked Cancel
             return;
 
         try

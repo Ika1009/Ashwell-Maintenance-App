@@ -9,7 +9,7 @@
              BackgroundColor="#141414">
 
     <Grid>
-        <Grid Padding="20">
+        <Grid Padding="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
@@ -19,16 +19,33 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <ImageButton x:Name="ServiceRecordBackBtt" Clicked="ServiceRecordBack" Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start"/>
             
                 <Image Source="service_record.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-                <VerticalStackLayout Grid.Row="1" Spacing="20">
+                <VerticalStackLayout Grid.Row="1" Spacing="20" Margin="0, 0, 0, -5">
                     <Label Text="Service Record" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                     <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
+                        <BoxView Color="#222225"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout x:Name="folderSearch" Grid.Row="2" Spacing="20" IsVisible="False" Margin="0, 20, 0, 0">
+                    <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                    <Frame Grid.Row="1" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="100">
+                        <Grid>
+                            <local:LinelessSearch x:Name="searchEntry" TextChanged="SearchEntry_TextChanged" Background="#222225" PlaceholderColor="#707070" CancelButtonColor="#fff" Placeholder="Search Folders" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium"/>
+
+                            <Image Source="search.png" WidthRequest="25" HorizontalOptions="Start" BackgroundColor="#222225" Margin="20,0,0,0"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100" Margin="0,0,0,0">
                         <BoxView Color="#222225"/>
                     </Frame>
                 </VerticalStackLayout>
@@ -142,7 +159,7 @@
                         <Label Text="Function:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 15"/>
                     
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkHeating">
+                            <CheckBox x:Name="checkHeating" CheckedChanged="CheckHeating">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHeating}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
@@ -156,7 +173,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkHotWater">
+                            <CheckBox x:Name="checkHotWater" CheckedChanged="CheckHotWater">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkHotWater}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
@@ -170,7 +187,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkBoth">
+                            <CheckBox x:Name="checkBoth" CheckedChanged="CheckBoth">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkBoth}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
@@ -276,7 +293,7 @@
                         <Label Text="Flue Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 15"/>
                     
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkOpenFlue">
+                            <CheckBox x:Name="checkOpenFlue" CheckedChanged="CheckOpenFlue">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkOpenFlue}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
@@ -290,7 +307,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkRoomSealed">
+                            <CheckBox x:Name="checkRoomSealed" CheckedChanged="CheckRoomSealed">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRoomSealed}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
@@ -304,7 +321,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkForcedDraft">
+                            <CheckBox x:Name="checkForcedDraft" CheckedChanged="CheckForcedDraft">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkForcedDraft}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
@@ -318,7 +335,7 @@
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkFlueless">
+                            <CheckBox x:Name="checkFlueless" CheckedChanged="CheckFlueless">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkFlueless}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
@@ -374,13 +391,20 @@
                         <Label Text="Gas Type:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 15"/>
                     
                         <HorizontalStackLayout>
-                            <CheckBox x:Name="checkNG">
+                            <CheckBox x:Name="checkNG" IsChecked="True">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNG}, Path=IsChecked}" Value="True">
                                         <Setter Property="Color" Value="Red" />
                                     </DataTrigger>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNG}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkLPG}, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsChecked" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkLPG}, Path=IsChecked}" Value="False">
+                                        <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
@@ -395,6 +419,13 @@
                                     </DataTrigger>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkLPG}, Path=IsChecked}" Value="False">
                                         <Setter Property="Color" Value="#fff" />
+                                    </DataTrigger>
+
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNG}, Path=IsChecked}" Value="True">
+                                        <Setter Property="IsChecked" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkNG}, Path=IsChecked}" Value="False">
+                                        <Setter Property="IsChecked" Value="True"/>
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
@@ -457,11 +488,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="applianceServiceValveComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="applianceServiceValveComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -499,11 +532,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="governorsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="governorsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -541,11 +576,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="gasSolenoidValvesComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="gasSolenoidValvesComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -583,11 +620,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="controlBoxPCBComment"  TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="controlBoxPCBComment"  TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -625,11 +664,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="gasketSealsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="gasketSealsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -667,11 +708,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="burnerComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="burnerComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -709,11 +752,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="burnerJetsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="burnerJetsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -751,11 +796,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="electrodesTransformerComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="electrodesTransformerComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -793,11 +840,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="flameFailureDeviceComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="flameFailureDeviceComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -835,11 +884,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="systemBoilerControlsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="systemBoilerControlsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -877,11 +928,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="boilerCasingComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="boilerCasingComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -919,11 +972,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="thermalInsulationComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="thermalInsulationComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -961,11 +1016,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="combustionFanIdFanComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="combustionFanIdFanComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1003,11 +1060,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="airFluePressureSwitchComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="airFluePressureSwitchComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1045,11 +1104,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="controlLimitStatusComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="controlLimitStatusComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1087,11 +1148,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="pressureTempGaugesComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="pressureTempGaugesComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1129,11 +1192,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="circulationPumpsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="circulationPumpsComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1171,11 +1236,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="condenseTrapComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="condenseTrapComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1213,11 +1280,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="heatExchangerFluewaysClearComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="heatExchangerFluewaysClearComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
 
@@ -1225,54 +1294,66 @@
                             <BoxView Color="#222225"/>
                         </Frame>
 
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="Working Intel Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="20">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Working Intel Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="workingIntelPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="workingIntelPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="workingIntelPressureComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="workingIntelPressureComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                             <BoxView Color="#222225"/>
                         </Frame>
 
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="Recorded Burner Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="20">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Recorded Burner Pressure (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="recordedBurnerPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="recordedBurnerPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="recordedBurnerPressureComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="recordedBurnerPressureComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                             <BoxView Color="#222225"/>
                         </Frame>
 
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="(If Possible) Measured Gas Rate (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="20">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="(If Possible) Measured Gas Rate (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="measuredGasRate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="measuredGasRate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="mesuredGasRateComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="mesuredGasRateComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
 
@@ -1311,11 +1392,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="flueFlowTestComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="flueFlowTestComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1353,11 +1436,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="spillageTestComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="spillageTestComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1395,11 +1480,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="AECVPlantIsolationCorrectComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="AECVPlantIsolationCorrectComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1437,11 +1524,13 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="safetyShutOffValveComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="safetyShutOffValveComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1479,18 +1568,20 @@
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
 
-                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                <local:LinelessEntry x:Name="plantroomGasTightnessTestComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                            </Frame>
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="plantroomGasTightnessTestComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                </Frame>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
 
                         <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
                             <BoxView Color="#222225"/>
                         </Frame>
 
-                        <VerticalStackLayout Spacing="10">
+                        <VerticalStackLayout Spacing="5">
                             <Label Text="State Appliance Condition:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                             <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
@@ -1511,54 +1602,70 @@
 
                     <Label Text="High Fire" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
 
-                    <VerticalStackLayout Spacing="20">
-                        <Label Text="CO2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <VerticalStackLayout Spacing="40">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="CO2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireCO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireCO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="CO (ppm):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="CO (ppm):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireCO" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireCO" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="O2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="O2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Ratio:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Ratio:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireRatio" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireRatio" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Flue Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Flue Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireFlueTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireFlueTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Efficiency (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Efficiency (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireEfficiency" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireEfficiency" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Excess Air (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Excess Air (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireExcessAir" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireExcessAir" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Room Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Room Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highFireRoomTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="highFireRoomTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="2" BorderColor="Transparent" CornerRadius="100">
@@ -1567,54 +1674,70 @@
 
                     <Label Text="Low Fire" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="15, 0, 0, 0"/>
 
-                    <VerticalStackLayout Spacing="20">
-                        <Label Text="CO2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                    <VerticalStackLayout Spacing="40">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="CO2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireCO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireCO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="CO (ppm):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="CO (ppm):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireCO" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireCO" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="O2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="O2 (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireO2" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Ratio:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Ratio:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireRatio" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireRatio" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Flue Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Flue Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireFlueTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireFlueTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Efficiency (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Efficiency (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireEfficiency" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireEfficiency" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Excess Air (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Excess Air (%):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireExcessAir" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireExcessAir" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
 
-                        <Label Text="Room Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Room Temp (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
-                        <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowFireRoomTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
-                        </Frame>
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="lowFireRoomTemp" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -1710,56 +1833,58 @@
             </ScrollView>
 
             <ScrollView x:Name="FolderSection" Grid.Row="1" IsVisible="False" VerticalScrollBarVisibility="Never">
-                <VerticalStackLayout Spacing="40" Margin="0, 40, 0, 0">
-                    <Label Text="Choose Folder" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+                <VerticalStackLayout x:Name="_folderStackLayout" Spacing="40" Margin="0, 15, 0, 0">
+                    <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 120">
+                        <ListView.RowHeight>60</ListView.RowHeight>
 
-                    <VerticalStackLayout Spacing="40" x:Name="_folderStackLayout">
-                        <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
-                            <Grid>
-                                <Grid Padding="20, 10">
-                                    <ImageButton Grid.Column="2" Source="new_folder.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Border BackgroundColor="#222225" StrokeShape="RoundRectangle 40" HeightRequest="50" Stroke="Transparent" Padding="0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="0.5*"/>
+                                                <ColumnDefinition Width="40"/>
+                                            </Grid.ColumnDefinitions>
 
-                                    <Label Text="New Folder" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                </Grid>
+                                            <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
 
-                                <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="NewFolder"/>
-                            </Grid>
-                        </Frame>
-
-                        <ListView x:Name="FoldersListView" SeparatorVisibility="None" VerticalScrollBarVisibility="Never" Margin="0, 0, 0, 100">
-                            <ListView.RowHeight>60</ListView.RowHeight>
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Frame BackgroundColor="#222225" CornerRadius="40" HeightRequest="50" BorderColor="Transparent" Padding="0">
-                                            <Grid>
-                                                <Grid Padding="20, 0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="0.5*"/>
-                                                        <ColumnDefinition Width="40"/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <ImageButton Grid.Column="2" Source="forward.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End"/>
-                                                    <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
-                                                    <Label Grid.Column="1" Text="{Binding Timestamp}" TextColor="#707070" FontSize="14" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-                                                </Grid>
-
-                                                <Button Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="FolderChosen" CommandParameter="{Binding Id}"/>
-                                            </Grid>
-                                        </Frame>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-
-
-                    </VerticalStackLayout>
+                                            <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Margin="20, 0, 0, 0"/>
+                                            <Label Grid.Column="1" Text="{Binding Timestamp}" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 20, 0"/>
+                                            <ImageButton Grid.Column="2" Source="pen.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" CommandParameter="{Binding Id}" Margin="0, 0, 20, 0"/>
+                                        </Grid>
+                                    </Border>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </VerticalStackLayout>
             </ScrollView>
         </Grid>
 
+        <Grid x:Name="folderAdd" IsVisible="False">
+            <BoxView Grid.Row="1" Color="Transparent" HeightRequest="150" VerticalOptions="End" IsEnabled="False">
+                <BoxView.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="Transparent"
+                            Offset="0.1" />
+                        <GradientStop Color="#141414"
+                            Offset="0.8" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <Frame x:Name="newFolder" Grid.RowSpan="2" HorizontalOptions="End" VerticalOptions="End"
+               Padding="0" Margin="0, 0, 35, 35" BackgroundColor="Transparent" BorderColor="Transparent" WidthRequest="60" HeightRequest="60" CornerRadius="30">
+                <Grid BackgroundColor="Red">
+                    <Image Source="plus.png" Scale="0.5"/>
+
+                    <Button BackgroundColor="Transparent" Clicked="NewFolder"/>
+                </Grid>
+            </Frame>
+        </Grid>
+        
         <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000" Grid.RowSpan="2" Margin="-20, -20, -20, 0">
             <ActivityIndicator.IsVisible>
                 <OnPlatform x:TypeArguments="x:Boolean">

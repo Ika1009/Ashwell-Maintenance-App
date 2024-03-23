@@ -12,6 +12,8 @@ public partial class ServiceRecordPage : ContentPage
     public ServiceRecordPage()
     {
         InitializeComponent();
+        checkHeating.IsChecked = true;
+        checkOpenFlue.IsChecked = true;
     }
     public void FolderChosen(object sender, EventArgs e)
     {
@@ -85,7 +87,7 @@ public partial class ServiceRecordPage : ContentPage
     public async void NewFolder(object sender, EventArgs e)
     {
         string folderName = await Shell.Current.DisplayPromptAsync("New Folder", "Enter folder name");
-        if (folderName == null) // User clicked Cancel
+        if (folderName == null || folderName == "") // User clicked Cancel
             return;
 
         try
@@ -172,6 +174,59 @@ public partial class ServiceRecordPage : ContentPage
             await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
         }
     }
+    private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            try
+            {
+                string searchText = e.NewTextValue;
+
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    // If search text is empty, load all folders
+                    if (FoldersListView != null && Folders != null)
+                    {
+                        FoldersListView.ItemsSource = null;
+                        FoldersListView.ItemsSource = Folders;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Folders or FoldersListView is null.", "OK");
+                    }
+                }
+                else
+                {
+                    // Filter folders based on search text
+                    if (Folders != null)
+                    {
+                        List<Folder> filteredFolders = new List<Folder>(Folders.Where(folder => folder.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)));
+                        // Update the ItemsSource with filtered folders
+                        if (FoldersListView != null)
+                        {
+                            FoldersListView.ItemsSource = null;
+                            FoldersListView.ItemsSource = filteredFolders;
+                        }
+                        else
+                        {
+                            await DisplayAlert("Error", "FoldersListView is null.", "OK");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Folders is null.", "OK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+
+            }
+        });
+
+
+    }
     public void ServiceRecordBack(object sender, EventArgs e)
     {
         if (SRSection1.IsVisible)
@@ -202,6 +257,10 @@ public partial class ServiceRecordPage : ContentPage
             if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
                 SRSection3.ScrollToAsync(0, 0, false);
             SRSection3.IsVisible = true;
+
+            FolderSection.IsVisible = false;
+            folderSearch.IsVisible = false;
+            folderAdd.IsVisible = false;
         }
     }
 
@@ -234,6 +293,8 @@ public partial class ServiceRecordPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await FolderSection.ScrollToAsync(0, 0, false);
         FolderSection.IsVisible = true;
+        folderSearch.IsVisible = true;
+        folderAdd.IsVisible = true;
 
         string dateTimeString = DateTime.Now.ToString("M-d-yyyy-HH-mm");
         reportName = $"Ashwell_Service_Report_{dateTimeString}.pdf";
@@ -340,7 +401,7 @@ public partial class ServiceRecordPage : ContentPage
             { "flueFlowTestNA", checkFlueFlowTestNA.IsChecked.ToString() },
             { "flueFlowTestComments", flueFlowTestComment.Text ?? string.Empty },
             { "spillageTest", checkSpillageTest.IsChecked.ToString() },
-            { "spillageTestNA", checkSpillageTestNA.IsChecked.ToString() },
+            { "spillageTestNA", checkBoth.IsChecked.ToString() },
             { "spillageTestComments", spillageTestComment.Text ?? string.Empty },
             { "AECVPlantIsolationCorrect", checkAECVPlantIsolationCorrect.IsChecked.ToString() },
             { "AECVPlantIsolationCorrectNA", checkAECVPlantIsolationCorrectNA.IsChecked.ToString() },
@@ -382,5 +443,105 @@ public partial class ServiceRecordPage : ContentPage
         bool tempLPG = checkLPG.IsChecked;
         reportData.Add("gasType", tempNG ? "NG" : (tempLPG ? "LPG" : ""));
         reportData.Add("reportName", reportName);
+    }
+
+
+    // Disjunct Buttons
+
+
+    public void DisjunctCheckboxes(CheckBox a, CheckBox b, CheckBox c)
+    {
+        a.IsChecked = true;
+        b.IsChecked = false;
+        c.IsChecked = false;
+
+        a.Color = Colors.Red;
+        b.Color = Colors.White;
+        c.Color = Colors.White;
+    }
+    public void DisjunctCheckboxes(CheckBox a, CheckBox b, CheckBox c, CheckBox d)
+    {
+        a.IsChecked = true;
+        b.IsChecked = false;
+        c.IsChecked = false;
+        d.IsChecked = false;
+
+        a.Color = Colors.Red;
+        b.Color = Colors.White;
+        c.Color = Colors.White;
+        d.Color = Colors.White;
+    }
+
+
+    public void CheckHotWater(object sender, EventArgs e)
+    {
+        if (checkHotWater.IsChecked)
+            DisjunctCheckboxes(checkHotWater, checkBoth, checkHeating);
+        else
+        {
+            checkHotWater.Color = Colors.White;
+            if (!checkBoth.IsChecked)
+                DisjunctCheckboxes(checkHeating, checkHotWater, checkBoth);
+        }
+    }
+    public void CheckBoth(object sender, EventArgs e)
+    {
+        if (checkBoth.IsChecked)
+            DisjunctCheckboxes(checkBoth, checkHotWater, checkHeating);
+        else
+        {
+            checkBoth.Color = Colors.White;
+            if (!checkHotWater.IsChecked)
+                DisjunctCheckboxes(checkHeating, checkHotWater, checkBoth);
+        }
+    }
+    public void CheckHeating(object sender, EventArgs e)
+    {
+        if (checkHeating.IsChecked || !checkHotWater.IsChecked && !checkBoth.IsChecked)
+            DisjunctCheckboxes(checkHeating, checkHotWater, checkBoth);
+        else
+            checkHeating.Color = Colors.White;
+    }
+
+
+    public void CheckOpenFlue(object sender, EventArgs e)
+    {
+        if (checkOpenFlue.IsChecked || !checkRoomSealed.IsChecked && !checkForcedDraft.IsChecked && !checkFlueless.IsChecked)
+            DisjunctCheckboxes(checkOpenFlue, checkRoomSealed, checkForcedDraft, checkFlueless);
+        else
+            checkOpenFlue.Color = Colors.White;
+    }
+    public void CheckRoomSealed(object sender, EventArgs e)
+    {
+        if (checkRoomSealed.IsChecked)
+            DisjunctCheckboxes(checkRoomSealed, checkOpenFlue, checkForcedDraft, checkFlueless);
+        else
+        {
+            checkRoomSealed.Color = Colors.White;
+            if (!checkForcedDraft.IsChecked && !checkFlueless.IsChecked)
+                DisjunctCheckboxes(checkOpenFlue, checkRoomSealed, checkForcedDraft, checkFlueless);
+        }
+    }
+    public void CheckForcedDraft(object sender, EventArgs e)
+    {
+        if (checkForcedDraft.IsChecked)
+            DisjunctCheckboxes(checkForcedDraft, checkOpenFlue, checkRoomSealed, checkFlueless);
+        else
+        {
+            checkForcedDraft.Color = Colors.White;
+            if (!checkFlueless.IsChecked && !checkRoomSealed.IsChecked)
+                DisjunctCheckboxes(checkOpenFlue, checkRoomSealed, checkForcedDraft, checkFlueless);
+        }
+    }
+    public void CheckFlueless(object sender, EventArgs e)
+    {
+        if (checkFlueless.IsChecked)
+            DisjunctCheckboxes(checkFlueless, checkForcedDraft, checkOpenFlue, checkRoomSealed);
+        else
+        {
+            checkFlueless.Color = Colors.White;
+            if (!checkForcedDraft.IsChecked && !checkRoomSealed.IsChecked)
+                DisjunctCheckboxes(checkOpenFlue, checkRoomSealed, checkForcedDraft, checkFlueless);
+        }
     }
 }

@@ -8,7 +8,6 @@ using System.Text.Json;
 public partial class DisplayedProjectsPage : ContentPage
 {
     bool projectComplete = true;
-    bool test = true;
     public async void JobsBack(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
@@ -43,7 +42,7 @@ public partial class DisplayedProjectsPage : ContentPage
     public async void NewFolder(object sender, EventArgs e)
     {
         string folderName = await Shell.Current.DisplayPromptAsync("New Folder", "Enter folder name");
-        if (folderName == null) // User clicked Cancel
+        if (folderName == null || folderName == "") // User clicked Cancel
             return;
 
         try
@@ -120,11 +119,6 @@ public partial class DisplayedProjectsPage : ContentPage
                             Timestamp = element.GetProperty("created_at").GetString(),
                             Signature1 = element.GetProperty("signature1").GetString(),
                             Signature2 = element.GetProperty("signature2").GetString(),
-
-                            TimestampVisible = true,
-                            IsEditing = false,
-                            //IsDeleteVisible = false,
-                            PenImageSource = "pen.png"
                         }) ;
                     }
                 }
@@ -203,19 +197,26 @@ public partial class DisplayedProjectsPage : ContentPage
 
 
     // Nixa pokusava da napravi Edit folder :3
-    private void ToggleEditing(object sender, EventArgs e)
-    {
-        if (sender is ImageButton button && button.BindingContext is Folder folder)
-        {
-            folder.IsEditing = !folder.IsEditing;
-            folder.TimestampVisible = !folder.IsEditing;
-            folder.PenImageSource = folder.IsEditing ? "tick.png" : "pen.png";
-        }
-    }
 
-    public void ChangeFolderName(object sender, EventArgs e)
+    public async void FolderEdit(object sender, EventArgs e)
     {
-        test = !test;
-        title.TextColor = test ? Colors.White : Colors.Red;
+        string folderId = (sender as ImageButton).CommandParameter as string;
+        string folderName = Folders.First(x => x.Id == folderId).Name;
+        string oldFolderName = folderName;
+
+        folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "OK", "Delete", null, -1, null, folderName);
+        if (folderName == null) // User clicked Cancel
+        {
+            await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
+            // Ovde treba da se folder izbrise haha....
+            return;
+        }
+        else if (folderName == oldFolderName)
+            return;
+
+        Folders.First(x => x.Id == folderId).Name = folderName; // ovo ne radi iz nekog razloga...
+        await LoadFolders();
+
+        // Ovde samo u bazi nekako treba da se doda da se ime zapravo promeni idk...
     }
 }
