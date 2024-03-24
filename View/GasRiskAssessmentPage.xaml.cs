@@ -418,6 +418,8 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("checkGuessTightnessTestCarriedOutYes", checkGuessTightnessTestCarriedOutYes.IsChecked.ToString());
         reportData.Add("checkGuessTightnessTestCarriedOutNo", checkGuessTightnessTestCarriedOutNo.IsChecked.ToString());
 
+        reportData.Add("checkNoticesAndLabelsYes", checkNoticesAndLabelsYes.IsChecked.ToString());
+        reportData.Add("checkNoticesAndLabelsNo", checkNoticesAndLabelsNo.IsChecked.ToString());
 
 
 
