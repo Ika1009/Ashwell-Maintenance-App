@@ -2293,14 +2293,16 @@ namespace Ashwell_Maintenance
             //comments
             gfx.DrawString(dic["ControlActionWorkingAtHeight"], font, XBrushes.Black, new XRect(347, 328, 564-347, 16), XStringFormats.Center);
             gfx.DrawString(dic["ControlActionPermitsToWorkRequired"], font, XBrushes.Black, new XRect(347, 347, 564-347, 16), XStringFormats.Center);
-            XRect boundingBox = new XRect(347, 390, 564-347, 458-390);
+         
+            XRect boundingBox = new XRect(347+3, 390, 564-347-3, 458-390);
             string text = dic["DustNoiseCOSHHTheControlActionRequired"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
+           
             gfx.DrawString(dic["ControlActionExcavations"], font, XBrushes.Black, new XRect(347, 369, 564-347, 16), XStringFormats.Center);
             gfx.DrawString(dic["ControlActionAnyOtherDanger"], font, XBrushes.Black, new XRect(347, 636, 564-347, 16), XStringFormats.Center);
-            XRect boundingBox1 = new XRect(347, 523, 564 - 347, 575 - 523);
+            XRect boundingBox1 = new XRect(347+3, 523, 564 - 347-3, 575 - 523);
             string text1 = dic["actionTaken"];
             XTextFormatter tf1 = new XTextFormatter(gfx);
             XRect layoutRectangle1 = boundingBox1;
@@ -2308,7 +2310,7 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["ControlActionAppointedFirstAider"], font, XBrushes.Black, new XRect(347, 689, 564 - 347, 16), XStringFormats.Center);
             gfx.DrawString(dic["ControlActionAdditionalActions"], font, XBrushes.Black, new XRect(347, 708, 564 - 347, 16), XStringFormats.Center);
             gfx.DrawString(dic["ControlActionIsItSafe"], font, XBrushes.Black, new XRect(347, 728, 564 - 347, 16), XStringFormats.Center);
-            XRect boundingBox2 = new XRect(347, 578, 564 - 347, 632 - 578);
+            XRect boundingBox2 = new XRect(347+3, 578, 564 - 347-3, 632 - 578);
             string text2 = dic["moreDangersTheControlActionRequired"];
             XTextFormatter tf2 = new XTextFormatter(gfx);
             XRect layoutRectangle2 = boundingBox2;
