@@ -1216,12 +1216,12 @@ namespace Ashwell_Maintenance
             string text = dic["meterHouseComment"];
             XTextFormatter tf = new XTextFormatter(gfx);
             XRect layoutRectangle = boundingBox;
-            tf.DrawString(text, new XFont("Arial", 11), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
 
             XRect boundingBox2 = new XRect(300, 250, 269, 107);
             XRect layoutRectangle2 = boundingBox2;
             text = dic["boilerHousePlantRoomComments"];
-            tf.DrawString(text, new XFont("Arial", 11), XBrushes.Black, layoutRectangle2, XStringFormats.TopLeft);
+            tf.DrawString(text, new XFont("Arial", 8), XBrushes.Black, layoutRectangle2, XStringFormats.TopLeft);
 
             //string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             //string filePath = System.IO.Path.Combine(downloadsFolder, "Boiler.pdf");
@@ -2291,8 +2291,8 @@ namespace Ashwell_Maintenance
             // gfx.DrawImage(ConvertToXImage(clijent), 64, 171, 229, 15);
 
             //comments
-            gfx.DrawString(dic["ControlActionWorkingAtHeight"], font, XBrushes.Black, new XRect(347, 328, 564-347, 16), XStringFormats.Center);
-            gfx.DrawString(dic["ControlActionPermitsToWorkRequired"], font, XBrushes.Black, new XRect(347, 347, 564-347, 16), XStringFormats.Center);
+            gfx.DrawString(dic["ControlActionWorkingAtHeight"], font, XBrushes.Black, new XRect(347, 328, 564-347, 16), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["ControlActionPermitsToWorkRequired"], font, XBrushes.Black, new XRect(347, 347, 564-347, 16), XStringFormats.CenterLeft);
          
             XRect boundingBox = new XRect(347+3, 390, 564-347-3, 458-390);
             string text = dic["DustNoiseCOSHHTheControlActionRequired"];
@@ -2300,7 +2300,7 @@ namespace Ashwell_Maintenance
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
            
-            gfx.DrawString(dic["ControlActionExcavations"], font, XBrushes.Black, new XRect(347, 369, 564-347, 16), XStringFormats.Center);
+            gfx.DrawString(dic["ControlActionExcavations"], font, XBrushes.Black, new XRect(347, 369, 564-347, 16), XStringFormats.CenterLeft);
             gfx.DrawString(dic["ControlActionAnyOtherDanger"], font, XBrushes.Black, new XRect(347, 636, 564-347, 16), XStringFormats.Center);
             XRect boundingBox1 = new XRect(347+3, 523, 564 - 347-3, 575 - 523);
             string text1 = dic["actionTaken"];
