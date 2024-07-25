@@ -6,6 +6,7 @@ using Ashwell_Maintenance;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Net.Http;
+using System.Net;
 
 public static class ApiService
 {
@@ -35,15 +36,26 @@ public static class ApiService
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
     public static async Task<HttpResponseMessage> RenameFolderAsync(string folderId, string newFolderName)
     {
+        // Get the old folder name
+        string oldFolderName;
+        try
+        {
+            oldFolderName = await GetFolderNameByIdAsync(folderId);
+        }
+        catch (Exception ex)
+        {
+            return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            {
+                Content = new StringContent($"Error fetching old folder name from the server: {ex.Message}")
+            };
+        }
+
         // Rename in the database
         HttpResponseMessage dbResponse = await RenameFolderInDatabaseAsync(folderId, newFolderName);
         if (!dbResponse.IsSuccessStatusCode)
         {
             return dbResponse;
         }
-
-        // Get the old folder name
-        string oldFolderName = await GetOldFolderNameByIdAsync(folderId);
 
         // Rename in Dropbox
         HttpResponseMessage dropboxResponse = await RenameFolderInDropboxAsync(oldFolderName, newFolderName);
@@ -57,7 +69,6 @@ public static class ApiService
             Content = new StringContent("Folder renamed successfully in both the database and Dropbox.")
         };
     }
-
 
     /// <summary>
     /// Renames an existing folder in the database.
@@ -76,11 +87,68 @@ public static class ApiService
     }
 
     /// <summary>
+    /// Deletes a folder from both the server database and Dropbox.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder to be deleted.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API calls.</returns>
+    public static async Task<HttpResponseMessage> DeleteFolderAsync(string folderId)
+    {
+        // Get the old folder name
+        string folderName;
+        try
+        {
+            folderName = await GetFolderNameByIdAsync(folderId);
+        }
+        catch (Exception ex)
+        {
+            return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            {
+                Content = new StringContent($"Error fetching old folder name from the server: {ex.Message}")
+            };
+        }
+
+        // Delete from the database
+        HttpResponseMessage dbResponse = await DeleteFolderFromDatabaseAsync(folderId);
+        if (!dbResponse.IsSuccessStatusCode)
+        {
+            return dbResponse;
+        }
+
+        // Delete from Dropbox
+        HttpResponseMessage dropboxResponse = await DeleteFolderInDropboxAsync(folderName);
+        if (!dropboxResponse.IsSuccessStatusCode)
+        {
+            return dropboxResponse;
+        }
+
+        return new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+        {
+            Content = new StringContent("Folder deleted successfully from both the database and Dropbox.")
+        };
+    }
+
+    /// <summary>
+    /// Deletes a folder from the server database.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder to be deleted.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
+    public static async Task<HttpResponseMessage> DeleteFolderFromDatabaseAsync(string folderId)
+    {
+        using HttpClient client = new();
+        var folderData = new { folder_id = folderId };
+        var jsonContent = new StringContent(JsonSerializer.Serialize(folderData), Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/delete_folder.php", jsonContent);
+        return response;
+    }
+
+
+    /// <summary>
     /// Retrieves the old folder name by its ID.
     /// </summary>
     /// <param name="folderId">The ID of the folder.</param>
     /// <returns>The old folder name as a string.</returns>
-    private static async Task<string> GetOldFolderNameByIdAsync(string folderId)
+    private static async Task<string> GetFolderNameByIdAsync(string folderId)
     {
         using HttpClient client = new();
         HttpResponseMessage response = await client.GetAsync($"{BaseApiUrl}/get_folder_name.php?folder_id={folderId}");
@@ -306,6 +374,33 @@ public static class ApiService
         HttpResponseMessage response = await client.PostAsync($"{_apiUrl}/files/move_v2", renameContent);
         return response;
     }
+
+    /// <summary>
+    /// Deletes a folder in Dropbox.
+    /// </summary>
+    /// <param name="folderName">The name of the folder to be deleted.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
+    public static async Task<HttpResponseMessage> DeleteFolderInDropboxAsync(string folderName)
+    {
+        if (string.IsNullOrEmpty(_accessToken))
+        {
+            _accessToken = await GetNewAccessTokenAsync();
+        }
+
+        using HttpClient client = new();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
+
+        // Construct the full path
+        string path = $"/{folderName}";
+
+        // Delete folder in Dropbox
+        var deleteData = new { path = path };
+        var deleteContent = new StringContent(JsonSerializer.Serialize(deleteData), Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await client.PostAsync($"{_apiUrl}/files/delete_v2", deleteContent);
+        return response;
+    }
+
 
     /// <summary>
     /// Uploads a PDF file to Dropbox.
