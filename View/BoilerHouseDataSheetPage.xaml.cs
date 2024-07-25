@@ -378,7 +378,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
             { "checkFreeAirExistingCM", checkFreeAirExistingCM.IsChecked.ToString() },
             { "checkFreeAirExistingMH", checkFreeAirExistingMH.IsChecked.ToString() },
             { "checkFreeAirRequiredCM", checkFreeAirRequiredCM.IsChecked.ToString() },
-            { "checkcheckFreeAirRequiredMH", checkcheckFreeAirRequiredMH.IsChecked.ToString() },
+            { "checkFreeAirRequiredMH", checkcheckFreeAirRequiredMH.IsChecked.ToString() },
             { "checkMainFlueYes", checkMainFlueYes.IsChecked.ToString() },
             { "checkMainFlueNA", checkMainFlueNA.IsChecked.ToString() },
             { "checkChimneyFlueTerminalPositionYes", checkChimneyFlueTerminalPositionYes.IsChecked.ToString() },
