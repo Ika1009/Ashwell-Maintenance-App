@@ -28,20 +28,71 @@ public static class ApiService
     }
 
     /// <summary>
-    /// Renames an existing folder on the server.
+    /// Renames an existing folder in both the database and Dropbox.
     /// </summary>
     /// <param name="folderId">The ID of the folder to be renamed.</param>
     /// <param name="newFolderName">The new name of the folder.</param>
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
     public static async Task<HttpResponseMessage> RenameFolderAsync(string folderId, string newFolderName)
     {
+        // Rename in the database
+        HttpResponseMessage dbResponse = await RenameFolderInDatabaseAsync(folderId, newFolderName);
+        if (!dbResponse.IsSuccessStatusCode)
+        {
+            return dbResponse;
+        }
+
+        // Get the old folder name
+        string oldFolderName = await GetOldFolderNameByIdAsync(folderId);
+
+        // Rename in Dropbox
+        HttpResponseMessage dropboxResponse = await RenameFolderInDropboxAsync(oldFolderName, newFolderName);
+        if (!dropboxResponse.IsSuccessStatusCode)
+        {
+            return dropboxResponse;
+        }
+
+        return new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+        {
+            Content = new StringContent("Folder renamed successfully in both the database and Dropbox.")
+        };
+    }
+
+
+    /// <summary>
+    /// Renames an existing folder in the database.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder to be renamed.</param>
+    /// <param name="newFolderName">The new name of the folder.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
+    public static async Task<HttpResponseMessage> RenameFolderInDatabaseAsync(string folderId, string newFolderName)
+    {
         using HttpClient client = new();
         var folderData = new { folder_id = folderId, new_folder_name = newFolderName };
         var jsonContent = new StringContent(JsonSerializer.Serialize(folderData), Encoding.UTF8, "application/json");
 
         HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/rename_folder.php", jsonContent);
-
         return response;
+    }
+
+    /// <summary>
+    /// Retrieves the old folder name by its ID.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder.</param>
+    /// <returns>The old folder name as a string.</returns>
+    private static async Task<string> GetOldFolderNameByIdAsync(string folderId)
+    {
+        using HttpClient client = new();
+        HttpResponseMessage response = await client.GetAsync($"{BaseApiUrl}/get_folder_name.php?folder_id={folderId}");
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception($"Failed to retrieve folder name for ID: {folderId}");
+        }
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var data = JsonSerializer.Deserialize<JsonElement>(jsonResponse);
+        return data.GetProperty("folder_name").GetString();
     }
 
     /// <summary>
@@ -226,6 +277,34 @@ public static class ApiService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Renames a folder in Dropbox.
+    /// </summary>
+    /// <param name="oldFolderName">The current name of the folder in Dropbox.</param>
+    /// <param name="newFolderName">The new name of the folder in Dropbox.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
+    public static async Task<HttpResponseMessage> RenameFolderInDropboxAsync(string oldFolderName, string newFolderName)
+    {
+        if (string.IsNullOrEmpty(_accessToken))
+        {
+            _accessToken = await GetNewAccessTokenAsync();
+        }
+
+        using HttpClient client = new();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
+
+        // Construct paths
+        string oldPath = $"/{oldFolderName}";
+        string newPath = $"/{newFolderName}";
+
+        // Rename folder in Dropbox
+        var renameData = new { from_path = oldPath, to_path = newPath };
+        var renameContent = new StringContent(JsonSerializer.Serialize(renameData), Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await client.PostAsync($"{_apiUrl}/files/move_v2", renameContent);
+        return response;
     }
 
     /// <summary>
