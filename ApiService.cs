@@ -26,6 +26,24 @@ public static class ApiService
 
         return response;
     }
+
+    /// <summary>
+    /// Renames an existing folder on the server.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder to be renamed.</param>
+    /// <param name="newFolderName">The new name of the folder.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
+    public static async Task<HttpResponseMessage> RenameFolderAsync(string folderId, string newFolderName)
+    {
+        using HttpClient client = new();
+        var folderData = new { folder_id = folderId, new_folder_name = newFolderName };
+        var jsonContent = new StringContent(JsonSerializer.Serialize(folderData), Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/rename_folder.php", jsonContent);
+
+        return response;
+    }
+
     /// <summary>
     /// Retrieves all folders with their names and IDs from the server.
     /// </summary>

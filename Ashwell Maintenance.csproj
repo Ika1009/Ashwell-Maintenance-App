@@ -30,6 +30,14 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0-android' and '$(Configuration)' == 'Release' ">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>key.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass>najjacasifra123</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>MauitestAlias</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>najjacasifra123</AndroidSigningKeyPass>
+	</PropertyGroup>
+	
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\ash_icon.svg" Color="Transparent" ForegroundScale="0.5" />
