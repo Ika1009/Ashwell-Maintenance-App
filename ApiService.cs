@@ -12,6 +12,58 @@ public static class ApiService
 {
     private static readonly string BaseApiUrl = "https://ashwellmaintenance.host";
 
+
+    /// <summary>
+    /// Logs in a user and saves their ID and admin status to CurrentUser.
+    /// </summary>
+    /// <param name="username">The username of the user.</param>
+    /// <param name="password">The password of the user.</param>
+    /// <returns>A tuple containing a boolean indicating success or failure and a string for the error message if any.</returns>
+    public static async Task<(bool isSuccess, string errorMessage)> LoginAsync(string username, string password)
+    {
+        using HttpClient client = new();
+        var loginData = new { username, password };
+        var jsonContent = new StringContent(JsonSerializer.Serialize(loginData), Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response;
+        try
+        {
+            response = await client.PostAsync($"{BaseApiUrl}/login.php", jsonContent);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to send login request: {ex.Message}");
+            return (false, "Server error: Unable to send request.");
+        }
+
+        if (!response.IsSuccessStatusCode)
+        {
+            Console.WriteLine($"Login failed with status code: {response.StatusCode}");
+            return (false, "Server error: Invalid response from server.");
+        }
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var data = JsonSerializer.Deserialize<JsonElement>(jsonResponse);
+
+        if (data.TryGetProperty("error", out JsonElement error))
+        {
+            string errorMessage = error.GetString();
+            if (errorMessage == "Invalid username or password")
+            {
+                return (false, "Invalid username or password.");
+            }
+            return (false, $"Server error: {errorMessage}");
+        }
+
+        string userId = data.GetProperty("user").GetProperty("id").GetString();
+        bool isAdmin = data.GetProperty("user").GetProperty("is_admin").GetBoolean();
+
+        // Save the user data to CurrentUser
+        CurrentUser.SetUser(userId, isAdmin);
+
+        return (true, null);
+    }
+
     /// <summary>
     /// Uploads a new folder to the server.
     /// </summary>
