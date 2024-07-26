@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ashwell_Maintenance.View.LoginPage"
+             Title="Login"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#141414">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid RowSpacing="10" Margin="0, 30, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="engineers_report.png" WidthRequest="60" HorizontalOptions="Center"/>
+
+            <Label Grid.Row="1" Text="Login" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+
+            <Frame Grid.Row="2" Padding="0" BorderColor="Transparent" CornerRadius="100">
+                <BoxView Color="#222225"/>
+            </Frame>
+        </Grid>
+
+        <Grid Grid.Row="1" Padding="0, -60, 0, 0">
+            <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                <Frame BackgroundColor="#222225" CornerRadius="20" BorderColor="Transparent" Padding="20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Entry x:Name="UsernameEntry" Placeholder="Username" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225"/>
+                        <Entry x:Name="PasswordEntry" Placeholder="Password" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225" IsPassword="True" Grid.Row="1"/>
+                        <Button Text="Login" BackgroundColor="#2196F3" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" CornerRadius="10" Clicked="LoginButton_Clicked" Grid.Row="2"/>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

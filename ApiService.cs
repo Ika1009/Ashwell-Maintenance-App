@@ -56,7 +56,8 @@ public static class ApiService
         }
 
         string userId = data.GetProperty("user").GetProperty("id").GetString();
-        bool isAdmin = data.GetProperty("user").GetProperty("is_admin").GetBoolean();
+        string isAdminString = data.GetProperty("user").GetProperty("is_admin").GetString();
+        bool isAdmin = isAdminString == "1";
 
         // Save the user data to CurrentUser
         CurrentUser.SetUser(userId, isAdmin);

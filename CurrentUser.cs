@@ -1,27 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Maui.Storage;
 
-namespace Ashwell_Maintenance
+public static class CurrentUser
 {
-    public static class CurrentUser
+    private const string UserIdKey = "CurrentUserId";
+    private const string IsAdminKey = "CurrentUserIsAdmin";
+
+    public static string UserId
     {
-        public static string UserId { get; private set; }
-        public static bool IsAdmin { get; private set; }
-
-        public static void SetUser(string userId, bool isAdmin)
-        {
-            UserId = userId;
-            IsAdmin = isAdmin;
-        }
-
-        public static void ClearUser()
-        {
-            UserId = null;
-            IsAdmin = false;
-        }
+        get => Preferences.Get(UserIdKey, string.Empty);
+        set => Preferences.Set(UserIdKey, value);
     }
 
+    public static bool IsAdmin
+    {
+        get => Preferences.Get(IsAdminKey, false);
+        set => Preferences.Set(IsAdminKey, value);
+    }
+
+    public static bool UserExists()
+    {
+        return !string.IsNullOrEmpty(UserId);
+    }
+
+    public static void SetUser(string userId, bool isAdmin)
+    {
+        UserId = userId;
+        IsAdmin = isAdmin;
+    }
+
+    public static void Clear()
+    {
+        Preferences.Remove(UserIdKey);
+        Preferences.Remove(IsAdminKey);
+    }
 }
