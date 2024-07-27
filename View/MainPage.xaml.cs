@@ -5,26 +5,6 @@
         public MainPage()
         {
             InitializeComponent();
-            //CheckForLogin();
-        }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            //await CheckForLogin();
-        }
-
-        public async Task CheckForLogin()
-        {
-            // Navigate to the Login Page if UserId is not available
-            //if (string.IsNullOrEmpty(CurrentUser.UserId))
-            //{
-            //    await Navigation.PushModalAsync(new LoginPage());
-            //}
-            //else
-            //{
-            //    await Shell.Current.DisplayAlert("Nikoleta", "je", "Govno Govnasto");
-            //}
-            await Navigation.PushModalAsync(new LoginPage());
         }
 
         public async void OpenPage(string page)
