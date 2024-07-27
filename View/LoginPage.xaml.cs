@@ -9,6 +9,8 @@ public partial class LoginPage : ContentPage
 
     private async void LoginButton_Clicked(object sender, EventArgs e)
     {
+        loadingBG.IsRunning = true; loading.IsRunning = true;
+        loginButton.IsEnabled = false;
         string username = UsernameEntry.Text;
         string password = PasswordEntry.Text;
 
@@ -23,11 +25,14 @@ public partial class LoginPage : ContentPage
         if (loginSuccess)
         {
             await DisplayAlert("Success", "Login successful!", "OK");
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
         else
         {
             await DisplayAlert("Login Failed", errorMessage, "OK");
         }
+        loginButton.IsEnabled = true;
+        loadingBG.IsRunning = false; loading.IsRunning = false;
+
     }
 }
