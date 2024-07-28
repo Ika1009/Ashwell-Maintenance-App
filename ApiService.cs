@@ -122,21 +122,26 @@ public static class ApiService
         }
 
         // Rename in Dropbox
-        HttpResponseMessage dropboxResponse;
-        try
+        //If folder doesn't exist it is in Incompleted Jobs - not uploaded to Dropbox
+        bool ifFolderExists = await CheckFolderExistsDropboxAsync(new HttpClient(), $"/{oldFolderName}");
+        if (ifFolderExists)
         {
-            dropboxResponse = await RenameFolderInDropboxAsync(oldFolderName, newFolderName);
-            if (!dropboxResponse.IsSuccessStatusCode)
+            HttpResponseMessage dropboxResponse;
+            try
             {
-                return dropboxResponse;
+                dropboxResponse = await RenameFolderInDropboxAsync(oldFolderName, newFolderName);
+                if (!dropboxResponse.IsSuccessStatusCode)
+                {
+                    return dropboxResponse;
+                }
             }
-        }
-        catch (Exception ex)
-        {
-            return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            catch (Exception ex)
             {
-                Content = new StringContent($"Error renaming folder in Dropbox: {ex.Message}")
-            };
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    Content = new StringContent($"Error renaming folder in Dropbox: {ex.Message}")
+                };
+            }
         }
 
         return new HttpResponseMessage(HttpStatusCode.OK)
@@ -190,11 +195,17 @@ public static class ApiService
         }
 
         // Delete from Dropbox
-        HttpResponseMessage dropboxResponse = await DeleteFolderInDropboxAsync(folderName);
-        if (!dropboxResponse.IsSuccessStatusCode)
+        //If folder doesn't exist it is in Incompleted Jobs - not uploaded to Dropbox
+        bool ifFolderExists = await CheckFolderExistsDropboxAsync(new HttpClient(), $"/{folderName}");
+        if(ifFolderExists)
         {
-            return dropboxResponse;
+            HttpResponseMessage dropboxResponse = await DeleteFolderInDropboxAsync(folderName);
+            if (!dropboxResponse.IsSuccessStatusCode)
+            {
+                return dropboxResponse;
+            }
         }
+
 
         return new HttpResponseMessage(System.Net.HttpStatusCode.OK)
         {
