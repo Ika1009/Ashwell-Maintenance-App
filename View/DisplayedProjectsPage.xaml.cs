@@ -205,18 +205,36 @@ public partial class DisplayedProjectsPage : ContentPage
         string oldFolderName = folderName;
 
         folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "OK", "Delete", null, -1, null, folderName);
-        if (folderName == null) // User clicked Cancel
+        if (folderName == null) // User clicked Delete
         {
-            await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
-            // Ovde treba da se folder izbrise haha....
+            bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
+            if (deleteConfirmed)
+            {
+                // Deleting Folder in the Database
+                var response = await ApiService.DeleteFolderAsync(folderId);
+                if (response.IsSuccessStatusCode)
+                {
+                    await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
+                }
+            }
             return;
         }
         else if (folderName == oldFolderName)
             return;
 
-        Folders.First(x => x.Id == folderId).Name = folderName; // ovo ne radi iz nekog razloga...
+        // User renamed folder and clicked OK
+        Folders.First(x => x.Id == folderId).Name = folderName;
         await LoadFolders();
 
-        // Ovde samo u bazi nekako treba da se doda da se ime zapravo promeni idk...
+        // Update the folder name in the database
+        var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
+        if (!updateResponse.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+        }
     }
 }

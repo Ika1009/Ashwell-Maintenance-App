@@ -104,20 +104,42 @@ public static class ApiService
         }
 
         // Rename in the database
-        HttpResponseMessage dbResponse = await RenameFolderInDatabaseAsync(folderId, newFolderName);
-        if (!dbResponse.IsSuccessStatusCode)
+        HttpResponseMessage dbResponse;
+        try
         {
-            return dbResponse;
+            dbResponse = await RenameFolderInDatabaseAsync(folderId, newFolderName);
+            if (!dbResponse.IsSuccessStatusCode)
+            {
+                return dbResponse;
+            }
+        }
+        catch (Exception ex)
+        {
+            return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            {
+                Content = new StringContent($"Error renaming folder in the database: {ex.Message}")
+            };
         }
 
         // Rename in Dropbox
-        HttpResponseMessage dropboxResponse = await RenameFolderInDropboxAsync(oldFolderName, newFolderName);
-        if (!dropboxResponse.IsSuccessStatusCode)
+        HttpResponseMessage dropboxResponse;
+        try
         {
-            return dropboxResponse;
+            dropboxResponse = await RenameFolderInDropboxAsync(oldFolderName, newFolderName);
+            if (!dropboxResponse.IsSuccessStatusCode)
+            {
+                return dropboxResponse;
+            }
+        }
+        catch (Exception ex)
+        {
+            return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            {
+                Content = new StringContent($"Error renaming folder in Dropbox: {ex.Message}")
+            };
         }
 
-        return new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+        return new HttpResponseMessage(HttpStatusCode.OK)
         {
             Content = new StringContent("Folder renamed successfully in both the database and Dropbox.")
         };
