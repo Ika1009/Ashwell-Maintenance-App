@@ -12,13 +12,11 @@ namespace Ashwell_Maintenance
         private async void CheckForLogin()
         {
             // Navigate to the Login Page if UserId is not available
-            //if (string.IsNullOrEmpty(CurrentUser.UserId))
-            //{
-            //    await Task.Delay(100); // Ensures the navigation stack is ready
-            //    await Navigation.PushModalAsync(new LoginPage());
-            //}
-            await Task.Delay(100); // Ensures the navigation stack is ready
-            await Navigation.PushModalAsync(new LoginPage());
+            if (string.IsNullOrEmpty(CurrentUser.UserId))
+            {
+                await Task.Delay(100); // Ensures the navigation stack is ready
+                await Navigation.PushModalAsync(new LoginPage());
+            }
         }
     }
 }
