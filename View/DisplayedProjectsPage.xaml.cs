@@ -204,7 +204,7 @@ public partial class DisplayedProjectsPage : ContentPage
         string folderName = Folders.First(x => x.Id == folderId).Name;
         string oldFolderName = folderName;
 
-        folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "OK", "Delete", null, -1, null, folderName);
+        folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "Rename", "Delete", null, -1, null, folderName);
         if (folderName == null) // User clicked Delete
         {
             bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
@@ -215,6 +215,7 @@ public partial class DisplayedProjectsPage : ContentPage
                 if (response.IsSuccessStatusCode)
                 {
                     await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                    await LoadFolders();
                 }
                 else
                 {
@@ -226,15 +227,15 @@ public partial class DisplayedProjectsPage : ContentPage
         else if (folderName == oldFolderName)
             return;
 
-        // User renamed folder and clicked OK
-        Folders.First(x => x.Id == folderId).Name = folderName;
-        await LoadFolders();
-
         // Update the folder name in the database
         var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
         if (!updateResponse.IsSuccessStatusCode)
         {
             await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
         }
+
+        // Update Renamed in the Front End
+        Folders.First(x => x.Id == folderId).Name = folderName;
+        await LoadFolders();
     }
 }
