@@ -43,9 +43,9 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Entry x:Name="UsernameEntry" Placeholder="Username" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225"/>
-                        <Entry x:Name="PasswordEntry" Placeholder="Password" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225" IsPassword="True" Grid.Row="1"/>
-                        <Button Text="Login" x:Name="loginButton" BackgroundColor="#2196F3" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" CornerRadius="10" Clicked="LoginButton_Clicked" Grid.Row="2"/>
+                        <Entry x:Name="UsernameEntry" Placeholder="Username" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225"  Margin="10"/>
+                        <Entry x:Name="PasswordEntry" Placeholder="Password" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225" IsPassword="True" Grid.Row="1" Margin="10"/>
+                        <Button Text="Login" x:Name="loginButton" BackgroundColor="#c20000" HeightRequest="50" Margin="10" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" CornerRadius="20" Clicked="LoginButton_Clicked" Grid.Row="2"/>
                     </Grid>
                 </Frame>
             </VerticalStackLayout>
