@@ -200,6 +200,8 @@ public partial class DisplayedProjectsPage : ContentPage
 
     public async void FolderEdit(object sender, EventArgs e)
     {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
         string folderId = (sender as ImageButton).CommandParameter as string;
         string folderName = Folders.First(x => x.Id == folderId).Name;
         string oldFolderName = folderName;
@@ -237,5 +239,7 @@ public partial class DisplayedProjectsPage : ContentPage
         // Update Renamed in the Front End
         Folders.First(x => x.Id == folderId).Name = folderName;
         await LoadFolders();
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
     }
 }
