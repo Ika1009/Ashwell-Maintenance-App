@@ -346,7 +346,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("reasonForWarningNotice", reasonForWarningNotice.Text ?? string.Empty);
         reportData.Add("warningNoticeRefNo", warningNoticeRefNo.Text ?? string.Empty);
         reportData.Add("dateOfLastTightnessTest", dateOfLastTightnessTest.Text ?? string.Empty);
-        reportData.Add("recordTightnessTestResult", recordTightnessTestResult.Text ?? string.Empty);
+        //reportData.Add("recordTightnessTestResult", recordTightnessTestResult.Text ?? string.Empty);  - promenjeno po zahtevu u check-boxes
         reportData.Add("dropRecorded", dropRecorded.Text ?? string.Empty);
         reportData.Add("engineersName", engineersName.Text ?? string.Empty);
         //reportData.Add("engineersSignature", engineersSignature.Text ?? string.Empty);
@@ -538,6 +538,38 @@ public partial class GasRiskAssessmentPage : ContentPage
             DisjunctCheckboxes(checkEmergencyControlsNA, checkEmergencyControlsYes, checkEmergencyControlsNo);
         else
             checkEmergencyControlsNA.Color = Colors.White;
+    }
+
+
+
+    public void CheckRecordTightnessTestResultYesChanged(object sender, EventArgs e)
+    {
+        if (checkRecordTightnessTestResultYes.IsChecked)
+            DisjunctCheckboxes(checkRecordTightnessTestResultYes, checkRecordTightnessTestResultNo, checkRecordTightnessTestResultNA);
+        else
+        {
+            checkRecordTightnessTestResultYes.Color = Colors.White;
+            if (!checkRecordTightnessTestResultNo.IsChecked)
+                DisjunctCheckboxes(checkRecordTightnessTestResultNA, checkRecordTightnessTestResultYes, checkRecordTightnessTestResultNo);
+        }
+    }
+    public void CheckRecordTightnessTestResultNoChanged(object sender, EventArgs e)
+    {
+        if (checkRecordTightnessTestResultNo.IsChecked)
+            DisjunctCheckboxes(checkRecordTightnessTestResultNo, checkRecordTightnessTestResultYes, checkRecordTightnessTestResultNA);
+        else
+        {
+            checkRecordTightnessTestResultNo.Color = Colors.White;
+            if (!checkRecordTightnessTestResultYes.IsChecked)
+                DisjunctCheckboxes(checkRecordTightnessTestResultNA, checkRecordTightnessTestResultYes, checkRecordTightnessTestResultNo);
+        }
+    }
+    public void CheckRecordTightnessTestResultNAChanged(object sender, EventArgs e)
+    {
+        if (checkRecordTightnessTestResultNA.IsChecked || !checkRecordTightnessTestResultYes.IsChecked && !checkRecordTightnessTestResultNo.IsChecked)
+            DisjunctCheckboxes(checkRecordTightnessTestResultNA, checkRecordTightnessTestResultYes, checkRecordTightnessTestResultNo);
+        else
+            checkRecordTightnessTestResultNA.Color = Colors.White;
     }
 
 

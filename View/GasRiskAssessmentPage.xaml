@@ -1903,19 +1903,79 @@
                         </Frame>
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout Spacing="5">
+                    <!--<VerticalStackLayout Spacing="5">
                         <Label Text="Record Tightness Test Result:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="recordTightnessTestResult" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
+                    </VerticalStackLayout>-->
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Record Tightness Test Result:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                            <HorizontalStackLayout>
+                                <CheckBox x:Name="checkRecordTightnessTestResultYes" CheckedChanged="CheckRecordTightnessTestResultYesChanged">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultYes}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Color" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultYes}, Path=IsChecked}" Value="False">
+                                            <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <Label Text="Pass" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <CheckBox x:Name="checkRecordTightnessTestResultNo" CheckedChanged="CheckRecordTightnessTestResultNoChanged">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultNo}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Color" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultNo}, Path=IsChecked}" Value="False">
+                                            <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <Label Text="Fail" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultNo}, Path=IsChecked}" Value="True">
+                                            <Setter Property="TextColor" Value="Red"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultNo}, Path=IsChecked}" Value="False">
+                                            <Setter Property="TextColor" Value="#fff"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <CheckBox x:Name="checkRecordTightnessTestResultNA" CheckedChanged="CheckRecordTightnessTestResultNAChanged" IsChecked="True">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultNA}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Color" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultNA}, Path=IsChecked}" Value="False">
+                                            <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <Label Text="N/A" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                        </FlexLayout>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="5">
                         <Label Text="Drop Recorded (mbar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="dropRecorded" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="dropRecorded" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1963,7 +2023,7 @@
                         <Label Text="Gas Safe Operative ID Number:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="gasSafeOperativeIdNo" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="gasSafeOperativeIdNo" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 

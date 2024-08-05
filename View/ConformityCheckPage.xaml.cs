@@ -13,10 +13,6 @@ public partial class ConformityCheckPage : ContentPage
 	{
 		InitializeComponent();
 
-        checkA_ID1.IsChecked = true;
-        checkA_ID2.IsChecked = true;
-        checkA_ID3.IsChecked = true;
-
         checkFluesFittedNA.IsChecked = true;
         checkFluesSupportedNA.IsChecked = true;
         checkFluesInLineNA.IsChecked = true;
@@ -362,10 +358,14 @@ public partial class ConformityCheckPage : ContentPage
         reportData.Add("nameAndAddressOfPremises", nameAndAddressOfPremises.Text ?? string.Empty);
         reportData.Add("location", location.Text ?? string.Empty);
         reportData.Add("ventilationCalculations", ventilationCalculations.Text ?? string.Empty);
-        reportData.Add("existingHighLevel", existingHighLevel.Text ?? string.Empty);
+        //reportData.Add("existingHighLevel", existingHighLevel.Text ?? string.Empty);
+        //reportData.Add("existingLowLevel", existingLowLevel.Text ?? string.Empty);
+        //reportData.Add("requiredHighLevel", requiredHighLevel.Text ?? string.Empty);
+        //reportData.Add("requiredLowLevel", requiredLowLevel.Text ?? string.Empty);
+        reportData.Add("existingLowLevel", existingHighLevel.Text ?? string.Empty);
         reportData.Add("existingLowLevel", existingLowLevel.Text ?? string.Empty);
         reportData.Add("requiredHighLevel", requiredHighLevel.Text ?? string.Empty);
-        reportData.Add("requiredLowLevel", requiredLowLevel.Text ?? string.Empty);
+        reportData.Add("requiredHighLevel", requiredLowLevel.Text ?? string.Empty);
         reportData.Add("ventilationChecksComments", ventilationChecksComments.Text ?? string.Empty);
         reportData.Add("flueChecksComments", flueChecksComments.Text ?? string.Empty);
         reportData.Add("emergencyStopButtonComment", emergencyStopButtonComment.Text ?? string.Empty);
@@ -382,10 +382,12 @@ public partial class ConformityCheckPage : ContentPage
 
         reportData.Add("checkRemedialToWorkRequiredYes", checkRemedialToWorkRequiredYes.IsChecked.ToString());
         reportData.Add("checkTestsCompletedSatisfactoryYes", checkTestsCompletedSatisfactoryYes.IsChecked.ToString());
-        reportData.Add("checkExistingHighLevelCM", checkExistingHighLevelCM.IsChecked.ToString());
-        reportData.Add("checkExistingLowLevelCM", checkExistingLowLevelCM.IsChecked.ToString());
-        reportData.Add("checkRequiredHighLevelCM", checkRequiredHighLevelCM.IsChecked.ToString());
-        reportData.Add("checkRequiredLowLevelCM", checkRequiredLowLevelCM.IsChecked.ToString());
+        //reportData.Add("checkExistingHighLevelCM", checkExistingHighLevelCM.IsChecked.ToString());
+        //reportData.Add("checkExistingLowLevelCM", checkExistingLowLevelCM.IsChecked.ToString());
+        //reportData.Add("checkRequiredHighLevelCM", checkRequiredHighLevelCM.IsChecked.ToString());
+        //reportData.Add("checkRequiredLowLevelCM", checkRequiredLowLevelCM.IsChecked.ToString());
+        reportData.Add("checkExistingLowLevelCM", checkExistingLevelCM.IsChecked.ToString());
+        reportData.Add("checkRequiredHighLevelCM", checkRequiredLevelCM.IsChecked.ToString());
         reportData.Add("checkVentilationCorrectlySizedYes", checkVentilationCorrectlySizedYes.IsChecked.ToString());
         reportData.Add("checkVentilationAtTheCorrectHeightYes", checkVentilationAtTheCorrectHeightYes.IsChecked.ToString());
         reportData.Add("checkVentilationArrangementsYes", checkVentilationArrangementsYes.IsChecked.ToString());
@@ -925,63 +927,51 @@ public partial class ConformityCheckPage : ContentPage
 
     public void A1(object sender, EventArgs e)
     {
-        if (checkA_ID1.IsChecked || (!checkB_AR1.IsChecked && !checkC_NCS1.IsChecked))
+        if (checkA_ID1.IsChecked)
             DisjunctABC(checkA_ID1, checkB_AR1, checkC_NCS1);
     }
     public void B1(object sender, EventArgs e)
     {
         if (checkB_AR1.IsChecked)
             DisjunctABC(checkB_AR1, checkA_ID1, checkC_NCS1);
-        else if (!checkC_NCS1.IsChecked)
-            DisjunctABC(checkA_ID1, checkB_AR1, checkC_NCS1);
     }
     public void C1(object sender, EventArgs e)
     {
         if (checkC_NCS1.IsChecked)
-            DisjunctABC(checkC_NCS1, checkB_AR1, checkA_ID1);
-        else if (!checkB_AR1.IsChecked)
-            DisjunctABC(checkA_ID1, checkB_AR1, checkC_NCS1);
+            DisjunctABC(checkC_NCS1, checkA_ID1, checkB_AR1);
     }
 
 
     public void A2(object sender, EventArgs e)
     {
-        if (checkA_ID2.IsChecked || (!checkB_AR2.IsChecked && !checkC_NCS2.IsChecked))
+        if (checkA_ID2.IsChecked)
             DisjunctABC(checkA_ID2, checkB_AR2, checkC_NCS2);
     }
     public void B2(object sender, EventArgs e)
     {
         if (checkB_AR2.IsChecked)
             DisjunctABC(checkB_AR2, checkA_ID2, checkC_NCS2);
-        else if (!checkC_NCS2.IsChecked)
-            DisjunctABC(checkA_ID2, checkB_AR2, checkC_NCS2);
     }
     public void C2(object sender, EventArgs e)
     {
         if (checkC_NCS2.IsChecked)
-            DisjunctABC(checkC_NCS2, checkB_AR2, checkA_ID2);
-        else if (!checkB_AR2.IsChecked)
-            DisjunctABC(checkA_ID2, checkB_AR2, checkC_NCS2);
+            DisjunctABC(checkC_NCS2, checkA_ID2, checkB_AR2);
     }
 
 
     public void A3(object sender, EventArgs e)
     {
-        if (checkA_ID3.IsChecked || (!checkB_AR3.IsChecked && !checkC_NCS3.IsChecked))
+        if (checkA_ID3.IsChecked)
             DisjunctABC(checkA_ID3, checkB_AR3, checkC_NCS3);
     }
     public void B3(object sender, EventArgs e)
     {
         if (checkB_AR3.IsChecked)
             DisjunctABC(checkB_AR3, checkA_ID3, checkC_NCS3);
-        else if (!checkC_NCS3.IsChecked)
-            DisjunctABC(checkA_ID3, checkB_AR3, checkC_NCS3);
     }
     public void C3(object sender, EventArgs e)
     {
         if (checkC_NCS3.IsChecked)
-            DisjunctABC(checkC_NCS3, checkB_AR3, checkA_ID3);
-        else if (!checkB_AR3.IsChecked)
-            DisjunctABC(checkA_ID3, checkB_AR3, checkC_NCS3);
+            DisjunctABC(checkC_NCS3, checkA_ID3, checkB_AR3);
     }
 }

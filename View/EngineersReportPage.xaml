@@ -81,7 +81,7 @@
                         <Label Text="SERIAL NUMBER:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="serialNumber" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                            <local:LinelessEntry x:Name="serialNumber" TextColor="#fff" FontSize="16 " FontFamily="SatoshiMedium"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -381,7 +381,7 @@
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkWarningNoticeYes" >
+                                <CheckBox x:Name="checkWarningNoticeYes">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeYes}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />
@@ -403,7 +403,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkWarningNoticeNo">
+                                <CheckBox x:Name="checkWarningNoticeNo" IsChecked="True">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkWarningNoticeNo}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />

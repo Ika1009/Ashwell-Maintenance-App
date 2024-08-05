@@ -234,6 +234,152 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="5">
+                        <Label Text="Existing Level" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                            <HorizontalStackLayout>
+                                <CheckBox x:Name="checkExistingLevelCM" IsChecked="True">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelCM}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Color" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelCM}, Path=IsChecked}" Value="False">
+                                            <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelMH}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelMH}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True"/>
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <Label Text="cm²" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <CheckBox x:Name="checkExistingLevelMH">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelMH}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Color" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelMH}, Path=IsChecked}" Value="False">
+                                            <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelCM}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkExistingLevelCM}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True"/>
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <Label Text="m³/h" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                        </FlexLayout>
+
+                        <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="High Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="existingHighLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                                </Frame>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                <Label Text="Low Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="existingLowLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Required Level" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
+
+                        <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                            <HorizontalStackLayout>
+                                <CheckBox x:Name="checkRequiredLevelCM" IsChecked="True">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRequiredLevelCM}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Color" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRequiredLevelCM}, Path=IsChecked}" Value="False">
+                                            <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckRequiredLevelMH}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckRequiredLevelMH}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True"/>
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <Label Text="cm²" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <CheckBox x:Name="checkcheckRequiredLevelMH">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckRequiredLevelMH}, Path=IsChecked}" Value="True">
+                                            <Setter Property="Color" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkcheckRequiredLevelMH}, Path=IsChecked}" Value="False">
+                                            <Setter Property="Color" Value="#fff" />
+                                        </DataTrigger>
+
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRequiredLevelCM}, Path=IsChecked}" Value="True">
+                                            <Setter Property="IsChecked" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRequiredLevelCM}, Path=IsChecked}" Value="False">
+                                            <Setter Property="IsChecked" Value="True"/>
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <Label Text="m³/h" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                        </FlexLayout>
+
+                        <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="High Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="requiredHighLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                                </Frame>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="5">
+                                <Label Text="Low Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                                <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                    <local:LinelessEntry x:Name="requiredLowLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
+                                </Frame>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <!--<VerticalStackLayout Spacing="5">
                         <Label Text="Existing High Level" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
 
                         <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
@@ -463,7 +609,7 @@
                                 <local:LinelessEntry x:Name="requiredLowLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                             </Frame>
                         </VerticalStackLayout>
-                    </VerticalStackLayout>
+                    </VerticalStackLayout>-->
 
                     <VerticalStackLayout Spacing="5">
                         <Label Text="Is the High and Low Level Ventilation Correctly Sized?" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center"/>
@@ -694,6 +840,13 @@
                             </CheckBox>
                             <Label Text="Category C  ( NCS )" TextColor="#34fc34" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
                         </HorizontalStackLayout>
+
+                        <Label Text="Select the category or leave the checkboxes empty if not applicable."
+                               TextColor="#707070"
+                               FontSize="16 "
+                               FontFamily="SatoshiMedium"
+                               HorizontalTextAlignment="Center"
+                               Margin="0, 10, 0, 0"/>
                     </VerticalStackLayout>
 
                     <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -1180,6 +1333,13 @@
                             </CheckBox>
                             <Label Text="Category C  ( NCS )" TextColor="#34fc34" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
                         </HorizontalStackLayout>
+
+                        <Label Text="Select the category or leave the checkboxes empty if not applicable."
+                               TextColor="#707070"
+                               FontSize="16 "
+                               FontFamily="SatoshiMedium"
+                               HorizontalTextAlignment="Center"
+                               Margin="0, 10, 0, 0"/>
                     </VerticalStackLayout>
 
                     <Frame Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
@@ -1678,6 +1838,13 @@
                             </CheckBox>
                             <Label Text="Category C  ( NCS )" TextColor="#34fc34" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center"/>
                         </HorizontalStackLayout>
+
+                        <Label Text="Select the category or leave the checkboxes empty if not applicable."
+                               TextColor="#707070"
+                               FontSize="16 "
+                               FontFamily="SatoshiMedium"
+                               HorizontalTextAlignment="Center"
+                               Margin="0, 10, 0, 0"/>
                     </VerticalStackLayout>
                 
 

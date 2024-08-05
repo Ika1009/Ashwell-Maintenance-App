@@ -81,7 +81,7 @@
                         <Label Text="Total Heating System Rating (kW):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="totalHeatingSystemRating" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="totalHeatingSystemRating" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -97,7 +97,7 @@
                         <Label Text="Flow Temperature (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="flowTemperature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="flowTemperature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -105,7 +105,7 @@
                         <Label Text="Return Temperature (°C):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="returnTemperature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="returnTemperature" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -113,7 +113,7 @@
                         <Label Text="Current Working Pressure (Bar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="currentWorkingPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="currentWorkingPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -121,7 +121,7 @@
                         <Label Text="Safety Valve Setting (Bar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="safetyValveSetting" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="safetyValveSetting" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -157,7 +157,7 @@
                         <Label Text="Expansion Vessel Size (Litres):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="expansionVesselSize" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="expansionVesselSize" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -179,7 +179,7 @@
                         <Label Text="Set Fill Pressure (Bar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="setFillPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="setFillPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -187,7 +187,7 @@
                         <Label Text="Rated Expension Vessel Charage (Bar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="ratedExpensionVesselCharge" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="ratedExpensionVesselCharge" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -195,7 +195,7 @@
                         <Label Text="High Pressure Switch Setting (Bar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="highPressureSwitchSetting" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="highPressureSwitchSetting" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -203,7 +203,7 @@
                         <Label Text="Low Pressure Switch Setting (Bar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="lowPressureSwitchSetting" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="lowPressureSwitchSetting" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -211,7 +211,7 @@
                         <Label Text="Final System Pressure (Bar):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="finalSystemPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="finalSystemPressure" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 

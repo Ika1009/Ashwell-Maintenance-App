@@ -80,7 +80,7 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="5">
-                        <Label Text="Name of Premices:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+                        <Label Text="Name of Premises:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
                             <local:LinelessEntry x:Name="nameOfPremises" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
@@ -682,7 +682,7 @@
                                 <Label Text="High Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                                 <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                    <local:LinelessEntry x:Name="freeAirExistingHighLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                    <local:LinelessEntry x:Name="freeAirExistingHighLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                                 </Frame>
                             </VerticalStackLayout>
 
@@ -690,7 +690,7 @@
                                 <Label Text="Low Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                                 <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                    <local:LinelessEntry x:Name="freeAirExistingLowLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                    <local:LinelessEntry x:Name="freeAirExistingLowLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                                 </Frame>
                             </VerticalStackLayout>
                         </Grid>
@@ -755,7 +755,7 @@
                                 <Label Text="High Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                                 <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                    <local:LinelessEntry x:Name="freeAirRequiredHighLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                    <local:LinelessEntry x:Name="freeAirRequiredHighLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                                 </Frame>
                             </VerticalStackLayout>
 
@@ -763,7 +763,7 @@
                                 <Label Text="Low Level:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                                 <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                                    <local:LinelessEntry x:Name="freeAirRequiredLowLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                                    <local:LinelessEntry x:Name="freeAirRequiredLowLevel" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                                 </Frame>
                             </VerticalStackLayout>
                         </Grid>
@@ -1363,7 +1363,7 @@
                         <Label Text="Plant Gas Installation Volume (m³):" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="plantGasInstallationVolume" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessEntry x:Name="plantGasInstallationVolume" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Keyboard="Numeric"/>
                         </Frame>
                     </VerticalStackLayout>
 

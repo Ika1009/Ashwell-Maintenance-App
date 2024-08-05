@@ -234,7 +234,7 @@ public partial class ServiceRecordPage : ContentPage
             ServiceRecordBackBtt.IsEnabled = false;
             Navigation.PopModalAsync();
         }
-        else if (SRSection2.IsVisible == true)
+        else if (SRSection2.IsVisible)
         {
             SRSection2.IsVisible = false;
 
@@ -242,7 +242,7 @@ public partial class ServiceRecordPage : ContentPage
                 SRSection1.ScrollToAsync(0, 0, false);
             SRSection1.IsVisible = true;
         }
-        else if (SRSection3.IsVisible == true)
+        else if (SRSection3.IsVisible)
         {
             SRSection3.IsVisible = false;
 
@@ -250,13 +250,28 @@ public partial class ServiceRecordPage : ContentPage
                 SRSection2.ScrollToAsync(0, 0, false);
             SRSection2.IsVisible = true;
         }
+        else if (SRSection4.IsVisible) {
+            SRSection4.IsVisible = false;
+
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                SRSection3.ScrollToAsync(0, 0, false);
+            SRSection3.IsVisible = true;
+        }
+        else if (SRSection5.IsVisible)
+        {
+            SRSection5.IsVisible = false;
+
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                SRSection4.ScrollToAsync(0, 0, false);
+            SRSection4.IsVisible = true;
+        }
         else
         {
             FolderSection.IsVisible = false;
 
             if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
-                SRSection3.ScrollToAsync(0, 0, false);
-            SRSection3.IsVisible = true;
+                SRSection5.ScrollToAsync(0, 0, false);
+            SRSection5.IsVisible = true;
 
             FolderSection.IsVisible = false;
             folderSearch.IsVisible = false;
@@ -282,13 +297,30 @@ public partial class ServiceRecordPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await SRSection3.ScrollToAsync(0, 0, false);
         SRSection3.IsVisible = true;
-        await LoadFolders();
     }
 
     
     public async void ServiceRecordNext3(object sender, EventArgs e)
     {
         SRSection3.IsVisible = false;
+
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await SRSection4.ScrollToAsync(0, 0, false);
+        SRSection4.IsVisible = true;
+    }
+
+    public async void ServiceRecordNext4(object sender, EventArgs e)
+    {
+        SRSection4.IsVisible = false;
+
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await SRSection5.ScrollToAsync(0, 0, false);
+        SRSection5.IsVisible = true;
+    }
+
+    public async void ServiceRecordNext5(object sender, EventArgs e)
+    {
+        SRSection5.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await FolderSection.ScrollToAsync(0, 0, false);
@@ -301,6 +333,7 @@ public partial class ServiceRecordPage : ContentPage
         GatherReportData();
         //await PdfCreation.ServiceRecord(reportData, Array.Empty<byte>(), Array.Empty<byte>());
         //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
+        await LoadFolders();
     }
     private void GatherReportData()
     {
@@ -365,7 +398,7 @@ public partial class ServiceRecordPage : ContentPage
             { "flameFailureDeviceSatisfactoryNA", checkFlameFailureDeviceNA.IsChecked.ToString() },
             { "flameFailureDeviceComments", flameFailureDeviceComment.Text ?? string.Empty },
             { "systemBoilerControlsSatisfactory", checkSystemBoilerControls.IsChecked.ToString() },
-            { "systemBoilerControlsSatisfactoryNA", checkSystemBolierControlsNA.IsChecked.ToString() },
+            { "systemBoilerControlsSatisfactoryNA", checkSystemBoilerControlsNA.IsChecked.ToString() },
             { "systemBoilerControlsComments", systemBoilerControlsComment.Text ?? string.Empty },
             { "boilerCasingSatisfactory", checkBoilerCasing.IsChecked.ToString() },
             { "boilerCasingSatisfactoryNA", checkBoilerCasingNA.IsChecked.ToString() },
