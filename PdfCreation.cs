@@ -155,6 +155,7 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["reasonForWarningNotice"], font, XBrushes.Black, new XRect(370, 614, 185, 4), XStringFormats.Center);//warning noter
             gfx.DrawString(dic["warningNoticeRefNo"], font, XBrushes.Black, new XRect(357, 629, 197, 4), XStringFormats.Center);//warnig noter reff number
             gfx.DrawString(dic["dateOfLastTightnessTest"], font, XBrushes.Black, new XRect(370, 644, 185, 4), XStringFormats.Center);//date last tightness
+            //Treba se promeniti u Yes/No/Na /Primedba
             gfx.DrawString(dic["recordTightnessTestResult"], font, XBrushes.Black, new XRect(373, 660, 68, 4), XStringFormats.Center);//tightness true result
             gfx.DrawString(dic["dropRecorded"], font, XBrushes.Black, new XRect(506, 660, 49, 4), XStringFormats.Center);//drop recorded
 
@@ -1801,6 +1802,8 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["badgedInput"], font, XBrushes.Black, new XRect(214, 263, 255 - 214, 10), XStringFormats.Center);
             gfx.DrawString(dic["badgedOutput"], font, XBrushes.Black, new XRect(320, 263, 362 - 320, 10), XStringFormats.Center);
             double y = 307;
+            //Primedba
+            //gfx.DrawString(dic["secs"], font, XBrushes.Black, new XRect(198, 427, 227 - 198, 13), XStringFormats.Center);
             //apliance component checklist
             List<string> componentBooleans1 = new List<string>
             {
