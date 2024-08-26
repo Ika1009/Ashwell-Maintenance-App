@@ -469,6 +469,26 @@ public partial class OneBPage : ContentPage
         return reportData;
     }
 
+
+    private void TotalVolumeLimit(bool full)
+    {
+        if (full && double.Parse(totalVolumeForTesting.Text) > 0.035)
+        {
+            totalVolumeExceeded.IsVisible = true;
+            OneBNext_First.IsEnabled = false;
+            OneBNext_First.TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#707070");
+            OneBNext_First.BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#222225");
+        }
+        else
+        {
+            totalVolumeExceeded.IsVisible = false;
+            OneBNext_First.IsEnabled = true;
+            OneBNext_First.TextColor = Colors.White;
+            OneBNext_First.BackgroundColor = Colors.Red;
+        }
+    }
+
+
     private void UpdateTotalPipeworkVolume(Label total, Picker quantificator, double k)
     {
         pipeworkVolumeNumber = Math.Round(Int64.Parse(quantificator.SelectedItem.ToString()) * k, 5);
@@ -479,7 +499,10 @@ public partial class OneBPage : ContentPage
         pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
         if (meterVolume.Text != null)
+        {
             totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+            TotalVolumeLimit(true);
+        }
     }
     private void SubtractTotalPipeworkVolume()
     {
@@ -490,6 +513,8 @@ public partial class OneBPage : ContentPage
             totalPipeworkVolume.Text = null;
             pipeworkFittingsIV.Text = null;
             totalVolumeForTesting.Text = null;
+
+            TotalVolumeLimit(false);
         }
         else
         {
@@ -498,7 +523,10 @@ public partial class OneBPage : ContentPage
             pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
             if (meterVolume.Text != null)
+            {
                 totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+                TotalVolumeLimit(true);
+            }
         }
     }
     public void meterVolumePicker_IndexChanged(object sender, EventArgs e)
@@ -514,7 +542,10 @@ public partial class OneBPage : ContentPage
             }
 
             if (pipeworkFittingsIV.Text != null)
+            {
                 totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+                TotalVolumeLimit(true);
+            }
         }
         else
         {
@@ -526,6 +557,8 @@ public partial class OneBPage : ContentPage
         meterVolume.Text = null;
         totalVolumeForTesting.Text = null;
         meterVolumePicker.SelectedIndex = -1;
+
+        TotalVolumeLimit(false);
     }
     public void testMediumPicker_IndexChanged(object sender, EventArgs e)
     {

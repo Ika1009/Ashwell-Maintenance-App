@@ -20,7 +20,7 @@ public partial class OnePage : ContentPage
         checkAreaA.IsChecked = true;
 
         List<Int64> numbers = new List<Int64>();
-        for (Int64 i = 1; i <= 88; i++)
+        for (Int64 i = 1; i <= 1000; i++)
             numbers.Add(i);
 
         steel1.ItemsSource = numbers;
@@ -349,8 +349,19 @@ public partial class OnePage : ContentPage
             await OSection3.ScrollToAsync(0, 0, false);
         OSection3.IsVisible = true;
     }
-    
-    public async void ONext3(object sender, EventArgs e)
+
+    public async void OSkip2(object sender, EventArgs e)
+    {
+        OSection2.IsVisible = false;
+
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await OSection3.ScrollToAsync(0, 0, false);
+        OSection3.IsVisible = true;
+
+        // ...
+    }
+
+    private async void ONext3()
     {
         OSection3.IsVisible = false;
 
@@ -375,6 +386,17 @@ public partial class OnePage : ContentPage
             stabilisationDuration.Text = null;
             testDuration.Text = null;
         }
+    }
+
+    public void ONext3(object sender, EventArgs e)
+    {
+        ONext3();
+    }
+
+    public void OSkip3(object sender, EventArgs e)
+    {
+        ONext3();
+        // ...
     }
     
     public async void ONext4(object sender, EventArgs e)
@@ -888,7 +910,7 @@ public partial class OnePage : ContentPage
         totalPipeworkVolume.Text = Math.Round(totalPipeworkVolumeNumber, 5).ToString();
         pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
-        if (meterVolume.Text != null && meterVolume.Text != "0.079d2L*")
+        if (meterVolume.Text != null && meterVolume.Text != "" && meterVolume.Text != "." && meterVolume.Text != "-")
             totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
     }
     private void SubtractTotalPipeworkVolume()
@@ -907,7 +929,7 @@ public partial class OnePage : ContentPage
             totalPipeworkVolume.Text = subtract.ToString();
             pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
-            if (meterVolume.Text != null)
+            if (meterVolume.Text != null && meterVolume.Text != "" && meterVolume.Text != "." && meterVolume.Text != "-")
                 totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
         }
     }
@@ -1022,7 +1044,7 @@ public partial class OnePage : ContentPage
     //}
 
 
-    public void meterVolumePicker_IndexChanged(object sender, EventArgs e)
+    public async void meterVolumePicker_IndexChanged(object sender, EventArgs e)
     {
         if (meterVolumePicker.SelectedIndex != -1)
         {
@@ -1037,12 +1059,21 @@ public partial class OnePage : ContentPage
                 case "U65": meterVolume.Text = "0.1"; break;
                 case "U100": meterVolume.Text = "0.182"; break;
                 case "U160": meterVolume.Text = "0.304"; break;
-                case "RD or Turbine": meterVolume.Text = "0.079d2L*"; break;
+                //case "RD or Turbine": meterVolume.Text = "0.079d2L*"; break;
                 case "Ultrasonic": meterVolume.Text = "0.0024"; break;
+                case "Custom": meterVolume.Text = await DisplayPromptAsync("Meter Volume", "Enter the custom value:", keyboard: Keyboard.Numeric); break;
             }
 
-            if (meterVolume.Text != "0.079d2L*" && pipeworkFittingsIV.Text != null)
-                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 5).ToString();
+            if (meterVolume.Text != null && meterVolume.Text != "" && meterVolume.Text != "-" && meterVolume.Text != "." && double.Parse(meterVolume.Text) > 0)
+            {
+                if (pipeworkFittingsIV.Text != null)
+                    totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+            }
+            else
+            {
+                meterVolume.Text = null;
+                meterVolumePicker_Delete();
+            }
         }
         else
         {
@@ -1050,6 +1081,12 @@ public partial class OnePage : ContentPage
         }
     }
     public void meterVolumePicker_Delete(object sender, EventArgs e)
+    {
+        meterVolume.Text = null;
+        totalVolumeForTesting.Text = null;
+        meterVolumePicker.SelectedIndex = -1;
+    }
+    private void meterVolumePicker_Delete()
     {
         meterVolume.Text = null;
         totalVolumeForTesting.Text = null;
@@ -1099,11 +1136,16 @@ public partial class OnePage : ContentPage
             testMediumPicker_x.IsVisible = true;
             testMediumPicker_delete.IsVisible = true;
 
-            if (testMediumPicker.SelectedItem.ToString() == "Natural Gas")
-                testMediumFactor.Text = "42";
 
-            else
-                testMediumFactor.Text = "67";
+            switch (testMediumPicker.SelectedItem.ToString())
+            {
+                case "Natural Gas": testMediumFactor.Text = "42"; break;
+                case "Air/Nitrogen": testMediumFactor.Text = "67"; break;
+                case "P - Fuel Gas": testMediumFactor.Text = "102"; break;
+                case "P - Air": testMediumFactor.Text = "221"; break;
+                case "B - Fuel Gas": testMediumFactor.Text = "128"; break;
+                case "B - Air": testMediumFactor.Text = "305"; break;
+            }
         }
         else
         {

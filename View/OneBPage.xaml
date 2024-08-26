@@ -404,7 +404,16 @@
                         <BoxView Color="#222225"/>
                     </Frame>
 
-                    <Button Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneBNext1"/>
+                    <Label x:Name="totalVolumeExceeded"
+                           Text="The installation volume has exceeded the scope for this test, please use IGEM/UP/1A."
+                           TextColor="Red"
+                           FontSize="16"
+                           FontFamily="SatoshiMedium"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           IsVisible="False"/>
+
+                    <Button x:Name="OneBNext_First" Text="Next" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" HeightRequest="70" WidthRequest="250" BackgroundColor="#c20000" CornerRadius="40" Margin="0, 0, 0, 100" Clicked="OneBNext1"/>
                 </VerticalStackLayout>
             </ScrollView>
 

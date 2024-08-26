@@ -17,7 +17,7 @@ public partial class OneAPage : ContentPage
         InitializeComponent();
 
         List<Int64> numbers = new List<Int64>();
-        for (Int64 i = 1; i <= 88; i++)
+        for (Int64 i = 1; i <= 1000; i++)
             numbers.Add(i);
 
         steel1.ItemsSource = numbers;
@@ -265,6 +265,24 @@ public partial class OneAPage : ContentPage
 
     }
 
+    private void TotalVolumeLimit(bool full)
+    {
+        if (full && double.Parse(totalVolumeForTesting.Text) > 1.0000001)
+        {
+            totalVolumeExceeded.IsVisible = true;
+            OneANext_First.IsEnabled = false;
+            OneANext_First.TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#707070");
+            OneANext_First.BackgroundColor = Microsoft.Maui.Graphics.Color.FromArgb("#222225");
+        }
+        else
+        {
+            totalVolumeExceeded.IsVisible = false;
+            OneANext_First.IsEnabled = true;
+            OneANext_First.TextColor = Colors.White;
+            OneANext_First.BackgroundColor = Colors.Red;
+        }
+    }
+
     public async void OneABack(object sender, EventArgs e)
     {
         if (OASection1.IsVisible)
@@ -334,8 +352,19 @@ public partial class OneAPage : ContentPage
             await OASection3.ScrollToAsync(0, 0, false);
         OASection3.IsVisible = true;
     }
-    
-    public async void OneANext3(object sender, EventArgs e)
+
+    public async void OneASkip2(object sender, EventArgs e)
+    {
+        OASection2.IsVisible = false;
+
+        if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+            await OASection3.ScrollToAsync(0, 0, false);
+        OASection3.IsVisible = true;
+
+        // ...
+    }
+
+    private async void OneANext3()
     {
         if (totalVolumeForTesting.Text != null && testMediumPicker.SelectedIndex != -1 && installationPicker.SelectedIndex != -1)
         {
@@ -464,6 +493,17 @@ public partial class OneAPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection4.ScrollToAsync(0, 0, false);
         OASection4.IsVisible = true;
+    }
+
+    public void OneANext3(object sender, EventArgs e)
+    {
+        OneANext3();
+    }
+
+    public void OneASkip3(object sender, EventArgs e)
+    {
+        OneANext3();
+        // ...
     }
     
     public async void OneANext4(object sender, EventArgs e)
@@ -765,8 +805,11 @@ public partial class OneAPage : ContentPage
         totalPipeworkVolume.Text = Math.Round(totalPipeworkVolumeNumber, 5).ToString();
         pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
-        if (meterVolume.Text != null && meterVolume.Text != "0.079d2L*")
+        if (meterVolume.Text != null && meterVolume.Text != "" && meterVolume.Text != "-" && meterVolume.Text != "." && double.Parse(meterVolume.Text) > 0/* && meterVolume.Text != "0.079d2L*"*/)
+        {
             totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+            TotalVolumeLimit(true);
+        }
     }
     private void SubtractTotalPipeworkVolume()
     {
@@ -777,6 +820,7 @@ public partial class OneAPage : ContentPage
             totalPipeworkVolume.Text = null;
             pipeworkFittingsIV.Text = null;
             totalVolumeForTesting.Text = null;
+            TotalVolumeLimit(false);
         }
         else
         {
@@ -784,11 +828,14 @@ public partial class OneAPage : ContentPage
             totalPipeworkVolume.Text = subtract.ToString();
             pipeworkFittingsIV.Text = Math.Round(totalPipeworkVolumeNumber + totalPipeworkVolumeNumber * 0.1, 7).ToString();
 
-            if (meterVolume.Text != null)
+            if (meterVolume.Text != null && meterVolume.Text != "" && meterVolume.Text != "." && meterVolume.Text != "-")
+            {
                 totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+                TotalVolumeLimit(true);
+            }
         }
     }
-    public void meterVolumePicker_IndexChanged(object sender, EventArgs e)
+    public async void meterVolumePicker_IndexChanged(object sender, EventArgs e)
     {
         if (meterVolumePicker.SelectedIndex != -1)
         {
@@ -803,12 +850,24 @@ public partial class OneAPage : ContentPage
                 case "U65": meterVolume.Text = "0.1"; break;
                 case "U100": meterVolume.Text = "0.182"; break;
                 case "U160": meterVolume.Text = "0.304"; break;
-                case "RD or Turbine": meterVolume.Text = "0.079d2L*"; break;
+                //case "RD or Turbine": meterVolume.Text = "0.079d2L*"; break;
                 case "Ultrasonic": meterVolume.Text = "0.0024"; break;
+                case "Custom": meterVolume.Text = await DisplayPromptAsync("Meter Volume" ,"Enter the custom value:", keyboard: Keyboard.Numeric); break;
             }
 
-            if (meterVolume.Text != "0.079d2L*" && pipeworkFittingsIV.Text != null)
-                totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+            if (meterVolume.Text != null && meterVolume.Text != "" && meterVolume.Text != "-" && meterVolume.Text != "." && double.Parse(meterVolume.Text) > 0)
+            {
+                if (pipeworkFittingsIV.Text != null)
+                {
+                    totalVolumeForTesting.Text = Math.Round(double.Parse(pipeworkFittingsIV.Text) + double.Parse(meterVolume.Text), 3).ToString();
+                    TotalVolumeLimit(true);
+                }
+            }
+            else
+            {
+                meterVolume.Text = null;
+                meterVolumePicker_Delete();
+            }
         }
         else
         {
@@ -819,6 +878,15 @@ public partial class OneAPage : ContentPage
     {
         meterVolume.Text = null;
         totalVolumeForTesting.Text = null;
+        TotalVolumeLimit(false);
+        meterVolumePicker.SelectedIndex = -1;
+    }
+
+    private void meterVolumePicker_Delete()
+    {
+        meterVolume.Text = null;
+        totalVolumeForTesting.Text = null;
+        TotalVolumeLimit(false);
         meterVolumePicker.SelectedIndex = -1;
     }
 
