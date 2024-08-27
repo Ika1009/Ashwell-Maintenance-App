@@ -346,6 +346,19 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("reasonForWarningNotice", reasonForWarningNotice.Text ?? string.Empty);
         reportData.Add("warningNoticeRefNo", warningNoticeRefNo.Text ?? string.Empty);
         reportData.Add("dateOfLastTightnessTest", dateOfLastTightnessTest.Text ?? string.Empty);
+        if (checkRecordTightnessTestResultYes.IsChecked)
+        {
+            reportData.Add("recordTightnessTestResult", "Pass");
+        }
+        if (checkRecordTightnessTestResultNo.IsChecked)
+        {
+            reportData.Add("recordTightnessTestResult", "Fail");
+        }
+        if (checkRecordTightnessTestResultNA.IsChecked)
+        {
+            reportData.Add("recordTightnessTestResult", "N/A");
+        }
+
         //reportData.Add("recordTightnessTestResult", recordTightnessTestResult.Text ?? string.Empty);  - promenjeno po zahtevu u check-boxes
         reportData.Add("dropRecorded", dropRecorded.Text ?? string.Empty);
         reportData.Add("engineersName", engineersName.Text ?? string.Empty);
