@@ -1809,6 +1809,14 @@
                                 <local:LinelessEntry x:Name="stateApplianceCondition" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
                             </Frame>
                         </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Remarks / Comments:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
+
+                            <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
+                                <local:LinelessEntry x:Name="stateApplianceConditionComment" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            </Frame>
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
 
                     <Frame Grid.Row="2" Padding="0" MinimumHeightRequest="0" HeightRequest="5" BorderColor="Transparent" CornerRadius="100">
