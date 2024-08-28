@@ -349,7 +349,7 @@ public partial class OnePage : ContentPage
             await OSection3.ScrollToAsync(0, 0, false);
         OSection3.IsVisible = true;
     }
-
+    public int oskip22 = 0; public int oskip33 = 0;
     public async void OSkip2(object sender, EventArgs e)
     {
         OSection2.IsVisible = false;
@@ -357,7 +357,7 @@ public partial class OnePage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OSection3.ScrollToAsync(0, 0, false);
         OSection3.IsVisible = true;
-
+        oskip22 = 1;
         // ...
     }
 
@@ -396,6 +396,7 @@ public partial class OnePage : ContentPage
     public void OSkip3(object sender, EventArgs e)
     {
         ONext3();
+    oskip33 = 1;
         // ...
     }
     
@@ -722,6 +723,32 @@ public partial class OnePage : ContentPage
         //    reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
         //else
         //    reportData.Add("testPassedOrFailed", string.Empty);
+
+        if (oskip22 == 1)
+        {
+            reportData["testMediumPicker"] = "N/A";
+            reportData["installationPicker"] = "N/A";
+            reportData["testMediumFactor"] = "N/A";
+            reportData["checkMeterBypassYes"] = "N/A";
+            reportData["testGaugeUsed"] = "N/A";
+            reportData["checkIsWeatherTemperatureStableYes"] = "N/A";
+            reportData["tightnessTestPressure"] = "N/A";
+            reportData["gaugeReadableMovement"] = "N/A";
+            reportData["maximumPermittedLeakRate"] = "N/A";
+            reportData["checkBarometricPressureCorrectionYes"] = "N/A";
+         
+        }
+        if (oskip33 == 1)
+        {
+            reportData["strengthTestPressure"] = "N/A";
+            reportData["checkComponentsRemovedBypassedYes"] = "N/A";
+            reportData["stabilisationPeriod"] = "N/A";
+            reportData["strenghtTestDuration"] = "N/A";
+            reportData["permittedPressureDrop"] = "N/A";
+            reportData["actualPressureDrop"] = "N/A";
+            reportData["testPassedOrFailed"] = "N/A";
+       
+        }
 
         return reportData;
     }
