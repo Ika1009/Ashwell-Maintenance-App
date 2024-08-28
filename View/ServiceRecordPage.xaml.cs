@@ -450,7 +450,7 @@ public partial class ServiceRecordPage : ContentPage
             { "plantroomGasTightnessTestNA", checkPlantroomGasTightnessTestNA.IsChecked.ToString() },
             { "plantroomGasTightnessTestComments", plantroomGasTightnessTestComment.Text ?? string.Empty },
             { "stateApplianceCondition", stateApplianceCondition.Text ?? string.Empty },
-         //   { "stateApplianceConditionComments", stateApplianceConditionComment.Text ?? string.Empty },
+            { "stateApplianceConditionComments", stateApplianceConditionComment.Text ?? string.Empty },
             { "HighFireCO2", highFireCO2.Text ?? string.Empty },
             { "HighFireCO", highFireCO.Text ?? string.Empty },
             { "HighFireO2", highFireO2.Text ?? string.Empty },

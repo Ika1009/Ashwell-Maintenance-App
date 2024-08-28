@@ -352,7 +352,8 @@ public partial class OneAPage : ContentPage
             await OASection3.ScrollToAsync(0, 0, false);
         OASection3.IsVisible = true;
     }
-
+    public int skip2 = 0;
+    public int skip3 = 0;
     public async void OneASkip2(object sender, EventArgs e)
     {
         OASection2.IsVisible = false;
@@ -360,7 +361,7 @@ public partial class OneAPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection3.ScrollToAsync(0, 0, false);
         OASection3.IsVisible = true;
-
+        skip2 = 1; 
         // ...
     }
 
@@ -503,6 +504,7 @@ public partial class OneAPage : ContentPage
     public void OneASkip3(object sender, EventArgs e)
     {
         OneANext3();
+        skip3 = 1;
         // ...
     }
     
@@ -724,7 +726,7 @@ public partial class OneAPage : ContentPage
             reportData.Add("meterVolumePicker", (meterVolumePicker.SelectedItem).ToString());
         else
             reportData.Add("meterVolumePicker", string.Empty);
-
+        //HEREEE
         if (testMediumPicker.SelectedIndex != -1)
             reportData.Add("testMediumPicker", (testMediumPicker.SelectedItem).ToString());
         else
@@ -761,7 +763,7 @@ public partial class OneAPage : ContentPage
         if (checkInadequateVentilationYes.IsChecked)
             reportData.Add("checkInadequateVentilationYes", "yes");
         else reportData.Add("checkInadequateVentilationYes", "no");
-
+        //till hereee
         reportData.Add("strengthTestPressure", strengthTestPressure.Text ?? string.Empty);
         //checkComponentsRemovedBypassedYes
         if (checkComponentsRemovedBypassedYes.IsChecked)
@@ -791,7 +793,30 @@ public partial class OneAPage : ContentPage
         reportData.Add("cardNumber", cardNumber.Text ?? string.Empty);
         reportData.Add("clientsName", clientsName.Text ?? string.Empty);
         reportData.Add("WarningNoticeRefNo", WarningNoticeRefNo.Text ?? string.Empty);
-   
+        if (skip2==1)
+        {
+            reportData["testMediumPicker"] = "N/A";
+            reportData["installationPicker"] = "N/A";
+            reportData["checkIsWeatherTemperatureStableYes"] = "N/A";
+            reportData["checkMeterBypassYes"] = "N/A";
+            reportData["testGaugeUsed"] = "N/A";
+            reportData["tightnessTestPressure"] = "N/A";
+            reportData["roomVolumeOfSmallestOccupiedSpace"] = "N/A";
+            reportData["maximumAllowablePressureDrop"] = "N/A";
+            reportData["checkInadequateVentilationYes"] = "N/A";
+            
+        }
+        if (skip3 == 1)
+        {
+            reportData["strengthTestPressure"] = "N/A";
+            reportData["checkComponentsRemovedBypassedYes"] = "N/A";
+            reportData["stabilisationPeriod"] = "N/A";
+            reportData["strenghtTestDuration"] = "N/A";
+            reportData["permittedPressureDrop"] = "N/A";
+            reportData["actualPressureDrop"] = "N/A";
+            reportData["checkTestPassedOrFailedPass"] = "N/A";
+        }
+
 
         return reportData;
     }
