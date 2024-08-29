@@ -28,8 +28,25 @@
                     </Frame>
                 </VerticalStackLayout>
             </Grid>
-        </Grid>
 
-        <Label Text="Settings Page Not Yet Added." TextColor="#707070" FontSize="16" FontFamily="SatoshiMedium" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <VerticalStackLayout Grid.Row="1" Padding="0, 30">
+                <Frame BackgroundColor="#222225" CornerRadius="40" BorderColor="Transparent" Padding="0">
+                    <Grid>
+                        <Grid ColumnSpacing="10" Padding="25, 15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Log Out" TextColor="#fff" FontSize="15" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <Image Grid.Column="1" Source="logout.png" HeightRequest="30"/>
+                        </Grid>
+
+                        <Button x:Name="PUR" Grid.ColumnSpan="3" BackgroundColor="Transparent" MinimumHeightRequest="0" Clicked="LogOut"/>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>

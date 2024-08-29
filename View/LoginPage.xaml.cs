@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Core.Platform;
+
 namespace Ashwell_Maintenance.View;
 
 public partial class LoginPage : ContentPage
@@ -24,8 +26,10 @@ public partial class LoginPage : ContentPage
 
         if (loginSuccess)
         {
-            await DisplayAlert("Success", "Login successful!", "OK");
-            await Navigation.PopModalAsync();
+            //await DisplayAlert("Success", "Login successful!", "OK");
+            if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
+                StatusBar.SetColor(Color.FromArgb("#141414"));
+            await Navigation.PopModalAsync(false);
         }
         else
         {

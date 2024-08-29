@@ -6,4 +6,10 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	public async void LogOut(object sender, EventArgs e)
+	{
+		CurrentUser.Clear();
+		await Navigation.PushModalAsync(new LoginPage(), false);
+	}
 }

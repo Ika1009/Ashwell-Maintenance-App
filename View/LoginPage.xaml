@@ -4,53 +4,63 @@
              x:Class="Ashwell_Maintenance.View.LoginPage"
              Title="Login"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:local="clr-namespace:Ashwell_Maintenance.Customs"
              Shell.NavBarIsVisible="False"
              BackgroundColor="#141414">
     
     <ContentPage.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="#141414" StatusBarStyle="LightContent"/>
+        <mct:StatusBarBehavior StatusBarColor="#850a0a" StatusBarStyle="LightContent"/>
     </ContentPage.Behaviors>
-    
-    <Grid Padding="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
 
-        <Grid RowSpacing="10" Margin="0, 30, 0, 0">
-            <Grid.RowDefinitions>
+    <Grid>
+        <BoxView Color="Transparent" HeightRequest="400" VerticalOptions="Start" IsEnabled="False">
+            <BoxView.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#79ff0000" Offset="0" />
+                    <GradientStop Color="Transparent" Offset="1" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+        
+        <Grid Padding="40, 0">
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="5"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Image Source="engineers_report.png" WidthRequest="60" HorizontalOptions="Center"/>
+            <Grid RowSpacing="10" Margin="0, 30, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
 
-            <Label Grid.Row="1" Text="Login" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+                <Image Source="engineers_report.png" WidthRequest="60" HorizontalOptions="Center"/>
 
-            <Frame Grid.Row="2" Padding="0" BorderColor="Transparent" CornerRadius="100">
-                <BoxView Color="#222225"/>
+                <Label Grid.Row="1" Text="Login" TextColor="#fff" FontSize="24" FontFamily="SatoshiMedium" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+
+                <Frame Grid.Row="2" Padding="0" BorderColor="Transparent" CornerRadius="100">
+                    <BoxView Color="#222225"/>
+                </Frame>
+            </Grid>-->
+
+            <Frame BackgroundColor="#222225" CornerRadius="15" BorderColor="Transparent" Padding="25, 40" VerticalOptions="Center">
+                <VerticalStackLayout Spacing="20">
+                    <Image Source="logo.png" Margin="0, 0, 0, 20"/>
+
+                    <Frame Padding="20, 5" BackgroundColor="#222225" BorderColor="#707070" CornerRadius="100">
+                        <local:LinelessEntry x:Name="UsernameEntry" Placeholder="Username" TextColor="#fff" PlaceholderColor="#707070" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <Frame Padding="20, 5" BackgroundColor="#222225" BorderColor="#707070" CornerRadius="100">
+                        <Entry x:Name="PasswordEntry" Placeholder="Password" TextColor="#fff" PlaceholderColor="#707070" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="Transparent" IsPassword="True"/>
+                    </Frame>
+
+                    <Button Text="Login" x:Name="loginButton" BackgroundColor="#c20000" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" CornerRadius="100" Padding="0, 15" Margin="0, 20, 0, 0" Clicked="LoginButton_Clicked"/>
+                </VerticalStackLayout>
             </Frame>
         </Grid>
 
-        <Grid Grid.Row="1" Padding="0, -60, 0, 0">
-            <VerticalStackLayout Spacing="20" VerticalOptions="Center">
-                <Frame BackgroundColor="#222225" CornerRadius="20" BorderColor="Transparent" Padding="20">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <Entry x:Name="UsernameEntry" Placeholder="Username" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225"  Margin="10"/>
-                        <Entry x:Name="PasswordEntry" Placeholder="Password" TextColor="#fff" PlaceholderColor="#84949c" FontSize="18" FontFamily="SatoshiMedium" BackgroundColor="#222225" IsPassword="True" Grid.Row="1" Margin="10"/>
-                        <Button Text="Login" x:Name="loginButton" BackgroundColor="#c20000" HeightRequest="50" Margin="10" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" CornerRadius="20" Clicked="LoginButton_Clicked" Grid.Row="2"/>
-                    </Grid>
-                </Frame>
-            </VerticalStackLayout>
-        </Grid>
-        
         <ActivityIndicator x:Name="loadingBG" IsRunning="False" Color="Transparent" BackgroundColor="#80000000">
             <ActivityIndicator.IsVisible>
                 <OnPlatform x:TypeArguments="x:Boolean">
