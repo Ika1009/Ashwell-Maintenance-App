@@ -209,7 +209,7 @@ public partial class DisplayedProjectsPage : ContentPage
         if (CurrentUser.IsAdmin)
             folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
         else
-            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "Cancel", null, -1, null, folderName);
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, folderName);
 
         if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
         {
