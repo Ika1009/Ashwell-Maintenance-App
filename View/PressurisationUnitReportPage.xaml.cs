@@ -298,6 +298,68 @@ public partial class PressurisationUnitReportPage : ContentPage
 
         //PdfCreation.PressurisationReport(GatherReportData());
     }
+    public void previewPressurisationUnitReportPage(Dictionary<string,string> reportData) 
+    {
+        // Assuming reportData is a dictionary of string keys and string values
+
+        // Populate the form fields from the dictionary
+        if (reportData.TryGetValue("siteNameAndAddress", out var siteNameAndAddress))
+            siteName.Text = siteNameAndAddress;
+
+        if (reportData.TryGetValue("totalHeatingSystemRating", out var totalHeatingSystemRating))
+            this.totalHeatingSystemRating.Text = totalHeatingSystemRating;
+
+        if (reportData.TryGetValue("numberOfBoilers", out var numberOfBoilers))
+            this.numberOfBoilers.Text = numberOfBoilers;
+
+        if (reportData.TryGetValue("flowTemperature", out var flowTemperature))
+            this.flowTemperature.Text = flowTemperature;
+
+        if (reportData.TryGetValue("returnTemperature", out var returnTemperature))
+            this.returnTemperature.Text = returnTemperature;
+
+        if (reportData.TryGetValue("currentWorkingPressure", out var currentWorkingPressure))
+            this.currentWorkingPressure.Text = currentWorkingPressure;
+
+        if (reportData.TryGetValue("safetyValveSetting", out var safetyValveSetting))
+            this.safetyValveSetting.Text = safetyValveSetting;
+
+        if (reportData.TryGetValue("unitModel", out var unitModel))
+            this.unitModel.Text = unitModel;
+
+        if (reportData.TryGetValue("serialNo", out var serialNo))
+            this.serialNo.Text = serialNo;
+
+        if (reportData.TryGetValue("expansionVesselSize", out var expansionVesselSize))
+            this.expansionVesselSize.Text = expansionVesselSize;
+
+        if (reportData.TryGetValue("numberOfPressureVessels", out var numberOfPressureVessels))
+            this.numberOfPressureVessels.Text = numberOfPressureVessels;
+
+        if (reportData.TryGetValue("setFillPressure", out var setFillPressure))
+            this.setFillPressure.Text = setFillPressure;
+
+        if (reportData.TryGetValue("ratedExpansionVesselCharge", out var ratedExpansionVesselCharge))
+            this.ratedExpensionVesselCharge.Text = ratedExpansionVesselCharge;
+
+        if (reportData.TryGetValue("highPressureSwitchSetting", out var highPressureSwitchSetting))
+            this.highPressureSwitchSetting.Text = highPressureSwitchSetting;
+
+        if (reportData.TryGetValue("lowPressureSwitchSetting", out var lowPressureSwitchSetting))
+            this.lowPressureSwitchSetting.Text = lowPressureSwitchSetting;
+
+        if (reportData.TryGetValue("finalSystemPressure", out var finalSystemPressure))
+            this.finalSystemPressure.Text = finalSystemPressure;
+
+        if (reportData.TryGetValue("notes", out var notes))
+            this.notes.Text = notes;
+
+        if (reportData.TryGetValue("date", out var date))
+            this.date.Text = date;
+        
+        //fale bool
+
+    }
     private Dictionary<string, string> GatherReportData()
     {
 
