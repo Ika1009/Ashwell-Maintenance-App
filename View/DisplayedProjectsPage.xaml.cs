@@ -200,14 +200,18 @@ public partial class DisplayedProjectsPage : ContentPage
 
     public async void FolderEdit(object sender, EventArgs e)
     {
-        loadingBG.IsRunning = true;
-        loading.IsRunning = true;
+        //loadingBG.IsRunning = true;
+        //loading.IsRunning = true;
         string folderId = (sender as ImageButton).CommandParameter as string;
         string folderName = Folders.First(x => x.Id == folderId).Name;
         string oldFolderName = folderName;
 
-        folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "Rename", "Delete", null, -1, null, folderName);
-        if (folderName == null) // User clicked Delete
+        if (CurrentUser.IsAdmin)
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
+        else
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "Cancel", null, -1, null, folderName);
+
+        if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
         {
             bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
             if (deleteConfirmed)
@@ -216,7 +220,7 @@ public partial class DisplayedProjectsPage : ContentPage
                 var response = await ApiService.DeleteFolderAsync(folderId);
                 if (response.IsSuccessStatusCode)
                 {
-                    await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                    //await DisplayAlert("Success", "Folder deleted successfully", "OK");
                     await LoadFolders();
                 }
                 else
@@ -226,7 +230,7 @@ public partial class DisplayedProjectsPage : ContentPage
             }
             return;
         }
-        else if (folderName == oldFolderName)
+        else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
             return;
 
         // Update the folder name in the database
