@@ -302,6 +302,99 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         //await PdfCreation.ConstructionDesignManagement(reportData);
     }
+    public void previewConstructionDesignManagmentPage(Dictionary<string,string> reportData)
+    {
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("siteAdress"))
+            siteAdress.Text = reportData["siteAdress"];
+        if (reportData.ContainsKey("client"))
+            client.Text = reportData["client"];
+        if (reportData.ContainsKey("responsibleSiteEngineer"))
+            responsibleSiteEngineer.Text = reportData["responsibleSiteEngineer"];
+        if (reportData.ContainsKey("otherEngineers"))
+            otherEngineers.Text = reportData["otherEngineers"];
+        if (reportData.ContainsKey("whatInformationIssued"))
+            whatInformationIssued.Text = reportData["whatInformationIssued"];
+        if (reportData.ContainsKey("startDate"))
+            startDate.Text = reportData["startDate"];
+        if (reportData.ContainsKey("other"))
+            other.Text = reportData["other"];
+        if (reportData.ContainsKey("date"))
+            date.Text = reportData["date"];
+        if (reportData.ContainsKey("completionDate"))
+            completionDate.Text = reportData["completionDate"];
+
+
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("ControlActionWorkingAtHeight"))
+            ControlActionWorkingAtHeight.Text = reportData["ControlActionWorkingAtHeight"];
+        if (reportData.ContainsKey("ControlActionPermitsToWorkRequired"))
+            ControlActionPermitsToWorkRequired.Text = reportData["ControlActionPermitsToWorkRequired"];
+        if (reportData.ContainsKey("ControlActionExcavations"))
+            ControlActionExcavations.Text = reportData["ControlActionExcavations"];
+        if (reportData.ContainsKey("DustNoiseCOSHHTheControlActionRequired"))
+            DustNoiseCOSHHTheControlActionRequired.Text = reportData["DustNoiseCOSHHTheControlActionRequired"];
+        if (reportData.ContainsKey("actionTaken"))
+            actionTaken.Text = reportData["actionTaken"];
+        if (reportData.ContainsKey("moreDangersTheControlActionRequired"))
+            moreDangersTheControlActionRequired.Text = reportData["moreDangersTheControlActionRequired"];
+        if (reportData.ContainsKey("ControlActionAnyOtherDanger"))
+            ControlActionAnyOtherDanger.Text = reportData["ControlActionAnyOtherDanger"];
+        if (reportData.ContainsKey("ControlActionAppointedFirstAider"))
+            ControlActionAppointedFirstAider.Text = reportData["ControlActionAppointedFirstAider"];
+        if (reportData.ContainsKey("ControlActionAdditionalActions"))
+            ControlActionAdditionalActions.Text = reportData["ControlActionAdditionalActions"];
+        if (reportData.ContainsKey("ControlActionIsItSafe"))
+            ControlActionIsItSafe.Text = reportData["ControlActionIsItSafe"];
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("checkWelfareFacilitiesYes"))
+            checkWelfareFacilitiesYes.IsChecked = bool.Parse(reportData["checkWelfareFacilitiesYes"]);
+        if (reportData.ContainsKey("checkPortableWelfareFacilitiesYes"))
+            checkPortableWelfareFacilitiesYes.IsChecked = bool.Parse(reportData["checkPortableWelfareFacilitiesYes"]);
+        if (reportData.ContainsKey("checkWorkingAtHeightYes"))
+            checkWorkingAtHeightYes.IsChecked = bool.Parse(reportData["checkWorkingAtHeightYes"]);
+        if (reportData.ContainsKey("checkPermitsToWorkRequiredYes"))
+            checkPermitsToWorkRequiredYes.IsChecked = bool.Parse(reportData["checkPermitsToWorkRequiredYes"]);
+        if (reportData.ContainsKey("checkExcavationsYes"))
+            checkExcavationsYes.IsChecked = bool.Parse(reportData["checkExcavationsYes"]);
+        if (reportData.ContainsKey("checkDustYes"))
+            checkDustYes.IsChecked = bool.Parse(reportData["checkDustYes"]);
+        if (reportData.ContainsKey("checkNoiseYes"))
+            checkNoiseYes.IsChecked = bool.Parse(reportData["checkNoiseYes"]);
+        if (reportData.ContainsKey("checkCOSHHYes"))
+            checkCOSHHYes.IsChecked = bool.Parse(reportData["checkCOSHHYes"]);
+        if (reportData.ContainsKey("checkOtherYes"))
+            checkOtherYes.IsChecked = bool.Parse(reportData["checkOtherYes"]);
+        if (reportData.ContainsKey("checkManagementSurveyYes"))
+            checkManagementSurveyYes.IsChecked = bool.Parse(reportData["checkManagementSurveyYes"]);
+        if (reportData.ContainsKey("checkFiveYearsSurveyYes"))
+            checkFiveYearsSurveyYes.IsChecked = bool.Parse(reportData["checkFiveYearsSurveyYes"]);
+        if (reportData.ContainsKey("checkElectricalYes"))
+            checkElectricalYes.IsChecked = bool.Parse(reportData["checkElectricalYes"]);
+        if (reportData.ContainsKey("checkGasYes"))
+            checkGasYes.IsChecked = bool.Parse(reportData["checkGasYes"]);
+        if (reportData.ContainsKey("checkWaterYes"))
+            checkWaterYes.IsChecked = bool.Parse(reportData["checkWaterYes"]);
+        if (reportData.ContainsKey("checkOtherServicesYes"))
+            checkOtherServicesYes.IsChecked = bool.Parse(reportData["checkOtherServicesYes"]);
+        if (reportData.ContainsKey("checkDangerToOthersYes"))
+            checkDangerToOthersYes.IsChecked = bool.Parse(reportData["checkDangerToOthersYes"]);
+        if (reportData.ContainsKey("checkDangerToPublicYes"))
+            checkDangerToPublicYes.IsChecked = bool.Parse(reportData["checkDangerToPublicYes"]);
+        if (reportData.ContainsKey("checkOtherDangersYes"))
+            checkOtherDangersYes.IsChecked = bool.Parse(reportData["checkOtherDangersYes"]);
+        if (reportData.ContainsKey("checkAnyOtherDangerYes"))
+            checkAnyOtherDangerYes.IsChecked = bool.Parse(reportData["checkAnyOtherDangerYes"]);
+        if (reportData.ContainsKey("checkHotWorksYes"))
+            checkHotWorksYes.IsChecked = bool.Parse(reportData["checkHotWorksYes"]);
+        if (reportData.ContainsKey("checkAppointedFirstAiderYes"))
+            checkAppointedFirstAiderYes.IsChecked = bool.Parse(reportData["checkAppointedFirstAiderYes"]);
+        if (reportData.ContainsKey("checkAdditionalActionsYes"))
+            checkAdditionalActionsYes.IsChecked = bool.Parse(reportData["checkAdditionalActionsYes"]);
+        if (reportData.ContainsKey("checkIsItSafeYes"))
+            checkIsItSafeYes.IsChecked = bool.Parse(reportData["checkIsItSafeYes"]);
+
+    }
     private Dictionary<string, string> GatherReportData()
     {
 
@@ -318,7 +411,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         reportData.Add("startDate", startDate.Text ?? string.Empty);
         reportData.Add("other", other.Text ?? string.Empty);
         reportData.Add("date", date.Text ?? string.Empty);
-        reportData.Add("completionDate", date.Text ?? string.Empty);
+        reportData.Add("completionDate", completionDate.Text ?? string.Empty);//mozda treba date umesto completion date
         //za buduce kometnari
         reportData.Add("ControlActionWorkingAtHeight", ControlActionWorkingAtHeight.Text ?? string.Empty);
         reportData.Add("ControlActionPermitsToWorkRequired", ControlActionPermitsToWorkRequired.Text ?? string.Empty);

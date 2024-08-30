@@ -329,6 +329,176 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.GasRisk(GatherReportData());
     }
+    public void previewGasRiskAssessmentPage(Dictionary<string,string> reportData)
+    {
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("nameAndSiteAdress"))
+            nameAndSiteAdress.Text = reportData["nameAndSiteAdress"];
+        if (reportData.ContainsKey("client"))
+            client.Text = reportData["client"];
+        if (reportData.ContainsKey("meterLocation"))
+            meterLocation.Text = reportData["meterLocation"];
+        if (reportData.ContainsKey("commentsOnOverallMeter"))
+            commentsOnOverallMeter.Text = reportData["commentsOnOverallMeter"];
+        if (reportData.ContainsKey("meterComments"))
+            meterComments.Text = reportData["meterComments"];
+        if (reportData.ContainsKey("pipeworkLocation"))
+            pipeworkLocation.Text = reportData["pipeworkLocation"];
+        if (reportData.ContainsKey("commentsOnOverallPipework"))
+            commentsOnOverallPipework.Text = reportData["commentsOnOverallPipework"];
+        if (reportData.ContainsKey("pipeworkComments"))
+            pipeworkComments.Text = reportData["pipeworkComments"];
+        if (reportData.ContainsKey("reasonForWarningNotice"))
+            reasonForWarningNotice.Text = reportData["reasonForWarningNotice"];
+        if (reportData.ContainsKey("warningNoticeRefNo"))
+            warningNoticeRefNo.Text = reportData["warningNoticeRefNo"];
+        if (reportData.ContainsKey("dateOfLastTightnessTest"))
+            dateOfLastTightnessTest.Text = reportData["dateOfLastTightnessTest"];
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("dropRecorded"))
+            dropRecorded.Text = reportData["dropRecorded"];
+        if (reportData.ContainsKey("engineersName"))
+            engineersName.Text = reportData["engineersName"];
+        if (reportData.ContainsKey("gasSafeOperativeIdNo"))
+            gasSafeOperativeIdNo.Text = reportData["gasSafeOperativeIdNo"];
+        if (reportData.ContainsKey("clientsName"))
+            clientsName.Text = reportData["clientsName"];
+        if (reportData.ContainsKey("completionDate"))
+            completionDate.Text = reportData["completionDate"];
+
+        if (reportData["recordTightnessTestResult"] == "Pass")
+        {
+            checkRecordTightnessTestResultYes.IsChecked = true;
+        }
+        else if(reportData["recordTightnessTestResult"] == "Fail")
+        {
+            checkRecordTightnessTestResultNo.IsChecked = true;
+        }
+        else if (reportData["recordTightnessTestResult"] == "N/A")
+        {
+            checkRecordTightnessTestResultNA.IsChecked = true;
+        }
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("checkInternalMeter"))
+            checkInternalMeter.IsChecked = bool.Parse(reportData["checkInternalMeter"]);
+        if (reportData.ContainsKey("checkExternalMeter"))
+            checkExternalMeter.IsChecked = bool.Parse(reportData["checkExternalMeter"]);
+        if (reportData.ContainsKey("checkGeneralMeterConditionYes"))
+            checkGeneralMeterConditionYes.IsChecked = bool.Parse(reportData["checkGeneralMeterConditionYes"]);
+        if (reportData.ContainsKey("checkGeneralMeterConditionNo"))
+            checkGeneralMeterConditionNo.IsChecked = bool.Parse(reportData["checkGeneralMeterConditionNo"]);
+        if (reportData.ContainsKey("checkEarthBondingYes"))
+            checkEarthBondingYes.IsChecked = bool.Parse(reportData["checkEarthBondingYes"]);
+        if (reportData.ContainsKey("checkEarthBondingNo"))
+            checkEarthBondingNo.IsChecked = bool.Parse(reportData["checkEarthBondingNo"]);
+        if (reportData.ContainsKey("checkEmergencyControlsYes"))
+            checkEmergencyControlsYes.IsChecked = bool.Parse(reportData["checkEmergencyControlsYes"]);
+        if (reportData.ContainsKey("checkEmergencyControlsNo"))
+            checkEmergencyControlsNo.IsChecked = bool.Parse(reportData["checkEmergencyControlsNo"]);
+        if (reportData.ContainsKey("checkMeterVentilationYes"))
+            checkMeterVentilationYes.IsChecked = bool.Parse(reportData["checkMeterVentilationYes"]);
+        if (reportData.ContainsKey("checkMeterVentilationNo"))
+            checkMeterVentilationNo.IsChecked = bool.Parse(reportData["checkMeterVentilationNo"]);
+        if (reportData.ContainsKey("checkGasLineDiagramYes"))
+            checkGasLineDiagramYes.IsChecked = bool.Parse(reportData["checkGasLineDiagramYes"]);
+        if (reportData.ContainsKey("checkGasLineDiagramNo"))
+            checkGasLineDiagramNo.IsChecked = bool.Parse(reportData["checkGasLineDiagramNo"]);
+        if (reportData.ContainsKey("checkEmergencyContractNumberYes"))
+            checkEmergencyContractNumberYes.IsChecked = bool.Parse(reportData["checkEmergencyContractNumberYes"]);
+        if (reportData.ContainsKey("checkEmergencyContractNumberNo"))
+            checkEmergencyContractNumberNo.IsChecked = bool.Parse(reportData["checkEmergencyContractNumberNo"]);
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("checkPipeworkIdentifiedYes"))
+            checkPipeworkIdentifiedYes.IsChecked = bool.Parse(reportData["checkPipeworkIdentifiedYes"]);
+        if (reportData.ContainsKey("checkPipeworkIdentifiedNo"))
+            checkPipeworkIdentifiedNo.IsChecked = bool.Parse(reportData["checkPipeworkIdentifiedNo"]);
+        if (reportData.ContainsKey("checkPipeworkBuriedYes"))
+            checkPipeworkBuriedYes.IsChecked = bool.Parse(reportData["checkPipeworkBuriedYes"]);
+        if (reportData.ContainsKey("checkPipeworkBuriedNo"))
+            checkPipeworkBuriedNo.IsChecked = bool.Parse(reportData["checkPipeworkBuriedNo"]);
+        if (reportData.ContainsKey("checkPipeworkSurfaceYes"))
+            checkPipeworkSurfaceYes.IsChecked = bool.Parse(reportData["checkPipeworkSurfaceYes"]);
+        if (reportData.ContainsKey("checkPipeworkSurfaceNo"))
+            checkPipeworkSurfaceNo.IsChecked = bool.Parse(reportData["checkPipeworkSurfaceNo"]);
+        if (reportData.ContainsKey("checkPipeworkEarthBondingYes"))
+            checkPipeworkEarthBondingYes.IsChecked = bool.Parse(reportData["checkPipeworkEarthBondingYes"]);
+        if (reportData.ContainsKey("checkPipeworkEarthBondingNo"))
+            checkPipeworkEarthBondingNo.IsChecked = bool.Parse(reportData["checkPipeworkEarthBondingNo"]);
+        if (reportData.ContainsKey("checkJointingMethodsYes"))
+            checkJointingMethodsYes.IsChecked = bool.Parse(reportData["checkJointingMethodsYes"]);
+        if (reportData.ContainsKey("checkJointingMethodsNo"))
+            checkJointingMethodsNo.IsChecked = bool.Parse(reportData["checkJointingMethodsNo"]);
+        if (reportData.ContainsKey("checkPipeworkSupportsYes"))
+            checkPipeworkSupportsYes.IsChecked = bool.Parse(reportData["checkPipeworkSupportsYes"]);
+        if (reportData.ContainsKey("checkPipeworkSupportsNo"))
+            checkPipeworkSupportsNo.IsChecked = bool.Parse(reportData["checkPipeworkSupportsNo"]);
+        if (reportData.ContainsKey("checkFixingsYes"))
+            checkFixingsYes.IsChecked = bool.Parse(reportData["checkFixingsYes"]);
+        if (reportData.ContainsKey("checkFixingsNo"))
+            checkFixingsNo.IsChecked = bool.Parse(reportData["checkFixingsNo"]);
+        if (reportData.ContainsKey("checkSupportSepparationDistancesYes"))
+            checkSupportSepparationDistancesYes.IsChecked = bool.Parse(reportData["checkSupportSepparationDistancesYes"]);
+        if (reportData.ContainsKey("checkSupportSepparationDistancesNo"))
+            checkSupportSepparationDistancesNo.IsChecked = bool.Parse(reportData["checkSupportSepparationDistancesNo"]);
+        if (reportData.ContainsKey("checkPipeworkInVoidsYes"))
+            checkPipeworkInVoidsYes.IsChecked = bool.Parse(reportData["checkPipeworkInVoidsYes"]);
+        if (reportData.ContainsKey("checkPipeworkInVoidsNo"))
+            checkPipeworkInVoidsNo.IsChecked = bool.Parse(reportData["checkPipeworkInVoidsNo"]);
+        if (reportData.ContainsKey("checkPipeSleevesYes"))
+            checkPipeSleevesYes.IsChecked = bool.Parse(reportData["checkPipeSleevesYes"]);
+        if (reportData.ContainsKey("checkPipeSleevesNo"))
+            checkPipeSleevesNo.IsChecked = bool.Parse(reportData["checkPipeSleevesNo"]);
+        if (reportData.ContainsKey("checkPipeSleevesSealedYes"))
+            checkPipeSleevesSealedYes.IsChecked = bool.Parse(reportData["checkPipeSleevesSealedYes"]);
+        if (reportData.ContainsKey("checkPipeSleevesSealedNo"))
+            checkPipeSleevesSealedNo.IsChecked = bool.Parse(reportData["checkPipeSleevesSealedNo"]);
+        if (reportData.ContainsKey("checkServiceValvesYes"))
+            checkServiceValvesYes.IsChecked = bool.Parse(reportData["checkServiceValvesYes"]);
+        if (reportData.ContainsKey("checkServiceValvesNo"))
+            checkServiceValvesNo.IsChecked = bool.Parse(reportData["checkServiceValvesNo"]);
+        if (reportData.ContainsKey("checkAdditionalEmergencyControlValvesYes"))
+            checkAdditionalEmergencyControlValvesYes.IsChecked = bool.Parse(reportData["checkAdditionalEmergencyControlValvesYes"]);
+        if (reportData.ContainsKey("checkAdditionalEmergencyControlValvesNo"))
+            checkAdditionalEmergencyControlValvesNo.IsChecked = bool.Parse(reportData["checkAdditionalEmergencyControlValvesNo"]);
+        if (reportData.ContainsKey("checkIsolationValveYes"))
+            checkIsolationValveYes.IsChecked = bool.Parse(reportData["checkIsolationValveYes"]);
+        if (reportData.ContainsKey("checkIsolationValveNo"))
+            checkIsolationValveNo.IsChecked = bool.Parse(reportData["checkIsolationValveNo"]);
+        if (reportData.ContainsKey("checkTestPointYes"))
+            checkTestPointYes.IsChecked = bool.Parse(reportData["checkTestPointYes"]);
+        if (reportData.ContainsKey("checkTestPointNo"))
+            checkTestPointNo.IsChecked = bool.Parse(reportData["checkTestPointNo"]);
+        if (reportData.ContainsKey("checkPurgePointsYes"))
+            checkPurgePointsYes.IsChecked = bool.Parse(reportData["checkPurgePointsYes"]);
+        if (reportData.ContainsKey("checkPurgePointsNo"))
+            checkPurgePointsNo.IsChecked = bool.Parse(reportData["checkPurgePointsNo"]);
+        if (reportData.ContainsKey("checkGeneralPipeworkConditionYes"))
+            checkGeneralPipeworkConditionYes.IsChecked = bool.Parse(reportData["checkGeneralPipeworkConditionYes"]);
+        if (reportData.ContainsKey("checkGeneralPipeworkConditionNo"))
+            checkGeneralPipeworkConditionNo.IsChecked = bool.Parse(reportData["checkGeneralPipeworkConditionNo"]);
+        if (reportData.ContainsKey("checkinstallationSafeToOperateYes"))
+            checkinstallationSafeToOperateYes.IsChecked = bool.Parse(reportData["checkinstallationSafeToOperateYes"]);
+        if (reportData.ContainsKey("checkinstallationSafeToOperateNo"))
+            checkinstallationSafeToOperateNo.IsChecked = bool.Parse(reportData["checkinstallationSafeToOperateNo"]);
+        if (reportData.ContainsKey("checkWarningNoticeIssuedYes"))
+            checkWarningNoticeIssuedYes.IsChecked = bool.Parse(reportData["checkWarningNoticeIssuedYes"]);
+        if (reportData.ContainsKey("checkWarningNoticeIssuedNo"))
+            checkWarningNoticeIssuedNo.IsChecked = bool.Parse(reportData["checkWarningNoticeIssuedNo"]);
+        if (reportData.ContainsKey("checkGasTightnessTestRecommendedYes"))
+            checkGasTightnessTestRecommendedYes.IsChecked = bool.Parse(reportData["checkGasTightnessTestRecommendedYes"]);
+        if (reportData.ContainsKey("checkGasTightnessTestRecommendedNo"))
+            checkGasTightnessTestRecommendedNo.IsChecked = bool.Parse(reportData["checkGasTightnessTestRecommendedNo"]);
+        if (reportData.ContainsKey("checkGuessTightnessTestCarriedOutYes"))
+            checkGuessTightnessTestCarriedOutYes.IsChecked = bool.Parse(reportData["checkGuessTightnessTestCarriedOutYes"]);
+        if (reportData.ContainsKey("checkGuessTightnessTestCarriedOutNo"))
+            checkGuessTightnessTestCarriedOutNo.IsChecked = bool.Parse(reportData["checkGuessTightnessTestCarriedOutNo"]);
+
+        if (reportData.ContainsKey("checkNoticesAndLabelsYes"))
+            checkNoticesAndLabelsYes.IsChecked = bool.Parse(reportData["checkNoticesAndLabelsYes"]);
+        if (reportData.ContainsKey("checkNoticesAndLabelsNo"))
+            checkNoticesAndLabelsNo.IsChecked = bool.Parse(reportData["checkNoticesAndLabelsNo"]);
+
+    }
     private Dictionary<string, string> GatherReportData()
     {
         Dictionary<string, string> reportData = new Dictionary<string, string>();

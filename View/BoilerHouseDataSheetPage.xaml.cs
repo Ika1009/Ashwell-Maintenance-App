@@ -328,6 +328,138 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.BoilerHouseDataSheet(GatherReportData());
     }
+    public void previewBoilerHouseDataSheetPage(Dictionary<string, string> reportData)
+    {
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("uern"))
+            uern.Text = reportData["uern"];
+        if (reportData.ContainsKey("SheetNo"))
+            SheetNo.Text = reportData["SheetNo"];
+        if (reportData.ContainsKey("WarningNoticeRefNo"))
+            WarningNoticeRefNo.Text = reportData["WarningNoticeRefNo"];
+        if (reportData.ContainsKey("nameOfPremises"))
+            nameOfPremises.Text = reportData["nameOfPremises"];
+        if (reportData.ContainsKey("adressOfPremises"))
+            adressOfPremises.Text = reportData["adressOfPremises"];
+        if (reportData.ContainsKey("appliancesCoveredByThisCheck"))
+            appliancesCoveredByThisCheck.Text = reportData["appliancesCoveredByThisCheck"];
+        if (reportData.ContainsKey("meterHouseLocation"))
+            meterHouseLocation.Text = reportData["meterHouseLocation"];
+        if (reportData.ContainsKey("meterHouseComment"))
+            meterHouseComment.Text = reportData["meterHouseComment"];
+        if (reportData.ContainsKey("ventilationLocation"))
+            ventilationLocation.Text = reportData["ventilationLocation"];
+        if (reportData.ContainsKey("freeAirExistingHighLevel"))
+            freeAirExistingHighLevel.Text = reportData["freeAirExistingHighLevel"];
+        if (reportData.ContainsKey("freeAirExistingLowLevel"))
+            freeAirExistingLowLevel.Text = reportData["freeAirExistingLowLevel"];
+        if (reportData.ContainsKey("freeAirRequiredHighLevel"))
+            freeAirRequiredHighLevel.Text = reportData["freeAirRequiredHighLevel"];
+        if (reportData.ContainsKey("freeAirRequiredLowLevel"))
+            freeAirRequiredLowLevel.Text = reportData["freeAirRequiredLowLevel"];
+        if (reportData.ContainsKey("boilerHousePlantRoomComments"))
+            boilerHousePlantRoomComments.Text = reportData["boilerHousePlantRoomComments"];
+        if (reportData.ContainsKey("inletWorkingPressureTestFullLoad"))
+            inletWorkingPressureTestFullLoad.Text = reportData["inletWorkingPressureTestFullLoad"];
+        if (reportData.ContainsKey("inletWorkingPressureTestPartLoad"))
+            inletWorkingPressureTestPartLoad.Text = reportData["inletWorkingPressureTestPartLoad"];
+        if (reportData.ContainsKey("standingPressure"))
+            standingPressure.Text = reportData["standingPressure"];
+        if (reportData.ContainsKey("plantGasInstallationVolume"))
+            plantGasInstallationVolume.Text = reportData["plantGasInstallationVolume"];
+        if (reportData.ContainsKey("engineersName"))
+            engineersName.Text = reportData["engineersName"];
+        if (reportData.ContainsKey("contractor"))
+            contractor.Text = reportData["contractor"];
+        if (reportData.ContainsKey("companyGasSafeRegistrationNo"))
+            companyGasSafeRegistrationNo.Text = reportData["companyGasSafeRegistrationNo"];
+        if (reportData.ContainsKey("engineersGasSafeIDNo"))
+            engineersGasSafeIDNo.Text = reportData["engineersGasSafeIDNo"];
+        if (reportData.ContainsKey("inspectionDate"))
+            inspectionDate.Text = reportData["inspectionDate"];
+        if (reportData.ContainsKey("clientsName"))
+            clientsName.Text = reportData["clientsName"];
+        if (reportData.ContainsKey("date"))
+            date.Text = reportData["date"];
+
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("checkRemedialToWorkRequiredYes"))
+            checkRemedialToWorkRequiredYes.IsChecked = bool.Parse(reportData["checkRemedialToWorkRequiredYes"]);
+        if (reportData.ContainsKey("checkTestsCompletedSatisfactoryYes"))
+            checkTestsCompletedSatisfactoryYes.IsChecked = bool.Parse(reportData["checkTestsCompletedSatisfactoryYes"]);
+        if (reportData.ContainsKey("checkPipeworkToGasMeterYes"))
+            checkPipeworkToGasMeterYes.IsChecked = bool.Parse(reportData["checkPipeworkToGasMeterYes"]);
+        if (reportData.ContainsKey("checkPipeworkToGasMeterNA"))
+            checkPipeworkToGasMeterNA.IsChecked = bool.Parse(reportData["checkPipeworkToGasMeterNA"]);
+        if (reportData.ContainsKey("checkRegulatorAndOrMeterYes"))
+            checkRegulatorAndOrMeterYes.IsChecked = bool.Parse(reportData["checkRegulatorAndOrMeterYes"]);
+        if (reportData.ContainsKey("checkRegulatorAndOrMeterNA"))
+            checkRegulatorAndOrMeterNA.IsChecked = bool.Parse(reportData["checkRegulatorAndOrMeterNA"]);
+        if (reportData.ContainsKey("checkSafetyNoticesLabelsYes"))
+            checkSafetyNoticesLabelsYes.IsChecked = bool.Parse(reportData["checkSafetyNoticesLabelsYes"]);
+        if (reportData.ContainsKey("checkSafetyNoticesLabelsNA"))
+            checkSafetyNoticesLabelsNA.IsChecked = bool.Parse(reportData["checkSafetyNoticesLabelsNA"]);
+        if (reportData.ContainsKey("checkLineDiagramYes"))
+            checkLineDiagramYes.IsChecked = bool.Parse(reportData["checkLineDiagramYes"]);
+        if (reportData.ContainsKey("checkLineDiagramNA"))
+            checkLineDiagramNA.IsChecked = bool.Parse(reportData["checkLineDiagramNA"]);
+        if (reportData.ContainsKey("checkColorCodingIndicationTapeYes"))
+            checkColorCodingIndicationTapeYes.IsChecked = bool.Parse(reportData["checkColorCodingIndicationTapeYes"]);
+        if (reportData.ContainsKey("checkColorCodingIndicationTapeNA"))
+            checkColorCodingIndicationTapeNA.IsChecked = bool.Parse(reportData["checkColorCodingIndicationTapeNA"]);
+        if (reportData.ContainsKey("checkMeterHouseVentilationYes"))
+            checkMeterHouseVentilationYes.IsChecked = bool.Parse(reportData["checkMeterHouseVentilationYes"]);
+        if (reportData.ContainsKey("checkMeterHouseVentilationNA"))
+            checkMeterHouseVentilationNA.IsChecked = bool.Parse(reportData["checkMeterHouseVentilationNA"]);
+        if (reportData.ContainsKey("checkFreeAirExistingCM"))
+            checkFreeAirExistingCM.IsChecked = bool.Parse(reportData["checkFreeAirExistingCM"]);
+        if (reportData.ContainsKey("checkFreeAirExistingMH"))
+            checkFreeAirExistingMH.IsChecked = bool.Parse(reportData["checkFreeAirExistingMH"]);
+        if (reportData.ContainsKey("checkFreeAirRequiredCM"))
+            checkFreeAirRequiredCM.IsChecked = bool.Parse(reportData["checkFreeAirRequiredCM"]);
+        if (reportData.ContainsKey("checkFreeAirRequiredMH"))
+            checkcheckFreeAirRequiredMH.IsChecked = bool.Parse(reportData["checkFreeAirRequiredMH"]);
+        if (reportData.ContainsKey("checkMainFlueYes"))
+            checkMainFlueYes.IsChecked = bool.Parse(reportData["checkMainFlueYes"]);
+        if (reportData.ContainsKey("checkMainFlueNA"))
+            checkMainFlueNA.IsChecked = bool.Parse(reportData["checkMainFlueNA"]);
+        if (reportData.ContainsKey("checkChimneyFlueTerminalPositionYes"))
+            checkChimneyFlueTerminalPositionYes.IsChecked = bool.Parse(reportData["checkChimneyFlueTerminalPositionYes"]);
+        if (reportData.ContainsKey("checkChimneyFlueTerminalPositionNA"))
+            checkChimneyFlueTerminalPositionNA.IsChecked = bool.Parse(reportData["checkChimneyFlueTerminalPositionNA"]);
+        if (reportData.ContainsKey("checkStubFluersToBoildersYes"))
+            checkStubFluersToBoildersYes.IsChecked = bool.Parse(reportData["checkStubFluersToBoildersYes"]);
+        if (reportData.ContainsKey("checkStubFluersToBoildersNA"))
+            checkStubFluersToBoildersNA.IsChecked = bool.Parse(reportData["checkStubFluersToBoildersNA"]);
+        if (reportData.ContainsKey("checkIdFanYes"))
+            checkIdFanYes.IsChecked = bool.Parse(reportData["checkIdFanYes"]);
+        if (reportData.ContainsKey("checkIdFanNA"))
+            checkIdFanNA.IsChecked = bool.Parse(reportData["checkIdFanNA"]);
+        if (reportData.ContainsKey("checkFanBoilerSafetyInterlockYes"))
+            checkFanBoilerSafetyInterlockYes.IsChecked = bool.Parse(reportData["checkFanBoilerSafetyInterlockYes"]);
+        if (reportData.ContainsKey("checkFanBoilerSafetyInterlockNA"))
+            checkFanBoilerSafetyInterlockNA.IsChecked = bool.Parse(reportData["checkFanBoilerSafetyInterlockNA"]);
+        if (reportData.ContainsKey("checkGeneralComplianceOfGasPipeYes"))
+            checkGeneralComplianceOfGasPipeYes.IsChecked = bool.Parse(reportData["checkGeneralComplianceOfGasPipeYes"]);
+        if (reportData.ContainsKey("checkGeneralComplianceOfGasPipeNA"))
+            checkGeneralComplianceOfGasPipeNA.IsChecked = bool.Parse(reportData["checkGeneralComplianceOfGasPipeNA"]);
+        if (reportData.ContainsKey("checkVentilationYes"))
+            checkVentilationYes.IsChecked = bool.Parse(reportData["checkVentilationYes"]);
+        if (reportData.ContainsKey("checkVentilationNA"))
+            checkVentilationNA.IsChecked = bool.Parse(reportData["checkVentilationNA"]);
+        if (reportData.ContainsKey("checkAIVYes"))
+            checkAIVYes.IsChecked = bool.Parse(reportData["checkAIVYes"]);
+        if (reportData.ContainsKey("checkAIVNo"))
+            checkAIVNo.IsChecked = bool.Parse(reportData["checkAIVNo"]);
+        if (reportData.ContainsKey("checkManualYes"))
+            checkManualYes.IsChecked = bool.Parse(reportData["checkManualYes"]);
+        if (reportData.ContainsKey("checkManualNo"))
+            checkManualNo.IsChecked = bool.Parse(reportData["checkManualNo"]);
+        if (reportData.ContainsKey("checkPlantGasTightnessTestYes"))
+            checkPlantGasTightnessTestYes.IsChecked = bool.Parse(reportData["checkPlantGasTightnessTestYes"]);
+
+
+    }
     private Dictionary<string, string> GatherReportData()
     {
 

@@ -306,6 +306,46 @@ public partial class EngineersReportPage : ContentPage
         reportName = $"Engineers_Report_{dateTimeString}.pdf";
         reportData = GatherReportData();
     }
+    public void previewEngineersReportPage(Dictionary<string, string> reportData)
+    {
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("clientsName")) clientsName.Text = reportData["clientsName"];
+        if (reportData.ContainsKey("address")) clientsAdress.Text = reportData["address"];
+        if (reportData.ContainsKey("applianceMake")) applianceMake.Text = reportData["applianceMake"];
+        if (reportData.ContainsKey("date")) date.Text = reportData["date"];
+        if (reportData.ContainsKey("engineer")) engineer.Text = reportData["engineer"];
+        if (reportData.ContainsKey("taskTNo")) taskTNo.Text = reportData["taskTNo"];
+        if (reportData.ContainsKey("serialNumber")) serialNumber.Text = reportData["serialNumber"];
+        if (reportData.ContainsKey("description")) descriptionOfWork.Text = reportData["description"];
+        if (reportData.ContainsKey("gasOperatinPressure")) gasOperatingPressure.Text = reportData["gasOperatinPressure"];
+        if (reportData.ContainsKey("inletPressure")) intletPressure.Text = reportData["inletPressure"];
+        if (reportData.ContainsKey("warningNoticeNumber")) warningNoticeNumber.Text = reportData["warningNoticeNumber"];
+        if (reportData.ContainsKey("totalHoursIncludingTravel")) totalHours.Text = reportData["totalHoursIncludingTravel"];
+
+        // Assume 'reportData' is the dictionary containing the data
+        if (reportData.ContainsKey("checkTaskComplete"))
+            checkTaskCompleteYes.IsChecked = bool.Parse(reportData["checkTaskComplete"]);
+        if (reportData.ContainsKey("checkSpillageTestPerformed"))
+            checkSpillageTestPass.IsChecked = bool.Parse(reportData["checkSpillageTestPerformed"]);
+        if (reportData.ContainsKey("checkSpillageTestPerformedNA"))
+            checkSpillageTestNA.IsChecked = bool.Parse(reportData["checkSpillageTestPerformedNA"]);
+        if (reportData.ContainsKey("checkRiskAssesmentCompleted"))
+            checkRiskAssessmentYes.IsChecked = bool.Parse(reportData["checkRiskAssesmentCompleted"]);
+        if (reportData.ContainsKey("checkFlueFlowTest"))
+            checkFlueFlowTestPass.IsChecked = bool.Parse(reportData["checkFlueFlowTest"]);
+        if (reportData.ContainsKey("checkFlueFlowTestNA"))
+            checkFlueFlowTestNA.IsChecked = bool.Parse(reportData["checkFlueFlowTestNA"]);
+        if (reportData.ContainsKey("checkThightnessTestCarriedOut"))
+            checkTightnessTestPass.IsChecked = bool.Parse(reportData["checkThightnessTestCarriedOut"]);
+        if (reportData.ContainsKey("checkThightnessTestCarriedOutNA"))
+            checkTightnessTestNA.IsChecked = bool.Parse(reportData["checkThightnessTestCarriedOutNA"]);
+        if (reportData.ContainsKey("checkApplianceSafeToUse"))
+            checkApplianceSafeToUseYes.IsChecked = bool.Parse(reportData["checkApplianceSafeToUse"]);
+        if (reportData.ContainsKey("checkWarningNoticeIssued"))
+            checkWarningNoticeYes.IsChecked = bool.Parse(reportData["checkWarningNoticeIssued"]);
+
+
+    }
     private Dictionary<string, string> GatherReportData()
     {
 
