@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Views;
+using Org.Apache.Http.Client.Params;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 
@@ -335,6 +336,212 @@ public partial class ServiceRecordPage : ContentPage
         //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         await LoadFolders();
     }
+    public void previewServiceRecordPage(Dictionary<string, string> reportData)
+    {
+        if (reportData.ContainsKey("site"))
+            site.Text = reportData["site"];
+
+        if (reportData.ContainsKey("location"))
+            location.Text = reportData["location"];
+
+        if (reportData.ContainsKey("assetNumber"))
+            assetNo.Text = reportData["assetNumber"];
+
+        if (reportData.ContainsKey("applianceNumber"))
+            applianceNo.Text = reportData["applianceNumber"];
+
+        if (reportData.ContainsKey("testsCompleted"))
+            checkTestsCompleted.IsChecked = reportData["testsCompleted"] == "True";
+
+        if (reportData.ContainsKey("remedialWorkRequired"))
+            checRemedialWorkRequired.IsChecked = reportData["remedialWorkRequired"] == "True";
+
+        if (reportData.ContainsKey("applianceMake"))
+            applianceMake.Text = reportData["applianceMake"];
+
+        if (reportData.ContainsKey("applianceModel"))
+            applianceModel.Text = reportData["applianceModel"];
+
+        if (reportData.ContainsKey("applianceSerialNumber"))
+            applianceSerialNo.Text = reportData["applianceSerialNumber"];
+
+        if (reportData.ContainsKey("gcNumber"))
+            GCNo.Text = reportData["gcNumber"];
+
+        if (reportData.ContainsKey("Heating"))
+            checkHeating.IsChecked = reportData["Heating"] == "True";
+
+        if (reportData.ContainsKey("HotWater"))
+            checkHotWater.IsChecked = reportData["HotWater"] == "True";
+
+        if (reportData.ContainsKey("Both"))
+            checkBoth.IsChecked = reportData["Both"] == "True";
+
+        if (reportData.ContainsKey("approxAgeOfAppliance"))
+            years.Text = reportData["approxAgeOfAppliance"];
+
+        if (reportData.ContainsKey("badgedInput"))
+            badgedInput.Text = reportData["badgedInput"];
+
+        if (reportData.ContainsKey("badgedOutput"))
+            budgedOutput.Text = reportData["badgedOutput"];
+
+        if (reportData.ContainsKey("burnerMake"))
+            burnerMake.Text = reportData["burnerMake"];
+
+        if (reportData.ContainsKey("burnerModel"))
+            burnerModel.Text = reportData["burnerModel"];
+
+        if (reportData.ContainsKey("burnerSerialNumber"))
+            burnerSerialNo.Text = reportData["burnerSerialNumber"];
+
+        if (reportData.ContainsKey("Type"))
+            type.Text = reportData["Type"];
+
+        if (reportData.ContainsKey("secs"))
+            flameFailureDeviceSecs.Text = reportData["secs"];
+
+        if (reportData.ContainsKey("Spec"))
+            spec.Text = reportData["Spec"];
+
+        if (reportData.ContainsKey("OpenFlue"))
+            checkOpenFlue.IsChecked = reportData["OpenFlue"] == "True";
+
+        if (reportData.ContainsKey("Roomsealed"))
+            checkRoomSealed.IsChecked = reportData["Roomsealed"] == "True";
+
+        if (reportData.ContainsKey("ForcedDraft"))
+            checkForcedDraft.IsChecked = reportData["ForcedDraft"] == "True";
+
+        if (reportData.ContainsKey("Flueless"))
+            checkFlueless.IsChecked = reportData["Flueless"] == "True";
+
+        if (reportData.ContainsKey("badgedBurnerPressure"))
+            badgedBurnerPressure.Text = reportData["badgedBurnerPressure"];
+
+        if (reportData.ContainsKey("ventilationSatisfactory"))
+            checkVentilationSatisfactory.IsChecked = reportData["ventilationSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("flueConditionSatisfactory"))
+            checkFlueConditionSatisfactory.IsChecked = reportData["flueConditionSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("tempNG"))
+            checkNG.IsChecked = reportData["tempNG"] == "True";
+
+        if (reportData.ContainsKey("tempLPG"))
+            checkLPG.IsChecked = reportData["tempLPG"] == "True";
+
+        if (reportData.ContainsKey("applianceServiceValveSatisfactory"))
+            checkAppServiceValve.IsChecked = reportData["applianceServiceValveSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("applianceServiceValveSatisfactoryNA"))
+            checkAppServiceValveNA.IsChecked = reportData["applianceServiceValveSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("applianceServiceValveSatisfactoryComments"))
+            applianceServiceValveComment.Text = reportData["applianceServiceValveSatisfactoryComments"];
+
+        if (reportData.ContainsKey("governorsSatisfactory"))
+            checkGovernors.IsChecked = reportData["governorsSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("governorsSatisfactoryNA"))
+            checkGovernorsNA.IsChecked = reportData["governorsSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("governorsComments"))
+            governorsComment.Text = reportData["governorsComments"];
+
+        if (reportData.ContainsKey("gasSolenoidValvesSatisfactory"))
+            checkGasSolenoidValves.IsChecked = reportData["gasSolenoidValvesSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("gasSolenoidValvesSatisfactoryNA"))
+            checkGasSolenoidValvesNA.IsChecked = reportData["gasSolenoidValvesSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("gasSolenoidValvesComments"))
+            gasSolenoidValvesComment.Text = reportData["gasSolenoidValvesComments"];
+
+        if (reportData.ContainsKey("controlBoxPcbSatisfactory"))
+            checkControlBoxPCB.IsChecked = reportData["controlBoxPcbSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("controlBoxPcbSatisfactoryNA"))
+            checkControlBoxPCBNA.IsChecked = reportData["controlBoxPcbSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("controlBoxPcbComments"))
+            controlBoxPCBComment.Text = reportData["controlBoxPcbComments"];
+
+        if (reportData.ContainsKey("gasketSealsSatisfactory"))
+            checkGasketSeals.IsChecked = reportData["gasketSealsSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("gasketSealsSatisfactoryNA"))
+            checkGasketSealsNA.IsChecked = reportData["gasketSealsSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("gasketSealsComments"))
+            gasketSealsComment.Text = reportData["gasketSealsComments"];
+
+        if (reportData.ContainsKey("burnerSatisfactory"))
+            checkBurner.IsChecked = reportData["burnerSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("burnerSatisfactoryNA"))
+            checkBurnerNA.IsChecked = reportData["burnerSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("burnerComments"))
+            burnerComment.Text = reportData["burnerComments"];
+
+        if (reportData.ContainsKey("burnerJetsSatisfactory"))
+            checkBurnerJets.IsChecked = reportData["burnerJetsSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("burnerJetsSatisfactoryNA"))
+            checkBurnerJetsNA.IsChecked = reportData["burnerJetsSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("burnerJetsComments"))
+            burnerJetsComment.Text = reportData["burnerJetsComments"];
+
+        if (reportData.ContainsKey("electrodesTransformerSatisfactory"))
+            checkElectrodesTransformer.IsChecked = reportData["electrodesTransformerSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("electrodesTransformerSatisfactoryNA"))
+            checkElectrodesTransformerNA.IsChecked = reportData["electrodesTransformerSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("electrodesTransformerComments"))
+            electrodesTransformerComment.Text = reportData["electrodesTransformerComments"];
+
+        if (reportData.ContainsKey("flameFailureDeviceSatisfactory"))
+            checkFlameFailureDevice.IsChecked = reportData["flameFailureDeviceSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("flameFailureDeviceSatisfactoryNA"))
+            checkFlameFailureDeviceNA.IsChecked = reportData["flameFailureDeviceSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("flameFailureDeviceComments"))
+            flameFailureDeviceComment.Text = reportData["flameFailureDeviceComments"];
+
+        if (reportData.ContainsKey("systemBoilerControlsSatisfactory"))
+            checkSystemBoilerControls.IsChecked = reportData["systemBoilerControlsSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("systemBoilerControlsSatisfactoryNA"))
+            checkSystemBoilerControlsNA.IsChecked = reportData["systemBoilerControlsSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("systemBoilerControlsComments"))
+            systemBoilerControlsComment.Text = reportData["systemBoilerControlsComments"];
+
+        if (reportData.ContainsKey("boilerCasingSatisfactory"))
+            checkBoilerCasing.IsChecked = reportData["boilerCasingSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("boilerCasingSatisfactoryNA"))
+            checkBoilerCasingNA.IsChecked = reportData["boilerCasingSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("boilerCasingComments"))
+            boilerCasingComment.Text = reportData["boilerCasingComments"];
+
+        if (reportData.ContainsKey("thermalInsulationSatisfactory"))
+            checkThermalInsulation.IsChecked = reportData["thermalInsulationSatisfactory"] == "True";
+
+        if (reportData.ContainsKey("thermalInsulationSatisfactoryNA"))
+            checkThermalInsulationNA.IsChecked = reportData["thermalInsulationSatisfactoryNA"] == "True";
+
+        if (reportData.ContainsKey("thermalInsulationComments"))
+            thermalInsulationComment.Text = reportData["thermalInsulationComments"];
+
+      
+
+    }
     private void GatherReportData()
     {
 
@@ -406,7 +613,7 @@ public partial class ServiceRecordPage : ContentPage
             { "boilerCasingComments", boilerCasingComment.Text ?? string.Empty },
             { "thermalInsulationSatisfactory", checkThermalInsulation.IsChecked.ToString() },
             { "thermalInsulationSatisfactoryNA", checkThermalInsulationNA.IsChecked.ToString() },
-            { "thermalInsulationComments", thermalInsulationComment.Text ?? string.Empty },
+            { "thermalInsulationComments", thermalInsulationComment.Text ?? string.Empty },//do ovde
             { "combustionFanIdFanSatisfactory", checkCombustionFanIdFan.IsChecked.ToString() },
             { "combustionFanIdFanSatisfactoryNA", checkCombustionFanIdFanNA.IsChecked.ToString() },
             { "combustionFanIdFanComments", combustionFanIdFanComment.Text ?? string.Empty },
