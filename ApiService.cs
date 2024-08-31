@@ -298,10 +298,34 @@ public static class ApiService
                 // Read the response content as a string
                 string jsonResponse = await response.Content.ReadAsStringAsync();
 
-                // Deserialize the JSON response into a Report object
-                var report = JsonSerializer.Deserialize<Report>(jsonResponse);
+                // Manually deserialize the JSON response
+                using JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse);
+                JsonElement root = jsonDocument.RootElement;
 
-                return report;
+                // Check if the root element contains the expected properties
+                if (root.TryGetProperty("status", out JsonElement statusElement) &&
+                    statusElement.GetString() == "success" &&
+                    root.TryGetProperty("data", out JsonElement dataElement))
+                {
+                    var report = new Report
+                    {
+                        ReportId = dataElement.GetProperty("report_id").GetString(),
+                        ReportName = dataElement.GetProperty("report_name").GetString(),
+                        CreatedAt = dataElement.GetProperty("created_at").GetString(),
+                        FolderId = dataElement.GetProperty("folder_id").GetString(),
+                        ReportData = JsonSerializer.Deserialize<Dictionary<string, string>>(dataElement.GetProperty("report_data").GetString()),
+                        ReportType = Enum.TryParse(dataElement.GetProperty("report_type").GetString(), true, out Enums.ReportType parsedReportType)
+                                     ? parsedReportType
+                                     : Enums.ReportType.ServiceRecord // Default Type if nothing is found
+                    };
+
+                    return report;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Unexpected JSON structure.");
+                    return null;
+                }
             }
             else
             {
@@ -320,7 +344,6 @@ public static class ApiService
             return null;
         }
     }
-
 
     /// <summary>
     /// Uploads a new report to the server.

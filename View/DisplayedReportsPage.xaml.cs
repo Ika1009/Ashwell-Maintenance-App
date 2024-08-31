@@ -34,25 +34,67 @@ public partial class DisplayedReportsPage : ContentPage
             displayedReportsTitle.Text = "Projects To Sign";
         }
     }
-    public class Report
-    {
-        public Enums.ReportType ReportType { get; set; }
-        public string ReportId { get; set; }
-        public string ReportName { get; set; }
-        public Dictionary<string, string> ReportData { get; set; }
-        public string FolderId { get; set; }
-        public string CreatedAt { get; set; }
-    }
 
     public async void ReportsBack(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
     }
 
-    public void ReportChosen(object sender, EventArgs e)
+    public async void ReportChosen(object sender, EventArgs e)
     {
+        if (sender is Button button)
+        {
+            // Retrieve the CommandParameter, which should be the ReportId
+            if (button.CommandParameter is string reportId)
+            {
+                Report report = await ApiService.GetReportByIdAsync(reportId);
 
+                if (report != null)
+                {
+                    // Successfully retrieved the report, handle the data as needed
+                    switch (report.ReportType)
+                    {
+                        case Enums.ReportType.BoilerHouseDataSheet:
+                            await Navigation.PushModalAsync(new BoilerHouseDataSheetPage(report));
+                            break;
+                        case Enums.ReportType.ConformityCheck:
+                            await Navigation.PushModalAsync(new ConformityCheckPage(report));
+                            break;
+                        case Enums.ReportType.ConstructionDesignManagement:
+                            //await Navigation.PushModalAsync(new ConstructionDesignManagmentPage(report));
+                            break;
+                        case Enums.ReportType.EngineersReport:
+                            //await Navigation.PushModalAsync(new EngineersReportPage(report));
+                            break;
+                        case Enums.ReportType.GasRiskAssessment:
+                            //await Navigation.PushModalAsync(new GasRiskAssessmentPage(report));
+                            break;
+                        case Enums.ReportType.OneA:
+                            //await Navigation.PushModalAsync(new OneAPage(report));
+                            break;
+                        case Enums.ReportType.OneB:
+                            //await Navigation.PushModalAsync(new OneBPage(report));
+                            break;
+                        case Enums.ReportType.One:
+                            //await Navigation.PushModalAsync(new OnePage(report));
+                            break;
+                        case Enums.ReportType.PressurisationUnitReport:
+                            //await Navigation.PushModalAsync(new PressurisationUnitReportPage(report));
+                            break;
+                        case Enums.ReportType.ServiceRecord:
+                            //await Navigation.PushModalAsync(new ServiceRecordPage(report));
+                            break;
+                    }
+                }
+                else
+                {
+                    // Handle the case where the report was not found or an error occurred
+                    Console.WriteLine("Failed to retrieve the report.");
+                }
+            }
+        }
     }
+
 
     public async void SignatureButton_Clicked(object sender, EventArgs e)
     {

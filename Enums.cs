@@ -36,22 +36,16 @@ namespace Ashwell_Maintenance
     }
     public class Report
     {
-        [JsonPropertyName("report_id")]
-        public int ReportId { get; set; }
+        public string ReportId { get; set; }
 
-        [JsonPropertyName("report_type")]
-        public string ReportType { get; set; }
+        public Enums.ReportType ReportType { get; set; }
 
-        [JsonPropertyName("report_name")]
         public string ReportName { get; set; }
 
-        [JsonPropertyName("report_data")]
         public Dictionary<string, string> ReportData { get; set; }
 
-        [JsonPropertyName("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
-        [JsonPropertyName("folder_id")]
-        public int FolderId { get; set; }
+        public string FolderId { get; set; }
     }
 }
