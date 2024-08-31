@@ -13,35 +13,35 @@ public partial class GasRiskAssessmentPage : ContentPage
 	{
 		InitializeComponent();
 
-        checkGeneralMeterConditionNA.IsChecked = true;
-        checkEarthBondingNA.IsChecked = true;
-        checkEmergencyControlsNA.IsChecked = true;
-        checkMeterVentilationNA.IsChecked = true;
-        checkGasLineDiagramNA.IsChecked = true;
-        checkEmergencyContractNumberNA.IsChecked = true;
-        checkNoticesAndLabelsNA.IsChecked = true;
-        checkGeneralPipeworkConditionNA.IsChecked = true;
-        checkPipeworkIdentifiedNA.IsChecked = true;
-        checkPipeworkBuriedNA.IsChecked = true;
-        checkPipeworkSurfaceNA.IsChecked = true;
-        checkPipeworkEarthBondingNA.IsChecked = true;
-        checkJointingMethodsNA.IsChecked = true;
-        checkPipeworkSupportsNA.IsChecked = true;
-        checkFixingsNA.IsChecked = true;
-        checkSupportSepparationDistancesNA.IsChecked = true;
-        checkPipeworkInVoidsNA.IsChecked = true;
-        checkPipeSleevesNA.IsChecked = true;
-        checkPipeSleevesSealedNA.IsChecked = true;
-        checkServiceValvesNA.IsChecked = true;
-        checkAdditionalEmergencyControlValvesNA.IsChecked = true;
-        checkIsolationValveNA.IsChecked = true;
-        checkTestPointNA.IsChecked = true;
-        checkPurgePointsNA.IsChecked = true;
-        checkGeneralPipeworkConditionNA.IsChecked = true;
-        checkinstallationSafeToOperateNA.IsChecked = true;
-        checkWarningNoticeIssuedNA.IsChecked = true;
-        checkGasTightnessTestRecommendedNA.IsChecked = true;
-        checkGuessTightnessTestCarriedOutNA.IsChecked = true;
+        //checkGeneralMeterConditionNA.IsChecked = true;
+        //checkEarthBondingNA.IsChecked = true;
+        //checkEmergencyControlsNA.IsChecked = true;
+        //checkMeterVentilationNA.IsChecked = true;
+        //checkGasLineDiagramNA.IsChecked = true;
+        //checkEmergencyContractNumberNA.IsChecked = true;
+        //checkNoticesAndLabelsNA.IsChecked = true;
+        //checkGeneralPipeworkConditionNA.IsChecked = true;
+        //checkPipeworkIdentifiedNA.IsChecked = true;
+        //checkPipeworkBuriedNA.IsChecked = true;
+        //checkPipeworkSurfaceNA.IsChecked = true;
+        //checkPipeworkEarthBondingNA.IsChecked = true;
+        //checkJointingMethodsNA.IsChecked = true;
+        //checkPipeworkSupportsNA.IsChecked = true;
+        //checkFixingsNA.IsChecked = true;
+        //checkSupportSepparationDistancesNA.IsChecked = true;
+        //checkPipeworkInVoidsNA.IsChecked = true;
+        //checkPipeSleevesNA.IsChecked = true;
+        //checkPipeSleevesSealedNA.IsChecked = true;
+        //checkServiceValvesNA.IsChecked = true;
+        //checkAdditionalEmergencyControlValvesNA.IsChecked = true;
+        //checkIsolationValveNA.IsChecked = true;
+        //checkTestPointNA.IsChecked = true;
+        //checkPurgePointsNA.IsChecked = true;
+        //checkGeneralPipeworkConditionNA.IsChecked = true;
+        //checkinstallationSafeToOperateNA.IsChecked = true;
+        //checkWarningNoticeIssuedNA.IsChecked = true;
+        //checkGasTightnessTestRecommendedNA.IsChecked = true;
+        //checkGuessTightnessTestCarriedOutNA.IsChecked = true;
     }
     public void FolderChosen(object sender, EventArgs e)
     {
