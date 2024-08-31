@@ -329,7 +329,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.GasRisk(GatherReportData());
     }
-    public void previewGasRiskAssessmentPage(Dictionary<string,string> reportData)
+    public void PreviewGasRiskAssessmentPage(Dictionary<string,string> reportData)
     {
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("nameAndSiteAdress"))
