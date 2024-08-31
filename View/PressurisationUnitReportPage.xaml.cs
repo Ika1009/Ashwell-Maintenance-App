@@ -356,8 +356,29 @@ public partial class PressurisationUnitReportPage : ContentPage
 
         if (reportData.TryGetValue("date", out var date))
             this.date.Text = date;
-        
+
         //fale bool
+        if (reportData.ContainsKey("checkMainWaterSupply"))
+        {
+            checkMainsWatersSupplyYes.IsChecked = Convert.ToBoolean(reportData["checkMainWaterSupply"]);
+        }
+        if (reportData.ContainsKey("checkColdFillPressureSet"))
+        {
+            checkColdFillPressureSetCorrectlyYes.IsChecked = Convert.ToBoolean(reportData["checkColdFillPressureSet"]);
+        }
+        if (reportData.ContainsKey("checkElectricalSupplyWorking"))
+        {
+            checkElectricalSupplyWorkingYes.IsChecked = Convert.ToBoolean(reportData["checkElectricalSupplyWorking"]);
+        }
+        if (reportData.ContainsKey("checkFillingLoopDisconnected"))
+        {
+            checkFillingLoopDisconnectedYes.IsChecked = Convert.ToBoolean(reportData["checkFillingLoopDisconnected"]);
+        }
+        if (reportData.ContainsKey("checkUnitLeftOperational"))
+        {
+            checkUnitLeftOperationalYes.IsChecked = Convert.ToBoolean(reportData["checkUnitLeftOperational"]);
+        }
+
 
     }
     private Dictionary<string, string> GatherReportData()

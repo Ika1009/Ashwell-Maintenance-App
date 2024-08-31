@@ -434,6 +434,10 @@ public partial class OnePage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.One(GatherReportData());
     }
+    public void previewOnePafe(Dictionary<string, string> reportData)
+    {
+
+    }
     private Dictionary<string, string> GatherReportData()
     {
         Dictionary<string, string> reportData = new Dictionary<string, string>();
@@ -642,7 +646,7 @@ public partial class OnePage : ContentPage
         reportData.Add("pipeworkFittingsIV", pipeworkFittingsIV.Text ?? string.Empty);
         reportData.Add("meterVolume", meterVolume.Text ?? string.Empty);
         reportData.Add("totalVolumeForTesting", totalVolumeForTesting.Text ?? string.Empty);
-
+        //till here
         if (checkIsWeatherTemperatureStableYes.IsChecked)
             reportData.Add("checkIsWeatherTemperatureStableYes", "yes");
         else reportData.Add("checkIsWeatherTemperatureStableYes", "no");
