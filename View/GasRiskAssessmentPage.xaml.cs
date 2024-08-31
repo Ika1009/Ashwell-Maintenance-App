@@ -42,6 +42,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         checkWarningNoticeIssuedNA.IsChecked = true;
         checkGasTightnessTestRecommendedNA.IsChecked = true;
         checkGuessTightnessTestCarriedOutNA.IsChecked = true;
+        checkRecordTightnessTestResultNA.IsChecked = true;
     }
     public void FolderChosen(object sender, EventArgs e)
     {

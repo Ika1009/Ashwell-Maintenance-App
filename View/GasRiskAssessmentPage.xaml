@@ -1955,7 +1955,7 @@
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <CheckBox x:Name="checkRecordTightnessTestResultNA" CheckedChanged="CheckRecordTightnessTestResultNAChanged" IsChecked="True">
+                                <CheckBox x:Name="checkRecordTightnessTestResultNA" CheckedChanged="CheckRecordTightnessTestResultNAChanged">
                                     <CheckBox.Triggers>
                                         <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference checkRecordTightnessTestResultNA}, Path=IsChecked}" Value="True">
                                             <Setter Property="Color" Value="Red" />

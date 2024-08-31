@@ -336,6 +336,120 @@ public partial class OneBPage : ContentPage
 
         //PdfCreation.IgeUpB(GatherReportData());
     }
+    public void previewOneBPage(Dictionary<string, string> reportData)
+    {
+        // Set text fields
+        site.Text = reportData.ContainsKey("site") ? reportData["site"] : string.Empty;
+        date.Text = reportData.ContainsKey("date") ? reportData["date"] : string.Empty;
+        location.Text = reportData.ContainsKey("location") ? reportData["location"] : string.Empty;
+        steel1Total.Text = reportData.ContainsKey("steel1Total") ? reportData["steel1Total"] : string.Empty;
+        steel2Total.Text = reportData.ContainsKey("steel2Total") ? reportData["steel2Total"] : string.Empty;
+        steel3Total.Text = reportData.ContainsKey("steel3Total") ? reportData["steel3Total"] : string.Empty;
+        steel4Total.Text = reportData.ContainsKey("steel4Total") ? reportData["steel4Total"] : string.Empty;
+        copper1Total.Text = reportData.ContainsKey("copper1Total") ? reportData["copper1Total"] : string.Empty;
+        copper2Total.Text = reportData.ContainsKey("copper2Total") ? reportData["copper2Total"] : string.Empty;
+        copper3Total.Text = reportData.ContainsKey("copper3Total") ? reportData["copper3Total"] : string.Empty;
+        copper4Total.Text = reportData.ContainsKey("copper4Total") ? reportData["copper4Total"] : string.Empty;
+        pesdr1Total.Text = reportData.ContainsKey("pesdr1Total") ? reportData["pesdr1Total"] : string.Empty;
+        pesdr2Total.Text = reportData.ContainsKey("pesdr2Total") ? reportData["pesdr2Total"] : string.Empty;
+        pesdr3Total.Text = reportData.ContainsKey("pesdr3Total") ? reportData["pesdr3Total"] : string.Empty;
+        totalPipeworkVolume.Text = reportData.ContainsKey("totalPipeworkVolume") ? reportData["totalPipeworkVolume"] : string.Empty;
+        pipeworkFittingsIV.Text = reportData.ContainsKey("pipeworkFittingsIV") ? reportData["pipeworkFittingsIV"] : string.Empty;
+        meterVolume.Text = reportData.ContainsKey("meterVolume") ? reportData["meterVolume"] : string.Empty;
+        totalVolumeForTesting.Text = reportData.ContainsKey("totalVolumeForTesting") ? reportData["totalVolumeForTesting"] : string.Empty;
+        tightnessTestPressure.Text = reportData.ContainsKey("tightnessTestPressure") ? reportData["tightnessTestPressure"] : string.Empty;
+        letByDuration.Text = reportData.ContainsKey("letByDuration") ? reportData["letByDuration"] : string.Empty;
+        stabilisationDuration.Text = reportData.ContainsKey("stabilisationDuration") ? reportData["stabilisationDuration"] : string.Empty;
+        testDuration.Text = reportData.ContainsKey("testDuration") ? reportData["testDuration"] : string.Empty;
+        actualPressureDropResult.Text = reportData.ContainsKey("actualPressureDropResult") ? reportData["actualPressureDropResult"] : string.Empty;
+        engineersComments.Text = reportData.ContainsKey("engineersComments") ? reportData["engineersComments"] : string.Empty;
+        engineer.Text = reportData.ContainsKey("engineer") ? reportData["engineer"] : string.Empty;
+        clientsName.Text = reportData.ContainsKey("clientsName") ? reportData["clientsName"] : string.Empty;
+        WarningNoticeRefNo.Text = reportData.ContainsKey("WarningNoticeRefNo") ? reportData["WarningNoticeRefNo"] : string.Empty;
+        cardNumber.Text = reportData.ContainsKey("cardNumber") ? reportData["cardNumber"] : string.Empty;
+
+        // Set checkboxes based on dictionary values
+        if (reportData.ContainsKey("checkIsWeatherTemperatureStableYes"))
+        {
+            bool isWeatherTemperatureStableYes = reportData["checkIsWeatherTemperatureStableYes"] == "True";
+            checkIsWeatherTemperatureStableYes.IsChecked = isWeatherTemperatureStableYes;
+            checkIsWeatherTemperatureStableNo.IsChecked = !isWeatherTemperatureStableYes;
+        }
+
+        // Set dropdowns based on dictionary values
+        if (reportData.ContainsKey("steel1"))
+        {
+            steel1.SelectedItem = reportData["steel1"];
+        }
+        if (reportData.ContainsKey("steel2"))
+        {
+            steel2.SelectedItem = reportData["steel2"];
+        }
+        if (reportData.ContainsKey("steel3"))
+        {
+            steel3.SelectedItem = reportData["steel3"];
+        }
+        if (reportData.ContainsKey("steel4"))
+        {
+            steel4.SelectedItem = reportData["steel4"];
+        }
+
+        if (reportData.ContainsKey("copper1"))
+        {
+            copper1.SelectedItem = reportData["copper1"];
+        }
+        if (reportData.ContainsKey("copper2"))
+        {
+            copper2.SelectedItem = reportData["copper2"];
+        }
+        if (reportData.ContainsKey("copper3"))
+        {
+            copper3.SelectedItem = reportData["copper3"];
+        }
+        if (reportData.ContainsKey("copper4"))
+        {
+            copper4.SelectedItem = reportData["copper4"];
+        }
+
+        if (reportData.ContainsKey("pesdr1"))
+        {
+            pesdr1.SelectedItem = reportData["pesdr1"];
+        }
+        if (reportData.ContainsKey("pesdr2"))
+        {
+            pesdr2.SelectedItem = reportData["pesdr2"];
+        }
+        if (reportData.ContainsKey("pesdr3"))
+        {
+            pesdr3.SelectedItem = reportData["pesdr3"];
+        }
+
+        if (reportData.ContainsKey("testMediumPicker"))
+        {
+            testMediumPicker.SelectedItem = reportData["testMediumPicker"];
+        }
+
+        if (reportData.ContainsKey("installationPicker"))
+        {
+            installationPicker.SelectedItem = reportData["installationPicker"];
+        }
+
+        if (reportData.ContainsKey("testGaugeUsed"))
+        {
+            testGaugeUsed.SelectedItem = reportData["testGaugeUsed"];
+        }
+
+        if (reportData.ContainsKey("maximumPermissiblePressureDrop"))
+        {
+            maximumPermissiblePressureDrop.SelectedItem = reportData["maximumPermissiblePressureDrop"];
+        }
+
+        if (reportData.ContainsKey("testPassedOrFailed"))
+        {
+            testPassedOrFailed.SelectedItem = reportData["testPassedOrFailed"];
+        }
+
+    }
     private Dictionary<string, string> GatherReportData()
     {
         Dictionary<string, string> reportData = new Dictionary<string, string>();
