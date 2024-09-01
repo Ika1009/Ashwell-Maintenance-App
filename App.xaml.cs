@@ -53,7 +53,7 @@ namespace Ashwell_Maintenance
 #endif
             });
 
-            Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(LinelessEntry), (handler, view) =>
+            Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(LinelessPicker), (handler, view) =>
             {
 #if __ANDROID__
                 handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
@@ -62,6 +62,23 @@ namespace Ashwell_Maintenance
                 handler.PlatformView.TintColor = UIKit.UIColor.Red;
                 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                 handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+#endif
+            });
+            Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping("CursorColor", (handler, view) =>
+            {
+#if __ANDROID__
+                handler.PlatformView.TextCursorDrawable.SetTint(Android.Graphics.Color.Red);
+#endif
+            });
+
+            Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping(nameof(LinelessDatePicker), (handler, view) =>
+            {
+#if __ANDROID__
+                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                handler.PlatformView.SetHighlightColor(Android.Graphics.Color.Red);
+#elif __IOS__
+                handler.PlatformView.TintColor = UIKit.UIColor.Red;
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
 #endif
             });
             Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping("CursorColor", (handler, view) =>

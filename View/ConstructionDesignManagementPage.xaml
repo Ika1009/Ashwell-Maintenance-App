@@ -113,7 +113,7 @@
                         <Label Text="Start Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="startDate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessDatePicker x:Name="startDate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Format="d/M/yyyy"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -121,7 +121,7 @@
                         <Label Text="Completion Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="completionDate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessDatePicker x:Name="completionDate" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Format="d/M/yyyy"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -1706,7 +1706,7 @@
                     <Label Text="Date:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                     <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                        <local:LinelessEntry x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                        <local:LinelessDatePicker x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Format="d/M/yyyy"/>
                     </Frame>
                 </VerticalStackLayout>
 
