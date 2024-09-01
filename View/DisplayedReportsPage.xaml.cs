@@ -70,13 +70,13 @@ public partial class DisplayedReportsPage : ContentPage
                             await Navigation.PushModalAsync(new GasRiskAssessmentPage(report));
                             break;
                         case Enums.ReportType.OneA:
-                            //await Navigation.PushModalAsync(new OneAPage(report));
+                            await Navigation.PushModalAsync(new OneAPage(report));
                             break;
                         case Enums.ReportType.OneB:
-                            //await Navigation.PushModalAsync(new OneBPage(report));
+                            await Navigation.PushModalAsync(new OneBPage(report));
                             break;
                         case Enums.ReportType.One:
-                            //await Navigation.PushModalAsync(new OnePage(report));
+                            await Navigation.PushModalAsync(new OnePage(report));
                             break;
                         case Enums.ReportType.PressurisationUnitReport:
                             //await Navigation.PushModalAsync(new PressurisationUnitReportPage(report));

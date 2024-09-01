@@ -12,6 +12,7 @@ public partial class OnePage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    bool previewOnly = false;
     public OnePage()
 	{
 		InitializeComponent();
@@ -54,7 +55,12 @@ public partial class OnePage : ContentPage
         pesdr7.ItemsSource = numbers;
         pesdr8.ItemsSource = numbers;
     }
-
+    public OnePage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewOnePage(report.ReportData);
+    }
     public void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;
@@ -416,11 +422,17 @@ public partial class OnePage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OSection6.ScrollToAsync(0, 0, false);
         OSection6.IsVisible = true;
-        await LoadFolders();
 
+        // Do not Show Folders if in preview of PDF page
+        if (!previewOnly)
+            await LoadFolders();
     }
     public async void ONextFinish(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         OSection6.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
