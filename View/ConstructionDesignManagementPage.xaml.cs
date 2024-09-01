@@ -329,13 +329,13 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         if (reportData.ContainsKey("whatInformationIssued"))
             whatInformationIssued.Text = reportData["whatInformationIssued"];
         if (reportData.ContainsKey("startDate"))
-            startDate.Text = reportData["startDate"];
+            startDate.Date = DateTime.Parse(reportData["startDate"]);
         if (reportData.ContainsKey("other"))
             other.Text = reportData["other"];
         if (reportData.ContainsKey("date"))
-            date.Text = reportData["date"];
+            date.Date = DateTime.Parse(reportData["date"]);
         if (reportData.ContainsKey("completionDate"))
-            completionDate.Text = reportData["completionDate"];
+            completionDate.Date = DateTime.Parse(reportData["completionDate"]);
 
 
         // Assume 'reportData' is the dictionary containing the data
@@ -421,10 +421,10 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         reportData.Add("responsibleSiteEngineer", responsibleSiteEngineer.Text ?? string.Empty);
         reportData.Add("otherEngineers", otherEngineers.Text ?? string.Empty);
         reportData.Add("whatInformationIssued", whatInformationIssued.Text ?? string.Empty);
-        reportData.Add("startDate", startDate.Text ?? string.Empty);
+        reportData.Add("startDate", startDate.Date.ToString("d/M/yyyy") ?? string.Empty);
         reportData.Add("other", other.Text ?? string.Empty);
-        reportData.Add("date", date.Text ?? string.Empty);
-        reportData.Add("completionDate", completionDate.Text ?? string.Empty);//mozda treba date umesto completion date
+        reportData.Add("date", date.Date.ToString("d/M/yyyy") ?? string.Empty);
+        reportData.Add("completionDate", completionDate.Date.ToString("d/M/yyyy") ?? string.Empty);//mozda treba date umesto completion date
         //za buduce kometnari
         reportData.Add("ControlActionWorkingAtHeight", ControlActionWorkingAtHeight.Text ?? string.Empty);
         reportData.Add("ControlActionPermitsToWorkRequired", ControlActionPermitsToWorkRequired.Text ?? string.Empty);
