@@ -9,11 +9,18 @@ public partial class ServiceRecordPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    private bool previewOnly = false;
     public ServiceRecordPage()
     {
         InitializeComponent();
         checkHeating.IsChecked = true;
         checkOpenFlue.IsChecked = true;
+    }
+    public ServiceRecordPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewServiceRecordPage(report.ReportData);
     }
     public void FolderChosen(object sender, EventArgs e)
     {
@@ -320,6 +327,10 @@ public partial class ServiceRecordPage : ContentPage
 
     public async void ServiceRecordNext5(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         SRSection5.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)

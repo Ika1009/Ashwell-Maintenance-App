@@ -79,10 +79,10 @@ public partial class DisplayedReportsPage : ContentPage
                             await Navigation.PushModalAsync(new OnePage(report));
                             break;
                         case Enums.ReportType.PressurisationUnitReport:
-                            //await Navigation.PushModalAsync(new PressurisationUnitReportPage(report));
+                            await Navigation.PushModalAsync(new PressurisationUnitReportPage(report));
                             break;
                         case Enums.ReportType.ServiceRecord:
-                            //await Navigation.PushModalAsync(new ServiceRecordPage(report));
+                            await Navigation.PushModalAsync(new ServiceRecordPage(report));
                             break;
                     }
                 }

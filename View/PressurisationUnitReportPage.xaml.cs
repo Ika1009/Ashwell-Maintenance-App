@@ -9,10 +9,17 @@ public partial class PressurisationUnitReportPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    private bool previewOnly = false;
     public PressurisationUnitReportPage()
 	{
 		InitializeComponent();
 	}
+    public PressurisationUnitReportPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewPressurisationUnitReportPage(report.ReportData);
+    }
 
     public void FolderChosen(object sender, EventArgs e)
     {
@@ -280,10 +287,16 @@ public partial class PressurisationUnitReportPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await PURSection3.ScrollToAsync(0, 0, false);
         PURSection3.IsVisible = true;
-        await LoadFolders();
+        // Do not Show Folders if in preview of PDF page
+        if (!previewOnly)
+            await LoadFolders();
     }
     public async void PressurisationUnitReportNext3(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         PURSection3.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
@@ -300,8 +313,6 @@ public partial class PressurisationUnitReportPage : ContentPage
     }
     public void PreviewPressurisationUnitReportPage(Dictionary<string,string> reportData) 
     {
-        // Assuming reportData is a dictionary of string keys and string values
-
         // Populate the form fields from the dictionary
         if (reportData.TryGetValue("siteNameAndAddress", out var siteNameAndAddress))
             siteName.Text = siteNameAndAddress;
