@@ -319,6 +319,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await BHDSSection4.ScrollToAsync(0, 0, false);
         BHDSSection4.IsVisible = true;
+
         // Do not Show Folders if in preview of PDF page
         if(!previewOnly)
             await LoadFolders();
@@ -328,7 +329,6 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         // Do not Show Folders if in preview of PDF page
         if (previewOnly)
             await Navigation.PopModalAsync();
-
 
         BHDSSection4.IsVisible = false;
 

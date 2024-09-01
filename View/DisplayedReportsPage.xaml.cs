@@ -64,10 +64,10 @@ public partial class DisplayedReportsPage : ContentPage
                             await Navigation.PushModalAsync(new ConstructionDesignManagmentPage(report));
                             break;
                         case Enums.ReportType.EngineersReport:
-                            //await Navigation.PushModalAsync(new EngineersReportPage(report));
+                            await Navigation.PushModalAsync(new EngineersReportPage(report));
                             break;
                         case Enums.ReportType.GasRiskAssessment:
-                            //await Navigation.PushModalAsync(new GasRiskAssessmentPage(report));
+                            await Navigation.PushModalAsync(new GasRiskAssessmentPage(report));
                             break;
                         case Enums.ReportType.OneA:
                             //await Navigation.PushModalAsync(new OneAPage(report));
