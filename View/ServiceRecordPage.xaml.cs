@@ -632,9 +632,9 @@ public partial class ServiceRecordPage : ContentPage
 
         if (reportData["gasType"] == "NG")
         {
-            checkNG.IsChecked == true;
+            checkNG.IsChecked = true;
         }
-        else checkLPG.IsChecked == true;
+        else checkLPG.IsChecked = true;
     }
     private void GatherReportData()
     {
