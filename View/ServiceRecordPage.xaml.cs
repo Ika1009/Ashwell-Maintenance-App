@@ -1,5 +1,4 @@
 using CommunityToolkit.Maui.Views;
-using Org.Apache.Http.Client.Params;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 
@@ -336,7 +335,7 @@ public partial class ServiceRecordPage : ContentPage
         //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         await LoadFolders();
     }
-    public void previewServiceRecordPage(Dictionary<string, string> reportData)
+    public void PreviewServiceRecordPage(Dictionary<string, string> reportData)
     {
         if (reportData.ContainsKey("site"))
             site.Text = reportData["site"];

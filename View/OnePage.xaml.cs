@@ -434,7 +434,7 @@ public partial class OnePage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.One(GatherReportData());
     }
-    public void previewOnePage(Dictionary<string, string> reportData)
+    public void PreviewOnePage(Dictionary<string, string> reportData)
     {
         // Populate site and location
         if (reportData.ContainsKey("site"))

@@ -343,7 +343,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.BoilerHouseDataSheet(GatherReportData());
     }
-    public void previewBoilerHouseDataSheetPage(Dictionary<string, string> reportData)
+    public void PreviewBoilerHouseDataSheetPage(Dictionary<string, string> reportData)
     {
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("uern"))

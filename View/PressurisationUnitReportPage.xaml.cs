@@ -298,7 +298,7 @@ public partial class PressurisationUnitReportPage : ContentPage
 
         //PdfCreation.PressurisationReport(GatherReportData());
     }
-    public void previewPressurisationUnitReportPage(Dictionary<string,string> reportData) 
+    public void PreviewPressurisationUnitReportPage(Dictionary<string,string> reportData) 
     {
         // Assuming reportData is a dictionary of string keys and string values
 

@@ -61,7 +61,7 @@ public partial class DisplayedReportsPage : ContentPage
                             await Navigation.PushModalAsync(new ConformityCheckPage(report));
                             break;
                         case Enums.ReportType.ConstructionDesignManagement:
-                            //await Navigation.PushModalAsync(new ConstructionDesignManagmentPage(report));
+                            await Navigation.PushModalAsync(new ConstructionDesignManagmentPage(report));
                             break;
                         case Enums.ReportType.EngineersReport:
                             //await Navigation.PushModalAsync(new EngineersReportPage(report));

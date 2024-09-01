@@ -533,7 +533,7 @@ public partial class OneAPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.OneA(GatherReportData());
     }
-    public void previewOneAPage(Dictionary<string,string> reportData)
+    public void PreviewOneAPage(Dictionary<string,string> reportData)
     {
         if (reportData.ContainsKey("site"))
             site.Text = reportData["site"];

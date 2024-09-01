@@ -358,7 +358,7 @@ public partial class ConformityCheckPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.CheckPage(GatherReportData());
     }
-    public void previewConformityCheckPage(Dictionary<string, string> reportData)
+    public void PreviewConformityCheckPage(Dictionary<string, string> reportData)
     {
         if (reportData.ContainsKey("uern"))
         {

@@ -336,7 +336,7 @@ public partial class OneBPage : ContentPage
 
         //PdfCreation.IgeUpB(GatherReportData());
     }
-    public void previewOneBPage(Dictionary<string, string> reportData)
+    public void PreviewOneBPage(Dictionary<string, string> reportData)
     {
         // Set text fields
         site.Text = reportData.ContainsKey("site") ? reportData["site"] : string.Empty;

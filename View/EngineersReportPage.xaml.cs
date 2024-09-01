@@ -306,7 +306,7 @@ public partial class EngineersReportPage : ContentPage
         reportName = $"Engineers_Report_{dateTimeString}.pdf";
         reportData = GatherReportData();
     }
-    public void previewEngineersReportPage(Dictionary<string, string> reportData)
+    public void PreviewEngineersReportPage(Dictionary<string, string> reportData)
     {
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("clientsName")) clientsName.Text = reportData["clientsName"];
