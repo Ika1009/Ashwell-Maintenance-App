@@ -33,7 +33,7 @@ public partial class ConformityCheckPage : ContentPage
     {
         InitializeComponent();
         previewOnly = true;
-        previewConformityCheckPage(report.ReportData);
+        PreviewConformityCheckPage(report.ReportData);
     }
     public void FolderChosen(object sender, EventArgs e)
     {

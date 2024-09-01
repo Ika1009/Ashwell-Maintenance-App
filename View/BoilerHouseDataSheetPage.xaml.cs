@@ -34,7 +34,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
     {
         InitializeComponent();
         previewOnly = true;
-        previewBoilerHouseDataSheetPage(report.ReportData);
+        PreviewBoilerHouseDataSheetPage(report.ReportData);
     }
 
     public void FolderChosen(object sender, EventArgs e)
