@@ -539,8 +539,102 @@ public partial class ServiceRecordPage : ContentPage
         if (reportData.ContainsKey("thermalInsulationComments"))
             thermalInsulationComment.Text = reportData["thermalInsulationComments"];
 
-      
+        //drugi deo
+        // Populate the form fields using the data from the dictionary
+        checkCombustionFanIdFan.IsChecked = bool.Parse(reportData["combustionFanIdFanSatisfactory"]);
+        checkCombustionFanIdFanNA.IsChecked = bool.Parse(reportData["combustionFanIdFanSatisfactoryNA"]);
+        combustionFanIdFanComment.Text = reportData["combustionFanIdFanComments"];
 
+        checkAirFluePressureSwitch.IsChecked = bool.Parse(reportData["airFluePressureSwitchSatisfactory"]);
+        checkAirFluePressureSwitchNA.IsChecked = bool.Parse(reportData["airFluePressureSwitchSatisfactoryNA"]);
+        airFluePressureSwitchComment.Text = reportData["airFluePressureSwitchComments"];
+
+        checkControlLimitStatus.IsChecked = bool.Parse(reportData["controlLimitStatsSatisfactory"]);
+        checkControlLimitStatusNA.IsChecked = bool.Parse(reportData["controlLimitStatsSatisfactoryNA"]);
+        controlLimitStatusComment.Text = reportData["controlLimitStatsComments"];
+
+        checkPressureTempGauges.IsChecked = bool.Parse(reportData["pressureTempGaugesSatisfactory"]);
+        checkPressureTempGaugesNA.IsChecked = bool.Parse(reportData["pressureTempGaugesSatisfactoryNA"]);
+        pressureTempGaugesComment.Text = reportData["pressureTempGaugesComments"];
+
+        checkCirculationPumps.IsChecked = bool.Parse(reportData["circulationPumpsSatisfactory"]);
+        checkCirculationPumpsNA.IsChecked = bool.Parse(reportData["circulationPumpsSatisfactoryNA"]);
+        circulationPumpsComment.Text = reportData["circulationPumpsComments"];
+
+        checkCondenseTrap.IsChecked = bool.Parse(reportData["condenseTrapSatisfactory"]);
+        checkCondenseTrapNA.IsChecked = bool.Parse(reportData["condenseTrapSatisfactoryNA"]);
+        condenseTrapComment.Text = reportData["condenseTrapComments"];
+
+        checkHeatExchangerFluewaysClear.IsChecked = bool.Parse(reportData["heatExhanger"]);
+        checkHeatExchangerFluewaysClearNA.IsChecked = bool.Parse(reportData["heatExhangerNA"]);
+        heatExchangerFluewaysClearComment.Text = reportData["heatExhangerComments"];
+
+        workingIntelPressure.Text = reportData["workingInletPressure"];
+        workingIntelPressureComment.Text = reportData["workingInletPressureComments"];
+
+        recordedBurnerPressure.Text = reportData["recordedBurnerPressure"];
+        recordedBurnerPressureComment.Text = reportData["recordedBurnerPressureComments"];
+
+        measuredGasRate.Text = reportData["measuredGasRate"];
+        mesuredGasRateComment.Text = reportData["measuredGasRateComments"];
+
+        checkFlueFlowTest.IsChecked = bool.Parse(reportData["flueFlowTest"]);
+        checkFlueFlowTestNA.IsChecked = bool.Parse(reportData["flueFlowTestNA"]);
+        flueFlowTestComment.Text = reportData["flueFlowTestComments"];
+
+        checkSpillageTest.IsChecked = bool.Parse(reportData["spillageTest"]);
+        checkBoth.IsChecked = bool.Parse(reportData["spillageTestNA"]);
+        spillageTestComment.Text = reportData["spillageTestComments"];
+
+        checkAECVPlantIsolationCorrect.IsChecked = bool.Parse(reportData["AECVPlantIsolationCorrect"]);
+        checkAECVPlantIsolationCorrectNA.IsChecked = bool.Parse(reportData["AECVPlantIsolationCorrectNA"]);
+        AECVPlantIsolationCorrectComment.Text = reportData["AECVPlantIsolationCorrectComments"];
+
+        checkSafetyShutOffValve.IsChecked = bool.Parse(reportData["safetyShutOffValve"]);
+        checkSafetyShutOffValveNA.IsChecked = bool.Parse(reportData["safetyShutOffValveNA"]);
+        safetyShutOffValveComment.Text = reportData["safetyShutOffValveComments"];
+
+        checkPlantroomGasTightnessTest.IsChecked = bool.Parse(reportData["plantroomGasTightnessTest"]);
+        checkPlantroomGasTightnessTestNA.IsChecked = bool.Parse(reportData["plantroomGasTightnessTestNA"]);
+        plantroomGasTightnessTestComment.Text = reportData["plantroomGasTightnessTestComments"];
+
+        stateApplianceCondition.Text = reportData["stateApplianceCondition"];
+        stateApplianceConditionComment.Text = reportData["stateApplianceConditionComments"];
+
+        highFireCO2.Text = reportData["HighFireCO2"];
+        highFireCO.Text = reportData["HighFireCO"];
+        highFireO2.Text = reportData["HighFireO2"];
+        highFireRatio.Text = reportData["HighFireRatio"];
+        highFireFlueTemp.Text = reportData["HighFireFlueTemp"];
+        highFireEfficiency.Text = reportData["HighFireEfficiency"];
+        highFireExcessAir.Text = reportData["HighFireExcessAir"];
+        highFireRoomTemp.Text = reportData["HighFireRoomTemp"];
+
+        lowFireCO2.Text = reportData["LowFireCO2"];
+        lowFireCO.Text = reportData["LowFireCO"];
+        lowFireO2.Text = reportData["LowFireO2"];
+        lowFireRatio.Text = reportData["LowFireRatio"];
+        lowFireFlueTemp.Text = reportData["LowFireFlueTemp"];
+        lowFireEfficiency.Text = reportData["LowFireEfficiency"];
+        lowFireExcessAir.Text = reportData["LowFireExcessAir"];
+        lowFireRoomTemp.Text = reportData["LowFireRoomTemp"];
+
+        engineersName.Text = reportData["engineersName"];
+        // engineersSignature.Text = reportData["engineersSignature"]; // Uncomment if using signatures
+        engineersGasSafeIDNumber.Text = reportData["engineersGasSafeID"];
+
+        clientsName.Text = reportData["clientsName"];
+        // clientsSignature.Text = reportData["clientsSignature"]; // Uncomment if using signatures
+
+        inspectionDate.Text = reportData["inspectionDate"];
+        additionalCommentsDefects.Text = reportData["commetsDefects"];
+        warningNoticeNumber.Text = reportData["warningNoticeIssueNumber"];
+
+        if (reportData["gasType"] == "NG")
+        {
+            checkNG.IsChecked == true;
+        }
+        else checkLPG.IsChecked == true;
     }
     private void GatherReportData()
     {
