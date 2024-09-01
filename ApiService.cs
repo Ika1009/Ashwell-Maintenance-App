@@ -217,7 +217,7 @@ public static class ApiService
     /// </summary>
     /// <param name="folderId">The ID of the folder to be deleted.</param>
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
-    public static async Task<HttpResponseMessage> DeleteFolderFromDatabaseAsync(string folderId)
+    private static async Task<HttpResponseMessage> DeleteFolderFromDatabaseAsync(string folderId)
     {
         using HttpClient client = new();
         var folderData = new { folder_id = folderId };
@@ -276,6 +276,73 @@ public static class ApiService
         HttpResponseMessage response = await client.GetAsync(apiUrl);
 
         return response;
+    }
+
+    /// <summary>
+    /// Retrieves all data for a specified report ID from the server.
+    /// </summary>
+    /// <param name="reportId">The ID of the report to retrieve.</param>
+    /// <returns>An instance of the Report class containing the data for the specified report, or null if the request fails.</returns>
+    public static async Task<Report> GetReportByIdAsync(string reportId)
+    {
+        using HttpClient client = new();
+
+        try
+        {
+            string apiUrl = $"{BaseApiUrl}/get_report_by_id.php?report_id={reportId}";
+
+            HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Read the response content as a string
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+
+                // Manually deserialize the JSON response
+                using JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse);
+                JsonElement root = jsonDocument.RootElement;
+
+                // Check if the root element contains the expected properties
+                if (root.TryGetProperty("status", out JsonElement statusElement) &&
+                    statusElement.GetString() == "success" &&
+                    root.TryGetProperty("data", out JsonElement dataElement))
+                {
+                    var report = new Report
+                    {
+                        ReportId = dataElement.GetProperty("report_id").GetString(),
+                        ReportName = dataElement.GetProperty("report_name").GetString(),
+                        CreatedAt = dataElement.GetProperty("created_at").GetString(),
+                        FolderId = dataElement.GetProperty("folder_id").GetString(),
+                        ReportData = JsonSerializer.Deserialize<Dictionary<string, string>>(dataElement.GetProperty("report_data").GetString()),
+                        ReportType = Enum.TryParse(dataElement.GetProperty("report_type").GetString(), true, out Enums.ReportType parsedReportType)
+                                     ? parsedReportType
+                                     : Enums.ReportType.ServiceRecord // Default Type if nothing is found
+                    };
+
+                    return report;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Unexpected JSON structure.");
+                    return null;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Error: Failed to retrieve the report. Status Code: {response.StatusCode}");
+                return null;
+            }
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine($"Request error: {e.Message}");
+            return null;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"An unexpected error occurred: {e.Message}");
+            return null;
+        }
     }
 
     /// <summary>
@@ -465,7 +532,7 @@ public static class ApiService
     /// </summary>
     /// <param name="folderName">The name of the folder to be deleted.</param>
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
-    public static async Task<HttpResponseMessage> DeleteFolderInDropboxAsync(string folderName)
+    private static async Task<HttpResponseMessage> DeleteFolderInDropboxAsync(string folderName)
     {
         if (string.IsNullOrEmpty(_accessToken))
         {

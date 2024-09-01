@@ -9,6 +9,7 @@ public partial class ConformityCheckPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    bool previewOnly = false;
     public ConformityCheckPage()
 	{
 		InitializeComponent();
@@ -28,6 +29,12 @@ public partial class ConformityCheckPage : ContentPage
         checkSystemStopNA.IsChecked = true;
         checkTestAndResetNA.IsChecked = true;
 	}
+    public ConformityCheckPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewConformityCheckPage(report.ReportData);
+    }
     public void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;
@@ -328,10 +335,16 @@ public partial class ConformityCheckPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await CCSection5.ScrollToAsync(0, 0, false);
         CCSection5.IsVisible = true;
-        await LoadFolders();
+        // Do not Show Folders if in preview of PDF page
+        if (!previewOnly)
+            await LoadFolders();
     }
     public async void CCNext5(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         CCSection5.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
@@ -345,7 +358,7 @@ public partial class ConformityCheckPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.CheckPage(GatherReportData());
     }
-    public void previewConformityCheckPage(Dictionary<string, string> reportData)
+    public void PreviewConformityCheckPage(Dictionary<string, string> reportData)
     {
         if (reportData.ContainsKey("uern"))
         {

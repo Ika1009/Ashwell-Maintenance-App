@@ -9,10 +9,17 @@ public partial class EngineersReportPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    bool previewOnly = false;
     public EngineersReportPage()
 	{
 		InitializeComponent();
 	}
+    public EngineersReportPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewEngineersReportPage(report.ReportData);
+    }
     public void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;
@@ -289,11 +296,18 @@ public partial class EngineersReportPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await ERSection3.ScrollToAsync(0, 0, false);
         ERSection3.IsVisible = true;
-        await LoadFolders();
+
+        // Do not Show Folders if in preview of PDF page
+        if (!previewOnly)
+            await LoadFolders();
     }
     
     public async void ERNext3(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         ERSection3.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
@@ -306,7 +320,7 @@ public partial class EngineersReportPage : ContentPage
         reportName = $"Engineers_Report_{dateTimeString}.pdf";
         reportData = GatherReportData();
     }
-    public void previewEngineersReportPage(Dictionary<string, string> reportData)
+    public void PreviewEngineersReportPage(Dictionary<string, string> reportData)
     {
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("clientsName")) clientsName.Text = reportData["clientsName"];

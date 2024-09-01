@@ -12,6 +12,7 @@ public partial class OneAPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    bool previewOnly = false;
     public OneAPage()
     {
         InitializeComponent();
@@ -50,6 +51,12 @@ public partial class OneAPage : ContentPage
         pesdr6.ItemsSource = numbers;
         pesdr7.ItemsSource = numbers;
         pesdr8.ItemsSource = numbers;
+    }
+    public OneAPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewOneAPage(report.ReportData);
     }
     public void FolderChosen(object sender, EventArgs e)
     {
@@ -515,11 +522,18 @@ public partial class OneAPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OASection5.ScrollToAsync(0, 0, false);
         OASection5.IsVisible = true;
-        await LoadFolders();
+
+        // Do not Show Folders if in preview of PDF page
+        if (!previewOnly)
+            await LoadFolders();
     }
 
     public async void OneANextFinish(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         OASection5.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
@@ -533,7 +547,7 @@ public partial class OneAPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.OneA(GatherReportData());
     }
-    public void previewOneAPage(Dictionary<string,string> reportData)
+    public void PreviewOneAPage(Dictionary<string,string> reportData)
     {
         if (reportData.ContainsKey("site"))
             site.Text = reportData["site"];

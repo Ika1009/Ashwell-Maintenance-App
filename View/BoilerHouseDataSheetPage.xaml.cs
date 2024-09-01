@@ -9,6 +9,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    bool previewOnly = false;
     public BoilerHouseDataSheetPage()
 	{
 		InitializeComponent();
@@ -29,6 +30,13 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         checkAIVNA.IsChecked = true;
         checkManualNA.IsChecked = true;
 	}
+    public BoilerHouseDataSheetPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewBoilerHouseDataSheetPage(report.ReportData);
+    }
+
     public void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;
@@ -311,10 +319,17 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await BHDSSection4.ScrollToAsync(0, 0, false);
         BHDSSection4.IsVisible = true;
-        await LoadFolders();
+
+        // Do not Show Folders if in preview of PDF page
+        if(!previewOnly)
+            await LoadFolders();
     }
 	public async void BHDSNext4(object sender, EventArgs e)
 	{
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         BHDSSection4.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
@@ -328,7 +343,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.BoilerHouseDataSheet(GatherReportData());
     }
-    public void previewBoilerHouseDataSheetPage(Dictionary<string, string> reportData)
+    public void PreviewBoilerHouseDataSheetPage(Dictionary<string, string> reportData)
     {
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("uern"))

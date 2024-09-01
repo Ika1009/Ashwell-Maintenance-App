@@ -9,10 +9,17 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    bool previewOnly = false;
     public ConstructionDesignManagmentPage()
 	{
 		InitializeComponent();
 	}
+    public ConstructionDesignManagmentPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewConstructionDesignManagmentPage(report.ReportData);
+    }
     public void FolderChosen(object sender, EventArgs e)
     {
         string folderId = (sender as Button).CommandParameter as string;
@@ -286,11 +293,17 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         //if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
         //    await CDMSection3.ScrollToAsync(0, 0, false);
         CDMSection3.IsVisible = true;
-        await LoadFolders();
+        // Do not Show Folders if in preview of PDF page
+        if (!previewOnly)
+            await LoadFolders();
     }
     
-    public void CDMNext3(object sender, EventArgs e)
+    public async void CDMNext3(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         CDMSection3.IsVisible = false;
         FolderSection.IsVisible = true;
         folderSearch.IsVisible = true;
@@ -302,7 +315,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         //await DisplayAlert("MARICU", "fajl sacuvan", "cancelanko");
         //await PdfCreation.ConstructionDesignManagement(reportData);
     }
-    public void previewConstructionDesignManagmentPage(Dictionary<string,string> reportData)
+    public void PreviewConstructionDesignManagmentPage(Dictionary<string,string> reportData)
     {
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("siteAdress"))

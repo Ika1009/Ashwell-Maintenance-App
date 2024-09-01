@@ -9,6 +9,7 @@ public partial class GasRiskAssessmentPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
+    bool previewOnly = true;
     public GasRiskAssessmentPage()
 	{
 		InitializeComponent();
@@ -43,6 +44,12 @@ public partial class GasRiskAssessmentPage : ContentPage
         checkGasTightnessTestRecommendedNA.IsChecked = true;
         checkGuessTightnessTestCarriedOutNA.IsChecked = true;
         checkRecordTightnessTestResultNA.IsChecked = true;
+    }
+    public GasRiskAssessmentPage(Report report)
+    {
+        InitializeComponent();
+        previewOnly = true;
+        PreviewGasRiskAssessmentPage(report.ReportData);
     }
     public void FolderChosen(object sender, EventArgs e)
     {
@@ -312,11 +319,18 @@ public partial class GasRiskAssessmentPage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await GRASection3.ScrollToAsync(0, 0, false);
         GRASection3.IsVisible = true;
-        await LoadFolders();
+
+        // Do not Show Folders if in preview of PDF page
+        if (!previewOnly)
+            await LoadFolders();
     }
 
     public async void GasRiskAssessmentNext3(object sender, EventArgs e)
     {
+        // Do not Show Folders if in preview of PDF page
+        if (previewOnly)
+            await Navigation.PopModalAsync();
+
         GRASection3.IsVisible = false;
 
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
@@ -330,7 +344,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData = GatherReportData();
         //PdfCreation.GasRisk(GatherReportData());
     }
-    public void previewGasRiskAssessmentPage(Dictionary<string,string> reportData)
+    public void PreviewGasRiskAssessmentPage(Dictionary<string,string> reportData)
     {
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("nameAndSiteAdress"))
