@@ -472,6 +472,8 @@ public partial class BoilerHouseDataSheetPage : ContentPage
             checkManualNo.IsChecked = bool.Parse(reportData["checkManualNo"]);
         if (reportData.ContainsKey("checkPlantGasTightnessTestYes"))
             checkPlantGasTightnessTestYes.IsChecked = bool.Parse(reportData["checkPlantGasTightnessTestYes"]);
+        if (reportData.ContainsKey("checkPlantGasTightnessTestNo"))
+            checkPlantGasTightnessTestNo.IsChecked = bool.Parse(reportData["checkPlantGasTightnessTestNo"]);
 
 
     }
@@ -544,7 +546,8 @@ public partial class BoilerHouseDataSheetPage : ContentPage
             { "checkAIVNo", checkAIVNo.IsChecked.ToString() },
             { "checkManualYes", checkManualYes.IsChecked.ToString() },
             { "checkManualNo", checkManualNo.IsChecked.ToString() },
-            { "checkPlantGasTightnessTestYes", checkPlantGasTightnessTestYes.IsChecked.ToString() }
+            { "checkPlantGasTightnessTestYes", checkPlantGasTightnessTestYes.IsChecked.ToString() },
+             { "checkPlantGasTightnessTestNo", checkPlantGasTightnessTestNo.IsChecked.ToString() }
         };
 
 
