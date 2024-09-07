@@ -60,7 +60,18 @@ public partial class SignaturePage : ContentPage
             drawingViewCustomer.Background = Colors.White;
             drawingViewEngineer.Background = Colors.White;
 
-            using var stream = drawingViewCustomer.IsVisible ? await drawingViewCustomer.GetImageStream(100, 100) : await drawingViewEngineer.GetImageStream(100, 100);
+            Stream stream = null;
+
+            if (drawingViewCustomer.IsVisible)
+                stream = await drawingViewCustomer.GetImageStream(100, 100);
+            else
+                stream = await drawingViewEngineer.GetImageStream(100, 100);
+
+            if (stream == null || stream.Length == 0)
+            {
+                throw new InvalidOperationException("The signature can't be empty.");
+            }
+
             using var memoryStream = new MemoryStream();
             stream.CopyTo(memoryStream);
 
@@ -84,7 +95,7 @@ public partial class SignaturePage : ContentPage
                 await Task.WhenAll
                 (
                     signatureTitle.FadeTo(1, 200),
-                    signatureTitle.TranslateTo( 0, signatureTitle.Y, 300, Easing.SinOut)
+                    signatureTitle.TranslateTo(0, signatureTitle.Y, 300, Easing.SinOut)
                 );
             }
             else
@@ -93,9 +104,9 @@ public partial class SignaturePage : ContentPage
                 await Navigation.PopModalAsync(); // Close the modal
             }
         }
-        catch
+        catch (Exception ex)
         {
-            // Kolko sam uzasan u ovome lol, ali radi? - Nixa
+            await Shell.Current.DisplayAlert("Error when signing", ex.Message, "OK");
 
             await signatureBorder.FadeTo(1, 100);
             await signatureBorder.FadeTo(1, 250);
