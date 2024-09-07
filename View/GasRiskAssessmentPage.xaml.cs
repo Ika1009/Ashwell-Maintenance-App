@@ -398,121 +398,204 @@ public partial class GasRiskAssessmentPage : ContentPage
             checkInternalMeter.IsChecked = bool.Parse(reportData["checkInternalMeter"]);
         if (reportData.ContainsKey("checkExternalMeter"))
             checkExternalMeter.IsChecked = bool.Parse(reportData["checkExternalMeter"]);
+
         if (reportData.ContainsKey("checkGeneralMeterConditionYes"))
             checkGeneralMeterConditionYes.IsChecked = bool.Parse(reportData["checkGeneralMeterConditionYes"]);
         if (reportData.ContainsKey("checkGeneralMeterConditionNo"))
             checkGeneralMeterConditionNo.IsChecked = bool.Parse(reportData["checkGeneralMeterConditionNo"]);
+        if (checkGeneralMeterConditionYes.IsChecked == false && checkGeneralMeterConditionNo.IsChecked == false)
+            checkGeneralMeterConditionNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkEarthBondingYes"))
             checkEarthBondingYes.IsChecked = bool.Parse(reportData["checkEarthBondingYes"]);
         if (reportData.ContainsKey("checkEarthBondingNo"))
             checkEarthBondingNo.IsChecked = bool.Parse(reportData["checkEarthBondingNo"]);
+        if (checkEarthBondingYes.IsChecked == false && checkEarthBondingNo.IsChecked == false)
+            checkEarthBondingNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkEmergencyControlsYes"))
             checkEmergencyControlsYes.IsChecked = bool.Parse(reportData["checkEmergencyControlsYes"]);
         if (reportData.ContainsKey("checkEmergencyControlsNo"))
             checkEmergencyControlsNo.IsChecked = bool.Parse(reportData["checkEmergencyControlsNo"]);
+        if (checkEmergencyControlsYes.IsChecked == false && checkEmergencyControlsNo.IsChecked == false)
+            checkEmergencyControlsNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkMeterVentilationYes"))
             checkMeterVentilationYes.IsChecked = bool.Parse(reportData["checkMeterVentilationYes"]);
         if (reportData.ContainsKey("checkMeterVentilationNo"))
             checkMeterVentilationNo.IsChecked = bool.Parse(reportData["checkMeterVentilationNo"]);
+        if (checkMeterVentilationYes.IsChecked == false && checkMeterVentilationNo.IsChecked == false)
+            checkMeterVentilationNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkGasLineDiagramYes"))
             checkGasLineDiagramYes.IsChecked = bool.Parse(reportData["checkGasLineDiagramYes"]);
         if (reportData.ContainsKey("checkGasLineDiagramNo"))
             checkGasLineDiagramNo.IsChecked = bool.Parse(reportData["checkGasLineDiagramNo"]);
+        if (checkGasLineDiagramYes.IsChecked == false && checkGasLineDiagramNo.IsChecked == false)
+            checkGasLineDiagramNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkEmergencyContractNumberYes"))
             checkEmergencyContractNumberYes.IsChecked = bool.Parse(reportData["checkEmergencyContractNumberYes"]);
         if (reportData.ContainsKey("checkEmergencyContractNumberNo"))
             checkEmergencyContractNumberNo.IsChecked = bool.Parse(reportData["checkEmergencyContractNumberNo"]);
+        if (checkEmergencyContractNumberYes.IsChecked == false && checkEmergencyContractNumberNo.IsChecked == false)
+            checkEmergencyContractNumberNA.IsChecked = true;
+
+
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("checkPipeworkIdentifiedYes"))
             checkPipeworkIdentifiedYes.IsChecked = bool.Parse(reportData["checkPipeworkIdentifiedYes"]);
         if (reportData.ContainsKey("checkPipeworkIdentifiedNo"))
             checkPipeworkIdentifiedNo.IsChecked = bool.Parse(reportData["checkPipeworkIdentifiedNo"]);
+        if (checkPipeworkIdentifiedYes.IsChecked == false && checkPipeworkIdentifiedNo.IsChecked == false)
+            checkPipeworkIdentifiedNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPipeworkBuriedYes"))
             checkPipeworkBuriedYes.IsChecked = bool.Parse(reportData["checkPipeworkBuriedYes"]);
         if (reportData.ContainsKey("checkPipeworkBuriedNo"))
             checkPipeworkBuriedNo.IsChecked = bool.Parse(reportData["checkPipeworkBuriedNo"]);
+        if (checkPipeworkBuriedYes.IsChecked == false && checkPipeworkBuriedNo.IsChecked == false)
+            checkPipeworkBuriedNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPipeworkSurfaceYes"))
             checkPipeworkSurfaceYes.IsChecked = bool.Parse(reportData["checkPipeworkSurfaceYes"]);
         if (reportData.ContainsKey("checkPipeworkSurfaceNo"))
             checkPipeworkSurfaceNo.IsChecked = bool.Parse(reportData["checkPipeworkSurfaceNo"]);
+        if (checkPipeworkSurfaceYes.IsChecked == false && checkPipeworkSurfaceNo.IsChecked == false)
+            checkPipeworkSurfaceNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPipeworkEarthBondingYes"))
             checkPipeworkEarthBondingYes.IsChecked = bool.Parse(reportData["checkPipeworkEarthBondingYes"]);
         if (reportData.ContainsKey("checkPipeworkEarthBondingNo"))
             checkPipeworkEarthBondingNo.IsChecked = bool.Parse(reportData["checkPipeworkEarthBondingNo"]);
+        if (checkPipeworkEarthBondingYes.IsChecked == false && checkPipeworkEarthBondingNo.IsChecked == false)
+            checkPipeworkEarthBondingNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkJointingMethodsYes"))
             checkJointingMethodsYes.IsChecked = bool.Parse(reportData["checkJointingMethodsYes"]);
         if (reportData.ContainsKey("checkJointingMethodsNo"))
             checkJointingMethodsNo.IsChecked = bool.Parse(reportData["checkJointingMethodsNo"]);
+        if (checkJointingMethodsYes.IsChecked == false && checkJointingMethodsNo.IsChecked == false)
+            checkJointingMethodsNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPipeworkSupportsYes"))
             checkPipeworkSupportsYes.IsChecked = bool.Parse(reportData["checkPipeworkSupportsYes"]);
         if (reportData.ContainsKey("checkPipeworkSupportsNo"))
             checkPipeworkSupportsNo.IsChecked = bool.Parse(reportData["checkPipeworkSupportsNo"]);
+        if (checkPipeworkSupportsYes.IsChecked == false && checkPipeworkSupportsNo.IsChecked == false)
+            checkPipeworkSupportsNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkFixingsYes"))
             checkFixingsYes.IsChecked = bool.Parse(reportData["checkFixingsYes"]);
         if (reportData.ContainsKey("checkFixingsNo"))
             checkFixingsNo.IsChecked = bool.Parse(reportData["checkFixingsNo"]);
+        if (checkFixingsYes.IsChecked == false && checkFixingsNo.IsChecked == false)
+            checkFixingsNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkSupportSepparationDistancesYes"))
             checkSupportSepparationDistancesYes.IsChecked = bool.Parse(reportData["checkSupportSepparationDistancesYes"]);
         if (reportData.ContainsKey("checkSupportSepparationDistancesNo"))
             checkSupportSepparationDistancesNo.IsChecked = bool.Parse(reportData["checkSupportSepparationDistancesNo"]);
+        if (checkSupportSepparationDistancesYes.IsChecked == false && checkSupportSepparationDistancesNo.IsChecked == false)
+            checkSupportSepparationDistancesNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPipeworkInVoidsYes"))
             checkPipeworkInVoidsYes.IsChecked = bool.Parse(reportData["checkPipeworkInVoidsYes"]);
         if (reportData.ContainsKey("checkPipeworkInVoidsNo"))
             checkPipeworkInVoidsNo.IsChecked = bool.Parse(reportData["checkPipeworkInVoidsNo"]);
+        if (checkPipeworkInVoidsYes.IsChecked == false && checkPipeworkInVoidsNo.IsChecked == false)
+            checkPipeworkInVoidsNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPipeSleevesYes"))
             checkPipeSleevesYes.IsChecked = bool.Parse(reportData["checkPipeSleevesYes"]);
         if (reportData.ContainsKey("checkPipeSleevesNo"))
             checkPipeSleevesNo.IsChecked = bool.Parse(reportData["checkPipeSleevesNo"]);
+        if (checkPipeSleevesYes.IsChecked == false && checkPipeSleevesNo.IsChecked == false)
+            checkPipeSleevesNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPipeSleevesSealedYes"))
             checkPipeSleevesSealedYes.IsChecked = bool.Parse(reportData["checkPipeSleevesSealedYes"]);
         if (reportData.ContainsKey("checkPipeSleevesSealedNo"))
             checkPipeSleevesSealedNo.IsChecked = bool.Parse(reportData["checkPipeSleevesSealedNo"]);
+        if (checkPipeSleevesSealedYes.IsChecked == false && checkPipeSleevesSealedNo.IsChecked == false)
+            checkPipeSleevesSealedNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkServiceValvesYes"))
             checkServiceValvesYes.IsChecked = bool.Parse(reportData["checkServiceValvesYes"]);
         if (reportData.ContainsKey("checkServiceValvesNo"))
             checkServiceValvesNo.IsChecked = bool.Parse(reportData["checkServiceValvesNo"]);
+        if (checkServiceValvesYes.IsChecked == false && checkServiceValvesNo.IsChecked == false)
+            checkServiceValvesNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkAdditionalEmergencyControlValvesYes"))
             checkAdditionalEmergencyControlValvesYes.IsChecked = bool.Parse(reportData["checkAdditionalEmergencyControlValvesYes"]);
         if (reportData.ContainsKey("checkAdditionalEmergencyControlValvesNo"))
             checkAdditionalEmergencyControlValvesNo.IsChecked = bool.Parse(reportData["checkAdditionalEmergencyControlValvesNo"]);
+        if (checkAdditionalEmergencyControlValvesYes.IsChecked == false && checkAdditionalEmergencyControlValvesNo.IsChecked == false)
+            checkAdditionalEmergencyControlValvesNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkIsolationValveYes"))
             checkIsolationValveYes.IsChecked = bool.Parse(reportData["checkIsolationValveYes"]);
         if (reportData.ContainsKey("checkIsolationValveNo"))
             checkIsolationValveNo.IsChecked = bool.Parse(reportData["checkIsolationValveNo"]);
+        if (checkIsolationValveYes.IsChecked == false && checkIsolationValveNo.IsChecked == false)
+            checkIsolationValveNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkTestPointYes"))
             checkTestPointYes.IsChecked = bool.Parse(reportData["checkTestPointYes"]);
         if (reportData.ContainsKey("checkTestPointNo"))
             checkTestPointNo.IsChecked = bool.Parse(reportData["checkTestPointNo"]);
+        if (checkTestPointYes.IsChecked == false && checkTestPointNo.IsChecked == false)
+            checkTestPointNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkPurgePointsYes"))
             checkPurgePointsYes.IsChecked = bool.Parse(reportData["checkPurgePointsYes"]);
         if (reportData.ContainsKey("checkPurgePointsNo"))
             checkPurgePointsNo.IsChecked = bool.Parse(reportData["checkPurgePointsNo"]);
+        if (checkPurgePointsYes.IsChecked == false && checkPurgePointsNo.IsChecked == false)
+            checkPurgePointsNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkGeneralPipeworkConditionYes"))
             checkGeneralPipeworkConditionYes.IsChecked = bool.Parse(reportData["checkGeneralPipeworkConditionYes"]);
         if (reportData.ContainsKey("checkGeneralPipeworkConditionNo"))
             checkGeneralPipeworkConditionNo.IsChecked = bool.Parse(reportData["checkGeneralPipeworkConditionNo"]);
+        if (checkGeneralPipeworkConditionYes.IsChecked == false && checkGeneralPipeworkConditionNo.IsChecked == false)
+            checkGeneralPipeworkConditionNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkinstallationSafeToOperateYes"))
             checkinstallationSafeToOperateYes.IsChecked = bool.Parse(reportData["checkinstallationSafeToOperateYes"]);
         if (reportData.ContainsKey("checkinstallationSafeToOperateNo"))
             checkinstallationSafeToOperateNo.IsChecked = bool.Parse(reportData["checkinstallationSafeToOperateNo"]);
+        if (checkinstallationSafeToOperateYes.IsChecked == false && checkinstallationSafeToOperateNo.IsChecked == false)
+            checkinstallationSafeToOperateNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkWarningNoticeIssuedYes"))
             checkWarningNoticeIssuedYes.IsChecked = bool.Parse(reportData["checkWarningNoticeIssuedYes"]);
         if (reportData.ContainsKey("checkWarningNoticeIssuedNo"))
             checkWarningNoticeIssuedNo.IsChecked = bool.Parse(reportData["checkWarningNoticeIssuedNo"]);
+        if (checkWarningNoticeIssuedYes.IsChecked == false && checkWarningNoticeIssuedNo.IsChecked == false)
+            checkWarningNoticeIssuedNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkGasTightnessTestRecommendedYes"))
             checkGasTightnessTestRecommendedYes.IsChecked = bool.Parse(reportData["checkGasTightnessTestRecommendedYes"]);
         if (reportData.ContainsKey("checkGasTightnessTestRecommendedNo"))
             checkGasTightnessTestRecommendedNo.IsChecked = bool.Parse(reportData["checkGasTightnessTestRecommendedNo"]);
+        if (checkGasTightnessTestRecommendedYes.IsChecked == false && checkGasTightnessTestRecommendedNo.IsChecked == false)
+            checkGasTightnessTestRecommendedNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkGuessTightnessTestCarriedOutYes"))
             checkGuessTightnessTestCarriedOutYes.IsChecked = bool.Parse(reportData["checkGuessTightnessTestCarriedOutYes"]);
         if (reportData.ContainsKey("checkGuessTightnessTestCarriedOutNo"))
             checkGuessTightnessTestCarriedOutNo.IsChecked = bool.Parse(reportData["checkGuessTightnessTestCarriedOutNo"]);
+        if (checkGuessTightnessTestCarriedOutYes.IsChecked == false && checkGuessTightnessTestCarriedOutNo.IsChecked == false)
+            checkGuessTightnessTestCarriedOutNA.IsChecked = true;
 
         if (reportData.ContainsKey("checkNoticesAndLabelsYes"))
             checkNoticesAndLabelsYes.IsChecked = bool.Parse(reportData["checkNoticesAndLabelsYes"]);
         if (reportData.ContainsKey("checkNoticesAndLabelsNo"))
             checkNoticesAndLabelsNo.IsChecked = bool.Parse(reportData["checkNoticesAndLabelsNo"]);
-
+        if (checkNoticesAndLabelsYes.IsChecked == false && checkNoticesAndLabelsNo.IsChecked == false)
+            checkNoticesAndLabelsNA.IsChecked = true;
     }
     private Dictionary<string, string> GatherReportData()
     {
