@@ -1155,7 +1155,17 @@ namespace Ashwell_Maintenance
        //     else
       //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
 
+            if (dic["checkFreeAirExistingCM"] == "True")
+               gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
+            else
+               gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
+            if (dic["checkFreeAirRequiredCM"] == "True")
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 207, 15, 15));//test complited
+            else
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
 
+
+            
       //      if (dic["checkExistingLowLevelCM"] == "True")
       //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474, 189.5, 15, 15));//remidial work
       //      else
