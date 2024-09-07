@@ -1146,24 +1146,25 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["freeAirRequiredHighLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(298, 410, 100, 17), XStringFormats.Center);
             gfx.DrawString(dic["freeAirRequiredLowLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(464, 410, 100, 17), XStringFormats.Center);
             // ovo da se ispravi
-            if (dic["checkExistingHighLevelCM"] == "True")
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
-            else
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
-            if (dic["checkRequiredHighLevelCM"] == "True")
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 207, 15, 15));//test complited
-            else
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
+      //      if (dic["checkExistingHighLevelCM"] == "True")
+      //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
+      //      else
+      //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
+      //      if (dic["checkRequiredHighLevelCM"] == "True")
+       //         gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 207, 15, 15));//test complited
+       //     else
+      //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
 
 
-            if (dic["checkExistingLowLevelCM"] == "True")
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474, 189.5, 15, 15));//remidial work
-            else
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474 + 58, 189.5, 15, 17));//remidial work
-            if (dic["checkRequiredLowLevelCM"] == "True")
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474, 207, 15, 15));//test complited
-            else
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474 + 58, 207, 15, 17));//test complited
+      //      if (dic["checkExistingLowLevelCM"] == "True")
+      //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474, 189.5, 15, 15));//remidial work
+      //      else
+       //         gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474 + 58, 189.5, 15, 17));//remidial work
+        //    if (dic["checkRequiredLowLevelCM"] == "True")
+        //        gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474, 207, 15, 15));//test complited
+         //   else
+           //     gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474 + 58, 207, 15, 17));//test complited
+            
 
             gfx.DrawString(dic["inletWorkingPressureTestFullLoad"], new XFont("Arial", 8), XBrushes.Black, new XRect(194, 614, 102, 17), XStringFormats.Center);
             gfx.DrawString(dic["standingPressure"], new XFont("Arial", 8), XBrushes.Black, new XRect(194, 632, 102, 17), XStringFormats.Center);
