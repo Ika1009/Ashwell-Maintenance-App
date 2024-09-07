@@ -235,9 +235,13 @@ public partial class DisplayedProjectsPage : ContentPage
 
         // Update the folder name in the database
         var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
-        if (!updateResponse.IsSuccessStatusCode)
+        if (updateResponse.IsSuccessStatusCode)
         {
-            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+            await DisplayAlert("Success", $"{updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+        }
+        else if (!updateResponse.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Error", $"Error updating folder name because of the following issue: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
         }
 
         // Update Renamed in the Front End

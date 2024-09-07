@@ -9,7 +9,7 @@ public partial class GasRiskAssessmentPage : ContentPage
     string reportName = "noname";
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
-    bool previewOnly = true;
+    bool previewOnly = false;
     public GasRiskAssessmentPage()
 	{
 		InitializeComponent();

@@ -106,7 +106,7 @@ public partial class SignaturePage : ContentPage
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error when signing", ex.Message, "OK");
+            await Shell.Current.DisplayAlert("Error when signing", "Signature can't be empty", "OK");
 
             await signatureBorder.FadeTo(1, 100);
             await signatureBorder.FadeTo(1, 250);
