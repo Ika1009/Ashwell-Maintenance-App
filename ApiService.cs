@@ -195,7 +195,7 @@ public static class ApiService
 
         // Delete from Dropbox
         //If folder doesn't exist it is in Incompleted Jobs - not uploaded to Dropbox
-        bool ifFolderExists = await CheckFolderExistsDropboxAsync(new HttpClient(), $"/{folderName}");
+        bool ifFolderExists = await CheckFolderExistsDropboxAsync($"/{folderName}");
         if(ifFolderExists)
         {
             HttpResponseMessage dropboxResponse = await DeleteFolderInDropboxAsync(folderName);
