@@ -343,16 +343,28 @@ public partial class EngineersReportPage : ContentPage
             checkSpillageTestPass.IsChecked = bool.Parse(reportData["checkSpillageTestPerformed"]);
         if (reportData.ContainsKey("checkSpillageTestPerformedNA"))
             checkSpillageTestNA.IsChecked = bool.Parse(reportData["checkSpillageTestPerformedNA"]);
+        if (checkSpillageTestPass.IsChecked == false && checkSpillageTestNA.IsChecked == false)
+            checkSpillageTestNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkRiskAssesmentCompleted"))
             checkRiskAssessmentYes.IsChecked = bool.Parse(reportData["checkRiskAssesmentCompleted"]);
+
+
         if (reportData.ContainsKey("checkFlueFlowTest"))
             checkFlueFlowTestPass.IsChecked = bool.Parse(reportData["checkFlueFlowTest"]);
         if (reportData.ContainsKey("checkFlueFlowTestNA"))
             checkFlueFlowTestNA.IsChecked = bool.Parse(reportData["checkFlueFlowTestNA"]);
+        if (checkFlueFlowTestPass.IsChecked == false && checkFlueFlowTestNA.IsChecked == false)
+            checkFlueFlowTestFail.IsChecked = true;
+
+
         if (reportData.ContainsKey("checkThightnessTestCarriedOut"))
             checkTightnessTestPass.IsChecked = bool.Parse(reportData["checkThightnessTestCarriedOut"]);
         if (reportData.ContainsKey("checkThightnessTestCarriedOutNA"))
             checkTightnessTestNA.IsChecked = bool.Parse(reportData["checkThightnessTestCarriedOutNA"]);
+        if (checkTightnessTestPass.IsChecked == false && checkTightnessTestNA.IsChecked == false)
+            checkTightnessTestFail.IsChecked = true;
+
         if (reportData.ContainsKey("checkApplianceSafeToUse"))
             checkApplianceSafeToUseYes.IsChecked = bool.Parse(reportData["checkApplianceSafeToUse"]);
         if (reportData.ContainsKey("checkWarningNoticeIssued"))
