@@ -89,7 +89,7 @@
                         <Label Text="DATE:" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" Margin="15, 0, 0, 0"/>
 
                         <Frame Padding="15, 0" BorderColor="Transparent" BackgroundColor="#222225" CornerRadius="100">
-                            <local:LinelessEntry x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium"/>
+                            <local:LinelessDatePicker x:Name="date" TextColor="#fff"  FontSize="16 " FontFamily="SatoshiMedium" Format="d/M/yyyy"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -474,7 +474,7 @@
 
                                             <Label Text="{Binding Name}" TextColor="#fff" FontSize="16" FontFamily="SatoshiMedium" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" Margin="20, 0, 0, 0"/>
                                             <Label Grid.Column="1" Text="{Binding Timestamp}" TextColor="#707070" FontSize="12" FontFamily="SatoshiMedium" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Margin="0, 0, 20, 0"/>
-                                            <ImageButton Grid.Column="2" Source="pen.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" CommandParameter="{Binding Id}" Margin="0, 0, 20, 0"/>
+                                            <ImageButton Grid.Column="2" Source="pen.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" CommandParameter="{Binding Id}" Margin="0, 0, 20, 0" Clicked="FolderEdit"/>
                                         </Grid>
                                     </Border>
                                 </ViewCell>

@@ -250,6 +250,61 @@ public partial class BoilerHouseDataSheetPage : ContentPage
 
     }
 
+    public async void FolderEdit(object sender, EventArgs e)
+    {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        string folderId = (sender as ImageButton).CommandParameter as string;
+        string folderName = Folders.First(x => x.Id == folderId).Name;
+        string oldFolderName = folderName;
+
+        if (CurrentUser.IsAdmin)
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
+        else
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, folderName);
+
+        if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
+        {
+            bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
+            if (deleteConfirmed)
+            {
+                // Deleting Folder in the Database
+                var response = await ApiService.DeleteFolderAsync(folderId);
+                if (response.IsSuccessStatusCode)
+                {
+                    //await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                    await LoadFolders();
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
+                }
+            }
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+        else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+
+        // Update the folder name in the database
+        var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
+        if (!updateResponse.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+        }
+
+        // Update Renamed in the Front End
+        Folders.First(x => x.Id == folderId).Name = folderName;
+        await LoadFolders();
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
+    }
+
     public async void BoilerHouseDataSheetBack(object sender, EventArgs e)
 	{
 		if (BHDSSection1.IsVisible)
@@ -391,11 +446,11 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         if (reportData.ContainsKey("engineersGasSafeIDNo"))
             engineersGasSafeIDNo.Text = reportData["engineersGasSafeIDNo"];
         if (reportData.ContainsKey("inspectionDate"))
-            inspectionDate.Text = reportData["inspectionDate"];
+            inspectionDate.Date = DateTime.Parse(reportData["inspectionDate"]);
         if (reportData.ContainsKey("clientsName"))
             clientsName.Text = reportData["clientsName"];
         if (reportData.ContainsKey("date"))
-            date.Text = reportData["date"];
+            date.Date = DateTime.Parse(reportData["date"]);
 
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("checkRemedialToWorkRequiredYes"))
@@ -504,9 +559,9 @@ public partial class BoilerHouseDataSheetPage : ContentPage
             { "contractor", contractor.Text ?? string.Empty },
             { "companyGasSafeRegistrationNo", companyGasSafeRegistrationNo.Text ?? string.Empty },
             { "engineersGasSafeIDNo", engineersGasSafeIDNo.Text ?? string.Empty },
-            { "inspectionDate", inspectionDate.Text ?? string.Empty },
+            { "inspectionDate", inspectionDate.Date.ToString("d/M/yyyy") ?? string.Empty },
             { "clientsName", clientsName.Text ?? string.Empty },
-            { "date", date.Text ?? string.Empty },
+            { "date", date.Date.ToString("d/M/yyyy") ?? string.Empty },
 
             { "checkRemedialToWorkRequiredYes", checkRemedialToWorkRequiredYes.IsChecked.ToString() },
             { "checkTestsCompletedSatisfactoryYes", checkTestsCompletedSatisfactoryYes.IsChecked.ToString() },

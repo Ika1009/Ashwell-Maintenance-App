@@ -228,10 +228,16 @@ public partial class DisplayedProjectsPage : ContentPage
                     await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
                 }
             }
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
             return;
         }
         else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
             return;
+        }
 
         // Update the folder name in the database
         var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);

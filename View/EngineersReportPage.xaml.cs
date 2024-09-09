@@ -241,6 +241,61 @@ public partial class EngineersReportPage : ContentPage
 
     }
 
+    public async void FolderEdit(object sender, EventArgs e)
+    {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        string folderId = (sender as ImageButton).CommandParameter as string;
+        string folderName = Folders.First(x => x.Id == folderId).Name;
+        string oldFolderName = folderName;
+
+        if (CurrentUser.IsAdmin)
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
+        else
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, folderName);
+
+        if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
+        {
+            bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
+            if (deleteConfirmed)
+            {
+                // Deleting Folder in the Database
+                var response = await ApiService.DeleteFolderAsync(folderId);
+                if (response.IsSuccessStatusCode)
+                {
+                    //await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                    await LoadFolders();
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
+                }
+            }
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+        else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+
+        // Update the folder name in the database
+        var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
+        if (!updateResponse.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+        }
+
+        // Update Renamed in the Front End
+        Folders.First(x => x.Id == folderId).Name = folderName;
+        await LoadFolders();
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
+    }
+
     public async void EngineersReportBack(object sender, EventArgs e)
 	{
 		if (ERSection1.IsVisible)
@@ -326,7 +381,7 @@ public partial class EngineersReportPage : ContentPage
         if (reportData.ContainsKey("clientsName")) clientsName.Text = reportData["clientsName"];
         if (reportData.ContainsKey("address")) clientsAdress.Text = reportData["address"];
         if (reportData.ContainsKey("applianceMake")) applianceMake.Text = reportData["applianceMake"];
-        if (reportData.ContainsKey("date")) date.Text = reportData["date"];
+        if (reportData.ContainsKey("date")) date.Date = DateTime.Parse(reportData["date"]);
         if (reportData.ContainsKey("engineer")) engineer.Text = reportData["engineer"];
         if (reportData.ContainsKey("taskTNo")) taskTNo.Text = reportData["taskTNo"];
         if (reportData.ContainsKey("serialNumber")) serialNumber.Text = reportData["serialNumber"];
@@ -371,7 +426,7 @@ public partial class EngineersReportPage : ContentPage
         reportData.Add("clientsName", clientsName.Text ?? string.Empty);
         reportData.Add("address", clientsAdress.Text ?? string.Empty);
         reportData.Add("applianceMake", applianceMake.Text ?? string.Empty);
-        reportData.Add("date", date.Text ?? string.Empty);
+        reportData.Add("date", date.Date.ToString("d/M/yyyy") ?? string.Empty);
         reportData.Add("engineer", engineer.Text ?? string.Empty);
         reportData.Add("taskTNo", taskTNo.Text ?? string.Empty);
         reportData.Add("serialNumber", serialNumber.Text ?? string.Empty);

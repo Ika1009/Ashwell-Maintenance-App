@@ -265,6 +265,61 @@ public partial class GasRiskAssessmentPage : ContentPage
 
     }
 
+    public async void FolderEdit(object sender, EventArgs e)
+    {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        string folderId = (sender as ImageButton).CommandParameter as string;
+        string folderName = Folders.First(x => x.Id == folderId).Name;
+        string oldFolderName = folderName;
+
+        if (CurrentUser.IsAdmin)
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
+        else
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, folderName);
+
+        if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
+        {
+            bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
+            if (deleteConfirmed)
+            {
+                // Deleting Folder in the Database
+                var response = await ApiService.DeleteFolderAsync(folderId);
+                if (response.IsSuccessStatusCode)
+                {
+                    //await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                    await LoadFolders();
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
+                }
+            }
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+        else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+
+        // Update the folder name in the database
+        var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
+        if (!updateResponse.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+        }
+
+        // Update Renamed in the Front End
+        Folders.First(x => x.Id == folderId).Name = folderName;
+        await LoadFolders();
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
+    }
+
     public async void GasRiskAssessmentBack(object sender, EventArgs e)
 	{
 		if (GRASection1.IsVisible)
@@ -368,7 +423,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         if (reportData.ContainsKey("warningNoticeRefNo"))
             warningNoticeRefNo.Text = reportData["warningNoticeRefNo"];
         if (reportData.ContainsKey("dateOfLastTightnessTest"))
-            dateOfLastTightnessTest.Text = reportData["dateOfLastTightnessTest"];
+            dateOfLastTightnessTest.Date = DateTime.Parse(reportData["dateOfLastTightnessTest"]);
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("dropRecorded"))
             dropRecorded.Text = reportData["dropRecorded"];
@@ -379,7 +434,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         if (reportData.ContainsKey("clientsName"))
             clientsName.Text = reportData["clientsName"];
         if (reportData.ContainsKey("completionDate"))
-            completionDate.Text = reportData["completionDate"];
+            completionDate.Date = DateTime.Parse(reportData["completionDate"]);
 
         if (reportData["recordTightnessTestResult"] == "Pass")
         {
@@ -530,7 +585,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("pipeworkComments", pipeworkComments.Text ?? string.Empty);
         reportData.Add("reasonForWarningNotice", reasonForWarningNotice.Text ?? string.Empty);
         reportData.Add("warningNoticeRefNo", warningNoticeRefNo.Text ?? string.Empty);
-        reportData.Add("dateOfLastTightnessTest", dateOfLastTightnessTest.Text ?? string.Empty);
+        reportData.Add("dateOfLastTightnessTest", dateOfLastTightnessTest.Date.ToString("d/M/yyyy") ?? string.Empty);
         if (checkRecordTightnessTestResultYes.IsChecked)
         {
             reportData.Add("recordTightnessTestResult", "Pass");
@@ -551,7 +606,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         reportData.Add("gasSafeOperativeIdNo", gasSafeOperativeIdNo.Text ?? string.Empty);
         reportData.Add("clientsName", clientsName.Text ?? string.Empty);
         //reportData.Add("clientsSignature", clientsSignature.Text ?? string.Empty);
-        reportData.Add("completionDate", completionDate.Text ?? string.Empty);
+        reportData.Add("completionDate", completionDate.Date.ToString("d/M/yyyy") ?? string.Empty);
 
 
 

@@ -249,6 +249,61 @@ public partial class ConformityCheckPage : ContentPage
 
     }
 
+    public async void FolderEdit(object sender, EventArgs e)
+    {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        string folderId = (sender as ImageButton).CommandParameter as string;
+        string folderName = Folders.First(x => x.Id == folderId).Name;
+        string oldFolderName = folderName;
+
+        if (CurrentUser.IsAdmin)
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
+        else
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, folderName);
+
+        if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
+        {
+            bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
+            if (deleteConfirmed)
+            {
+                // Deleting Folder in the Database
+                var response = await ApiService.DeleteFolderAsync(folderId);
+                if (response.IsSuccessStatusCode)
+                {
+                    //await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                    await LoadFolders();
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
+                }
+            }
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+        else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+
+        // Update the folder name in the database
+        var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
+        if (!updateResponse.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+        }
+
+        // Update Renamed in the Front End
+        Folders.First(x => x.Id == folderId).Name = folderName;
+        await LoadFolders();
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
+    }
+
     public async void ConformityCheckBack(object sender, EventArgs e)
 	{
 		if (CCSection1.IsVisible)
@@ -430,7 +485,7 @@ public partial class ConformityCheckPage : ContentPage
         }
         if (reportData.ContainsKey("inspectionDate"))
         {
-            inspectionDate.Text = reportData["inspectionDate"];
+            inspectionDate.Date = DateTime.Parse(reportData["inspectionDate"]);
         }
         if (reportData.ContainsKey("engineersGasSafeIDNo"))
         {
@@ -442,7 +497,7 @@ public partial class ConformityCheckPage : ContentPage
         }
         if (reportData.ContainsKey("date"))
         {
-            date.Text = reportData["date"];
+            date.Date = DateTime.Parse(reportData["date"]);
         }
         if (reportData.ContainsKey("checkRemedialToWorkRequiredYes"))
             checkRemedialToWorkRequiredYes.IsChecked = bool.Parse(reportData["checkRemedialToWorkRequiredYes"]);
@@ -608,10 +663,10 @@ public partial class ConformityCheckPage : ContentPage
         reportData.Add("engineersName", engineersName.Text ?? string.Empty);
         reportData.Add("contractor", contractor.Text ?? string.Empty);
         reportData.Add("companyGasSafeRegistrationNo", companyGasSafeRegistrationNo.Text ?? string.Empty);
-        reportData.Add("inspectionDate", inspectionDate.Text ?? string.Empty);
+        reportData.Add("inspectionDate", inspectionDate.Date.ToString("d/M/yyyy") ?? string.Empty);
         reportData.Add("engineersGasSafeIDNo", engineersGasSafeIDNo.Text ?? string.Empty);
         reportData.Add("clientsName", clientsName.Text ?? string.Empty);
-        reportData.Add("date", date.Text ?? string.Empty);
+        reportData.Add("date", date.Date.ToString("d/M/yyyy") ?? string.Empty);
         
 
 

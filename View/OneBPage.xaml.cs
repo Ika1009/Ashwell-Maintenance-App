@@ -254,6 +254,61 @@ public partial class OneBPage : ContentPage
 
 
     }
+
+    public async void FolderEdit(object sender, EventArgs e)
+    {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        string folderId = (sender as ImageButton).CommandParameter as string;
+        string folderName = Folders.First(x => x.Id == folderId).Name;
+        string oldFolderName = folderName;
+
+        if (CurrentUser.IsAdmin)
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
+        else
+            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, folderName);
+
+        if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
+        {
+            bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
+            if (deleteConfirmed)
+            {
+                // Deleting Folder in the Database
+                var response = await ApiService.DeleteFolderAsync(folderId);
+                if (response.IsSuccessStatusCode)
+                {
+                    //await DisplayAlert("Success", "Folder deleted successfully", "OK");
+                    await LoadFolders();
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
+                }
+            }
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+        else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            return;
+        }
+
+        // Update the folder name in the database
+        var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
+        if (!updateResponse.IsSuccessStatusCode)
+        {
+            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
+        }
+
+        // Update Renamed in the Front End
+        Folders.First(x => x.Id == folderId).Name = folderName;
+        await LoadFolders();
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
+    }
     public async void OneBBack(object sender, EventArgs e)
 	{
         if (OBSection1.IsVisible)
@@ -354,7 +409,7 @@ public partial class OneBPage : ContentPage
     {
         // Set text fields
         site.Text = reportData.ContainsKey("site") ? reportData["site"] : string.Empty;
-        date.Text = reportData.ContainsKey("date") ? reportData["date"] : string.Empty;
+        date.Date = reportData.ContainsKey("date") ? DateTime.Parse(reportData["date"]) : DateTime.Now;
         location.Text = reportData.ContainsKey("location") ? reportData["location"] : string.Empty;
         steel1Total.Text = reportData.ContainsKey("steel1Total") ? reportData["steel1Total"] : string.Empty;
         steel2Total.Text = reportData.ContainsKey("steel2Total") ? reportData["steel2Total"] : string.Empty;
@@ -472,7 +527,7 @@ public partial class OneBPage : ContentPage
         //  reportData.Add("", .IsChecked.ToString());
 
         reportData.Add("site", site.Text ?? string.Empty);
-        reportData.Add("date", date.Text ?? string.Empty);
+        reportData.Add("date", date.Date.ToString("d/M/yyyy") ?? string.Empty);
         reportData.Add("location", location.Text ?? string.Empty);
         reportData.Add("steel1Total", steel1Total.Text ?? string.Empty);
         reportData.Add("steel2Total", steel2Total.Text ?? string.Empty);
