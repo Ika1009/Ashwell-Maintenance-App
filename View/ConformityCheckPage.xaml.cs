@@ -534,18 +534,25 @@ public partial class ConformityCheckPage : ContentPage
 
         if (reportData.ContainsKey("checkFluesFittedNo"))
             checkFluesFittedNo.IsChecked = bool.Parse(reportData["checkFluesFittedNo"]);
+        if (checkFluesFittedYes.IsChecked == false && checkFluesFittedNo.IsChecked == false)
+            checkFluesFittedNA.IsChecked = true;
 
         if (reportData.ContainsKey("checkFluesSupportedYes"))
             checkFluesSupportedYes.IsChecked = bool.Parse(reportData["checkFluesSupportedYes"]);
 
         if (reportData.ContainsKey("checkFluesSupportedNo"))
             checkFluesSupportedNo.IsChecked = bool.Parse(reportData["checkFluesSupportedNo"]);
-
+        if (checkFluesSupportedYes.IsChecked == false && checkFluesSupportedNo.IsChecked == false)
+            checkFluesSupportedNA.IsChecked = true;
         if (reportData.ContainsKey("checkFluesInLineYes"))
             checkFluesInLineYes.IsChecked = bool.Parse(reportData["checkFluesInLineYes"]);
 
         if (reportData.ContainsKey("checkFluesInLineNo"))
             checkFluesInLineNo.IsChecked = bool.Parse(reportData["checkFluesInLineNo"]);
+        if (checkFluesInLineYes.IsChecked == false && checkFluesInLineNo.IsChecked == false)
+            checkFluesInLineNA.IsChecked = true;
+
+
 
         if (reportData.ContainsKey("checkFacilitiesYes"))
             checkFacilitiesYes.IsChecked = bool.Parse(reportData["checkFacilitiesYes"]);
@@ -553,11 +560,20 @@ public partial class ConformityCheckPage : ContentPage
         if (reportData.ContainsKey("checkFacilitiesNo"))
             checkFacilitiesNo.IsChecked = bool.Parse(reportData["checkFacilitiesNo"]);
 
+        if (checkFacilitiesYes.IsChecked == false && checkFacilitiesNo.IsChecked == false)
+            checkFacilitiesNA.IsChecked = true;
+
+
         if (reportData.ContainsKey("checkFlueGradientsYes"))
             checkFlueGradientsYes.IsChecked = bool.Parse(reportData["checkFlueGradientsYes"]);
 
         if (reportData.ContainsKey("checkFlueGradientsNo"))
             checkFlueGradientsNo.IsChecked = bool.Parse(reportData["checkFlueGradientsNo"]);
+
+        if (checkFlueGradientsYes.IsChecked == false && checkFlueGradientsNo.IsChecked == false)
+            checkFlueGradientsNA.IsChecked = true;
+
+
 
         if (reportData.ContainsKey("checkFluesInspectionYes"))
             checkFluesInspectionYes.IsChecked = bool.Parse(reportData["checkFluesInspectionYes"]);
@@ -565,11 +581,19 @@ public partial class ConformityCheckPage : ContentPage
         if (reportData.ContainsKey("checkFluesInspectionNo"))
             checkFluesInspectionNo.IsChecked = bool.Parse(reportData["checkFluesInspectionNo"]);
 
+        if (checkFluesInspectionYes.IsChecked == false && checkFluesInspectionNo.IsChecked == false)
+            checkFluesInspectionNA.IsChecked = true;
+
+
         if (reportData.ContainsKey("checkFlueJointsYes"))
             checkFlueJointsYes.IsChecked = bool.Parse(reportData["checkFlueJointsYes"]);
 
         if (reportData.ContainsKey("checkFlueJointsNo"))
             checkFlueJointsNo.IsChecked = bool.Parse(reportData["checkFlueJointsNo"]);
+
+
+        if (checkFlueJointsYes.IsChecked == false && checkFlueJointsNo.IsChecked == false)
+            checkFlueJointsNA.IsChecked = true;
 
         if (reportData.ContainsKey("checkA_ID2"))
             checkA_ID2.IsChecked = bool.Parse(reportData["checkA_ID2"]);
@@ -586,11 +610,18 @@ public partial class ConformityCheckPage : ContentPage
         if (reportData.ContainsKey("checkInterlocksProvidedNo"))
             checkInterlocksProvidedNo.IsChecked = bool.Parse(reportData["checkInterlocksProvidedNo"]);
 
+        if (checkInterlocksProvidedYes.IsChecked == false && checkInterlocksProvidedNo.IsChecked == false)
+            checkInterlocksProvidedNA.IsChecked = true;
+
+
         if (reportData.ContainsKey("checkEmergencyShutOffButtonYes"))
             checkEmergencyShutOffButtonYes.IsChecked = bool.Parse(reportData["checkEmergencyShutOffButtonYes"]);
 
         if (reportData.ContainsKey("checkEmergencyShutOffButtonNo"))
             checkEmergencyShutOffButtonNo.IsChecked = bool.Parse(reportData["checkEmergencyShutOffButtonNo"]);
+
+        if (checkEmergencyShutOffButtonYes.IsChecked == false && checkEmergencyShutOffButtonNo.IsChecked == false)
+            checkEmergencyShutOffButtonNA.IsChecked = true;
 
         if (reportData.ContainsKey("checkPlantInterlinkYes"))
             checkPlantInterlinkYes.IsChecked = bool.Parse(reportData["checkPlantInterlinkYes"]);
@@ -598,11 +629,18 @@ public partial class ConformityCheckPage : ContentPage
         if (reportData.ContainsKey("checkPlantInterlinkNo"))
             checkPlantInterlinkNo.IsChecked = bool.Parse(reportData["checkPlantInterlinkNo"]);
 
+
+        if (checkPlantInterlinkYes.IsChecked == false && checkPlantInterlinkNo.IsChecked == false)
+            checkPlantInterlinkNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkFuelShutOffYes"))
             checkFuelShutOffYes.IsChecked = bool.Parse(reportData["checkFuelShutOffYes"]);
 
         if (reportData.ContainsKey("checkFuelShutOffNo"))
             checkFuelShutOffNo.IsChecked = bool.Parse(reportData["checkFuelShutOffNo"]);
+
+        if (checkFuelShutOffYes.IsChecked == false && checkFuelShutOffNo.IsChecked == false)
+            checkFuelShutOffNA.IsChecked = true;
 
         if (reportData.ContainsKey("checkFuelFirstEntryYes"))
             checkFuelFirstEntryYes.IsChecked = bool.Parse(reportData["checkFuelFirstEntryYes"]);
@@ -610,17 +648,24 @@ public partial class ConformityCheckPage : ContentPage
         if (reportData.ContainsKey("checkFuelFirstEntryNo"))
             checkFuelFirstEntryNo.IsChecked = bool.Parse(reportData["checkFuelFirstEntryNo"]);
 
+        if (checkFuelFirstEntryYes.IsChecked == false && checkFuelFirstEntryNo.IsChecked == false)
+            checkFuelFirstEntryNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkSystemStopYes"))
             checkSystemStopYes.IsChecked = bool.Parse(reportData["checkSystemStopYes"]);
 
         if (reportData.ContainsKey("checkSystemStopNo"))
             checkSystemStopNo.IsChecked = bool.Parse(reportData["checkSystemStopNo"]);
+        if (checkSystemStopYes.IsChecked == false && checkSystemStopNo.IsChecked == false)
+            checkSystemStopNA.IsChecked = true;
 
         if (reportData.ContainsKey("checkTestAndResetYes"))
             checkTestAndResetYes.IsChecked = bool.Parse(reportData["checkTestAndResetYes"]);
 
         if (reportData.ContainsKey("checkTestAndResetNo"))
             checkTestAndResetNo.IsChecked = bool.Parse(reportData["checkTestAndResetNo"]);
+        if (checkTestAndResetYes.IsChecked == false && checkTestAndResetNo.IsChecked == false)
+            checkTestAndResetNA.IsChecked = true;
 
         if (reportData.ContainsKey("checkA_ID3"))
             checkA_ID3.IsChecked = bool.Parse(reportData["checkA_ID3"]);

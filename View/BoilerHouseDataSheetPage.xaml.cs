@@ -457,30 +457,49 @@ public partial class BoilerHouseDataSheetPage : ContentPage
             checkRemedialToWorkRequiredYes.IsChecked = bool.Parse(reportData["checkRemedialToWorkRequiredYes"]);
         if (reportData.ContainsKey("checkTestsCompletedSatisfactoryYes"))
             checkTestsCompletedSatisfactoryYes.IsChecked = bool.Parse(reportData["checkTestsCompletedSatisfactoryYes"]);
+
         if (reportData.ContainsKey("checkPipeworkToGasMeterYes"))
             checkPipeworkToGasMeterYes.IsChecked = bool.Parse(reportData["checkPipeworkToGasMeterYes"]);
         if (reportData.ContainsKey("checkPipeworkToGasMeterNA"))
             checkPipeworkToGasMeterNA.IsChecked = bool.Parse(reportData["checkPipeworkToGasMeterNA"]);
+        if (checkPipeworkToGasMeterYes.IsChecked == false && checkPipeworkToGasMeterNA.IsChecked == false)
+            checkPipeworkToGasMeterNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkRegulatorAndOrMeterYes"))
             checkRegulatorAndOrMeterYes.IsChecked = bool.Parse(reportData["checkRegulatorAndOrMeterYes"]);
         if (reportData.ContainsKey("checkRegulatorAndOrMeterNA"))
             checkRegulatorAndOrMeterNA.IsChecked = bool.Parse(reportData["checkRegulatorAndOrMeterNA"]);
+        if (checkRegulatorAndOrMeterYes.IsChecked == false && checkRegulatorAndOrMeterNA.IsChecked == false)
+            checkRegulatorAndOrMeterNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkSafetyNoticesLabelsYes"))
             checkSafetyNoticesLabelsYes.IsChecked = bool.Parse(reportData["checkSafetyNoticesLabelsYes"]);
         if (reportData.ContainsKey("checkSafetyNoticesLabelsNA"))
             checkSafetyNoticesLabelsNA.IsChecked = bool.Parse(reportData["checkSafetyNoticesLabelsNA"]);
+        if (checkSafetyNoticesLabelsYes.IsChecked == false && checkSafetyNoticesLabelsNA.IsChecked == false)
+            checkSafetyNoticesLabelsNo.IsChecked = true;
         if (reportData.ContainsKey("checkLineDiagramYes"))
             checkLineDiagramYes.IsChecked = bool.Parse(reportData["checkLineDiagramYes"]);
         if (reportData.ContainsKey("checkLineDiagramNA"))
             checkLineDiagramNA.IsChecked = bool.Parse(reportData["checkLineDiagramNA"]);
+        if (checkLineDiagramYes.IsChecked == false && checkLineDiagramNA.IsChecked == false)
+            checkLineDiagramNo.IsChecked = true;
+
+
         if (reportData.ContainsKey("checkColorCodingIndicationTapeYes"))
             checkColorCodingIndicationTapeYes.IsChecked = bool.Parse(reportData["checkColorCodingIndicationTapeYes"]);
         if (reportData.ContainsKey("checkColorCodingIndicationTapeNA"))
             checkColorCodingIndicationTapeNA.IsChecked = bool.Parse(reportData["checkColorCodingIndicationTapeNA"]);
+        if (checkColorCodingIndicationTapeYes.IsChecked == false && checkColorCodingIndicationTapeNA.IsChecked == false)
+            checkColorCodingIndicationTapeNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkMeterHouseVentilationYes"))
             checkMeterHouseVentilationYes.IsChecked = bool.Parse(reportData["checkMeterHouseVentilationYes"]);
         if (reportData.ContainsKey("checkMeterHouseVentilationNA"))
             checkMeterHouseVentilationNA.IsChecked = bool.Parse(reportData["checkMeterHouseVentilationNA"]);
+        if (checkMeterHouseVentilationYes.IsChecked == false && checkMeterHouseVentilationNA.IsChecked == false)
+            checkMeterHouseVentilationNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkFreeAirExistingCM"))
             checkFreeAirExistingCM.IsChecked = bool.Parse(reportData["checkFreeAirExistingCM"]);
         if (reportData.ContainsKey("checkFreeAirExistingMH"))
@@ -489,44 +508,74 @@ public partial class BoilerHouseDataSheetPage : ContentPage
             checkFreeAirRequiredCM.IsChecked = bool.Parse(reportData["checkFreeAirRequiredCM"]);
         if (reportData.ContainsKey("checkFreeAirRequiredMH"))
             checkcheckFreeAirRequiredMH.IsChecked = bool.Parse(reportData["checkFreeAirRequiredMH"]);
+
         if (reportData.ContainsKey("checkMainFlueYes"))
             checkMainFlueYes.IsChecked = bool.Parse(reportData["checkMainFlueYes"]);
         if (reportData.ContainsKey("checkMainFlueNA"))
             checkMainFlueNA.IsChecked = bool.Parse(reportData["checkMainFlueNA"]);
+        if (checkMainFlueYes.IsChecked == false && checkMainFlueNA.IsChecked == false)
+            checkMainFlueNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkChimneyFlueTerminalPositionYes"))
             checkChimneyFlueTerminalPositionYes.IsChecked = bool.Parse(reportData["checkChimneyFlueTerminalPositionYes"]);
         if (reportData.ContainsKey("checkChimneyFlueTerminalPositionNA"))
             checkChimneyFlueTerminalPositionNA.IsChecked = bool.Parse(reportData["checkChimneyFlueTerminalPositionNA"]);
+        if (checkChimneyFlueTerminalPositionYes.IsChecked == false && checkChimneyFlueTerminalPositionNA.IsChecked == false)
+            checkChimneyFlueTerminalPositionNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkStubFluersToBoildersYes"))
             checkStubFluersToBoildersYes.IsChecked = bool.Parse(reportData["checkStubFluersToBoildersYes"]);
         if (reportData.ContainsKey("checkStubFluersToBoildersNA"))
             checkStubFluersToBoildersNA.IsChecked = bool.Parse(reportData["checkStubFluersToBoildersNA"]);
+        if (checkStubFluersToBoildersYes.IsChecked == false && checkStubFluersToBoildersNA.IsChecked == false)
+            checkStubFluersToBoildersNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkIdFanYes"))
             checkIdFanYes.IsChecked = bool.Parse(reportData["checkIdFanYes"]);
         if (reportData.ContainsKey("checkIdFanNA"))
             checkIdFanNA.IsChecked = bool.Parse(reportData["checkIdFanNA"]);
+        if (checkIdFanYes.IsChecked == false && checkIdFanNA.IsChecked == false)
+            checkIdFanNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkFanBoilerSafetyInterlockYes"))
             checkFanBoilerSafetyInterlockYes.IsChecked = bool.Parse(reportData["checkFanBoilerSafetyInterlockYes"]);
         if (reportData.ContainsKey("checkFanBoilerSafetyInterlockNA"))
             checkFanBoilerSafetyInterlockNA.IsChecked = bool.Parse(reportData["checkFanBoilerSafetyInterlockNA"]);
+        if (checkFanBoilerSafetyInterlockYes.IsChecked == false && checkFanBoilerSafetyInterlockNA.IsChecked == false)
+            checkFanBoilerSafetyInterlockNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkGeneralComplianceOfGasPipeYes"))
             checkGeneralComplianceOfGasPipeYes.IsChecked = bool.Parse(reportData["checkGeneralComplianceOfGasPipeYes"]);
         if (reportData.ContainsKey("checkGeneralComplianceOfGasPipeNA"))
             checkGeneralComplianceOfGasPipeNA.IsChecked = bool.Parse(reportData["checkGeneralComplianceOfGasPipeNA"]);
+        if (checkGeneralComplianceOfGasPipeYes.IsChecked == false && checkGeneralComplianceOfGasPipeNA.IsChecked == false)
+            checkGeneralComplianceOfGasPipeNo.IsChecked = true;
+
+
         if (reportData.ContainsKey("checkVentilationYes"))
             checkVentilationYes.IsChecked = bool.Parse(reportData["checkVentilationYes"]);
         if (reportData.ContainsKey("checkVentilationNA"))
             checkVentilationNA.IsChecked = bool.Parse(reportData["checkVentilationNA"]);
+        if (checkVentilationYes.IsChecked == false && checkVentilationNA.IsChecked == false)
+            checkVentilationNo.IsChecked = true;
+
         if (reportData.ContainsKey("checkAIVYes"))
             checkAIVYes.IsChecked = bool.Parse(reportData["checkAIVYes"]);
         if (reportData.ContainsKey("checkAIVNo"))
             checkAIVNo.IsChecked = bool.Parse(reportData["checkAIVNo"]);
+        if (checkAIVYes.IsChecked == false && checkAIVNo.IsChecked == false)
+            checkAIVNA.IsChecked = true;
+
         if (reportData.ContainsKey("checkManualYes"))
             checkManualYes.IsChecked = bool.Parse(reportData["checkManualYes"]);
         if (reportData.ContainsKey("checkManualNo"))
             checkManualNo.IsChecked = bool.Parse(reportData["checkManualNo"]);
+        if (checkManualYes.IsChecked == false && checkManualNo.IsChecked == false)
+            checkManualNA.IsChecked = true;
         if (reportData.ContainsKey("checkPlantGasTightnessTestYes"))
             checkPlantGasTightnessTestYes.IsChecked = bool.Parse(reportData["checkPlantGasTightnessTestYes"]);
+        if (reportData.ContainsKey("checkPlantGasTightnessTestNo"))
+            checkPlantGasTightnessTestNo.IsChecked = bool.Parse(reportData["checkPlantGasTightnessTestNo"]);
 
 
     }
@@ -599,7 +648,8 @@ public partial class BoilerHouseDataSheetPage : ContentPage
             { "checkAIVNo", checkAIVNo.IsChecked.ToString() },
             { "checkManualYes", checkManualYes.IsChecked.ToString() },
             { "checkManualNo", checkManualNo.IsChecked.ToString() },
-            { "checkPlantGasTightnessTestYes", checkPlantGasTightnessTestYes.IsChecked.ToString() }
+            { "checkPlantGasTightnessTestYes", checkPlantGasTightnessTestYes.IsChecked.ToString() },
+             { "checkPlantGasTightnessTestNo", checkPlantGasTightnessTestNo.IsChecked.ToString() }
         };
 
 

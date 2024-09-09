@@ -122,7 +122,7 @@ public static class ApiService
 
         // Rename in Dropbox
         //If folder doesn't exist it is in Incompleted Jobs - not uploaded to Dropbox
-        bool ifFolderExists = await CheckFolderExistsDropboxAsync(new HttpClient(), $"/{oldFolderName}");
+        bool ifFolderExists = await CheckFolderExistsDropboxAsync($"/{oldFolderName}");
         if (ifFolderExists)
         {
             HttpResponseMessage dropboxResponse;
@@ -195,7 +195,7 @@ public static class ApiService
 
         // Delete from Dropbox
         //If folder doesn't exist it is in Incompleted Jobs - not uploaded to Dropbox
-        bool ifFolderExists = await CheckFolderExistsDropboxAsync(new HttpClient(), $"/{folderName}");
+        bool ifFolderExists = await CheckFolderExistsDropboxAsync($"/{folderName}");
         if(ifFolderExists)
         {
             HttpResponseMessage dropboxResponse = await DeleteFolderInDropboxAsync(folderName);
@@ -603,15 +603,31 @@ public static class ApiService
         }
     }
 
-
     /// <summary>
-    /// Checks if a folder exists in Dropbox.
+    /// Checks if a folder exists in Dropbox
     /// </summary>
     /// <param name="client">The HttpClient instance.</param>
     /// <param name="path">The path of the folder in Dropbox.</param>
     /// <returns>True if the folder exists, false otherwise.</returns>
     private static async Task<bool> CheckFolderExistsDropboxAsync(HttpClient client, string path)
     {
+        var response = await client.PostAsJsonAsync($"{_apiUrl}/files/get_metadata", new { path });
+        return response.IsSuccessStatusCode;
+    }
+    /// <summary>
+    /// Checks if a folder exists in Dropbox and creates new client.
+    /// </summary>
+    /// <param name="path">The path of the folder in Dropbox.</param>
+    /// <returns>True if the folder exists, false otherwise.</returns>
+    private static async Task<bool> CheckFolderExistsDropboxAsync(string path)
+    {
+        if (string.IsNullOrEmpty(_accessToken))
+        {
+            _accessToken = await GetNewAccessTokenAsync();
+        }
+
+        using HttpClient client = new();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
         var response = await client.PostAsJsonAsync($"{_apiUrl}/files/get_metadata", new { path });
         return response.IsSuccessStatusCode;
     }
