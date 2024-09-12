@@ -718,10 +718,10 @@ public partial class ConformityCheckPage : ContentPage
         reportData.Add("checkRemedialToWorkRequiredYes", checkRemedialToWorkRequiredYes.IsChecked.ToString());
         reportData.Add("checkTestsCompletedSatisfactoryYes", checkTestsCompletedSatisfactoryYes.IsChecked.ToString());
         
-        reportData.Add("checkExistingHighLevelCM", checkExistingHighLevelCM.IsChecked.ToString());
+         // reportData.Add("checkExistingHighLevelCM", checkExistingHighLevelCM.IsChecked.ToString());
         //reportData.Add("checkExistingLowLevelCM", checkExistingLowLevelCM.IsChecked.ToString());
         //reportData.Add("checkRequiredHighLevelCM", checkRequiredHighLevelCM.IsChecked.ToString());
-        reportData.Add("checkRequiredLowLevelCM", checkRequiredLowLevelCM.IsChecked.ToString());
+       // reportData.Add("checkRequiredLowLevelCM", checkRequiredLowLevelCM.IsChecked.ToString());
 
         reportData.Add("checkExistingLowLevelCM", checkExistingLevelCM.IsChecked.ToString());
         reportData.Add("checkRequiredHighLevelCM", checkRequiredLevelCM.IsChecked.ToString());

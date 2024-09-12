@@ -1165,23 +1165,41 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["freeAirRequiredHighLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(298, 410, 100, 17), XStringFormats.Center);
             gfx.DrawString(dic["freeAirRequiredLowLevel"], new XFont("Arial", 8), XBrushes.Black, new XRect(464, 410, 100, 17), XStringFormats.Center);
             // ovo da se ispravi
-      //      if (dic["checkExistingHighLevelCM"] == "True")
-      //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
-      //      else
-      //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
-      //      if (dic["checkRequiredHighLevelCM"] == "True")
-       //         gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 207, 15, 15));//test complited
-       //     else
-      //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
+            //      if (dic["checkExistingHighLevelCM"] == "True")
+            //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
+            //      else
+            //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
+            //      if (dic["checkRequiredHighLevelCM"] == "True")
+            //         gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 207, 15, 15));//test complited
+            //     else
+            //          gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
 
             if (dic["checkFreeAirExistingCM"] == "True")
-               gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
-            else
-               gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(145, 395, 15, 15));
+            }
+            if (dic["checkFreeAirExistingMH"] == "True")
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(193, 395, 15, 15));
+            }
+
             if (dic["checkFreeAirRequiredCM"] == "True")
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 207, 15, 15));//test complited
-            else
-                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(145, 413, 15, 15));
+            }
+            if (dic["checkFreeAirRequiredMH"] == "True")
+            {
+                gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(193, 413, 15, 15));
+            }
+
+            //if (dic["checkFreeAirExistingCM"] == "True")
+            //   gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
+            //else
+            //   gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
+            //if (dic["checkFreeAirRequiredCM"] == "True")
+            //    gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 207, 15, 15));//test complited
+            //else
+            //    gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 207, 15, 17));//test complited
 
 
             
