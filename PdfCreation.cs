@@ -2168,7 +2168,7 @@ namespace Ashwell_Maintenance
             }
             if (dic["checkSpillageTestPerformed"] == "True")
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(115, 701, 24, 10), 0, 360);
-            else if (!(dic["checkSpillageTestPerformedNA"] == "True"))
+            else if (dic["checkSpillageTestPerformedNA"] == "True")//else if (!(dic["checkSpillageTestPerformedNA"] == "True"))
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(142, 701, 22, 10), 0, 360);
             else
                 gfx.DrawArc(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(165, 701, 22, 10), 0, 360);
