@@ -697,10 +697,10 @@ public partial class ConformityCheckPage : ContentPage
         //reportData.Add("existingLowLevel", existingLowLevel.Text ?? string.Empty);
         //reportData.Add("requiredHighLevel", requiredHighLevel.Text ?? string.Empty);
         //reportData.Add("requiredLowLevel", requiredLowLevel.Text ?? string.Empty);
-        reportData.Add("existingLowLevel", existingHighLevel.Text ?? string.Empty);
+        reportData.Add("existingHighLevel", existingHighLevel.Text ?? string.Empty);
         reportData.Add("existingLowLevel", existingLowLevel.Text ?? string.Empty);
         reportData.Add("requiredHighLevel", requiredHighLevel.Text ?? string.Empty);
-        reportData.Add("requiredHighLevel", requiredLowLevel.Text ?? string.Empty);
+        reportData.Add("requiredLowLevel", requiredLowLevel.Text ?? string.Empty);
         reportData.Add("ventilationChecksComments", ventilationChecksComments.Text ?? string.Empty);
         reportData.Add("flueChecksComments", flueChecksComments.Text ?? string.Empty);
         reportData.Add("emergencyStopButtonComment", emergencyStopButtonComment.Text ?? string.Empty);
