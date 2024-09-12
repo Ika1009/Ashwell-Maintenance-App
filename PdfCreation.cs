@@ -2355,8 +2355,8 @@ namespace Ashwell_Maintenance
             // gfx.DrawImage(ConvertToXImage(clijent), 64, 171, 229, 15);
 
             //comments
-            gfx.DrawString(dic["ControlActionWorkingAtHeight"], font, XBrushes.Black, new XRect(347+3, 328, 564-347, 16), XStringFormats.CenterLeft);
-            gfx.DrawString(dic["ControlActionPermitsToWorkRequired"], font, XBrushes.Black, new XRect(347+3, 347, 564-347, 16), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["ControlActionWorkingAtHeight"], font, XBrushes.Black, new XRect(347+3, 328, 564-347-3, 16), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["ControlActionPermitsToWorkRequired"], font, XBrushes.Black, new XRect(347+3, 347, 564-347-3, 16), XStringFormats.CenterLeft);
          
             XRect boundingBox = new XRect(347+3, 390, 564-347-3, 458-390);
             string text = dic["DustNoiseCOSHHTheControlActionRequired"];
@@ -2364,8 +2364,8 @@ namespace Ashwell_Maintenance
             XRect layoutRectangle = boundingBox;
             tf.DrawString(text, new XFont("Arial", 10), XBrushes.Black, layoutRectangle, XStringFormats.TopLeft);
            
-            gfx.DrawString(dic["ControlActionExcavations"], font, XBrushes.Black, new XRect(347+3, 369, 564-347, 16), XStringFormats.CenterLeft);
-            gfx.DrawString(dic["ControlActionAnyOtherDanger"], font, XBrushes.Black, new XRect(347+3, 636, 564-347, 16), XStringFormats.Center);
+            gfx.DrawString(dic["ControlActionExcavations"], font, XBrushes.Black, new XRect(347+3, 369, 564-347-3, 16), XStringFormats.CenterLeft);
+            gfx.DrawString(dic["ControlActionAnyOtherDanger"], font, XBrushes.Black, new XRect(347+3, 636, 564-347-3, 16), XStringFormats.Center);
             XRect boundingBox1 = new XRect(347+3, 523, 564 - 347-3, 575 - 523);
             string text1 = dic["actionTaken"];
             XTextFormatter tf1 = new XTextFormatter(gfx);
