@@ -1018,7 +1018,7 @@ namespace Ashwell_Maintenance
             gfx.DrawString(dic["existingLowLevel"], font, XBrushes.Black, new XRect(367, 188, 90, 13), XStringFormats.Center);
             gfx.DrawString(dic["requiredLowLevel"], font, XBrushes.Black, new XRect(367, 207, 90, 13), XStringFormats.Center);
 
-            if (dic["checkExistingHighLevelCM"] == "True")
+            if (dic["checkExistingLowLevelCM"] == "True")
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(203, 189.5, 15, 15));//remidial work
             else
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(261, 189.5, 15, 17));//remidial work
@@ -1032,7 +1032,7 @@ namespace Ashwell_Maintenance
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474, 189.5, 15, 15));//remidial work
             else
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474 + 58, 189.5, 15, 17));//remidial work
-            if (dic["checkRequiredLowLevelCM"] == "True")
+            if (dic["checkRequiredHighLevelCM"] == "True")
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474, 207, 15, 15));//test complited
             else
                 gfx.DrawEllipse(new XPen(XColor.FromArgb(0, 0, 0)), new XRect(474 + 58, 207, 15, 17));//test complited
