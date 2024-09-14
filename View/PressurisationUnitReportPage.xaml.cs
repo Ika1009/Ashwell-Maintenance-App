@@ -422,7 +422,7 @@ public partial class PressurisationUnitReportPage : ContentPage
             this.notes.Text = notes;
 
         if (reportData.TryGetValue("date", out var date))
-            this.date.Date = DateTime.Parse(date);
+            this.date.Date = DateTime.ParseExact(date, "d/M/yyyy", null);
 
         //fale bool
         if (reportData.ContainsKey("checkMainWaterSupply"))

@@ -903,7 +903,7 @@ public partial class OneAPage : ContentPage
         // Set date, engineer, card number, etc.
         if (reportData.ContainsKey("date"))
         {
-            date.Date = DateTime.Parse(reportData["date"]);
+            date.Date = DateTime.ParseExact(reportData["date"], "d/M/yyyy", null);
         }
         if (reportData.ContainsKey("engineer"))
         {

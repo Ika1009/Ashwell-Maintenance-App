@@ -772,7 +772,7 @@ public partial class OnePage : ContentPage
             actualPressureDropResult.Text = reportData["actualPressureDropResult"];
 
         if (reportData.ContainsKey("date"))
-            date.Date = DateTime.Parse(reportData["date"]);
+            date.Date = DateTime.ParseExact(reportData["date"], "d/M/yyyy", null);
 
         if (reportData.ContainsKey("engineer"))
             engineer.Text = reportData["engineer"];

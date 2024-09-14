@@ -692,7 +692,7 @@ public partial class ServiceRecordPage : ContentPage
         clientsName.Text = reportData["clientsName"];
         // clientsSignature.Text = reportData["clientsSignature"]; // Uncomment if using signatures
 
-        inspectionDate.Date = DateTime.Parse(reportData["inspectionDate"]);
+        inspectionDate.Date = DateTime.ParseExact(reportData["inspectionDate"], "d/M/yyyy", null);
         additionalCommentsDefects.Text = reportData["commetsDefects"];
         warningNoticeNumber.Text = reportData["warningNoticeIssueNumber"];
 

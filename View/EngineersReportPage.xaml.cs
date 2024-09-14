@@ -381,7 +381,7 @@ public partial class EngineersReportPage : ContentPage
         if (reportData.ContainsKey("clientsName")) clientsName.Text = reportData["clientsName"];
         if (reportData.ContainsKey("address")) clientsAdress.Text = reportData["address"];
         if (reportData.ContainsKey("applianceMake")) applianceMake.Text = reportData["applianceMake"];
-        if (reportData.ContainsKey("date")) date.Date = DateTime.Parse(reportData["date"]);
+        if (reportData.ContainsKey("date")) date.Date = DateTime.ParseExact(reportData["date"], "d/M/yyyy", null);
         if (reportData.ContainsKey("engineer")) engineer.Text = reportData["engineer"];
         if (reportData.ContainsKey("taskTNo")) taskTNo.Text = reportData["taskTNo"];
         if (reportData.ContainsKey("serialNumber")) serialNumber.Text = reportData["serialNumber"];

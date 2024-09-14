@@ -409,7 +409,7 @@ public partial class OneBPage : ContentPage
     {
         // Set text fields
         site.Text = reportData.ContainsKey("site") ? reportData["site"] : string.Empty;
-        date.Date = reportData.ContainsKey("date") ? DateTime.Parse(reportData["date"]) : DateTime.Now;
+        date.Date = reportData.ContainsKey("date") ? DateTime.ParseExact(reportData["date"], "d/M/yyyy", null) : DateTime.Now;
         location.Text = reportData.ContainsKey("location") ? reportData["location"] : string.Empty;
         steel1Total.Text = reportData.ContainsKey("steel1Total") ? reportData["steel1Total"] : string.Empty;
         steel2Total.Text = reportData.ContainsKey("steel2Total") ? reportData["steel2Total"] : string.Empty;

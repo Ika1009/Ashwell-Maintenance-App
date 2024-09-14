@@ -423,7 +423,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         if (reportData.ContainsKey("warningNoticeRefNo"))
             warningNoticeRefNo.Text = reportData["warningNoticeRefNo"];
         if (reportData.ContainsKey("dateOfLastTightnessTest"))
-            dateOfLastTightnessTest.Date = DateTime.Parse(reportData["dateOfLastTightnessTest"]);
+            dateOfLastTightnessTest.Date = DateTime.ParseExact(reportData["dateOfLastTightnessTest"], "d/M/yyyy", null);
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("dropRecorded"))
             dropRecorded.Text = reportData["dropRecorded"];
@@ -434,7 +434,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         if (reportData.ContainsKey("clientsName"))
             clientsName.Text = reportData["clientsName"];
         if (reportData.ContainsKey("completionDate"))
-            completionDate.Date = DateTime.Parse(reportData["completionDate"]);
+            completionDate.Date = DateTime.ParseExact(reportData["completionDate"], "d/M/yyyy", null);
 
         if (reportData["recordTightnessTestResult"] == "Pass")
         {

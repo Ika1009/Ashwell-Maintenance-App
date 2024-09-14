@@ -485,7 +485,7 @@ public partial class ConformityCheckPage : ContentPage
         }
         if (reportData.ContainsKey("inspectionDate"))
         {
-            inspectionDate.Date = DateTime.Parse(reportData["inspectionDate"]);
+            inspectionDate.Date = DateTime.ParseExact(reportData["inspectionDate"], "d/M/yyyy", null);
         }
         if (reportData.ContainsKey("engineersGasSafeIDNo"))
         {
@@ -497,7 +497,7 @@ public partial class ConformityCheckPage : ContentPage
         }
         if (reportData.ContainsKey("date"))
         {
-            date.Date = DateTime.Parse(reportData["date"]);
+            date.Date = DateTime.ParseExact(reportData["date"], "d/M/yyyy", null);
         }
         if (reportData.ContainsKey("checkRemedialToWorkRequiredYes"))
             checkRemedialToWorkRequiredYes.IsChecked = bool.Parse(reportData["checkRemedialToWorkRequiredYes"]);

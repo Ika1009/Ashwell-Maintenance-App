@@ -446,11 +446,11 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         if (reportData.ContainsKey("engineersGasSafeIDNo"))
             engineersGasSafeIDNo.Text = reportData["engineersGasSafeIDNo"];
         if (reportData.ContainsKey("inspectionDate"))
-            inspectionDate.Date = DateTime.Parse(reportData["inspectionDate"]);
+            inspectionDate.Date = DateTime.ParseExact(reportData["inspectionDate"], "d/M/yyyy", null);
         if (reportData.ContainsKey("clientsName"))
             clientsName.Text = reportData["clientsName"];
         if (reportData.ContainsKey("date"))
-            date.Date = DateTime.Parse(reportData["date"]);
+            date.Date = DateTime.ParseExact(reportData["date"], "d/M/yyyy", null);
 
         // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("checkRemedialToWorkRequiredYes"))

@@ -384,13 +384,13 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         if (reportData.ContainsKey("whatInformationIssued"))
             whatInformationIssued.Text = reportData["whatInformationIssued"];
         if (reportData.ContainsKey("startDate"))
-            startDate.Date = DateTime.Parse(reportData["startDate"]);
+            startDate.Date = DateTime.ParseExact(reportData["startDate"], "d/M/yyyy", null);
         if (reportData.ContainsKey("other"))
             other.Text = reportData["other"];
         if (reportData.ContainsKey("date"))
-            date.Date = DateTime.Parse(reportData["date"]);
+            date.Date = DateTime.ParseExact(reportData["date"], "d/M/yyyy", null);
         if (reportData.ContainsKey("completionDate"))
-            completionDate.Date = DateTime.Parse(reportData["completionDate"]);
+            completionDate.Date = DateTime.ParseExact(reportData["completionDate"], "d/M/yyyy", null);
 
 
         // Assume 'reportData' is the dictionary containing the data
