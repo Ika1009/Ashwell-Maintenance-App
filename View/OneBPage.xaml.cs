@@ -407,6 +407,25 @@ public partial class OneBPage : ContentPage
     }
     public void PreviewOneBPage(Dictionary<string, string> reportData)
     {
+
+        List<String> numbers = new List<String>();
+        for (Int64 i = 1; i <= 88; i++)
+            numbers.Add(i.ToString());
+
+        steel1.ItemsSource = numbers;
+        steel2.ItemsSource = numbers;
+        steel3.ItemsSource = numbers;
+        steel4.ItemsSource = numbers;
+
+        copper1.ItemsSource = numbers;
+        copper2.ItemsSource = numbers;
+        copper3.ItemsSource = numbers;
+        copper4.ItemsSource = numbers;
+
+        pesdr1.ItemsSource = numbers;
+        pesdr2.ItemsSource = numbers;
+        pesdr3.ItemsSource = numbers;
+
         // Set text fields
         site.Text = reportData.ContainsKey("site") ? reportData["site"] : string.Empty;
         date.Date = reportData.ContainsKey("date") ? DateTime.ParseExact(reportData["date"], "d/M/yyyy", null) : DateTime.Now;

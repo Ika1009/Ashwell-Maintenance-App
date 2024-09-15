@@ -503,6 +503,42 @@ public partial class OnePage : ContentPage
     }
     public void PreviewOnePage(Dictionary<string, string> reportData)
     {
+        List<String> numbers = new List<String>();
+        for (Int64 i = 1; i <= 1000; i++)
+            numbers.Add(i.ToString());
+
+        steel1.ItemsSource = numbers;
+        steel2.ItemsSource = numbers;
+        steel3.ItemsSource = numbers;
+        steel4.ItemsSource = numbers;
+        steel5.ItemsSource = numbers;
+        steel6.ItemsSource = numbers;
+        steel7.ItemsSource = numbers;
+        steel8.ItemsSource = numbers;
+        steel9.ItemsSource = numbers;
+        steel10.ItemsSource = numbers;
+        steel11.ItemsSource = numbers;
+        steel12.ItemsSource = numbers;
+        steel13.ItemsSource = numbers;
+
+        copper1.ItemsSource = numbers;
+        copper2.ItemsSource = numbers;
+        copper3.ItemsSource = numbers;
+        copper4.ItemsSource = numbers;
+        copper5.ItemsSource = numbers;
+        copper6.ItemsSource = numbers;
+        copper7.ItemsSource = numbers;
+
+        pesdr1.ItemsSource = numbers;
+        pesdr2.ItemsSource = numbers;
+        pesdr3.ItemsSource = numbers;
+        pesdr4.ItemsSource = numbers;
+        pesdr5.ItemsSource = numbers;
+        pesdr6.ItemsSource = numbers;
+        pesdr7.ItemsSource = numbers;
+        pesdr8.ItemsSource = numbers;
+
+
         // Populate site and location
         if (reportData.ContainsKey("site"))
             site.Text = reportData["site"];
