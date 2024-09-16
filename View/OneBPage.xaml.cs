@@ -408,9 +408,9 @@ public partial class OneBPage : ContentPage
     public void PreviewOneBPage(Dictionary<string, string> reportData)
     {
 
-        List<String> numbers = new List<String>();
+        List<Int64> numbers = new List<Int64>();
         for (Int64 i = 1; i <= 88; i++)
-            numbers.Add(i.ToString());
+            numbers.Add(i);
 
         steel1.ItemsSource = numbers;
         steel2.ItemsSource = numbers;
@@ -425,6 +425,55 @@ public partial class OneBPage : ContentPage
         pesdr1.ItemsSource = numbers;
         pesdr2.ItemsSource = numbers;
         pesdr3.ItemsSource = numbers;
+
+        if (reportData.ContainsKey("steel1") && reportData["steel1"] != string.Empty)
+        {
+            steel1.SelectedItem = Int64.Parse(reportData["steel1"]);
+        }
+
+        if (reportData.ContainsKey("steel2") && reportData["steel2"] != string.Empty)
+        {
+            steel2.SelectedItem = Int64.Parse(reportData["steel2"]);
+        }
+        if (reportData.ContainsKey("steel3") && reportData["steel3"] != string.Empty)
+        {
+            steel3.SelectedItem = Int64.Parse(reportData["steel3"]);
+        }
+        if (reportData.ContainsKey("steel4") && reportData["steel4"] != string.Empty)
+        {
+            steel4.SelectedItem = Int64.Parse(reportData["steel4"]);
+        }
+
+        if (reportData.ContainsKey("copper1") && reportData["copper1"] != string.Empty)
+        {
+            copper1.SelectedItem = Int64.Parse(reportData["copper1"]);
+        }
+        if (reportData.ContainsKey("copper2") && reportData["copper2"] != string.Empty)
+        {
+            copper2.SelectedItem = Int64.Parse(reportData["copper2"]);
+        }
+        if (reportData.ContainsKey("copper3") && reportData["copper3"] != string.Empty)
+        {
+            copper3.SelectedItem = Int64.Parse(reportData["copper3"]);
+        }
+        if (reportData.ContainsKey("copper4") && reportData["copper4"] != string.Empty)
+        {
+            copper4.SelectedItem = Int64.Parse(reportData["copper4"]);
+        }
+
+        if (reportData.ContainsKey("pesdr1") && reportData["pesdr1"] != string.Empty)
+        {
+            pesdr1.SelectedItem = Int64.Parse(reportData["pesdr1"]);
+        }
+        if (reportData.ContainsKey("pesdr2") && reportData["pesdr2"] != string.Empty)
+        {
+            pesdr2.SelectedItem = Int64.Parse(reportData["pesdr2"]);
+        }
+        if (reportData.ContainsKey("pesdr3") && reportData["pesdr3"] != string.Empty)
+        {
+            pesdr3.SelectedItem = Int64.Parse(reportData["pesdr3"]);
+        }
+
 
         // Set text fields
         site.Text = reportData.ContainsKey("site") ? reportData["site"] : string.Empty;
@@ -465,53 +514,7 @@ public partial class OneBPage : ContentPage
         }
 
         // Set dropdowns based on dictionary values
-        if (reportData.ContainsKey("steel1"))
-        {
-            steel1.SelectedItem = reportData["steel1"];
-        }
-        if (reportData.ContainsKey("steel2"))
-        {
-            steel2.SelectedItem = reportData["steel2"];
-        }
-        if (reportData.ContainsKey("steel3"))
-        {
-            steel3.SelectedItem = reportData["steel3"];
-        }
-        if (reportData.ContainsKey("steel4"))
-        {
-            steel4.SelectedItem = reportData["steel4"];
-        }
-
-        if (reportData.ContainsKey("copper1"))
-        {
-            copper1.SelectedItem = reportData["copper1"];
-        }
-        if (reportData.ContainsKey("copper2"))
-        {
-            copper2.SelectedItem = reportData["copper2"];
-        }
-        if (reportData.ContainsKey("copper3"))
-        {
-            copper3.SelectedItem = reportData["copper3"];
-        }
-        if (reportData.ContainsKey("copper4"))
-        {
-            copper4.SelectedItem = reportData["copper4"];
-        }
-
-        if (reportData.ContainsKey("pesdr1"))
-        {
-            pesdr1.SelectedItem = reportData["pesdr1"];
-        }
-        if (reportData.ContainsKey("pesdr2"))
-        {
-            pesdr2.SelectedItem = reportData["pesdr2"];
-        }
-        if (reportData.ContainsKey("pesdr3"))
-        {
-            pesdr3.SelectedItem = reportData["pesdr3"];
-        }
-
+       
         if (reportData.ContainsKey("testMediumPicker"))
         {
             testMediumPicker.SelectedItem = reportData["testMediumPicker"];
