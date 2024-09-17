@@ -75,7 +75,7 @@ public partial class OnePage : ContentPage
         OneBackBtt.IsEnabled = false;
         try
         {
-            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.EngineersReport, reportName, folder.Id, report);
+            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.One, reportName, folder.Id, report);
 
             if (response.IsSuccessStatusCode)
             {
