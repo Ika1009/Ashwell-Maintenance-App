@@ -1222,6 +1222,7 @@ public partial class OneAPage : ContentPage
         reportData.Add("WarningNoticeRefNo", WarningNoticeRefNo.Text ?? string.Empty);
         if (skip2==1)
         {
+            skip2 = 0;
             reportData["testMediumPicker"] = "N/A";
             reportData["installationPicker"] = "N/A";
             reportData["checkIsWeatherTemperatureStableYes"] = "N/A";
@@ -1235,6 +1236,7 @@ public partial class OneAPage : ContentPage
         }
         if (skip3 == 1)
         {
+            skip3 = 0;
             reportData["strengthTestPressure"] = "N/A";
             reportData["checkComponentsRemovedBypassedYes"] = "N/A";
             reportData["stabilisationPeriod"] = "N/A";

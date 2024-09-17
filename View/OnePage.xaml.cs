@@ -456,8 +456,9 @@ public partial class OnePage : ContentPage
 
     public void OSkip3(object sender, EventArgs e)
     {
+        oskip33 = 1;
         ONext3();
-    oskip33 = 1;
+   
         // ...
     }
     
@@ -503,6 +504,8 @@ public partial class OnePage : ContentPage
     }
     public void PreviewOnePage(Dictionary<string, string> reportData)
     {
+          InitializeComponent();
+
         List<Int64> numbers = new List<Int64>();
         for (Int64 i = 1; i <= 1000; i++)
             numbers.Add(i);
@@ -538,356 +541,358 @@ public partial class OnePage : ContentPage
         pesdr7.ItemsSource = numbers;
         pesdr8.ItemsSource = numbers;
 
-        // Populate steel items
+        //  // Populate steel items
         if (reportData.ContainsKey("steel1") && reportData["steel1"] != string.Empty)
-            steel1.SelectedItem = Int64.Parse(reportData["steel1"]) ;
+            steel1.SelectedItem = Int64.Parse(reportData["steel1"]);
 
         if (reportData.ContainsKey("steel1Total"))
             steel1Total.Text = reportData["steel1Total"];
 
         if (reportData.ContainsKey("steel2") && reportData["steel2"] != string.Empty)
-            steel2.SelectedItem = Int64.Parse(reportData["steel2"]) ;
+            steel2.SelectedItem = Int64.Parse(reportData["steel2"]);
 
         if (reportData.ContainsKey("steel2Total"))
             steel2Total.Text = reportData["steel2Total"];
 
         if (reportData.ContainsKey("steel3") && reportData["steel3"] != string.Empty)
-            steel3.SelectedItem = Int64.Parse(reportData["steel3"]) ;
+            steel3.SelectedItem = Int64.Parse(reportData["steel3"]);
 
         if (reportData.ContainsKey("steel3Total"))
             steel3Total.Text = reportData["steel3Total"];
 
         if (reportData.ContainsKey("steel4") && reportData["steel4"] != string.Empty)
-            steel4.SelectedItem = Int64.Parse(reportData["steel4"]) ;
+            steel4.SelectedItem = Int64.Parse(reportData["steel4"]);
 
         if (reportData.ContainsKey("steel4Total"))
             steel4Total.Text = reportData["steel4Total"];
 
         if (reportData.ContainsKey("steel5") && reportData["steel5"] != string.Empty)
-            steel5.SelectedItem = Int64.Parse(reportData["steel5"]) ;
+            steel5.SelectedItem = Int64.Parse(reportData["steel5"]);
 
         if (reportData.ContainsKey("steel5Total"))
             steel5Total.Text = reportData["steel5Total"];
 
         if (reportData.ContainsKey("steel6") && reportData["steel6"] != string.Empty)
-            steel6.SelectedItem = Int64.Parse(reportData["steel6"]) ;
+            steel6.SelectedItem = Int64.Parse(reportData["steel6"]);
 
         if (reportData.ContainsKey("steel6Total"))
             steel6Total.Text = reportData["steel6Total"];
 
         if (reportData.ContainsKey("steel7") && reportData["steel7"] != string.Empty)
-            steel7.SelectedItem = Int64.Parse(reportData["steel7"]) ;
+            steel7.SelectedItem = Int64.Parse(reportData["steel7"]);
 
         if (reportData.ContainsKey("steel7Total"))
             steel7Total.Text = reportData["steel7Total"];
 
         if (reportData.ContainsKey("steel8") && reportData["steel8"] != string.Empty)
-            steel8.SelectedItem = Int64.Parse(reportData["steel8"]) ;
+            steel8.SelectedItem = Int64.Parse(reportData["steel8"]);
 
         if (reportData.ContainsKey("steel8Total"))
             steel8Total.Text = reportData["steel8Total"];
 
         if (reportData.ContainsKey("steel9") && reportData["steel9"] != string.Empty)
-            steel9.SelectedItem = Int64.Parse(reportData["steel9"]) ;
+            steel9.SelectedItem = Int64.Parse(reportData["steel9"]);
 
         if (reportData.ContainsKey("steel9Total"))
             steel9Total.Text = reportData["steel9Total"];
 
         if (reportData.ContainsKey("steel10") && reportData["steel10"] != string.Empty)
-            steel10.SelectedItem = Int64.Parse(reportData["steel10"]) ;
+            steel10.SelectedItem = Int64.Parse(reportData["steel10"]);
 
         if (reportData.ContainsKey("steel10Total"))
             steel10Total.Text = reportData["steel10Total"];
 
         if (reportData.ContainsKey("steel11") && reportData["steel11"] != string.Empty)
-            steel11.SelectedItem = Int64.Parse(reportData["steel11"]) ;
+            steel11.SelectedItem = Int64.Parse(reportData["steel11"]);
 
         if (reportData.ContainsKey("steel11Total"))
             steel11Total.Text = reportData["steel11Total"];
 
         if (reportData.ContainsKey("steel12") && reportData["steel12"] != string.Empty)
-            steel12.SelectedItem = Int64.Parse(reportData["steel12"]) ;
+            steel12.SelectedItem = Int64.Parse(reportData["steel12"]);
 
         if (reportData.ContainsKey("steel12Total"))
             steel12Total.Text = reportData["steel12Total"];
 
         if (reportData.ContainsKey("steel13") && reportData["steel13"] != string.Empty)
-            steel13.SelectedItem = Int64.Parse(reportData["steel13"]) ;
+            steel13.SelectedItem = Int64.Parse(reportData["steel13"]);
 
         if (reportData.ContainsKey("steel13Total"))
             steel13Total.Text = reportData["steel13Total"];
 
         if (reportData.ContainsKey("copper1") && reportData["copper1"] != string.Empty)
-            copper1.SelectedItem = Int64.Parse(reportData["copper1"]) ;
+            copper1.SelectedItem = Int64.Parse(reportData["copper1"]);
 
         if (reportData.ContainsKey("copper1Total"))
             copper1Total.Text = reportData["copper1Total"];
 
         if (reportData.ContainsKey("copper2") && reportData["copper2"] != string.Empty)
-            copper2.SelectedItem = Int64.Parse(reportData["copper2"]) ;
+            copper2.SelectedItem = Int64.Parse(reportData["copper2"]);
 
         if (reportData.ContainsKey("copper2Total"))
             copper2Total.Text = reportData["copper2Total"];
 
         if (reportData.ContainsKey("copper3") && reportData["copper3"] != string.Empty)
-            copper3.SelectedItem = Int64.Parse(reportData["copper3"]) ;
+            copper3.SelectedItem = Int64.Parse(reportData["copper3"]);
 
         if (reportData.ContainsKey("copper3Total"))
             copper3Total.Text = reportData["copper3Total"];
 
         if (reportData.ContainsKey("copper4") && reportData["copper4"] != string.Empty)
-            copper4.SelectedItem = Int64.Parse(reportData["copper4"]) ;
+            copper4.SelectedItem = Int64.Parse(reportData["copper4"]);
 
         if (reportData.ContainsKey("copper4Total"))
             copper4Total.Text = reportData["copper4Total"];
 
         if (reportData.ContainsKey("copper5") && reportData["copper5"] != string.Empty)
-            copper5.SelectedItem = Int64.Parse(reportData["copper5"]) ;
+            copper5.SelectedItem = Int64.Parse(reportData["copper5"]);
 
         if (reportData.ContainsKey("copper5Total"))
             copper5Total.Text = reportData["copper5Total"];
 
         if (reportData.ContainsKey("copper6") && reportData["copper6"] != string.Empty)
-            copper6.SelectedItem = Int64.Parse(reportData["copper6"]) ;
+            copper6.SelectedItem = Int64.Parse(reportData["copper6"]);
 
         if (reportData.ContainsKey("copper6Total"))
             copper6Total.Text = reportData["copper6Total"];
 
         if (reportData.ContainsKey("copper7") && reportData["copper7"] != string.Empty)
-            copper7.SelectedItem = Int64.Parse(reportData["copper7"]) ;
+            copper7.SelectedItem = Int64.Parse(reportData["copper7"]);
 
         if (reportData.ContainsKey("copper7Total"))
             copper7Total.Text = reportData["copper7Total"];
 
         if (reportData.ContainsKey("pesdr1") && reportData["pesdr1"] != string.Empty)
-            pesdr1.SelectedItem = Int64.Parse(reportData["pesdr1"]) ;
+            pesdr1.SelectedItem = Int64.Parse(reportData["pesdr1"]);
 
         if (reportData.ContainsKey("pesdr1Total"))
             pesdr1Total.Text = reportData["pesdr1Total"];
 
         if (reportData.ContainsKey("pesdr2") && reportData["pesdr2"] != string.Empty)
-            pesdr2.SelectedItem = Int64.Parse(reportData["pesdr2"]) ;
+            pesdr2.SelectedItem = Int64.Parse(reportData["pesdr2"]);
 
         if (reportData.ContainsKey("pesdr2Total"))
             pesdr2Total.Text = reportData["pesdr2Total"];
 
         if (reportData.ContainsKey("pesdr3") && reportData["pesdr3"] != string.Empty)
-            pesdr3.SelectedItem = Int64.Parse(reportData["pesdr3"]) ;
+            pesdr3.SelectedItem = Int64.Parse(reportData["pesdr3"]);
 
         if (reportData.ContainsKey("pesdr3Total"))
             pesdr3Total.Text = reportData["pesdr3Total"];
 
         if (reportData.ContainsKey("pesdr4") && reportData["pesdr4"] != string.Empty)
-            pesdr4.SelectedItem = Int64.Parse(reportData["pesdr4"]) ;
+            pesdr4.SelectedItem = Int64.Parse(reportData["pesdr4"]);
 
         if (reportData.ContainsKey("pesdr4Total"))
             pesdr4Total.Text = reportData["pesdr4Total"];
 
         if (reportData.ContainsKey("pesdr5") && reportData["pesdr5"] != string.Empty)
-            pesdr5.SelectedItem = Int64.Parse(reportData["pesdr5"]) ;
+            pesdr5.SelectedItem = Int64.Parse(reportData["pesdr5"]);
 
         if (reportData.ContainsKey("pesdr5Total"))
             pesdr5Total.Text = reportData["pesdr5Total"];
 
         if (reportData.ContainsKey("pesdr6") && reportData["pesdr6"] != string.Empty)
-            pesdr6.SelectedItem = Int64.Parse(reportData["pesdr6"]) ;
+            pesdr6.SelectedItem = Int64.Parse(reportData["pesdr6"]);
 
         if (reportData.ContainsKey("pesdr6Total"))
             pesdr6Total.Text = reportData["pesdr6Total"];
 
         if (reportData.ContainsKey("pesdr7") && reportData["pesdr7"] != string.Empty)
-            pesdr7.SelectedItem = Int64.Parse(reportData["pesdr7"]) ;
+            pesdr7.SelectedItem = Int64.Parse(reportData["pesdr7"]);
 
         if (reportData.ContainsKey("pesdr7Total"))
             pesdr7Total.Text = reportData["pesdr7Total"];
 
         if (reportData.ContainsKey("pesdr8") && reportData["pesdr8"] != string.Empty)
-            pesdr8.SelectedItem = Int64.Parse(reportData["pesdr8"]) ;
+            pesdr8.SelectedItem = Int64.Parse(reportData["pesdr8"]);
 
         if (reportData.ContainsKey("pesdr8Total"))
             pesdr8Total.Text = reportData["pesdr8Total"];
 
 
 
-        // Populate site and location
+        //  // Populate site and location
         if (reportData.ContainsKey("site"))
             site.Text = reportData["site"];
 
         if (reportData.ContainsKey("location"))
             location.Text = reportData["location"];
 
-        //// Populate steel items
-        //if (reportData.ContainsKey("steel1"))
-        //    steel1.SelectedItem = reportData["steel1"];
+        //  ////// Populate steel items
+        //  //if (reportData.ContainsKey("steel1"))
+        //  //    steel1.SelectedItem = reportData["steel1"];
 
-        //if (reportData.ContainsKey("steel1Total"))
-        //    steel1Total.Text = reportData["steel1Total"];
+        //  //if (reportData.ContainsKey("steel1Total"))
+        //  //    steel1Total.Text = reportData["steel1Total"];
 
-        //if (reportData.ContainsKey("steel2"))
-        //    steel2.SelectedItem = reportData["steel2"];
+        //  //if (reportData.ContainsKey("steel2"))
+        //  //    steel2.SelectedItem = reportData["steel2"];
 
-        //if (reportData.ContainsKey("steel2Total"))
-        //    steel2Total.Text = reportData["steel2Total"];
+        //  //if (reportData.ContainsKey("steel2Total"))
+        //  //    steel2Total.Text = reportData["steel2Total"];
 
-        //if (reportData.ContainsKey("steel3"))
-        //    steel3.SelectedItem = reportData["steel3"];
+        //  //if (reportData.ContainsKey("steel3"))
+        //  //    steel3.SelectedItem = reportData["steel3"];
 
-        //if (reportData.ContainsKey("steel3Total"))
-        //    steel3Total.Text = reportData["steel3Total"];
+        //  //if (reportData.ContainsKey("steel3Total"))
+        //  //    steel3Total.Text = reportData["steel3Total"];
 
-        //if (reportData.ContainsKey("steel4"))
-        //    steel4.SelectedItem = reportData["steel4"];
+        //  //if (reportData.ContainsKey("steel4"))
+        //  //    steel4.SelectedItem = reportData["steel4"];
 
-        //if (reportData.ContainsKey("steel4Total"))
-        //    steel4Total.Text = reportData["steel4Total"];
+        //  //if (reportData.ContainsKey("steel4Total"))
+        //  //    steel4Total.Text = reportData["steel4Total"];
 
-        //if (reportData.ContainsKey("steel5"))
-        //    steel5.SelectedItem = reportData["steel5"];
+        //  //if (reportData.ContainsKey("steel5"))
+        //  //    steel5.SelectedItem = reportData["steel5"];
 
-        //if (reportData.ContainsKey("steel5Total"))
-        //    steel5Total.Text = reportData["steel5Total"];
+        //  //if (reportData.ContainsKey("steel5Total"))
+        //  //    steel5Total.Text = reportData["steel5Total"];
 
-        //if (reportData.ContainsKey("steel6"))
-        //    steel6.SelectedItem = reportData["steel6"];
+        //  //if (reportData.ContainsKey("steel6"))
+        //  //    steel6.SelectedItem = reportData["steel6"];
 
-        //if (reportData.ContainsKey("steel6Total"))
-        //    steel6Total.Text = reportData["steel6Total"];
+        //  //if (reportData.ContainsKey("steel6Total"))
+        //  //    steel6Total.Text = reportData["steel6Total"];
 
-        //if (reportData.ContainsKey("steel7"))
-        //    steel7.SelectedItem = reportData["steel7"];
+        //  //if (reportData.ContainsKey("steel7"))
+        //  //    steel7.SelectedItem = reportData["steel7"];
 
-        //if (reportData.ContainsKey("steel7Total"))
-        //    steel7Total.Text = reportData["steel7Total"];
+        //  //if (reportData.ContainsKey("steel7Total"))
+        //  //    steel7Total.Text = reportData["steel7Total"];
 
-        //if (reportData.ContainsKey("steel8"))
-        //    steel8.SelectedItem = reportData["steel8"];
+        //  //if (reportData.ContainsKey("steel8"))
+        //  //    steel8.SelectedItem = reportData["steel8"];
 
-        //if (reportData.ContainsKey("steel8Total"))
-        //    steel8Total.Text = reportData["steel8Total"];
+        //  //if (reportData.ContainsKey("steel8Total"))
+        //  //    steel8Total.Text = reportData["steel8Total"];
 
-        //if (reportData.ContainsKey("steel9"))
-        //    steel9.SelectedItem = reportData["steel9"];
+        //  //if (reportData.ContainsKey("steel9"))
+        //  //    steel9.SelectedItem = reportData["steel9"];
 
-        //if (reportData.ContainsKey("steel9Total"))
-        //    steel9Total.Text = reportData["steel9Total"];
+        //  //if (reportData.ContainsKey("steel9Total"))
+        //  //    steel9Total.Text = reportData["steel9Total"];
 
-        //if (reportData.ContainsKey("steel10"))
-        //    steel10.SelectedItem = reportData["steel10"];
+        //  //if (reportData.ContainsKey("steel10"))
+        //  //    steel10.SelectedItem = reportData["steel10"];
 
-        //if (reportData.ContainsKey("steel10Total"))
-        //    steel10Total.Text = reportData["steel10Total"];
+        //  //if (reportData.ContainsKey("steel10Total"))
+        //  //    steel10Total.Text = reportData["steel10Total"];
 
-        //if (reportData.ContainsKey("steel11"))
-        //    steel11.SelectedItem = reportData["steel11"];
+        //  //if (reportData.ContainsKey("steel11"))
+        //  //    steel11.SelectedItem = reportData["steel11"];
 
-        //if (reportData.ContainsKey("steel11Total"))
-        //    steel11Total.Text = reportData["steel11Total"];
+        //  //if (reportData.ContainsKey("steel11Total"))
+        //  //    steel11Total.Text = reportData["steel11Total"];
 
-        //if (reportData.ContainsKey("steel12"))
-        //    steel12.SelectedItem = reportData["steel12"];
+        //  //if (reportData.ContainsKey("steel12"))
+        //  //    steel12.SelectedItem = reportData["steel12"];
 
-        //if (reportData.ContainsKey("steel12Total"))
-        //    steel12Total.Text = reportData["steel12Total"];
+        //  //if (reportData.ContainsKey("steel12Total"))
+        //  //    steel12Total.Text = reportData["steel12Total"];
 
-        //if (reportData.ContainsKey("steel13"))
-        //    steel13.SelectedItem = reportData["steel13"];
+        //  //if (reportData.ContainsKey("steel13"))
+        //  //    steel13.SelectedItem = reportData["steel13"];
 
-        //if (reportData.ContainsKey("steel13Total"))
-        //    steel13Total.Text = reportData["steel13Total"];
+        //  //if (reportData.ContainsKey("steel13Total"))
+        //  //    steel13Total.Text = reportData["steel13Total"];
 
-        //// Populate copper items
-        //if (reportData.ContainsKey("copper1"))
-        //    copper1.SelectedItem = reportData["copper1"];
+        //  //// Populate copper items
+        //  //if (reportData.ContainsKey("copper1"))
+        //  //    copper1.SelectedItem = reportData["copper1"];
 
-        //if (reportData.ContainsKey("copper1Total"))
-        //    copper1Total.Text = reportData["copper1Total"];
+        //  //if (reportData.ContainsKey("copper1Total"))
+        //  //    copper1Total.Text = reportData["copper1Total"];
 
-        //if (reportData.ContainsKey("copper2"))
-        //    copper2.SelectedItem = reportData["copper2"];
+        //  //if (reportData.ContainsKey("copper2"))
+        //  //    copper2.SelectedItem = reportData["copper2"];
 
-        //if (reportData.ContainsKey("copper2Total"))
-        //    copper2Total.Text = reportData["copper2Total"];
+        //  //if (reportData.ContainsKey("copper2Total"))
+        //  //    copper2Total.Text = reportData["copper2Total"];
 
-        //if (reportData.ContainsKey("copper3"))
-        //    copper3.SelectedItem = reportData["copper3"];
+        //  //if (reportData.ContainsKey("copper3"))
+        //  //    copper3.SelectedItem = reportData["copper3"];
 
-        //if (reportData.ContainsKey("copper3Total"))
-        //    copper3Total.Text = reportData["copper3Total"];
+        //  //if (reportData.ContainsKey("copper3Total"))
+        //  //    copper3Total.Text = reportData["copper3Total"];
 
-        //if (reportData.ContainsKey("copper4"))
-        //    copper4.SelectedItem = reportData["copper4"];
+        //  //if (reportData.ContainsKey("copper4"))
+        //  //    copper4.SelectedItem = reportData["copper4"];
 
-        //if (reportData.ContainsKey("copper4Total"))
-        //    copper4Total.Text = reportData["copper4Total"];
+        //  //if (reportData.ContainsKey("copper4Total"))
+        //  //    copper4Total.Text = reportData["copper4Total"];
 
-        //if (reportData.ContainsKey("copper5"))
-        //    copper5.SelectedItem = reportData["copper5"];
+        //  //if (reportData.ContainsKey("copper5"))
+        //  //    copper5.SelectedItem = reportData["copper5"];
 
-        //if (reportData.ContainsKey("copper5Total"))
-        //    copper5Total.Text = reportData["copper5Total"];
+        //  //if (reportData.ContainsKey("copper5Total"))
+        //  //    copper5Total.Text = reportData["copper5Total"];
 
-        //if (reportData.ContainsKey("copper6"))
-        //    copper6.SelectedItem = reportData["copper6"];
+        //  //if (reportData.ContainsKey("copper6"))
+        //  //    copper6.SelectedItem = reportData["copper6"];
 
-        //if (reportData.ContainsKey("copper6Total"))
-        //    copper6Total.Text = reportData["copper6Total"];
+        //  //if (reportData.ContainsKey("copper6Total"))
+        //  //    copper6Total.Text = reportData["copper6Total"];
 
-        //if (reportData.ContainsKey("copper7"))
-        //    copper7.SelectedItem = reportData["copper7"];
+        //  //if (reportData.ContainsKey("copper7"))
+        //  //    copper7.SelectedItem = reportData["copper7"];
 
-        //if (reportData.ContainsKey("copper7Total"))
-        //    copper7Total.Text = reportData["copper7Total"];
+        //  //if (reportData.ContainsKey("copper7Total"))
+        //  //    copper7Total.Text = reportData["copper7Total"];
 
-        //// Populate PESDR items
-        //if (reportData.ContainsKey("pesdr1"))
-        //    pesdr1.SelectedItem = reportData["pesdr1"];
+        //  //// Populate PESDR items
+        //  //if (reportData.ContainsKey("pesdr1"))
+        //  //    pesdr1.SelectedItem = reportData["pesdr1"];
 
-        //if (reportData.ContainsKey("pesdr1Total"))
-        //    pesdr1Total.Text = reportData["pesdr1Total"];
+        //  //if (reportData.ContainsKey("pesdr1Total"))
+        //  //    pesdr1Total.Text = reportData["pesdr1Total"];
 
-        //if (reportData.ContainsKey("pesdr2"))
-        //    pesdr2.SelectedItem = reportData["pesdr2"];
+        //  //if (reportData.ContainsKey("pesdr2"))
+        //  //    pesdr2.SelectedItem = reportData["pesdr2"];
 
-        //if (reportData.ContainsKey("pesdr2Total"))
-        //    pesdr2Total.Text = reportData["pesdr2Total"];
+        //  //if (reportData.ContainsKey("pesdr2Total"))
+        //  //    pesdr2Total.Text = reportData["pesdr2Total"];
 
-        //if (reportData.ContainsKey("pesdr3"))
-        //    pesdr3.SelectedItem = reportData["pesdr3"];
+        //  //if (reportData.ContainsKey("pesdr3"))
+        //  //    pesdr3.SelectedItem = reportData["pesdr3"];
 
-        //if (reportData.ContainsKey("pesdr3Total"))
-        //    pesdr3Total.Text = reportData["pesdr3Total"];
+        //  //if (reportData.ContainsKey("pesdr3Total"))
+        //  //    pesdr3Total.Text = reportData["pesdr3Total"];
 
-        //if (reportData.ContainsKey("pesdr4"))
-        //    pesdr4.SelectedItem = reportData["pesdr4"];
+        //  //if (reportData.ContainsKey("pesdr4"))
+        //  //    pesdr4.SelectedItem = reportData["pesdr4"];
 
-        //if (reportData.ContainsKey("pesdr4Total"))
-        //    pesdr4Total.Text = reportData["pesdr4Total"];
+        //  //if (reportData.ContainsKey("pesdr4Total"))
+        //  //    pesdr4Total.Text = reportData["pesdr4Total"];
 
-        //if (reportData.ContainsKey("pesdr5"))
-        //    pesdr5.SelectedItem = reportData["pesdr5"];
+        //  //if (reportData.ContainsKey("pesdr5"))
+        //  //    pesdr5.SelectedItem = reportData["pesdr5"];
 
-        //if (reportData.ContainsKey("pesdr5Total"))
-        //    pesdr5Total.Text = reportData["pesdr5Total"];
+        //  //if (reportData.ContainsKey("pesdr5Total"))
+        //  //    pesdr5Total.Text = reportData["pesdr5Total"];
 
-        //if (reportData.ContainsKey("pesdr6"))
-        //    pesdr6.SelectedItem = reportData["pesdr6"];
+        //  //if (reportData.ContainsKey("pesdr6"))
+        //  //    pesdr6.SelectedItem = reportData["pesdr6"];
 
-        //if (reportData.ContainsKey("pesdr6Total"))
-        //    pesdr6Total.Text = reportData["pesdr6Total"];
+        //  //if (reportData.ContainsKey("pesdr6Total"))
+        //  //    pesdr6Total.Text = reportData["pesdr6Total"];
 
-        //if (reportData.ContainsKey("pesdr7"))
-        //    pesdr7.SelectedItem = reportData["pesdr7"];
+        //  //if (reportData.ContainsKey("pesdr7"))
+        //  //    pesdr7.SelectedItem = reportData["pesdr7"];
 
-        //if (reportData.ContainsKey("pesdr7Total"))
-        //    pesdr7Total.Text = reportData["pesdr7Total"];
+        //  //if (reportData.ContainsKey("pesdr7Total"))
+        //  //    pesdr7Total.Text = reportData["pesdr7Total"];
 
-        //if (reportData.ContainsKey("pesdr8"))
-        //    pesdr8.SelectedItem = reportData["pesdr8"];
+        //  //if (reportData.ContainsKey("pesdr8"))
+        //  //    pesdr8.SelectedItem = reportData["pesdr8"];
 
-        //if (reportData.ContainsKey("pesdr8Total"))
-        //    pesdr8Total.Text = reportData["pesdr8Total"];
+        //  //if (reportData.ContainsKey("pesdr8Total"))
+        //  //    pesdr8Total.Text = reportData["pesdr8Total"];
 
-        // Populate other fields
+
+
+        //  // Populate other fields
         if (reportData.ContainsKey("meterVolumePicker"))
             meterVolumePicker.SelectedItem = reportData["meterVolumePicker"];
 
@@ -896,6 +901,9 @@ public partial class OnePage : ContentPage
 
         if (reportData.ContainsKey("installationPicker"))
             installationPicker.SelectedItem = reportData["installationPicker"];
+
+
+
 
         if (reportData.ContainsKey("totalPipeworkVolume"))
             totalPipeworkVolume.Text = reportData["totalPipeworkVolume"];
@@ -923,7 +931,7 @@ public partial class OnePage : ContentPage
             checkMeterBypassNo.IsChecked = !isMeterBypassYes;
         }
 
-        //
+
         if (reportData.ContainsKey("checkBarometricPressureCorrectionYes"))
         {
             bool isWeatherStableYes1 = reportData["checkBarometricPressureCorrectionYes"] == "True";
@@ -937,7 +945,7 @@ public partial class OnePage : ContentPage
             checkComponentsRemovedBypassedYes.IsChecked = isMeterBypassYes1;
             checkComponentsRemovedBypassedNo.IsChecked = !isMeterBypassYes1;
         }
-        // Populate text fields
+        //// Populate text fields
         if (reportData.ContainsKey("testMediumFactor"))
             testMediumFactor.Text = reportData["testMediumFactor"];
 
@@ -1004,19 +1012,29 @@ public partial class OnePage : ContentPage
         if (reportData.ContainsKey("AreaCD_Value"))
             AreaCD_Value.Text = reportData["AreaCD_Value"];
 
-        // Populate combo boxes
+        //// Populate combo boxes
         if (reportData.ContainsKey("maximumPermittedLeakRate"))
             maximumPermittedLeakRate.SelectedItem = reportData["maximumPermittedLeakRate"];
 
         if (reportData.ContainsKey("testPassedOrFailed"))
             testPassedOrFailed.SelectedItem = reportData["testPassedOrFailed"];
 
-        // Populate checkboxes
-        if (reportData.ContainsKey("checkAreaA"))
-            checkAreaA.IsChecked = bool.Parse(reportData["checkAreaA"]);
+        //// Populate checkboxes
+        //if (reportData.ContainsKey("checkAreaA"))
+        //    checkAreaA.IsChecked = bool.Parse(reportData["checkAreaA"]);
 
-        if (reportData.ContainsKey("checkAreaB"))
-            checkAreaB.IsChecked = bool.Parse(reportData["checkAreaB"]);
+        //if (reportData.ContainsKey("checkAreaB"))
+        //    checkAreaB.IsChecked = bool.Parse(reportData["checkAreaB"]);
+        if (reportData["checkAreaA"] == "True")
+        {
+            checkAreaA.IsChecked = true;
+        }
+        else if (reportData["checkAreaB"] == "True")
+        {
+            checkAreaB.IsChecked = true;
+        }
+        else checkAreaCD.IsChecked = true;
+
         if (reportData.ContainsKey("checkTestPassedOrFailedPass"))
         {
             checkTestPassedOrFailedPass.IsChecked = reportData["checkTestPassedOrFailedPass"] == "Passed";
@@ -1324,6 +1342,7 @@ public partial class OnePage : ContentPage
 
         if (oskip22 == 1)
         {
+            oskip22 = 0;
             reportData["testMediumPicker"] = "N/A";
             reportData["installationPicker"] = "N/A";
             reportData["testMediumFactor"] = "N/A";
@@ -1338,6 +1357,7 @@ public partial class OnePage : ContentPage
         }
         if (oskip33 == 1)
         {
+            oskip33 = 0;
             reportData["strengthTestPressure"] = "N/A";
             reportData["checkComponentsRemovedBypassedYes"] = "N/A";
             reportData["stabilisationPeriod"] = "N/A";
