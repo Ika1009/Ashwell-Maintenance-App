@@ -504,7 +504,7 @@ public partial class OnePage : ContentPage
     }
     public void PreviewOnePage(Dictionary<string, string> reportData)
     {
-          InitializeComponent();
+          //InitializeComponent();
 
         List<Int64> numbers = new List<Int64>();
         for (Int64 i = 1; i <= 1000; i++)
