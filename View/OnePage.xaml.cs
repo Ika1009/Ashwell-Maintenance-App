@@ -507,17 +507,17 @@ public partial class OnePage : ContentPage
     {
         //InitializeComponent();
 
-        //if (reportData.ContainsKey("checkAreasWithInadequateVentilationYes"))
-        //{
-        //    string value = reportData["checkAreasWithInadequateVentilationYes"];
-        //    if(value == "yes")
-        //    checkAreasWithInadequateVentilationYes.IsChecked = true;
-        //    if(value == "N/A")
-        //    checkAreasWithInadequateVentilationNA.IsChecked = true;
-        //    if(value == "no")
-        //    checkAreasWithInadequateVentilationNo.IsChecked = true;
-        //}
-        checkAreasWithInadequateVentilationNA.IsChecked = true;
+        if (reportData.ContainsKey("checkAreasWithInadequateVentilationYes"))
+        {
+            string value = reportData["checkAreasWithInadequateVentilationYes"];
+            if (value == "yes")
+                checkAreasWithInadequateVentilationYes.IsChecked = true;
+            if (value == "N/A")
+                checkAreasWithInadequateVentilationNA.IsChecked = true;
+            if (value == "no")
+                checkAreasWithInadequateVentilationNo.IsChecked = true;
+        }
+        //checkAreasWithInadequateVentilationNA.IsChecked = true;
         //checkAreaA.IsChecked = true;
 
         if (reportData["checkAreaA"] == "True")
