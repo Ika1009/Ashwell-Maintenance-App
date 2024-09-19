@@ -877,7 +877,10 @@ public partial class OneAPage : ContentPage
             checkInadequateVentilationNo.IsChecked = !inadequateVentilationYes;
         }
 
-        // Continue with remaining fields
+        //// Continue with remaining fields
+        ///
+
+
         if (reportData.ContainsKey("strengthTestPressure"))
         {
             strengthTestPressure.Text = reportData["strengthTestPressure"];
@@ -914,18 +917,18 @@ public partial class OneAPage : ContentPage
             checkTestPassedOrFailedFail.IsChecked = !testPassed;
         }
 
-        if (reportData.ContainsKey("letByDuration"))
-        {
-            letByDuration.Text = reportData["letByDuration"];
-        }
-        if (reportData.ContainsKey("stabilisationDuration"))
-        {
-            stabilisationDuration.Text = reportData["stabilisationDuration"];
-        }
-        if (reportData.ContainsKey("testDuration"))
-        {
-            testDuration.Text = reportData["testDuration"];
-        }
+            //if (reportData.ContainsKey("letByDuration") && reportData["letByDuration"] != string.Empty)
+            //{
+            //    letByDuration.Text = reportData["letByDuration"];
+            //}
+            //if (reportData.ContainsKey("stabilisationDuration") && reportData["stabilisationDuration"] != string.Empty)
+            //{
+            //    stabilisationDuration.Text = reportData["stabilisationDuration"];
+            //}
+            //if (reportData.ContainsKey("testDuration") && reportData["testDuration"] != string.Empty)
+            //{
+            //    testDuration.Text = reportData["testDuration"];
+            //}
         if (reportData.ContainsKey("actualPressureDropResult"))
         {
             actualPressureDropResult.Text = reportData["actualPressureDropResult"];
@@ -936,7 +939,7 @@ public partial class OneAPage : ContentPage
             testPassedOrFailed.SelectedItem = reportData["testPassedOrFailed"];
         }
 
-        // Set date, engineer, card number, etc.
+        //// Set date, engineer, card number, etc.
         if (reportData.ContainsKey("date"))
         {
             date.Date = DateTime.ParseExact(reportData["date"], "d/M/yyyy", null);

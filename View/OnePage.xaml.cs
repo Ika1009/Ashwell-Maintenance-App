@@ -354,6 +354,7 @@ public partial class OnePage : ContentPage
         }
         else if (OSection4.IsVisible)
         {
+            //MAJAMI : checkAreaA.IsChecked = false;
             checkAreaA.IsChecked = false;
             checkAreaB.IsChecked = false;
             checkAreaCD.IsChecked = false;
@@ -504,8 +505,30 @@ public partial class OnePage : ContentPage
     }
     public void PreviewOnePage(Dictionary<string, string> reportData)
     {
-          //InitializeComponent();
+        //InitializeComponent();
 
+        //if (reportData.ContainsKey("checkAreasWithInadequateVentilationYes"))
+        //{
+        //    string value = reportData["checkAreasWithInadequateVentilationYes"];
+        //    if(value == "yes")
+        //    checkAreasWithInadequateVentilationYes.IsChecked = true;
+        //    if(value == "N/A")
+        //    checkAreasWithInadequateVentilationNA.IsChecked = true;
+        //    if(value == "no")
+        //    checkAreasWithInadequateVentilationNo.IsChecked = true;
+        //}
+        checkAreasWithInadequateVentilationNA.IsChecked = true;
+        //checkAreaA.IsChecked = true;
+
+        if (reportData["checkAreaA"] == "True")
+        {
+            checkAreaA.IsChecked = true;
+        }
+        else if (reportData["checkAreaB"] == "True")
+        {
+            checkAreaB.IsChecked = true;
+        }
+        else checkAreaCD.IsChecked = true;
         List<Int64> numbers = new List<Int64>();
         for (Int64 i = 1; i <= 1000; i++)
             numbers.Add(i);
@@ -896,10 +919,10 @@ public partial class OnePage : ContentPage
         if (reportData.ContainsKey("meterVolumePicker"))
             meterVolumePicker.SelectedItem = reportData["meterVolumePicker"];
 
-        if (reportData.ContainsKey("testMediumPicker"))
+        if (reportData.ContainsKey("testMediumPicker") && reportData["testMediumPicker"] != "N/A")
             testMediumPicker.SelectedItem = reportData["testMediumPicker"];
 
-        if (reportData.ContainsKey("installationPicker"))
+        if (reportData.ContainsKey("installationPicker") && reportData["installationPicker"] != "N/A")
             installationPicker.SelectedItem = reportData["installationPicker"];
 
 
@@ -973,14 +996,14 @@ public partial class OnePage : ContentPage
         if (reportData.ContainsKey("actualPressureDrop"))
             actualPressureDrop.Text = reportData["actualPressureDrop"];
 
-        if (reportData.ContainsKey("letByDuration"))
-            letByDuration.Text = reportData["letByDuration"];
+        //if (reportData.ContainsKey("letByDuration"))
+        //    letByDuration.Text = reportData["letByDuration"];
 
-        if (reportData.ContainsKey("stabilisationDuration"))
-            stabilisationDuration.Text = reportData["stabilisationDuration"];
+        //if (reportData.ContainsKey("stabilisationDuration"))
+        //    stabilisationDuration.Text = reportData["stabilisationDuration"];
 
-        if (reportData.ContainsKey("testDuration"))
-            testDuration.Text = reportData["testDuration"];
+        //if (reportData.ContainsKey("testDuration"))
+        //    testDuration.Text = reportData["testDuration"];
 
         if (reportData.ContainsKey("actualPressureDropResult"))
             actualPressureDropResult.Text = reportData["actualPressureDropResult"];
@@ -1006,14 +1029,14 @@ public partial class OnePage : ContentPage
         if (reportData.ContainsKey("AreaB_Value"))
             AreaB_Value.Text = reportData["AreaB_Value"];
 
-        if (reportData.ContainsKey("roomVolume"))
+        if (reportData.ContainsKey("roomVolume") && checkAreaB.IsChecked)
             roomVolume.Text = reportData["roomVolume"];
 
         if (reportData.ContainsKey("AreaCD_Value"))
             AreaCD_Value.Text = reportData["AreaCD_Value"];
 
         //// Populate combo boxes
-        if (reportData.ContainsKey("maximumPermittedLeakRate"))
+        if (reportData.ContainsKey("maximumPermittedLeakRate") && reportData["maximumPermittedLeakRate"] != "N/A")
             maximumPermittedLeakRate.SelectedItem = reportData["maximumPermittedLeakRate"];
 
         if (reportData.ContainsKey("testPassedOrFailed"))
@@ -1025,27 +1048,27 @@ public partial class OnePage : ContentPage
 
         //if (reportData.ContainsKey("checkAreaB"))
         //    checkAreaB.IsChecked = bool.Parse(reportData["checkAreaB"]);
-        if (reportData["checkAreaA"] == "True")
-        {
-            checkAreaA.IsChecked = true;
-        }
-        else if (reportData["checkAreaB"] == "True")
-        {
-            checkAreaB.IsChecked = true;
-        }
-        else checkAreaCD.IsChecked = true;
+        //if (reportData["checkAreaA"] == "True")
+        //{
+        //    checkAreaA.IsChecked = true;
+        //}
+        //else if (reportData["checkAreaB"] == "True")
+        //{
+        //    checkAreaB.IsChecked = true;
+        //}
+        //else checkAreaCD.IsChecked = true;
 
         if (reportData.ContainsKey("checkTestPassedOrFailedPass"))
         {
             checkTestPassedOrFailedPass.IsChecked = reportData["checkTestPassedOrFailedPass"] == "Passed";
         }
-        if (reportData.ContainsKey("checkAreasWithInadequateVentilationYes"))
-        {
-            string value = reportData["checkAreasWithInadequateVentilationYes"];
-            checkAreasWithInadequateVentilationYes.IsChecked = (value == "yes");
-            checkAreasWithInadequateVentilationNA.IsChecked = (value == "N/A");
-            checkAreasWithInadequateVentilationNo.IsChecked = (value == "no");
-        }
+        //if (reportData.ContainsKey("checkAreasWithInadequateVentilationYes"))
+        //{
+        //    string value = reportData["checkAreasWithInadequateVentilationYes"];
+        //    checkAreasWithInadequateVentilationYes.IsChecked = (value == "yes");
+        //    checkAreasWithInadequateVentilationNA.IsChecked = (value == "N/A");
+        //    checkAreasWithInadequateVentilationNo.IsChecked = (value == "no");
+        //}
         if (reportData.ContainsKey("actualLeakRateResult"))
             actualLeakRateResult.Text = reportData["actualLeakRateResult"];
 
