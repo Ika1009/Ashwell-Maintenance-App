@@ -344,6 +344,35 @@ public static class ApiService
             return null;
         }
     }
+    /// <summary>
+    /// Uploads an image to the server from a mobile app.
+    /// </summary>
+    /// <param name="imageData">The image data as a byte array.</param>
+    /// <param name="imageName">The name of the image file to be saved on the server.</param>
+    /// <param name="folderId">The ID of the folder where the image should be saved.</param>
+    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
+    public static async Task<HttpResponseMessage> UploadImageAsync(byte[] imageData, string imageName, string folderId)
+    {
+        using HttpClient client = new();
+
+        // Create the form data content
+        using MultipartFormDataContent formData = new MultipartFormDataContent();
+
+        // Add the folder ID to the form data
+        formData.Add(new StringContent(folderId), "folderId");
+
+        // Add the image content to the form data
+        var imageContent = new ByteArrayContent(imageData);
+        imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg"); // Adjust the MIME type if necessary
+
+        // Add the image file to the form data with the provided image name
+        formData.Add(imageContent, "image", imageName);
+
+        // Make the POST request to upload the image
+        HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/upload_image.php", formData);
+
+        return response;
+    }
 
     /// <summary>
     /// Uploads a new report to the server.
