@@ -457,12 +457,11 @@ public partial class OnePage : ContentPage
 
     public void OSkip3(object sender, EventArgs e)
     {
-        oskip33 = 1;
         ONext3();
-   
+        oskip33 = 1;
         // ...
     }
-    
+
     public async void ONext4(object sender, EventArgs e)
     {
         OSection4.IsVisible = false;
@@ -827,14 +826,14 @@ public partial class OnePage : ContentPage
         if (reportData.ContainsKey("actualPressureDrop"))
             actualPressureDrop.Text = reportData["actualPressureDrop"];
 
-        //if (reportData.ContainsKey("letByDuration"))
-        //    letByDuration.Text = reportData["letByDuration"];
+        if (reportData.ContainsKey("letByDuration"))
+            letByDuration.Text = reportData["letByDuration"];
 
-        //if (reportData.ContainsKey("stabilisationDuration"))
-        //    stabilisationDuration.Text = reportData["stabilisationDuration"];
+        if (reportData.ContainsKey("stabilisationDuration"))
+            stabilisationDuration.Text = reportData["stabilisationDuration"];
 
-        //if (reportData.ContainsKey("testDuration"))
-        //    testDuration.Text = reportData["testDuration"];
+        if (reportData.ContainsKey("testDuration"))
+            testDuration.Text = reportData["testDuration"];
 
         if (reportData.ContainsKey("actualPressureDropResult"))
             actualPressureDropResult.Text = reportData["actualPressureDropResult"];
@@ -1179,20 +1178,20 @@ public partial class OnePage : ContentPage
         reportData.Add("roomVolume", roomVolume.Text ?? string.Empty);
         reportData.Add("AreaCD_Value", AreaA_Value.Text ?? string.Empty);
 
-      // reportData.Add("letByDuration", letByDuration.Text ?? string.Empty);
-      //  reportData.Add("stabilisationDuration", stabilisationDuration.Text ?? string.Empty);
-      //  reportData.Add("testDuration", testDuration.Text ?? string.Empty);
-      //  reportData.Add("actualPressureDropResult", actualPressureDropResult.Text ?? string.Empty);
+        reportData.Add("letByDuration", letByDuration.Text ?? string.Empty);
+        reportData.Add("stabilisationDuration", stabilisationDuration.Text ?? string.Empty);
+        reportData.Add("testDuration", testDuration.Text ?? string.Empty);
+        reportData.Add("actualPressureDropResult", actualPressureDropResult.Text ?? string.Empty);
         reportData.Add("actualLeakRateResult", actualLeakRateResult.Text ?? string.Empty);
         if (checkAreasWithInadequateVentilationYes.IsChecked)
             reportData.Add("checkAreasWithInadequateVentilationYes", "yes");
         else if(checkAreasWithInadequateVentilationNA.IsChecked) reportData.Add("checkAreasWithInadequateVentilationYes", "N/A");
         else reportData.Add("checkAreasWithInadequateVentilationYes", "no");
         //testPassedOrFailed
-        //if (testPassedOrFailed.SelectedIndex != -1)
-        //    reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
-        //else
-        //    reportData.Add("testPassedOrFailed", string.Empty);
+        if (testPassedOrFailed.SelectedIndex != -1)
+            reportData.Add("testPassedOrFailed", (testPassedOrFailed.SelectedItem).ToString());
+        else
+            reportData.Add("testPassedOrFailed", string.Empty);
 
         if (oskip22 == 1)
         {
