@@ -373,6 +373,42 @@ public static class ApiService
 
         return response;
     }
+    /// <summary>
+    /// Retrieves all image paths for a specified folderId from the server.
+    /// </summary>
+    /// <param name="folderId">The ID of the folder where the images are stored.</param>
+    /// <returns>A list of image paths from the server.</returns>
+    public static async Task<List<string>> GetImagePathsAsync(string folderId)
+    {
+        using HttpClient client = new();
+
+        // Build the request URL with the folderId query parameter
+        string requestUrl = $"{BaseApiUrl}/get_images_by_folder.php?folderId={folderId}";
+
+        // Send the GET request to retrieve image paths
+        HttpResponseMessage response = await client.GetAsync(requestUrl);
+
+        // Ensure the response is successful
+        response.EnsureSuccessStatusCode();
+
+        // Parse the response content as a string
+        string responseContent = await response.Content.ReadAsStringAsync();
+
+        // Deserialize the JSON response to extract image paths
+        var jsonResponse = JsonSerializer.Deserialize<Dictionary<string, object>>(responseContent);
+
+        // Check if the response contains 'imagePaths'
+        if (jsonResponse != null && jsonResponse.ContainsKey("imagePaths"))
+        {
+            var imagePathsJson = jsonResponse["imagePaths"].ToString();
+
+            // Deserialize the image paths into a list
+            return JsonSerializer.Deserialize<List<string>>(imagePathsJson);
+        }
+
+        return new List<string>();
+    }
+
 
     /// <summary>
     /// Uploads a new report to the server.
