@@ -220,4 +220,33 @@ public partial class DisplayedReportsPage : ContentPage
         loading.IsRunning = false;
     }
 
+    private async void OnUploadButtonClicked(object sender, EventArgs e)
+    {
+        try
+        {
+            // Open the file picker for images
+            var result = await FilePicker.Default.PickAsync(new PickOptions
+            {
+                FileTypes = FilePickerFileType.Images,
+                PickerTitle = "Select an Image"
+            });
+
+            if (result != null)
+            {
+                // Read the image data as byte array
+                using var stream = await result.OpenReadAsync();
+                using var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                byte[] imageData = memoryStream.ToArray();
+
+                // Now upload the image data
+                await ApiService.UploadImageAsync(imageData, result.FileName, folderId);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle any exceptions
+            await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
 }
