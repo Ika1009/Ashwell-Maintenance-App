@@ -649,7 +649,7 @@ public partial class ServiceRecordPage : ContentPage
         flueFlowTestComment.Text = reportData["flueFlowTestComments"];
 
         checkSpillageTest.IsChecked = bool.Parse(reportData["spillageTest"]);
-        checkBoth.IsChecked = bool.Parse(reportData["spillageTestNA"]);
+        checkSpillageTestNA.IsChecked = bool.Parse(reportData["spillageTestNA"]);
         spillageTestComment.Text = reportData["spillageTestComments"];
 
         checkAECVPlantIsolationCorrect.IsChecked = bool.Parse(reportData["AECVPlantIsolationCorrect"]);
@@ -805,7 +805,7 @@ public partial class ServiceRecordPage : ContentPage
             { "flueFlowTestNA", checkFlueFlowTestNA.IsChecked.ToString() },
             { "flueFlowTestComments", flueFlowTestComment.Text ?? string.Empty },
             { "spillageTest", checkSpillageTest.IsChecked.ToString() },
-            { "spillageTestNA", checkBoth.IsChecked.ToString() },
+            { "spillageTestNA", checkSpillageTestNA.IsChecked.ToString() },
             { "spillageTestComments", spillageTestComment.Text ?? string.Empty },
             { "AECVPlantIsolationCorrect", checkAECVPlantIsolationCorrect.IsChecked.ToString() },
             { "AECVPlantIsolationCorrectNA", checkAECVPlantIsolationCorrectNA.IsChecked.ToString() },

@@ -411,7 +411,7 @@ public partial class OnePage : ContentPage
             await OSection3.ScrollToAsync(0, 0, false);
         OSection3.IsVisible = true;
     }
-    public int oskip22 = 0; public int oskip33 = 0;
+    public int oskip222 = 0; public int oskip333 = 0;
     public async void OSkip2(object sender, EventArgs e)
     {
         OSection2.IsVisible = false;
@@ -419,7 +419,7 @@ public partial class OnePage : ContentPage
         if (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS)
             await OSection3.ScrollToAsync(0, 0, false);
         OSection3.IsVisible = true;
-        oskip22 = 1;
+        oskip222 = 1;
         // ...
     }
 
@@ -458,7 +458,7 @@ public partial class OnePage : ContentPage
     public void OSkip3(object sender, EventArgs e)
     {
         ONext3();
-        oskip33 = 1;
+        oskip333 = 1;
         // ...
     }
 
@@ -749,10 +749,10 @@ public partial class OnePage : ContentPage
         if (reportData.ContainsKey("meterVolumePicker"))
             meterVolumePicker.SelectedItem = reportData["meterVolumePicker"];
 
-        if (reportData.ContainsKey("testMediumPicker") && reportData["testMediumPicker"] != "N/A")
+        if (reportData.ContainsKey("testMediumPicker") /*&& reportData["testMediumPicker"] != "N/A"*/)
             testMediumPicker.SelectedItem = reportData["testMediumPicker"];
 
-        if (reportData.ContainsKey("installationPicker") && reportData["installationPicker"] != "N/A")
+        if (reportData.ContainsKey("installationPicker")/* && reportData["installationPicker"] != "N/A"*/)
             installationPicker.SelectedItem = reportData["installationPicker"];
 
 
@@ -866,7 +866,7 @@ public partial class OnePage : ContentPage
         //    AreaCD_Value.Text = reportData["AreaCD_Value"];
 
         //// Populate combo boxes
-        if (reportData.ContainsKey("maximumPermittedLeakRate") && reportData["maximumPermittedLeakRate"] != "N/A")
+        if (reportData.ContainsKey("maximumPermittedLeakRate")/* && reportData["maximumPermittedLeakRate"] != "N/A"*/)
             maximumPermittedLeakRate.SelectedItem = reportData["maximumPermittedLeakRate"];
 
         if (reportData.ContainsKey("testPassedOrFailed"))
@@ -1193,9 +1193,9 @@ public partial class OnePage : ContentPage
         else
             reportData.Add("testPassedOrFailed", string.Empty);
 
-        if (oskip22 == 1)
+        if (oskip222 == 1)
         {
-            oskip22 = 0;
+            oskip222 = 0;
             reportData["testMediumPicker"] = "N/A";
             reportData["installationPicker"] = "N/A";
             reportData["testMediumFactor"] = "N/A";
@@ -1208,9 +1208,9 @@ public partial class OnePage : ContentPage
             reportData["checkBarometricPressureCorrectionYes"] = "N/A";
          
         }
-        if (oskip33 == 1)
+        if (oskip333 == 1)
         {
-            oskip33 = 0;
+            oskip333 = 0;
             reportData["strengthTestPressure"] = "N/A";
             reportData["checkComponentsRemovedBypassedYes"] = "N/A";
             reportData["stabilisationPeriod"] = "N/A";
