@@ -7,6 +7,8 @@ namespace Ashwell_Maintenance.View;
 public partial class DisplayedReportsPage : ContentPage
 {
     public ObservableCollection<Report> Reports { get; } = new();
+    public ObservableCollection<Image> Images { get; } = new();
+
     private readonly string folderId;
     private readonly string folderName;
     private readonly bool folderComplete;
@@ -218,6 +220,51 @@ public partial class DisplayedReportsPage : ContentPage
         }
         loadingBG.IsRunning = false;
         loading.IsRunning = false;
+    }
+    private async Task LoadImages(string folderId)
+    {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        try
+        {
+            // Call the backend method to get image paths
+            List<string> imagePaths = await ApiService.GetImagePathsAsync(folderId);
+
+            if (imagePaths == null || imagePaths.Count == 0)
+            {
+                return;
+            }
+
+            // Clear the current image list and load new images
+            Images.Clear();
+            foreach (var imagePath in imagePaths)
+            {
+                Images.Add(new Image
+                {
+                    ImagePath = imagePath,
+                    ImageName = Path.GetFileName(imagePath)
+                });
+            }
+
+            //ImagesListView.ItemsSource ??= Images;
+        }
+        catch (HttpRequestException httpEx)
+        {
+            await DisplayAlert("Error", $"Failed to load images. Details: {httpEx.Message}", "OK");
+        }
+        catch (JsonException jsonEx)
+        {
+            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+        }
+        finally
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+        }
     }
 
     private async void OnUploadButtonClicked(object sender, EventArgs e)

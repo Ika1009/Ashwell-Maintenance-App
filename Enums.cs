@@ -48,4 +48,10 @@ namespace Ashwell_Maintenance
 
         public string FolderId { get; set; }
     }
+    public class Image
+    {
+        public string ImagePath { get; set; }
+        public string ImageName { get; set; }
+    }
+
 }
