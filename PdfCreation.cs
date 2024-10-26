@@ -2147,7 +2147,7 @@ namespace Ashwell_Maintenance
             int duzina = 0;
             for (int i = 0; i < TempDesc.Length; i++)
             {
-                if (duzina + TempDesc[i].Length < 135)
+                if (duzina + TempDesc[i].Length < 130)
                 {
                     l[d] += TempDesc[i] + " ";
                     duzina += TempDesc[i].Length + 1;
