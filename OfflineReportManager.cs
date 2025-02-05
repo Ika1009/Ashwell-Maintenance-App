@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Maui.Storage;
 
-public static class ReportManager
+public static class OfflineReportManager
 {
     private static readonly HttpClient HttpClient = new();
 
