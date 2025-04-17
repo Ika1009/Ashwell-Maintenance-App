@@ -47,7 +47,13 @@ namespace Ashwell_Maintenance
         public string CreatedAt { get; set; }
 
         public string FolderId { get; set; }
+
+        public Report()
+        {
+            CreatedAt = DateTime.UtcNow.ToString("o");
+        }
     }
+
     public class Image
     {
         public string ImagePath { get; set; }
