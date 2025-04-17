@@ -64,8 +64,8 @@ public static class ReportManager
             }
         }
 
-        // Save locally if either main upload OR PDF upload failed
-        if (!uploadSuccess || (uploadSuccess && !pdfUploadSuccess))
+        // Save locally if either main upload failed
+        if (!uploadSuccess)
         {
             await SaveReportLocallyAsync(reportType, reportName, folder, reportData);
         }

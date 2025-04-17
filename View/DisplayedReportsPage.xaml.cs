@@ -7,7 +7,7 @@ namespace Ashwell_Maintenance.View;
 public partial class DisplayedReportsPage : ContentPage
 {
     public ObservableCollection<Report> Reports { get; } = new();
-    public ObservableCollection<Image> Images { get; } = new();
+    public ObservableCollection<ReportImage> Images { get; } = new();
 
     private readonly string folderId;
     private readonly string folderName;
@@ -239,7 +239,7 @@ public partial class DisplayedReportsPage : ContentPage
             Images.Clear();
             foreach (var imagePath in imagePaths)
             {
-                Images.Add(new Image
+                Images.Add(new ReportImage
                 {
                     ImagePath = imagePath,
                     ImageName = Path.GetFileName(imagePath)

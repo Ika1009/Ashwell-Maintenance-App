@@ -21,7 +21,7 @@
 
                 <ImageButton Source="back" Padding="10" Margin="-10" HeightRequest="60" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Start" Clicked="ReportsBack"/>
 
-                <ImageButton Source="add_photo" Padding="10" Margin="-10, -17, -10, -10" HeightRequest="70" WidthRequest="70" HorizontalOptions="End" VerticalOptions="Start" Clicked=""/>
+                <ImageButton Source="add_photo" Padding="10" Margin="-10, -17, -10, -10" HeightRequest="70" WidthRequest="70" HorizontalOptions="End" VerticalOptions="Start"/>
 
                 <Image Source="sign.png" WidthRequest="60" HorizontalOptions="Center"/>
 

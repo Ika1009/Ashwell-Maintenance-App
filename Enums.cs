@@ -54,7 +54,7 @@ namespace Ashwell_Maintenance
         }
     }
 
-    public class Image
+    public class ReportImage
     {
         public string ImagePath { get; set; }
         public string ImageName { get; set; }

@@ -26,7 +26,6 @@ public partial class ConstructionDesignManagmentPage : ContentPage
 
         _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
     }
-
     private async Task UploadReport(Folder folder, Dictionary<string, string> report)
     {
         loadingBG.IsRunning = true;
