@@ -48,58 +48,13 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
         BoilderHouseDataSheetBackBtt.IsEnabled = false;
-        try
-        {
-            HttpResponseMessage response = await ApiService.UploadReportAsync(Enums.ReportType.BoilerHouseDataSheet, reportName, folder.Id, report);
 
-            if (response.IsSuccessStatusCode)
-            {
-                await DisplayAlert("Success", "Successfully uploaded new sheet.", "OK");
-            }
-            else
-            {
-                await DisplayAlert("Error", "Failed to upload report.", "OK");
-            }
-        }
-        catch (HttpRequestException httpEx)
-        {
-            await DisplayAlert("Error", $"HTTP request error. Details: {httpEx.Message}", "OK");
-        }
-        catch (JsonException jsonEx)
-        {
-            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
-        }
+        // Use the centralized ReportManager to upload (and fallback locally if needed)
+        await ReportManager.UploadReportAsync(Enums.ReportType.BoilerHouseDataSheet, 
+            reportName, 
+            folder, 
+            report);
 
-        if (!string.IsNullOrEmpty(folder.Signature1) && !string.IsNullOrEmpty(folder.Signature2))
-        {
-            try
-            {
-                byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
-                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature2}");
-                if (signature1 == null || signature2 == null)
-                    throw new Exception("Couldn't retrieve signatures");
-
-                byte[] pdfData = await PdfCreation.BoilerHouseDataSheet(reportData, signature1, signature2);
-
-                if (pdfData != null)
-                {
-                    HttpResponseMessage signatureResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
-
-                    if (!signatureResponse.IsSuccessStatusCode)
-                    {
-                        await DisplayAlert("Error", $"Failed to upload {reportName} to DropBox with already given signatures.", "OK");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", $"Error processing signatures when uploading file to DropBox: {ex.Message}", "OK");
-            }
-        }
         loadingBG.IsRunning = false;
         loading.IsRunning = false;
         await Navigation.PopModalAsync();
