@@ -2,81 +2,133 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Maui.Networking;
 
 public static class ReportManager
 {
+    /// <summary>
+    /// Attempts to upload the report and its PDF. Throws on any failure.
+    /// </summary>
     public static async Task UploadReportAsync(
         Enums.ReportType reportType,
         string reportName,
         Folder folder,
         Dictionary<string, string> reportData)
     {
-        bool uploadSuccess = false;
-        bool pdfUploadSuccess = false;
+        // 1) Upload raw report data
+        HttpResponseMessage response = await ApiService.UploadReportAsync(reportType, reportName, folder.Id, reportData);
+        if (!response.IsSuccessStatusCode)
+            throw new HttpRequestException("Failed to upload report to server.");
 
-        try
+        // 2) If both signatures exist, generate and upload PDF
+        if (!string.IsNullOrEmpty(folder.Signature1) && !string.IsNullOrEmpty(folder.Signature2))
         {
-            HttpResponseMessage response = await ApiService.UploadReportAsync(reportType, reportName, folder.Id, reportData);
-            uploadSuccess = response.IsSuccessStatusCode;
+            // Fetch signatures
+            byte[] sig1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
+            byte[] sig2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature2}");
+            if (sig1 == null || sig2 == null)
+                throw new Exception("Couldn't retrieve signatures.");
 
-            if (!uploadSuccess)
-                throw new HttpRequestException("Failed to upload report to server.");
-        }
-        catch (HttpRequestException)
-        {
-            await ShowError("No internet or server error. Saving report locally.");
-        }
-        catch (Exception ex)
-        {
-            await ShowError($"Unexpected error uploading report: {ex.Message}");
-        }
+            // Generate PDF
+            byte[] pdfData = await PdfCreation.BoilerHouseDataSheet(reportData, sig1, sig2);
+            if (pdfData == null)
+                throw new Exception("PDF generation returned null.");
 
-        // PDF Upload logic if server upload succeeded and signatures exist
-        if (uploadSuccess &&
-            !string.IsNullOrEmpty(folder.Signature1) &&
-            !string.IsNullOrEmpty(folder.Signature2))
-        {
-            try
-            {
-                byte[] signature1 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature1}");
-                byte[] signature2 = await ApiService.GetImageAsByteArrayAsync($"https://ashwellmaintenance.host/{folder.Signature2}");
-
-                if (signature1 == null || signature2 == null)
-                    throw new Exception("Couldn't retrieve signatures.");
-
-                byte[] pdfData = await PdfCreation.BoilerHouseDataSheet(reportData, signature1, signature2);
-
-                if (pdfData != null)
-                {
-                    HttpResponseMessage pdfResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
-                    pdfUploadSuccess = pdfResponse.IsSuccessStatusCode;
-
-                    if (!pdfUploadSuccess)
-                        throw new HttpRequestException("Failed to upload PDF to Dropbox.");
-                }
-            }
-            catch (Exception ex)
-            {
-                await ShowError($"PDF upload failed: {ex.Message}");
-            }
-        }
-
-        // Save locally if either main upload failed
-        if (!uploadSuccess)
-        {
-            await SaveReportLocallyAsync(reportType, reportName, folder, reportData);
-        }
-
-        if (uploadSuccess)
-        {
-            await Application.Current.MainPage.DisplayAlert("Success", "Report successfully uploaded.", "OK");
+            // Upload PDF
+            HttpResponseMessage pdfResponse = await ApiService.UploadPdfToDropboxAsync(pdfData, folder.Name, reportName);
+            if (!pdfResponse.IsSuccessStatusCode)
+                throw new HttpRequestException("Failed to upload PDF to Dropbox.");
         }
     }
 
-    private static async Task SaveReportLocallyAsync(
+    /// <summary>
+    /// Retries uploading all pending reports. Stops and retains the failed one; removes any successfully uploaded.
+    /// </summary>
+    public static async Task RetryPendingReportsAsync()
+    {
+        if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            return;
+
+        string folderPath = Path.Combine(FileSystem.AppDataDirectory, "PendingReports");
+        string fullPath = Path.Combine(folderPath, "pending_reports.json");
+        if (!File.Exists(fullPath))
+            return;
+
+        List<Report> pending;
+        try
+        {
+            string existingJson = await File.ReadAllTextAsync(fullPath);
+            pending = JsonSerializer.Deserialize<List<Report>>(existingJson) ?? new List<Report>();
+        }
+        catch
+        {
+            return;
+        }
+
+        // Load current folders for signature info
+        HttpResponseMessage folderResp = await ApiService.GetAllFoldersAsync();
+        var folders = new List<Folder>();
+        if (folderResp.IsSuccessStatusCode)
+        {
+            string json = await folderResp.Content.ReadAsStringAsync();
+            using var doc = JsonDocument.Parse(json);
+            if (doc.RootElement.TryGetProperty("data", out var arr))
+            {
+                folders = arr.EnumerateArray()
+                             .Select(el => new Folder
+                             {
+                                 Id = el.GetProperty("folder_id").GetString(),
+                                 Name = el.GetProperty("folder_name").GetString(),
+                                 Signature1 = el.GetProperty("signature1").GetString(),
+                                 Signature2 = el.GetProperty("signature2").GetString()
+                             })
+                             .ToList();
+            }
+        }
+
+        var remaining = new List<Report>();
+        foreach (var rpt in pending)
+        {
+            var folder = folders.FirstOrDefault(f => f.Id == rpt.FolderId);
+            if (folder == null)
+            {
+                remaining.Add(rpt);
+                break;
+            }
+            try
+            {
+                await UploadReportAsync(rpt.ReportType, rpt.ReportName, folder, rpt.ReportData);
+            }
+            catch
+            {
+                remaining.Add(rpt);
+                break;
+            }
+        }
+
+        try
+        {
+            if (remaining.Any())
+            {
+                string updated = JsonSerializer.Serialize(remaining, new JsonSerializerOptions { WriteIndented = true });
+                await File.WriteAllTextAsync(fullPath, updated);
+            }
+            else
+            {
+                File.Delete(fullPath);
+            }
+        }
+        catch { }
+    }
+
+    /// <summary>
+    /// Saves a report locally for later retry.
+    /// </summary>
+    public static async Task SaveReportLocallyAsync(
         Enums.ReportType reportType,
         string reportName,
         Folder folder,
@@ -89,17 +141,14 @@ public static class ReportManager
                 Directory.CreateDirectory(localFolderPath);
 
             string fullPath = Path.Combine(localFolderPath, "pending_reports.json");
-
-            // Load existing pending reports if file exists
-            List<Report> pendingReports = new List<Report>();
+            List<Report> pending = new List<Report>();
             if (File.Exists(fullPath))
             {
                 string existingJson = await File.ReadAllTextAsync(fullPath);
-                pendingReports = JsonSerializer.Deserialize<List<Report>>(existingJson) ?? new List<Report>();
+                pending = JsonSerializer.Deserialize<List<Report>>(existingJson) ?? new List<Report>();
             }
 
-            // Add new report to the list
-            pendingReports.Add(new Report
+            pending.Add(new Report
             {
                 ReportType = reportType,
                 ReportName = reportName,
@@ -107,21 +156,12 @@ public static class ReportManager
                 ReportData = reportData
             });
 
-            // Serialize updated list and write back
-            string updatedJson = JsonSerializer.Serialize(pendingReports, new JsonSerializerOptions { WriteIndented = true });
-            await File.WriteAllTextAsync(fullPath, updatedJson);
-
-            await Application.Current.MainPage.DisplayAlert("Saved", "No internet. Report saved locally.", "OK");
+            string updated = JsonSerializer.Serialize(pending, new JsonSerializerOptions { WriteIndented = true });
+            await File.WriteAllTextAsync(fullPath, updated);
         }
         catch (Exception ex)
         {
-            await Application.Current.MainPage.DisplayAlert("Error", $"Failed to save report locally: {ex.Message}", "OK");
+            // optionally log the failure
         }
-    }
-
-
-    private static Task ShowError(string message)
-    {
-        return Application.Current.MainPage.DisplayAlert("Error", message, "OK");
     }
 }

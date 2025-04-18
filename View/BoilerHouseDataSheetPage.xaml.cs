@@ -10,6 +10,7 @@ public partial class BoilerHouseDataSheetPage : ContentPage
     public ObservableCollection<Folder> Folders = new();
     private Dictionary<string, string> reportData;
     bool previewOnly = false;
+    private readonly Enums.ReportType reportType = Enums.ReportType.BoilerHouseDataSheet;
     public BoilerHouseDataSheetPage()
 	{
 		InitializeComponent();
@@ -43,21 +44,40 @@ public partial class BoilerHouseDataSheetPage : ContentPage
 
         _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
     }
-    private async Task UploadReport(Folder folder, Dictionary<string, string> report)
+    private async Task UploadReport(Folder folder, Dictionary<string, string> reportData)
     {
         loadingBG.IsRunning = true;
         loading.IsRunning = true;
         BoilderHouseDataSheetBackBtt.IsEnabled = false;
 
-        // Use the centralized ReportManager to upload (and fallback locally if needed)
-        await ReportManager.UploadReportAsync(Enums.ReportType.BoilerHouseDataSheet, 
-            reportName, 
-            folder, 
-            report);
+        try
+        {
+            await ReportManager.UploadReportAsync(reportType, reportName, folder, reportData);
 
-        loadingBG.IsRunning = false;
-        loading.IsRunning = false;
-        await Navigation.PopModalAsync();
+            // If we reach here, both data and PDF (if any) uploaded successfully
+            await DisplayAlert("Success", "Report successfully uploaded.", "OK");
+        }
+        catch (HttpRequestException)
+        {
+            // Network/server issue: saved locally by retry logic
+            await DisplayAlert("Offline", "No internet or server error. Report saved locally.", "OK");
+
+            await ReportManager.SaveReportLocallyAsync(reportType, reportName, folder, reportData);
+        }
+        catch (Exception ex)
+        {
+            // Any other error (PDF generation/upload, etc.)
+            await DisplayAlert("Error", $"Upload failed: {ex.Message}. Report saved locally.", "OK");
+
+            await ReportManager.SaveReportLocallyAsync(reportType, reportName, folder, reportData);
+        }
+        finally
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            BoilderHouseDataSheetBackBtt.IsEnabled = true;
+            await Navigation.PopModalAsync();
+        }
     }
 
     public async void NewFolder(object sender, EventArgs e)
