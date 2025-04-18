@@ -11,7 +11,7 @@
             base.OnAppearing();
 
             // Only bother with retry+spinner if there really are reports saved
-            if (await ReportManager.HasPendingReportsAsync())
+            if (await ReportManager.HasPendingReportsAsync() && Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 StartLoading();
 
