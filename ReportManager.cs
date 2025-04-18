@@ -126,6 +126,29 @@ public static class ReportManager
     }
 
     /// <summary>
+    /// Returns true if pending_reports.json exists **and** contains at least one Report.
+    /// </summary>
+    public static async Task<bool> HasPendingReportsAsync()
+    {
+        string folderPath = Path.Combine(FileSystem.AppDataDirectory, "PendingReports");
+        string fullPath = Path.Combine(folderPath, "pending_reports.json");
+        if (!File.Exists(fullPath))
+            return false;
+
+        try
+        {
+            string json = await File.ReadAllTextAsync(fullPath);
+            var list = JsonSerializer.Deserialize<List<Report>>(json);
+            return list != null && list.Count > 0;
+        }
+        catch
+        {
+            // If the file is corrupt, assume no valid pending reports
+            return false;
+        }
+    }
+
+    /// <summary>
     /// Saves a report locally for later retry.
     /// </summary>
     public static async Task SaveReportLocallyAsync(

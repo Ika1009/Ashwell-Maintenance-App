@@ -6,13 +6,42 @@
         {
             InitializeComponent();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
 
-        public async void OpenPage(string page)
+            // Only bother with retry+spinner if there really are reports saved
+            if (await ReportManager.HasPendingReportsAsync())
+            {
+                StartLoading();
+
+                try
+                {
+                    await ReportManager.RetryPendingReportsAsync();
+                }
+                finally
+                {
+                    StopLoading();
+                }
+            }
+        }
+        private void StartLoading()
         {
             CDM.IsEnabled = false; ER.IsEnabled = false; SR.IsEnabled = false; GRA.IsEnabled = false; PUR.IsEnabled = false;
             BHDS.IsEnabled = false; CC.IsEnabled = false; TT.IsEnabled = false;
 
             loadingBG.IsRunning = true; loading.IsRunning = true;
+        }
+        private void StopLoading()
+        {
+            loading.IsRunning = false; loadingBG.IsRunning = false;
+
+            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
+            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+        }
+        public async void OpenPage(string page)
+        {
+            StartLoading();
 
             switch (page)
             {
@@ -28,10 +57,7 @@
                 case "TT": await Navigation.PushModalAsync(new OnePage()); break;
             }
 
-            loading.IsRunning = false; loadingBG.IsRunning = false;
-
-            CDM.IsEnabled = true; ER.IsEnabled = true; SR.IsEnabled = true; GRA.IsEnabled = true; PUR.IsEnabled = true;
-            BHDS.IsEnabled = true; CC.IsEnabled = true; TT.IsEnabled = true;
+            StopLoading();
         }
         public void CDM_Tapped(object sender, EventArgs e)
         {
