@@ -83,94 +83,39 @@ public partial class BoilerHouseDataSheetPage : ContentPage
     public async void NewFolder(object sender, EventArgs e)
     {
         string folderName = await Shell.Current.DisplayPromptAsync("New Folder", "Enter folder name");
-        if (folderName == null || folderName == "") // User clicked Cancel
-            return;
+        if (string.IsNullOrWhiteSpace(folderName)) return;
 
-        try
-        {
-            var response = await ApiService.UploadFolderAsync(folderName);
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
 
-            if (response.IsSuccessStatusCode)
-            {
-                // Load folders after successful upload
-                await LoadFolders();
-            }
-            else
-            {
-                var errorContent = await response.Content.ReadAsStringAsync();
+        var newFolder = await FolderManager.CreateFolderAsync(folderName);
 
-                string errorMessage;
-                if (!string.IsNullOrWhiteSpace(errorContent))
-                {
-                    try
-                    {
-                        var errorObj = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
-                        errorMessage = errorObj.ContainsKey("error") ? errorObj["error"] : "An unknown error occurred.";
-                    }
-                    catch
-                    {
-                        errorMessage = "An unknown error occurred.";
-                    }
-                }
-                else
-                    errorMessage = "Internal server error.";
+        // Always refresh displayed list
+        await FolderManager.LoadFoldersAsync(Folders, FoldersListView);
 
-                await Application.Current.MainPage.DisplayAlert("Error", errorMessage, "OK");
-            }
-        }
-        catch (Exception ex)
-        {
-            // Handle other potential exceptions like network errors, timeouts, etc.
-            await Application.Current.MainPage.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
-        }
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
     }
     private async Task LoadFolders()
     {
-        try
-        {
-            HttpResponseMessage response = await ApiService.GetAllFoldersAsync();
-            if (!response.IsSuccessStatusCode)
-            {
-                await DisplayAlert("Error", "Failed to load folders.", "OK");
-                return;
-            }
-
-            string json = await response.Content.ReadAsStringAsync();
-
-            JsonDocument jsonDocument = JsonDocument.Parse(json);
-            if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataArray))
-            {
-                // Clear the existing items and add the new ones directly to the ObservableCollection
-                Folders.Clear();
-                foreach (var element in dataArray.EnumerateArray())
-                {
-                    Folders.Add(new Folder
-                    {
-                        Id = element.GetProperty("folder_id").GetString(),
-                        Name = element.GetProperty("folder_name").GetString(),
-                        Timestamp = element.GetProperty("created_at").GetString(),
-                        Signature1 = element.GetProperty("signature1").GetString(),
-                        Signature2 = element.GetProperty("signature2").GetString()
-                    });
-                }
-
-                // Check if the ItemsSource is already set
-                FoldersListView.ItemsSource ??= Folders;
-            }
-        }
-        catch (JsonException jsonEx)
-        {
-            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
-        }
-        catch (FormatException formatEx)
-        {
-            await DisplayAlert("Error", $"Failed to format the date. Details: {formatEx.Message}", "OK");
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
-        }
+        await FolderManager.LoadFoldersAsync(Folders, FoldersListView);
     }
+
+    public async void FolderEdit(object sender, EventArgs e)
+    {
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+
+        var folderId = (sender as ImageButton)?.CommandParameter as string;
+        var folder = Folders.FirstOrDefault(f => f.Id == folderId);
+
+        if (folder != null)
+            await FolderManager.EditFolderAsync(folder, Folders);
+
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
+    }
+
     private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
         Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(async () =>
@@ -223,61 +168,6 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         });
 
 
-    }
-
-    public async void FolderEdit(object sender, EventArgs e)
-    {
-        loadingBG.IsRunning = true;
-        loading.IsRunning = true;
-        string folderId = (sender as ImageButton).CommandParameter as string;
-        string folderName = Folders.First(x => x.Id == folderId).Name;
-        string oldFolderName = folderName;
-
-        if (CurrentUser.IsAdmin)
-            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, folderName);
-        else
-            folderName = await Shell.Current.DisplayPromptAsync("Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, folderName);
-
-        if (folderName == null && CurrentUser.IsAdmin) // User clicked Delete
-        {
-            bool deleteConfirmed = await Shell.Current.DisplayAlert("Delete Folder", "This folder will be deleted", "OK", "Cancel");
-            if (deleteConfirmed)
-            {
-                // Deleting Folder in the Database
-                var response = await ApiService.DeleteFolderAsync(folderId);
-                if (response.IsSuccessStatusCode)
-                {
-                    //await DisplayAlert("Success", "Folder deleted successfully", "OK");
-                    await LoadFolders();
-                }
-                else
-                {
-                    await DisplayAlert("Error", $"Error deleting folder: {response.Content.ReadAsStringAsync().Result}", "OK");
-                }
-            }
-            loadingBG.IsRunning = false;
-            loading.IsRunning = false;
-            return;
-        }
-        else if (folderName == oldFolderName || !CurrentUser.IsAdmin && folderName == null)
-        {
-            loadingBG.IsRunning = false;
-            loading.IsRunning = false;
-            return;
-        }
-
-        // Update the folder name in the database
-        var updateResponse = await ApiService.RenameFolderAsync(folderId, folderName);
-        if (!updateResponse.IsSuccessStatusCode)
-        {
-            await DisplayAlert("Error", $"Error updating folder name: {updateResponse.Content.ReadAsStringAsync().Result}", "OK");
-        }
-
-        // Update Renamed in the Front End
-        Folders.First(x => x.Id == folderId).Name = folderName;
-        await LoadFolders();
-        loadingBG.IsRunning = false;
-        loading.IsRunning = false;
     }
 
     public async void BoilerHouseDataSheetBack(object sender, EventArgs e)
