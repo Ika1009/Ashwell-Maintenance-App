@@ -20,7 +20,7 @@ public static class ReportManager
         Dictionary<string, string> reportData)
     {
         // 1) Upload raw report data
-        HttpResponseMessage response = await ApiService.UploadReportAsync(reportType, reportName, folder.Id, reportData);
+        HttpResponseMessage response = await ApiService.UploadReportAsync(reportType, reportName, folder.Id,  folder.Name, reportData);
         if (!response.IsSuccessStatusCode)
             throw new HttpRequestException("Failed to upload report to server.");
 

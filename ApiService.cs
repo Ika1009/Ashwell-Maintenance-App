@@ -416,9 +416,10 @@ public static class ApiService
     /// <param name="reportType">The type of the report.</param>
     /// <param name="reportName">The name of the report.</param>
     /// <param name="folderId">The ID of the folder where the report should be saved.</param>
+    /// <param name="folderName">The name of the folder that is used if it is offline, the folderId doesn't exist.</param>
     /// <param name="additionalReportData">A dictionary containing real values for the report.</param>
     /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
-    public static async Task<HttpResponseMessage> UploadReportAsync(Enums.ReportType reportType, string reportName, string folderId, Dictionary<string, string> additionalReportData)
+    public static async Task<HttpResponseMessage> UploadReportAsync(Enums.ReportType reportType, string reportName, string folderId, string folderName, Dictionary<string, string> additionalReportData)
     {
         using HttpClient client = new();
 
@@ -427,7 +428,8 @@ public static class ApiService
         {
             new KeyValuePair<string, string>("report_type", reportType.ToString()),
             new KeyValuePair<string, string>("report_name", reportName),
-            new KeyValuePair<string, string>("folder_id", folderId)
+            new KeyValuePair<string, string>("folder_id", folderId),
+            new KeyValuePair<string, string>("folder_name", folderName)
         };
 
         // Add additional report data to the list
