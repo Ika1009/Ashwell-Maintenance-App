@@ -204,16 +204,17 @@ namespace Ashwell_Maintenance
         }
 
         /// <summary>
-        /// Retries creating any folders in the offline queue. Stops at first failure.
+        /// Retries creating any folders in the offline queue. Stops at first failure and throws.
         /// </summary>
         public static async Task RetryPendingFoldersAsync()
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-                return;
+                return;    // nothing to do if offline
 
             if (!File.Exists(OfflineQueuePath))
                 return;
 
+            // Load pending folders
             List<Folder> pending;
             try
             {
@@ -222,48 +223,60 @@ namespace Ashwell_Maintenance
             }
             catch
             {
+                // corrupt file → give up silently
                 return;
             }
 
             var stillPending = new List<Folder>();
 
+            // Process in order
             foreach (var folder in pending)
             {
                 try
                 {
-                    // Attempt server create
                     var resp = await ApiService.UploadFolderAsync(folder.Name);
                     if (!resp.IsSuccessStatusCode)
-                        throw new HttpRequestException();
-
-                    // if success, continue to next
+                        throw new HttpRequestException($"Server returned {(int)resp.StatusCode} for folder '{folder.Name}'");
+                    // success → do nothing
                 }
-                catch
+                catch (Exception ex)
                 {
-                    // on first failure, keep this and all remaining
+                    // On first failure, keep this one and all the rest in the queue
                     stillPending.AddRange(pending.Skip(stillPending.Count));
-                    break;
+                    // Persist updated queue
+                    string updated = JsonSerializer.Serialize(stillPending, new JsonSerializerOptions { WriteIndented = true });
+                    await File.WriteAllTextAsync(OfflineQueuePath, updated);
+                    // Bubble up so RetryPendingReportsAsync can abort
+                    throw new Exception($"RetryPendingFoldersAsync failed at '{folder.Name}': {ex.Message}", ex);
                 }
             }
 
-            // overwrite or delete queue file
+            // If we got here, all succeeded → delete the queue
             try
             {
-                if (stillPending.Any())
-                {
-                    string updated = JsonSerializer.Serialize(stillPending,
-                        new JsonSerializerOptions { WriteIndented = true });
-                    await File.WriteAllTextAsync(OfflineQueuePath, updated);
-                }
-                else
-                {
-                    File.Delete(OfflineQueuePath);
-                }
+                File.Delete(OfflineQueuePath);
             }
             catch
             {
                 // ignore
             }
+        }
+
+        /// <summary>
+        /// If the folder.Id is null, this will create (or queue) it and return a valid Id.
+        /// </summary>
+        public static async Task<string> EnsureFolderIdAsync(Folder folder)
+        {
+            if (!string.IsNullOrEmpty(folder.Id))
+                return folder.Id;
+
+            // Calls your CreateFolderAsync which either returns a server‐created Folder
+            // or a placeholder with Id==null queued for later.
+            var realFolder = await CreateFolderAsync(folder.Name);
+
+            // Ensure we cache the new Id (might still be null if offline)
+            folder.Id = realFolder.Id;
+            return folder.Id;
         }
 
         /// <summary>

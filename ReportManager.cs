@@ -19,7 +19,9 @@ public static class ReportManager
         Folder folder,
         Dictionary<string, string> reportData)
     {
-        // 1) Upload raw report data
+        // If the folder.Id is null, this will create (or queue) it and return a valid Id.
+        folder.Id = await FolderManager.EnsureFolderIdAsync(folder);
+
         HttpResponseMessage response = await ApiService.UploadReportAsync(reportType, reportName, folder.Id,  folder.Name, reportData);
         if (!response.IsSuccessStatusCode)
             throw new HttpRequestException("Failed to upload report to server.");
@@ -53,6 +55,16 @@ public static class ReportManager
         if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             return;
 
+        // Try folders first; abort on any error
+        try
+        {
+            await FolderManager.RetryPendingFoldersAsync();
+        }
+        catch
+        {
+            // Folder queue still has at least one failure → do not proceed to reports
+            return;
+        }
         string folderPath = Path.Combine(FileSystem.AppDataDirectory, "PendingReports");
         string fullPath = Path.Combine(folderPath, "pending_reports.json");
         if (!File.Exists(fullPath))
