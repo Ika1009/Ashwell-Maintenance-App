@@ -52,81 +52,72 @@ public static class ReportManager
     /// </summary>
     public static async Task RetryPendingReportsAsync()
     {
+        // 1) Only run when online
         if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             return;
 
-        // Try folders first; abort on any error
-        try
-        {
-            await FolderManager.RetryPendingFoldersAsync();
-        }
-        catch
-        {
-            // Folder queue still has at least one failure → do not proceed to reports
-            return;
-        }
         string folderPath = Path.Combine(FileSystem.AppDataDirectory, "PendingReports");
         string fullPath = Path.Combine(folderPath, "pending_reports.json");
         if (!File.Exists(fullPath))
             return;
 
+        // 2) Load all pending reports (each has FolderId and FolderName)
         List<Report> pending;
         try
         {
             string existingJson = await File.ReadAllTextAsync(fullPath);
-            pending = JsonSerializer.Deserialize<List<Report>>(existingJson) ?? new List<Report>();
+            pending = JsonSerializer.Deserialize<List<Report>>(existingJson)
+                      ?? new List<Report>();
         }
         catch
         {
-            return;
+            return; // corrupt file → give up
         }
 
-        // Load current folders for signature info
-        HttpResponseMessage folderResp = await ApiService.GetAllFoldersAsync();
-        var folders = new List<Folder>();
-        if (folderResp.IsSuccessStatusCode)
-        {
-            string json = await folderResp.Content.ReadAsStringAsync();
-            using var doc = JsonDocument.Parse(json);
-            if (doc.RootElement.TryGetProperty("data", out var arr))
-            {
-                folders = arr.EnumerateArray()
-                             .Select(el => new Folder
-                             {
-                                 Id = el.GetProperty("folder_id").GetString(),
-                                 Name = el.GetProperty("folder_name").GetString(),
-                                 Signature1 = el.GetProperty("signature1").GetString(),
-                                 Signature2 = el.GetProperty("signature2").GetString()
-                             })
-                             .ToList();
-            }
-        }
+        var stillPending = new List<Report>();
 
-        var remaining = new List<Report>();
+        // 3) Process each pending report in order
         foreach (var rpt in pending)
         {
-            var folder = folders.FirstOrDefault(f => f.Id == rpt.FolderId);
-            if (folder == null)
+            // a) Build a folder stub with Name (and possibly null Id)
+            var folder = new Folder
             {
-                remaining.Add(rpt);
+                Id = rpt.FolderId,
+                Name = rpt.FolderName
+            };
+
+            // b) Ensure the folder exists (create if Id==null)
+            try
+            {
+                folder.Id = await FolderManager.EnsureFolderIdAsync(folder);
+            }
+            catch
+            {
+                // failed to create or retrieve → stop here
+                stillPending.Add(rpt);
                 break;
             }
+
+            // c) Now upload report (data + PDF)
             try
             {
                 await UploadReportAsync(rpt.ReportType, rpt.ReportName, folder, rpt.ReportData);
             }
             catch
             {
-                remaining.Add(rpt);
+                // upload failed → stop here
+                stillPending.Add(rpt);
                 break;
             }
         }
 
+        // 4) Rewrite or delete the pending file
         try
         {
-            if (remaining.Any())
+            if (stillPending.Any())
             {
-                string updated = JsonSerializer.Serialize(remaining, new JsonSerializerOptions { WriteIndented = true });
+                string updated = JsonSerializer.Serialize(stillPending,
+                                       new JsonSerializerOptions { WriteIndented = true });
                 await File.WriteAllTextAsync(fullPath, updated);
             }
             else
@@ -134,7 +125,10 @@ public static class ReportManager
                 File.Delete(fullPath);
             }
         }
-        catch { }
+        catch
+        {
+            // ignore I/O errors
+        }
     }
 
     /// <summary>
@@ -188,6 +182,7 @@ public static class ReportManager
                 ReportType = reportType,
                 ReportName = reportName,
                 FolderId = folder.Id,
+                FolderName = folder.Name,
                 ReportData = reportData
             });
 

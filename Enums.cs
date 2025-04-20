@@ -47,6 +47,7 @@ namespace Ashwell_Maintenance
         public string CreatedAt { get; set; }
 
         public string FolderId { get; set; }
+        public string FolderName { get; set; }
 
         public Report()
         {

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,16 +11,13 @@ namespace Ashwell_Maintenance
 {
     public static class FolderManager
     {
-        // Path to offline queue of new-folder requests
-        private static readonly string OfflineQueuePath =
-            Path.Combine(FileSystem.AppDataDirectory, "PendingFolders.json");
-
         /// <summary>
-        /// Creates a folder on the server if online, otherwise queues it for later.
+        /// Tries to create the folder on the server (if online). 
+        /// On success returns the real Id; on network/server failure returns a placeholder Folder with Id = null.
         /// </summary>
         public static async Task<Folder> CreateFolderAsync(string folderName)
         {
-            // 1) Try server
+            // If we have connectivity, try server
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 try
@@ -33,51 +28,53 @@ namespace Ashwell_Maintenance
                         var payload = await resp.Content.ReadAsStringAsync();
                         using var doc = JsonDocument.Parse(payload);
                         string id = doc.RootElement.GetProperty("folder_id").GetString();
+                        string createdAt = doc.RootElement.TryGetProperty("created_at", out var ts)
+                                           ? ts.GetString()
+                                           : DateTime.UtcNow.ToString("o");
 
                         return new Folder
                         {
                             Id = id,
                             Name = folderName,
-                            Timestamp = DateTime.UtcNow.ToString("o")
+                            Timestamp = createdAt
                         };
                     }
                 }
                 catch
                 {
-                    // network/server error → fall back
+                    // swallow and fall back to offline
                 }
             }
 
-            // 2) Offline or failure: queue and return placeholder
-            var offline = new Folder
+            // Offline or server error → return placeholder
+            return new Folder
             {
                 Id = null,
                 Name = folderName,
                 Timestamp = DateTime.UtcNow.ToString("o")
             };
-            await QueueFolderForLaterUpload(offline);
-            return offline;
         }
 
         /// <summary>
-        /// Loads folders into the given collection:
-        /// - If online, fetches server list
-        /// - Always appends any offline‑queued folders so they appear in the UI
+        /// Populates the given ObservableCollection with server folders (if online).
+        /// If offline or fetch fails, shows an alert and leaves the list empty.
         /// </summary>
         public static async Task LoadFoldersAsync(
             ObservableCollection<Folder> folders,
             ListView listView = null)
         {
             folders.Clear();
-            bool loadedFromServer = false;
 
-            // Attempt server fetch
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 try
                 {
                     var resp = await ApiService.GetAllFoldersAsync();
-                    if (resp.IsSuccessStatusCode)
+                    if (!resp.IsSuccessStatusCode)
+                    {
+                        await Shell.Current.DisplayAlert("Error", "Failed to load folders.", "OK");
+                    }
+                    else
                     {
                         string json = await resp.Content.ReadAsStringAsync();
                         using var doc = JsonDocument.Parse(json);
@@ -94,7 +91,6 @@ namespace Ashwell_Maintenance
                                     Signature2 = el.GetProperty("signature2").GetString()
                                 });
                             }
-                            loadedFromServer = true;
                         }
                     }
                 }
@@ -103,33 +99,9 @@ namespace Ashwell_Maintenance
                     await Shell.Current.DisplayAlert("Error", $"Loading folders failed: {ex.Message}", "OK");
                 }
             }
-
-            // Append offline‑queued items
-            if (File.Exists(OfflineQueuePath))
+            else
             {
-                try
-                {
-                    string pendingJson = await File.ReadAllTextAsync(OfflineQueuePath);
-                    var pending = JsonSerializer
-                        .Deserialize<List<Folder>>(pendingJson)
-                        ?? new List<Folder>();
-
-                    foreach (var q in pending)
-                        folders.Add(q);
-                }
-                catch
-                {
-                    // ignore corrupt queue
-                }
-            }
-
-            // Notify if we never got server data
-            if (!loadedFromServer)
-            {
-                await Shell.Current.DisplayAlert(
-                    "Offline",
-                    "Could not load server folders. Showing only offline‑created ones.",
-                    "OK");
+                await Shell.Current.DisplayAlert("Offline", "Cannot load folders while offline.", "OK");
             }
 
             if (listView != null)
@@ -145,158 +117,64 @@ namespace Ashwell_Maintenance
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                await Shell.Current.DisplayAlert(
-                    "Offline",
-                    "You cannot rename or delete folders while offline.",
-                    "OK");
+                await Shell.Current.DisplayAlert("Offline", "You cannot rename or delete folders while offline.", "OK");
                 return;
             }
 
             string oldName = folder.Name;
             string newName = oldName;
 
+            // Prompt
             if (CurrentUser.IsAdmin)
             {
                 newName = await Shell.Current.DisplayPromptAsync(
-                    "Edit Folder",
-                    "Rename or delete folder",
-                    "RENAME",
-                    "DELETE",
-                    null, -1, null, oldName);
+                    "Edit Folder", "Rename or delete folder", "RENAME", "DELETE", null, -1, null, oldName);
             }
             else
             {
                 newName = await Shell.Current.DisplayPromptAsync(
-                    "Edit Folder",
-                    "Rename folder",
-                    "RENAME",
-                    "Cancel",
-                    null, -1, null, oldName);
+                    "Edit Folder", "Rename folder", "RENAME", "Cancel", null, -1, null, oldName);
             }
 
-            // DELETE?
+            // DELETE case (admin only)
             if (newName == null && CurrentUser.IsAdmin)
             {
-                bool ok = await Shell.Current.DisplayAlert(
-                    "Delete Folder",
-                    "This folder will be deleted permanently.",
-                    "OK", "Cancel");
-                if (ok)
+                bool confirmed = await Shell.Current.DisplayAlert(
+                    "Delete Folder", "This will delete the folder permanently.", "OK", "Cancel");
+                if (confirmed)
                 {
                     var delResp = await ApiService.DeleteFolderAsync(folder.Id);
                     if (delResp.IsSuccessStatusCode)
                         await LoadFoldersAsync(folders);
                     else
-                        await Shell.Current.DisplayAlert("Error", "Failed to delete folder", "OK");
+                        await Shell.Current.DisplayAlert("Error", "Failed to delete folder.", "OK");
                 }
                 return;
             }
 
-            // RENAME?
+            // RENAME
             if (!string.IsNullOrWhiteSpace(newName) && newName != oldName)
             {
                 var renameResp = await ApiService.RenameFolderAsync(folder.Id, newName);
                 if (renameResp.IsSuccessStatusCode)
                     await LoadFoldersAsync(folders);
                 else
-                    await Shell.Current.DisplayAlert("Error", "Failed to rename folder", "OK");
+                    await Shell.Current.DisplayAlert("Error", "Failed to rename folder.", "OK");
             }
         }
 
         /// <summary>
-        /// Retries creating any folders in the offline queue. Stops at first failure and throws.
-        /// </summary>
-        public static async Task RetryPendingFoldersAsync()
-        {
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-                return;    // nothing to do if offline
-
-            if (!File.Exists(OfflineQueuePath))
-                return;
-
-            // Load pending folders
-            List<Folder> pending;
-            try
-            {
-                string json = await File.ReadAllTextAsync(OfflineQueuePath);
-                pending = JsonSerializer.Deserialize<List<Folder>>(json) ?? new List<Folder>();
-            }
-            catch
-            {
-                // corrupt file → give up silently
-                return;
-            }
-
-            var stillPending = new List<Folder>();
-
-            // Process in order
-            foreach (var folder in pending)
-            {
-                try
-                {
-                    var resp = await ApiService.UploadFolderAsync(folder.Name);
-                    if (!resp.IsSuccessStatusCode)
-                        throw new HttpRequestException($"Server returned {(int)resp.StatusCode} for folder '{folder.Name}'");
-                    // success → do nothing
-                }
-                catch (Exception ex)
-                {
-                    // On first failure, keep this one and all the rest in the queue
-                    stillPending.AddRange(pending.Skip(stillPending.Count));
-                    // Persist updated queue
-                    string updated = JsonSerializer.Serialize(stillPending, new JsonSerializerOptions { WriteIndented = true });
-                    await File.WriteAllTextAsync(OfflineQueuePath, updated);
-                    // Bubble up so RetryPendingReportsAsync can abort
-                    throw new Exception($"RetryPendingFoldersAsync failed at '{folder.Name}': {ex.Message}", ex);
-                }
-            }
-
-            // If we got here, all succeeded → delete the queue
-            try
-            {
-                File.Delete(OfflineQueuePath);
-            }
-            catch
-            {
-                // ignore
-            }
-        }
-
-        /// <summary>
-        /// If the folder.Id is null, this will create (or queue) it and return a valid Id.
+        /// If folder.Id == null, calls CreateFolderAsync to get a real Id (or leave it null if still offline).
+        /// Caches the result back into folder.Id.
         /// </summary>
         public static async Task<string> EnsureFolderIdAsync(Folder folder)
         {
             if (!string.IsNullOrEmpty(folder.Id))
                 return folder.Id;
 
-            // Calls your CreateFolderAsync which either returns a server‐created Folder
-            // or a placeholder with Id==null queued for later.
-            var realFolder = await CreateFolderAsync(folder.Name);
-
-            // Ensure we cache the new Id (might still be null if offline)
-            folder.Id = realFolder.Id;
+            var real = await CreateFolderAsync(folder.Name);
+            folder.Id = real.Id;
             return folder.Id;
-        }
-
-        /// <summary>
-        /// Appends a folder to the offline queue.
-        /// </summary>
-        private static async Task QueueFolderForLaterUpload(Folder folder)
-        {
-            var pending = new List<Folder>();
-            if (File.Exists(OfflineQueuePath))
-            {
-                string existing = await File.ReadAllTextAsync(OfflineQueuePath);
-                pending = JsonSerializer.Deserialize<List<Folder>>(existing)
-                          ?? new List<Folder>();
-            }
-
-            pending.Add(folder);
-
-            string json = JsonSerializer.Serialize(pending,
-                new JsonSerializerOptions { WriteIndented = true });
-            await File.WriteAllTextAsync(OfflineQueuePath, json);
         }
     }
 }
