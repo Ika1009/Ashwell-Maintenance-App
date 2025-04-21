@@ -104,9 +104,11 @@ public partial class GasRiskAssessmentPage : ContentPage
         loading.IsRunning = true;
 
         var newFolder = await FolderManager.CreateFolderAsync(folderName);
+        Folders.Add(newFolder);
 
         // Always refresh displayed list
-        await FolderManager.LoadFoldersAsync(Folders, FoldersListView);
+        if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            await FolderManager.LoadFoldersAsync(Folders, FoldersListView);
 
         loadingBG.IsRunning = false;
         loading.IsRunning = false;

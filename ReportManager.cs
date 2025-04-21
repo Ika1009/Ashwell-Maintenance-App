@@ -102,6 +102,7 @@ public static class ReportManager
             try
             {
                 await UploadReportAsync(rpt.ReportType, rpt.ReportName, folder, rpt.ReportData);
+
             }
             catch
             {
