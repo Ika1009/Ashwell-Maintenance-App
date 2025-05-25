@@ -2,7 +2,7 @@
 
 The Ashwell Maintenance app is a powerful tool designed to simplify PDF generation through form filling. This application was tailor-made for UK company Ashwell Maintenance to optimize workflow and enhance document management as a part of a Fiverr project. 📄
 
-One of my most complex Fiverr projects to date, it was developed using .NET MAUI, it streamlines PDF generation through dynamic forms, automatic signing of documents, PDF generation, offline capabilities, Dropbox integration and more.
+This is one of my most complex Fiverr projects to date. It was developed using .NET MAUI, it streamlines PDF generation through dynamic forms, automatic signing of documents, PDF generation, offline capabilities, Dropbox integration and more.
 
 ## Purpose 🌟
 
