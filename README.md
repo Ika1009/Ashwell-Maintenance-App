@@ -2,6 +2,8 @@
 
 The Ashwell Maintenance app is a powerful tool designed to simplify PDF generation through form filling. This application was tailor-made for UK company Ashwell Maintenance to optimize workflow and enhance document management as a part of a Fiverr project. 📄
 
+One of my most complex Fiverr projects to date, it was developed using .NET MAUI, it streamlines PDF generation through dynamic forms, automatic signing of documents, PDF generation, offline capabilities, Dropbox integration and more.
+
 ## Purpose 🌟
 
 The Ashwell Maintenance app serves as a comprehensive solution for:
@@ -17,6 +19,8 @@ The Ashwell Maintenance app serves as a comprehensive solution for:
 - ☁️ Dropbox Integration: When signed, the app will conveniently upload signed and filled PDF files to Dropbox for easy access and backup for the owner only.
 - 📦 Powered by .NET MAUI: A responsive and reliable user experience, built on .NET MAUI.
 
+![Mockup of the App](./promo1.png)
+
 ## Offline Capability 🌐
 
 The Ashwell Maintenance app is designed to operate effectively both online and offline. When offline, you can continue to work on your documents, and once a network connection is restored, the app seamlessly syncs your data with the servers. This offline functionality ensures that you can be productive no matter where you are.
@@ -30,6 +34,8 @@ The Ashwell Maintenance app leverages the following technologies:
 - **Back-end**: PHP
 - **Database**: MySQL
 - **Cloud Integration**: Dropbox API
+
+![Mockup of the App](./promo2.png)
 
 ## License 📜
 
