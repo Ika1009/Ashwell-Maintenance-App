@@ -23,8 +23,16 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     }
     public void FolderChosen(object sender, EventArgs e)
     {
-        string folderId = (sender as Button).CommandParameter as string;
+        var button = sender as Button;
+        if (button != null)
+        {
+            button.IsEnabled = false;
+        }
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        CDMBackBtt.IsEnabled = false;
 
+        string folderId = button?.CommandParameter as string;
         _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
     }
     private async Task UploadReport(Folder folder, Dictionary<string, string> reportData)
@@ -230,7 +238,7 @@ public partial class ConstructionDesignManagmentPage : ContentPage
     }
     public void PreviewConstructionDesignManagmentPage(Dictionary<string,string> reportData)
     {
-        // Assume 'reportData' is the dictionary containing the data
+        // Fill data as before
         if (reportData.ContainsKey("siteAdress"))
             siteAdress.Text = reportData["siteAdress"];
         if (reportData.ContainsKey("client"))
@@ -320,7 +328,76 @@ public partial class ConstructionDesignManagmentPage : ContentPage
         if (reportData.ContainsKey("checkIsItSafeYes"))
             checkIsItSafeYes.IsChecked = bool.Parse(reportData["checkIsItSafeYes"]);
 
+    // Make all controls uneditable in preview mode
+    if (previewOnly)
+    {
+        siteAdress.IsEnabled = false;
+        client.IsEnabled = false;
+        responsibleSiteEngineer.IsEnabled = false;
+        otherEngineers.IsEnabled = false;
+        whatInformationIssued.IsEnabled = false;
+        startDate.IsEnabled = false;
+        completionDate.IsEnabled = false;
+        date.IsEnabled = false;
+        ControlActionWorkingAtHeight.IsEnabled = false;
+        ControlActionPermitsToWorkRequired.IsEnabled = false;
+        ControlActionExcavations.IsEnabled = false;
+        DustNoiseCOSHHTheControlActionRequired.IsEnabled = false;
+        actionTaken.IsEnabled = false;
+        moreDangersTheControlActionRequired.IsEnabled = false;
+        ControlActionAnyOtherDanger.IsEnabled = false;
+        ControlActionAppointedFirstAider.IsEnabled = false;
+        ControlActionAdditionalActions.IsEnabled = false;
+        ControlActionIsItSafe.IsEnabled = false;
+        // Disable and make all checkboxes input transparent
+        checkWelfareFacilitiesYes.IsEnabled = false; checkWelfareFacilitiesYes.InputTransparent = true;
+        checkWelfareFacilitiesNo.IsEnabled = false; checkWelfareFacilitiesNo.InputTransparent = true;
+        checkPortableWelfareFacilitiesYes.IsEnabled = false; checkPortableWelfareFacilitiesYes.InputTransparent = true;
+        checkPortableWelfareFacilitiesNo.IsEnabled = false; checkPortableWelfareFacilitiesNo.InputTransparent = true;
+        checkWorkingAtHeightYes.IsEnabled = false; checkWorkingAtHeightYes.InputTransparent = true;
+        checkWorkingAtHeightNo.IsEnabled = false; checkWorkingAtHeightNo.InputTransparent = true;
+        checkPermitsToWorkRequiredYes.IsEnabled = false; checkPermitsToWorkRequiredYes.InputTransparent = true;
+        checkPermitsToWorkRequiredNo.IsEnabled = false; checkPermitsToWorkRequiredNo.InputTransparent = true;
+        checkExcavationsYes.IsEnabled = false; checkExcavationsYes.InputTransparent = true;
+        checkExcavationsdNo.IsEnabled = false; checkExcavationsdNo.InputTransparent = true;
+        checkDustYes.IsEnabled = false; checkDustYes.InputTransparent = true;
+        checkDustdNo.IsEnabled = false; checkDustdNo.InputTransparent = true;
+        checkNoiseYes.IsEnabled = false; checkNoiseYes.InputTransparent = true;
+        checkNoisedNo.IsEnabled = false; checkNoisedNo.InputTransparent = true;
+        checkCOSHHYes.IsEnabled = false; checkCOSHHYes.InputTransparent = true;
+        checkCOSHHNo.IsEnabled = false; checkCOSHHNo.InputTransparent = true;
+        checkOtherYes.IsEnabled = false; checkOtherYes.InputTransparent = true;
+        checkOtherdNo.IsEnabled = false; checkOtherdNo.InputTransparent = true;
+        checkManagementSurveyYes.IsEnabled = false; checkManagementSurveyYes.InputTransparent = true;
+        checkManagementSurveyNo.IsEnabled = false; checkManagementSurveyNo.InputTransparent = true;
+        checkFiveYearsSurveyYes.IsEnabled = false; checkFiveYearsSurveyYes.InputTransparent = true;
+        checkFiveYearsSurveyNo.IsEnabled = false; checkFiveYearsSurveyNo.InputTransparent = true;
+        checkElectricalYes.IsEnabled = false; checkElectricalYes.InputTransparent = true;
+        checkElectricalNo.IsEnabled = false; checkElectricalNo.InputTransparent = true;
+        checkGasYes.IsEnabled = false; checkGasYes.InputTransparent = true;
+        checkGasNo.IsEnabled = false; checkGasNo.InputTransparent = true;
+        checkWaterYes.IsEnabled = false; checkWaterYes.InputTransparent = true;
+        checkWaterNo.IsEnabled = false; checkWaterNo.InputTransparent = true;
+        checkOtherServicesYes.IsEnabled = false; checkOtherServicesYes.InputTransparent = true;
+        checkOtherServicesNo.IsEnabled = false; checkOtherServicesNo.InputTransparent = true;
+        checkDangerToOthersYes.IsEnabled = false; checkDangerToOthersYes.InputTransparent = true;
+        checkDangerToOthersNo.IsEnabled = false; checkDangerToOthersNo.InputTransparent = true;
+        checkDangerToPublicYes.IsEnabled = false; checkDangerToPublicYes.InputTransparent = true;
+        checkDangerToPublicNo.IsEnabled = false; checkDangerToPublicNo.InputTransparent = true;
+        checkOtherDangersYes.IsEnabled = false; checkOtherDangersYes.InputTransparent = true;
+        checkOtherDangersNo.IsEnabled = false; checkOtherDangersNo.InputTransparent = true;
+        checkAnyOtherDangerYes.IsEnabled = false; checkAnyOtherDangerYes.InputTransparent = true;
+        checkAnyOtherDangerNo.IsEnabled = false; checkAnyOtherDangerNo.InputTransparent = true;
+        checkHotWorksYes.IsEnabled = false; checkHotWorksYes.InputTransparent = true;
+        checkHotWorksNo.IsEnabled = false; checkHotWorksNo.InputTransparent = true;
+        checkAppointedFirstAiderYes.IsEnabled = false; checkAppointedFirstAiderYes.InputTransparent = true;
+        checkAppointedFirstAiderNo.IsEnabled = false; checkAppointedFirstAiderNo.InputTransparent = true;
+        checkAdditionalActionsYes.IsEnabled = false; checkAdditionalActionsYes.InputTransparent = true;
+        checkAdditionalActionsNo.IsEnabled = false; checkAdditionalActionsNo.InputTransparent = true;
+        checkIsItSafeYes.IsEnabled = false; checkIsItSafeYes.InputTransparent = true;
+        checkIsItSafeNo.IsEnabled = false; checkIsItSafeNo.InputTransparent = true;
     }
+}
     private Dictionary<string, string> GatherReportData()
     {
 

@@ -65,8 +65,17 @@ public partial class OnePage : ContentPage
     }
     public void FolderChosen(object sender, EventArgs e)
     {
-        string folderId = (sender as Button).CommandParameter as string;
+        var button = sender as Button;
+        if (button != null)
+        {
+            button.IsEnabled = false;
+        }
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        // TODO: Add the correct back button control name if available
+        // OneBackBtt.IsEnabled = false;
 
+        string folderId = button?.CommandParameter as string;
         _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
     }
     private async Task UploadReport(Folder folder, Dictionary<string, string> reportData)
@@ -891,11 +900,6 @@ public partial class OnePage : ContentPage
         else
             reportData.Add("copper5", string.Empty);
         reportData.Add("copper5Total", copper5Total.Text ?? string.Empty);
-        //if (copper5.SelectedIndex != -1)
-        //    reportData.Add("copper5", (copper5.SelectedItem).ToString());
-        //else
-        //    reportData.Add("copper5", string.Empty);
-        //reportData.Add("copper5Total", copper5Total.Text ?? string.Empty);
 
         if (copper6.SelectedIndex != -1)
             reportData.Add("copper6", (copper6.SelectedItem).ToString());
@@ -1252,15 +1256,15 @@ public partial class OnePage : ContentPage
     }
 
 
-    //public void letByDuration_Completed(object sender, EventArgs e)
+    //public void letByDuration_Completed(object sender, EventsArgs e)
     //{
     //    EntryChanged(letByDuration);
     //}
-    //public void stabilisationDuration_Completed(object sender, EventArgs e)
+    //public void stabilisationDuration_Completed(object sender, EventsArgs e)
     //{
     //    EntryChanged(stabilisationDuration);
     //}
-    //public void testDuration_Completed(object sender, EventArgs e)
+    //public void testDuration_Completed(object sender, EventsArgs e)
     //{
     //    EntryChanged(testDuration);
     //}

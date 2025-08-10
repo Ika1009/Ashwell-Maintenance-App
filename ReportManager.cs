@@ -36,7 +36,20 @@ public static class ReportManager
                 throw new Exception("Couldn't retrieve signatures.");
 
             // Generate PDF
-            byte[] pdfData = await PdfCreation.BoilerHouseDataSheet(reportData, sig1, sig2);
+            byte[] pdfData = reportType switch
+            {
+                Enums.ReportType.BoilerHouseDataSheet => await PdfCreation.BoilerHouseDataSheet(reportData, sig1, sig2),
+                Enums.ReportType.ConformityCheck => await PdfCreation.ConformityCheck(reportData, sig1, sig2),
+                Enums.ReportType.ConstructionDesignManagement => await PdfCreation.ConstructionDesignManagement(reportData, sig1, sig2),
+                Enums.ReportType.EngineersReport => await PdfCreation.EngineersReport(reportData, sig1, sig2),
+                Enums.ReportType.GasRiskAssessment => await PdfCreation.GasRiskAssessment(reportData, sig1, sig2),
+                Enums.ReportType.OneA => await PdfCreation.OneA(reportData, sig1, sig2),
+                Enums.ReportType.OneB => await PdfCreation.OneB(reportData, sig1, sig2),
+                Enums.ReportType.One => await PdfCreation.One(reportData, sig1, sig2),
+                Enums.ReportType.PressurisationUnitReport => await PdfCreation.PressurisationReport(reportData, sig1, sig2),
+                Enums.ReportType.ServiceRecord => await PdfCreation.ServiceRecord(reportData, sig1, sig2),
+                _ => null
+            };
             if (pdfData == null)
                 throw new Exception("PDF generation returned null.");
 

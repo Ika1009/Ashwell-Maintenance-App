@@ -26,8 +26,16 @@ public partial class ServiceRecordPage : ContentPage
     }
     public void FolderChosen(object sender, EventArgs e)
     {
-        string folderId = (sender as Button).CommandParameter as string;
+        var button = sender as Button;
+        if (button != null)
+        {
+            button.IsEnabled = false;
+        }
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        ServiceRecordBackBtt.IsEnabled = false;
 
+        string folderId = button?.CommandParameter as string;
         _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
     }
     private async Task UploadReport(Folder folder, Dictionary<string, string> reportData)
