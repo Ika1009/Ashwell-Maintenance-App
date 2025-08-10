@@ -318,7 +318,36 @@ public partial class PressurisationUnitReportPage : ContentPage
             checkUnitLeftOperationalYes.IsChecked = Convert.ToBoolean(reportData["checkUnitLeftOperational"]);
         }
 
+        if (previewOnly)
+        {
+            // Entries and Editors
+            this.siteAddress.IsEnabled = false;
+            this.siteName.IsEnabled = false;
+            this.totalHeatingSystemRating.IsEnabled = false;
+            this.numberOfBoilers.IsEnabled = false;
+            this.flowTemperature.IsEnabled = false;
+            this.returnTemperature.IsEnabled = false;
+            this.currentWorkingPressure.IsEnabled = false;
+            this.safetyValveSetting.IsEnabled = false;
+            this.unitModel.IsEnabled = false;
+            this.serialNo.IsEnabled = false;
+            this.expansionVesselSize.IsEnabled = false;
+            this.numberOfPressureVessels.IsEnabled = false;
+            this.setFillPressure.IsEnabled = false;
+            this.ratedExpensionVesselCharge.IsEnabled = false;
+            this.highPressureSwitchSetting.IsEnabled = false;
+            this.lowPressureSwitchSetting.IsEnabled = false;
+            this.finalSystemPressure.IsEnabled = false;
+            this.notes.IsEnabled = false;
+            this.date.IsEnabled = false;
 
+            // CheckBoxes: disable and make input transparent
+            checkMainsWatersSupplyYes.IsEnabled = false; checkMainsWatersSupplyYes.InputTransparent = true;
+            checkColdFillPressureSetCorrectlyYes.IsEnabled = false; checkColdFillPressureSetCorrectlyYes.InputTransparent = true;
+            checkElectricalSupplyWorkingYes.IsEnabled = false; checkElectricalSupplyWorkingYes.InputTransparent = true;
+            checkFillingLoopDisconnectedYes.IsEnabled = false; checkFillingLoopDisconnectedYes.InputTransparent = true;
+            checkUnitLeftOperationalYes.IsEnabled = false; checkUnitLeftOperationalYes.InputTransparent = true;
+        }
     }
     private Dictionary<string, string> GatherReportData()
     {

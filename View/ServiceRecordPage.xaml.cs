@@ -576,6 +576,121 @@ public partial class ServiceRecordPage : ContentPage
             checkNG.IsChecked = true;
         }
         else checkLPG.IsChecked = true;
+
+        if (previewOnly)
+        {
+            // Entries and Editors
+            site.IsEnabled = false;
+            location.IsEnabled = false;
+            assetNo.IsEnabled = false;
+            applianceNo.IsEnabled = false;
+            applianceMake.IsEnabled = false;
+            applianceModel.IsEnabled = false;
+            applianceSerialNo.IsEnabled = false;
+            GCNo.IsEnabled = false;
+            years.IsEnabled = false;
+            badgedInput.IsEnabled = false;
+            budgedOutput.IsEnabled = false;
+            burnerMake.IsEnabled = false;
+            burnerModel.IsEnabled = false;
+            burnerSerialNo.IsEnabled = false;
+            type.IsEnabled = false;
+            spec.IsEnabled = false;
+            badgedBurnerPressure.IsEnabled = false;
+            workingIntelPressure.IsEnabled = false;
+            workingIntelPressureComment.IsEnabled = false;
+            recordedBurnerPressure.IsEnabled = false;
+            recordedBurnerPressureComment.IsEnabled = false;
+            measuredGasRate.IsEnabled = false;
+            mesuredGasRateComment.IsEnabled = false;
+            stateApplianceCondition.IsEnabled = false;
+            stateApplianceConditionComment.IsEnabled = false;
+            highFireCO2.IsEnabled = false;
+            highFireCO.IsEnabled = false;
+            highFireO2.IsEnabled = false;
+            highFireRatio.IsEnabled = false;
+            highFireFlueTemp.IsEnabled = false;
+            highFireEfficiency.IsEnabled = false;
+            highFireExcessAir.IsEnabled = false;
+            highFireRoomTemp.IsEnabled = false;
+            lowFireCO2.IsEnabled = false;
+            lowFireCO.IsEnabled = false;
+            lowFireO2.IsEnabled = false;
+            lowFireRatio.IsEnabled = false;
+            lowFireFlueTemp.IsEnabled = false;
+            lowFireEfficiency.IsEnabled = false;
+            lowFireExcessAir.IsEnabled = false;
+            lowFireRoomTemp.IsEnabled = false;
+            engineersName.IsEnabled = false;
+            engineersGasSafeIDNumber.IsEnabled = false;
+            clientsName.IsEnabled = false;
+            inspectionDate.IsEnabled = false;
+            additionalCommentsDefects.IsEnabled = false;
+            warningNoticeNumber.IsEnabled = false;
+
+            // CheckBoxes: disable and make input transparent
+            checkTestsCompleted.IsEnabled = false; checkTestsCompleted.InputTransparent = true;
+            checRemedialWorkRequired.IsEnabled = false; checRemedialWorkRequired.InputTransparent = true;
+            checkHeating.IsEnabled = false; checkHeating.InputTransparent = true;
+            checkHotWater.IsEnabled = false; checkHotWater.InputTransparent = true;
+            checkBoth.IsEnabled = false; checkBoth.InputTransparent = true;
+            checkOpenFlue.IsEnabled = false; checkOpenFlue.InputTransparent = true;
+            checkRoomSealed.IsEnabled = false; checkRoomSealed.InputTransparent = true;
+            checkForcedDraft.IsEnabled = false; checkForcedDraft.InputTransparent = true;
+            checkFlueless.IsEnabled = false; checkFlueless.InputTransparent = true;
+            checkVentilationSatisfactory.IsEnabled = false; checkVentilationSatisfactory.InputTransparent = true;
+            checkFlueConditionSatisfactory.IsEnabled = false; checkFlueConditionSatisfactory.InputTransparent = true;
+            checkNG.IsEnabled = false; checkNG.InputTransparent = true;
+            checkLPG.IsEnabled = false; checkLPG.InputTransparent = true;
+            checkAppServiceValve.IsEnabled = false; checkAppServiceValve.InputTransparent = true;
+            checkAppServiceValveNA.IsEnabled = false; checkAppServiceValveNA.InputTransparent = true;
+            checkGovernors.IsEnabled = false; checkGovernors.InputTransparent = true;
+            checkGovernorsNA.IsEnabled = false; checkGovernorsNA.InputTransparent = true;
+            checkGasSolenoidValves.IsEnabled = false; checkGasSolenoidValves.InputTransparent = true;
+            checkGasSolenoidValvesNA.IsEnabled = false; checkGasSolenoidValvesNA.InputTransparent = true;
+            checkControlBoxPCB.IsEnabled = false; checkControlBoxPCB.InputTransparent = true;
+            checkControlBoxPCBNA.IsEnabled = false; checkControlBoxPCBNA.InputTransparent = true;
+            checkGasketSeals.IsEnabled = false; checkGasketSeals.InputTransparent = true;
+            checkGasketSealsNA.IsEnabled = false; checkGasketSealsNA.InputTransparent = true;
+            checkBurner.IsEnabled = false; checkBurner.InputTransparent = true;
+            checkBurnerNA.IsEnabled = false; checkBurnerNA.InputTransparent = true;
+            checkBurnerJets.IsEnabled = false; checkBurnerJets.InputTransparent = true;
+            checkBurnerJetsNA.IsEnabled = false; checkBurnerJetsNA.InputTransparent = true;
+            checkElectrodesTransformer.IsEnabled = false; checkElectrodesTransformer.InputTransparent = true;
+            checkElectrodesTransformerNA.IsEnabled = false; checkElectrodesTransformerNA.InputTransparent = true;
+            checkFlameFailureDevice.IsEnabled = false; checkFlameFailureDevice.InputTransparent = true;
+            checkFlameFailureDeviceNA.IsEnabled = false; checkFlameFailureDeviceNA.InputTransparent = true;
+            checkSystemBoilerControls.IsEnabled = false; checkSystemBoilerControls.InputTransparent = true;
+            checkSystemBoilerControlsNA.IsEnabled = false; checkSystemBoilerControlsNA.InputTransparent = true;
+            checkBoilerCasing.IsEnabled = false; checkBoilerCasing.InputTransparent = true;
+            checkBoilerCasingNA.IsEnabled = false; checkBoilerCasingNA.InputTransparent = true;
+            checkThermalInsulation.IsEnabled = false; checkThermalInsulation.InputTransparent = true;
+            checkThermalInsulationNA.IsEnabled = false; checkThermalInsulationNA.InputTransparent = true;
+            checkCombustionFanIdFan.IsEnabled = false; checkCombustionFanIdFan.InputTransparent = true;
+            checkCombustionFanIdFanNA.IsEnabled = false; checkCombustionFanIdFanNA.InputTransparent = true;
+            checkAirFluePressureSwitch.IsEnabled = false; checkAirFluePressureSwitch.InputTransparent = true;
+            checkAirFluePressureSwitchNA.IsEnabled = false; checkAirFluePressureSwitchNA.InputTransparent = true;
+            checkControlLimitStatus.IsEnabled = false; checkControlLimitStatus.InputTransparent = true;
+            checkControlLimitStatusNA.IsEnabled = false; checkControlLimitStatusNA.InputTransparent = true;
+            checkPressureTempGauges.IsEnabled = false; checkPressureTempGauges.InputTransparent = true;
+            checkPressureTempGaugesNA.IsEnabled = false; checkPressureTempGaugesNA.InputTransparent = true;
+            checkCirculationPumps.IsEnabled = false; checkCirculationPumps.InputTransparent = true;
+            checkCirculationPumpsNA.IsEnabled = false; checkCirculationPumpsNA.InputTransparent = true;
+            checkCondenseTrap.IsEnabled = false; checkCondenseTrap.InputTransparent = true;
+            checkCondenseTrapNA.IsEnabled = false; checkCondenseTrapNA.InputTransparent = true;
+            checkHeatExchangerFluewaysClear.IsEnabled = false; checkHeatExchangerFluewaysClear.InputTransparent = true;
+            checkHeatExchangerFluewaysClearNA.IsEnabled = false; checkHeatExchangerFluewaysClearNA.InputTransparent = true;
+            checkFlueFlowTest.IsEnabled = false; checkFlueFlowTest.InputTransparent = true;
+            checkFlueFlowTestNA.IsEnabled = false; checkFlueFlowTestNA.InputTransparent = true;
+            checkSpillageTest.IsEnabled = false; checkSpillageTest.InputTransparent = true;
+            checkSpillageTestNA.IsEnabled = false; checkSpillageTestNA.InputTransparent = true;
+            checkAECVPlantIsolationCorrect.IsEnabled = false; checkAECVPlantIsolationCorrect.InputTransparent = true;
+            checkAECVPlantIsolationCorrectNA.IsEnabled = false; checkAECVPlantIsolationCorrectNA.InputTransparent = true;
+            checkSafetyShutOffValve.IsEnabled = false; checkSafetyShutOffValve.InputTransparent = true;
+            checkSafetyShutOffValveNA.IsEnabled = false; checkSafetyShutOffValveNA.InputTransparent = true;
+            checkPlantroomGasTightnessTest.IsEnabled = false; checkPlantroomGasTightnessTest.InputTransparent = true;
+            checkPlantroomGasTightnessTestNA.IsEnabled = false; checkPlantroomGasTightnessTestNA.InputTransparent = true;
+        }
     }
     private void GatherReportData()
     {

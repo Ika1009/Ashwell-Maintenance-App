@@ -275,7 +275,7 @@ public partial class GasRiskAssessmentPage : ContentPage
     }
     public void PreviewGasRiskAssessmentPage(Dictionary<string,string> reportData)
     {
-        // Assume 'reportData' is the dictionary containing the data
+        // Entries
         if (reportData.ContainsKey("nameAndSiteAdress"))
             nameAndSiteAdress.Text = reportData["nameAndSiteAdress"];
         if (reportData.ContainsKey("client"))
@@ -298,7 +298,6 @@ public partial class GasRiskAssessmentPage : ContentPage
             warningNoticeRefNo.Text = reportData["warningNoticeRefNo"];
         if (reportData.ContainsKey("dateOfLastTightnessTest"))
             dateOfLastTightnessTest.Date = DateTime.ParseExact(reportData["dateOfLastTightnessTest"], "d/M/yyyy", null);
-        // Assume 'reportData' is the dictionary containing the data
         if (reportData.ContainsKey("dropRecorded"))
             dropRecorded.Text = reportData["dropRecorded"];
         if (reportData.ContainsKey("engineersName"))
@@ -525,6 +524,118 @@ public partial class GasRiskAssessmentPage : ContentPage
             checkNoticesAndLabelsNo.IsChecked = bool.Parse(reportData["checkNoticesAndLabelsNo"]);
         if (checkNoticesAndLabelsYes.IsChecked == false && checkNoticesAndLabelsNo.IsChecked == false)
             checkNoticesAndLabelsNA.IsChecked = true;
+
+        if (previewOnly)
+        {
+            // Only disable controls that exist in the XAML for this page
+            nameAndSiteAdress.IsEnabled = false;
+            client.IsEnabled = false;
+            meterLocation.IsEnabled = false;
+            commentsOnOverallMeter.IsEnabled = false;
+            meterComments.IsEnabled = false;
+            pipeworkLocation.IsEnabled = false;
+            commentsOnOverallPipework.IsEnabled = false;
+            pipeworkComments.IsEnabled = false;
+            reasonForWarningNotice.IsEnabled = false;
+            warningNoticeRefNo.IsEnabled = false;
+            dateOfLastTightnessTest.IsEnabled = false;
+            dropRecorded.IsEnabled = false;
+            engineersName.IsEnabled = false;
+            gasSafeOperativeIdNo.IsEnabled = false;
+            clientsName.IsEnabled = false;
+            completionDate.IsEnabled = false;
+
+            // CheckBoxes: disable and make input transparent (only those that exist in XAML)
+            checkInternalMeter.IsEnabled = false; checkInternalMeter.InputTransparent = true;
+            checkExternalMeter.IsEnabled = false; checkExternalMeter.InputTransparent = true;
+            checkGeneralMeterConditionYes.IsEnabled = false; checkGeneralMeterConditionYes.InputTransparent = true;
+            checkGeneralMeterConditionNo.IsEnabled = false; checkGeneralMeterConditionNo.InputTransparent = true;
+            checkGeneralMeterConditionNA.IsEnabled = false; checkGeneralMeterConditionNA.InputTransparent = true;
+            checkEarthBondingYes.IsEnabled = false; checkEarthBondingYes.InputTransparent = true;
+            checkEarthBondingNo.IsEnabled = false; checkEarthBondingNo.InputTransparent = true;
+            checkEarthBondingNA.IsEnabled = false; checkEarthBondingNA.InputTransparent = true;
+            checkEmergencyControlsYes.IsEnabled = false; checkEmergencyControlsYes.InputTransparent = true;
+            checkEmergencyControlsNo.IsEnabled = false; checkEmergencyControlsNo.InputTransparent = true;
+            checkEmergencyControlsNA.IsEnabled = false; checkEmergencyControlsNA.InputTransparent = true;
+            checkMeterVentilationYes.IsEnabled = false; checkMeterVentilationYes.InputTransparent = true;
+            checkMeterVentilationNo.IsEnabled = false; checkMeterVentilationNo.InputTransparent = true;
+            checkMeterVentilationNA.IsEnabled = false; checkMeterVentilationNA.InputTransparent = true;
+            checkGasLineDiagramYes.IsEnabled = false; checkGasLineDiagramYes.InputTransparent = true;
+            checkGasLineDiagramNo.IsEnabled = false; checkGasLineDiagramNo.InputTransparent = true;
+            checkGasLineDiagramNA.IsEnabled = false; checkGasLineDiagramNA.InputTransparent = true;
+            checkEmergencyContractNumberYes.IsEnabled = false; checkEmergencyContractNumberYes.InputTransparent = true;
+            checkEmergencyContractNumberNo.IsEnabled = false; checkEmergencyContractNumberNo.InputTransparent = true;
+            checkEmergencyContractNumberNA.IsEnabled = false; checkEmergencyContractNumberNA.InputTransparent = true;
+            checkNoticesAndLabelsYes.IsEnabled = false; checkNoticesAndLabelsYes.InputTransparent = true;
+            checkNoticesAndLabelsNo.IsEnabled = false; checkNoticesAndLabelsNo.InputTransparent = true;
+            checkNoticesAndLabelsNA.IsEnabled = false; checkNoticesAndLabelsNA.InputTransparent = true;
+            checkPipeworkIdentifiedYes.IsEnabled = false; checkPipeworkIdentifiedYes.InputTransparent = true;
+            checkPipeworkIdentifiedNo.IsEnabled = false; checkPipeworkIdentifiedNo.InputTransparent = true;
+            checkPipeworkIdentifiedNA.IsEnabled = false; checkPipeworkIdentifiedNA.InputTransparent = true;
+            checkPipeworkBuriedYes.IsEnabled = false; checkPipeworkBuriedYes.InputTransparent = true;
+            checkPipeworkBuriedNo.IsEnabled = false; checkPipeworkBuriedNo.InputTransparent = true;
+            checkPipeworkBuriedNA.IsEnabled = false; checkPipeworkBuriedNA.InputTransparent = true;
+            checkPipeworkSurfaceYes.IsEnabled = false; checkPipeworkSurfaceYes.InputTransparent = true;
+            checkPipeworkSurfaceNo.IsEnabled = false; checkPipeworkSurfaceNo.InputTransparent = true;
+            checkPipeworkSurfaceNA.IsEnabled = false; checkPipeworkSurfaceNA.InputTransparent = true;
+            checkPipeworkEarthBondingYes.IsEnabled = false; checkPipeworkEarthBondingYes.InputTransparent = true;
+            checkPipeworkEarthBondingNo.IsEnabled = false; checkPipeworkEarthBondingNo.InputTransparent = true;
+            checkPipeworkEarthBondingNA.IsEnabled = false; checkPipeworkEarthBondingNA.InputTransparent = true;
+            checkJointingMethodsYes.IsEnabled = false; checkJointingMethodsYes.InputTransparent = true;
+            checkJointingMethodsNo.IsEnabled = false; checkJointingMethodsNo.InputTransparent = true;
+            checkJointingMethodsNA.IsEnabled = false; checkJointingMethodsNA.InputTransparent = true;
+            checkPipeworkSupportsYes.IsEnabled = false; checkPipeworkSupportsYes.InputTransparent = true;
+            checkPipeworkSupportsNo.IsEnabled = false; checkPipeworkSupportsNo.InputTransparent = true;
+            checkPipeworkSupportsNA.IsEnabled = false; checkPipeworkSupportsNA.InputTransparent = true;
+            checkFixingsYes.IsEnabled = false; checkFixingsYes.InputTransparent = true;
+            checkFixingsNo.IsEnabled = false; checkFixingsNo.InputTransparent = true;
+            checkFixingsNA.IsEnabled = false; checkFixingsNA.InputTransparent = true;
+            checkSupportSepparationDistancesYes.IsEnabled = false; checkSupportSepparationDistancesYes.InputTransparent = true;
+            checkSupportSepparationDistancesNo.IsEnabled = false; checkSupportSepparationDistancesNo.InputTransparent = true;
+            checkSupportSepparationDistancesNA.IsEnabled = false; checkSupportSepparationDistancesNA.InputTransparent = true;
+            checkPipeworkInVoidsYes.IsEnabled = false; checkPipeworkInVoidsYes.InputTransparent = true;
+            checkPipeworkInVoidsNo.IsEnabled = false; checkPipeworkInVoidsNo.InputTransparent = true;
+            checkPipeworkInVoidsNA.IsEnabled = false; checkPipeworkInVoidsNA.InputTransparent = true;
+            checkPipeSleevesYes.IsEnabled = false; checkPipeSleevesYes.InputTransparent = true;
+            checkPipeSleevesNo.IsEnabled = false; checkPipeSleevesNo.InputTransparent = true;
+            checkPipeSleevesNA.IsEnabled = false; checkPipeSleevesNA.InputTransparent = true;
+            checkPipeSleevesSealedYes.IsEnabled = false; checkPipeSleevesSealedYes.InputTransparent = true;
+            checkPipeSleevesSealedNo.IsEnabled = false; checkPipeSleevesSealedNo.InputTransparent = true;
+            checkPipeSleevesSealedNA.IsEnabled = false; checkPipeSleevesSealedNA.InputTransparent = true;
+            checkServiceValvesYes.IsEnabled = false; checkServiceValvesYes.InputTransparent = true;
+            checkServiceValvesNo.IsEnabled = false; checkServiceValvesNo.InputTransparent = true;
+            checkServiceValvesNA.IsEnabled = false; checkServiceValvesNA.InputTransparent = true;
+            checkAdditionalEmergencyControlValvesYes.IsEnabled = false; checkAdditionalEmergencyControlValvesYes.InputTransparent = true;
+            checkAdditionalEmergencyControlValvesNo.IsEnabled = false; checkAdditionalEmergencyControlValvesNo.InputTransparent = true;
+            checkAdditionalEmergencyControlValvesNA.IsEnabled = false; checkAdditionalEmergencyControlValvesNA.InputTransparent = true;
+            checkIsolationValveYes.IsEnabled = false; checkIsolationValveYes.InputTransparent = true;
+            checkIsolationValveNo.IsEnabled = false; checkIsolationValveNo.InputTransparent = true;
+            checkIsolationValveNA.IsEnabled = false; checkIsolationValveNA.InputTransparent = true;
+            checkTestPointYes.IsEnabled = false; checkTestPointYes.InputTransparent = true;
+            checkTestPointNo.IsEnabled = false; checkTestPointNo.InputTransparent = true;
+            checkTestPointNA.IsEnabled = false; checkTestPointNA.InputTransparent = true;
+            checkPurgePointsYes.IsEnabled = false; checkPurgePointsYes.InputTransparent = true;
+            checkPurgePointsNo.IsEnabled = false; checkPurgePointsNo.InputTransparent = true;
+            checkPurgePointsNA.IsEnabled = false; checkPurgePointsNA.InputTransparent = true;
+            checkGeneralPipeworkConditionYes.IsEnabled = false; checkGeneralPipeworkConditionYes.InputTransparent = true;
+            checkGeneralPipeworkConditionNo.IsEnabled = false; checkGeneralPipeworkConditionNo.InputTransparent = true;
+            checkGeneralPipeworkConditionNA.IsEnabled = false; checkGeneralPipeworkConditionNA.InputTransparent = true;
+            checkinstallationSafeToOperateYes.IsEnabled = false; checkinstallationSafeToOperateYes.InputTransparent = true;
+            checkinstallationSafeToOperateNo.IsEnabled = false; checkinstallationSafeToOperateNo.InputTransparent = true;
+            checkinstallationSafeToOperateNA.IsEnabled = false; checkinstallationSafeToOperateNA.InputTransparent = true;
+            checkWarningNoticeIssuedYes.IsEnabled = false; checkWarningNoticeIssuedYes.InputTransparent = true;
+            checkWarningNoticeIssuedNo.IsEnabled = false; checkWarningNoticeIssuedNo.InputTransparent = true;
+            checkWarningNoticeIssuedNA.IsEnabled = false; checkWarningNoticeIssuedNA.InputTransparent = true;
+            checkGasTightnessTestRecommendedYes.IsEnabled = false; checkGasTightnessTestRecommendedYes.InputTransparent = true;
+            checkGasTightnessTestRecommendedNo.IsEnabled = false; checkGasTightnessTestRecommendedNo.InputTransparent = true;
+            checkGasTightnessTestRecommendedNA.IsEnabled = false; checkGasTightnessTestRecommendedNA.InputTransparent = true;
+            checkGuessTightnessTestCarriedOutYes.IsEnabled = false; checkGuessTightnessTestCarriedOutYes.InputTransparent = true;
+            checkGuessTightnessTestCarriedOutNo.IsEnabled = false; checkGuessTightnessTestCarriedOutNo.InputTransparent = true;
+            checkGuessTightnessTestCarriedOutNA.IsEnabled = false; checkGuessTightnessTestCarriedOutNA.InputTransparent = true;
+            checkRecordTightnessTestResultYes.IsEnabled = false; checkRecordTightnessTestResultYes.InputTransparent = true;
+            checkRecordTightnessTestResultNo.IsEnabled = false; checkRecordTightnessTestResultNo.InputTransparent = true;
+            checkRecordTightnessTestResultNA.IsEnabled = false; checkRecordTightnessTestResultNA.InputTransparent = true;
+        }
     }
     private Dictionary<string, string> GatherReportData()
     {
@@ -1573,6 +1684,7 @@ public partial class GasRiskAssessmentPage : ContentPage
         else
             checkGasTightnessTestRecommendedNA.Color = Colors.White;
     }
+
 
 
 

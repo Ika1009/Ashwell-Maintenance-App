@@ -293,6 +293,35 @@ public partial class EngineersReportPage : ContentPage
             checkWarningNoticeYes.IsChecked = bool.Parse(reportData["checkWarningNoticeIssued"]);
 
 
+        if (previewOnly)
+        {
+            clientsName.IsEnabled = false;
+            clientsAdress.IsEnabled = false;
+            applianceMake.IsEnabled = false;
+            date.IsEnabled = false;
+            engineer.IsEnabled = false;
+            taskTNo.IsEnabled = false;
+            serialNumber.IsEnabled = false;
+            descriptionOfWork.IsEnabled = false;
+            gasOperatingPressure.IsEnabled = false;
+            intletPressure.IsEnabled = false;
+            warningNoticeNumber.IsEnabled = false;
+            totalHours.IsEnabled = false;
+            // CheckBoxes: disable and make input transparent
+            checkTaskCompleteYes.IsEnabled = false; checkTaskCompleteYes.InputTransparent = true;
+            checkSpillageTestPass.IsEnabled = false; checkSpillageTestPass.InputTransparent = true;
+            checkSpillageTestNo.IsEnabled = false; checkSpillageTestNo.InputTransparent = true;
+            checkSpillageTestNA.IsEnabled = false; checkSpillageTestNA.InputTransparent = true;
+            checkRiskAssessmentYes.IsEnabled = false; checkRiskAssessmentYes.InputTransparent = true;
+            checkFlueFlowTestPass.IsEnabled = false; checkFlueFlowTestPass.InputTransparent = true;
+            checkFlueFlowTestFail.IsEnabled = false; checkFlueFlowTestFail.InputTransparent = true;
+            checkFlueFlowTestNA.IsEnabled = false; checkFlueFlowTestNA.InputTransparent = true;
+            checkTightnessTestPass.IsEnabled = false; checkTightnessTestPass.InputTransparent = true;
+            checkTightnessTestFail.IsEnabled = false; checkTightnessTestFail.InputTransparent = true;
+            checkTightnessTestNA.IsEnabled = false; checkTightnessTestNA.InputTransparent = true;
+            checkApplianceSafeToUseYes.IsEnabled = false; checkApplianceSafeToUseYes.InputTransparent = true;
+            checkWarningNoticeYes.IsEnabled = false; checkWarningNoticeYes.InputTransparent = true;
+        }
     }
     private Dictionary<string, string> GatherReportData()
     {

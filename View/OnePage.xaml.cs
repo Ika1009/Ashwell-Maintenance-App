@@ -777,7 +777,119 @@ public partial class OnePage : ContentPage
         //}
         if (reportData.ContainsKey("actualLeakRateResult"))
             actualLeakRateResult.Text = reportData["actualLeakRateResult"];
+        if (previewOnly)
+        {
+            // Entries and Editors
+            site.IsEnabled = false;
+            date.IsEnabled = false;
+            location.IsEnabled = false;
+            steel1Total.IsEnabled = false;
+            steel2Total.IsEnabled = false;
+            steel3Total.IsEnabled = false;
+            steel4Total.IsEnabled = false;
+            steel5Total.IsEnabled = false;
+            steel6Total.IsEnabled = false;
+            steel7Total.IsEnabled = false;
+            steel8Total.IsEnabled = false;
+            steel9Total.IsEnabled = false;
+            steel10Total.IsEnabled = false;
+            steel11Total.IsEnabled = false;
+            steel12Total.IsEnabled = false;
+            steel13Total.IsEnabled = false;
+            copper1Total.IsEnabled = false;
+            copper2Total.IsEnabled = false;
+            copper3Total.IsEnabled = false;
+            copper4Total.IsEnabled = false;
+            copper5Total.IsEnabled = false;
+            copper6Total.IsEnabled = false;
+            copper7Total.IsEnabled = false;
+            pesdr1Total.IsEnabled = false;
+            pesdr2Total.IsEnabled = false;
+            pesdr3Total.IsEnabled = false;
+            pesdr4Total.IsEnabled = false;
+            pesdr5Total.IsEnabled = false;
+            pesdr6Total.IsEnabled = false;
+            pesdr7Total.IsEnabled = false;
+            pesdr8Total.IsEnabled = false;
+            totalPipeworkVolume.IsEnabled = false;
+            pipeworkFittingsIV.IsEnabled = false;
+            meterVolume.IsEnabled = false;
+            totalVolumeForTesting.IsEnabled = false;
+            tightnessTestPressure.IsEnabled = false;
+            letByDuration.IsEnabled = false;
+            stabilisationDuration.IsEnabled = false;
+            testDuration.IsEnabled = false;
+            actualPressureDropResult.IsEnabled = false;
+            engineer.IsEnabled = false;
+            clientsName.IsEnabled = false;
+            WarningNoticeRefNo.IsEnabled = false;
+            cardNumber.IsEnabled = false;
+            testMediumFactor.IsEnabled = false;
+            testGuageUsed.IsEnabled = false;
+            gaugeReadableMovement.IsEnabled = false;
+            strengthTestPressure.IsEnabled = false;
+            stabilisationPeriod.IsEnabled = false;
+            strenghtTestDuration.IsEnabled = false;
+            permittedPressureDrop.IsEnabled = false;
+            actualPressureDrop.IsEnabled = false;
+            AreaA_Value.IsEnabled = false;
+            AreaB_Value.IsEnabled = false;
+            AreaCD_Value.IsEnabled = false;
+            roomVolume.IsEnabled = false;
+            actualLeakRateResult.IsEnabled = false;
 
+            // CheckBoxes: disable and make input transparent
+            checkIsWeatherTemperatureStableYes.IsEnabled = false; checkIsWeatherTemperatureStableYes.InputTransparent = true;
+            checkIsWeatherTemperatureStableNo.IsEnabled = false; checkIsWeatherTemperatureStableNo.InputTransparent = true;
+            checkMeterBypassYes.IsEnabled = false; checkMeterBypassYes.InputTransparent = true;
+            checkMeterBypassNo.IsEnabled = false; checkMeterBypassNo.InputTransparent = true;
+            checkBarometricPressureCorrectionYes.IsEnabled = false; checkBarometricPressureCorrectionYes.InputTransparent = true;
+            checkBarometricPressureCorrectionNo.IsEnabled = false; checkBarometricPressureCorrectionNo.InputTransparent = true;
+            checkComponentsRemovedBypassedYes.IsEnabled = false; checkComponentsRemovedBypassedYes.InputTransparent = true;
+            checkComponentsRemovedBypassedNo.IsEnabled = false; checkComponentsRemovedBypassedNo.InputTransparent = true;
+            checkTestPassedOrFailedPass.IsEnabled = false; checkTestPassedOrFailedPass.InputTransparent = true;
+            checkAreaA.IsEnabled = false; checkAreaA.InputTransparent = true;
+            checkAreaB.IsEnabled = false; checkAreaB.InputTransparent = true;
+            checkAreaCD.IsEnabled = false; checkAreaCD.InputTransparent = true;
+            checkAreasWithInadequateVentilationYes.IsEnabled = false; checkAreasWithInadequateVentilationYes.InputTransparent = true;
+            checkAreasWithInadequateVentilationNo.IsEnabled = false; checkAreasWithInadequateVentilationNo.InputTransparent = true;
+            checkAreasWithInadequateVentilationNA.IsEnabled = false; checkAreasWithInadequateVentilationNA.InputTransparent = true;
+
+            // Pickers: disable
+            steel1.IsEnabled = false;
+            steel2.IsEnabled = false;
+            steel3.IsEnabled = false;
+            steel4.IsEnabled = false;
+            steel5.IsEnabled = false;
+            steel6.IsEnabled = false;
+            steel7.IsEnabled = false;
+            steel8.IsEnabled = false;
+            steel9.IsEnabled = false;
+            steel10.IsEnabled = false;
+            steel11.IsEnabled = false;
+            steel12.IsEnabled = false;
+            steel13.IsEnabled = false;
+            copper1.IsEnabled = false;
+            copper2.IsEnabled = false;
+            copper3.IsEnabled = false;
+            copper4.IsEnabled = false;
+            copper5.IsEnabled = false;
+            copper6.IsEnabled = false;
+            copper7.IsEnabled = false;
+            pesdr1.IsEnabled = false;
+            pesdr2.IsEnabled = false;
+            pesdr3.IsEnabled = false;
+            pesdr4.IsEnabled = false;
+            pesdr5.IsEnabled = false;
+            pesdr6.IsEnabled = false;
+            pesdr7.IsEnabled = false;
+            pesdr8.IsEnabled = false;
+            meterVolumePicker.IsEnabled = false;
+            testMediumPicker.IsEnabled = false;
+            installationPicker.IsEnabled = false;
+            maximumPermittedLeakRate.IsEnabled = false;
+            testPassedOrFailed.IsEnabled = false;
+        }
     }
     private Dictionary<string, string> GatherReportData()
     {

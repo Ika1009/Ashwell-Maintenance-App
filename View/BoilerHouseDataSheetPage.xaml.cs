@@ -452,7 +452,90 @@ public partial class BoilerHouseDataSheetPage : ContentPage
         if (reportData.ContainsKey("checkPlantGasTightnessTestNo"))
             checkPlantGasTightnessTestNo.IsChecked = bool.Parse(reportData["checkPlantGasTightnessTestNo"]);
 
+        if (previewOnly)
+        {
+            // Entries and Editors
+            uern.IsEnabled = false;
+            SheetNo.IsEnabled = false;
+            WarningNoticeRefNo.IsEnabled = false;
+            nameOfPremises.IsEnabled = false;
+            adressOfPremises.IsEnabled = false;
+            appliancesCoveredByThisCheck.IsEnabled = false;
+            meterHouseLocation.IsEnabled = false;
+            meterHouseComment.IsEnabled = false;
+            ventilationLocation.IsEnabled = false;
+            freeAirExistingHighLevel.IsEnabled = false;
+            freeAirExistingLowLevel.IsEnabled = false;
+            freeAirRequiredHighLevel.IsEnabled = false;
+            freeAirRequiredLowLevel.IsEnabled = false;
+            boilerHousePlantRoomComments.IsEnabled = false;
+            inletWorkingPressureTestFullLoad.IsEnabled = false;
+            inletWorkingPressureTestPartLoad.IsEnabled = false;
+            standingPressure.IsEnabled = false;
+            plantGasInstallationVolume.IsEnabled = false;
+            engineersName.IsEnabled = false;
+            contractor.IsEnabled = false;
+            companyGasSafeRegistrationNo.IsEnabled = false;
+            engineersGasSafeIDNo.IsEnabled = false;
+            inspectionDate.IsEnabled = false;
+            clientsName.IsEnabled = false;
+            date.IsEnabled = false;
 
+            // CheckBoxes: disable and make input transparent
+            checkRemedialToWorkRequiredYes.IsEnabled = false; checkRemedialToWorkRequiredYes.InputTransparent = true;
+            checkTestsCompletedSatisfactoryYes.IsEnabled = false; checkTestsCompletedSatisfactoryYes.InputTransparent = true;
+            checkPipeworkToGasMeterYes.IsEnabled = false; checkPipeworkToGasMeterYes.InputTransparent = true;
+            checkPipeworkToGasMeterNo.IsEnabled = false; checkPipeworkToGasMeterNo.InputTransparent = true;
+            checkPipeworkToGasMeterNA.IsEnabled = false; checkPipeworkToGasMeterNA.InputTransparent = true;
+            checkRegulatorAndOrMeterYes.IsEnabled = false; checkRegulatorAndOrMeterYes.InputTransparent = true;
+            checkRegulatorAndOrMeterNo.IsEnabled = false; checkRegulatorAndOrMeterNo.InputTransparent = true;
+            checkRegulatorAndOrMeterNA.IsEnabled = false; checkRegulatorAndOrMeterNA.InputTransparent = true;
+            checkSafetyNoticesLabelsYes.IsEnabled = false; checkSafetyNoticesLabelsYes.InputTransparent = true;
+            checkSafetyNoticesLabelsNo.IsEnabled = false; checkSafetyNoticesLabelsNo.InputTransparent = true;
+            checkSafetyNoticesLabelsNA.IsEnabled = false; checkSafetyNoticesLabelsNA.InputTransparent = true;
+            checkLineDiagramYes.IsEnabled = false; checkLineDiagramYes.InputTransparent = true;
+            checkLineDiagramNo.IsEnabled = false; checkLineDiagramNo.InputTransparent = true;
+            checkLineDiagramNA.IsEnabled = false; checkLineDiagramNA.InputTransparent = true;
+            checkColorCodingIndicationTapeYes.IsEnabled = false; checkColorCodingIndicationTapeYes.InputTransparent = true;
+            checkColorCodingIndicationTapeNo.IsEnabled = false; checkColorCodingIndicationTapeNo.InputTransparent = true;
+            checkColorCodingIndicationTapeNA.IsEnabled = false; checkColorCodingIndicationTapeNA.InputTransparent = true;
+            checkMeterHouseVentilationYes.IsEnabled = false; checkMeterHouseVentilationYes.InputTransparent = true;
+            checkMeterHouseVentilationNo.IsEnabled = false; checkMeterHouseVentilationNo.InputTransparent = true;
+            checkMeterHouseVentilationNA.IsEnabled = false; checkMeterHouseVentilationNA.InputTransparent = true;
+            checkFreeAirExistingCM.IsEnabled = false; checkFreeAirExistingCM.InputTransparent = true;
+            checkFreeAirExistingMH.IsEnabled = false; checkFreeAirExistingMH.InputTransparent = true;
+            checkFreeAirRequiredCM.IsEnabled = false; checkFreeAirRequiredCM.InputTransparent = true;
+            checkcheckFreeAirRequiredMH.IsEnabled = false; checkcheckFreeAirRequiredMH.InputTransparent = true;
+            checkMainFlueYes.IsEnabled = false; checkMainFlueYes.InputTransparent = true;
+            checkMainFlueNo.IsEnabled = false; checkMainFlueNo.InputTransparent = true;
+            checkMainFlueNA.IsEnabled = false; checkMainFlueNA.InputTransparent = true;
+            checkChimneyFlueTerminalPositionYes.IsEnabled = false; checkChimneyFlueTerminalPositionYes.InputTransparent = true;
+            checkChimneyFlueTerminalPositionNo.IsEnabled = false; checkChimneyFlueTerminalPositionNo.InputTransparent = true;
+            checkChimneyFlueTerminalPositionNA.IsEnabled = false; checkChimneyFlueTerminalPositionNA.InputTransparent = true;
+            checkStubFluersToBoildersYes.IsEnabled = false; checkStubFluersToBoildersYes.InputTransparent = true;
+            checkStubFluersToBoildersNo.IsEnabled = false; checkStubFluersToBoildersNo.InputTransparent = true;
+            checkStubFluersToBoildersNA.IsEnabled = false; checkStubFluersToBoildersNA.InputTransparent = true;
+            checkIdFanYes.IsEnabled = false; checkIdFanYes.InputTransparent = true;
+            checkIdFanNo.IsEnabled = false; checkIdFanNo.InputTransparent = true;
+            checkIdFanNA.IsEnabled = false; checkIdFanNA.InputTransparent = true;
+            checkFanBoilerSafetyInterlockYes.IsEnabled = false; checkFanBoilerSafetyInterlockYes.InputTransparent = true;
+            checkFanBoilerSafetyInterlockNo.IsEnabled = false; checkFanBoilerSafetyInterlockNo.InputTransparent = true;
+            checkFanBoilerSafetyInterlockNA.IsEnabled = false; checkFanBoilerSafetyInterlockNA.InputTransparent = true;
+            checkGeneralComplianceOfGasPipeYes.IsEnabled = false; checkGeneralComplianceOfGasPipeYes.InputTransparent = true;
+            checkGeneralComplianceOfGasPipeNo.IsEnabled = false; checkGeneralComplianceOfGasPipeNo.InputTransparent = true;
+            checkGeneralComplianceOfGasPipeNA.IsEnabled = false; checkGeneralComplianceOfGasPipeNA.InputTransparent = true;
+            checkVentilationYes.IsEnabled = false; checkVentilationYes.InputTransparent = true;
+            checkVentilationNo.IsEnabled = false; checkVentilationNo.InputTransparent = true;
+            checkVentilationNA.IsEnabled = false; checkVentilationNA.InputTransparent = true;
+            checkAIVYes.IsEnabled = false; checkAIVYes.InputTransparent = true;
+            checkAIVNo.IsEnabled = false; checkAIVNo.InputTransparent = true;
+            checkAIVNA.IsEnabled = false; checkAIVNA.InputTransparent = true;
+            checkManualYes.IsEnabled = false; checkManualYes.InputTransparent = true;
+            checkManualNo.IsEnabled = false; checkManualNo.InputTransparent = true;
+            checkManualNA.IsEnabled = false; checkManualNA.InputTransparent = true;
+            checkPlantGasTightnessTestYes.IsEnabled = false; checkPlantGasTightnessTestYes.InputTransparent = true;
+            checkPlantGasTightnessTestNo.IsEnabled = false; checkPlantGasTightnessTestNo.InputTransparent = true;
+        }
     }
     private Dictionary<string, string> GatherReportData()
     {

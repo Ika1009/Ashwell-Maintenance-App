@@ -552,6 +552,93 @@ public partial class ConformityCheckPage : ContentPage
         if (reportData.ContainsKey("checkSystemDosingFacilitiesYes"))
             checkSystemDosingFacilitiesYes.IsChecked = bool.Parse(reportData["checkSystemDosingFacilitiesYes"]);
 
+        if (previewOnly)
+        {
+            // Entries and Editors
+            uern.IsEnabled = false;
+            SheetNo.IsEnabled = false;
+            WarningNoticeRefNo.IsEnabled = false;
+            nameAndAddressOfPremises.IsEnabled = false;
+            location.IsEnabled = false;
+            ventilationCalculations.IsEnabled = false;
+            existingHighLevel.IsEnabled = false;
+            existingLowLevel.IsEnabled = false;
+            requiredHighLevel.IsEnabled = false;
+            requiredLowLevel.IsEnabled = false;
+            ventilationChecksComments.IsEnabled = false;
+            flueChecksComments.IsEnabled = false;
+            emergencyStopButtonComment.IsEnabled = false;
+            safetyInterlocksComments.IsEnabled = false;
+            engineersName.IsEnabled = false;
+            contractor.IsEnabled = false;
+            companyGasSafeRegistrationNo.IsEnabled = false;
+            inspectionDate.IsEnabled = false;
+            engineersGasSafeIDNo.IsEnabled = false;
+            clientsName.IsEnabled = false;
+            date.IsEnabled = false;
+
+            // CheckBoxes: disable and make input transparent
+            checkRemedialToWorkRequiredYes.IsEnabled = false; checkRemedialToWorkRequiredYes.InputTransparent = true;
+            checkTestsCompletedSatisfactoryYes.IsEnabled = false; checkTestsCompletedSatisfactoryYes.InputTransparent = true;
+            checkExistingLevelCM.IsEnabled = false; checkExistingLevelCM.InputTransparent = true;
+            checkRequiredLevelCM.IsEnabled = false; checkRequiredLevelCM.InputTransparent = true;
+            checkVentilationCorrectlySizedYes.IsEnabled = false; checkVentilationCorrectlySizedYes.InputTransparent = true;
+            checkVentilationAtTheCorrectHeightYes.IsEnabled = false; checkVentilationAtTheCorrectHeightYes.InputTransparent = true;
+            checkVentilationArrangementsYes.IsEnabled = false; checkVentilationArrangementsYes.InputTransparent = true;
+            checkA_ID1.IsEnabled = false; checkA_ID1.InputTransparent = true;
+            checkB_AR1.IsEnabled = false; checkB_AR1.InputTransparent = true;
+            checkC_NCS1.IsEnabled = false; checkC_NCS1.InputTransparent = true;
+            checkFluesFittedYes.IsEnabled = false; checkFluesFittedYes.InputTransparent = true;
+            checkFluesFittedNo.IsEnabled = false; checkFluesFittedNo.InputTransparent = true;
+            checkFluesFittedNA.IsEnabled = false; checkFluesFittedNA.InputTransparent = true;
+            checkFluesSupportedYes.IsEnabled = false; checkFluesSupportedYes.InputTransparent = true;
+            checkFluesSupportedNo.IsEnabled = false; checkFluesSupportedNo.InputTransparent = true;
+            checkFluesSupportedNA.IsEnabled = false; checkFluesSupportedNA.InputTransparent = true;
+            checkFluesInLineYes.IsEnabled = false; checkFluesInLineYes.InputTransparent = true;
+            checkFluesInLineNo.IsEnabled = false; checkFluesInLineNo.InputTransparent = true;
+            checkFluesInLineNA.IsEnabled = false; checkFluesInLineNA.InputTransparent = true;
+            checkFacilitiesYes.IsEnabled = false; checkFacilitiesYes.InputTransparent = true;
+            checkFacilitiesNo.IsEnabled = false; checkFacilitiesNo.InputTransparent = true;
+            checkFacilitiesNA.IsEnabled = false; checkFacilitiesNA.InputTransparent = true;
+            checkFlueGradientsYes.IsEnabled = false; checkFlueGradientsYes.InputTransparent = true;
+            checkFlueGradientsNo.IsEnabled = false; checkFlueGradientsNo.InputTransparent = true;
+            checkFlueGradientsNA.IsEnabled = false; checkFlueGradientsNA.InputTransparent = true;
+            checkFluesInspectionYes.IsEnabled = false; checkFluesInspectionYes.InputTransparent = true;
+            checkFluesInspectionNo.IsEnabled = false; checkFluesInspectionNo.InputTransparent = true;
+            checkFluesInspectionNA.IsEnabled = false; checkFluesInspectionNA.InputTransparent = true;
+            checkFlueJointsYes.IsEnabled = false; checkFlueJointsYes.InputTransparent = true;
+            checkFlueJointsNo.IsEnabled = false; checkFlueJointsNo.InputTransparent = true;
+            checkFlueJointsNA.IsEnabled = false; checkFlueJointsNA.InputTransparent = true;
+            checkA_ID2.IsEnabled = false; checkA_ID2.InputTransparent = true;
+            checkB_AR2.IsEnabled = false; checkB_AR2.InputTransparent = true;
+            checkC_NCS2.IsEnabled = false; checkC_NCS2.InputTransparent = true;
+            checkInterlocksProvidedYes.IsEnabled = false; checkInterlocksProvidedYes.InputTransparent = true;
+            checkInterlocksProvidedNo.IsEnabled = false; checkInterlocksProvidedNo.InputTransparent = true;
+            checkInterlocksProvidedNA.IsEnabled = false; checkInterlocksProvidedNA.InputTransparent = true;
+            checkEmergencyShutOffButtonYes.IsEnabled = false; checkEmergencyShutOffButtonYes.InputTransparent = true;
+            checkEmergencyShutOffButtonNo.IsEnabled = false; checkEmergencyShutOffButtonNo.InputTransparent = true;
+            checkEmergencyShutOffButtonNA.IsEnabled = false; checkEmergencyShutOffButtonNA.InputTransparent = true;
+            checkPlantInterlinkYes.IsEnabled = false; checkPlantInterlinkYes.InputTransparent = true;
+            checkPlantInterlinkNo.IsEnabled = false; checkPlantInterlinkNo.InputTransparent = true;
+            checkPlantInterlinkNA.IsEnabled = false; checkPlantInterlinkNA.InputTransparent = true;
+            checkFuelShutOffYes.IsEnabled = false; checkFuelShutOffYes.InputTransparent = true;
+            checkFuelShutOffNo.IsEnabled = false; checkFuelShutOffNo.InputTransparent = true;
+            checkFuelShutOffNA.IsEnabled = false; checkFuelShutOffNA.InputTransparent = true;
+            checkFuelFirstEntryYes.IsEnabled = false; checkFuelFirstEntryYes.InputTransparent = true;
+            checkFuelFirstEntryNo.IsEnabled = false; checkFuelFirstEntryNo.InputTransparent = true;
+            checkFuelFirstEntryNA.IsEnabled = false; checkFuelFirstEntryNA.InputTransparent = true;
+            checkSystemStopYes.IsEnabled = false; checkSystemStopYes.InputTransparent = true;
+            checkSystemStopNo.IsEnabled = false; checkSystemStopNo.InputTransparent = true;
+            checkSystemStopNA.IsEnabled = false; checkSystemStopNA.InputTransparent = true;
+            checkTestAndResetYes.IsEnabled = false; checkTestAndResetYes.InputTransparent = true;
+            checkTestAndResetNo.IsEnabled = false; checkTestAndResetNo.InputTransparent = true;
+            checkTestAndResetNA.IsEnabled = false; checkTestAndResetNA.InputTransparent = true;
+            checkA_ID3.IsEnabled = false; checkA_ID3.InputTransparent = true;
+            checkB_AR3.IsEnabled = false; checkB_AR3.InputTransparent = true;
+            checkC_NCS3.IsEnabled = false; checkC_NCS3.InputTransparent = true;
+            checkSystemDosingFacilitiesYes.IsEnabled = false; checkSystemDosingFacilitiesYes.InputTransparent = true;
+        }
+
     }
     private Dictionary<string, string> GatherReportData()
     {
@@ -639,12 +726,7 @@ public partial class ConformityCheckPage : ContentPage
         reportData.Add("checkB_AR3", checkB_AR3.IsChecked.ToString());
         reportData.Add("checkC_NCS3", checkC_NCS3.IsChecked.ToString());
         reportData.Add("checkSystemDosingFacilitiesYes", checkSystemDosingFacilitiesYes.IsChecked.ToString());
-     
-
-
-
-
-
+        
         return reportData;
     }
 

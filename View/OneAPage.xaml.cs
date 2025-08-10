@@ -836,7 +836,108 @@ public partial class OneAPage : ContentPage
             WarningNoticeRefNo.Text = reportData["WarningNoticeRefNo"];
         }
 
-
+        // Make all controls uneditable in preview mode
+        if (previewOnly)
+        {
+            // Entries and Editors
+            site.IsEnabled = false;
+            location.IsEnabled = false;
+            steel1Total.IsEnabled = false;
+            steel2Total.IsEnabled = false;
+            steel3Total.IsEnabled = false;
+            steel4Total.IsEnabled = false;
+            steel5Total.IsEnabled = false;
+            steel6Total.IsEnabled = false;
+            steel7Total.IsEnabled = false;
+            steel8Total.IsEnabled = false;
+            steel9Total.IsEnabled = false;
+            steel10Total.IsEnabled = false;
+            steel11Total.IsEnabled = false;
+            steel12Total.IsEnabled = false;
+            steel13Total.IsEnabled = false;
+            copper1Total.IsEnabled = false;
+            copper2Total.IsEnabled = false;
+            copper3Total.IsEnabled = false;
+            copper4Total.IsEnabled = false;
+            copper5Total.IsEnabled = false;
+            copper6Total.IsEnabled = false;
+            copper7Total.IsEnabled = false;
+            pesdr1Total.IsEnabled = false;
+            pesdr2Total.IsEnabled = false;
+            pesdr3Total.IsEnabled = false;
+            pesdr4Total.IsEnabled = false;
+            pesdr5Total.IsEnabled = false;
+            pesdr6Total.IsEnabled = false;
+            pesdr7Total.IsEnabled = false;
+            pesdr8Total.IsEnabled = false;
+            totalPipeworkVolume.IsEnabled = false;
+            pipeworkFittingsIV.IsEnabled = false;
+            meterVolume.IsEnabled = false;
+            totalVolumeForTesting.IsEnabled = false;
+            tightnessTestPressure.IsEnabled = false;
+            roomVolumeOfSmallestOccupiedSpace.IsEnabled = false;
+            maximumAllowablePressureDrop.IsEnabled = false;
+            strengthTestPressure.IsEnabled = false;
+            stabilisationPeriod.IsEnabled = false;
+            strenghtTestDuration.IsEnabled = false;
+            permittedPressureDrop.IsEnabled = false;
+            actualPressureDrop.IsEnabled = false;
+            letByDuration.IsEnabled = false;
+            stabilisationDuration.IsEnabled = false;
+            testDuration.IsEnabled = false;
+            actualPressureDropResult.IsEnabled = false;
+            engineer.IsEnabled = false;
+            cardNumber.IsEnabled = false;
+            clientsName.IsEnabled = false;
+            WarningNoticeRefNo.IsEnabled = false;
+            // Pickers
+            steel1.IsEnabled = false;
+            steel2.IsEnabled = false;
+            steel3.IsEnabled = false;
+            steel4.IsEnabled = false;
+            steel5.IsEnabled = false;
+            steel6.IsEnabled = false;
+            steel7.IsEnabled = false;
+            steel8.IsEnabled = false;
+            steel9.IsEnabled = false;
+            steel10.IsEnabled = false;
+            steel11.IsEnabled = false;
+            steel12.IsEnabled = false;
+            steel13.IsEnabled = false;
+            copper1.IsEnabled = false;
+            copper2.IsEnabled = false;
+            copper3.IsEnabled = false;
+            copper4.IsEnabled = false;
+            copper5.IsEnabled = false;
+            copper6.IsEnabled = false;
+            copper7.IsEnabled = false;
+            pesdr1.IsEnabled = false;
+            pesdr2.IsEnabled = false;
+            pesdr3.IsEnabled = false;
+            pesdr4.IsEnabled = false;
+            pesdr5.IsEnabled = false;
+            pesdr6.IsEnabled = false;
+            pesdr7.IsEnabled = false;
+            pesdr8.IsEnabled = false;
+            meterVolumePicker.IsEnabled = false;
+            testMediumPicker.IsEnabled = false;
+            installationPicker.IsEnabled = false;
+            testGaugeUsed.IsEnabled = false;
+            testPassedOrFailed.IsEnabled = false;
+            // DatePickers
+            date.IsEnabled = false;
+            // CheckBoxes
+            checkIsWeatherTemperatureStableYes.IsEnabled = false; checkIsWeatherTemperatureStableYes.InputTransparent = true;
+            checkIsWeatherTemperatureStableNo.IsEnabled = false; checkIsWeatherTemperatureStableNo.InputTransparent = true;
+            checkMeterBypassYes.IsEnabled = false; checkMeterBypassYes.InputTransparent = true;
+            checkMeterBypassNo.IsEnabled = false; checkMeterBypassNo.InputTransparent = true;
+            checkInadequateVentilationYes.IsEnabled = false; checkInadequateVentilationYes.InputTransparent = true;
+            checkInadequateVentilationNo.IsEnabled = false; checkInadequateVentilationNo.InputTransparent = true;
+            checkComponentsRemovedBypassedYes.IsEnabled = false; checkComponentsRemovedBypassedYes.InputTransparent = true;
+            checkComponentsRemovedBypassedNo.IsEnabled = false; checkComponentsRemovedBypassedNo.InputTransparent = true;
+            checkTestPassedOrFailedPass.IsEnabled = false; checkTestPassedOrFailedPass.InputTransparent = true;
+            checkTestPassedOrFailedFail.IsEnabled = false; checkTestPassedOrFailedFail.InputTransparent = true;
+        }
     }
     private Dictionary<string, string> GatherReportData()
     {
@@ -959,12 +1060,7 @@ public partial class OneAPage : ContentPage
         else
             reportData.Add("copper5", string.Empty);
         reportData.Add("copper5Total", copper5Total.Text ?? string.Empty);
-        //if (copper5.SelectedIndex != -1)
-        //    reportData.Add("copper5", (copper5.SelectedItem).ToString());
-        //else
-        //    reportData.Add("copper5", string.Empty);
-        //reportData.Add("copper5Total", copper5Total.Text ?? string.Empty);
-        
+
         if (copper6.SelectedIndex != -1)
             reportData.Add("copper6", (copper6.SelectedItem).ToString());
         else
