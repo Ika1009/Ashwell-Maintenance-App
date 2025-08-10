@@ -65,6 +65,28 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
+                    <Label Text="Images" TextColor="#fff" FontSize="18" FontFamily="SatoshiMedium" Margin="0,20,0,0"/>
+                    <CollectionView x:Name="ImagesCollectionView"
+                                    ItemsSource="{Binding Images}"
+                                    HeightRequest="260"
+                                    ItemsLayout="HorizontalList"
+                                    Margin="0,0,0,20">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="5" BackgroundColor="#222225" CornerRadius="10" Margin="5">
+                                    <VerticalStackLayout>
+                                        <Image WidthRequest="200" HeightRequest="200" Aspect="AspectFill">
+                                            <Image.Source>
+                                                <UriImageSource Uri="{Binding ImagePath}" CachingEnabled="False"/>
+                                            </Image.Source>
+                                        </Image>
+                                        <Label Text="{Binding ImageName}" TextColor="#fff" FontSize="14" HorizontalTextAlignment="Center"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </VerticalStackLayout>
             </ScrollView>
         </Grid>
@@ -99,5 +121,14 @@
                 </OnPlatform>
             </ActivityIndicator.IsVisible>
         </ActivityIndicator>
+
+        <Frame x:Name="uploadImageButtonFrame" Grid.RowSpan="2" HorizontalOptions="End" VerticalOptions="End" Padding="0" Margin="0, 0, 15, 30" BackgroundColor="Transparent" BorderColor="Transparent" WidthRequest="60" HeightRequest="60" CornerRadius="30">
+            <Grid BackgroundColor="Red">
+                <Image Source="plus.png" Scale="0.5"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnUploadButtonClicked" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </Frame>
     </Grid>
 </ContentPage>

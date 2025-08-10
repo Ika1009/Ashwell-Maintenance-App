@@ -18,6 +18,7 @@ public partial class DisplayedReportsPage : ContentPage
 	    InitializeComponent();
         this.BindingContext = this; // This line sets the page's context to itself, making the Reports collection bindable in XAML.
         _ = LoadReports(folderId);
+        _ = LoadImages(folderId); // Load images on page open
         this.folderId = folderId;
         this.folderName = folderName;
     }
@@ -26,6 +27,7 @@ public partial class DisplayedReportsPage : ContentPage
         InitializeComponent();
         this.BindingContext = this; // This line sets the page's context to itself, making the Reports collection bindable in XAML.
         _ = LoadReports(folderId);
+        _ = LoadImages(folderId); // Load images on page open
         this.folderId = folderId;
         this.folderName = folderName;
         this.folderComplete = folderComplete;
@@ -239,14 +241,24 @@ public partial class DisplayedReportsPage : ContentPage
             Images.Clear();
             foreach (var imagePath in imagePaths)
             {
+                // Ensure the image path is a full URL and has an extension
+                string fileName = Path.GetFileName(imagePath);
+                string ext = Path.GetExtension(fileName);
+                if (string.IsNullOrWhiteSpace(ext))
+                {
+                    // Default to .jpg if no extension
+                    fileName += ".jpg";
+                }
+                string fullPath = imagePath.StartsWith("http", StringComparison.OrdinalIgnoreCase)
+                    ? imagePath
+                    : $"https://ashwellmaintenance.host/images/{fileName}";
+
                 Images.Add(new ReportImage
                 {
-                    ImagePath = imagePath,
-                    ImageName = Path.GetFileName(imagePath)
+                    ImagePath = fullPath,
+                    ImageName = fileName
                 });
             }
-
-            //ImagesListView.ItemsSource ??= Images;
         }
         catch (HttpRequestException httpEx)
         {
@@ -280,6 +292,24 @@ public partial class DisplayedReportsPage : ContentPage
 
             if (result != null)
             {
+                // Ensure the file name has an extension
+                string fileName = result.FileName;
+                string ext = Path.GetExtension(fileName);
+                if (string.IsNullOrWhiteSpace(ext))
+                {
+                    // Try to infer extension from content type
+                    ext = ".jpg"; // Default
+                    if (!string.IsNullOrWhiteSpace(result.ContentType))
+                    {
+                        if (result.ContentType.Contains("png")) ext = ".png";
+                        else if (result.ContentType.Contains("jpeg")) ext = ".jpg";
+                        else if (result.ContentType.Contains("gif")) ext = ".gif";
+                        else if (result.ContentType.Contains("bmp")) ext = ".bmp";
+                        else if (result.ContentType.Contains("webp")) ext = ".webp";
+                    }
+                    fileName = "image_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ext;
+                }
+
                 // Read the image data as byte array
                 using var stream = await result.OpenReadAsync();
                 using var memoryStream = new MemoryStream();
@@ -287,7 +317,8 @@ public partial class DisplayedReportsPage : ContentPage
                 byte[] imageData = memoryStream.ToArray();
 
                 // Now upload the image data
-                await ApiService.UploadImageAsync(imageData, result.FileName, folderId);
+                await ApiService.UploadImageAsync(imageData, fileName, folderId);
+                await LoadImages(folderId); // Refresh images after upload
             }
         }
         catch (Exception ex)
