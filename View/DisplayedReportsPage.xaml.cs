@@ -46,57 +46,64 @@ public partial class DisplayedReportsPage : ContentPage
 
     public async void ReportChosen(object sender, EventArgs e)
     {
-        if (sender is Button button)
+        loadingBG.IsRunning = true;
+        loading.IsRunning = true;
+        try
         {
-            // Retrieve the CommandParameter, which should be the ReportId
-            if (button.CommandParameter is string reportId)
+            if (sender is Button button)
             {
-                Report report = await ApiService.GetReportByIdAsync(reportId);
+                // Retrieve the CommandParameter, which should be the ReportId
+                if (button.CommandParameter is string reportId)
+                {
+                    Report report = await ApiService.GetReportByIdAsync(reportId);
 
-                if (report != null)
-                {
-                    // Successfully retrieved the report, handle the data as needed
-                    switch (report.ReportType)
+                    if (report != null)
                     {
-                        case Enums.ReportType.BoilerHouseDataSheet:
-                            await Navigation.PushModalAsync(new BoilerHouseDataSheetPage(report));
-                            break;
-                        case Enums.ReportType.ConformityCheck:
-                            await Navigation.PushModalAsync(new ConformityCheckPage(report));
-                            break;
-                        case Enums.ReportType.ConstructionDesignManagement:
-                            await Navigation.PushModalAsync(new ConstructionDesignManagmentPage(report));
-                            break;
-                        case Enums.ReportType.EngineersReport:
-                            await Navigation.PushModalAsync(new EngineersReportPage(report));
-                            break;
-                        case Enums.ReportType.GasRiskAssessment:
-                            await Navigation.PushModalAsync(new GasRiskAssessmentPage(report));
-                            break;
-                        case Enums.ReportType.OneA:
-                            await Navigation.PushModalAsync(new OneAPage(report));
-                            break;
-                        case Enums.ReportType.OneB:
-                            await Navigation.PushModalAsync(new OneBPage(report));
-                            break;
-                        case Enums.ReportType.One:
-                            await Navigation.PushModalAsync(new OnePage(report));
-                            break;
-                        case Enums.ReportType.PressurisationUnitReport:
-                            await Navigation.PushModalAsync(new PressurisationUnitReportPage(report));
-                            break;
-                        case Enums.ReportType.ServiceRecord:
-                            await Navigation.PushModalAsync(new ServiceRecordPage(report));
-                            break;
+                        // Successfully retrieved the report, handle the data as needed
+                        switch (report.ReportType)
+                        {
+                            case Enums.ReportType.BoilerHouseDataSheet:
+                                await Navigation.PushModalAsync(new BoilerHouseDataSheetPage(report));
+                                break;
+                            case Enums.ReportType.ConformityCheck:
+                                await Navigation.PushModalAsync(new ConformityCheckPage(report));
+                                break;
+                            case Enums.ReportType.ConstructionDesignManagement:
+                                await Navigation.PushModalAsync(new ConstructionDesignManagmentPage(report));
+                                break;
+                            case Enums.ReportType.EngineersReport:
+                                await Navigation.PushModalAsync(new EngineersReportPage(report));
+                                break;
+                            case Enums.ReportType.GasRiskAssessment:
+                                await Navigation.PushModalAsync(new GasRiskAssessmentPage(report));
+                                break;
+                            case Enums.ReportType.OneA:
+                                await Navigation.PushModalAsync(new OneAPage(report));
+                                break;
+                            case Enums.ReportType.OneB:
+                                await Navigation.PushModalAsync(new OneBPage(report));
+                                break;
+                            case Enums.ReportType.One:
+                                await Navigation.PushModalAsync(new OnePage(report));
+                                break;
+                            case Enums.ReportType.PressurisationUnitReport:
+                                await Navigation.PushModalAsync(new PressurisationUnitReportPage(report));
+                                break;
+                            case Enums.ReportType.ServiceRecord:
+                                await Navigation.PushModalAsync(new ServiceRecordPage(report));
+                                break;
+                        }
                     }
-                }
-                else
-                {
-                    // Handle the case where the report was not found or an error occurred
-                    Console.WriteLine("Failed to retrieve the report.");
+                    else
+                    {
+                        // Handle the case where the report was not found or an error occurred
+                        Console.WriteLine("Failed to retrieve the report.");
+                    }
                 }
             }
         }
+        loadingBG.IsRunning = false;
+        loading.IsRunning = false;
     }
 
 
@@ -283,6 +290,14 @@ public partial class DisplayedReportsPage : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+
+    public async void OnImageTapped(object sender, EventArgs e)
+    {
+        if (sender is Frame frame && frame.BindingContext is ReportImage img && !string.IsNullOrEmpty(img.ImagePath))
+        {
+            await Navigation.PushModalAsync(new ImagePreviewPage(img.ImagePath));
         }
     }
 }

@@ -33,8 +33,17 @@ public partial class EngineersReportPage : ContentPage
         loading.IsRunning = true;
         EngineersReportBackBtt.IsEnabled = false;
 
-        string folderId = button?.CommandParameter as string;
-        _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
+        try
+        {
+            string folderId = button?.CommandParameter as string;
+            _ = UploadReport(Folders.First(folder => folder.Id == folderId), reportData);
+        }
+        finally
+        {
+            loadingBG.IsRunning = false;
+            loading.IsRunning = false;
+            EngineersReportBackBtt.IsEnabled = true;
+        }
     }
     private async Task UploadReport(Folder folder, Dictionary<string, string> reportData)
     {

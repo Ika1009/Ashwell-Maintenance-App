@@ -76,13 +76,16 @@
                             <DataTemplate>
                                 <Frame Padding="5" BackgroundColor="#222225" CornerRadius="10" Margin="5">
                                     <VerticalStackLayout>
-                                        <Image WidthRequest="200" HeightRequest="200" Aspect="AspectFill">
+                                        <Image WidthRequest="200" HeightRequest="200" Aspect="AspectFill" x:Name="PreviewableImage">
                                             <Image.Source>
                                                 <UriImageSource Uri="{Binding ImagePath}" CachingEnabled="False"/>
                                             </Image.Source>
                                         </Image>
                                         <Label Text="{Binding ImageName}" TextColor="#fff" FontSize="14" HorizontalTextAlignment="Center"/>
                                     </VerticalStackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnImageTapped" />
+                                    </Frame.GestureRecognizers>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
