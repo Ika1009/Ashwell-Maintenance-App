@@ -60,5 +60,10 @@ namespace Ashwell_Maintenance
         public string ImagePath { get; set; }
         public string ImageName { get; set; }
     }
-
+    public class ImageInfo
+    {
+        public string ImageId { get; set; }
+        public string FileName { get; set; }
+        public string Path { get; set; }
+    }
 }

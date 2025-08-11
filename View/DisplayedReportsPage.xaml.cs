@@ -229,48 +229,23 @@ public partial class DisplayedReportsPage : ContentPage
         loading.IsRunning = true;
         try
         {
-            // Call the backend method to get image paths
-            List<string> imagePaths = await ApiService.GetImagePathsAsync(folderId);
+            var images = await ApiService.GetImagesAsync(folderId);
 
-            if (imagePaths == null || imagePaths.Count == 0)
-            {
-                return;
-            }
+            if (images == null || images.Count == 0) return;
 
-            // Clear the current image list and load new images
             Images.Clear();
-            foreach (var imagePath in imagePaths)
+            foreach (var img in images)
             {
-                // Ensure the image path is a full URL and has an extension
-                string fileName = Path.GetFileName(imagePath);
-                string ext = Path.GetExtension(fileName);
-                if (string.IsNullOrWhiteSpace(ext))
-                {
-                    // Default to .jpg if no extension
-                    fileName += ".jpg";
-                }
-                string fullPath = imagePath.StartsWith("http", StringComparison.OrdinalIgnoreCase)
-                    ? imagePath
-                    : $"https://ashwellmaintenance.host/images/{fileName}";
-
                 Images.Add(new ReportImage
                 {
-                    ImagePath = fullPath,
-                    ImageName = fileName
+                    ImagePath = img.Path,
+                    ImageName = img.FileName
                 });
             }
         }
-        catch (HttpRequestException httpEx)
-        {
-            await DisplayAlert("Error", $"Failed to load images. Details: {httpEx.Message}", "OK");
-        }
-        catch (JsonException jsonEx)
-        {
-            await DisplayAlert("Error", $"Failed to parse the received data. Details: {jsonEx.Message}", "OK");
-        }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", $"An unknown error occurred. Details: {ex.Message}", "OK");
+            await DisplayAlert("Error", $"Failed to load images: {ex.Message}", "OK");
         }
         finally
         {
@@ -283,7 +258,6 @@ public partial class DisplayedReportsPage : ContentPage
     {
         try
         {
-            // Open the file picker for images
             var result = await FilePicker.Default.PickAsync(new PickOptions
             {
                 FileTypes = FilePickerFileType.Images,
@@ -292,39 +266,23 @@ public partial class DisplayedReportsPage : ContentPage
 
             if (result != null)
             {
-                // Ensure the file name has an extension
                 string fileName = result.FileName;
-                string ext = Path.GetExtension(fileName);
-                if (string.IsNullOrWhiteSpace(ext))
+                if (string.IsNullOrWhiteSpace(Path.GetExtension(fileName)))
                 {
-                    // Try to infer extension from content type
-                    ext = ".jpg"; // Default
-                    if (!string.IsNullOrWhiteSpace(result.ContentType))
-                    {
-                        if (result.ContentType.Contains("png")) ext = ".png";
-                        else if (result.ContentType.Contains("jpeg")) ext = ".jpg";
-                        else if (result.ContentType.Contains("gif")) ext = ".gif";
-                        else if (result.ContentType.Contains("bmp")) ext = ".bmp";
-                        else if (result.ContentType.Contains("webp")) ext = ".webp";
-                    }
-                    fileName = "image_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ext;
+                    fileName = "image_" + DateTime.Now + ".jpg";
                 }
 
-                // Read the image data as byte array
                 using var stream = await result.OpenReadAsync();
-                using var memoryStream = new MemoryStream();
-                await stream.CopyToAsync(memoryStream);
-                byte[] imageData = memoryStream.ToArray();
+                using var ms = new MemoryStream();
+                await stream.CopyToAsync(ms);
 
-                // Now upload the image data
-                await ApiService.UploadImageAsync(imageData, fileName, folderId);
-                await LoadImages(folderId); // Refresh images after upload
+                await ApiService.UploadImageAsync(ms.ToArray(), fileName, folderId);
+                await LoadImages(folderId);
             }
         }
         catch (Exception ex)
         {
-            // Handle any exceptions
-            await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+            await DisplayAlert("Error", ex.Message, "OK");
         }
     }
 }

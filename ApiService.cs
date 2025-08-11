@@ -1,12 +1,12 @@
-﻿using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using Ashwell_Maintenance;
+﻿using Ashwell_Maintenance;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Net.Http;
-using System.Net;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 public static class ApiService
 {
@@ -344,69 +344,51 @@ public static class ApiService
             return null;
         }
     }
-    /// <summary>
-    /// Uploads an image to the server from a mobile app.
-    /// </summary>
-    /// <param name="imageData">The image data as a byte array.</param>
-    /// <param name="imageName">The name of the image file to be saved on the server.</param>
-    /// <param name="folderId">The ID of the folder where the image should be saved.</param>
-    /// <returns>A HttpResponseMessage indicating the outcome of the API call.</returns>
-    public static async Task<HttpResponseMessage> UploadImageAsync(byte[] imageData, string imageName, string folderId)
+    public static async Task<ImageInfo> UploadImageAsync(byte[] imageData, string imageName, string folderId)
     {
         using HttpClient client = new();
+        using MultipartFormDataContent formData = new();
 
-        // Create the form data content
-        using MultipartFormDataContent formData = new MultipartFormDataContent();
-
-        // Add the folder ID to the form data
         formData.Add(new StringContent(folderId), "folderId");
-
-        // Add the image content to the form data
         var imageContent = new ByteArrayContent(imageData);
-        imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg"); // Adjust the MIME type if necessary
-
-        // Add the image file to the form data with the provided image name
+        imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         formData.Add(imageContent, "image", imageName);
 
-        // Make the POST request to upload the image
         HttpResponseMessage response = await client.PostAsync($"{BaseApiUrl}/upload_image.php", formData);
-
-        return response;
-    }
-    /// <summary>
-    /// Retrieves all image paths for a specified folderId from the server.
-    /// </summary>
-    /// <param name="folderId">The ID of the folder where the images are stored.</param>
-    /// <returns>A list of image paths from the server.</returns>
-    public static async Task<List<string>> GetImagePathsAsync(string folderId)
-    {
-        using HttpClient client = new();
-
-        // Build the request URL with the folderId query parameter
-        string requestUrl = $"{BaseApiUrl}/get_images_by_folder.php?folderId={folderId}";
-
-        // Send the GET request to retrieve image paths
-        HttpResponseMessage response = await client.GetAsync(requestUrl);
-
-        // Ensure the response is successful
         response.EnsureSuccessStatusCode();
 
-        // Parse the response content as a string
-        string responseContent = await response.Content.ReadAsStringAsync();
+        string content = await response.Content.ReadAsStringAsync();
+        using JsonDocument doc = JsonDocument.Parse(content);
 
-        // Deserialize the JSON response to extract image paths
-        var jsonResponse = JsonSerializer.Deserialize<Dictionary<string, object>>(responseContent);
-
-        // Check if the response contains 'imagePaths'
-        if (jsonResponse != null && jsonResponse.ContainsKey("imagePaths"))
+        var imageElement = doc.RootElement.GetProperty("image");
+        return new ImageInfo
         {
-            var imagePathsJson = jsonResponse["imagePaths"].ToString();
+            ImageId = imageElement.GetProperty("imageId").GetString(),
+            FileName = imageElement.GetProperty("fileName").GetString(),
+            Path = $"{BaseApiUrl}/{imageElement.GetProperty("path").GetString().TrimStart('/')}"
+        };
+    }
 
-            // Deserialize the image paths into a list
-            return JsonSerializer.Deserialize<List<string>>(imagePathsJson);
+    public static async Task<List<ImageInfo>> GetImagesAsync(string folderId)
+    {
+        using HttpClient client = new();
+        HttpResponseMessage response = await client.GetAsync($"{BaseApiUrl}/get_images_by_folder.php?folderId={folderId}");
+        response.EnsureSuccessStatusCode();
+
+        string content = await response.Content.ReadAsStringAsync();
+        using JsonDocument doc = JsonDocument.Parse(content);
+
+        var list = new List<ImageInfo>();
+        foreach (var img in doc.RootElement.GetProperty("images").EnumerateArray())
+        {
+            list.Add(new ImageInfo
+            {
+                ImageId = img.GetProperty("imageId").GetString(),
+                FileName = img.GetProperty("fileName").GetString(),
+                Path = $"{BaseApiUrl}/{img.GetProperty("path").GetString().TrimStart('/')}"
+            });
         }
-
-        return new List<string>();
+        return list;
     }
 
 
