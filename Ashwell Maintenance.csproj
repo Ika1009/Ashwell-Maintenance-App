@@ -20,8 +20,13 @@
 		<ApplicationIdGuid>cda7f9e6-62d7-4012-a18c-fff0851b995a</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>2.0</ApplicationDisplayVersion>
+		<ApplicationVersion>2.0</ApplicationVersion>
+
+		<!-- Android SDK Versions -->
+		<AndroidCompileSdkVersion>33</AndroidCompileSdkVersion>
+		<AndroidTargetSdkVersion>33</AndroidTargetSdkVersion>
+		<AndroidMinSdkVersion>24</AndroidMinSdkVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
