@@ -102,6 +102,10 @@ public partial class DisplayedReportsPage : ContentPage
                 }
             }
         }
+        finally
+        {
+
+        }
         loadingBG.IsRunning = false;
         loading.IsRunning = false;
     }
